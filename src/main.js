@@ -9,6 +9,8 @@ import scenariosData from '../data/scenarios.json';
 
 // ── 初始化 ──
 const app = document.getElementById('app');
+console.log('[FC] app element:', app);
+console.log('[FC] scenariosData length:', scenariosData?.length);
 
 // ── 科目定義 ──
 const SUBJECTS = [
@@ -41,7 +43,7 @@ window.FC.goHome = goHome;
 
 export function goTopic(topicId) {
   initTopicProgress(topicId);
-  state = { ...state, view: 'topic', topicId }; // subjectId preserved from current state
+  state = { ...state, view: 'topic', topicId, subjectId: state.subjectId };
   render();
 }
 window.FC.goTopic = goTopic;
@@ -132,7 +134,7 @@ function renderStudentSelect() {
       </div>
       <div style="text-align:center;color:var(--text-light);margin-bottom:16px;font-size:0.9em">— 或新增學生 —</div>
       <div style="background:var(--card);border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
-        <input id="new-student-name" type="text" placeholder="輸入新學生名字"
+        <input id="new-student-name" type="text" inputmode="none" autocomplete="off" placeholder="輸入新學生名字"
           style="width:100%;padding:14px;border:2px solid var(--border);border-radius:10px;font-size:1em;margin-bottom:10px;box-sizing:border-box" />
         <button class="btn btn-success" style="width:100%" onclick="FC.addStudent()">➕ 新增學生</button>
       </div>
@@ -391,32 +393,36 @@ function render() {
     state = { ...state, view: 'student-select' };
   }
 
-  switch (state.view) {
-    case 'student-select':
-      app.innerHTML = renderStudentSelect(); break;
-    case 'subject-select':
-      app.innerHTML = renderSubjectSelect(); break;
-    case 'login':
-      app.innerHTML = renderLogin(); break;
-    case 'teacher':
-      app.innerHTML = renderTeacher(); safeSetNames(); break;
-    case 'home':
-      app.innerHTML = renderHome(state.subjectId); break;
-    case 'topic':
-      app.innerHTML = renderTopicList(state.topicId, state.subjectId); break;
-    case 'play':
-      app.innerHTML = renderPlay(state.scenarioId, state.subjectId); break;
-    case 'result':
-      app.innerHTML = renderResult(state.resultData, state.subjectId); break;
-    case 'progress':
-      app.innerHTML = renderProgress(state.subjectId); break;
-    case 'settings':
-      app.innerHTML = renderSettings(); break;
-    default:
-      app.innerHTML = '<div class="container"><p>頁面不存在</p><button class="btn btn-primary" onclick="FC.goHome()">回首頁</button></div>';
+  console.log('[FC] render, view:', state.view);
+  let html = '';
+  try {
+    switch (state.view) {
+      case 'student-select': html = renderStudentSelect(); break;
+      case 'subject-select': html = renderSubjectSelect(); break;
+      case 'login': html = renderLogin(); break;
+      case 'teacher': html = renderTeacher(); safeSetNames(); break;
+      case 'home': html = renderHome(state.subjectId); break;
+      case 'topic': html = renderTopicList(state.topicId, state.subjectId); break;
+      case 'play': html = renderPlay(state.scenarioId, state.subjectId); break;
+      case 'result': html = renderResult(state.resultData, state.subjectId); break;
+      case 'progress': html = renderProgress(state.subjectId); break;
+      case 'settings': html = renderSettings(); break;
+      default: html = '<div class="container"><p>頁面不存在</p></div>';
+    }
+    console.log('[FC] html length:', html.length);
+    app.innerHTML = html;
+  } catch(e) {
+    console.error('[FC] RENDER ERROR:', e.message, e.stack);
+    app.innerHTML = '<pre style="color:red;padding:20px">[FC] Render Error:\n' + e.message + '\n' + (e.stack||'').split('\n').slice(0,5).join('\n') + '</pre>';
   }
 }
 
 // ── 啟動 ──
 setScenarios(scenariosData);
-render();
+try {
+  render();
+  console.log('[FC] render complete, app innerHTML length:', app.innerHTML.length);
+} catch(e) {
+  console.error('[FC] RENDER ERROR:', e.message, e.stack);
+  app.innerHTML = '<pre style="color:red;padding:20px">[FC] Render Error:\n' + e.message + '\n' + (e.stack||'').split('\n').slice(0,5).join('\n') + '</pre>';
+}
