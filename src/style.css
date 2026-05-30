@@ -403,6 +403,290 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   font-weight: 600;
 }
 
+/* ---- 學生選擇頁 ---- */
+.student-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  border: 3px solid transparent;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.student-card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(74,144,217,0.18);
+}
+.student-card:active { transform: translateY(0); }
+.student-card .avatar {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8em;
+  flex-shrink: 0;
+}
+.student-card .info { flex: 1; }
+.student-card .info .name { font-size: 1.2em; font-weight: 700; }
+.student-card .info .sub { font-size: 0.85em; color: var(--text-light); }
+.student-card .arrow { font-size: 1.2em; color: var(--text-light); }
+
+/* ---- 老師儀表板增強 ---- */
+.teacher-panel {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.teacher-panel h2 { color: #fff; margin-bottom: 4px; }
+.teacher-panel .subtitle { opacity: 0.8; font-size: 0.9em; }
+.student-row {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.1s;
+}
+.student-row:hover { transform: translateX(4px); }
+.student-row .avatar {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: #f0f4ff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4em;
+  flex-shrink: 0;
+}
+.student-row .info { flex: 1; }
+.student-row .info .name { font-weight: 700; }
+.student-row .info .meta { font-size: 0.8em; color: var(--text-light); margin-top: 2px; }
+.student-row .stat-badge {
+  text-align: center;
+  min-width: 50px;
+}
+.student-row .stat-badge .num { font-size: 1.4em; font-weight: 800; color: var(--primary); }
+.student-row .stat-badge .label { font-size: 0.7em; color: var(--text-light); }
+
+/* ---- 主題卡片增強 ---- */
+.topic-card {
+  padding: 20px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: #fff;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.topic-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.topic-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+.topic-card .emoji { font-size: 2.8em; display: block; margin-bottom: 8px; }
+.topic-card .title { font-weight: 700; font-size: 1.1em; }
+.topic-card .sub { font-size: 0.85em; opacity: 0.9; margin-top: 4px; }
+.topic-card .progress-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.topic-card .progress-fill {
+  height: 100%;
+  background: #fff;
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+/* ---- 結果頁增強 ---- */
+.result-card {
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 12px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: -20px; right: -20px;
+  width: 100px; height: 100px;
+  border-radius: 50%;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.result-card.good {
+  background: linear-gradient(135deg, #f6ffed 0%, #d9f7be 100%);
+  border: 2px solid var(--success);
+}
+.result-card.bad {
+  background: linear-gradient(135deg, #fff1f0 0%, #ffccc7 100%);
+  border: 2px solid var(--danger);
+}
+.result-card .comment { font-size: 1.15em; margin-bottom: 12px; line-height: 1.6; }
+.result-card .moral { font-weight: 800; font-size: 1.4em; }
+.result-card .moral .plus { color: var(--success); }
+.result-card .moral .minus { color: var(--danger); }
+
+/* ---- 信條展示增強 ---- */
+.creed-show {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.creed-show::before {
+  content: '🌟';
+  position: absolute;
+  top: -10px; right: -10px;
+  font-size: 80px;
+  opacity: 0.08;
+  pointer-events: none;
+}
+.creed-show .label { font-size: 0.9em; opacity: 0.9; margin-bottom: 10px; font-weight: 600; letter-spacing: 0.05em; }
+.creed-show .items { display: flex; flex-direction: column; gap: 8px; }
+.creed-show .item {
+  background: rgba(255,255,255,0.18);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  border-left: 3px solid rgba(255,255,255,0.5);
+}
+
+/* ---- 科目選擇增強 ---- */
+.subject-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 16px;
+  border: 3px solid;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: transform 0.15s, box-shadow 0.15s;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+}
+.subject-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+.subject-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
+
+/* ---- 場景列表增強 ---- */
+.scenario-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--card);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  border-left: 4px solid transparent;
+}
+.scenario-item:hover {
+  transform: translateX(6px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  border-left-color: var(--primary);
+}
+.scenario-item.completed { opacity: 0.7; border-left-color: var(--success); }
+
+/* ---- 選項按鈕增強 ---- */
+.option-btn {
+  width: 100%;
+  padding: 18px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+  text-align: left;
+  font-size: 1.05em;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.1s, box-shadow 0.2s;
+  position: relative;
+}
+.option-btn:hover {
+  border-color: var(--primary);
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(74,144,217,0.15);
+}
+.option-btn:active { transform: scale(0.99); }
+.option-btn .opt-id {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px; height: 32px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  font-weight: 700;
+  margin-right: 12px;
+  font-size: 0.9em;
+}
+
+/* ---- 進度頁面增強 ---- */
+.progress-cell {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.progress-cell .num { font-size: 2.2em; font-weight: 800; color: var(--primary); }
+.progress-cell .label { font-size: 0.9em; color: var(--text-light); margin-top: 4px; }
+
+/* ---- 登入頁增強 ---- */
+.login-form {
+  max-width: 380px;
+  margin: 60px auto;
+  background: var(--card);
+  border-radius: 20px;
+  padding: 32px 24px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+}
+.login-form h2 { text-align: center; margin-bottom: 24px; }
+.login-form input {
+  width: 100%;
+  padding: 14px;
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-size: 1em;
+  margin-bottom: 14px;
+  transition: border-color 0.2s;
+}
+.login-form input:focus { outline: none; border-color: var(--primary); }
+
 /* ---- 響應式 ---- */
 @media (max-width: 480px) {
   .topic-grid { grid-template-columns: 1fr; }

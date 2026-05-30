@@ -112,21 +112,31 @@ export function switchStudent() {
 window.FC.switchStudent = switchStudent;
 
 // ── 學生選擇 ──
+const STUDENT_EMOJI = { '張鈞保': '👦', '祝卓鋒': '🚪' };
 function renderStudentSelect() {
+  const saved = ['張鈞保', '祝卓鋒'];
   return `
-    <div class="container fade-in" style="max-width:400px">
-      <h2 style="text-align:center;margin-bottom:20px">👤 選擇學生</h2>
-      <div style="display:flex;flex-direction:column;gap:10px">
-        ${['張鈞保', '祝卓鋒', '其他'].map(name => `
-          <button class="btn btn-primary" onclick="FC.selectStudent('${name}')">👤 ${name}</button>
+    <div class="container fade-in" style="max-width:460px;padding-top:40px">
+      <h2 style="text-align:center;margin-bottom:24px">👤 選擇學生</h2>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
+        ${['張鈞保', '祝卓鋒'].map(name => `
+          <div class="student-card" onclick="FC.selectStudent('${name}')">
+            <div class="avatar">${STUDENT_EMOJI[name] || '👤'}</div>
+            <div class="info">
+              <div class="name">${name}</div>
+              <div class="sub">按此開始學習</div>
+            </div>
+            <div class="arrow">→</div>
+          </div>
         `).join('')}
       </div>
-      <div style="margin-top:16px">
+      <div style="text-align:center;color:var(--text-light);margin-bottom:16px;font-size:0.9em">— 或新增學生 —</div>
+      <div style="background:var(--card);border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
         <input id="new-student-name" type="text" placeholder="輸入新學生名字"
-          style="width:100%;padding:12px;border:2px solid var(--border);border-radius:10px;font-size:1em;margin-bottom:8px" />
+          style="width:100%;padding:14px;border:2px solid var(--border);border-radius:10px;font-size:1em;margin-bottom:10px;box-sizing:border-box" />
         <button class="btn btn-success" style="width:100%" onclick="FC.addStudent()">➕ 新增學生</button>
       </div>
-      <div style="margin-top:12px;text-align:center">
+      <div style="margin-top:16px;text-align:center">
         <button class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
       </div>
     </div>
@@ -203,8 +213,33 @@ const _TEACHER_SUBJECTS = [
   { id: 'science', label: '🔬', color: '#9C27B0' },
 ];
 
+// ── 老師儀表板 ──
 function renderTeacher() {
   const students = getAllStudents();
+  const TEACHER_EMOJI = { '張鈞保': '👦', '祝卓鋒': '🚪' };
+
+  if (!students.length) {
+    return `
+    <div class="container fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goHome()">←</button>
+        <h2>📊 老師儀表板</h2>
+      </div>
+      <div class="teacher-panel">
+        <h2>📊 老師儀表板</h2>
+        <div class="subtitle">暂无学生数据</div>
+      </div>
+      <div style="text-align:center;padding:40px;color:var(--text-light)">
+        <div style="font-size:3em;margin-bottom:12px">📭</div>
+        <p>暫時沒有學生數據</p>
+        <p style="font-size:0.85em;margin-top:8px">學生完成學習後會自動顯示在這裡</p>
+      </div>
+      <div style="margin-top:16px">
+        <button class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
+      </div>
+    </div>`;
+  }
+
   return `
     <div class="container fade-in">
       <div class="page-header">
@@ -212,44 +247,42 @@ function renderTeacher() {
         <h2>📊 老師儀表板</h2>
       </div>
 
-      <div class="card">
-        <div style="font-weight:600;margin-bottom:10px">👥 學生一覽 (${students.length})</div>
-        ${students.length === 0 ? '<p style="color:var(--text-light)">暫無學生數據</p>' : `
-        <table class="teacher-table">
-          <thead>
-            <tr><th>學生</th><th>🎯</th><th>📐</th><th>🔤</th><th>🔬</th><th>總分</th><th>最近</th></tr>
-          </thead>
-          <tbody>
-            ${students.map(s => {
-              const getSubPct = id => {
-                const sp = s.subjectProgress?.[id] || {};
-                if (!sp.total) return '—';
-                return sp.completed + '/' + sp.total;
-              };
-              return `
-              <tr>
-                <td>👤 ${s.name}</td>
-                <td style="color:#4285F4;font-weight:600">${getSubPct('math')}</td>
-                <td style="color:#EA4335;font-weight:600">${getSubPct('chinese')}</td>
-                <td style="color:#34A853;font-weight:600">${getSubPct('english')}</td>
-                <td style="color:#9C27B0;font-weight:600">${getSubPct('science')}</td>
-                <td><strong>${s.totalMoralScore || 0}</strong></td>
-                <td>${s.lastPlayed || '—'}</td>
-              </tr>`;
-            }).join('')}
-          </tbody>
-        </table>`}
+      <div class="teacher-panel">
+        <h2>👥 學生總覽</h2>
+        <div class="subtitle">共 ${students.length} 位學生</div>
       </div>
 
-      <div class="card">
+      <div style="display:flex;flex-direction:column;gap:10px">
+        ${students.map(s => {
+          const total = s.totalMoralScore || 0;
+          const completed = s.completedScenarios?.length || 0;
+          const emoji = TEACHER_EMOJI[s.name] || '👤';
+          const grade = total >= 200 ? '🌟' : total >= 100 ? '⭐' : total >= 50 ? '✨' : '💫';
+          return `
+          <div class="student-row">
+            <div class="avatar">${emoji}</div>
+            <div class="info">
+              <div class="name">${s.name}</div>
+              <div class="meta">完成 ${completed} 個場景 · 最近 ${s.lastPlayed || '—'}</div>
+            </div>
+            <div class="stat-badge">
+              <div class="num" style="color:${total >= 100 ? '#52c41a' : 'var(--text)'}">${total}</div>
+              <div class="label">道德分</div>
+            </div>
+            <div style="font-size:1.2em">${grade}</div>
+          </div>`;
+        }).join('')}
+      </div>
+
+      <div class="card" style="margin-top:16px">
         <div style="font-weight:600;margin-bottom:10px">📚 科目總覽</div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
-          ${_TEACHER_SUBJECTS.map(sub => {
+          ${[{id:'math',label:'🎯',color:'#4285F4'},{id:'chinese',label:'📐',color:'#EA4335'},{id:'english',label:'🔤',color:'#34A853'},{id:'science',label:'🔬',color:'#9C27B0'}].map(sub => {
             const totalCompleted = students.reduce((acc, s) => acc + (s.subjectProgress?.[sub.id]?.completed || 0), 0);
             const totalPossible = students.reduce((acc, s) => acc + (s.subjectProgress?.[sub.id]?.total || 0), 0);
             const pct = totalPossible ? Math.round((totalCompleted / totalPossible) * 100) : 0;
             return `
-              <div style="background:${sub.color}22;border:2px solid ${sub.color};border-radius:12px;padding:12px;text-align:center">
+              <div style="background:${sub.color}18;border:2px solid ${sub.color};border-radius:12px;padding:12px;text-align:center">
                 <div style="font-size:1.5em;margin-bottom:4px">${sub.label}</div>
                 <div style="font-weight:700;font-size:1.1em;color:${sub.color}">${totalCompleted}/${totalPossible}</div>
                 <div style="height:6px;background:#eee;border-radius:3px;margin-top:6px;overflow:hidden">
