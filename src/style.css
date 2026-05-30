@@ -362,9 +362,51 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
 .voice-fab.speaking { animation: pulse 1s infinite; }
 @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
+/* ---- 科目選擇 ---- */
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.subject-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 24px 16px;
+  border: 3px solid;
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: transform 0.15s;
+  background: transparent;
+}
+.subject-btn:hover { transform: scale(1.04); }
+
+/* ---- 科目橫幅 ---- */
+.subject-banner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+/* ---- 小按鈕 ---- */
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.9em;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
 /* ---- 響應式 ---- */
 @media (max-width: 480px) {
   .topic-grid { grid-template-columns: 1fr; }
   .progress-grid { grid-template-columns: 1fr; }
   .progress-cell.big { grid-column: span 1; }
+  .subject-grid { grid-template-columns: repeat(2, 1fr); }
 }

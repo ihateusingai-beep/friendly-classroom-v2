@@ -10,10 +10,22 @@ import scenariosData from '../data/scenarios.json';
 // ── 初始化 ──
 const app = document.getElementById('app');
 
-// 狀態機
+// ── 科目定義 ──
+const SUBJECTS = [
+  { id: 'math',    title: '數學', emoji: '🎯', color: '#4285F4', bgColor: '#E8F0FE' },
+  { id: 'chinese', title: '中文', emoji: '📐', color: '#EA4335', bgColor: '#FCE8E6' },
+  { id: 'english', title: '英文', emoji: '🔤', color: '#34A853', bgColor: '#E6F4EA' },
+  { id: 'science', title: '常識', emoji: '🔬', color: '#9C27B0', bgColor: '#F3E5F5' },
+];
+
+function getSubjectColor(id)  { return SUBJECTS.find(s => s.id === id)?.color || '#666'; }
+function getSubjectBgColor(id){ return SUBJECTS.find(s => s.id === id)?.bgColor || '#f5f5f5'; }
+
+// ── 狀態機 ──
 let state = {
-  view: 'home',      // home | topic | play | result | progress | settings | teacher | login | student-select
+  view: 'home',      // home | topic | play | result | progress | settings | teacher | login | student-select | subject-select
   student: null,
+  subjectId: null,   // 🎯📐🔤🔬
   topicId: null,
   scenarioId: null,
   resultData: null,
@@ -29,7 +41,7 @@ window.FC.goHome = goHome;
 
 export function goTopic(topicId) {
   initTopicProgress(topicId);
-  state = { ...state, view: 'topic', topicId };
+  state = { ...state, view: 'topic', topicId }; // subjectId preserved from current state
   render();
 }
 window.FC.goTopic = goTopic;
@@ -79,6 +91,18 @@ export function goRandom() {
   play(s.id);
 }
 window.FC.goRandom = goRandom;
+
+export function goSubjectSelect() {
+  state = { ...state, view: 'subject-select' };
+  render();
+}
+window.FC.goSubjectSelect = goSubjectSelect;
+
+export function selectSubject(subjectId) {
+  state = { ...state, subjectId, view: 'home' };
+  render();
+}
+window.FC.selectSubject = selectSubject;
 
 export function switchStudent() {
   state = { ...state, view: 'student-select' };
@@ -149,6 +173,27 @@ window.FC.doLogin = function() {
   }
 };
 
+// ── 科目選擇 ──
+function renderSubjectSelect() {
+  return `
+    <div class="container fade-in" style="max-width:500px">
+      <h2 style="text-align:center;margin-bottom:20px">📚 選擇科目</h2>
+      <div class="subject-grid">
+        ${SUBJECTS.map(sub => `
+          <button class="subject-btn" style="background:${sub.bgColor};border-color:${sub.color}"
+            onclick="FC.selectSubject('${sub.id}')">
+            <div style="font-size:2em">${sub.emoji}</div>
+            <div style="font-weight:600;color:${sub.color}">${sub.title}</div>
+          </button>
+        `).join('')}
+      </div>
+      <div style="margin-top:12px;text-align:center">
+        <button class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
+      </div>
+    </div>
+  `;
+}
+
 // ── 老師Dashboard ──
 function renderTeacher() {
   const students = getAllStudents();
@@ -169,7 +214,7 @@ function renderTeacher() {
           <tbody>
             ${students.map(s => `
               <tr>
-                <td>👤 ${s.name}</td>
+                <td>👤 <span class="student-name"></span></td>
                 <td>${s.totalMoralScore || 0}</td>
                 <td>${s.completedScenarios?.length || 0}</td>
                 <td>${s.lastPlayed || '—'}</td>
@@ -273,20 +318,22 @@ function render() {
   switch (state.view) {
     case 'student-select':
       app.innerHTML = renderStudentSelect(); break;
+    case 'subject-select':
+      app.innerHTML = renderSubjectSelect(); break;
     case 'login':
       app.innerHTML = renderLogin(); break;
     case 'teacher':
       app.innerHTML = renderTeacher(); break;
     case 'home':
-      app.innerHTML = renderHome(); break;
+      app.innerHTML = renderHome(state.subjectId); break;
     case 'topic':
-      app.innerHTML = renderTopicList(state.topicId); break;
+      app.innerHTML = renderTopicList(state.topicId, state.subjectId); break;
     case 'play':
-      app.innerHTML = renderPlay(state.scenarioId); break;
+      app.innerHTML = renderPlay(state.scenarioId, state.subjectId); break;
     case 'result':
-      app.innerHTML = renderResult(state.resultData); break;
+      app.innerHTML = renderResult(state.resultData, state.subjectId); break;
     case 'progress':
-      app.innerHTML = renderProgress(); break;
+      app.innerHTML = renderProgress(state.subjectId); break;
     case 'settings':
       app.innerHTML = renderSettings(); break;
     default:

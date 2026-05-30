@@ -4,6 +4,18 @@ import { getTopic } from './topics.js';
 import { getCreedsByIds, formatCreeds } from './creeds.js';
 import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 
+// ── 科目 helpers ──
+const _SUBJECTS = [
+  { id: 'math',    title: '數學', emoji: '🎯', color: '#4285F4', bgColor: '#E8F0FE' },
+  { id: 'chinese', title: '中文', emoji: '📐', color: '#EA4335', bgColor: '#FCE8E6' },
+  { id: 'english', title: '英文', emoji: '🔤', color: '#34A853', bgColor: '#E6F4EA' },
+  { id: 'science', title: '常識', emoji: '🔬', color: '#9C27B0', bgColor: '#F3E5F5' },
+];
+function getSubjectColor(id)  { return _SUBJECTS.find(s => s.id === id)?.color || '#666'; }
+function getSubjectBgColor(id){ return _SUBJECTS.find(s => s.id === id)?.bgColor || '#f5f5f5'; }
+function getSubjectName(id)   { return _SUBJECTS.find(s => s.id === id)?.title || ''; }
+function getSubjectEmoji(id)  { return _SUBJECTS.find(s => s.id === id)?.emoji || ''; }
+
 let currentStudent = null;
 let currentTopic = null;
 let currentScenario = null;
@@ -79,25 +91,44 @@ export function suggestNext(topicId) {
   return topicScenarios.find(s => !p.completedScenarios.includes(s.id)) || null;
 }
 
-export function renderHome() {
+export function renderHome(subjectId) {
+  const subjectColor = getSubjectColor(subjectId);
+  const subjectBg = getSubjectBgColor(subjectId);
+
   return `
     <div class="container fade-in">
-      ${currentStudent ? `
-        <div class="student-bar">
-          <span>👤 <span class="name">${currentStudent}</span></span>
-          <span>🎯 總分：${getProgress(currentStudent).totalMoralScore || 0}</span>
-        </div>
-      ` : ''}
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.switchStudent()">👤</button>
+        <h2>🌟 友愛教室</h2>
+        <button class="back-btn" style="background:${subjectBg};color:${subjectColor};border:2px solid ${subjectColor}"
+          onclick="FC.goSubjectSelect()">
+          ${getSubjectEmoji(subjectId) || '📚'}
+        </button>
+      </div>
 
-      <h1>📚 友愛教室</h1>
-      <p style="text-align:center;color:var(--text-light);margin-bottom:20px">選擇一個主題開始學習</p>
+      ${subjectId ? `
+      <div class="subject-banner" style="background:${subjectBg};border:2px solid ${subjectColor}">
+        <span style="font-size:1.5em">${getSubjectEmoji(subjectId)}</span>
+        <div>
+          <div style="font-weight:600;color:${subjectColor}">${getSubjectName(subjectId)}學模擬練習</div>
+          <div style="font-size:0.85em;color:var(--text-light)">按主題學習 → 智能漸進解鎖</div>
+        </div>
+        <button class="btn btn-sm" style="margin-left:auto;background:${subjectColor};color:white"
+          onclick="FC.goSubjectSelect()">切換科目</button>
+      </div>
+      ` : `
+      <div class="subject-banner" style="background:#f5f5f5;border:2px dashed #ccc;text-align:center;padding:16px">
+        <div style="margin-bottom:8px">📚 請先選擇科目</div>
+        <button class="btn btn-primary" onclick="FC.goSubjectSelect()">選擇科目</button>
+      </div>
+      `}
 
       <div class="topic-grid">
         ${[
           { id: 'emotions', emoji: '🎭', title: '情緒與規範', sub: '管理情緒、守規矩', color: '#FF6B6B' },
           { id: 'respect',  emoji: '🤝', title: '尊重與關懷', sub: '尊重別人、關心他人', color: '#4ECDC4' },
           { id: 'honesty',  emoji: '⚖️', title: '誠實與責任', sub: '誠實面對、勇於承擔', color: '#45B7D1' },
-          { id: 'conflict', emoji: '💪', title: '衝突與求助', sub: '解決衝突、向人求助', color: '#96CEB4' },
+          { id: 'conflict',  emoji: '💪', title: '衝突與求助', sub: '解決衝突、向人求助', color: '#96CEB4' },
         ].map(t => {
           const p = currentStudent ? (getProgress(currentStudent).topicProgress[t.id] || {}) : {};
           const pct = p.total ? Math.round((p.completed / p.total) * 100) : 0;
@@ -127,9 +158,10 @@ export function renderHome() {
   `;
 }
 
-export function renderTopicList(topicId) {
+export function renderTopicList(topicId, subjectId) {
   const topic = getTopic(topicId);
   const topicScenarios = getScenariosByTopic(topicId);
+  const subColor = getSubjectColor(subjectId);
   initTopicProgress(topicId);
 
   return `
@@ -137,6 +169,7 @@ export function renderTopicList(topicId) {
       <div class="page-header">
         <button class="back-btn" onclick="FC.goHome()">←</button>
         <h2>${topic.emoji} ${topic.title}</h2>
+        ${subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''}
       </div>
       <p style="color:var(--text-light);margin-bottom:16px">${topic.description}</p>
 
@@ -159,19 +192,19 @@ export function renderTopicList(topicId) {
   `;
 }
 
-export function renderPlay(scenarioId) {
+export function renderPlay(scenarioId, subjectId) {
   const s = playScenario(scenarioId);
   if (!s) return '<div class="container"><p>場景不存在</p></div>';
   const topic = getTopic(s.topicId);
+  const subColor = getSubjectColor(subjectId);
 
   return `
     <div class="container fade-in">
       <div class="page-header">
         <button class="back-btn" onclick="FC.goTopic('${s.topicId}')">←</button>
+        ${subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''}
         <span class="play-top" style="flex:1;text-align:center">
-          <span class="play-top">
-            <span class="topic-badge" style="background:${topic?.color || 'var(--primary)'}">${topic?.emoji || ''} ${topic?.title || ''}</span>
-          </span>
+          <span class="topic-badge" style="background:${topic?.color || 'var(--primary)'}">${topic?.emoji || ''} ${topic?.title || ''}</span>
         </span>
       </div>
 
@@ -199,12 +232,16 @@ export function renderPlay(scenarioId) {
   `;
 }
 
-export function renderResult(data) {
+export function renderResult(data, subjectId) {
   const { option, moralChange, mainComment, creeds, creedText } = data;
   const isGood = moralChange >= 0;
+  const subColor = getSubjectColor(subjectId);
 
   return `
     <div class="container fade-in">
+      ${subjectId ? `<div style="text-align:center;margin-bottom:8px">
+        <span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>
+      </div>` : ''}
       <div class="result-card ${isGood ? 'good' : 'bad'}">
         <div class="comment">${mainComment || '你做出了選擇！'}</div>
         <div class="moral">${isGood ? '＋' : ''}${moralChange} 道德分</div>
@@ -227,16 +264,18 @@ export function renderResult(data) {
   `;
 }
 
-export function renderProgress() {
+export function renderProgress(subjectId) {
   const p = getProgress(currentStudent);
   const total = p.totalMoralScore || 0;
   const completed = p.completedScenarios?.length || 0;
+  const subColor = getSubjectColor(subjectId);
 
   return `
     <div class="container fade-in">
       <div class="page-header">
         <button class="back-btn" onclick="FC.goHome()">←</button>
         <h2>📊 我的進度</h2>
+        ${subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''}
       </div>
 
       <div class="progress-grid">
