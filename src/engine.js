@@ -2,7 +2,7 @@
 import { getProgress, markComplete, updateTopicTotal, isCompleted } from './progress.js';
 import { getTopic } from './topics.js';
 import { getCreedsByIds, formatCreeds } from './creeds.js';
-import { speakScenario, speakCreeds } from './audio.js';
+import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 
 let currentStudent = null;
 let currentTopic = null;
@@ -295,7 +295,7 @@ export function renderSettings() {
             <strong>🔊 語音朗讀</strong>
             <div style="font-size:0.85em;color:var(--text-light)">自動朗讀題目和信條</div>
           </div>
-          <div class="toggle ${require('./audio.js').isEnabled() ? 'on' : ''}" onclick="FC.toggleVoice(this)"></div>
+          <div class="toggle ${isEnabled() ? 'on' : ''}" onclick="FC.toggleVoice(this)"></div>
         </div>
         <div class="setting-row">
           <div>

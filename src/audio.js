@@ -17,7 +17,7 @@ export function speak(text) {
   if (!enabled) return;
   speechSynthesis.cancel();
   const utter = new SpeechSynthesisUtterance(text);
-  utter.voice = pick_voice();
+  utter.voice = pickVoice();
   utter.rate = 0.9;
   utter.pitch = 1.0;
   speechSynthesis.speak(utter);
@@ -28,7 +28,7 @@ export function speakScenario(scenario) {
   speechSynthesis.cancel();
   const text = `${scenario.title}。${scenario.description}`;
   const utter = new SpeechSynthesisUtterance(text);
-  utter.voice = pick_voice();
+  utter.voice = pickVoice();
   utter.rate = 0.85;
   speechSynthesis.speak(utter);
 }
@@ -38,7 +38,7 @@ export function speakCreeds(creeds) {
   speechSynthesis.cancel();
   const text = creeds.map(c => `${c.title}：${c.text}`).join('。');
   const utter = new SpeechSynthesisUtterance(text);
-  utter.voice = pick_voice();
+  utter.voice = pickVoice();
   utter.rate = 0.85;
   speechSynthesis.speak(utter);
 }
