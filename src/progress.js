@@ -9,15 +9,21 @@ export function getProgress(studentName) {
       completedScenarios: [],
       topicProgress: {
         emotions: { completed: 0, total: 0 },
-        respect: { completed: 0, total: 0 },
-        honesty: { completed: 0, total: 0 },
-        conflict: { completed: 0, total: 0 },
+        respect:    { completed: 0, total: 0 },
+        honesty:    { completed: 0, total: 0 },
+        conflict:   { completed: 0, total: 0 },
+      },
+      subjectProgress: {
+        math:    { completed: 0, total: 0 },
+        chinese: { completed: 0, total: 0 },
+        english: { completed: 0, total: 0 },
+        science: { completed: 0, total: 0 },
       },
       totalMoralScore: 0,
       lastPlayed: null,
     };
   } catch {
-    return { name: studentName, completedScenarios: [], topicProgress: {}, totalMoralScore: 0, lastPlayed: null };
+    return { name: studentName, completedScenarios: [], topicProgress: {}, subjectProgress: {}, totalMoralScore: 0, lastPlayed: null };
   }
 }
 
@@ -26,13 +32,16 @@ export function saveProgress(progress) {
   localStorage.setItem(PREFIX + progress.name, JSON.stringify(progress));
 }
 
-export function markComplete(studentName, scenarioId, topicId, moralChange) {
+export function markComplete(studentName, scenarioId, topicId, moralChange, subjectId) {
   const p = getProgress(studentName);
   if (!p.completedScenarios.includes(scenarioId)) {
     p.completedScenarios.push(scenarioId);
     p.totalMoralScore = Math.max(0, (p.totalMoralScore || 0) + moralChange);
     if (p.topicProgress[topicId]) {
       p.topicProgress[topicId].completed++;
+    }
+    if (subjectId && p.subjectProgress[subjectId]) {
+      p.subjectProgress[subjectId].completed++;
     }
     saveProgress(p);
   }
@@ -45,6 +54,16 @@ export function updateTopicTotal(studentName, topicId, total) {
     p.topicProgress[topicId] = { completed: 0, total };
   } else {
     p.topicProgress[topicId].total = total;
+  }
+  saveProgress(p);
+}
+
+export function updateSubjectTotal(studentName, subjectId, total) {
+  const p = getProgress(studentName);
+  if (!p.subjectProgress[subjectId]) {
+    p.subjectProgress[subjectId] = { completed: 0, total };
+  } else {
+    p.subjectProgress[subjectId].total = total;
   }
   saveProgress(p);
 }

@@ -1,5 +1,5 @@
 // 遊戲引擎
-import { getProgress, markComplete, updateTopicTotal, isCompleted } from './progress.js';
+import { getProgress, markComplete, updateTopicTotal, updateSubjectTotal, isCompleted } from './progress.js';
 import { getTopic } from './topics.js';
 import { getCreedsByIds, formatCreeds } from './creeds.js';
 import { speakScenario, speakCreeds, isEnabled } from './audio.js';
@@ -36,7 +36,7 @@ export function playScenario(scenarioId) {
   return currentScenario;
 }
 
-export function chooseOption(optionId) {
+export function chooseOption(optionId, subjectId) {
   const scenario = currentScenario;
   if (!scenario) return null;
 
@@ -53,7 +53,7 @@ export function chooseOption(optionId) {
 
   // 標記完成
   if (currentStudent) {
-    markComplete(currentStudent, scenario.id, scenario.topicId, moralChange);
+    markComplete(currentStudent, scenario.id, scenario.topicId, moralChange, subjectId);
   }
 
   // 信條
@@ -77,6 +77,13 @@ export function initTopicProgress(topicId) {
   if (!currentStudent) return;
   const topicScenarios = getScenariosByTopic(topicId);
   updateTopicTotal(currentStudent, topicId, topicScenarios.length);
+}
+
+export function initSubjectProgress(subjectId) {
+  if (!currentStudent || !subjectId) return;
+  // Count total scenarios (for now all scenarios belong to all subjects)
+  const all = getScenarios();
+  updateSubjectTotal(currentStudent, subjectId, all.length);
 }
 
 export function getDisplayProgress() {
@@ -269,6 +276,12 @@ export function renderProgress(subjectId) {
   const total = p.totalMoralScore || 0;
   const completed = p.completedScenarios?.length || 0;
   const subColor = getSubjectColor(subjectId);
+  const subjects = [
+    { id: 'math',    title: '🎯 數學',    color: '#4285F4' },
+    { id: 'chinese', title: '📐 中文',    color: '#EA4335' },
+    { id: 'english', title: '🔤 英文',    color: '#34A853' },
+    { id: 'science', title: '🔬 常識',    color: '#9C27B0' },
+  ];
 
   return `
     <div class="container fade-in">
@@ -292,6 +305,24 @@ export function renderProgress(subjectId) {
           <div class="label">🗓️ 最近遊玩</div>
         </div>
       </div>
+
+      ${subjectId ? `<div class="card" style="margin-bottom:12px">
+        <div style="font-weight:600;margin-bottom:10px">📚 科目進度</div>
+        ${subjects.map(sub => {
+          const sp = p.subjectProgress?.[sub.id] || {};
+          const pct = sp.total ? Math.round((sp.completed / sp.total) * 100) : 0;
+          return `
+            <div style="margin-bottom:8px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                <span style="color:${sub.color};font-weight:600">${sub.title}</span>
+                <span style="color:var(--text-light)">${sp.completed || 0}/${sp.total || 0}</span>
+              </div>
+              <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden">
+                <div style="height:100%;width:${pct}%;background:${sub.color};border-radius:4px;transition:width 0.4s"></div>
+              </div>
+            </div>`;
+        }).join('')}
+      </div>` : ''}
 
       ${['emotions','respect','honesty','conflict'].map(tid => {
         const tp = p.topicProgress[tid] || {};

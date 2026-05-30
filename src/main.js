@@ -4,7 +4,7 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
          renderPlay, renderResult, renderProgress, renderSettings,
          playScenario, chooseOption, suggestNext } from './engine.js';
 import { speakScenario, speakCreeds, setEnabled, isEnabled } from './audio.js';
-import { exportProgress, importProgress, getAllStudents, getProgress } from './progress.js';
+import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './progress.js';
 import scenariosData from '../data/scenarios.json';
 
 // ── 初始化 ──
@@ -53,7 +53,7 @@ export function play(scenarioId) {
 window.FC.play = play;
 
 export function choose(optionId) {
-  const data = chooseOption(optionId);
+  const data = chooseOption(optionId, state.subjectId);
   state = { ...state, view: 'result', resultData: data };
   render();
 }
@@ -99,6 +99,7 @@ export function goSubjectSelect() {
 window.FC.goSubjectSelect = goSubjectSelect;
 
 export function selectSubject(subjectId) {
+  initSubjectProgress(subjectId);
   state = { ...state, subjectId, view: 'home' };
   render();
 }
@@ -195,6 +196,13 @@ function renderSubjectSelect() {
 }
 
 // ── 老師Dashboard ──
+const _TEACHER_SUBJECTS = [
+  { id: 'math',    label: '🎯', color: '#4285F4' },
+  { id: 'chinese', label: '📐', color: '#EA4335' },
+  { id: 'english', label: '🔤', color: '#34A853' },
+  { id: 'science', label: '🔬', color: '#9C27B0' },
+];
+
 function renderTeacher() {
   const students = getAllStudents();
   return `
@@ -206,22 +214,50 @@ function renderTeacher() {
 
       <div class="card">
         <div style="font-weight:600;margin-bottom:10px">👥 學生一覽 (${students.length})</div>
-        ${students.length === 0 ? '<p style="color:var(--text-light)">暫無學生數據</p>' : ''}
+        ${students.length === 0 ? '<p style="color:var(--text-light)">暫無學生數據</p>' : `
         <table class="teacher-table">
           <thead>
-            <tr><th>學生</th><th>總分</th><th>已完成</th><th>最近遊玩</th></tr>
+            <tr><th>學生</th><th>🎯</th><th>📐</th><th>🔤</th><th>🔬</th><th>總分</th><th>最近</th></tr>
           </thead>
           <tbody>
-            ${students.map(s => `
+            ${students.map(s => {
+              const getSubPct = id => {
+                const sp = s.subjectProgress?.[id] || {};
+                if (!sp.total) return '—';
+                return sp.completed + '/' + sp.total;
+              };
+              return `
               <tr>
-                <td>👤 <span class="student-name"></span></td>
-                <td>${s.totalMoralScore || 0}</td>
-                <td>${s.completedScenarios?.length || 0}</td>
+                <td>👤 ${s.name}</td>
+                <td style="color:#4285F4;font-weight:600">${getSubPct('math')}</td>
+                <td style="color:#EA4335;font-weight:600">${getSubPct('chinese')}</td>
+                <td style="color:#34A853;font-weight:600">${getSubPct('english')}</td>
+                <td style="color:#9C27B0;font-weight:600">${getSubPct('science')}</td>
+                <td><strong>${s.totalMoralScore || 0}</strong></td>
                 <td>${s.lastPlayed || '—'}</td>
-              </tr>
-            `).join('')}
+              </tr>`;
+            }).join('')}
           </tbody>
-        </table>
+        </table>`}
+      </div>
+
+      <div class="card">
+        <div style="font-weight:600;margin-bottom:10px">📚 科目總覽</div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
+          ${_TEACHER_SUBJECTS.map(sub => {
+            const totalCompleted = students.reduce((acc, s) => acc + (s.subjectProgress?.[sub.id]?.completed || 0), 0);
+            const totalPossible = students.reduce((acc, s) => acc + (s.subjectProgress?.[sub.id]?.total || 0), 0);
+            const pct = totalPossible ? Math.round((totalCompleted / totalPossible) * 100) : 0;
+            return `
+              <div style="background:${sub.color}22;border:2px solid ${sub.color};border-radius:12px;padding:12px;text-align:center">
+                <div style="font-size:1.5em;margin-bottom:4px">${sub.label}</div>
+                <div style="font-weight:700;font-size:1.1em;color:${sub.color}">${totalCompleted}/${totalPossible}</div>
+                <div style="height:6px;background:#eee;border-radius:3px;margin-top:6px;overflow:hidden">
+                  <div style="height:100%;width:${pct}%;background:${sub.color};border-radius:3px"></div>
+                </div>
+              </div>`;
+          }).join('')}
+        </div>
       </div>
 
       <div class="card">
@@ -309,6 +345,13 @@ window.FC.importMyData = function() {
 };
 
 // ── 渲染 ──
+function safeSetNames() {
+  document.querySelectorAll('.student-name').forEach((el, i) => {
+    const students = getAllStudents();
+    if (students[i]) el.textContent = students[i].name;
+  });
+}
+
 function render() {
   // 學生未設定 → 強迫選擇
   if (!getStudent() && state.view !== 'student-select' && state.view !== 'login') {
@@ -323,7 +366,7 @@ function render() {
     case 'login':
       app.innerHTML = renderLogin(); break;
     case 'teacher':
-      app.innerHTML = renderTeacher(); break;
+      app.innerHTML = renderTeacher(); safeSetNames(); break;
     case 'home':
       app.innerHTML = renderHome(state.subjectId); break;
     case 'topic':
