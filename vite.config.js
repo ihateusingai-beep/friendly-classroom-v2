@@ -2,7 +2,7 @@ import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
 export default defineConfig({
-  base: './',
+  base: '/friendly-classroom-v2/',
   publicDir: 'public',
   build: {
     outDir: 'dist',
