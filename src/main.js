@@ -71,7 +71,7 @@ export function retry() {
 window.FC.retry = retry;
 
 export function goProgress() {
-  if (!getStudent()) { goStudentSelect(); return; }
+  if (!getStudent()) { switchStudent(); return; }
   state = { ...state, view: 'progress' };
   render();
 }
