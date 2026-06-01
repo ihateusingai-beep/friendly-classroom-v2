@@ -57,7 +57,7 @@ export function goTopic(topicId) {
 window.FC.goTopic = goTopic;
 
 export function play(scenarioId) {
-  window.FC.lastPlayedScenarioId = scenarioId; // guard: 跨模組-accessible
+  localStorage.setItem('fc_last_scenario', scenarioId); // guard: TTS trigger
   state = { ...state, view: 'play', scenarioId };
   render();
 }
@@ -77,7 +77,7 @@ export function retry() {
 window.FC.retry = retry;
 
 export function goProgress() {
-  if (!getStudent()) { switchStudent(); return; }
+  // 移除 student-select，直接去進度頁
   state = { ...state, view: 'progress' };
   render();
 }
@@ -413,9 +413,10 @@ function safeSetNames() {
 }
 
 function render() {
-  // 學生未設定 → 強迫選擇
-  if (!getStudent() && state.view !== 'student-select' && state.view !== 'login') {
-    state = { ...state, view: 'student-select' };
+  // 學生未設定 → 強迫選擇（已移除，改為直接去首頁）
+  if (!getStudent() && state.view !== 'login' && state.view !== 'subject-select') {
+    // 移除 student-select 後，預設去科目選擇
+    state = { ...state, view: 'subject-select' };
   }
 
   console.log('[FC] render, view:', state.view);

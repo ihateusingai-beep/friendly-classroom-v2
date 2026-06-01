@@ -222,8 +222,8 @@ export function renderPlay(scenarioId, subjectId) {
 
       <div class="scenario-desc">${s.description}</div>
       ${(() => {
-        if (isEnabled() && window.FC?.lastPlayedScenarioId === s.id) {
-          window.FC.lastPlayedScenarioId = null; // consume after one shot
+        if (isEnabled() && localStorage.getItem('fc_last_scenario') === s.id) {
+          localStorage.removeItem('fc_last_scenario'); // consume after one shot
           speakScenario(s);
         }
         return '';

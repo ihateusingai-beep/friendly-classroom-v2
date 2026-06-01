@@ -93,3 +93,6 @@ export function resetAllSettings() {
 if (typeof speechSynthesis !== 'undefined') {
   speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 }
+
+// Bug 4: 頁面 unload 時清除 speaking flag，防止 block 未來 TTS
+window.addEventListener('beforeunload', () => { speaking = false; });
