@@ -26,7 +26,9 @@ export function speak(text) {
 export function speakScenario(scenario) {
   if (!enabled) return;
   speechSynthesis.cancel();
-  const text = `${scenario.title}。${scenario.description}`;
+  const labels = ['A', 'B', 'C', 'D'];
+  const optionsText = scenario.options.map((o, i) => `${labels[i]}。${o.text}`).join('。');
+  const text = `${scenario.title}。${scenario.description}。選項：${optionsText}`;
   const utter = new SpeechSynthesisUtterance(text);
   utter.voice = pickVoice();
   utter.rate = 0.85;
