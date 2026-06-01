@@ -102,6 +102,9 @@ export function renderHome(subjectId) {
   const subjectColor = getSubjectColor(subjectId);
   const subjectBg = getSubjectBgColor(subjectId);
 
+  // TTS 測試（方便學生確認聲音正常）
+  const ttsTestHtml = isEnabled() ? `<button class="btn btn-outline" style="margin-bottom:12px;font-size:0.9em" onclick="FC.testTTS()">🔊 測試發音</button>` : '';
+
   return `
     <div class="container fade-in">
       <div class="page-header">
@@ -157,6 +160,7 @@ export function renderHome(subjectId) {
         <button class="btn btn-outline" onclick="FC.goRandom()">🎲 自由模式</button>
         <button class="btn btn-outline" onclick="FC.goProgress()">📊 我的進度</button>
       </div>
+      ${ttsTestHtml}
       <div class="action-row">
         <button class="btn btn-outline" onclick="FC.goSettings()">⚙️ 設定</button>
         <button class="btn btn-outline" onclick="FC.switchStudent()">🔄 切換學生</button>

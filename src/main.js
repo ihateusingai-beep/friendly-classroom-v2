@@ -103,6 +103,12 @@ export function goRandom() {
 }
 window.FC.goRandom = goRandom;
 
+// TTS 測試（讓學生確認發音正常）
+window.FC.testTTS = function() {
+  const { speak } = window._fcAudio || {};
+  if (speak) speak('呢個係發音測試，請確認可以聽到聲音。如果聽到呢段說話，代表語音功能正常運作。');
+};
+
 export function goSubjectSelect() {
   state = { ...state, view: 'subject-select' };
   render();

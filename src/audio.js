@@ -94,5 +94,15 @@ if (typeof speechSynthesis !== 'undefined') {
   speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
 }
 
+// 緊急補丁：儘早初始化 voices（某些瀏覽器 voiceschange 只觸發一次）
+if (typeof speechSynthesis !== 'undefined') {
+  speechSynthesis.getVoices();
+  setTimeout(() => speechSynthesis.getVoices(), 100);
+  setTimeout(() => speechSynthesis.getVoices(), 500);
+}
+
+// 匯出給 FC.testTTS 用
+window._fcAudio = { speak, speakScenario, speakCreeds, setEnabled, isEnabled };
+
 // Bug 4: 頁面 unload 時清除 speaking flag，防止 block 未來 TTS
 window.addEventListener('beforeunload', () => { speaking = false; });
