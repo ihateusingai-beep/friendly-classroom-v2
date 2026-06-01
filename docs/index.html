@@ -4,10 +4,19 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>友愛教室 V2</title>
-  <script type="module" crossorigin src="./assets/index-DkmrDyTn.js"></script>
+  <script>
+    window.__TEST = 'INLINE_SCRIPT_RUN';
+    console.log('[TEST] Inline script ran, __TEST set');
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('[TEST] DOMContentLoaded fired, #app:', document.getElementById('app'));
+      var app = document.getElementById('app');
+      if(app) app.innerHTML = '<div style="padding:30px;font-size:24px;color:green;text-align:center">✅ JS載入成功！<br><br><button onclick="alert(\'TTS測試\')" style="font-size:20px;padding:12px">🔊 測試TTS</button><br><br><button onclick="location.reload()" style="font-size:16px;padding:8px">🔄 重整頁面</button></div>';
+    });
+  </script>
+  <script type="module" crossorigin src="./assets/index-B1AxTHHi.js"></script>
   <link rel="stylesheet" crossorigin href="./assets/index-DLprw7d9.css">
 </head>
 <body>
-  <div id="app"></div>
+  <div id="app">LOADING... <span id="test-span"></span></div>
 </body>
 </html>
