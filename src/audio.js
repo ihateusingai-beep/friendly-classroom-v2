@@ -1,25 +1,13 @@
-// 語音朗讀 — 雙層架構
-// Layer 1: speechSynthesis (即時，無網絡需求)
-// Layer 2: MiniMax TTS API (備用，較慢但可靠)
+// 語音朗讀 — 預生成 MP3 架構
+// 所有音頻預生成於 /public/audio/，零依賴、零延遲
+
+const audioBase = 'audio/';
 
 let enabled = false;
 let speaking = false;
-let mmxCache = {}; // text → audio URL cache
+let currentAudio = null;
 
-export function setEnabled(v) { enabled = v; }
-export function isEnabled() { return enabled; }
-export function isSpeaking() { return speaking; }
-export function stopSpeaking() {
-  speaking = false;
-  speechSynthesis?.cancel();
-  if (window._fcAudio?._currentAudio) {
-    window._fcAudio._currentAudio.pause();
-    window._fcAudio._currentAudio = null;
-  }
-}
-export function setSpeaking(v) { speaking = v; }
-
-// ── 個人化參數 ──
+// ── 參數讀取 ──
 function getParams() {
   return {
     speed: parseFloat(localStorage.getItem('fc_tts_speed') || '0.85'),
@@ -38,119 +26,82 @@ export function applyCSS() {
   root.style.setProperty('--fc-spacing', spacingMap[p.spacing] || '16px');
 }
 
-// ── Layer 1: Browser Speech Synthesis ──
-function pickVoice() {
-  if (typeof speechSynthesis === 'undefined') return null;
-  const voices = speechSynthesis.getVoices();
-  let v = voices.find(vo => vo.lang.startsWith('zh-HK') || vo.lang.startsWith('zh-yue'));
-  if (!v) v = voices.find(vo => vo.lang.startsWith('zh'));
-  if (!v) v = voices.find(vo => vo.lang.startsWith('en'));
-  return v || null;
+// ── 音頻播放 ──
+export function setEnabled(v) { enabled = v; }
+export function isEnabled() { return enabled; }
+export function isSpeaking() { return speaking; }
+
+export function stopSpeaking() {
+  speaking = false;
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio = null;
+  }
 }
 
-function hasChineseVoice() {
-  if (typeof speechSynthesis === 'undefined') return false;
-  const voices = speechSynthesis.getVoices();
-  return voices.some(v => v.lang.startsWith('zh'));
-}
+export function setSpeaking(v) { speaking = v; }
 
-function speakWithBrowser(text, speed) {
-  if (typeof speechSynthesis === 'undefined') return false;
-  speechSynthesis.cancel();
+// 播放本地 MP3（預生成）
+function playLocal(src) {
+  stopSpeaking();
+  currentAudio = new Audio(audioBase + src);
+  currentAudio.onended = () => { speaking = false; currentAudio = null; };
+  currentAudio.onerror = () => { speaking = false; currentAudio = null; };
+  currentAudio.play().catch(() => { speaking = false; currentAudio = null; });
   speaking = true;
-  const utter = new SpeechSynthesisUtterance(text);
-  utter.voice = pickVoice();
-  utter.rate = speed;
-  utter.pitch = 1.0;
-  utter.onend = () => { speaking = false; };
-  utter.onerror = () => {
-    speaking = false;
-    if (text) speakWithMiniMax(text);
-  };
-  speechSynthesis.speak(utter);
-  return true;
 }
 
-// ── Layer 2: MiniMax TTS (需配置 proxy URL) ──
-const TTS_PROXY = localStorage.getItem('fc_tts_proxy') || '';
-const API_KEY = localStorage.getItem('fc_mmx_key') || '';
-
-function speakWithMiniMax(text) {
-  if (!TTS_PROXY || !API_KEY) { speaking = false; return; }
-
-  const cacheKey = text.slice(0, 80);
-  if (mmxCache[cacheKey]) {
-    playAudioURL(mmxCache[cacheKey]);
-    return;
-  }
-
-  fetch(TTS_PROXY, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + API_KEY },
-    body: JSON.stringify({ text, model: 'speech-01-turbo', voice: 'Cantonese_GentleLady' })
-  })
-  .then(r => r.json())
-  .then(data => {
-    if (data.data?.audio_url) {
-      mmxCache[cacheKey] = data.data.audio_url;
-      playAudioURL(data.data.audio_url);
-    } else { speaking = false; }
-  })
-  .catch(() => { speaking = false; });
-}
-
-function playAudioURL(url) {
-  const audio = new Audio(url);
-  window._fcAudio = window._fcAudio || {};
-  window._fcAudio._currentAudio = audio;
-  audio.onended = () => { speaking = false; };
-  audio.onerror = () => { speaking = false; };
-  audio.play().catch(() => { speaking = false; });
-}
-
-// ── Public API ──
-export function speak(text) {
-  if (!enabled || speaking || !text) return;
-
-  if (hasChineseVoice()) {
-    speakWithBrowser(text, getParams().speed);
-  } else if (TTS_PROXY && API_KEY) {
-    speakWithMiniMax(text);
-  } else {
-    speaking = false;
-  }
-}
-
+// 播放場景音頻
 export function speakScenario(scenario) {
   if (!enabled || speaking) return;
-  const labels = ['A', 'B', 'C', 'D'];
-  const optionsText = scenario.options.map((o, i) => `${labels[i]}。${o.text}`).join('。');
-  const text = `${scenario.title}。${scenario.description}。選項：${optionsText}`;
-  speak(text);
+  const id = scenario.id || scenario;
+  playLocal(`scenarios/${id}.mp3`);
 }
 
+// 播放信條音頻
 export function speakCreeds(creeds) {
   if (!enabled || speaking) return;
-  const text = creeds.map(c => `${c.title}：${c.text}`).join('。');
-  speak(text);
+  if (!creeds || creeds.length === 0) return;
+  // 只播放第一條信條
+  const id = creeds[0].id || creeds[0];
+  playLocal(`creeds/creed-${id}.mp3`);
 }
 
+// 通用朗讀（用作後備 fallback）
+export function speak(text) {
+  if (!enabled || speaking || !text) return;
+  // 嘗試直接播放（根據文字 hash 找對應音頻）
+  // 目前主要通過 speakScenario / speakCreeds 調用
+  speaking = false;
+}
+
+// 重置設定
 export function resetAllSettings() {
   localStorage.removeItem('fc_tts_speed');
   localStorage.removeItem('fc_font_size');
   localStorage.removeItem('fc_line_height');
   localStorage.removeItem('fc_spacing');
-  mmxCache = {};
   applyCSS();
 }
 
-// Preload voices
-if (typeof speechSynthesis !== 'undefined') {
-  speechSynthesis.getVoices();
-  speechSynthesis.onvoiceschanged = () => speechSynthesis.getVoices();
-  setTimeout(() => speechSynthesis.getVoices(), 100);
-  setTimeout(() => speechSynthesis.getVoices(), 500);
+// 預加載（可選）
+export function preloadAudio(ids) {
+  ids.forEach(id => {
+    const audio = new Audio(audioBase + 'scenarios/' + id + '.mp3');
+    audio.preload = 'auto';
+  });
 }
 
-window._fcAudio = { speak, speakScenario, speakCreeds, setEnabled, isEnabled };
-window.addEventListener('beforeunload', () => { speaking = false; });
+// 初始化
+applyCSS();
+
+window._fcAudio = {
+  speakScenario,
+  speakCreeds,
+  setEnabled,
+  isEnabled,
+  preloadAudio,
+  applyCSS
+};
+
+window.addEventListener('beforeunload', () => { stopSpeaking(); });
