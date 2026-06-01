@@ -3,7 +3,7 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
          getDisplayProgress, initTopicProgress, renderHome, renderTopicList,
          renderPlay, renderResult, renderProgress, renderSettings,
          playScenario, chooseOption, suggestNext } from './engine.js';
-import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS } from './audio.js';
+import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './progress.js';
 import scenariosData from '../data/scenarios.json';
 
@@ -40,6 +40,7 @@ let state = {
   resultData: null,
   teacherMode: false,
 };
+let lastPlayedScenarioId = null; // guard: 防 TTS 重複觸發
 
 // ── 路由 ──
 export function goHome() {
@@ -56,6 +57,7 @@ export function goTopic(topicId) {
 window.FC.goTopic = goTopic;
 
 export function play(scenarioId) {
+  window.FC.lastPlayedScenarioId = scenarioId; // guard: 跨模組-accessible
   state = { ...state, view: 'play', scenarioId };
   render();
 }
@@ -368,6 +370,10 @@ window.FC.setSpacing = function(v) {
 window.FC.setSpeed = function(v) {
   localStorage.setItem('fc_tts_speed', v);
   document.getElementById('speed-val').textContent = parseFloat(v).toFixed(2) + 'x';
+};
+window.FC.resetSettings = function() {
+  resetAllSettings();
+  render();
 };
 
 // ── 匯出入 ──

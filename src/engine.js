@@ -221,7 +221,13 @@ export function renderPlay(scenarioId, subjectId) {
       </div>
 
       <div class="scenario-desc">${s.description}</div>
-      ${(() => { if (isEnabled()) speakScenario(s); return ''; })()}
+      ${(() => {
+        if (isEnabled() && window.FC?.lastPlayedScenarioId === s.id) {
+          window.FC.lastPlayedScenarioId = null; // consume after one shot
+          speakScenario(s);
+        }
+        return '';
+      })()}
       <div class="options">
         ${s.options.map((opt, i) => {
           const labels = ['A', 'B', 'C', 'D'];
@@ -408,10 +414,13 @@ export function renderSettings() {
         <div>
           <div style="margin-bottom:6px"><strong>間格</strong></div>
           <div style="display:flex;gap:8px">
-            <button class="btn btn-outline" onclick="FC.setSpacing('narrow')" id="sp-narrow" style="flex:1;padding:8px;font-size:0.9em">窄</button>
-            <button class="btn btn-primary" onclick="FC.setSpacing('medium')" id="sp-medium" style="flex:1;padding:8px;font-size:0.9em">中</button>
-            <button class="btn btn-outline" onclick="FC.setSpacing('wide')" id="sp-wide" style="flex:1;padding:8px;font-size:0.9em">闊</button>
+            <button class="btn ${localStorage.getItem('fc_spacing')==='narrow'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('narrow')" id="sp-narrow" style="flex:1;padding:8px;font-size:0.9em">窄</button>
+            <button class="btn ${localStorage.getItem('fc_spacing')==='medium'||!localStorage.getItem('fc_spacing')?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('medium')" id="sp-medium" style="flex:1;padding:8px;font-size:0.9em">中</button>
+            <button class="btn ${localStorage.getItem('fc_spacing')==='wide'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('wide')" id="sp-wide" style="flex:1;padding:8px;font-size:0.9em">闊</button>
           </div>
+        </div>
+        <div style="margin-top:12px;text-align:center">
+          <button class="btn btn-outline" onclick="FC.resetSettings()" style="color:var(--text-light);font-size:0.85em">🔄 重置所有設定</button>
         </div>
       </div>
 
