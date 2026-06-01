@@ -351,6 +351,15 @@ window.FC.speak = function() {
   const s = playScenario(state.scenarioId);
   if (s) speakScenario(s);
 };
+window.FC.speakOpt = function(optionId) {
+  const s = playScenario(state.scenarioId);
+  if (!s) return;
+  const opt = s.options.find(o => o.id === optionId);
+  if (opt) {
+    const { speak } = window._fcAudio || {};
+    if (speak) speak(opt.text);
+  }
+};
 window.FC.speakCreeds = function() {
   if (state.resultData?.creeds) speakCreeds(state.resultData.creeds);
 };

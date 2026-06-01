@@ -229,22 +229,19 @@ export function renderPlay(scenarioId, subjectId) {
              onerror="this.style.display='none'" />
       </div>
 
-      <div class="scenario-desc">${s.description}</div>
-      ${(() => {
-        if (isEnabled() && localStorage.getItem('fc_last_scenario') === s.id) {
-          localStorage.removeItem('fc_last_scenario'); // consume after one shot
-          speakScenario(s);
-        }
-        return '';
-      })()}
+      <div class="scenario-desc">
+        <button class="inline-voice-btn" onclick="FC.speak()" title="朗讀題目">🔊</button>
+        ${s.description}
+      </div>
       <div class="options">
         ${s.options.map((opt, i) => {
           const labels = ['A', 'B', 'C', 'D'];
           return `
-            <button class="option-btn" onclick="FC.choose('${opt.id}')">
-              <span class="opt-id">${labels[i] || (i+1)}</span>
-              ${opt.text}
-            </button>
+            <div class="option-card" onclick="FC.choose('${opt.id}')">
+              <span class="opt-badge">${labels[i] || (i+1)}</span>
+              <span class="opt-text">${opt.text}</span>
+              <button class="opt-read" onclick="event.stopPropagation();FC.speakOpt('${opt.id}')" title="朗讀">🔊</button>
+            </div>
           `;
         })}
       </div>
@@ -265,12 +262,16 @@ export function renderResult(data, subjectId) {
         <span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>
       </div>` : ''}
       <div class="result-card ${isGood ? 'good' : 'bad'}">
+        <div class="result-emoji">${isGood ? '🌟' : '💪'}</div>
         <div class="comment">${mainComment || '你做出了選擇！'}</div>
-        <div class="moral">${isGood ? '＋' : ''}${moralChange} 道德分</div>
+        <div class="moral-score">${isGood ? '＋' : ''}${moralChange} 道德分</div>
       </div>
 
       <div class="creed-show">
-        <div class="label">🌟 學校信條</div>
+        <div class="creed-header">
+          <div class="label">🌟 學校信條</div>
+          <button class="inline-voice-btn" onclick="FC.speakCreeds()" title="朗讀信條">🔊</button>
+        </div>
         <div class="items">
           ${(creedText || []).map(c => `<div class="item">${c}</div>`).join('')}
         </div>
