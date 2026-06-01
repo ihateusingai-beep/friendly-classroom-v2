@@ -107,7 +107,8 @@
           {
             "character": "小強",
             "change": 10,
-            "comment": "你帮手匿咗入抽屜。结果老師發現監視器，以為係你偷！你喊咗但唔敢講真相，怕失去呢個「朋友」..."
+            "comment": "你帮手匿咗入抽屜。结果老師發現監視器，以為係你偷！你喊咗但唔敢講真相，怕失去呢個「朋友」...",
+            "moralChange": 8
           }
         ],
         "next_scenario": "s3"
@@ -119,12 +120,14 @@
           {
             "character": "小強",
             "change": -5,
-            "comment": "小強之後比老師發現，但係同老師話：「係佢叫我匿既！」你有口難言..."
+            "comment": "小強之後比老師發現，但係同老師話：「係佢叫我匿既！」你有口難言...",
+            "moralChange": -8
           },
           {
             "character": "小強",
             "change": -10,
-            "comment": "小強之後俾人鬧，但係你覺得如果一開始勸佢還返就好啦..."
+            "comment": "小強之後俾人鬧，但係你覺得如果一開始勸佢還返就好啦...",
+            "moralChange": -8
           }
         ],
         "next_scenario": "s3"
@@ -136,7 +139,8 @@
           {
             "character": "小強",
             "change": 15,
-            "comment": "小強話：「...好啦，对唔住。」你陪佢還咗去，小強多謝你陪佢面對！"
+            "comment": "小強話：「...好啦，对唔住。」你陪佢還咗去，小強多謝你陪佢面對！",
+            "moralChange": 8
           }
         ],
         "next_scenario": "s3"
@@ -175,7 +179,8 @@
           {
             "character": "小美",
             "change": -20,
-            "comment": "你衝過去大聲問，小美嚇一跳：「我淨係想識新朋友之嘛...」全班望住你，你覺得更加丟臉..."
+            "comment": "你衝過去大聲問，小美嚇一跳：「我淨係想識新朋友之嘛...」全班望住你，你覺得更加丟臉...",
+            "moralChange": -8
           }
         ],
         "next_scenario": "s4"
@@ -187,12 +192,14 @@
           {
             "character": "小美",
             "change": -10,
-            "comment": "你成日坐係度諗：「我果然唔值得被鍾意...」你越來越唔想講野..."
+            "comment": "你成日坐係度諗：「我果然唔值得被鍾意...」你越來越唔想講野...",
+            "moralChange": -8
           },
           {
             "character": "小美",
             "change": 5,
-            "comment": "小美唔知你諗緊咩，但係見到你唔開心都有啲擔心..."
+            "comment": "小美唔知你諗緊咩，但係見到你唔開心都有啲擔心...",
+            "moralChange": -8
           }
         ],
         "next_scenario": "s4"
@@ -204,7 +211,8 @@
           {
             "character": "小美",
             "change": 20,
-            "comment": "小美即刻話：「梗係啦！我淨係想多識一个人之嘛，你永远都好重要！」"
+            "comment": "小美即刻話：「梗係啦！我淨係想多識一个人之嘛，你永远都好重要！」",
+            "moralChange": 8
           }
         ],
         "next_scenario": "s4"
@@ -249,12 +257,14 @@
           {
             "character": "小強",
             "change": 5,
-            "comment": "老師信咗小強。但係花盆既植物枯死咗，小強之後話：「 Victoria 唔會發現！」你心裡沉沉地..."
+            "comment": "老師信咗小強。但係花盆既植物枯死咗，小強之後話：「 Victoria 唔會發現！」你心裡沉沉地...",
+            "moralChange": -8
           },
           {
             "character": "老師",
             "change": -10,
-            "comment": "老師唔知真相，但係你覺得自己做錯咗..."
+            "comment": "老師唔知真相，但係你覺得自己做錯咗...",
+            "moralChange": -8
           }
         ],
         "next_scenario": "s5"
@@ -266,12 +276,14 @@
           {
             "character": "小強",
             "change": -25,
-            "comment": "你大聲話係小強，小強一面紅，下堂之後反面：「叛徒！」你哋之後冇再講野，你心裡空左..."
+            "comment": "你大聲話係小強，小強一面紅，下堂之後反面：「叛徒！」你哋之後冇再講野，你心裡空左...",
+            "moralChange": -8
           },
           {
             "character": "老師",
             "change": 10,
-            "comment": "老師知道你肯話真相，但你失去咗一個朋友..."
+            "comment": "老師知道你肯話真相，但你失去咗一個朋友...",
+            "moralChange": -8
           }
         ],
         "next_scenario": "s5"
@@ -283,7 +295,8 @@
           {
             "character": "小強",
             "change": 20,
-            "comment": "小強話：「...好啦，對唔住。」你陪佢同一齊去認錯，老師話：「知錯能改就係好孩子！」"
+            "comment": "小強話：「...好啦，對唔住。」你陪佢同一齊去認錯，老師話：「知錯能改就係好孩子！」",
+            "moralChange": 8
           }
         ],
         "next_scenario": "s5"
@@ -327,12 +340,14 @@
           {
             "character": "小芳",
             "change": 10,
-            "comment": "安安置咗好耐搵唔到水壺，最後惟有飲自來水。放學時佢媽媽知咗都好嬲，你聽到：「啲細路點解咁曳？」你訓左差啲..."
+            "comment": "安安置咗好耐搵唔到水壺，最後惟有飲自來水。放學時佢媽媽知咗都好嬲，你聽到：「啲細路點解咁曳？」你訓左差啲...",
+            "moralChange": -8
           },
           {
             "character": "安安",
             "change": -20,
-            "comment": "安安急到喊，你心裡好內疚..."
+            "comment": "安安急到喊，你心裡好內疚...",
+            "moralChange": -8
           }
         ],
         "next_scenario": "s6"
@@ -344,12 +359,14 @@
           {
             "character": "小芳",
             "change": -10,
-            "comment": "嗰班同學笑你細胆之后就唔再搵你玩。你觉得你似個懦夫，正義都不敢..."
+            "comment": "嗰班同學笑你細胆之后就唔再搵你玩。你觉得你似個懦夫，正義都不敢...",
+            "moralChange": -8
           },
           {
             "character": "安安",
             "change": 0,
-            "comment": "至少你冇參與..."
+            "comment": "至少你冇參與...",
+            "moralChange": -8
           }
         ],
         "next_scenario": "s6"
@@ -361,12 +378,14 @@
           {
             "character": "小芳",
             "change": 5,
-            "comment": "小芳話：「 Victoria 咁呀...算啦。」佢嫌你無癮，但係你守得住自己既善良！"
+            "comment": "小芳話：「 Victoria 咁呀...算啦。」佢嫌你無癮，但係你守得住自己既善良！",
+            "moralChange": 8
           },
           {
             "character": "安安",
             "change": 10,
-            "comment": "安安唔知呢件事，但係你好似做啱咗..."
+            "comment": "安安唔知呢件事，但係你好似做啱咗...",
+            "moralChange": 8
           }
         ],
         "next_scenario": "s6"
@@ -410,11 +429,13 @@
           {
             "character": "小明",
             "change": 10,
+            "moralChange": -15,
             "comment": "你同小明一齊排斥小華。但係之後你先知，小華係唔小心整壞既嘢，佢本來想道歉但搵唔倒機會。小華喊咗，你覺得自己做錯咗..."
           },
           {
             "character": "小華",
             "change": -25,
+            "moralChange": -10,
             "comment": "小華覺得被誤會，好傷心..."
           }
         ],
@@ -427,11 +448,13 @@
           {
             "character": "小明",
             "change": 0,
+            "moralChange": -5,
             "comment": "小明越話越嬲仲搵其他人一齊排斥小華。你雖然冇參與但係都冇阻止。見到小華一個你心裡唔舒服..."
           },
           {
             "character": "小華",
             "change": -10,
+            "moralChange": -5,
             "comment": "小華覺得自己一個人..."
           }
         ],
@@ -444,11 +467,13 @@
           {
             "character": "小明",
             "change": 15,
+            "moralChange": 10,
             "comment": "小明諗咗下：「嗯...都係問下先...」之後發現係誤會，佢同小華和好咗！你幫佢哋化解咗爭執！"
           },
           {
             "character": "小華",
             "change": 10,
+            "moralChange": 8,
             "comment": "小華多謝你幫佢講说话！"
           }
         ],
@@ -489,7 +514,8 @@
           {
             "character": "小珍",
             "change": -20,
-            "comment": "小珍喊得更大聲，覺得你唔明白佢。之後佢唔再好同你分享心事，你哋既友誼出現裂痕..."
+            "comment": "小珍喊得更大聲，覺得你唔明白佢。之後佢唔再好同你分享心事，你哋既友誼出現裂痕...",
+            "moralChange": -8
           }
         ],
         "next_scenario": "s8"
@@ -501,12 +527,14 @@
           {
             "character": "小珍",
             "change": -5,
-            "comment": "小珍點點頭，但係你睇得出佢仲係好難過。下次體育課佢扮肚痛唔想參加。你觉得你既安慰好似冇幫到佢..."
+            "comment": "小珍點點頭，但係你睇得出佢仲係好難過。下次體育課佢扮肚痛唔想參加。你觉得你既安慰好似冇幫到佢...",
+            "moralChange": 5
           },
           {
             "character": "小珍",
             "change": 5,
-            "comment": "至少有你在..."
+            "comment": "至少有你在...",
+            "moralChange": 5
           }
         ],
         "next_scenario": "s8"
@@ -518,7 +546,8 @@
           {
             "character": "小珍",
             "change": 20,
-            "comment": "小珍即刻笑咗：「多謝你呀！你最明白我！」之後體育堂佢好積極咁參與！"
+            "comment": "小珍即刻笑咗：「多謝你呀！你最明白我！」之後體育堂佢好積極咁參與！",
+            "moralChange": 8
           }
         ],
         "next_scenario": "s8"
@@ -562,7 +591,8 @@
           {
             "character": "同學A",
             "change": -5,
-            "comment": "你成個下晝都坐係度，心情越來越低落。返到屋企你同媽媽話：「我冇朋友...」媽媽好擔心，但係你唔知點改變..."
+            "comment": "你成個下晝都坐係度，心情越來越低落。返到屋企你同媽媽話：「我冇朋友...」媽媽好擔心，但係你唔知點改變...",
+            "moralChange": -8
           }
         ],
         "next_scenario": null
@@ -574,7 +604,8 @@
           {
             "character": "老師",
             "change": 15,
-            "comment": "老師好好心機聽你講，話：「不如搵啲同學一齊玩啦？」之後老師幫你介紹咗幾個朋友，你逐步逐步融入咗！"
+            "comment": "老師好好心機聽你講，話：「不如搵啲同學一齊玩啦？」之後老師幫你介紹咗幾個朋友，你逐步逐步融入咗！",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -586,7 +617,8 @@
           {
             "character": "同學A",
             "change": 20,
-            "comment": "你真係好勇敢！嗰個同學即刻話：「梗係可以啦！一齊啦！」你交咗新朋友，原來主動一啲都唔難！"
+            "comment": "你真係好勇敢！嗰個同學即刻話：「梗係可以啦！一齊啦！」你交咗新朋友，原來主動一啲都唔難！",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -632,12 +664,14 @@
           {
             "character": "小傑",
             "change": -20,
-            "comment": "小傑望住你，唔出聲就走開咗"
+            "comment": "小傑望住你，唔出聲就走開咗",
+            "moralChange": -8
           },
           {
             "character": "小玲",
             "change": 5,
-            "comment": "但你心裡有啲唔舒服"
+            "comment": "但你心裡有啲唔舒服",
+            "moralChange": -8
           }
         ],
         "next_scenario": null
@@ -649,12 +683,14 @@
           {
             "character": "小傑",
             "change": 20,
-            "comment": "小傑話多謝你，你哋既友情更加堅固"
+            "comment": "小傑話多謝你，你哋既友情更加堅固",
+            "moralChange": 8
           },
           {
             "character": "小玲",
             "change": -10,
-            "comment": "你好似釋然咗"
+            "comment": "你好似釋然咗",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -693,7 +729,8 @@
           {
             "character": "小強",
             "change": -20,
-            "comment": "你同大打起來，要罰企"
+            "comment": "你同大打起來，要罰企",
+            "moralChange": -8
           }
         ],
         "next_scenario": null
@@ -705,7 +742,8 @@
           {
             "character": "小強",
             "change": 10,
-            "comment": "小強話我只是玩之嘛，之後冇再咁樣講"
+            "comment": "小強話我只是玩之嘛，之後冇再咁樣講",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -744,7 +782,8 @@
           {
             "character": "小傑",
             "change": -15,
-            "comment": "越好激動但冇人理，状況仲越鬧越大"
+            "comment": "越好激動但冇人理，状況仲越鬧越大",
+            "moralChange": -8
           }
         ],
         "next_scenario": null
@@ -756,7 +795,8 @@
           {
             "character": "小傑",
             "change": 5,
-            "comment": "媽媽幫你report上去，發布者被記名"
+            "comment": "媽媽幫你report上去，發布者被記名",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -796,7 +836,8 @@
           {
             "character": "小傑",
             "change": -25,
-            "comment": "小傑話洗鬼理你，你兩個反面"
+            "comment": "小傑話洗鬼理你，你兩個反面",
+            "moralChange": -8
           }
         ],
         "next_scenario": null
@@ -808,7 +849,8 @@
           {
             "character": "小傑",
             "change": 10,
-            "comment": "小傑話sorry，你学識咗原諒同設定界線"
+            "comment": "小傑話sorry，你学識咗原諒同設定界線",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -848,7 +890,8 @@
           {
             "character": "表弟",
             "change": -10,
-            "comment": "表弟話正好，我可以自己玩"
+            "comment": "表弟話正好，我可以自己玩",
+            "moralChange": -8
           }
         ],
         "next_scenario": null
@@ -860,7 +903,8 @@
           {
             "character": "表弟",
             "change": 15,
-            "comment": "表弟話好啦，一人一關！你哋玩得好開心"
+            "comment": "表弟話好啦，一人一關！你哋玩得好開心",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -900,7 +944,8 @@
           {
             "character": "爸爸",
             "change": 10,
-            "comment": "爸爸話以為你唔想去...下次一定叫埋你"
+            "comment": "爸爸話以為你唔想去...下次一定叫埋你",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -966,7 +1011,8 @@
           {
             "character": "小美",
             "change": -30,
-            "comment": "小美喊住搵老師話你既衰嘢"
+            "comment": "小美喊住搵老師話你既衰嘢",
+            "moralChange": -8
           }
         ],
         "next_scenario": null
@@ -978,7 +1024,8 @@
           {
             "character": "小美",
             "change": 15,
-            "comment": "你扶埋佢去醫療室，變咗英雄"
+            "comment": "你扶埋佢去醫療室，變咗英雄",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -1018,7 +1065,8 @@
           {
             "character": "小傑",
             "change": 0,
-            "comment": "你自己一個，但發現原來一個都可以好好玩"
+            "comment": "你自己一個，但發現原來一個都可以好好玩",
+            "moralChange": 5
           }
         ],
         "next_scenario": null
@@ -1030,7 +1078,8 @@
           {
             "character": "小傑",
             "change": 5,
-            "comment": "搵到新朋友，仲開心"
+            "comment": "搵到新朋友，仲開心",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -1069,7 +1118,8 @@
           {
             "character": "小傑",
             "change": 5,
-            "comment": "但係之後你兩個都fail...老師話如果包庇都會照罰"
+            "comment": "但係之後你兩個都fail...老師話如果包庇都會照罰",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -1081,7 +1131,8 @@
           {
             "character": "小傑",
             "change": 10,
-            "comment": "小傑話sorry，我自己想辦法"
+            "comment": "小傑話sorry，我自己想辦法",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -1120,7 +1171,8 @@
           {
             "character": "老師",
             "change": 10,
-            "comment": "老師話有錯就改，下次做齊佢"
+            "comment": "老師話有錯就改，下次做齊佢",
+            "moralChange": 8
           }
         ],
         "next_scenario": null
@@ -1132,7 +1184,8 @@
           {
             "character": "老師",
             "change": -10,
-            "comment": "老師話下次唔好再，仲留堂...好羞恥"
+            "comment": "老師話下次唔好再，仲留堂...好羞恥",
+            "moralChange": -8
           }
         ],
         "next_scenario": null

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>友愛教室 V2 — DEBUG</title>
+  <style>
+    body { font-family: system-ui; background: #f5f7fa; margin: 0; padding: 20px; }
+    #app { background: #fff; border-radius: 16px; padding: 24px; max-width: 600px; margin: 40px auto; box-shadow: 0 4px 16px rgba(0,0,0,0.1); }
+    .student-card { display: flex; align-items: center; gap: 12px; padding: 16px; border: 2px solid #e8e8e8; border-radius: 12px; margin-bottom: 10px; cursor: pointer; }
+    .student-card:hover { border-color: #4A90D9; }
+    .student-card .avatar { width: 48px; height: 48px; border-radius: 50%; background: #4A90D9; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.5em; }
+    .student-card .name { font-weight: 700; font-size: 1.1em; }
+    .student-card .sub { font-size: 0.85em; color: #666; }
+    .btn { padding: 12px 24px; border: none; border-radius: 12px; font-size: 1em; font-weight: 600; cursor: pointer; }
+    .btn-primary { background: #4A90D9; color: #fff; }
+    .btn-outline { background: transparent; border: 2px solid #4A90D9; color: #4A90D9; }
+    input { width: 100%; padding: 12px; border: 2px solid #e8e8e8; border-radius: 10px; font-size: 1em; box-sizing: border-box; margin-bottom: 10px; }
+    h2 { text-align: center; margin-bottom: 24px; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2>👤 選擇學生</h2>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
+      <div class="student-card" onclick="selectStudent('張鈞保')">
+        <div class="avatar">👦</div>
+        <div><div class="name">張鈞保</div><div class="sub">按此開始學習</div></div>
+      </div>
+      <div class="student-card" onclick="selectStudent('祝卓鋒')">
+        <div class="avatar">🚪</div>
+        <div><div class="name">祝卓鋒</div><div class="sub">按此開始學習</div></div>
+      </div>
+    </div>
+    <div style="text-align:center;color:#999;margin-bottom:16px;font-size:0.9em">— 或新增學生 —</div>
+    <div style="background:#f9f9f9;border-radius:14px;padding:16px">
+      <input id="new-student" type="text" placeholder="輸入新學生名字" />
+      <button class="btn btn-primary" style="width:100%" onclick="addStudent()">➕ 新增學生</button>
+    </div>
+    <div style="margin-top:16px;text-align:center">
+      <button class="btn btn-outline" onclick="goTeacher()">🔐 老師模式</button>
+    </div>
+  </div>
+  <script>
+    function selectStudent(name) {
+      localStorage.setItem('fc_student', name);
+      location.href = '?student=' + encodeURIComponent(name);
+    }
+    function addStudent() {
+      var name = document.getElementById('new-student').value.trim();
+      if (name) { selectStudent(name); }
+    }
+    function goTeacher() {
+      var pw = prompt('輸入老師密碼:');
+      if (pw === 'admin') location.href = '?teacher=1';
+    }
+    // Show current student if already selected
+    var s = localStorage.getItem('fc_student');
+    if (s) document.querySelector('.name').textContent = s + ' (已選擇)';
+  </script>
+</body>
+</html>
