@@ -413,12 +413,6 @@ function safeSetNames() {
 }
 
 function render() {
-  // 學生未設定 → 強迫選擇（已移除，改為直接去首頁）
-  if (!getStudent() && state.view !== 'login' && state.view !== 'subject-select') {
-    // 移除 student-select 後，預設去科目選擇
-    state = { ...state, view: 'subject-select' };
-  }
-
   console.log('[FC] render, view:', state.view);
   let html = '';
   try {
