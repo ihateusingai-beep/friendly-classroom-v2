@@ -7,6 +7,9 @@ import { speakScenario, speakCreeds, setEnabled, isEnabled } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './progress.js';
 import scenariosData from '../data/scenarios.json';
 
+// ── Vite HMR 破壞 DOM 寫入，强制停用 ──
+if (import.meta.hot) { import.meta.hot.decline(); }
+
 // ── 初始化 ──
 const app = document.getElementById('app');
 console.log('[FC] app element:', app);
