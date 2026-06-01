@@ -86,6 +86,11 @@
         <div class="scenario-bg">📍 ${n.background||""}</div>
       </div>
 
+      <div class="scenario-image-wrap">
+        <img src="assets/images/scenarios/${n.id}.png" alt="${n.title}" class="scenario-image"
+             onerror="this.style.display='none'" />
+      </div>
+
       <div class="scenario-desc">${n.description}</div>
       ${P()&&localStorage.getItem("fc_last_scenario")===n.id&&(localStorage.removeItem("fc_last_scenario"),z(n)),""}
       <div class="options">

@@ -220,6 +220,11 @@ export function renderPlay(scenarioId, subjectId) {
         <div class="scenario-bg">📍 ${s.background || ''}</div>
       </div>
 
+      <div class="scenario-image-wrap">
+        <img src="assets/images/scenarios/${s.id}.png" alt="${s.title}" class="scenario-image"
+             onerror="this.style.display='none'" />
+      </div>
+
       <div class="scenario-desc">${s.description}</div>
       ${(() => {
         if (isEnabled() && localStorage.getItem('fc_last_scenario') === s.id) {
