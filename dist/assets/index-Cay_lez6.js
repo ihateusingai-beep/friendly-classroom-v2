@@ -225,10 +225,10 @@
       <h2 style="text-align:center;margin-bottom:24px">👤 選擇學生</h2>
       <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
         ${C().map(t=>`
-          <div class="student-card" onclick="FC.selectStudent('${t}')">
-            <div class="avatar">👤</div>
+          <div class="student-card" onclick="FC.selectStudent('${t.name}')">
+            <div class="avatar">${t.emoji||"👤"}</div>
             <div class="info">
-              <div class="name">${t}</div>
+              <div class="name">${t.name}</div>
               <div class="sub">按此開始學習</div>
             </div>
             <div class="arrow">→</div>

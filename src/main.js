@@ -127,11 +127,11 @@ function renderStudentSelect() {
     <div class="container fade-in" style="max-width:460px;padding-top:40px">
       <h2 style="text-align:center;margin-bottom:24px">👤 選擇學生</h2>
       <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
-        ${saved.map(name => `
-          <div class="student-card" onclick="FC.selectStudent('${name}')">
-            <div class="avatar">👤</div>
+        ${saved.map(student => `
+          <div class="student-card" onclick="FC.selectStudent('${student.name}')">
+            <div class="avatar">${student.emoji || '👤'}</div>
             <div class="info">
-              <div class="name">${name}</div>
+              <div class="name">${student.name}</div>
               <div class="sub">按此開始學習</div>
             </div>
             <div class="arrow">→</div>
