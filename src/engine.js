@@ -356,28 +356,62 @@ export function renderSettings() {
     <div class="container fade-in">
       <div class="page-header">
         <button class="back-btn" onclick="FC.goHome()">←</button>
-        <h2>⚙️ 設定</h2>
+        <h2>⚙️ 個人化設定</h2>
       </div>
 
-      <div class="card">
-        <div class="setting-row">
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:14px">🔊 語音朗讀</div>
+        <div class="setting-row" style="margin-bottom:12px">
           <div>
-            <strong>🔊 語音朗讀</strong>
+            <strong>開 / 關</strong>
             <div style="font-size:0.85em;color:var(--text-light)">自動朗讀題目和信條</div>
           </div>
           <div class="toggle ${isEnabled() ? 'on' : ''}" onclick="FC.toggleVoice(this)"></div>
         </div>
-        <div class="setting-row">
-          <div>
-            <strong>📝 字型大小</strong>
-            <div style="font-size:0.85em;color:var(--text-light)">調整文字大小</div>
+        <div style="margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <strong>朗讀速度</strong>
+            <span id="speed-val" style="color:var(--primary);font-weight:600">0.85x</span>
           </div>
-          <select onchange="FC.setFontSize(this.value)" style="padding:6px 12px;border-radius:8px;border:1px solid var(--border)">
-            <option value="16">細</option>
-            <option value="18" selected>中</option>
-            <option value="22">大</option>
-            <option value="28">特大</option>
-          </select>
+          <input type="range" min="0.5" max="1.5" step="0.05" value="0.85"
+            oninput="FC.setSpeed(this.value)"
+            style="width:100%;accent-color:var(--primary)" />
+          <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)">
+            <span>慢</span><span>正常</span><span>快</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:14px">📝 文字顯示</div>
+        <div style="margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <strong>字體大小</strong>
+            <span id="fs-val" style="color:var(--primary);font-weight:600">中</span>
+          </div>
+          <input type="range" min="16" max="32" step="2" value="18"
+            oninput="FC.setFontSize(this.value)"
+            style="width:100%;accent-color:var(--primary)" />
+          <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)">
+            <span>Aa</span><span style="font-size:1.2em">Aa</span><span style="font-size:1.5em">Aa</span>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <strong>行距</strong>
+            <span id="lh-val" style="color:var(--primary);font-weight:600">1.5</span>
+          </div>
+          <input type="range" min="1.2" max="2.2" step="0.1" value="1.5"
+            oninput="FC.setLineHeight(this.value)"
+            style="width:100%;accent-color:var(--primary)" />
+        </div>
+        <div>
+          <div style="margin-bottom:6px"><strong>間格</strong></div>
+          <div style="display:flex;gap:8px">
+            <button class="btn btn-outline" onclick="FC.setSpacing('narrow')" id="sp-narrow" style="flex:1;padding:8px;font-size:0.9em">窄</button>
+            <button class="btn btn-primary" onclick="FC.setSpacing('medium')" id="sp-medium" style="flex:1;padding:8px;font-size:0.9em">中</button>
+            <button class="btn btn-outline" onclick="FC.setSpacing('wide')" id="sp-wide" style="flex:1;padding:8px;font-size:0.9em">闊</button>
+          </div>
         </div>
       </div>
 

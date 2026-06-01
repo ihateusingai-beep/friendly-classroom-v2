@@ -3,7 +3,7 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
          getDisplayProgress, initTopicProgress, renderHome, renderTopicList,
          renderPlay, renderResult, renderProgress, renderSettings,
          playScenario, chooseOption, suggestNext } from './engine.js';
-import { speakScenario, speakCreeds, setEnabled, isEnabled } from './audio.js';
+import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './progress.js';
 import scenariosData from '../data/scenarios.json';
 
@@ -14,6 +14,7 @@ if (import.meta.hot) { import.meta.hot.decline(); }
 const app = document.getElementById('app');
 console.log('[FC] app element:', app);
 console.log('[FC] scenariosData length:', scenariosData?.length);
+applyCSS(); // 套用個人化 CSS 參數
 
 // ── 科目定義 ──
 const SUBJECTS = [
@@ -353,7 +354,20 @@ window.FC.toggleVoice = function(el) {
 };
 
 window.FC.setFontSize = function(v) {
-  document.documentElement.style.setProperty('--font-size', v + 'px');
+  localStorage.setItem('fc_font_size', v);
+  applyCSS();
+};
+window.FC.setLineHeight = function(v) {
+  localStorage.setItem('fc_line_height', v);
+  applyCSS();
+};
+window.FC.setSpacing = function(v) {
+  localStorage.setItem('fc_spacing', v);
+  applyCSS();
+};
+window.FC.setSpeed = function(v) {
+  localStorage.setItem('fc_tts_speed', v);
+  document.getElementById('speed-val').textContent = parseFloat(v).toFixed(2) + 'x';
 };
 
 // ── 匯出入 ──

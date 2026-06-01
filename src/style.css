@@ -14,7 +14,10 @@
   --border: #e8e8e8;
   --radius: 16px;
   --shadow: 0 4px 16px rgba(0,0,0,0.08);
-  --font-size: 18px;
+  /* 個人化參數（JS 動態設定） */
+  --fc-font-size: 18px;
+  --fc-line-height: 1.5;
+  --fc-spacing: 16px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,13 +26,12 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
-  font-size: var(--font-size);
-  line-height: 1.6;
+  font-size: var(--fc-font-size);
+  line-height: var(--fc-line-height);
   min-height: 100vh;
 }
 
-/* ---- 通用容器 ---- */
-.container { max-width: 800px; margin: 0 auto; padding: 16px; }
+.container { max-width: 800px; margin: 0 auto; padding: var(--fc-spacing); }
 
 /* ---- 卡片 ---- */
 .card {
