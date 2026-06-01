@@ -26,6 +26,9 @@ const SUBJECTS = [
 function getSubjectColor(id)  { return SUBJECTS.find(s => s.id === id)?.color || '#666'; }
 function getSubjectBgColor(id){ return SUBJECTS.find(s => s.id === id)?.bgColor || '#f5f5f5'; }
 
+// ── 全域 FC 初始化（防止 undefined error） ──
+window.FC = window.FC || {};
+
 // ── 狀態機 ──
 let state = {
   view: 'home',      // home | topic | play | result | progress | settings | teacher | login | student-select | subject-select
