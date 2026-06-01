@@ -17,5 +17,5 @@ export function getCreedsByIds(ids) {
 }
 
 export function formatCreeds(ids) {
-  return getCreedsByIds(ids).map(c => `#${c.id} ${c.title}：${c.text}`);
+  return getCreedsByIds(ids).map(c => `${c.title}：${c.text}`);
 }
