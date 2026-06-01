@@ -12,8 +12,6 @@ if (import.meta.hot) { import.meta.hot.decline(); }
 
 // ── 初始化 ──
 const app = document.getElementById('app');
-console.log('[FC] app element:', app);
-console.log('[FC] scenariosData length:', scenariosData?.length);
 applyCSS(); // 套用個人化 CSS 參數
 
 // ── 科目定義 ──
@@ -156,6 +154,7 @@ function renderStudentSelect() {
       <div style="margin-top:16px;text-align:center">
         <button class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
       </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }
@@ -187,6 +186,7 @@ function renderLogin() {
           <button class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
         </div>
       </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }
@@ -218,6 +218,7 @@ function renderSubjectSelect() {
       <div style="margin-top:12px;text-align:center">
         <button class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
       </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }
@@ -253,6 +254,7 @@ function renderTeacher() {
       <div style="margin-top:16px">
         <button class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
       </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>`;
   }
 
@@ -323,6 +325,7 @@ function renderTeacher() {
       <div style="margin-top:16px">
         <button class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
       </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }
@@ -428,7 +431,6 @@ function safeSetNames() {
 }
 
 function render() {
-  console.log('[FC] render, view:', state.view);
   let html = '';
   try {
     switch (state.view) {
@@ -444,10 +446,9 @@ function render() {
       case 'settings': html = renderSettings(); break;
       default: html = '<div class="container"><p>頁面不存在</p></div>';
     }
-    console.log('[FC] html length:', html.length);
     app.innerHTML = html;
   } catch(e) {
-    console.error('[FC] RENDER ERROR:', e.message, e.stack);
+    console.error('RENDER ERROR:', e.message, e.stack);
     app.innerHTML = '<pre style="color:red;padding:20px">[FC] Render Error:\n' + e.message + '\n' + (e.stack||'').split('\n').slice(0,5).join('\n') + '</pre>';
   }
 }
@@ -456,8 +457,7 @@ function render() {
 setScenarios(scenariosData);
 try {
   render();
-  console.log('[FC] render complete, app innerHTML length:', app.innerHTML.length);
 } catch(e) {
-  console.error('[FC] RENDER ERROR:', e.message, e.stack);
+  console.error('RENDER ERROR:', e.message, e.stack);
   app.innerHTML = '<pre style="color:red;padding:20px">[FC] Render Error:\n' + e.message + '\n' + (e.stack||'').split('\n').slice(0,5).join('\n') + '</pre>';
 }

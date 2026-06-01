@@ -165,6 +165,7 @@ export function renderHome(subjectId) {
         <button class="btn btn-outline" onclick="FC.goSettings()">⚙️ 設定</button>
         <button class="btn btn-outline" onclick="FC.switchStudent()">🔄 切換學生</button>
       </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }
@@ -199,6 +200,7 @@ export function renderTopicList(topicId, subjectId) {
           `;
         })}
       </ul>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }
@@ -247,6 +249,7 @@ export function renderPlay(scenarioId, subjectId) {
       </div>
 
       <button class="voice-fab" onclick="FC.speak()" title="朗讀題目">🔊</button>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }
@@ -283,6 +286,7 @@ export function renderResult(data, subjectId) {
       </div>
 
       <button class="voice-fab" onclick="FC.speakCreeds()" title="朗讀信條">🔊</button>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }
@@ -362,6 +366,7 @@ export function renderProgress(subjectId) {
         <button class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出進度</button>
         <button class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
       </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }
@@ -446,6 +451,18 @@ export function renderSettings() {
         <div style="font-weight:600;margin-bottom:10px">🔐 老師模式</div>
         <button class="btn btn-primary" onclick="FC.goTeacher()">進入老師模式</button>
       </div>
+
+      <div class="privacy-notice" style="background:#fffbe6;border:1px solid #faad14;border-radius:12px;padding:16px;margin-top:24px;font-size:14px;color:#8a6d3b">
+        <h4 style="margin-bottom:8px">🔒 資料收集說明</h4>
+        <p>本應用使用瀏覽器本地儲存（localStorage）保存以下資料：</p>
+        <ul style="margin:8px 0 0 20px">
+          <li>個人化設定（字體大小、行距、朗讀速度）</li>
+          <li>學習進度及題目記錄</li>
+        </ul>
+        <p style="margin-top:8px">📌 資料僅存放於本設備，不會傳送至任何伺服器。</p>
+      </div>
+
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }
