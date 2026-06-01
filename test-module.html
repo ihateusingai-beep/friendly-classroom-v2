@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <title>Test Module</title>
+</head>
+<body>
+  <div id="app">loading...</div>
+  <script type="module">
+    console.log('[TEST] module script running');
+    document.getElementById('app').textContent = 'module executed at ' + Date.now();
+  </script>
+</body>
+</html>
