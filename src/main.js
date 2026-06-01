@@ -376,18 +376,27 @@ window.FC.toggleVoice = function(el) {
 window.FC.setFontSize = function(v) {
   localStorage.setItem('fc_font_size', v);
   applyCSS();
+  const label = document.querySelector('[data-for="fs"]');
+  if (label) label.textContent = v <= 18 ? '小' : v <= 22 ? '中' : '大';
 };
 window.FC.setLineHeight = function(v) {
   localStorage.setItem('fc_line_height', v);
   applyCSS();
+  const label = document.querySelector('[data-for="lh"]');
+  if (label) label.textContent = parseFloat(v).toFixed(1);
 };
 window.FC.setSpacing = function(v) {
   localStorage.setItem('fc_spacing', v);
   applyCSS();
+  ['narrow','medium','wide'].forEach(s => {
+    const btn = document.getElementById('sp-' + s);
+    if (btn) btn.className = 'btn ' + (s === v ? 'btn-primary' : 'btn-outline');
+  });
 };
 window.FC.setSpeed = function(v) {
   localStorage.setItem('fc_tts_speed', v);
-  document.getElementById('speed-val').textContent = parseFloat(v).toFixed(2) + 'x';
+  const label = document.querySelector('[data-for="speed"]');
+  if (label) label.textContent = parseFloat(v).toFixed(2) + 'x';
 };
 window.FC.resetSettings = function() {
   resetAllSettings();

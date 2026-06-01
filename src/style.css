@@ -382,33 +382,38 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   border-bottom: 1px solid var(--border);
 }
 .setting-row:last-child { border-bottom: none; }
+
+/* Toggle Switch - 重新設計 */
 .toggle {
-  width: 48px; height: 26px;
-  background: var(--border);
-  border-radius: 13px;
+  width: 52px;
+  height: 28px;
+  background: #ccc;
+  border-radius: 14px;
   position: relative;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background 0.25s;
+  flex-shrink: 0;
 }
-.toggle.on { background: var(--primary); }
+.toggle.on { background: var(--success); }
 .toggle::after {
   content: '';
   position: absolute;
-  width: 22px; height: 22px;
+  width: 22px;
+  height: 22px;
   background: #fff;
   border-radius: 50%;
-  top: 2px; left: 2px;
-  transition: left 0.2s;
+  top: 3px;
+  left: 3px;
+  transition: left 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.2);
 }
-.toggle.on::after { left: 24px; }
+.toggle.on::after { left: 27px; }
 
 /* ---- 導航按鈕組 ---- */
 .action-row { display: flex; gap: 10px; margin-top: 16px; }
 .action-row .btn { flex: 1; justify-content: center; }
 
 /* ---- 動畫 ---- */
-@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-/* ── Animations ── */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }

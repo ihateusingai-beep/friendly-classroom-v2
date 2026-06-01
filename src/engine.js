@@ -372,7 +372,14 @@ export function renderProgress(subjectId) {
 }
 
 export function renderSettings() {
-  const speechEnabled = typeof speechSynthesis !== 'undefined';
+  const speed = localStorage.getItem('fc_tts_speed') || '0.85';
+  const fontSize = localStorage.getItem('fc_font_size') || '18';
+  const lineHeight = localStorage.getItem('fc_line_height') || '1.5';
+  const spacing = localStorage.getItem('fc_spacing') || 'medium';
+
+  const fsLabel = fontSize <= 18 ? '小' : fontSize <= 22 ? '中' : '大';
+  const enabled = isEnabled();
+
   return `
     <div class="container fade-in">
       <div class="page-header">
@@ -387,14 +394,14 @@ export function renderSettings() {
             <strong>開 / 關</strong>
             <div style="font-size:0.85em;color:var(--text-light)">自動朗讀題目和信條</div>
           </div>
-          <div class="toggle ${isEnabled() ? 'on' : ''}" onclick="FC.toggleVoice(this)"></div>
+          <div class="toggle ${enabled ? 'on' : ''}" data-key="voice" onclick="FC.toggleVoice(this)"></div>
         </div>
         <div style="margin-bottom:10px">
           <div style="display:flex;justify-content:space-between;margin-bottom:6px">
             <strong>朗讀速度</strong>
-            <span id="speed-val" style="color:var(--primary);font-weight:600">0.85x</span>
+            <span class="val-label" style="color:var(--primary);font-weight:600" data-for="speed">${parseFloat(speed).toFixed(2)}x</span>
           </div>
-          <input type="range" min="0.5" max="1.5" step="0.05" value="0.85"
+          <input type="range" min="0.5" max="1.5" step="0.05" value="${speed}"
             oninput="FC.setSpeed(this.value)"
             style="width:100%;accent-color:var(--primary)" />
           <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)">
@@ -408,9 +415,9 @@ export function renderSettings() {
         <div style="margin-bottom:12px">
           <div style="display:flex;justify-content:space-between;margin-bottom:6px">
             <strong>字體大小</strong>
-            <span id="fs-val" style="color:var(--primary);font-weight:600">中</span>
+            <span class="val-label" style="color:var(--primary);font-weight:600" data-for="fs">${fsLabel}</span>
           </div>
-          <input type="range" min="16" max="32" step="2" value="18"
+          <input type="range" min="16" max="32" step="2" value="${fontSize}"
             oninput="FC.setFontSize(this.value)"
             style="width:100%;accent-color:var(--primary)" />
           <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)">
@@ -420,18 +427,18 @@ export function renderSettings() {
         <div style="margin-bottom:12px">
           <div style="display:flex;justify-content:space-between;margin-bottom:6px">
             <strong>行距</strong>
-            <span id="lh-val" style="color:var(--primary);font-weight:600">1.5</span>
+            <span class="val-label" style="color:var(--primary);font-weight:600" data-for="lh">${lineHeight}</span>
           </div>
-          <input type="range" min="1.2" max="2.2" step="0.1" value="1.5"
+          <input type="range" min="1.2" max="2.2" step="0.1" value="${lineHeight}"
             oninput="FC.setLineHeight(this.value)"
             style="width:100%;accent-color:var(--primary)" />
         </div>
         <div>
           <div style="margin-bottom:6px"><strong>間格</strong></div>
           <div style="display:flex;gap:8px">
-            <button class="btn ${localStorage.getItem('fc_spacing')==='narrow'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('narrow')" id="sp-narrow" style="flex:1;padding:8px;font-size:0.9em">窄</button>
-            <button class="btn ${localStorage.getItem('fc_spacing')==='medium'||!localStorage.getItem('fc_spacing')?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('medium')" id="sp-medium" style="flex:1;padding:8px;font-size:0.9em">中</button>
-            <button class="btn ${localStorage.getItem('fc_spacing')==='wide'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('wide')" id="sp-wide" style="flex:1;padding:8px;font-size:0.9em">闊</button>
+            <button class="btn ${spacing==='narrow'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('narrow')" id="sp-narrow" style="flex:1;padding:8px;font-size:0.9em">窄</button>
+            <button class="btn ${spacing==='medium'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('medium')" id="sp-medium" style="flex:1;padding:8px;font-size:0.9em">中</button>
+            <button class="btn ${spacing==='wide'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('wide')" id="sp-wide" style="flex:1;padding:8px;font-size:0.9em">闊</button>
           </div>
         </div>
         <div style="margin-top:12px;text-align:center">
