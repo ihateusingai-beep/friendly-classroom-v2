@@ -120,16 +120,16 @@ export function switchStudent() {
 window.FC.switchStudent = switchStudent;
 
 // ── 學生選擇 ──
-const STUDENT_EMOJI = { '張鈞保': '👦', '祝卓鋒': '🚪' };
+const STUDENT_EMOJI = {};  // 動態從 localStorage 讀取
 function renderStudentSelect() {
-  const saved = ['張鈞保', '祝卓鋒'];
+  const saved = getAllStudents();  // 從 progress.js 動態讀取
   return `
     <div class="container fade-in" style="max-width:460px;padding-top:40px">
       <h2 style="text-align:center;margin-bottom:24px">👤 選擇學生</h2>
       <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
-        ${['張鈞保', '祝卓鋒'].map(name => `
+        ${saved.map(name => `
           <div class="student-card" onclick="FC.selectStudent('${name}')">
-            <div class="avatar">${STUDENT_EMOJI[name] || '👤'}</div>
+            <div class="avatar">👤</div>
             <div class="info">
               <div class="name">${name}</div>
               <div class="sub">按此開始學習</div>
@@ -224,7 +224,6 @@ const _TEACHER_SUBJECTS = [
 // ── 老師儀表板 ──
 function renderTeacher() {
   const students = getAllStudents();
-  const TEACHER_EMOJI = { '張鈞保': '👦', '祝卓鋒': '🚪' };
 
   if (!students.length) {
     return `

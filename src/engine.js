@@ -221,7 +221,7 @@ export function renderPlay(scenarioId, subjectId) {
       </div>
 
       <div class="scenario-desc">${s.description}</div>
-
+      ${(() => { if (isEnabled()) speakScenario(s); return ''; })()}
       <div class="options">
         ${s.options.map((opt, i) => {
           const labels = ['A', 'B', 'C', 'D'];
