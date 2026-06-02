@@ -72,12 +72,27 @@ export function speakCreeds(creeds) {
   playLocal(`creeds/creed-${id}.mp3`);
 }
 
-// 通用朗讀（用作後備 fallback）
+// 通用朗讀（使用 Web Speech API — Instant TTS，零延遲）
 export function speak(text) {
-  if (!enabled || speaking || !text) return;
-  // 嘗試直接播放（根據文字 hash 找對應音頻）
-  // 目前主要通過 speakScenario / speakCreeds 調用
-  speaking = false;
+  if (!text) return;
+  // 停止之前嘅朗讀
+  if (speaking) {
+    window.speechSynthesis?.cancel();
+  }
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'zh-HK';    // 粵語優先
+  utterance.rate = getParams().speed || 0.85;
+  utterance.pitch = 1.0;
+  // 尝试选择女声
+  const voices = window.speechSynthesis?.getVoices() || [];
+  const preferred = voices.find(v => v.lang.includes('zh') && v.name.includes('female')) ||
+                    voices.find(v => v.lang.includes('zh')) ||
+                    voices[0];
+  if (preferred) utterance.voice = preferred;
+  utterance.onstart = () => { speaking = true; console.log('[FC TTS] Speaking:', text.slice(0, 20)); };
+  utterance.onend = () => { speaking = false; console.log('[FC TTS] Done'); };
+  utterance.onerror = (e) => { speaking = false; console.error('[FC TTS] Error:', e.error); };
+  window.speechSynthesis?.speak(utterance);
 }
 
 // 重置設定
@@ -103,6 +118,7 @@ applyCSS();
 window._fcAudio = {
   speakScenario,
   speakCreeds,
+  speak,
   setEnabled,
   isEnabled,
   preloadAudio,
