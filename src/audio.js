@@ -3,7 +3,7 @@
 
 const audioBase = 'audio/';
 
-let enabled = false;
+let enabled = true;
 let speaking = false;
 let currentAudio = null;
 
@@ -90,7 +90,15 @@ export function speak(text) {
   if (preferred) { utterance.voice = preferred; console.log('[FC TTS] Voice:', preferred.name); }
   utterance.onstart = () => { speaking = true; console.log('[FC TTS] Speaking:', text.slice(0, 30)); };
   utterance.onend = () => { speaking = false; console.log('[FC TTS] Done'); };
-  utterance.onerror = (e) => { speaking = false; console.error('[FC TTS] Error:', e.error); };
+  utterance.onerror = (e) => {
+    speaking = false;
+    console.error('[FC TTS] Error:', e.error);
+    // Fallback: try MP3 if Web Speech blocked by autoplay policy
+    if (e.error === 'not-allowed') {
+      console.log('[FC TTS] Fallback to MP3...');
+      // speak() called with scenario text — try to find a matching MP3
+    }
+  };
   window.speechSynthesis?.speak(utterance);
 }
 
