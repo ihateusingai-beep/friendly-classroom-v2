@@ -53,14 +53,39 @@ function playLocal(src) {
   speaking = true;
 }
 
+// 播放本地 MP3（預生成） + TTS fallback
+function playLocalWithFallback(src, text) {
+  stopSpeaking();
+  const url = audioBase + src;
+  console.log('[FC Audio] Playing:', url);
+  currentAudio = new Audio(url);
+  currentAudio.onended = () => { speaking = false; currentAudio = null; console.log('[FC Audio] Done'); };
+  currentAudio.onerror = (e) => {
+    console.log('[FC Audio] MP3 not found, using TTS fallback');
+    currentAudio = null;
+    // Fallback to Web Speech API
+    speak(text);
+  };
+  currentAudio.oncanplaythrough = () => {
+    speaking = true;
+    currentAudio.play().catch(e => {
+      console.log('[FC Audio] Play failed, using TTS fallback');
+      speaking = false;
+      currentAudio = null;
+      speak(text);
+    });
+  };
+}
+
 // 播放場景音頻
 export function speakScenario(scenario) {
   console.log('[FC Audio] speakScenario called, enabled:', enabled, 'speaking:', speaking, 'scenario:', scenario);
   if (!enabled) { console.log('[FC Audio] Blocked: voice not enabled'); return; }
   if (speaking) { console.log('[FC Audio] Blocked: already speaking'); return; }
   const id = scenario?.id || scenario;
+  const text = scenario?.description || '';
   console.log('[FC Audio] Playing scenario:', id);
-  playLocal(`scenarios/${id}.mp3`);
+  playLocalWithFallback(`scenarios/${id}.mp3`, text);
 }
 
 // 播放信條音頻
