@@ -75,21 +75,20 @@ export function speakCreeds(creeds) {
 // 通用朗讀（使用 Web Speech API — Instant TTS，零延遲）
 export function speak(text) {
   if (!text) return;
-  // 停止之前嘅朗讀
-  if (speaking) {
-    window.speechSynthesis?.cancel();
-  }
+  if (speaking) window.speechSynthesis?.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'zh-HK';    // 粵語優先
+  utterance.lang = 'zh-HK';
   utterance.rate = getParams().speed || 0.85;
   utterance.pitch = 1.0;
-  // 尝试选择女声
   const voices = window.speechSynthesis?.getVoices() || [];
-  const preferred = voices.find(v => v.lang.includes('zh') && v.name.includes('female')) ||
+  // 優先揀 粵語 > 國語 > 其他
+  const preferred = voices.find(v => v.lang === 'zh-HK') ||
+                    voices.find(v => v.lang === 'zh-TW') ||
+                    voices.find(v => v.lang === 'zh-CN') ||
                     voices.find(v => v.lang.includes('zh')) ||
                     voices[0];
-  if (preferred) utterance.voice = preferred;
-  utterance.onstart = () => { speaking = true; console.log('[FC TTS] Speaking:', text.slice(0, 20)); };
+  if (preferred) { utterance.voice = preferred; console.log('[FC TTS] Voice:', preferred.name); }
+  utterance.onstart = () => { speaking = true; console.log('[FC TTS] Speaking:', text.slice(0, 30)); };
   utterance.onend = () => { speaking = false; console.log('[FC TTS] Done'); };
   utterance.onerror = (e) => { speaking = false; console.error('[FC TTS] Error:', e.error); };
   window.speechSynthesis?.speak(utterance);
