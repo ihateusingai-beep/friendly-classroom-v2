@@ -48,22 +48,28 @@ body {
 .btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  padding: 12px 24px;
+  padding: 18px 32px;
+  min-height: 64px;
   border: none;
-  border-radius: 12px;
-  font-size: 1em;
-  font-weight: 600;
+  border-radius: 16px;
+  font-size: 1.25em;
+  font-weight: 700;
   cursor: pointer;
-  transition: transform 0.1s, opacity 0.2s;
+  transition: transform 0.15s, box-shadow 0.2s;
   text-decoration: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
-.btn:active { transform: scale(0.96); }
+.btn:active { transform: scale(0.96); box-shadow: none; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
 .btn-primary { background: var(--primary); color: #fff; }
 .btn-success { background: var(--success); color: #fff; }
 .btn-danger { background: var(--danger); color: #fff; }
-.btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); border-radius: 12px; }
-.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn-outline { background: transparent; border: 3px solid var(--primary); color: var(--primary); border-radius: 16px; }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+.btn-small { padding: 12px 20px; min-height: 48px; font-size: 1em; }
 
 /* ---- 標題 ---- */
 h1 { font-size: 1.8em; text-align: center; margin-bottom: 16px; }
@@ -206,27 +212,29 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
 }
 .scenario-desc .inline-voice-btn:hover { transform: scale(1.1); }
 
-/* ── 選項卡片 ── */
+/* ── 選項卡片（巨型化 Special Ed）── */
 .option-card {
   width: 100%;
-  padding: 16px 16px 16px 16px;
-  border: 2px solid var(--border);
-  border-radius: 14px;
+  padding: 20px 18px;
+  border: 3px solid var(--border);
+  border-radius: 16px;
   background: var(--card);
   text-align: left;
-  font-size: 1.05em;
+  font-size: 1.25em;
   cursor: pointer;
-  transition: border-color 0.2s, transform 0.1s, box-shadow 0.2s;
-  margin-bottom: 8px;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 16px;
+  min-height: 72px;
 }
 .option-card:hover {
   border-color: var(--primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(74,144,217,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(74,144,217,0.18);
 }
+.option-card:active { transform: scale(0.99); }
 .option-card .opt-badge {
   display: flex;
   align-items: center;
@@ -283,16 +291,17 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
 
 /* ---- 結果展示 ---- */
 .result-card {
-  border-radius: var(--radius);
-  padding: 24px 20px;
-  margin-bottom: 12px;
+  border-radius: 20px;
+  padding: 28px 24px;
+  margin-bottom: 16px;
   text-align: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
 }
-.result-card.good { background: #f6ffed; border: 2px solid var(--success); }
-.result-card.bad { background: #fff1f0; border: 2px solid var(--danger); }
-.result-card .result-emoji { font-size: 3em; margin-bottom: 10px; }
-.result-card .comment { font-size: 1.1em; margin-bottom: 14px; line-height: 1.6; font-weight: 600; }
-.result-card .moral-score { font-weight: 800; font-size: 1.3em; }
+.result-card.good { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); border: 3px solid #4CAF50; }
+.result-card.bad { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); border: 3px solid #FF9800; }
+.result-card .result-emoji { font-size: 4em; margin-bottom: 12px; }
+.result-card .comment { font-size: 1.3em; margin-bottom: 14px; line-height: 1.5; font-weight: 700; }
+.result-card .moral-score { font-weight: 800; font-size: 1.5em; color: var(--primary); }
 
 /* ── 信條展示 ── */
 .creed-show {
@@ -416,12 +425,65 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
 .action-row { display: flex; gap: 10px; margin-top: 16px; }
 .action-row .btn { flex: 1; justify-content: center; }
 
-/* ---- 動畫 ---- */
+/* ---- 情緒慶祝動畫 ---- */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .fade-in { animation: fadeIn 0.3s ease-out; }
+
+@keyframes pulse {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+@keyframes starBurst {
+  0%   { transform: scale(0) rotate(0deg); opacity: 1; }
+  50%  { transform: scale(1.4) rotate(15deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+@keyframes confettiFall {
+  0%   { transform: translateY(-20px) rotate(0deg) scale(1); opacity: 1; }
+  100% { transform: translateY(80px) rotate(720deg) scale(0.5); opacity: 0; }
+}
+@keyframes bounceIn {
+  0%   { transform: scale(0.3); opacity: 0; }
+  50%  { transform: scale(1.15); }
+  70%  { transform: scale(0.95); }
+  100% { transform: scale(1); opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes floatUp {
+  0%   { transform: translateY(0px); opacity: 1; }
+  100% { transform: translateY(-60px); opacity: 0; }
+}
+
+/* 結果卡片動畫 */
+.result-card.good  { animation: bounceIn 0.6s ease-out, pulse 1.5s 0.6s ease-in-out infinite; }
+.result-card.bad   { animation: bounceIn 0.6s ease-out; }
+.result-emoji      { animation: starBurst 0.5s ease-out; }
+
+/* Confetti 碎片 */
+.confetti-piece {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  animation: confettiFall 1.5s ease-out forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* 星星上浮 */
+.star-float {
+  position: fixed;
+  font-size: 2em;
+  animation: floatUp 1.2s ease-out forwards;
+  pointer-events: none;
+  z-index: 9999;
+}
 
 /* ---- 進度環 ---- */
 .progress-ring {

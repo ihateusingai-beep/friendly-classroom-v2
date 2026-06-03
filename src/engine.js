@@ -65,6 +65,8 @@ export function chooseOption(optionId, subjectId) {
     mainComment,
     creeds,
     creedText: formatCreeds(scenario.creedIds || []),
+    scenarioImage: scenario.image || null,
+    scenarioTitle: scenario.title || '',
   };
 }
 
@@ -255,16 +257,20 @@ export function renderPlay(scenarioId, subjectId) {
 }
 
 export function renderResult(data, subjectId) {
-  const { option, moralChange, mainComment, creeds, creedText } = data;
+  const { option, moralChange, mainComment, creeds, creedText, scenarioImage, scenarioTitle } = data;
   const isGood = moralChange >= 0;
   const subColor = getSubjectColor(subjectId);
 
   return `
-    <div class="container fade-in">
+    <div class="container fade-in" id="result-root">
       ${subjectId ? `<div style="text-align:center;margin-bottom:8px">
         <span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>
       </div>` : ''}
-      <div class="result-card ${isGood ? 'good' : 'bad'}">
+      ${scenarioImage ? `
+      <div class="scenario-image-wrap" style="max-height:180px;margin-bottom:16px;border-radius:16px;overflow:hidden">
+        <img src="${scenarioImage}" alt="${scenarioTitle}" style="width:100%;max-height:180px;object-fit:cover" />
+      </div>` : ''}
+      <div class="result-card ${isGood ? 'good' : 'bad'}" id="result-card">
         <div class="result-emoji">${isGood ? '🌟' : '💪'}</div>
         <div class="comment">${mainComment || '你做出了選擇！'}</div>
         <div class="moral-score">${isGood ? '＋' : ''}${moralChange} 道德分</div>

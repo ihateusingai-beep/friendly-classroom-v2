@@ -3,6 +3,111 @@
 
 const audioBase = 'audio/';
 
+// ── Web Audio API 遊戲音效（零延遲，唔需要外部檔案）──
+let _audioCtx = null;
+function getAudioCtx() {
+  if (!_audioCtx) _audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  return _audioCtx;
+}
+
+export function playSFX(type) {
+  try {
+    const ctx = getAudioCtx();
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    const g = gain.gain;
+
+    switch (type) {
+      case 'click':
+        // 短促點擊
+        osc.frequency.value = 800;
+        osc.type = 'sine';
+        g.setValueAtTime(0.15, now);
+        g.exponentialRampToValueAtTime(0.001, now + 0.08);
+        osc.start(now);
+        osc.stop(now + 0.08);
+        break;
+      case 'hover':
+        // 柔和tick
+        osc.frequency.value = 600;
+        osc.type = 'sine';
+        g.setValueAtTime(0.06, now);
+        g.exponentialRampToValueAtTime(0.001, now + 0.05);
+        osc.start(now);
+        osc.stop(now + 0.05);
+        break;
+      case 'success':
+        // 上行階梯音
+        osc.frequency.value = 523; // C5
+        osc.type = 'sine';
+        g.setValueAtTime(0.18, now);
+        osc.start(now);
+        osc.frequency.setValueAtTime(659, now + 0.1); // E5
+        osc.frequency.setValueAtTime(784, now + 0.2); // G5
+        g.exponentialRampToValueAtTime(0.001, now + 0.45);
+        osc.stop(now + 0.45);
+        break;
+      case 'fail':
+        // 柔和下行音
+        osc.frequency.value = 400;
+        osc.type = 'sine';
+        g.setValueAtTime(0.12, now);
+        osc.frequency.exponentialRampToValueAtTime(200, now + 0.3);
+        g.exponentialRampToValueAtTime(0.001, now + 0.3);
+        osc.start(now);
+        osc.stop(now + 0.3);
+        break;
+      case 'celebrate':
+        // 慶祝和弦
+        [523, 659, 784].forEach((freq, i) => {
+          const o = ctx.createOscillator();
+          const gg = ctx.createGain();
+          o.connect(gg);
+          gg.connect(ctx.destination);
+          o.frequency.value = freq;
+          o.type = 'sine';
+          gg.gain.setValueAtTime(0.12, now + i * 0.08);
+          gg.gain.exponentialRampToValueAtTime(0.001, now + 0.6 + i * 0.08);
+          o.start(now + i * 0.08);
+          o.stop(now + 0.65 + i * 0.08);
+        });
+        break;
+      case 'complete':
+        // 完成音 — 三連上行
+        [523, 659, 784, 1047].forEach((freq, i) => {
+          const o = ctx.createOscillator();
+          const gg = ctx.createGain();
+          o.connect(gg);
+          gg.connect(ctx.destination);
+          o.frequency.value = freq;
+          o.type = 'triangle';
+          gg.gain.setValueAtTime(0.14, now + i * 0.07);
+          gg.gain.exponentialRampToValueAtTime(0.001, now + 0.5 + i * 0.07);
+          o.start(now + i * 0.07);
+          o.stop(now + 0.55 + i * 0.07);
+        });
+        break;
+    }
+  } catch (e) {
+    console.warn('[FC SFX] Error:', e.message);
+  }
+}
+
+// 自動為所有 .btn 掛鉤 SFX
+export function initSFX() {
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn');
+    if (btn) playSFX('click');
+  });
+  document.addEventListener('mouseover', (e) => {
+    const btn = e.target.closest('.btn');
+    if (btn) playSFX('hover');
+  });
+}
+
 let enabled = true;
 let speaking = false;
 let currentAudio = null;
@@ -154,7 +259,9 @@ window._fcAudio = {
   setEnabled,
   isEnabled,
   preloadAudio,
-  applyCSS
+  applyCSS,
+  playSFX,
+  initSFX,
 };
 
 window.addEventListener('beforeunload', () => { stopSpeaking(); });

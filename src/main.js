@@ -4,7 +4,7 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
          getDisplayProgress, initTopicProgress, renderHome, renderTopicList,
          renderPlay, renderResult, renderProgress, renderSettings,
          playScenario, chooseOption, suggestNext } from './engine.js';
-import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings } from './audio.js';
+import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './progress.js';
 import scenariosData from '../data/scenarios.json';
 
@@ -14,6 +14,7 @@ if (import.meta.hot) { import.meta.hot.decline(); }
 // ── 初始化 ──
 const app = document.getElementById('app');
 applyCSS(); // 套用個人化 CSS 參數
+initSFX();  // 初始化遊戲音效
 
 // ── 科目定義 ──
 const SUBJECTS = [
@@ -66,8 +67,62 @@ export function choose(optionId) {
   const data = chooseOption(optionId, state.subjectId);
   state = { ...state, view: 'result', resultData: data };
   render();
+  // 情緒慶祝動畫 + SFX
+  setTimeout(() => {
+    const isGood = data.moralChange >= 0;
+    if (isGood) {
+      playSFX('success');
+      triggerConfetti();
+      triggerStarFloat();
+    } else {
+      playSFX('fail');
+      triggerComfort();
+    }
+  }, 100);
 }
 window.FC.choose = choose;
+
+function triggerConfetti() {
+  const colors = ['#FFD700','#FF6B6B','#4ECDC4','#45B7D1','#96CEB4','#FFE66D'];
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random() * 90 + 5 + 'vw';
+    el.style.top  = Math.random() * 30 + 10 + 'vh';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.animationDelay = Math.random() * 0.5 + 's';
+    el.style.borderRadius = Math.random() > 0.5 ? '50%' : '2px';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2000);
+  }
+}
+
+function triggerStarFloat() {
+  const emojis = ['🌟','✨','💫','⭐'];
+  for (let i = 0; i < 6; i++) {
+    const el = document.createElement('div');
+    el.className = 'star-float';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 80 + 10 + 'vw';
+    el.style.top  = 50 + Math.random() * 30 + 'vh';
+    el.style.animationDelay = Math.random() * 0.8 + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 2000);
+  }
+}
+
+function triggerComfort() {
+  const el = document.createElement('div');
+  el.className = 'star-float';
+  el.textContent = '💪';
+  el.style.left = '50%';
+  el.style.top  = '50%';
+  el.style.transform = 'translate(-50%,-50%)';
+  el.style.fontSize = '4em';
+  el.style.animation = 'bounceIn 0.8s ease-out forwards';
+  document.body.appendChild(el);
+  setTimeout(() => el.remove(), 1500);
+}
 
 export function retry() {
   if (state.scenarioId) play(state.scenarioId);
