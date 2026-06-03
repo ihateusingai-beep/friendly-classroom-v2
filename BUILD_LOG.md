@@ -1,5 +1,45 @@
 # Build Log - friendly-classroom-v2
 
+## v2.0.0-2026-06-03 - Special Ed UX Upgrade
+
+**Date:** 2026-06-03
+**Release:** https://github.com/ihateusingai-beep/friendly-classroom-v2/releases/tag/v2.0.0-2026-06-03
+**Git:** f51968e
+
+### GitHub Pages
+https://ihateusingai-beep.github.io/friendly-classroom-v2/
+
+### Changes Applied
+- **巨型按鈕**: .btn min-height 64px, font 1.25em, hover lift效果, box-shadow
+- **巨型選項卡**: .option-card min-height 72px, font 1.25em, border 3px
+- **結果畫面**: 4em emoji, 漸層背景, bounceIn動畫, pulse效果(good only)
+- **情緒動畫**: confetti彩色碎片(20個) + 星星上浮(6個) + 安慰💪bounce
+- **Web Audio API SFX**: click/hover/success/fail/celebrate/complete (零外部依賴)
+- **Result screen顯示場景圖**: scenario.image 傳入renderResult展示
+- **場景圖片修復**: data/scenarios.json空檔案→從git f44a12e恢復(103KB, 46 scenarios)
+- **initSFX()**: 全域按鈕自動音效
+
+### 关键文件
+- src/style.css: 按鈕/選項卡/結果卡/動畫keyframes
+- src/main.js: choose() → triggerConfetti/StarFloat/Comfort + playSFX
+- src/audio.js: playSFX() Web Audio API, initSFX()
+- src/engine.js: chooseOption() → 回傳scenarioImage+scenarioTitle
+- data/scenarios.json: 從git恢復，46 scenarios完整
+
+### 部署狀態
+- git push → GitHub Actions → GitHub Pages
+- 最新: f51968e committed 2026-06-03 00:34 UTC
+- Actions: completed/success 32s
+
+### Rollback
+```bash
+cd ~/FC
+git reset --hard f44a12e  # 回滾到上一個stable
+git push --force origin main
+```
+
+---
+
 ## v1.0.0-2026-06-02 - Stable Build
 
 **Date:** 2026-06-02
