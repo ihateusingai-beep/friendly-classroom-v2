@@ -28,8 +28,15 @@ https://ihateusingai-beep.github.io/friendly-classroom-v2/
 
 ### 部署狀態
 - git push → GitHub Actions → GitHub Pages
-- 最新: f51968e committed 2026-06-03 00:34 UTC
-- Actions: completed/success 32s
+- 最新: 09aadd9 committed 2026-06-03 03:46 UTC
+- Actions: completed/success 28s
+
+### 額外修正 v2.1.0 (2026-06-03)
+8個不合理道德分數修正：
+- s-new2 大聲喝止: +10→-10 | s-new2 默默忍受: -5→-15
+- s-new5 扮事不關己: -5→-20 | s-new19 行開扮睇唔到: -5→-20
+- s-c7 公開指責: +20→-10 | s-c5 立即告知老師: +20→+10
+- s-new1 拒絕借: 0→-5 | s-new4 把遮借俾自己跑: +5→+15
 
 ### Rollback
 ```bash
