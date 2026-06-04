@@ -1593,10 +1593,10 @@
     "id": "s-door2",
     "title": "特別關卡：門與安全",
     "background": "走廊・樓梯口",
-    "description": "你見到祝卓鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？",
+    "description": "你見到小鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？",
     "characters": [
       {
-        "name": "祝卓鋒",
+        "name": "小鋒",
         "emoji": "🚪",
         "initial_relationship": 50
       }
@@ -1609,13 +1609,13 @@
     "options": [
       {
         "id": "s-door2-a",
-        "text": "走埋去話：「祝卓鋒，門就嚟開喇，小心呀！」",
+        "text": "走埋去話：「小鋒，門就嚟開喇，小心呀！」",
         "effects": [
           {
-            "character": "祝卓鋒",
+            "character": "小鋒",
             "change": 30,
             "moralChange": 25,
-            "comment": "祝卓鋒即刻停低，望住你：「你點知？」你話：「我見到你爬嚟爬去，擔心你整傷。」佢笑咗：「多謝你！」"
+            "comment": "小鋒即刻停低，望住你：「你點知？」你話：「我見到你爬嚟爬去，擔心你整傷。」佢笑咗：「多謝你！」"
           }
         ],
         "next_scenario": null
@@ -1625,10 +1625,10 @@
         "text": "行開當睇唔到（因為話俾佢知可能會得罪佢）",
         "effects": [
           {
-            "character": "祝卓鋒",
+            "character": "小鋒",
             "change": 0,
             "moralChange": -10,
-            "comment": "門突然打開，祝卓鋒整傷咗手指...你心裡有少少內咎，如果你早啲提醒佢就好..."
+            "comment": "門突然打開，小鋒整傷咗手指...你心裡有少少內咎，如果你早啲提醒佢就好..."
           }
         ],
         "next_scenario": null
@@ -1638,10 +1638,10 @@
         "text": "立即走去通知老師",
         "effects": [
           {
-            "character": "祝卓鋒",
+            "character": "小鋒",
             "change": -15,
             "moralChange": 15,
-            "comment": "老師即時趕到制止咗危險情況，但祝卓鋒有少少唔高興：「你通知老師？」..."
+            "comment": "老師即時趕到制止咗危險情況，但小鋒有少少唔高興：「你通知老師？」..."
           }
         ],
         "next_scenario": null
@@ -1653,7 +1653,7 @@
       5,
       7
     ],
-    "imagePrompt": "你見到祝卓鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你見到小鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
   },
   {
     "id": "s-door3",
@@ -1802,10 +1802,10 @@
     "id": "s-door6",
     "title": "特別關卡：關門紀律",
     "background": "課室・上午",
-    "description": "上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。祝卓鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師...",
+    "description": "上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。小鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師...",
     "characters": [
       {
-        "name": "祝卓鋒",
+        "name": "小鋒",
         "emoji": "🚪",
         "initial_relationship": 50
       },
@@ -1823,13 +1823,13 @@
     "options": [
       {
         "id": "s-door6-a",
-        "text": "笑祝卓鋒：「你整到好大聲呀！」",
+        "text": "笑小鋒：「你整到好大聲呀！」",
         "effects": [
           {
-            "character": "祝卓鋒",
+            "character": "小鋒",
             "change": -15,
             "moralChange": -10,
-            "comment": "祝卓鋒好尷尬，其他人笑。老師皺眉望你..."
+            "comment": "小鋒好尷尬，其他人笑。老師皺眉望你..."
           },
           {
             "character": "老師",
@@ -1842,13 +1842,13 @@
       },
       {
         "id": "s-door6-b",
-        "text": "輕聲話祝卓鋒：「下次温柔啲啦」",
+        "text": "輕聲話小鋒：「下次温柔啲啦」",
         "effects": [
           {
-            "character": "祝卓鋒",
+            "character": "小鋒",
             "change": 15,
             "moralChange": 15,
-            "comment": "祝卓鋒多謝你體諒，點點頭。老師見到你關心同學，微笑。"
+            "comment": "小鋒多謝你體諒，點點頭。老師見到你關心同學，微笑。"
           },
           {
             "character": "老師",
@@ -1864,10 +1864,10 @@
         "text": "主動走埋去，輕手輕腳閂好門",
         "effects": [
           {
-            "character": "祝卓鋒",
+            "character": "小鋒",
             "change": 10,
             "moralChange": 20,
-            "comment": "你示範咗點樣安靜關門。祝卓鋒學到嘢，老師滿意。"
+            "comment": "你示範咗點樣安靜關門。小鋒學到嘢，老師滿意。"
           },
           {
             "character": "老師",
@@ -1885,7 +1885,7 @@
       5,
       7
     ],
-    "imagePrompt": "上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。祝卓鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。小鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
   },
   {
     "id": "s-new1",
