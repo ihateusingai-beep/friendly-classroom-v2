@@ -1,7 +1,7 @@
 // 友愛教室 V2 — main.js
 import './style.css';
 import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic,
-         getDisplayProgress, initTopicProgress, renderHome, renderTopicList,
+         getDisplayProgress, initTopicProgress, initSubjectProgress, renderHome, renderTopicList,
          renderPlay, renderResult, renderProgress, renderSettings,
          playScenario, chooseOption, suggestNext } from './engine.js';
 import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX } from './audio.js';

@@ -37,12 +37,10 @@ export function markComplete(studentName, scenarioId, topicId, moralChange, subj
   if (!p.completedScenarios.includes(scenarioId)) {
     p.completedScenarios.push(scenarioId);
     p.totalMoralScore = Math.max(0, (p.totalMoralScore || 0) + moralChange);
-    if (p.topicProgress[topicId]) {
-      p.topicProgress[topicId].completed++;
-    }
-    if (subjectId && p.subjectProgress[subjectId]) {
-      p.subjectProgress[subjectId].completed++;
-    }
+    if (!p.topicProgress[topicId]) p.topicProgress[topicId] = { completed: 0, total: 0 };
+    p.topicProgress[topicId].completed++;
+    if (!p.subjectProgress[subjectId]) p.subjectProgress[subjectId] = { completed: 0, total: 0 };
+    p.subjectProgress[subjectId].completed++;
     saveProgress(p);
   }
   return p;
@@ -90,6 +88,22 @@ export function importProgress(jsonData) {
       if (!p.completedScenarios.includes(id)) p.completedScenarios.push(id);
     });
     p.totalMoralScore = Math.max(p.totalMoralScore || 0, data.totalMoralScore || 0);
+    // merge topic progress
+    if (data.topicProgress) {
+      Object.keys(data.topicProgress).forEach(tid => {
+        if (!p.topicProgress[tid]) p.topicProgress[tid] = { completed: 0, total: 0 };
+        p.topicProgress[tid].completed = Math.max(p.topicProgress[tid].completed || 0, data.topicProgress[tid].completed || 0);
+        if (data.topicProgress[tid].total) p.topicProgress[tid].total = Math.max(p.topicProgress[tid].total || 0, data.topicProgress[tid].total);
+      });
+    }
+    // merge subject progress
+    if (data.subjectProgress) {
+      Object.keys(data.subjectProgress).forEach(sid => {
+        if (!p.subjectProgress[sid]) p.subjectProgress[sid] = { completed: 0, total: 0 };
+        p.subjectProgress[sid].completed = Math.max(p.subjectProgress[sid].completed || 0, data.subjectProgress[sid].completed || 0);
+        if (data.subjectProgress[sid].total) p.subjectProgress[sid].total = Math.max(p.subjectProgress[sid].total || 0, data.subjectProgress[sid].total);
+      });
+    }
     saveProgress(p);
     return { ok: true };
   } catch (e) {

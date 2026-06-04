@@ -226,8 +226,7 @@ export function speak(text) {
     console.error('[FC TTS] Error:', e.error);
     // Fallback: try MP3 if Web Speech blocked by autoplay policy
     if (e.error === 'not-allowed') {
-      console.log('[FC TTS] Fallback to MP3...');
-      // speak() called with scenario text — try to find a matching MP3
+      console.log('[FC TTS] Autoplay blocked — user must interact first. Suggest enabling TTS in settings.');
     }
   };
   window.speechSynthesis?.speak(utterance);

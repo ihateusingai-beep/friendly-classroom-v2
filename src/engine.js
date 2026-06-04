@@ -68,6 +68,7 @@ export function chooseOption(optionId, subjectId) {
     scenarioImage: scenario.image || null,
     scenarioTitle: scenario.title || '',
     outcomeImage: `assets/images/outcomes/${scenario.id}_opt${scenario.options.findIndex(o=>o.id===optionId)+1}.png`,
+    nextScenario: option.next_scenario || null,
   };
 }
 
@@ -243,7 +244,7 @@ export function renderPlay(scenarioId, subjectId) {
           const labels = ['A', 'B', 'C', 'D'];
           return `
             <div class="option-card" onclick="FC.choose('${opt.id}')">
-              <img src="assets/images/scenarios/${s.id}.png" alt=""
+              <img src="assets/images/outcomes/${s.id}_opt${i+1}.png" alt=""
                    class="opt-thumb" onerror="this.style.display='none'" />
               <span class="opt-badge">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
