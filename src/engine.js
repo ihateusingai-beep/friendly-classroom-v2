@@ -67,6 +67,7 @@ export function chooseOption(optionId, subjectId) {
     creedText: formatCreeds(scenario.creedIds || []),
     scenarioImage: scenario.image || null,
     scenarioTitle: scenario.title || '',
+    outcomeImage: `assets/images/outcomes/${scenario.id}_opt${scenario.options.findIndex(o=>o.id===optionId)+1}.png`,
   };
 }
 
@@ -285,6 +286,12 @@ export function renderResult(data, subjectId) {
           ${(creedText || []).map(c => `<div class="item">${c}</div>`).join('')}
         </div>
       </div>
+
+      ${data.outcomeImage ? `
+      <div class="outcome-image-wrap" style="margin-top:16px;border-radius:16px;overflow:hidden">
+        <img src="${data.outcomeImage}" alt="結果圖" style="width:100%;border-radius:16px"
+             onerror="this.style.display='none'" />
+      </div>` : ''}
 
       <div class="action-row">
         <button class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
