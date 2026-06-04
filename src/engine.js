@@ -243,6 +243,8 @@ export function renderPlay(scenarioId, subjectId) {
           const labels = ['A', 'B', 'C', 'D'];
           return `
             <div class="option-card" onclick="FC.choose('${opt.id}')">
+              <img src="assets/images/scenarios/${s.id}.png" alt=""
+                   class="opt-thumb" onerror="this.style.display='none'" />
               <span class="opt-badge">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
               <button class="opt-read" onclick="event.stopPropagation();FC.speakOpt('${opt.id}')" title="朗讀">🔊</button>

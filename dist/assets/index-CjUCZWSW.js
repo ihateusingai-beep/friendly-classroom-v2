@@ -101,6 +101,8 @@
       <div class="options">
         ${n.options.map((a,s)=>{const c=["A","B","C","D"];return`
             <div class="option-card" onclick="FC.choose('${a.id}')">
+              <img src="assets/images/scenarios/${n.id}.png" alt=""
+                   class="opt-thumb" onerror="this.style.display='none'" />
               <span class="opt-badge">${c[s]||s+1}</span>
               <span class="opt-text">${a.text}</span>
               <button class="opt-read" onclick="event.stopPropagation();FC.speakOpt('${a.id}')" title="朗讀">🔊</button>

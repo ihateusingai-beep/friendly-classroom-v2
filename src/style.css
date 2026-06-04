@@ -235,6 +235,14 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   box-shadow: 0 6px 20px rgba(74,144,217,0.18);
 }
 .option-card:active { transform: scale(0.99); }
+.option-card .opt-thumb {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  border: 2px solid var(--border);
+}
 .option-card .opt-badge {
   display: flex;
   align-items: center;
