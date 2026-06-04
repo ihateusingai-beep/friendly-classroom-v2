@@ -190,7 +190,8 @@ export function speakScenario(scenario) {
   const id = scenario?.id || scenario;
   const text = scenario?.description || '';
   console.log('[FC Audio] Playing scenario:', id);
-  playLocalWithFallback(`scenarios/${id}.mp3`, text);
+  // 直接 Web Speech API TTS（跳過 MP3）
+  speak(text);
 }
 
 // 播放信條音頻
