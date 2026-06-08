@@ -3092,5 +3092,690 @@
       7
     ],
     "imagePrompt": "今日係你值日，但你好想走咗去同朋友玩... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+  },
+  {
+    "id": "s-self-01",
+    "title": "自我保護：媽媽安慰",
+    "background": "家中・晚上",
+    "description": "你哭咗，媽媽輕輕幫你抹眼淚，問你發生咩事。",
+    "hints": [
+      "呢個係好接觸，因為係家人關心你。",
+      "好接觸會令你感覺安全同舒服。"
+    ],
+    "characters": [
+      {"name": "媽媽", "emoji": "👩", "initial_relationship": 80}
+    ],
+    "options": [
+      {
+        "id": "s-self-01-a",
+        "text": "接受安慰，話畀媽媽聽",
+        "effects": [
+          {"character": "媽媽", "change": 10, "moralChange": 15, "comment": "你好勇敢！媽媽好開心你信任佢。"}
+        ],
+        "next_scenario": "s-self-02"
+      },
+      {
+        "id": "s-self-01-b",
+        "text": "推開媽媽",
+        "effects": [
+          {"character": "媽媽", "change": -5, "moralChange": -10, "comment": "媽媽會擔心你..."}
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "self-protection",
+    "creedIds": [1, 5],
+    "imagePrompt": "A young Chinese boy with teary eyes, gentle mother wiping tears, warm home setting, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-02",
+    "title": "自我保護：同學讚賞",
+    "background": "課室・小息",
+    "description": "同學輕輕拍你肩膀，讚你做得好。",
+    "hints": [
+      "呢個係好接觸，朋友之間嘅鼓勵。",
+      "好接觸要雙方都開心。"
+    ],
+    "characters": [
+      {"name": "同學", "emoji": "👦", "initial_relationship": 60}
+    ],
+    "options": [
+      {
+        "id": "s-self-02-a",
+        "text": "笑住接受",
+        "effects": [{"character": "同學", "change": 10, "moralChange": 10, "comment": "你令朋友都開心！"}],
+        "next_scenario": "s-self-03"
+      },
+      {
+        "id": "s-self-02-b",
+        "text": "覺得奇怪，走開",
+        "effects": [{"character": "同學", "change": -5, "moralChange": -5, "comment": "朋友可能會誤會..."}],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "self-protection",
+    "creedIds": [1],
+    "imagePrompt": "Happy boy patted on shoulder by smiling classmate, school playground, anime cartoon style, warm tones, no text, 16:9"
+  },
+  {
+    "id": "s-self-03",
+    "title": "自我保護：陌生人摸大腿",
+    "background": "公園・玩耍",
+    "description": "一個陌生人突然摸你大腿，你覺得好唔舒服。",
+    "hints": [
+      "呢個係壞接觸！即刻離開。",
+      "壞接觸要大聲講「唔好」同搵大人。"
+    ],
+    "characters": [
+      {"name": "陌生人", "emoji": "👤", "initial_relationship": 20}
+    ],
+    "options": [
+      {
+        "id": "s-self-03-a",
+        "text": "大聲講「唔好」然後跑向媽媽",
+        "effects": [{"character": "陌生人", "change": -20, "moralChange": 20, "comment": "你好勇敢！安全第一！"}],
+        "next_scenario": "s-self-04"
+      },
+      {
+        "id": "s-self-03-b",
+        "text": "忍住唔聲張",
+        "effects": [{"character": "陌生人", "change": 5, "moralChange": -15, "comment": "記住：壞接觸一定要講出嚟！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "park",
+    "topicId": "self-protection",
+    "creedIds": [5, 7],
+    "imagePrompt": "Young boy looking uncomfortable as stranger touches thigh, warning scene, anime cartoon style, expressive worried face, no text, 16:9"
+  },
+  {
+    "id": "s-self-04",
+    "title": "自我保護：叔叔摸頭",
+    "background": "學校門口",
+    "description": "一個叔叔摸你頭髮說「乖乖」，你覺得怪怪地。",
+    "hints": [
+      "陌生人摸頭都可能係壞接觸。",
+      "即刻搵老師或媽媽。"
+    ],
+    "options": [
+      {
+        "id": "s-self-04-a",
+        "text": "即刻跑去搵老師",
+        "effects": [{"moralChange": 15, "comment": "正確！陌生人嘅好意都要小心。"}],
+        "next_scenario": "s-self-05"
+      },
+      {
+        "id": "s-self-04-b",
+        "text": "笑住留低",
+        "effects": [{"moralChange": -10, "comment": "記住安全最重要。"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "school_gate",
+    "topicId": "self-protection",
+    "creedIds": [5],
+    "imagePrompt": "Young girl uneasy as uncle touches hair, park setting, anime cartoon style, worried expression, no text, 16:9"
+  },
+  {
+    "id": "s-self-05",
+    "title": "自我保護：醫生檢查",
+    "background": "診所",
+    "description": "醫生要檢查你耳朵，媽媽喺度陪住。",
+    "hints": [
+      "有大人陪嘅醫療檢查係好接觸。",
+      "但陌生人單獨接觸就要小心。"
+    ],
+    "options": [
+      {
+        "id": "s-self-05-a",
+        "text": "安心接受檢查",
+        "effects": [{"moralChange": 10, "comment": "好接觸令你健康！"}],
+        "next_scenario": "s-self-06"
+      },
+      {
+        "id": "s-self-05-b",
+        "text": "推開醫生",
+        "effects": [{"moralChange": -5, "comment": "有媽媽陪就係安全嘅。"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "clinic",
+    "topicId": "self-protection",
+    "creedIds": [1],
+    "imagePrompt": "Boy calmly having ear checked by doctor with mother beside, safe medical scene, anime cartoon style, reassuring, no text, 16:9"
+  },
+  {
+    "id": "s-self-06",
+    "title": "自我保護：朋友握手",
+    "background": "課室・放學",
+    "description": "朋友伸出手想同你握手打招呼。",
+    "hints": [
+      "朋友之間嘅握手係好接觸。",
+      "記住分辨好壞接觸，你已經好厲害！"
+    ],
+    "options": [
+      {
+        "id": "s-self-06-a",
+        "text": "開心握手",
+        "effects": [{"moralChange": 15, "comment": "你完成自我保護學習！每日安全badge +10分"}],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-06-b",
+        "text": "唔想握手",
+        "effects": [{"moralChange": 5, "comment": "尊重自己感覺都係正確。"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "self-protection",
+    "creedIds": [1, 5],
+    "imagePrompt": "Two happy children shaking hands, classroom, anime cartoon style, bright positive, no text, 16:9"
+  },
+  {
+    "id": "s-self-07",
+    "title": "社交距離：朋友講秘密",
+    "background": "課室・小息",
+    "description": "朋友想同你講秘密，坐喺手臂距離。",
+    "hints": [
+      "手臂距離係朋友之間嘅合宜距離。",
+      "太近會令對方唔舒服。"
+    ],
+    "options": [
+      {
+        "id": "s-self-07-a",
+        "text": "保持手臂距離傾偈",
+        "effects": [{"moralChange": 10, "comment": "你好識得尊重他人！"}],
+        "next_scenario": "s-self-08"
+      },
+      {
+        "id": "s-self-07-b",
+        "text": "貼住佢講",
+        "effects": [{"moralChange": -5, "comment": "記住保持距離。"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-distance",
+    "creedIds": [1],
+    "imagePrompt": "Boy and friend at arm's length whispering, classroom, anime cartoon style, no text, 16:9"
+  },
+  {
+    "id": "s-self-08",
+    "title": "社交距離：陌生人買嘢",
+    "background": "便利店",
+    "description": "陌生人喺兩步距離買嘢，冇貼住你。",
+    "hints": [
+      "陌生人應該保持兩步距離。",
+      "呢個係安全嘅社交距離。"
+    ],
+    "options": [
+      {
+        "id": "s-self-08-a",
+        "text": "安心繼續買嘢",
+        "effects": [{"moralChange": 10, "comment": "正確！呢個距離好安全。"}],
+        "next_scenario": "s-self-09"
+      },
+      {
+        "id": "s-self-08-b",
+        "text": "覺得害怕，走開",
+        "effects": [{"moralChange": 5, "comment": "保護自己感覺都係對嘅。"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "shop",
+    "topicId": "social-distance",
+    "creedIds": [5],
+    "imagePrompt": "Boy standing two steps from stranger at shop, safe distance, anime cartoon style, no text, 16:9"
+  },
+  {
+    "id": "s-self-09",
+    "title": "社交距離：家人擁抱",
+    "background": "家中",
+    "description": "媽媽想同你擁抱，你好開心。",
+    "hints": [
+      "家人之間零距離係好正常嘅。",
+      "只有信任嘅人先可以零距離。"
+    ],
+    "options": [
+      {
+        "id": "s-self-09-a",
+        "text": "開心接受擁抱",
+        "effects": [{"moralChange": 15, "comment": "家人嘅愛好寶貴！"}],
+        "next_scenario": "s-self-10"
+      },
+      {
+        "id": "s-self-09-b",
+        "text": "推開媽媽",
+        "effects": [{"moralChange": -5, "comment": "媽媽會傷心..."}],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "social-distance",
+    "creedIds": [1],
+    "imagePrompt": "Boy happily hugging mother, zero distance, warm family, anime cartoon style, no text, 16:9"
+  },
+  {
+    "id": "s-self-10",
+    "title": "社交距離：公車太近",
+    "background": "公車",
+    "description": "陌生人喺公車上貼住你，你覺得好唔舒服。",
+    "hints": [
+      "呢個係太近！即刻企開啲。",
+      "陌生人太近係唔安全。"
+    ],
+    "options": [
+      {
+        "id": "s-self-10-a",
+        "text": "即刻企開兩步",
+        "effects": [{"moralChange": 15, "comment": "你好識保護自己！"}],
+        "next_scenario": "s-self-11"
+      },
+      {
+        "id": "s-self-10-b",
+        "text": "忍住唔郁",
+        "effects": [{"moralChange": -10, "comment": "太近要即刻離開！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "bus",
+    "topicId": "social-distance",
+    "creedIds": [5, 7],
+    "imagePrompt": "Boy uncomfortable on bus with stranger too close, personal space invasion, anime cartoon style, worried, no text, 16:9"
+  },
+  {
+    "id": "s-self-11",
+    "title": "社交距離：打球推人",
+    "background": "操場",
+    "description": "同學打波時大力推你，貼住你。",
+    "hints": [
+      "打波都唔可以太近推人。",
+      "即刻話畀老師聽。"
+    ],
+    "options": [
+      {
+        "id": "s-self-11-a",
+        "text": "話畀老師聽",
+        "effects": [{"moralChange": 10, "comment": "正確！保護自己同他人。"}],
+        "next_scenario": "s-self-12"
+      },
+      {
+        "id": "s-self-11-b",
+        "text": "推返去",
+        "effects": [{"moralChange": -10, "comment": "暴力唔係解決方法。"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "social-distance",
+    "creedIds": [5],
+    "imagePrompt": "Boy being pushed during ball game, too close, playground, anime cartoon style, surprised, no text, 16:9"
+  },
+  {
+    "id": "s-self-12",
+    "title": "社交距離：老師講故事",
+    "background": "課室",
+    "description": "老師講故事，你坐喺手臂距離聽。",
+    "hints": [
+      "老師同學生之間手臂距離係合宜。",
+      "你已經好識分辨社交距離！"
+    ],
+    "options": [
+      {
+        "id": "s-self-12-a",
+        "text": "專心聽故事",
+        "effects": [{"moralChange": 15, "comment": "你完成社交距離學習！badge +10分"}],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-12-b",
+        "text": "坐得太近",
+        "effects": [{"moralChange": -5, "comment": "記住保持手臂距離。"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-distance",
+    "creedIds": [1, 5],
+    "imagePrompt": "Boy sitting at arm's length listening to teacher, appropriate distance, classroom, anime cartoon style, no text, 16:9"
+  },
+  {
+    "id": "s-self-13",
+    "title": "陌生人：跟我走",
+    "background": "學校門口",
+    "description": "陌生人話：「我識你媽媽，跟我走。」",
+    "hints": [
+      "陌生人話識你家人都要小心！",
+      "即刻搵大人，唔好跟。"
+    ],
+    "options": [
+      {
+        "id": "s-self-13-a",
+        "text": "即刻搵老師",
+        "effects": [{"moralChange": 20, "comment": "你好勇敢！安全第一！"}],
+        "next_scenario": "s-self-14"
+      },
+      {
+        "id": "s-self-13-b",
+        "text": "跟住陌生人",
+        "effects": [{"moralChange": -20, "comment": "永遠唔好跟陌生人！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "school_gate",
+    "topicId": "stranger-danger",
+    "creedIds": [5, 7],
+    "imagePrompt": "Stranger saying follow me, boy refusing, school gate, anime cartoon style, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-14",
+    "title": "陌生人：畀糖果",
+    "background": "公園",
+    "description": "陌生人畀糖果你食。",
+    "hints": [
+      "唔好收陌生人嘅嘢！",
+      "即刻跑開。"
+    ],
+    "options": [
+      {
+        "id": "s-self-14-a",
+        "text": "唔收，跑向人群",
+        "effects": [{"moralChange": 15, "comment": "正確！保護自己！"}],
+        "next_scenario": "s-self-15"
+      },
+      {
+        "id": "s-self-14-b",
+        "text": "接受糖果",
+        "effects": [{"moralChange": -15, "comment": "陌生人嘅嘢唔可以食！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "park",
+    "topicId": "stranger-danger",
+    "creedIds": [5],
+    "imagePrompt": "Stranger offering candy, boy refusing and running, park, anime cartoon style, alert, no text, 16:9"
+  },
+  {
+    "id": "s-self-15",
+    "title": "陌生人：問屋企",
+    "background": "學校",
+    "description": "陌生人問你屋企喺邊。",
+    "hints": [
+      "唔好話畀陌生人聽屋企位置！",
+      "即刻搵老師。"
+    ],
+    "options": [
+      {
+        "id": "s-self-15-a",
+        "text": "唔答，搵老師",
+        "effects": [{"moralChange": 15, "comment": "你好識保護自己！"}],
+        "next_scenario": "s-self-16"
+      },
+      {
+        "id": "s-self-15-b",
+        "text": "話畀佢聽",
+        "effects": [{"moralChange": -10, "comment": "屋企位置唔可以話畀陌生人！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "school",
+    "topicId": "stranger-danger",
+    "creedIds": [5, 7],
+    "imagePrompt": "Stranger asking where you live, boy not answering, school, anime cartoon style, cautious, no text, 16:9"
+  },
+  {
+    "id": "s-self-16",
+    "title": "陌生人：摸頭",
+    "background": "公園",
+    "description": "陌生人摸你頭話「好乖」。",
+    "hints": [
+      "陌生人摸頭都要大聲講「唔好」！",
+      "即刻離開。"
+    ],
+    "options": [
+      {
+        "id": "s-self-16-a",
+        "text": "大聲講「唔好」",
+        "effects": [{"moralChange": 15, "comment": "好勇敢！"}],
+        "next_scenario": "s-self-17"
+      },
+      {
+        "id": "s-self-16-b",
+        "text": "笑住留低",
+        "effects": [{"moralChange": -10, "comment": "陌生人摸你就要即刻離開！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "park",
+    "topicId": "stranger-danger",
+    "creedIds": [5],
+    "imagePrompt": "Stranger touching head, boy saying no loudly, anime cartoon style, worried, no text, 16:9"
+  },
+  {
+    "id": "s-self-17",
+    "title": "陌生人：買玩具",
+    "background": "學校門口",
+    "description": "陌生人話帶你去買玩具。",
+    "hints": [
+      "陌生人話買嘢都唔可以跟！",
+      "跑向人群。"
+    ],
+    "options": [
+      {
+        "id": "s-self-17-a",
+        "text": "跑向人群",
+        "effects": [{"moralChange": 20, "comment": "你好聰明！"}],
+        "next_scenario": "s-self-18"
+      },
+      {
+        "id": "s-self-17-b",
+        "text": "跟住佢",
+        "effects": [{"moralChange": -20, "comment": "永遠唔好跟陌生人！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "school_gate",
+    "topicId": "stranger-danger",
+    "creedIds": [5, 7],
+    "imagePrompt": "Stranger offering to buy toys, boy running to crowd, anime cartoon style, running, no text, 16:9"
+  },
+  {
+    "id": "s-self-18",
+    "title": "陌生人：上車",
+    "background": "街頭",
+    "description": "陌生人叫你上車。",
+    "hints": [
+      "陌生人叫你上車＝危險！",
+      "大聲喊「救命」同跑。"
+    ],
+    "options": [
+      {
+        "id": "s-self-18-a",
+        "text": "大聲喊「救命」跑開",
+        "effects": [{"moralChange": 20, "comment": "你完成陌生人應對學習！badge +10分"}],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-18-b",
+        "text": "上車",
+        "effects": [{"moralChange": -25, "comment": "呢個好危險！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "street",
+    "topicId": "stranger-danger",
+    "creedIds": [5, 7],
+    "imagePrompt": "Stranger asking boy to get in car, boy shouting help and running, danger scene, anime cartoon style, urgent, no text, 16:9"
+  },
+  {
+    "id": "s-self-19",
+    "title": "求助：公園迷路",
+    "background": "公園",
+    "description": "你喺公園迷路，見到保安。",
+    "hints": [
+      "迷路要即刻搵大人！",
+      "大聲講「救命」。"
+    ],
+    "options": [
+      {
+        "id": "s-self-19-a",
+        "text": "跑向保安求助",
+        "effects": [{"moralChange": 15, "comment": "你好勇敢！"}],
+        "next_scenario": "s-self-20"
+      },
+      {
+        "id": "s-self-19-b",
+        "text": "自己亂走",
+        "effects": [{"moralChange": -10, "comment": "迷路要即刻求助！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "park",
+    "topicId": "help-seeking",
+    "creedIds": [5, 7],
+    "imagePrompt": "Boy lost in park running to security guard, safe choice, anime cartoon style, brave, no text, 16:9"
+  },
+  {
+    "id": "s-self-20",
+    "title": "求助：壞接觸後",
+    "background": "家中",
+    "description": "你遇到壞接觸，即刻搵媽媽。",
+    "hints": [
+      "壞接觸後要即刻話畀大人聽！",
+      "媽媽會保護你。"
+    ],
+    "options": [
+      {
+        "id": "s-self-20-a",
+        "text": "即刻話畀媽媽聽",
+        "effects": [{"moralChange": 20, "comment": "你好聰明！安全最重要。"}],
+        "next_scenario": "s-self-21"
+      },
+      {
+        "id": "s-self-20-b",
+        "text": "忍住唔講",
+        "effects": [{"moralChange": -15, "comment": "壞接觸一定要講出嚟！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [1, 5],
+    "imagePrompt": "Boy after bad touch running to tell mother, home, anime cartoon style, relieved, no text, 16:9"
+  },
+  {
+    "id": "s-self-21",
+    "title": "求助：陌生人跟蹤",
+    "background": "街頭",
+    "description": "陌生人跟蹤你，你跑入學校搵老師。",
+    "hints": [
+      "有人跟蹤要即刻入安全地方！",
+      "話畀老師聽。"
+    ],
+    "options": [
+      {
+        "id": "s-self-21-a",
+        "text": "跑入學校搵老師",
+        "effects": [{"moralChange": 20, "comment": "你好識保護自己！"}],
+        "next_scenario": "s-self-22"
+      },
+      {
+        "id": "s-self-21-b",
+        "text": "繼續行",
+        "effects": [{"moralChange": -15, "comment": "跟蹤要即刻求助！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "street",
+    "topicId": "help-seeking",
+    "creedIds": [5, 7],
+    "imagePrompt": "Boy followed by stranger running into school to tell teacher, safe escape, anime cartoon style, decisive, no text, 16:9"
+  },
+  {
+    "id": "s-self-22",
+    "title": "求助：上廁所",
+    "background": "學校走廊",
+    "description": "你想上廁所但唔識路，見到老師。",
+    "hints": [
+      "唔識路要問老師！",
+      "老師會幫你。"
+    ],
+    "options": [
+      {
+        "id": "s-self-22-a",
+        "text": "問老師幫手",
+        "effects": [{"moralChange": 10, "comment": "問大人係正確！"}],
+        "next_scenario": "s-self-23"
+      },
+      {
+        "id": "s-self-22-b",
+        "text": "自己搵",
+        "effects": [{"moralChange": -5, "comment": "唔識路要即刻問人。"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "school_corridor",
+    "topicId": "help-seeking",
+    "creedIds": [1],
+    "imagePrompt": "Boy needing toilet asking teacher for help, school corridor, anime cartoon style, shy but brave, no text, 16:9"
+  },
+  {
+    "id": "s-self-23",
+    "title": "求助：感覺唔舒服",
+    "background": "家中",
+    "description": "你感覺唔舒服，話畀爸爸聽。",
+    "hints": [
+      "身體唔舒服要話畀家人聽！",
+      "家人會照顧你。"
+    ],
+    "options": [
+      {
+        "id": "s-self-23-a",
+        "text": "話畀爸爸聽",
+        "effects": [{"moralChange": 10, "comment": "信任家人好重要！"}],
+        "next_scenario": "s-self-24"
+      },
+      {
+        "id": "s-self-23-b",
+        "text": "忍住唔講",
+        "effects": [{"moralChange": -5, "comment": "感覺唔舒服要講出嚟。"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [1],
+    "imagePrompt": "Boy feeling unwell telling father, family support, anime cartoon style, tired but trusting, no text, 16:9"
+  },
+  {
+    "id": "s-self-24",
+    "title": "求助：見到欺負",
+    "background": "操場",
+    "description": "你見到同學被欺負，即刻搵老師。",
+    "hints": [
+      "見到欺負要即刻搵老師！",
+      "你係勇敢嘅小勇士。"
+    ],
+    "options": [
+      {
+        "id": "s-self-24-a",
+        "text": "即刻搵老師",
+        "effects": [{"moralChange": 20, "comment": "你完成求助方法學習！badge +10分"}],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-24-b",
+        "text": "唔理",
+        "effects": [{"moralChange": -15, "comment": "見到欺負要即刻求助！"}],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "help-seeking",
+    "creedIds": [5, 7],
+    "imagePrompt": "Boy seeing classmate bullied running to tell teacher, playground, anime cartoon style, serious, no text, 16:9"
   }
 ]
