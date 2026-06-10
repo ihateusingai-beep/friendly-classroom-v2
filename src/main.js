@@ -1,11 +1,16 @@
 // 友愛教室 V2 — main.js
 import './style.css';
+import './sw-register.js';  // PWA install + update prompt
 import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic,
          getDisplayProgress, initTopicProgress, initSubjectProgress, renderHome, renderTopicList,
          renderPlay, renderResult, renderProgress, renderSettings,
          playScenario, chooseOption, suggestNext } from './engine.js';
 import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX } from './audio.js';
-import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './progress.js';
+import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
+import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
+import { bus } from './domain/EventBus.js';
+import { getMoralBarData } from './domain/Moral.js';
+import { initSync, syncNow, getSyncStatus } from './sync.js';
 import scenariosData from '../data/scenarios.json';
 
 // ── Vite HMR 破壞 DOM 寫入，强制停用 ──
@@ -16,16 +21,83 @@ const app = document.getElementById('app');
 applyCSS(); // 套用個人化 CSS 參數
 initSFX();  // 初始化遊戲音效
 
-// ── 科目定義 ──
-const SUBJECTS = [
-  { id: 'math',    title: '數學', emoji: '🎯', color: '#4285F4', bgColor: '#E8F0FE' },
-  { id: 'chinese', title: '中文', emoji: '📐', color: '#EA4335', bgColor: '#FCE8E6' },
-  { id: 'english', title: '英文', emoji: '🔤', color: '#34A853', bgColor: '#E6F4EA' },
-  { id: 'science', title: '常識', emoji: '🔬', color: '#9C27B0', bgColor: '#F3E5F5' },
-];
+// ── EventBus：道德值 Bar 即時更新 ──
+bus.on('moral:updated', (e) => {
+  const current = getStudent();
+  if (e.studentId !== current) return; // 只更新當前學生
+  const bar = document.getElementById('moral-bar');
+  if (!bar) return;
+  const { percent, color } = getMoralBarData(e.score);
+  const fill = bar.querySelector('.moral-fill');
+  const num  = bar.querySelector('.moral-num');
+  if (fill) fill.style.width = percent + '%', fill.style.background = color;
+  if (num)  num.textContent  = e.score;
+});
 
-function getSubjectColor(id)  { return SUBJECTS.find(s => s.id === id)?.color || '#666'; }
-function getSubjectBgColor(id){ return SUBJECTS.find(s => s.id === id)?.bgColor || '#f5f5f5'; }
+// ── Sync status badge in moral bar ──
+bus.on('sync:status', (e) => {
+  // Cache for settings page
+  window._fcSyncStatus = { ...getSyncStatus(), ...e };
+
+  const badge = document.getElementById('sync-badge');
+  if (!badge) return;
+  const { status } = e;
+  if (status === 'syncing') {
+    badge.textContent = '🔄';
+    badge.title = '同步中…';
+    badge.style.opacity = '1';
+  } else if (status === 'ok') {
+    badge.textContent = '✅';
+    badge.title = '已同步';
+    setTimeout(() => { badge.textContent = '☁️'; badge.title = '已連線'; }, 2500);
+  } else if (status === 'error') {
+    badge.textContent = '⚠️';
+    badge.title = '同步失敗 — ' + (e.error || '');
+    badge.style.opacity = '1';
+  } else if (status === 'offline') {
+    badge.textContent = '📴';
+    badge.title = '離線模式';
+    badge.style.opacity = '1';
+  }
+});
+
+// ── Offline banner ──
+let offlineBannerEl = null;
+bus.on('sync:status', (e) => {
+  if (e.status === 'offline') {
+    if (offlineBannerEl) return;
+    offlineBannerEl = document.createElement('div');
+    offlineBannerEl.id = 'offline-banner';
+    offlineBannerEl.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ff4d4f;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      z-index: 9998;
+      font-weight: 500;
+    `;
+    offlineBannerEl.textContent = '📴 離線模式 — 進度將在恢復連線後自動同步';
+    document.body.appendChild(offlineBannerEl);
+  } else if (e.status === 'online' && offlineBannerEl) {
+    offlineBannerEl.remove();
+    offlineBannerEl = null;
+  }
+});
+
+// ── Init sync on load ──
+const _currentStudent = getStudent();
+if (_currentStudent) {
+  const p = getProgress(_currentStudent);
+  initSync(_currentStudent, p);
+}
+
+// ── 科目 helpers（從 subjects.js 統一取） ──
+// getSubjectColor / getSubjectBgColor 已從 ./subjects.js import
 
 // ── 全域 FC 初始化（防止 undefined error） ──
 window.FC = window.FC || {};
@@ -41,6 +113,17 @@ let state = {
   teacherMode: false,
 };
 let lastPlayedScenarioId = null; // guard: 防 TTS 重複觸發
+
+// ── 懒加载 teacher chunk（學生不會下載此檔案）──
+let _teacher = null;  // 動態加載後 cache
+
+async function _loadTeacher() {
+  if (!_teacher) {
+    const mod = await import('./teacher.js');
+    _teacher = { renderLogin: mod.renderLogin, renderTeacher: mod.renderTeacher };
+  }
+  return _teacher;
+}
 
 // ── 路由 ──
 export function goHome() {
@@ -143,7 +226,9 @@ export function goSettings() {
 }
 window.FC.goSettings = goSettings;
 
-export function goTeacher() {
+export async function goTeacher() {
+  // 懒加载 teacher chunk
+  await _loadTeacher();
   state = { ...state, view: 'login' };
   render();
 }
@@ -229,23 +314,7 @@ window.FC.addStudent = function() {
   render();
 };
 
-// ── 老師登入 ──
-function renderLogin() {
-  return `
-    <div class="container fade-in">
-      <div class="login-form">
-        <h2 style="text-align:center;margin-bottom:20px">🔐 老師登入</h2>
-        <input id="teacher-pw" type="password" placeholder="輸入密碼" />
-        <button class="btn btn-primary" style="width:100%" onclick="FC.doLogin()">登入</button>
-        <p id="login-error" style="color:var(--danger);text-align:center;margin-top:8px;display:none">密碼錯誤</p>
-        <div style="margin-top:12px;text-align:center">
-          <button class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
-        </div>
-      </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
-    </div>
-  `;
-}
+// doLogin stays in main.js (reads DOM + updates state)
 window.FC.doLogin = function() {
   const pw = document.getElementById('teacher-pw')?.value;
   if (pw === 'admin') {
@@ -263,7 +332,7 @@ function renderSubjectSelect() {
     <div class="container fade-in" style="max-width:500px">
       <h2 style="text-align:center;margin-bottom:20px">📚 選擇科目</h2>
       <div class="subject-grid">
-        ${SUBJECTS.map(sub => `
+        ${getAllSubjects().map(sub => `
           <button class="subject-btn" style="background:${sub.bgColor};border-color:${sub.color}"
             onclick="FC.selectSubject('${sub.id}')">
             <div style="font-size:2em">${sub.emoji}</div>
@@ -279,119 +348,14 @@ function renderSubjectSelect() {
   `;
 }
 
-// ── 老師Dashboard ──
-const _TEACHER_SUBJECTS = [
-  { id: 'math',    label: '🎯', color: '#4285F4' },
-  { id: 'chinese', label: '📐', color: '#EA4335' },
-  { id: 'english', label: '🔤', color: '#34A853' },
-  { id: 'science', label: '🔬', color: '#9C27B0' },
-];
-
-// ── 老師儀表板 ──
-function renderTeacher() {
-  const students = getAllStudents();
-
-  if (!students.length) {
-    return `
-    <div class="container fade-in">
-      <div class="page-header">
-        <button class="back-btn" onclick="FC.goHome()">←</button>
-        <h2>📊 老師儀表板</h2>
-      </div>
-      <div class="teacher-panel">
-        <h2>📊 老師儀表板</h2>
-        <div class="subtitle">暂无学生数据</div>
-      </div>
-      <div style="text-align:center;padding:40px;color:var(--text-light)">
-        <div style="font-size:3em;margin-bottom:12px">📭</div>
-        <p>暫時沒有學生數據</p>
-        <p style="font-size:0.85em;margin-top:8px">學生完成學習後會自動顯示在這裡</p>
-      </div>
-      <div style="margin-top:16px">
-        <button class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
-      </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
-    </div>`;
-  }
-
-  return `
-    <div class="container fade-in">
-      <div class="page-header">
-        <button class="back-btn" onclick="FC.goHome()">←</button>
-        <h2>📊 老師儀表板</h2>
-      </div>
-
-      <div class="teacher-panel">
-        <h2>👥 學生總覽</h2>
-        <div class="subtitle">共 ${students.length} 位學生</div>
-      </div>
-
-      <div style="display:flex;flex-direction:column;gap:10px">
-        ${students.map(s => {
-          const total = s.totalMoralScore || 0;
-          const completed = s.completedScenarios?.length || 0;
-          const emoji = TEACHER_EMOJI[s.name] || '👤';
-          const grade = total >= 200 ? '🌟' : total >= 100 ? '⭐' : total >= 50 ? '✨' : '💫';
-          return `
-          <div class="student-row">
-            <div class="avatar">${emoji}</div>
-            <div class="info">
-              <div class="name">${s.name}</div>
-              <div class="meta">完成 ${completed} 個場景 · 最近 ${s.lastPlayed || '—'}</div>
-            </div>
-            <div class="stat-badge">
-              <div class="num" style="color:${total >= 100 ? '#52c41a' : 'var(--text)'}">${total}</div>
-              <div class="label">道德分</div>
-            </div>
-            <div style="font-size:1.2em">${grade}</div>
-          </div>`;
-        }).join('')}
-      </div>
-
-      <div class="card" style="margin-top:16px">
-        <div style="font-weight:600;margin-bottom:10px">📚 科目總覽</div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px">
-          ${[{id:'math',label:'🎯',color:'#4285F4'},{id:'chinese',label:'📐',color:'#EA4335'},{id:'english',label:'🔤',color:'#34A853'},{id:'science',label:'🔬',color:'#9C27B0'}].map(sub => {
-            const totalCompleted = students.reduce((acc, s) => acc + (s.subjectProgress?.[sub.id]?.completed || 0), 0);
-            const totalPossible = students.reduce((acc, s) => acc + (s.subjectProgress?.[sub.id]?.total || 0), 0);
-            const pct = totalPossible ? Math.round((totalCompleted / totalPossible) * 100) : 0;
-            return `
-              <div style="background:${sub.color}18;border:2px solid ${sub.color};border-radius:12px;padding:12px;text-align:center">
-                <div style="font-size:1.5em;margin-bottom:4px">${sub.label}</div>
-                <div style="font-weight:700;font-size:1.1em;color:${sub.color}">${totalCompleted}/${totalPossible}</div>
-                <div style="height:6px;background:#eee;border-radius:3px;margin-top:6px;overflow:hidden">
-                  <div style="height:100%;width:${pct}%;background:${sub.color};border-radius:3px"></div>
-                </div>
-              </div>`;
-          }).join('')}
-        </div>
-      </div>
-
-      <div class="card">
-        <div style="font-weight:600;margin-bottom:10px">📥 匯入學生數據</div>
-        <p style="font-size:0.85em;color:var(--text-light);margin-bottom:8px">選擇學生之前匯出的 .json 檔案</p>
-        <input type="file" accept=".json" onchange="FC.handleImport(event)" style="margin-bottom:10px" />
-      </div>
-
-      <div class="card">
-        <div style="font-weight:600;margin-bottom:10px">📤 匯出全班數據</div>
-        <button class="btn btn-success" onclick="FC.exportAll()">📤 匯出全班</button>
-      </div>
-
-      <div style="margin-top:16px">
-        <button class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
-      </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
-    </div>
-  `;
-}
+// handleImport / exportAll stay in main.js (teacher專屬操作，但零 circular deps)
 window.FC.handleImport = function(e) {
   const file = e.target.files?.[0];
   if (!file) return;
   const reader = new FileReader();
   reader.onload = (ev) => {
     const r = importProgress(ev.target.result);
-    if (r.ok) { alert('匯入成功！'); goTeacher(); }
+    if (r.ok) { alert('匯入成功！'); window.FC.goTeacher(); }
     else { alert('匯入失敗：' + r.error); }
   };
   reader.readAsText(file);
@@ -463,6 +427,20 @@ window.FC.resetSettings = function() {
   render();
 };
 
+// ── Force sync ──
+window.FC.forceSync = async function() {
+  const name = getStudent();
+  if (!name) return;
+  const p = getProgress(name);
+  const result = await syncNow(name, p);
+  if (result.ok) {
+    const badge = document.getElementById('settings-sync-status');
+    const lastSync = document.getElementById('settings-last-sync');
+    if (badge) badge.textContent = '✅ 已同步';
+    if (lastSync) lastSync.textContent = new Date().toLocaleString('zh-HK', { dateStyle: 'short', timeStyle: 'short' });
+  }
+};
+
 // ── 匯出入 ──
 window.FC.exportMyData = function() {
   const name = getStudent();
@@ -505,8 +483,8 @@ function render() {
     switch (state.view) {
       case 'student-select': html = renderStudentSelect(); break;
       case 'subject-select': html = renderSubjectSelect(); break;
-      case 'login': html = renderLogin(); break;
-      case 'teacher': html = renderTeacher(); safeSetNames(); break;
+      case 'login': html = _teacher ? _teacher.renderLogin() : '<div class="container"><p>載入中...</p></div>'; break;
+      case 'teacher': html = _teacher ? _teacher.renderTeacher() : '<div class="container"><p>載入中...</p></div>'; if (_teacher) safeSetNames(); break;
       case 'home': html = renderHome(state.subjectId); break;
       case 'topic': html = renderTopicList(state.topicId, state.subjectId); break;
       case 'play': html = renderPlay(state.scenarioId, state.subjectId); break;

@@ -45,3 +45,15 @@ export function getSubjectColor(id) {
 export function getSubjectBgColor(id) {
   return getSubject(id)?.bgColor || '#f5f5f5';
 }
+
+export function getSubjectName(id) {
+  return getSubject(id)?.title || '';
+}
+
+export function getSubjectEmoji(id) {
+  return getSubject(id)?.emoji || '';
+}
+
+export function getAllSubjects() {
+  return SUBJECTS;
+}

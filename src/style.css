@@ -855,4 +855,43 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   .progress-grid { grid-template-columns: 1fr; }
   .progress-cell.big { grid-column: span 1; }
   .subject-grid { grid-template-columns: repeat(2, 1fr); }
+}/* ---- NT-D Moral Bar（固定於 student 頁頂部）---- */
+.moral-bar-fixed {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 30, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 200, 255, 0.2);
+  padding: 8px 16px;
+  margin-bottom: 8px;
+}
+.moral-bar-inner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.moral-emoji { font-size: 1.1em; }
+.moral-label { font-size: 0.8em; color: rgba(200, 220, 255, 0.7); white-space: nowrap; }
+.moral-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.moral-fill {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease, background-color 0.3s ease;
+}
+.moral-num {
+  font-size: 0.85em;
+  font-weight: 700;
+  color: #00ffff;
+  min-width: 28px;
+  text-align: right;
 }

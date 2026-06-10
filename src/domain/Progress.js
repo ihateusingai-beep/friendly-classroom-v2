@@ -1,44 +1,24 @@
-// localStorage 進度管理
+// domain/Progress.js — 進度管理 + EventBus 整合
+// 現有 progress.js 全部重命名為 domain/Progress.js
+// main.js / engine.js 的 import path 更新即可，API 完全不變
+
+import { bus } from './EventBus.js';
+
 const PREFIX = 'fc_progress_';
 
-// Lazy import sync to avoid circular dep
-let _sync = null;
-async function getSync() {
-  if (!_sync) _sync = await import('./sync.js');
-  return _sync;
-}
-
+// ── 現有 API（完全向後相容）──
 export function getProgress(studentName) {
   try {
     const raw = localStorage.getItem(PREFIX + studentName);
-    return raw ? JSON.parse(raw) : {
-      name: studentName,
-      completedScenarios: [],
-      topicProgress: {
-        emotions: { completed: 0, total: 0 },
-        respect:    { completed: 0, total: 0 },
-        honesty:    { completed: 0, total: 0 },
-        conflict:   { completed: 0, total: 0 },
-      },
-      subjectProgress: {
-        math:    { completed: 0, total: 0 },
-        chinese: { completed: 0, total: 0 },
-        english: { completed: 0, total: 0 },
-        science: { completed: 0, total: 0 },
-      },
-      totalMoralScore: 0,
-      lastPlayed: null,
-    };
+    return raw ? JSON.parse(raw) : _defaultProgress(studentName);
   } catch {
-    return { name: studentName, completedScenarios: [], topicProgress: {}, subjectProgress: {}, totalMoralScore: 0, lastPlayed: null };
+    return _defaultProgress(studentName);
   }
 }
 
 export function saveProgress(progress) {
   progress.lastPlayed = new Date().toISOString().split('T')[0];
   localStorage.setItem(PREFIX + progress.name, JSON.stringify(progress));
-  // Cloud sync — non-blocking, fails silently
-  getSync().then(({ syncNow }) => syncNow(progress.name, progress));
 }
 
 export function markComplete(studentName, scenarioId, topicId, moralChange, subjectId) {
@@ -51,6 +31,11 @@ export function markComplete(studentName, scenarioId, topicId, moralChange, subj
     if (!p.subjectProgress[subjectId]) p.subjectProgress[subjectId] = { completed: 0, total: 0 };
     p.subjectProgress[subjectId].completed++;
     saveProgress(p);
+
+    // 廣播事件
+    bus.emit('progress:updated', { studentId: studentName, scenarioId, topicId, moralChange });
+    bus.emit('moral:updated',   { studentId: studentName, score: p.totalMoralScore, change: moralChange });
+    bus.emit('scenario:completed', { studentId: studentName, scenarioId, result: { moralChange, newScore: p.totalMoralScore } });
   }
   return p;
 }
@@ -92,12 +77,10 @@ export function importProgress(jsonData) {
   try {
     const data = JSON.parse(jsonData);
     const p = getProgress(data.name);
-    // merge
     data.completedScenarios.forEach(id => {
       if (!p.completedScenarios.includes(id)) p.completedScenarios.push(id);
     });
     p.totalMoralScore = Math.max(p.totalMoralScore || 0, data.totalMoralScore || 0);
-    // merge topic progress
     if (data.topicProgress) {
       Object.keys(data.topicProgress).forEach(tid => {
         if (!p.topicProgress[tid]) p.topicProgress[tid] = { completed: 0, total: 0 };
@@ -105,7 +88,6 @@ export function importProgress(jsonData) {
         if (data.topicProgress[tid].total) p.topicProgress[tid].total = Math.max(p.topicProgress[tid].total || 0, data.topicProgress[tid].total);
       });
     }
-    // merge subject progress
     if (data.subjectProgress) {
       Object.keys(data.subjectProgress).forEach(sid => {
         if (!p.subjectProgress[sid]) p.subjectProgress[sid] = { completed: 0, total: 0 };
@@ -127,4 +109,38 @@ export function exportProgress(studentName) {
 
 export function isCompleted(studentName, scenarioId) {
   return getProgress(studentName).completedScenarios.includes(scenarioId);
+}
+
+// ── 新增：Summary（domain 層額外產出）──
+export function getStudentSummary(studentId) {
+  const p = getProgress(studentId);
+  return {
+    name: studentId,
+    score: p.totalMoralScore || 0,
+    completedCount: p.completedScenarios?.length || 0,
+    topicCount: Object.keys(p.topicProgress || {}).length,
+    lastPlayed: p.lastPlayed || null,
+  };
+}
+
+// ── Internal ──
+function _defaultProgress(name) {
+  return {
+    name,
+    completedScenarios: [],
+    topicProgress: {
+      emotions: { completed: 0, total: 0 },
+      respect:    { completed: 0, total: 0 },
+      honesty:    { completed: 0, total: 0 },
+      conflict:   { completed: 0, total: 0 },
+    },
+    subjectProgress: {
+      math:    { completed: 0, total: 0 },
+      chinese: { completed: 0, total: 0 },
+      english: { completed: 0, total: 0 },
+      science: { completed: 0, total: 0 },
+    },
+    totalMoralScore: 0,
+    lastPlayed: null,
+  };
 }

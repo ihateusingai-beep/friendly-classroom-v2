@@ -1,105 +1,47 @@
-// 遊戲引擎
-import { getProgress, markComplete, updateTopicTotal, updateSubjectTotal, isCompleted } from './progress.js';
+// 遊戲引擎 — Render Layer
+// 遊戲邏輯 delegate 到 domain/ScenarioEngine.js
+// 所有 render* 函數保留在此檔案
+
+import { getSubjectColor, getSubjectBgColor, getSubjectName, getSubjectEmoji } from './subjects.js';
 import { getTopic } from './topics.js';
-import { getCreedsByIds, formatCreeds } from './creeds.js';
 import { speakScenario, speakCreeds, isEnabled } from './audio.js';
+import { getMoralBarData } from './domain/Moral.js';
+import { getProgress } from './domain/Progress.js';
 
-// ── 科目 helpers ──
-const _SUBJECTS = [
-  { id: 'math',    title: '數學', emoji: '🎯', color: '#4285F4', bgColor: '#E8F0FE' },
-  { id: 'chinese', title: '中文', emoji: '📐', color: '#EA4335', bgColor: '#FCE8E6' },
-  { id: 'english', title: '英文', emoji: '🔤', color: '#34A853', bgColor: '#E6F4EA' },
-  { id: 'science', title: '常識', emoji: '🔬', color: '#9C27B0', bgColor: '#F3E5F5' },
-];
-function getSubjectColor(id)  { return _SUBJECTS.find(s => s.id === id)?.color || '#666'; }
-function getSubjectBgColor(id){ return _SUBJECTS.find(s => s.id === id)?.bgColor || '#f5f5f5'; }
-function getSubjectName(id)   { return _SUBJECTS.find(s => s.id === id)?.title || ''; }
-function getSubjectEmoji(id)  { return _SUBJECTS.find(s => s.id === id)?.emoji || ''; }
+// ── 遊戲邏輯 delegate（from domain/ScenarioEngine） ──
+import {
+  setStudent, getStudent,
+  setScenarios, getScenarios, getScenariosByTopic,
+  playScenario, getCurrentScenario,
+  chooseOption,
+  getScenarioStatus,
+  initTopicProgress, initSubjectProgress,
+  getDisplayProgress, suggestNext,
+} from './domain/ScenarioEngine.js';
 
-let currentStudent = null;
-let currentTopic = null;
-let currentScenario = null;
-let scenarios = [];
+export { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic,
+         playScenario, chooseOption, getScenarioStatus, initTopicProgress,
+         initSubjectProgress, getDisplayProgress, suggestNext };
 
-export function setStudent(name) { currentStudent = name; }
-export function getStudent() { return currentStudent; }
-
-export function setScenarios(arr) { scenarios = arr; }
-export function getScenarios() { return scenarios; }
-
-export function getScenariosByTopic(topicId) {
-  return scenarios.filter(s => s.topicId === topicId);
-}
-
-export function playScenario(scenarioId) {
-  currentScenario = scenarios.find(s => s.id === scenarioId) || null;
-  return currentScenario;
-}
-
-export function chooseOption(optionId, subjectId) {
-  const scenario = currentScenario;
-  if (!scenario) return null;
-
-  const option = scenario.options.find(o => o.id === optionId);
-  if (!option) return null;
-
-  // 計算道德分
-  let moralChange = 0;
-  let mainComment = '';
-  option.effects.forEach(eff => {
-    moralChange += eff.moralChange || 0;
-    if (eff.comment) mainComment = eff.comment;
-  });
-
-  // 標記完成
-  if (currentStudent) {
-    markComplete(currentStudent, scenario.id, scenario.topicId, moralChange, subjectId);
-  }
-
-  // 信條
-  const creeds = getCreedsByIds(scenario.creedIds || []);
-
-  return {
-    option,
-    moralChange,
-    mainComment,
-    creeds,
-    creedText: formatCreeds(scenario.creedIds || []),
-    scenarioImage: scenario.image || null,
-    scenarioTitle: scenario.title || '',
-    outcomeImage: `assets/images/outcomes/${scenario.id}_opt${scenario.options.findIndex(o=>o.id===optionId)+1}.png`,
-    nextScenario: option.next_scenario || null,
-  };
-}
-
-export function getScenarioStatus(scenarioId) {
-  if (!currentStudent) return 'locked';
-  return isCompleted(currentStudent, scenarioId) ? 'completed' : 'available';
-}
-
-export function initTopicProgress(topicId) {
-  if (!currentStudent) return;
-  const topicScenarios = getScenariosByTopic(topicId);
-  updateTopicTotal(currentStudent, topicId, topicScenarios.length);
-}
-
-export function initSubjectProgress(subjectId) {
-  if (!currentStudent || !subjectId) return;
-  // Count total scenarios (for now all scenarios belong to all subjects)
-  const all = getScenarios();
-  updateSubjectTotal(currentStudent, subjectId, all.length);
-}
-
-export function getDisplayProgress() {
-  if (!currentStudent) return null;
-  return getProgress(currentStudent);
-}
-
-export function suggestNext(topicId) {
-  const topicScenarios = getScenariosByTopic(topicId);
-  if (!currentStudent) return topicScenarios[0] || null;
-  const p = getProgress(currentStudent);
-  return topicScenarios.find(s => !p.completedScenarios.includes(s.id)) || null;
+// === 道德值 Bar（接受 studentId，pure function）===
+export function renderMoralBar(studentId) {
+  if (!studentId) return '';
+  const p = getProgress(studentId);
+  const score = p.totalMoralScore || 0;
+  const { percent, color } = getMoralBarData(score);
+  return `
+    <div class="moral-bar-fixed" id="moral-bar">
+      <div class="moral-bar-inner">
+        <span class="moral-emoji">⭐</span>
+        <span class="moral-label">道德值</span>
+        <div class="moral-track">
+          <div class="moral-fill" style="width:${percent}%;background:${color}"></div>
+        </div>
+        <span class="moral-num">${score}</span>
+        <span id="sync-badge" title="已連線" style="font-size:0.95em;opacity:0.85">☁️</span>
+      </div>
+    </div>
+  `;
 }
 
 export function renderHome(subjectId) {
@@ -119,6 +61,8 @@ export function renderHome(subjectId) {
           ${getSubjectEmoji(subjectId) || '📚'}
         </button>
       </div>
+
+      ${currentStudent ? renderMoralBar(currentStudent) : ''}
 
       ${subjectId ? `
       <div class="subject-banner" style="background:${subjectBg};border:2px solid ${subjectColor}">
@@ -298,7 +242,7 @@ export function renderResult(data, subjectId) {
 
       <div class="action-row">
         <button class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
-        <button class="btn btn-outline" onclick="FC.goTopic('${currentScenario?.topicId}')">← 返回主題</button>
+        <button class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
       </div>
 
       <button class="voice-fab" onclick="FC.speakCreeds()" title="朗讀信條">🔊</button>
@@ -396,6 +340,16 @@ export function renderSettings() {
   const fsLabel = fontSize <= 18 ? '小' : fontSize <= 22 ? '中' : '大';
   const enabled = isEnabled();
 
+  // Sync status for display
+  const syncStatus = (() => {
+    try {
+      return window._fcSyncStatus || { status: 'idle', isOnline: navigator.onLine, lastSyncTime: null };
+    } catch { return { status: 'idle', isOnline: true }; }
+  })();
+  const lastSync = syncStatus.lastSyncTime
+    ? new Date(syncStatus.lastSyncTime).toLocaleString('zh-HK', { dateStyle: 'short', timeStyle: 'short' })
+    : '從未同步';
+
   return `
     <div class="container fade-in">
       <div class="page-header">
@@ -463,6 +417,19 @@ export function renderSettings() {
       </div>
 
       <div class="card">
+        <div style="font-weight:600;margin-bottom:10px">☁️ 雲端同步</div>
+        <div style="font-size:0.9em;color:var(--text-light);margin-bottom:10px">
+          連線狀態：<span id="settings-sync-status">${syncStatus.isOnline ? '在線' : '📴 離線'}</span>
+          &nbsp;·&nbsp;上次同步：<span id="settings-last-sync">${lastSync}</span>
+        </div>
+        <div class="action-row">
+          <button class="btn btn-outline" onclick="FC.forceSync()">🔄 立即同步</button>
+          <button class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出</button>
+          <button class="btn btn-outline" onclick="FC.importMyData()">📥 匯入</button>
+        </div>
+      </div>
+
+      <div class="card">
         <div style="font-weight:600;margin-bottom:10px">👥 資料管理</div>
         <div class="action-row">
           <button class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出我的進度</button>
@@ -482,7 +449,7 @@ export function renderSettings() {
           <li>個人化設定（字體大小、行距、朗讀速度）</li>
           <li>學習進度及題目記錄</li>
         </ul>
-        <p style="margin-top:8px">📌 資料僅存放於本設備，不會傳送至任何伺服器。</p>
+        <p style="margin-top:8px">📌 離線使用時，進度仍保存在本地。恢復連線後自動同步。</p>
       </div>
 
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
