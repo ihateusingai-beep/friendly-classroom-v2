@@ -6,7 +6,7 @@ import { getSubjectColor, getSubjectBgColor, getSubjectName, getSubjectEmoji } f
 import { getTopic } from './topics.js';
 import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 import { getMoralBarData } from './domain/Moral.js';
-import { getProgress } from './domain/Progress.js';
+import { getProgress, isCompleted } from './domain/Progress.js';
 
 // ── 遊戲邏輯 delegate（from domain/ScenarioEngine） ──
 import {
@@ -62,7 +62,7 @@ export function renderHome(subjectId) {
         </button>
       </div>
 
-      ${currentStudent ? renderMoralBar(currentStudent) : ''}
+      ${getStudent() ? renderMoralBar(getStudent()) : ''}
 
       ${subjectId ? `
       <div class="subject-banner" style="background:${subjectBg};border:2px solid ${subjectColor}">
@@ -88,14 +88,14 @@ export function renderHome(subjectId) {
           { id: 'honesty',  emoji: '⚖️', title: '誠實與責任', sub: '誠實面對、勇於承擔', color: '#45B7D1' },
           { id: 'conflict',  emoji: '💪', title: '衝突與求助', sub: '解決衝突、向人求助', color: '#96CEB4' },
         ].map(t => {
-          const p = currentStudent ? (getProgress(currentStudent).topicProgress[t.id] || {}) : {};
+          const p = getStudent() ? (getProgress(getStudent()).topicProgress[t.id] || {}) : {};
           const pct = p.total ? Math.round((p.completed / p.total) * 100) : 0;
           return `
             <div class="topic-card" style="background:${t.color}" onclick="FC.goTopic('${t.id}')">
               <span class="emoji">${t.emoji}</span>
               <div class="title">${t.title}</div>
               <div class="sub">${t.sub}</div>
-              ${currentStudent ? `
+              ${getStudent() ? `
                 <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
                 <div class="sub">${p.completed || 0}/${p.total || 0} 已完成</div>
               ` : ''}
@@ -135,7 +135,7 @@ export function renderTopicList(topicId, subjectId) {
 
       <ul class="scenario-list">
         ${topicScenarios.map(s => {
-          const done = currentStudent && isCompleted(currentStudent, s.id);
+          const done = getStudent() && isCompleted(getStudent(), s.id);
           return `
             <li class="scenario-item ${done ? 'completed' : ''}" onclick="FC.play('${s.id}')">
               <div class="check">${done ? '✓' : ''}</div>
@@ -252,7 +252,7 @@ export function renderResult(data, subjectId) {
 }
 
 export function renderProgress(subjectId) {
-  const p = getProgress(currentStudent);
+  const p = getProgress(getStudent());
   const total = p.totalMoralScore || 0;
   const completed = p.completedScenarios?.length || 0;
   const subColor = getSubjectColor(subjectId);
