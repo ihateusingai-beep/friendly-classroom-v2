@@ -36,7 +36,7 @@ export function renderRoleSelect() {
           <div class="rc-icon">🧒</div>
           <div class="rc-body">
             <h3>學生模式</h3>
-            <p>自己揀遊戲模式、自己揀課題，自由探索學習</p>
+            <p>揀遊戲、學習社交禮貌，自由探索</p>
           </div>
           <div class="rc-arrow">→</div>
         </div>
@@ -54,6 +54,233 @@ export function renderRoleSelect() {
       <div style="margin-top:32px;text-align:center">
         <p style="font-size:0.8em;color:var(--text-light)">© Ken Cheng 製作</p>
       </div>
+    </div>
+  `;
+}
+
+// ── Game Hub (Blooket-style lobby) ───────────────────────────────────────────
+// 學生揀「學生模式」後去呢度。4 個 game card：好人好事銀行 / 情境答題 / 仲有 2 個 coming soon
+export function renderGameHub() {
+  return `
+    <div class="hub-screen fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
+        <h2>🎮 揀個遊戲開始</h2>
+      </div>
+
+      <div class="hub-grid">
+        <div class="game-card available" onclick="FC.playGoodDeedBank()" style="background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#eab308">
+          <div class="gc-icon">🏦</div>
+          <div class="gc-title">好人好事銀行</div>
+          <div class="gc-desc">做好事存款，衰嘢扣款，目標存到 $100 變品格富翁！</div>
+          <div class="gc-tag">pilot</div>
+        </div>
+
+        <div class="game-card available" onclick="FC.goSubjectSelect()" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-color:#3b82f6">
+          <div class="gc-icon">📖</div>
+          <div class="gc-title">情境答題</div>
+          <div class="gc-desc">傳統自由模式，揀課題自學</div>
+        </div>
+
+        <div class="game-card locked" style="background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:#ef4444;cursor:not-allowed;opacity:0.6">
+          <div class="gc-icon">🌷</div>
+          <div class="gc-title">關係花園</div>
+          <div class="gc-desc">（即將推出）</div>
+          <div class="gc-tag">coming soon</div>
+        </div>
+
+        <div class="game-card locked" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#a855f7;cursor:not-allowed;opacity:0.6">
+          <div class="gc-icon">🎲</div>
+          <div class="gc-title">道德大富翁</div>
+          <div class="gc-desc">（即將推出）</div>
+          <div class="gc-tag">coming soon</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:20px">
+        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
+      </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `;
+}
+
+// ── 🏦 好人好事銀行 ─────────────────────────────────────────────────────────
+import {
+  startBankRun, getBankRun, endBankRun, recordBankTransaction,
+  advanceToNextQuestion, BANK_CONFIG,
+} from './games/GoodDeedBank.js';
+
+export function renderBankPlay(scenario, run) {
+  if (!scenario) {
+    return '<div class="container"><p>題目載入失敗</p></div>';
+  }
+  const total = BANK_CONFIG.QUESTIONS_PER_RUN;
+  const idx = run.currentIdx + 1; // 1-based for display
+  const balance = run.balance;
+  const target = BANK_CONFIG.TARGET_BALANCE;
+  const pct = Math.min(100, Math.max(0, (balance / target) * 100));
+  const balanceClass = balance > 0 ? 'positive' : balance < 0 ? 'negative' : 'neutral';
+
+  return `
+    <div class="container fade-in" style="max-width:560px">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.confirmExitBank()">←</button>
+        <h2>🏦 好人好事銀行</h2>
+      </div>
+
+      <div class="bank-ledger">
+        <div class="bl-row">
+          <span class="bl-label">題目</span>
+          <span class="bl-val">${idx} / ${total}</span>
+        </div>
+        <div class="bl-row">
+          <span class="bl-label">💰 結餘</span>
+          <span class="bl-val ${balanceClass}">$${balance}</span>
+        </div>
+        <div class="bank-progress" title="目標 $${target}">
+          <div class="bank-fill" style="width:${pct}%"></div>
+          <span class="bank-target">目標 $${target}</span>
+        </div>
+      </div>
+
+      <div class="scenario-desc" style="margin-top:16px">
+        <strong>${scenario.title}</strong>
+        <div style="color:var(--text-light);font-size:0.92em;margin-top:6px">📍 ${scenario.background || ''}</div>
+        <div style="margin-top:8px">${scenario.description}</div>
+      </div>
+
+      <div class="options" style="margin-top:14px">
+        ${scenario.options.map((opt, i) => {
+          const labels = ['A', 'B', 'C', 'D'];
+          return `
+            <div class="option-card" onclick="FC.bankChoose('${opt.id}')">
+              <span class="opt-badge">${labels[i] || (i+1)}</span>
+              <span class="opt-text">${opt.text}</span>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    </div>
+  `;
+}
+
+export function renderBankResult(scenario, result, run) {
+  if (!result) {
+    return '<div class="container"><p>結果載入失敗</p><button class="btn btn-primary" onclick="FC.exitBank()">← 返 Game Hub</button></div>';
+  }
+  const delta = result.moralChange || 0;
+  const isPositive = delta > 0;
+  const isNeutral = delta === 0;
+  const balance = run.balance;
+  const isWon = run.status === 'finished' && balance >= BANK_CONFIG.TARGET_BALANCE;
+  const isBankrupt = run.status === 'bankrupt';
+  const isFinished = run.status === 'finished';
+  const target = BANK_CONFIG.TARGET_BALANCE;
+
+  return `
+    <div class="container fade-in" style="max-width:560px">
+      <div class="page-header">
+        <h2>🏦 銀行結算</h2>
+      </div>
+
+      <div class="bank-stamp ${isPositive ? 'green' : isNeutral ? 'gray' : 'red'}" id="bank-stamp">
+        <div class="stamp-emoji">${isPositive ? '💰' : isNeutral ? '➖' : '💸'}</div>
+        <div class="stamp-delta">${isPositive ? '+' : ''}${delta} 元</div>
+        <div class="stamp-label">${isPositive ? '存款' : isNeutral ? '無變化' : '扣款'}</div>
+      </div>
+
+      <div class="result-card ${isPositive ? 'good' : 'bad'}" id="result-card">
+        <div class="result-emoji">${isPositive ? '🌟' : '💪'}</div>
+        <div class="comment">${result.mainComment || ''}</div>
+      </div>
+
+      <div class="bank-balance-big" style="text-align:center;margin:18px 0">
+        <div style="font-size:0.9em;color:var(--text-light)">目前結餘</div>
+        <div class="${delta > 0 ? 'positive' : delta < 0 ? 'negative' : 'neutral'}" style="font-size:2.4em;font-weight:800">$${balance}</div>
+        <div style="font-size:0.85em;color:var(--text-light)">目標 $${target}</div>
+      </div>
+
+      ${isWon ? `
+        <div class="bank-end-banner win">
+          🎉 恭喜！你已經存到 $${balance}，係個「品格富翁」！
+        </div>
+      ` : isBankrupt ? `
+        <div class="bank-end-banner lose">
+          💔 結餘太低，破產喇。今次再嚟過！
+        </div>
+      ` : isFinished ? `
+        <div class="bank-end-banner end">
+          🏁 全部 ${BANK_CONFIG.QUESTIONS_PER_RUN} 題做完喇！結餘：$${balance}
+        </div>
+      ` : ''}
+
+      <div class="action-row" style="margin-top:18px">
+        <button class="btn btn-primary" onclick="FC.bankNext()">${isFinished || isBankrupt ? '✓ 結算' : '➡ 下一題'}</button>
+        <button class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
+      </div>
+    </div>
+  `;
+}
+
+export function renderBankSummary(run) {
+  if (!run) return '<div class="container"><p>冇紀錄</p></div>';
+  const isWon = run.status === 'finished' && run.balance >= BANK_CONFIG.TARGET_BALANCE;
+  const isBankrupt = run.status === 'bankrupt';
+  const totalGain = run.stamps.filter(s => s.delta > 0).reduce((a, b) => a + b.delta, 0);
+  const totalLoss = run.stamps.filter(s => s.delta < 0).reduce((a, b) => a + b.delta, 0);
+  const goodCount = run.stamps.filter(s => s.delta > 0).length;
+  const badCount = run.stamps.filter(s => s.delta < 0).length;
+
+  return `
+    <div class="container fade-in" style="max-width:560px">
+      <div class="page-header">
+        <h2>🏦 結算單</h2>
+      </div>
+
+      <div class="bank-end-banner ${isWon ? 'win' : isBankrupt ? 'lose' : 'end'}" style="font-size:1.1em">
+        ${isWon ? '🎉 品格富翁達陣！' : isBankrupt ? '💔 今次破產喇' : '🏁 旅程結束'}
+      </div>
+
+      <div class="progress-grid" style="margin:18px 0">
+        <div class="progress-cell">
+          <div class="num" style="color:${run.balance >= 0 ? '#22c55e' : '#ef4444'}">$${run.balance}</div>
+          <div class="label">最終結餘</div>
+        </div>
+        <div class="progress-cell">
+          <div class="num">+${totalGain}</div>
+          <div class="label">總存款</div>
+        </div>
+        <div class="progress-cell">
+          <div class="num">${totalLoss}</div>
+          <div class="label">總扣款</div>
+        </div>
+        <div class="progress-cell">
+          <div class="num">${goodCount}✓ ${badCount}✗</div>
+          <div class="label">好事 / 衰事</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:10px">📒 存摺紀錄</div>
+        ${run.stamps.length === 0 ? '<div style="color:var(--text-light);font-size:0.9em;text-align:center;padding:12px">冇交易紀錄</div>' : `
+          <div style="display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto">
+            ${run.stamps.map((s, i) => `
+              <div class="ledger-row">
+                <span class="ledger-num">#${i+1}</span>
+                <span class="ledger-label">${s.label || '—'}</span>
+                <span class="ledger-delta ${s.delta > 0 ? 'positive' : s.delta < 0 ? 'negative' : 'neutral'}">${s.delta > 0 ? '+' : ''}${s.delta} 元</span>
+              </div>
+            `).join('')}
+          </div>
+        `}
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-primary" onclick="FC.playGoodDeedBank()">🔄 再玩一次</button>
+        <button class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
+      </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
 }

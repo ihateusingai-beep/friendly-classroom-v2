@@ -1,0 +1,884 @@
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const i of document.querySelectorAll('link[rel="modulepreload"]'))o(i);new MutationObserver(i=>{for(const s of i)if(s.type==="childList")for(const c of s.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&o(c)}).observe(document,{childList:!0,subtree:!0});function n(i){const s={};return i.integrity&&(s.integrity=i.integrity),i.referrerPolicy&&(s.referrerPolicy=i.referrerPolicy),i.crossOrigin==="use-credentials"?s.credentials="include":i.crossOrigin==="anonymous"?s.credentials="omit":s.credentials="same-origin",s}function o(i){if(i.ep)return;i.ep=!0;const s=n(i);fetch(i.href,s)}})();const Ke="modulepreload",Ge=function(e,t){return new URL(e,t).href},me={},fe=function(t,n,o){let i=Promise.resolve();if(n&&n.length>0){let c=function(d){return Promise.all(d.map(y=>Promise.resolve(y).then(k=>({status:"fulfilled",value:k}),k=>({status:"rejected",reason:k}))))};const r=document.getElementsByTagName("link"),l=document.querySelector("meta[property=csp-nonce]"),m=(l==null?void 0:l.nonce)||(l==null?void 0:l.getAttribute("nonce"));i=c(n.map(d=>{if(d=Ge(d,o),d in me)return;me[d]=!0;const y=d.endsWith(".css"),k=y?'[rel="stylesheet"]':"";if(!!o)for(let T=r.length-1;T>=0;T--){const V=r[T];if(V.href===d&&(!y||V.rel==="stylesheet"))return}else if(document.querySelector(`link[href="${d}"]${k}`))return;const _=document.createElement("link");if(_.rel=y?"stylesheet":Ke,y||(_.as="script"),_.crossOrigin="",_.href=d,m&&_.setAttribute("nonce",m),document.head.appendChild(_),y)return new Promise((T,V)=>{_.addEventListener("load",T),_.addEventListener("error",()=>V(new Error(`Unable to preload CSS for ${d}`)))})}))}function s(c){const r=new Event("vite:preloadError",{cancelable:!0});if(r.payload=c,window.dispatchEvent(r),!r.defaultPrevented)throw c}return i.then(c=>{for(const r of c||[])r.status==="rejected"&&s(r.reason);return t().catch(s)})};let j=null;window.addEventListener("beforeinstallprompt",e=>{e.preventDefault(),j=e,Oe()});function Oe(){const e=document.getElementById("pwa-install-banner");e&&e.remove();const t=document.createElement("div");t.id="pwa-install-banner",t.style.cssText=`
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #7B2FBE, #5B1F9E);
+    color: white;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 9999;
+    font-size: 15px;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s ease-out;
+  `,t.innerHTML=`
+    <span style="font-size:1.4em">📱</span>
+    <span style="flex:1">將應用加入主畫面，離線都能用！</span>
+    <button id="pwa-install-btn" style="
+      background: white;
+      color: #7B2FBE;
+      border: none;
+      border-radius: 20px;
+      padding: 8px 18px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+    ">安裝</button>
+    <button id="pwa-install-close" style="
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+    ">✕</button>
+  `,document.body.appendChild(t),t.querySelector("#pwa-install-btn").addEventListener("click",async()=>{if(!j)return;j.prompt();const{outcome:n}=await j.userChoice;if(j=null,t.remove(),n==="accepted"){const o=document.getElementById("pwa-update-banner");o&&o.remove()}}),t.querySelector("#pwa-install-close").addEventListener("click",()=>{t.remove(),sessionStorage.setItem("fc_install_dismissed","1")})}window.addEventListener("DOMContentLoaded",()=>{sessionStorage.getItem("fc_install_dismissed")||window.matchMedia("(display-mode: standalone)").matches});"serviceWorker"in navigator&&fe(async()=>{const{registerSW:e}=await import("./virtual_pwa-register-ChOBCpCh.js");return{registerSW:e}},[],import.meta.url).then(({registerSW:e})=>{e({onNeedRefresh(){De()},onOfflineReady(){Xe()}})}).catch(()=>{});function De(){if(document.getElementById("pwa-update-banner"))return;const t=document.createElement("div");t.id="pwa-update-banner",t.style.cssText=`
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #faad14, #e67e00);
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 9999;
+    font-size: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    animation: slideDown 0.3s ease-out;
+  `,t.innerHTML=`
+    <span style="font-size:1.2em">🔄</span>
+    <span style="flex:1">有新版本可用</span>
+    <button id="pwa-reload-btn" style="
+      background: white;
+      color: #e67e00;
+      border: none;
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 14px;
+    ">重新載入</button>
+    <button id="pwa-update-close" style="
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      cursor: pointer;
+      font-size: 16px;
+      line-height: 1;
+    ">✕</button>
+  `,document.body.appendChild(t),t.querySelector("#pwa-reload-btn").addEventListener("click",()=>{window.location.reload()}),t.querySelector("#pwa-update-close").addEventListener("click",()=>{t.remove()})}function Xe(){const e=document.getElementById("pwa-toast");e&&e.remove();const t=document.createElement("div");t.id="pwa-toast",t.style.cssText=`
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #52c41a;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 24px;
+    font-size: 14px;
+    z-index: 9999;
+    animation: fadeInUp 0.3s ease-out;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  `,t.textContent="✅ 已準備好離線使用",document.body.appendChild(t),setTimeout(()=>t.remove(),3500)}const ue=document.createElement("style");ue.textContent=`
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+@keyframes fadeInUp {
+  from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+  to   { transform: translateX(-50%) translateY(0);      opacity: 1; }
+}
+`;document.head.appendChild(ue);const xe=[{id:"math",title:"數學",emoji:"🎯",color:"#4285F4",bgColor:"#E8F0FE",icon:"＋－×÷"},{id:"chinese",title:"中文",emoji:"📐",color:"#EA4335",bgColor:"#FCE8E6",icon:"語文"},{id:"english",title:"英文",emoji:"🔤",color:"#34A853",bgColor:"#E6F4EA",icon:"ABC"},{id:"science",title:"常識",emoji:"🔬",color:"#9C27B0",bgColor:"#F3E5F5",icon:"探究"}];function D(e){return xe.find(t=>t.id===e)}function R(e){var t;return((t=D(e))==null?void 0:t.color)||"#666"}function qe(e){var t;return((t=D(e))==null?void 0:t.bgColor)||"#f5f5f5"}function H(e){var t;return((t=D(e))==null?void 0:t.title)||""}function $(e){var t;return((t=D(e))==null?void 0:t.emoji)||""}function Ue(){return xe}const ie=[{id:"emotions",title:"情緒與規範",emoji:"🎭",description:"學習管理情緒、守規矩、尊重他人",creedIds:[1,5,7],color:"#FF6B6B"},{id:"respect",title:"尊重與關懷",emoji:"🤝",description:"學習尊重別人、關心他人、不嘲笑",creedIds:[4,5],color:"#4ECDC4"},{id:"honesty",title:"誠實與責任",emoji:"⚖️",description:"學習誠實面對、勇於承擔責任",creedIds:[2,6],color:"#45B7D1"},{id:"conflict",title:"衝突與求助",emoji:"💪",description:"學習解決衝突、向人求助",creedIds:[2,5,7],color:"#96CEB4"}];function se(e){return ie.find(t=>t.id===e)}const be="audio/";let W=null;function Ye(){return W||(W=new(window.AudioContext||window.webkitAudioContext)),W}function A(e){try{const t=Ye(),n=t.currentTime,o=t.createOscillator(),i=t.createGain();o.connect(i),i.connect(t.destination);const s=i.gain;switch(e){case"click":o.frequency.value=800,o.type="sine",s.setValueAtTime(.15,n),s.exponentialRampToValueAtTime(.001,n+.08),o.start(n),o.stop(n+.08);break;case"hover":o.frequency.value=600,o.type="sine",s.setValueAtTime(.06,n),s.exponentialRampToValueAtTime(.001,n+.05),o.start(n),o.stop(n+.05);break;case"success":o.frequency.value=523,o.type="sine",s.setValueAtTime(.18,n),o.start(n),o.frequency.setValueAtTime(659,n+.1),o.frequency.setValueAtTime(784,n+.2),s.exponentialRampToValueAtTime(.001,n+.45),o.stop(n+.45);break;case"fail":o.frequency.value=400,o.type="sine",s.setValueAtTime(.12,n),o.frequency.exponentialRampToValueAtTime(200,n+.3),s.exponentialRampToValueAtTime(.001,n+.3),o.start(n),o.stop(n+.3);break;case"celebrate":[523,659,784].forEach((c,r)=>{const l=t.createOscillator(),m=t.createGain();l.connect(m),m.connect(t.destination),l.frequency.value=c,l.type="sine",m.gain.setValueAtTime(.12,n+r*.08),m.gain.exponentialRampToValueAtTime(.001,n+.6+r*.08),l.start(n+r*.08),l.stop(n+.65+r*.08)});break;case"complete":[523,659,784,1047].forEach((c,r)=>{const l=t.createOscillator(),m=t.createGain();l.connect(m),m.connect(t.destination),l.frequency.value=c,l.type="triangle",m.gain.setValueAtTime(.14,n+r*.07),m.gain.exponentialRampToValueAtTime(.001,n+.5+r*.07),l.start(n+r*.07),l.stop(n+.55+r*.07)});break}}catch(t){console.warn("[FC SFX] Error:",t.message)}}function ye(){document.addEventListener("click",e=>{e.target.closest(".btn")&&A("click")}),document.addEventListener("mouseover",e=>{e.target.closest(".btn")&&A("hover")})}let N=!0,f=!1,v=null;const ve=[{id:"auto",label:"自動（按系統預設）",hint:"跟 OS 第一個中文 voice"},{id:"zh-HK",label:"🇭🇰 粵語（香港）",hint:"需要 OS/browser 裝咗粵語 voice"},{id:"zh-TW",label:"🇹🇼 國語（台灣 / 普通話通用）",hint:"zh-TW 中文 voice, 兩岸都聽得明"},{id:"zh-CN",label:"🇨🇳 普通話（中國大陸）",hint:"zh-CN 中文 voice"}],we=localStorage.getItem("fc_tts_lang");let C=we||"zh-HK";if(!we)try{localStorage.setItem("fc_tts_lang",C)}catch{}let E=null;function Je(){return E||(E=new Promise(e=>{const t=window.speechSynthesis;if(!t)return e([]);let n=t.getVoices();if(n.length>0)return e(n);const o=()=>{n=t.getVoices(),n.length>0&&(t.removeEventListener("voiceschanged",o),e(n))};t.addEventListener("voiceschanged",o),setTimeout(()=>e(t.getVoices()||[]),5e3)}),E)}async function We(){const e=await Je();if(!e.length)return null;if(C!=="auto"){const t=e.find(i=>i.lang===C);if(t)return t;const n=C.split("-")[0];return e.find(i=>i.lang.startsWith(n))||null}return e.find(t=>t.lang==="zh-HK")||e.find(t=>t.lang==="zh-TW")||e.find(t=>t.lang==="zh-CN")||e.find(t=>t.lang.includes("zh"))||e[0]||null}function Ce(){return{speed:parseFloat(localStorage.getItem("fc_tts_speed")||"0.85"),fontSize:parseInt(localStorage.getItem("fc_font_size")||"18"),lineHeight:parseFloat(localStorage.getItem("fc_line_height")||"1.5"),spacing:localStorage.getItem("fc_spacing")||"medium"}}function P(){const e=Ce(),t={narrow:"8px",medium:"16px",wide:"28px"},n=document.documentElement;n.style.setProperty("--fc-font-size",e.fontSize+"px"),n.style.setProperty("--fc-line-height",e.lineHeight),n.style.setProperty("--fc-spacing",t[e.spacing]||"16px")}function _e(e){N=e}function X(){return N}function ke(){f=!1,v&&(v.pause(),v=null)}function Qe(e){ke();const t=be+e;console.log("[FC Audio] Playing:",t),v=new Audio(t),v.onended=()=>{f=!1,v=null,console.log("[FC Audio] Done")},v.onerror=n=>{console.error("[FC Audio] Error:",n),f=!1,v=null},v.play().catch(n=>{console.error("[FC Audio] Play failed:",n.message),f=!1,v=null}),f=!0}function Se(e){if(console.log("[FC Audio] speakScenario called, enabled:",N,"speaking:",f,"scenario:",e),!N){console.log("[FC Audio] Blocked: voice not enabled");return}if(f){console.log("[FC Audio] Blocked: already speaking");return}const t=(e==null?void 0:e.id)||e,n=(e==null?void 0:e.description)||"";console.log("[FC Audio] Playing scenario:",t),Fe(n)}function Ie(e){if(!N||f||!e||e.length===0)return;const t=e[0].id||e[0];Qe(`creeds/creed-${t}.mp3`)}async function Fe(e){var o,i;if(!e)return;f&&((o=window.speechSynthesis)==null||o.cancel());const t=new SpeechSynthesisUtterance(e);t.lang=C==="auto"?"zh-HK":C,t.rate=Ce().speed||.85,t.pitch=1;const n=await We();n?(t.voice=n,console.log("[FC TTS] Voice:",n.name,"("+n.lang+")")):console.warn("[FC TTS] No matching voice found for",C),t.onstart=()=>{f=!0,console.log("[FC TTS] Speaking:",e.slice(0,30))},t.onend=()=>{f=!1,console.log("[FC TTS] Done")},t.onerror=s=>{f=!1,console.error("[FC TTS] Error:",s.error),s.error==="not-allowed"&&console.log("[FC TTS] Autoplay blocked — user must interact first. Suggest enabling TTS in settings.")},(i=window.speechSynthesis)==null||i.speak(t)}function Ze(e){if(!ve.find(t=>t.id===e)){console.warn("[FC TTS] Unknown lang:",e);return}C=e,E=null,localStorage.setItem("fc_tts_lang",e),console.log("[FC TTS] Lang set to",e)}function et(){return C}function tt(){localStorage.removeItem("fc_tts_speed"),localStorage.removeItem("fc_font_size"),localStorage.removeItem("fc_line_height"),localStorage.removeItem("fc_spacing"),P()}function nt(e){e.forEach(t=>{const n=new Audio(be+"scenarios/"+t+".mp3");n.preload="auto"})}window._fcAudio={speakScenario:Se,speakCreeds:Ie,speak:Fe,setEnabled:_e,isEnabled:X,preloadAudio:nt,applyCSS:P,playSFX:A,initSFX:ye};window.addEventListener("beforeunload",()=>{ke()});const ot=[{id:1,title:"守法的",text:"我們是守法的：遵守校規，奉公守法"},{id:2,title:"信實的",text:"我們是信實的：誠實負責，不欺騙人"},{id:3,title:"整潔的",text:"我們是整潔的：校服整潔，儀容端正"},{id:4,title:"友愛的",text:"我們是友愛的：關心別人，互相幫助"},{id:5,title:"禮讓的",text:"我們是禮讓的：待人有禮，不易發怒"},{id:6,title:"勤力的",text:"我們是勤力的：上課專心，努力學習"},{id:7,title:"合作的",text:"我們是合作的：遵守規則，積極參與"},{id:8,title:"獨立的",text:"我們是獨立的：自己的事，自己去做"},{id:9,title:"愛護學校的",text:"我們是愛護學校的：愛護公物，保護環境"},{id:10,title:"感恩的",text:"我們是感恩的：尊敬師長，孝順父母"}],it=[4,5,7,9,10],Q=[1,2,3,6,8];function $e(e){return ot.filter(t=>e.includes(t.id))}function st(e){return $e(e).map(t=>`${t.title}：${t.text}`)}function at(e,t){if(t===0)return e||[];const n=e||[],o=t>0?it:Q,i=n.filter(s=>o.includes(s));if(i.length>0)return i;if(t<0&&n.length>0){const s=Q.find(c=>!n.includes(c))||Q[0];return[...n.slice(0,1),s]}return[o[0]]}function ct(e){return e>=70?"good":e>=30?"warning":"danger"}function rt(e){return Math.max(0,Math.min(100,Math.round((e+50)/1.5)))}function Pe(e){const t=rt(e),n=ct(e);return{percent:t,color:n==="good"?"#22c55e":n==="warning"?"#eab308":"#ef4444",level:n,score:e}}function Te(e,t,n){const o=e.options.find(l=>l.id===t);if(!o)return null;let i=0,s="";o.effects.forEach(l=>{i+=l.moralChange||0,l.comment&&(s=l.comment)});const c=$e(at(e.creedIds||[],i)),r=i>=0;return{moralChange:i,newScore:null,triggeredCreeds:c,isPositive:r,mainComment:s||(r?"你做出了好的選擇！":"你做出了選擇！"),option:o,scenario:e}}class lt{constructor(){this._handlers=new Map}on(t,n){return this._handlers.has(t)||this._handlers.set(t,new Set),this._handlers.get(t).add(n),()=>this.off(t,n)}off(t,n){this._handlers.has(t)&&this._handlers.get(t).delete(n)}emit(t,n){this._handlers.has(t)&&this._handlers.get(t).forEach(o=>{try{o(n)}catch(i){console.error(`[EventBus] handler error on "${t}":`,i)}})}}const u=new lt,ae="fc_progress_";function b(e){try{const t=localStorage.getItem(ae+e);return t?JSON.parse(t):he(e)}catch{return he(e)}}function q(e){e.lastPlayed=new Date().toISOString().split("T")[0],localStorage.setItem(ae+e.name,JSON.stringify(e))}function ge(e,t,n,o,i){const s=b(e);return s.completedScenarios.includes(t)||(s.completedScenarios.push(t),s.totalMoralScore=Math.max(0,(s.totalMoralScore||0)+o),s.topicProgress[n]||(s.topicProgress[n]={completed:0,total:0}),s.topicProgress[n].completed++,i&&(s.subjectProgress[i]||(s.subjectProgress[i]={completed:0,total:0}),s.subjectProgress[i].completed++),q(s),u.emit("progress:updated",{studentId:e,scenarioId:t,topicId:n,moralChange:o}),u.emit("moral:updated",{studentId:e,score:s.totalMoralScore,change:o}),u.emit("scenario:completed",{studentId:e,scenarioId:t,result:{moralChange:o,newScore:s.totalMoralScore}})),s}function dt(e,t,n){const o=b(e);o.topicProgress[t]?o.topicProgress[t].total=n:o.topicProgress[t]={completed:0,total:n},q(o)}function mt(e,t,n){const o=b(e);o.subjectProgress[t]?o.subjectProgress[t].total=n:o.subjectProgress[t]={completed:0,total:n},q(o)}function je(){const e=[];for(let t=0;t<localStorage.length;t++){const n=localStorage.key(t);if(n.startsWith(ae))try{e.push(JSON.parse(localStorage.getItem(n)))}catch{}}return e}function Ee(e){try{const t=JSON.parse(e),n=b(t.name);return t.completedScenarios.forEach(o=>{n.completedScenarios.includes(o)||n.completedScenarios.push(o)}),n.totalMoralScore=Math.max(n.totalMoralScore||0,t.totalMoralScore||0),t.topicProgress&&Object.keys(t.topicProgress).forEach(o=>{n.topicProgress[o]||(n.topicProgress[o]={completed:0,total:0}),n.topicProgress[o].completed=Math.max(n.topicProgress[o].completed||0,t.topicProgress[o].completed||0),t.topicProgress[o].total&&(n.topicProgress[o].total=Math.max(n.topicProgress[o].total||0,t.topicProgress[o].total))}),t.subjectProgress&&Object.keys(t.subjectProgress).forEach(o=>{n.subjectProgress[o]||(n.subjectProgress[o]={completed:0,total:0}),n.subjectProgress[o].completed=Math.max(n.subjectProgress[o].completed||0,t.subjectProgress[o].completed||0),t.subjectProgress[o].total&&(n.subjectProgress[o].total=Math.max(n.subjectProgress[o].total||0,t.subjectProgress[o].total))}),q(n),{ok:!0}}catch(t){return{ok:!1,error:t.message}}}function gt(e){const t=b(e);return JSON.stringify(t,null,2)}function ht(e,t){return b(e).completedScenarios.includes(t)}function he(e){return{name:e,completedScenarios:[],topicProgress:{emotions:{completed:0,total:0},respect:{completed:0,total:0},honesty:{completed:0,total:0},conflict:{completed:0,total:0}},subjectProgress:{math:{completed:0,total:0},chinese:{completed:0,total:0},english:{completed:0,total:0},science:{completed:0,total:0}},totalMoralScore:0,lastPlayed:null}}let x=null,G=null,L=[];const ee=new Set,te=new Set;function ze(e){x=e,ee.clear(),te.clear()}function p(){return x}function pt(e){L=e}function ce(){return L}function Be(e){return L.filter(t=>t.topicId===e)}function re(e){return G=L.find(t=>t.id===e)||null,G}function ft(){return G}function ut(e,t,n){var s;const o=L.find(c=>c.id===e)||G;if(!o)return null;const i=Te(o,t);return i?(x&&n?ge(x,o.id,o.topicId,i.moralChange,n):x&&!n&&ge(x,o.id,o.topicId,i.moralChange,null),{option:i.option,moralChange:i.moralChange,mainComment:i.mainComment,creeds:i.triggeredCreeds,creedText:st(i.triggeredCreeds.map(c=>c.id)),scenarioImage:o.image||null,scenarioTitle:o.title||"",outcomeImage:`assets/images/outcomes/${o.id}_opt${o.options.findIndex(c=>c.id===t)+1}.png`,nextScenario:((s=i.option)==null?void 0:s.next_scenario)||null}):null}function Ae(e){if(!x)return;const t=`${x}|${e}`;if(ee.has(t))return;ee.add(t);const n=Be(e);dt(x,e,n.length)}function xt(e){if(!x||!e)return;const t=`${x}|${e}`;if(te.has(t))return;te.add(t);const n=ce();mt(x,e,n.length)}const Ne=100,bt=-50,Re=8;function yt(e){const t=ce();if(!t.length)return[];const n=t.slice();for(let o=n.length-1;o>0;o--){const i=Math.floor(Math.random()*(o+1));[n[o],n[i]]=[n[i],n[o]]}return n.slice(0,e)}let h=null;function vt(){return h={balance:0,stamps:[],history:[],questions:yt(Re),currentIdx:0,status:"playing"},h}function B(){return h}function wt(){h=null}function Ct(e,t){if(!h)return;const n=e||0,o=h.balance;return h.balance+=n,h.stamps.push({delta:n,label:t||"",ts:Date.now()}),h.history.push({moralChange:n,scenarioTitle:t}),h.currentIdx>=h.questions.length-1&&(h.status="finished"),h.balance>=Ne&&h.status==="playing"&&(h.status="finished"),h.balance<=bt&&(h.status="bankrupt"),{oldBalance:o,newBalance:h.balance,status:h.status}}function _t(){return h?(h.currentIdx=Math.min(h.currentIdx+1,h.questions.length),h):null}const F={TARGET_BALANCE:Ne,QUESTIONS_PER_RUN:Re};function kt(){return`
+    <div class="role-screen">
+      <div class="logo">🎓</div>
+      <h1>友愛教室</h1>
+      <p class="tagline">選擇你的身份，開始學習！</p>
+
+      <div class="role-cards">
+        <div class="role-card student" onclick="FC.chooseRole('student')">
+          <div class="rc-icon">🧒</div>
+          <div class="rc-body">
+            <h3>學生模式</h3>
+            <p>揀遊戲、學習社交禮貌，自由探索</p>
+          </div>
+          <div class="rc-arrow">→</div>
+        </div>
+
+        <div class="role-card teacher" onclick="FC.chooseRole('teacher')">
+          <div class="rc-icon">👨‍🏫</div>
+          <div class="rc-body">
+            <h3>老師 / 家長模式</h3>
+            <p>設定功課範圍、控制功能開關、查看學習報告</p>
+          </div>
+          <div class="rc-arrow">→</div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;text-align:center">
+        <p style="font-size:0.8em;color:var(--text-light)">© Ken Cheng 製作</p>
+      </div>
+    </div>
+  `}function St(){return`
+    <div class="hub-screen fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
+        <h2>🎮 揀個遊戲開始</h2>
+      </div>
+
+      <div class="hub-grid">
+        <div class="game-card available" onclick="FC.playGoodDeedBank()" style="background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#eab308">
+          <div class="gc-icon">🏦</div>
+          <div class="gc-title">好人好事銀行</div>
+          <div class="gc-desc">做好事存款，衰嘢扣款，目標存到 $100 變品格富翁！</div>
+          <div class="gc-tag">pilot</div>
+        </div>
+
+        <div class="game-card available" onclick="FC.goSubjectSelect()" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-color:#3b82f6">
+          <div class="gc-icon">📖</div>
+          <div class="gc-title">情境答題</div>
+          <div class="gc-desc">傳統自由模式，揀課題自學</div>
+        </div>
+
+        <div class="game-card locked" style="background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:#ef4444;cursor:not-allowed;opacity:0.6">
+          <div class="gc-icon">🌷</div>
+          <div class="gc-title">關係花園</div>
+          <div class="gc-desc">（即將推出）</div>
+          <div class="gc-tag">coming soon</div>
+        </div>
+
+        <div class="game-card locked" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#a855f7;cursor:not-allowed;opacity:0.6">
+          <div class="gc-icon">🎲</div>
+          <div class="gc-title">道德大富翁</div>
+          <div class="gc-desc">（即將推出）</div>
+          <div class="gc-tag">coming soon</div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:20px">
+        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
+      </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}function It(e,t){if(!e)return'<div class="container"><p>題目載入失敗</p></div>';const n=F.QUESTIONS_PER_RUN,o=t.currentIdx+1,i=t.balance,s=F.TARGET_BALANCE,c=Math.min(100,Math.max(0,i/s*100)),r=i>0?"positive":i<0?"negative":"neutral";return`
+    <div class="container fade-in" style="max-width:560px">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.confirmExitBank()">←</button>
+        <h2>🏦 好人好事銀行</h2>
+      </div>
+
+      <div class="bank-ledger">
+        <div class="bl-row">
+          <span class="bl-label">題目</span>
+          <span class="bl-val">${o} / ${n}</span>
+        </div>
+        <div class="bl-row">
+          <span class="bl-label">💰 結餘</span>
+          <span class="bl-val ${r}">$${i}</span>
+        </div>
+        <div class="bank-progress" title="目標 $${s}">
+          <div class="bank-fill" style="width:${c}%"></div>
+          <span class="bank-target">目標 $${s}</span>
+        </div>
+      </div>
+
+      <div class="scenario-desc" style="margin-top:16px">
+        <strong>${e.title}</strong>
+        <div style="color:var(--text-light);font-size:0.92em;margin-top:6px">📍 ${e.background||""}</div>
+        <div style="margin-top:8px">${e.description}</div>
+      </div>
+
+      <div class="options" style="margin-top:14px">
+        ${e.options.map((l,m)=>{const d=["A","B","C","D"];return`
+            <div class="option-card" onclick="FC.bankChoose('${l.id}')">
+              <span class="opt-badge">${d[m]||m+1}</span>
+              <span class="opt-text">${l.text}</span>
+            </div>
+          `}).join("")}
+      </div>
+    </div>
+  `}function Ft(e,t,n){if(!t)return'<div class="container"><p>結果載入失敗</p><button class="btn btn-primary" onclick="FC.exitBank()">← 返 Game Hub</button></div>';const o=t.moralChange||0,i=o>0,s=o===0,c=n.balance,r=n.status==="finished"&&c>=F.TARGET_BALANCE,l=n.status==="bankrupt",m=n.status==="finished",d=F.TARGET_BALANCE;return`
+    <div class="container fade-in" style="max-width:560px">
+      <div class="page-header">
+        <h2>🏦 銀行結算</h2>
+      </div>
+
+      <div class="bank-stamp ${i?"green":s?"gray":"red"}" id="bank-stamp">
+        <div class="stamp-emoji">${i?"💰":s?"➖":"💸"}</div>
+        <div class="stamp-delta">${i?"+":""}${o} 元</div>
+        <div class="stamp-label">${i?"存款":s?"無變化":"扣款"}</div>
+      </div>
+
+      <div class="result-card ${i?"good":"bad"}" id="result-card">
+        <div class="result-emoji">${i?"🌟":"💪"}</div>
+        <div class="comment">${t.mainComment||""}</div>
+      </div>
+
+      <div class="bank-balance-big" style="text-align:center;margin:18px 0">
+        <div style="font-size:0.9em;color:var(--text-light)">目前結餘</div>
+        <div class="${o>0?"positive":o<0?"negative":"neutral"}" style="font-size:2.4em;font-weight:800">$${c}</div>
+        <div style="font-size:0.85em;color:var(--text-light)">目標 $${d}</div>
+      </div>
+
+      ${r?`
+        <div class="bank-end-banner win">
+          🎉 恭喜！你已經存到 $${c}，係個「品格富翁」！
+        </div>
+      `:l?`
+        <div class="bank-end-banner lose">
+          💔 結餘太低，破產喇。今次再嚟過！
+        </div>
+      `:m?`
+        <div class="bank-end-banner end">
+          🏁 全部 ${F.QUESTIONS_PER_RUN} 題做完喇！結餘：$${c}
+        </div>
+      `:""}
+
+      <div class="action-row" style="margin-top:18px">
+        <button class="btn btn-primary" onclick="FC.bankNext()">${m||l?"✓ 結算":"➡ 下一題"}</button>
+        <button class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
+      </div>
+    </div>
+  `}function $t(e){if(!e)return'<div class="container"><p>冇紀錄</p></div>';const t=e.status==="finished"&&e.balance>=F.TARGET_BALANCE,n=e.status==="bankrupt",o=e.stamps.filter(r=>r.delta>0).reduce((r,l)=>r+l.delta,0),i=e.stamps.filter(r=>r.delta<0).reduce((r,l)=>r+l.delta,0),s=e.stamps.filter(r=>r.delta>0).length,c=e.stamps.filter(r=>r.delta<0).length;return`
+    <div class="container fade-in" style="max-width:560px">
+      <div class="page-header">
+        <h2>🏦 結算單</h2>
+      </div>
+
+      <div class="bank-end-banner ${t?"win":n?"lose":"end"}" style="font-size:1.1em">
+        ${t?"🎉 品格富翁達陣！":n?"💔 今次破產喇":"🏁 旅程結束"}
+      </div>
+
+      <div class="progress-grid" style="margin:18px 0">
+        <div class="progress-cell">
+          <div class="num" style="color:${e.balance>=0?"#22c55e":"#ef4444"}">$${e.balance}</div>
+          <div class="label">最終結餘</div>
+        </div>
+        <div class="progress-cell">
+          <div class="num">+${o}</div>
+          <div class="label">總存款</div>
+        </div>
+        <div class="progress-cell">
+          <div class="num">${i}</div>
+          <div class="label">總扣款</div>
+        </div>
+        <div class="progress-cell">
+          <div class="num">${s}✓ ${c}✗</div>
+          <div class="label">好事 / 衰事</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:10px">📒 存摺紀錄</div>
+        ${e.stamps.length===0?'<div style="color:var(--text-light);font-size:0.9em;text-align:center;padding:12px">冇交易紀錄</div>':`
+          <div style="display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto">
+            ${e.stamps.map((r,l)=>`
+              <div class="ledger-row">
+                <span class="ledger-num">#${l+1}</span>
+                <span class="ledger-label">${r.label||"—"}</span>
+                <span class="ledger-delta ${r.delta>0?"positive":r.delta<0?"negative":"neutral"}">${r.delta>0?"+":""}${r.delta} 元</span>
+              </div>
+            `).join("")}
+          </div>
+        `}
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-primary" onclick="FC.playGoodDeedBank()">🔄 再玩一次</button>
+        <button class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
+      </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}const ne=[{id:"relaxed",icon:"🧘",title:"輕鬆學習",desc:"無計時、無限提示，慢慢做，慢慢學",color:"#eab308",bg:"linear-gradient(135deg, #fef9c3, #fef08a)"},{id:"timed",icon:"⚡",title:"計時挑戰",desc:"限時答題，計分，訓練答題速度",color:"#3b82f6",bg:"linear-gradient(135deg, #dbeafe, #bfdbfe)"},{id:"combo",icon:"🔥",title:"Combo 衝刺",desc:"連續答啱分數倍增，挑戰最高 Combo 數",color:"#ef4444",bg:"linear-gradient(135deg, #fee2e2, #fecaca)"},{id:"challenge",icon:"🎯",title:"挑戰模式",desc:"計時 + Combo 混合，最強挑戰",color:"#a855f7",bg:"linear-gradient(135deg, #f3e8ff, #e9d5ff)"}];function Pt(e,t){const n=e||localStorage.getItem("fc_game_mode")||"relaxed";return`
+    <div class="mode-screen fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
+        <h2>🎮 選擇遊戲模式</h2>
+      </div>
+
+      <div class="mode-header">
+        <p>你鍾意點玩？揀一個模式開始！</p>
+      </div>
+
+      <div class="mode-grid">
+        ${ne.map(o=>`
+          <div class="mode-card ${o.id} ${n===o.id?"selected":""}"
+               style="background:${o.bg};border-color:${o.color}"
+               onclick="FC.selectMode('${o.id}')">
+            <div class="mc-icon">${o.icon}</div>
+            <div class="mc-title">${o.title}</div>
+            <div class="mc-desc">${o.desc}</div>
+          </div>
+        `).join("")}
+      </div>
+
+      <div style="text-align:center;margin-top:8px;margin-bottom:20px">
+        <p style="font-size:0.85em;color:var(--text-light)">
+          💡 模式可以在設定頁隨時更改
+        </p>
+      </div>
+
+      ${t?`
+        <div style="text-align:center">
+          <button class="btn btn-primary" style="min-width:220px;font-size:1.1em"
+            onclick="FC.goHome()">
+            ✅ 確定，開始學習 →
+          </button>
+        </div>
+      `:`
+        <div style="text-align:center">
+          <button class="btn btn-primary" style="min-width:220px;font-size:1.1em"
+            onclick="FC.goSubjectSelect()">
+            📚 選擇課題 →
+          </button>
+        </div>
+      `}
+
+      <div style="text-align:center;margin-top:16px">
+        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
+      </div>
+
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}function Tt(){const e=ie.map(o=>{var i;return{...o,sub:((i=o.description)==null?void 0:i.split(/[，。,。]/)[0])||""}});let t={};try{t=JSON.parse(localStorage.getItem("fc_teacher_config")||"{}")}catch{t={}}const n={hintEnabled:t.hintEnabled!==!1,timerEnabled:t.timerEnabled??!1,timerSeconds:t.timerSeconds||30,comboEnabled:t.comboEnabled??!1,buttonSize:t.buttonSize||"normal",assignedTopics:t.assignedTopics||[]};return`
+    <div class="container fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goTeacher()">←</button>
+        <h2>⚙️ 功能設定</h2>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:700;font-size:1.05em;margin-bottom:14px">🔘 功能開關</div>
+
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">💡 提示功能</div>
+            <div class="ft-desc">學生可以睇提示</div>
+          </div>
+          <button class="toggle-switch ${n.hintEnabled?"on":""}"
+            onclick="FC.toggleTeacherFeature(this, 'hintEnabled')"></button>
+        </div>
+
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">⏱️ 計時功能</div>
+            <div class="ft-desc">開啟後每題限時答題</div>
+          </div>
+          <button class="toggle-switch ${n.timerEnabled?"on":""}"
+            onclick="FC.toggleTeacherFeature(this, 'timerEnabled')"></button>
+        </div>
+
+        ${n.timerEnabled?`
+        <div style="padding:10px 0 14px 0">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <strong>答題時限</strong>
+            <span style="color:var(--primary);font-weight:600">${n.timerSeconds} 秒</span>
+          </div>
+          <input type="range" min="10" max="60" step="5" value="${n.timerSeconds}"
+            oninput="FC.setTeacherTimer(this.value)"
+            style="width:100%;accent-color:var(--primary)" />
+          <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)">
+            <span>10秒</span><span>30秒</span><span>60秒</span>
+          </div>
+        </div>
+        `:""}
+
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">🔥 Combo 系統</div>
+            <div class="ft-desc">開啟連續答啱加分</div>
+          </div>
+          <button class="toggle-switch ${n.comboEnabled?"on":""}"
+            onclick="FC.toggleTeacherFeature(this, 'comboEnabled')"></button>
+        </div>
+
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">👆 按鈕大小</div>
+            <div class="ft-desc">控制答題按鈕尺寸</div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button class="btn ${n.buttonSize==="large"?"btn-primary":"btn-outline"}"
+              style="padding:6px 12px;font-size:0.85em;min-height:36px"
+              onclick="FC.setButtonSize('large')">大</button>
+            <button class="btn ${n.buttonSize==="normal"?"btn-primary":"btn-outline"}"
+              style="padding:6px 12px;font-size:0.85em;min-height:36px"
+              onclick="FC.setButtonSize('normal')">中</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:700;font-size:1.05em;margin-bottom:12px">📋 課題範圍</div>
+        <p style="font-size:0.88em;color:var(--text-light);margin-bottom:12px">
+          勾選要考核的主題，留空 = 全部開放
+        </p>
+        ${e.map(o=>`
+          <label style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer">
+            <input type="checkbox" value="${o.id}"
+              ${n.assignedTopics.includes(o.id)||n.assignedTopics.length===0?"checked":""}
+              onchange="FC.toggleAssignedTopic('${o.id}', this.checked)"
+              style="width:22px;height:22px;accent-color:var(--primary)" />
+            <span style="font-size:1.2em">${o.emoji}</span>
+            <span style="font-weight:600">${o.title}</span>
+            <span style="margin-left:auto;font-size:0.82em;color:var(--text-light)">${o.sub}</span>
+          </label>
+        `).join("")}
+      </div>
+
+      <div class="card">
+        <div style="font-weight:700;font-size:1.05em;margin-bottom:10px">🔐 PIN 安全</div>
+        <p style="font-size:0.88em;color:var(--text-light);margin-bottom:12px">
+          老師模式 PIN（預設：admin）
+        </p>
+        <input type="password" id="teacher-pin-input" value="admin" maxlength="6"
+          placeholder="輸入新 PIN"
+          style="width:100%;padding:14px;border:2px solid var(--border);border-radius:12px;font-size:1em;box-sizing:border-box;margin-bottom:10px" />
+        <button class="btn btn-outline" style="width:100%;font-size:0.95em"
+          onclick="FC.saveTeacherPIN()">💾 儲存 PIN</button>
+      </div>
+
+      <div style="margin-top:16px">
+        <button class="btn btn-primary" style="width:100%"
+          onclick="FC.saveTeacherConfig()">✅ 儲存所有設定</button>
+      </div>
+
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:24px">© Ken Cheng 製作</div>
+    </div>
+  `}function jt(e){if(!e)return"";const n=b(e).totalMoralScore||0,{percent:o,color:i}=Pe(n);return`
+    <div class="moral-bar-fixed" id="moral-bar">
+      <div class="moral-bar-inner">
+        <span class="moral-emoji">⭐</span>
+        <span class="moral-label">道德值</span>
+        <div class="moral-track">
+          <div class="moral-fill" style="width:${o}%;background:${i}"></div>
+        </div>
+        <span class="moral-num">${n}</span>
+        <span id="sync-badge" title="已連線" style="font-size:0.95em;opacity:0.85">☁️</span>
+      </div>
+    </div>
+  `}function Et(e){const t=R(e),n=qe(e),o=localStorage.getItem("fc_game_mode")||"relaxed",i=ne.find(c=>c.id===o)||ne[0],s=X()?'<button class="btn btn-outline" style="margin-bottom:12px;font-size:0.9em" onclick="FC.testTTS()">🔊 測試發音</button>':"";return`
+    <div class="container fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goRoleSelect()">🏠</button>
+        <h2>🌟 友愛教室</h2>
+        <button class="back-btn" style="background:${n};color:${t};border:2px solid ${t}"
+          onclick="FC.goSubjectSelect()">
+          ${$(e)||"📚"}
+        </button>
+      </div>
+
+      ${p()?jt(p()):""}
+
+      <!-- Mode badge + change button -->
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+        <span class="mode-badge ${o}" style="font-size:0.88em">
+          ${i.icon} ${i.title}
+        </span>
+        <button onclick="FC.goModeSelect()"
+          style="background:none;border:none;cursor:pointer;font-size:0.8em;color:var(--text-light);text-decoration:underline;padding:0">
+          更改模式
+        </button>
+      </div>
+
+      ${e?`
+      <div class="subject-banner" style="background:${n};border:2px solid ${t}">
+        <span style="font-size:1.5em">${$(e)}</span>
+        <div>
+          <div style="font-weight:600;color:${t}">${H(e)}學模擬練習</div>
+          <div style="font-size:0.85em;color:var(--text-light)">按主題學習 → 智能漸進解鎖</div>
+        </div>
+        <button class="btn btn-sm" style="margin-left:auto;background:${t};color:white"
+          onclick="FC.goSubjectSelect()">切換科目</button>
+      </div>
+      `:`
+      <div class="subject-banner" style="background:#f5f5f5;border:2px dashed #ccc;text-align:center;padding:16px">
+        <div style="margin-bottom:8px">📚 請先選擇科目</div>
+        <button class="btn btn-primary" onclick="FC.goSubjectSelect()">選擇科目</button>
+      </div>
+      `}
+
+      <div class="topic-grid">
+        ${ie.map(c=>{var d;const r=p()?b(p()).topicProgress[c.id]||{}:{},l=r.total?Math.round(r.completed/r.total*100):0,m=((d=c.description)==null?void 0:d.split(/[，。,。]/)[0])||c.description||"";return`
+            <div class="topic-card" style="background:${c.color}" onclick="FC.goTopic('${c.id}')">
+              <span class="emoji">${c.emoji}</span>
+              <div class="title">${c.title}</div>
+              <div class="sub">${m}</div>
+              ${p()?`
+                <div class="progress-bar"><div class="progress-fill" style="width:${l}%"></div></div>
+                <div class="sub">${r.completed||0}/${r.total||0} 已完成</div>
+              `:""}
+            </div>
+          `}).join("")}
+      </div>
+
+      <div class="action-row" style="margin-top:20px">
+        <button class="btn btn-outline" onclick="FC.goRandom()">🎲 自由模式</button>
+        <button class="btn btn-outline" onclick="FC.goProgress()">📊 我的進度</button>
+      </div>
+      ${s}
+      <div class="action-row">
+        <button class="btn btn-outline" onclick="FC.goSettings()">⚙️ 設定</button>
+        <button class="btn btn-outline" onclick="FC.switchStudent()">🔄 切換學生</button>
+      </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}function zt(e,t){const n=se(e),o=Be(e),i=R(t);return Ae(e),`
+    <div class="container fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goHome()">←</button>
+        <h2>${n.emoji} ${n.title}</h2>
+        ${t?`<span class="topic-badge" style="background:${i}">${$(t)} ${H(t)}</span>`:""}
+      </div>
+      <p style="color:var(--text-light);margin-bottom:16px">${n.description}</p>
+
+      <ul class="scenario-list">
+        ${o.map(s=>{const c=p()&&ht(p(),s.id);return`
+            <li class="scenario-item ${c?"completed":""}" onclick="FC.play('${s.id}')">
+              <div class="check">${c?"✓":""}</div>
+              <div class="info">
+                <div class="title">${s.title}</div>
+                <div class="sub">${s.background||""}</div>
+              </div>
+              <span style="font-size:1.2em">→</span>
+            </li>
+          `})}
+      </ul>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}function Bt(e,t){const n=re(e);if(!n)return'<div class="container"><p>場景不存在</p></div>';const o=se(n.topicId),i=R(t);return`
+    <div class="container fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goTopic('${n.topicId}')">←</button>
+        ${t?`<span class="topic-badge" style="background:${i}">${$(t)} ${H(t)}</span>`:""}
+        <span class="play-top" style="flex:1;text-align:center">
+          <span class="topic-badge" style="background:${(o==null?void 0:o.color)||"var(--primary)"}">${(o==null?void 0:o.emoji)||""} ${(o==null?void 0:o.title)||""}</span>
+        </span>
+      </div>
+
+      <div class="play-top">
+        <div class="scenario-title">${n.title}</div>
+        <div class="scenario-bg">📍 ${n.background||""}</div>
+      </div>
+
+      <div class="scenario-image-wrap">
+        <img src="assets/images/scenarios/${n.id}.png" alt="${n.title}" class="scenario-image"
+             onerror="this.style.display='none'" />
+      </div>
+
+      <div class="scenario-desc">
+        <button class="inline-voice-btn" onclick="FC.speak()" title="朗讀題目">🔊</button>
+        ${n.description}
+      </div>
+      <div class="options">
+        ${n.options.map((s,c)=>{const r=["A","B","C","D"];return`
+            <div class="option-card" onclick="FC.choose('${s.id}')">
+              <img src="assets/images/outcomes/${n.id}_opt${c+1}.png" alt=""
+                   class="opt-thumb" onerror="this.style.display='none'" />
+              <span class="opt-badge">${r[c]||c+1}</span>
+              <span class="opt-text">${s.text}</span>
+              <button type="button" class="opt-read"
+                onclick="FC._stopEvt(event);FC.speakOpt('${s.id}')"
+                onmousedown="FC._stopEvt(event)"
+                ontouchstart="FC._stopEvt(event)"
+                ontouchend="FC._stopEvt(event)"
+                title="朗讀呢個選項">🔊</button>
+            </div>
+          `}).join("")}
+      </div>
+
+      <button type="button" class="voice-fab" onclick="FC.speak()" title="朗讀題目">🔊</button>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}function At(e,t){var y;if(!e)return'<div class="container fade-in"><p>⚠️ 結果載入失敗，請重試。</p><button class="btn btn-primary" onclick="FC.goHome()">← 返首頁</button></div>';const{option:n,moralChange:o,mainComment:i,creeds:s,creedText:c,scenarioImage:r,scenarioTitle:l}=e,m=o>=0,d=R(t);return`
+    <div class="container fade-in" id="result-root">
+      ${t?`<div style="text-align:center;margin-bottom:8px">
+        <span class="topic-badge" style="background:${d}">${$(t)} ${H(t)}</span>
+      </div>`:""}
+      ${r?`
+      <div class="scenario-image-wrap" style="max-height:180px;margin-bottom:16px;border-radius:16px;overflow:hidden">
+        <img src="${r}" alt="${l}" style="width:100%;max-height:180px;object-fit:cover" />
+      </div>`:""}
+      <div class="result-card ${m?"good":"bad"}" id="result-card">
+        <div class="result-emoji">${m?"🌟":"💪"}</div>
+        <div class="comment">${i||"你做出了選擇！"}</div>
+        <div class="moral-score">${m?"＋":""}${o} 道德分</div>
+      </div>
+
+      <div class="creed-show">
+        <div class="creed-header">
+          <div class="label">🌟 學校信條</div>
+          <button class="inline-voice-btn" onclick="FC.speakCreeds()" title="朗讀信條">🔊</button>
+        </div>
+        <div class="items">
+          ${(c||[]).map(k=>`<div class="item">${k}</div>`).join("")}
+        </div>
+      </div>
+
+      ${e.outcomeImage?`
+      <div class="outcome-image-wrap" style="margin-top:16px;border-radius:16px;overflow:hidden">
+        <img src="${e.outcomeImage}" alt="結果圖" style="width:100%;border-radius:16px"
+             onerror="this.style.display='none'" />
+      </div>`:""}
+
+      <div class="action-row">
+        <button class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
+        <button class="btn btn-outline" onclick="FC.goTopic('${(y=ft())==null?void 0:y.topicId}')">← 返回主題</button>
+      </div>
+
+      <button class="voice-fab" onclick="FC.speakCreeds()" title="朗讀信條">🔊</button>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}function Nt(e){var c;const t=b(p()),n=t.totalMoralScore||0,o=((c=t.completedScenarios)==null?void 0:c.length)||0,i=R(e),s=[{id:"math",title:"🎯 數學",color:"#4285F4"},{id:"chinese",title:"📐 中文",color:"#EA4335"},{id:"english",title:"🔤 英文",color:"#34A853"},{id:"science",title:"🔬 常識",color:"#9C27B0"}];return`
+    <div class="container fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goHome()">←</button>
+        <h2>📊 我的進度</h2>
+        ${e?`<span class="topic-badge" style="background:${i}">${$(e)} ${H(e)}</span>`:""}
+      </div>
+
+      <div class="progress-grid">
+        <div class="progress-cell big">
+          <div class="num">${n}</div>
+          <div class="label">🎯 總道德分</div>
+        </div>
+        <div class="progress-cell">
+          <div class="num">${o}</div>
+          <div class="label">📝 已完成場景</div>
+        </div>
+        <div class="progress-cell">
+          <div class="num">${t.lastPlayed||"—"}</div>
+          <div class="label">🗓️ 最近遊玩</div>
+        </div>
+      </div>
+
+      ${e?`<div class="card" style="margin-bottom:12px">
+        <div style="font-weight:600;margin-bottom:10px">📚 科目進度</div>
+        ${s.map(r=>{var d;const l=((d=t.subjectProgress)==null?void 0:d[r.id])||{},m=l.total?Math.round(l.completed/l.total*100):0;return`
+            <div style="margin-bottom:8px">
+              <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+                <span style="color:${r.color};font-weight:600">${r.title}</span>
+                <span style="color:var(--text-light)">${l.completed||0}/${l.total||0}</span>
+              </div>
+              <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden">
+                <div style="height:100%;width:${m}%;background:${r.color};border-radius:4px;transition:width 0.4s"></div>
+              </div>
+            </div>`}).join("")}
+      </div>`:""}
+
+      ${["emotions","respect","honesty","conflict"].map(r=>{const l=t.topicProgress[r]||{},m=l.total?Math.round(l.completed/l.total*100):0,d=se(r);return`
+          <div class="card" style="margin-bottom:10px">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+              <span style="font-size:1.2em">${(d==null?void 0:d.emoji)||""}</span>
+              <strong>${(d==null?void 0:d.title)||r}</strong>
+              <span style="margin-left:auto;color:var(--text-light)">${l.completed||0}/${l.total||0}</span>
+            </div>
+            <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden">
+              <div style="height:100%;width:${m}%;background:${(d==null?void 0:d.color)||"var(--primary)"};border-radius:4px;transition:width 0.4s"></div>
+            </div>
+          </div>
+        `}).join("")}
+
+      <div class="action-row">
+        <button class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出進度</button>
+        <button class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
+      </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}function Rt(){var m;const e=localStorage.getItem("fc_tts_speed")||"0.85",t=localStorage.getItem("fc_font_size")||"18",n=localStorage.getItem("fc_line_height")||"1.5",o=localStorage.getItem("fc_spacing")||"medium",i=localStorage.getItem("fc_tts_lang")||"auto",s=t<=18?"小":t<=22?"中":"大",c=X(),r=(()=>{try{return window._fcSyncStatus||{status:"idle",isOnline:navigator.onLine,lastSyncTime:null}}catch{return{status:"idle",isOnline:!0}}})(),l=r.lastSyncTime?new Date(r.lastSyncTime).toLocaleString("zh-HK",{dateStyle:"short",timeStyle:"short"}):"從未同步";return`
+    <div class="container fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
+        <h2>⚙️ 個人化設定</h2>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:14px">🔊 語音朗讀</div>
+        <div class="setting-row" style="margin-bottom:12px">
+          <div>
+            <strong>開 / 關</strong>
+            <div style="font-size:0.85em;color:var(--text-light)">自動朗讀題目和信條</div>
+          </div>
+          <div class="toggle ${c?"on":""}" data-key="voice" onclick="FC.toggleVoice(this)"></div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="margin-bottom:6px">
+            <strong>發音語言</strong>
+            <div style="font-size:0.82em;color:var(--text-light);margin-top:2px">揀錯會 load 國語而唔係粵語</div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            ${(((m=window.FC)==null?void 0:m.TTS_LANGS)||[]).map(d=>`
+              <button class="btn"
+                data-active="${i===d.id}"
+                style="flex:1;min-width:0;font-size:0.88em;padding:8px 6px;${i===d.id?"background:var(--primary);color:#fff;border:3px solid var(--primary);":"background:transparent;border:3px solid var(--primary);color:var(--primary);"}"
+                onclick="FC.setTTSLang('${d.id}')"
+                title="${d.hint}">${d.label}</button>
+            `).join("")}
+          </div>
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <strong>朗讀速度</strong>
+            <span class="val-label" style="color:var(--primary);font-weight:600" data-for="speed">${parseFloat(e).toFixed(2)}x</span>
+          </div>
+          <input type="range" min="0.5" max="1.5" step="0.05" value="${e}"
+            oninput="FC.setSpeed(this.value)"
+            style="width:100%;accent-color:var(--primary)" />
+          <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)">
+            <span>慢</span><span>正常</span><span>快</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:14px">📝 文字顯示</div>
+        <div style="margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <strong>字體大小</strong>
+            <span class="val-label" style="color:var(--primary);font-weight:600" data-for="fs">${s}</span>
+          </div>
+          <input type="range" min="16" max="32" step="2" value="${t}"
+            oninput="FC.setFontSize(this.value)"
+            style="width:100%;accent-color:var(--primary)" />
+          <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)">
+            <span>Aa</span><span style="font-size:1.2em">Aa</span><span style="font-size:1.5em">Aa</span>
+          </div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <strong>行距</strong>
+            <span class="val-label" style="color:var(--primary);font-weight:600" data-for="lh">${n}</span>
+          </div>
+          <input type="range" min="1.2" max="2.2" step="0.1" value="${n}"
+            oninput="FC.setLineHeight(this.value)"
+            style="width:100%;accent-color:var(--primary)" />
+        </div>
+        <div>
+          <div style="margin-bottom:6px"><strong>間格</strong></div>
+          <div style="display:flex;gap:8px">
+            <button class="btn ${o==="narrow"?"btn-primary":"btn-outline"}" onclick="FC.setSpacing('narrow')" id="sp-narrow" style="flex:1;padding:8px;font-size:0.9em">窄</button>
+            <button class="btn ${o==="medium"?"btn-primary":"btn-outline"}" onclick="FC.setSpacing('medium')" id="sp-medium" style="flex:1;padding:8px;font-size:0.9em">中</button>
+            <button class="btn ${o==="wide"?"btn-primary":"btn-outline"}" onclick="FC.setSpacing('wide')" id="sp-wide" style="flex:1;padding:8px;font-size:0.9em">闊</button>
+          </div>
+        </div>
+        <div style="margin-top:12px;text-align:center">
+          <button class="btn btn-outline" onclick="FC.resetSettings()" style="color:var(--text-light);font-size:0.85em">🔄 重置所有設定</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-weight:600;margin-bottom:10px">☁️ 雲端同步</div>
+        <div style="font-size:0.9em;color:var(--text-light);margin-bottom:10px">
+          連線狀態：<span id="settings-sync-status">${r.isOnline?"在線":"📴 離線"}</span>
+          &nbsp;·&nbsp;上次同步：<span id="settings-last-sync">${l}</span>
+        </div>
+        <div class="action-row">
+          <button class="btn btn-outline" onclick="FC.forceSync()">🔄 立即同步</button>
+          <button class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出</button>
+          <button class="btn btn-outline" onclick="FC.importMyData()">📥 匯入</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-weight:600;margin-bottom:10px">👥 資料管理</div>
+        <div class="action-row">
+          <button class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出我的進度</button>
+          <button class="btn btn-outline" onclick="FC.importMyData()">📥 匯入進度</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div style="font-weight:600;margin-bottom:10px">🔐 老師模式</div>
+        <button class="btn btn-primary" onclick="FC.goTeacher()">進入老師模式</button>
+      </div>
+
+      <div class="privacy-notice" style="background:#fffbe6;border:1px solid #faad14;border-radius:12px;padding:16px;margin-top:24px;font-size:14px;color:#8a6d3b">
+        <h4 style="margin-bottom:8px">🔒 資料收集說明</h4>
+        <p>本應用使用瀏覽器本地儲存（localStorage）保存以下資料：</p>
+        <ul style="margin:8px 0 0 20px">
+          <li>個人化設定（字體大小、行距、朗讀速度）</li>
+          <li>學習進度及題目記錄</li>
+        </ul>
+        <p style="margin-top:8px">📌 離線使用時，進度仍保存在本地。恢復連線後自動同步。</p>
+      </div>
+
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}const Ht=(window.location.hostname==="localhost"&&window.location.port==="5173","http://localhost:8000");let O=localStorage.getItem("fc_teacher_token")||null,He=parseInt(localStorage.getItem("fc_teacher_expiry")||"0",10),M=navigator.onLine,I="idle",z=null;const pe="fc_device_id";function Lt(){let e=localStorage.getItem(pe);return e||(e="device_"+Math.random().toString(36).slice(2)+"_"+Date.now(),localStorage.setItem(pe,e)),e}window.addEventListener("online",()=>{M=!0,u.emit("sync:status",{status:"online"}),Vt()});window.addEventListener("offline",()=>{M=!1,I="offline",u.emit("sync:status",{status:"offline"})});async function Mt(e,t,n,o={}){const i=Ht+t,s={"Content-Type":"application/json",...o.headers};O&&(s["X-Teacher-Token"]=O);const c=await fetch(i,{method:e,headers:s,body:n?JSON.stringify(n):void 0,signal:AbortSignal.timeout(8e3)});if(!c.ok){const r=await c.json().catch(()=>({message:c.statusText}));throw new Error(r.message||`HTTP ${c.status}`)}return c.json()}async function le(e,t){if(!M)return I="offline",u.emit("sync:status",{status:"offline"}),{ok:!1,reason:"offline"};I="syncing",u.emit("sync:status",{status:"syncing",student:e});try{const n=await Mt("POST","/api/sync",{name:e,completedScenarios:t.completedScenarios||[],topicProgress:t.topicProgress||{},subjectProgress:t.subjectProgress||{},totalMoralScore:t.totalMoralScore||0,lastPlayed:t.lastPlayed,deviceId:Lt()});return I="ok",z=new Date().toISOString(),u.emit("sync:status",{status:"ok",student:e,lastSynced:z}),localStorage.setItem(`fc_last_sync_${e}`,z),{ok:!0,lastSynced:z}}catch(n){return I="error",u.emit("sync:status",{status:"error",student:e,error:n.message}),console.warn("[Sync] Failed:",n.message),{ok:!1,reason:n.message}}}let K=null;function Vt(){K&&(le(K.name,K.progress),K=null)}function Kt(){return O?Date.now()>He?(Gt(),!1):!0:!1}function Gt(){O=null,He=0,localStorage.removeItem("fc_teacher_token"),localStorage.removeItem("fc_teacher_expiry")}function Ot(){return{status:I,isOnline:M,lastSyncTime:z,teacherLoggedIn:Kt()}}function Dt(e,t){M&&e&&t&&setTimeout(()=>le(e,t),500)}const Xt=JSON.parse(`[{"id":"s1","title":"關卡1：嘲笑同學","background":"課室・小息時間","description":"小傑指著正在玩既小宇話：「我哋一齊笑佢好唔好？佢著既衫咁樣好搞笑呀！」","hints":["小宇著咩衫係佢既自由，唔係你既娛樂。你覺得佢當時會係咩心情？","如果被笑既係你，你會希望旁觀者做啲咩？","善良既選擇係拒絕參與，幫助被欺負既人 —— 但你係需要有勇氣嗰個。"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50},{"name":"小宇","emoji":"👦","initial_relationship":50}],"options":[{"id":"s1-a","text":"跟住一齊笑","effects":[{"character":"小傑","change":10,"moralChange":-15,"comment":"你同小傑笑得好開心！但係小宇低頭就走咗。第二日你見到小宇覺得好心虛..."}],"next_scenario":"s2"},{"id":"s1-b","text":"靜靜地走開","effects":[{"character":"小傑","change":0,"moralChange":-5,"comment":"你走開咗，但係成晚在想：「我應該講啲咩？」第二日你聽見小宇因為太傷心請假沒返學..."},{"character":"小宇","change":5,"moralChange":0,"comment":"小宇唔知你既事，但係如果你出聲可能會唔同..."}],"next_scenario":"s2"},{"id":"s1-c","text":"「我唔覺得好笑，每個人都可以著自己鍾意既衫」","effects":[{"character":"小傑","change":-5,"moralChange":10,"comment":"小傑話：「你唔夠朋友呀！」但係小宇望向你眼神裡有啲感謝..."},{"character":"小宇","change":20,"moralChange":5,"comment":"小宇話：「多謝你呀...」點點頭就跑開咗。"}],"next_scenario":"s2"}],"location":"break","topicId":"respect","creedIds":[4,5],"imagePrompt":"小傑指著正在玩既小宇話：「我哋一齊笑佢好唔好？佢著既衫咁樣好搞笑呀！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s2","title":"關卡2：幫手匿贓","background":"走廊・晏晝","description":"小強拉著你話：「幫我一個忙，我啱先拎咗啱嘢既玩具車，帮我匿埋佢！」","hints":["如果你係失主，發現自己既玩具唔見咗，你會點？你希望其他人點幫你？","匿贓係犯法行為，即使係朋友叫你做。友誼唔應該包括犯罪。","真正既朋友會喺你做錯時勸你改正，唔係叫你幫佢隱瞞。"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50}],"options":[{"id":"s2-a","text":"答應幫佢匿","effects":[{"character":"小強","change":10,"comment":"你帮手匿咗入抽屜。结果老師發現監視器，以為係你偷！你喊咗但唔敢講真相，怕失去呢個「朋友」...","moralChange":8}],"next_scenario":"s3"},{"id":"s2-b","text":"唔幫手亦唔話","effects":[{"character":"小強","change":-5,"comment":"小強之後比老師發現，但係同老師話：「係佢叫我匿既！」你有口難言...","moralChange":-8},{"character":"小強","change":-10,"comment":"小強之後俾人鬧，但係你覺得如果一開始勸佢還返就好啦...","moralChange":-8}],"next_scenario":"s3"},{"id":"s2-c","text":"「我哋一齊還返啦」","effects":[{"character":"小強","change":15,"comment":"小強話：「...好啦，对唔住。」你陪佢還咗去，小強多謝你陪佢面對！","moralChange":8}],"next_scenario":"s3"}],"location":"break","topicId":"honesty","creedIds":[2,6],"imagePrompt":"小強拉著你話：「幫我一個忙，我啱先拎咗啱嘢既玩具車，帮我匿埋佢！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s3","title":"關卡3：新朋友","background":"操場・晏晝","description":"小美最近成日同新同學玩，都唔理你啦。你覺得心裡酸酸地...","hints":["小美淨係想識新朋友，唔係想放棄你。你有冇試過主動問佢？","嫉妒係正常既，但質問唔會令你哋關係更好。嘗試表達感受而非指責。","直接話「我有啲難過」然後問清楚，係健康既溝通方式。"],"characters":[{"name":"小美","emoji":"👩‍🎓","initial_relationship":60}],"options":[{"id":"s3-a","text":"嬲既質問佢","effects":[{"character":"小美","change":-20,"comment":"你衝過去大聲問，小美嚇一跳：「我淨係想識新朋友之嘛...」全班望住你，你覺得更加丟臉...","moralChange":-8}],"next_scenario":"s4"},{"id":"s3-b","text":"覺得自己唔好，不再同佢講話","effects":[{"character":"小美","change":-10,"comment":"你成日坐係度諗：「我果然唔值得被鍾意...」你越來越唔想講野...","moralChange":-8},{"character":"小美","change":5,"comment":"小美唔知你諗緊咩，但係見到你唔開心都有啲擔心...","moralChange":-8}],"next_scenario":"s4"},{"id":"s3-c","text":"平靜咁話：「我有啲難過，我哋仲係好朋友嗎？」","effects":[{"character":"小美","change":20,"comment":"小美即刻話：「梗係啦！我淨係想多識一个人之嘛，你永远都好重要！」","moralChange":8}],"next_scenario":"s4"}],"location":"break","topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"小美最近成日同新同學玩，都唔理你啦。你覺得心裡酸酸地... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s4","title":"關卡4：邊個整跌既花盆？","background":"課室・下晝","description":"你見到小強唔小心整跌咗老師既花盆，但係佢同老師話：「係風吹跌既！」","hints":["小傑話係風吹跌，但花盆係你打籃球整跌既。老師會點諗？","為咗保護自己而呃人，遲早會被發現，而且你會失去誠信。","主動承認話：「老師，對唔住，我整跌咗。」係最有尊嚴既做法。"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50},{"name":"老師","emoji":"👩‍🏫","initial_relationship":50}],"options":[{"id":"s4-a","text":"扮作唔知道","effects":[{"character":"小強","change":5,"comment":"老師信咗小強。但係花盆既植物枯死咗，小強之後話：「 Victoria 唔會發現！」你心裡沉沉地...","moralChange":-8},{"character":"老師","change":-10,"comment":"老師唔知真相，但係你覺得自己做錯咗...","moralChange":-8}],"next_scenario":"s5"},{"id":"s4-b","text":"大聲話係小強整既","effects":[{"character":"小強","change":-25,"comment":"你大聲話係小強，小強一面紅，下堂之後反面：「叛徒！」你哋之後冇再講野，你心裡空左...","moralChange":-8},{"character":"老師","change":10,"comment":"老師知道你肯話真相，但你失去咗一個朋友...","moralChange":-8}],"next_scenario":"s5"},{"id":"s4-c","text":"私下同小強講：「你仲老師話實話啦，我陪你一齊去」","effects":[{"character":"小強","change":20,"comment":"小強話：「...好啦，對唔住。」你陪佢同一齊去認錯，老師話：「知錯能改就係好孩子！」","moralChange":8}],"next_scenario":"s5"}],"location":"classroom","topicId":"honesty","creedIds":[2,6],"imagePrompt":"你見到小強唔小心整跌咗老師既花盆，但係佢同老師話：「係風吹跌既！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s5","title":"關卡5：整蠱仔","background":"操場・晏晝","description":"小芳偷偷同你講：「我哋將安安既水壺匿埋，等佢搵唔到好好笑！」","hints":["小信睇到封信大叫，全班都喺笑，佢係咪真係覺得好笑？","整蠱令人難過就唔係好笑。如果有一方唔開心，就已經失去意義。","如果你係小信，你寧願有人走嚟幫你、定係繼續被笑？"],"characters":[{"name":"小芳","emoji":"👩‍🎓","initial_relationship":50},{"name":"安安","emoji":"👦","initial_relationship":50}],"options":[{"id":"s5-a","text":"參與呢個整蠱","effects":[{"character":"小芳","change":10,"comment":"安安置咗好耐搵唔到水壺，最後惟有飲自來水。放學時佢媽媽知咗都好嬲，你聽到：「啲細路點解咁曳？」你訓左差啲...","moralChange":-8},{"character":"安安","change":-20,"comment":"安安急到喊，你心裡好內疚...","moralChange":-8}],"next_scenario":"s6"},{"id":"s5-b","text":"「我...我唔敢」","effects":[{"character":"小芳","change":-10,"comment":"嗰班同學笑你細胆之后就唔再搵你玩。你觉得你似個懦夫，正義都不敢...","moralChange":-8},{"character":"安安","change":0,"comment":"至少你冇參與...","moralChange":-8}],"next_scenario":"s6"},{"id":"s5-c","text":"「咁樣會令安安難過我不想參加」","effects":[{"character":"小芳","change":5,"comment":"小芳話：「 Victoria 咁呀...算啦。」佢嫌你無癮，但係你守得住自己既善良！","moralChange":8},{"character":"安安","change":10,"comment":"安安唔知呢件事，但係你好似做啱咗...","moralChange":8}],"next_scenario":"s6"}],"location":"break","topicId":"respect","creedIds":[4,5],"imagePrompt":"小芳偷偷同你講：「我哋將安安既水壺匿埋，等佢搵唔到好好笑！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s6","title":"關卡6：鬧交","background":"課室・晏晝","description":"小明好嬲話：「我再都唔同小華玩啦！佢整壞咗我既玩具！」","hints":["小美話係小明整跌筆，但小明話係小美整跌。你知道真相係點嗎？","唔好下判斷，先聽晒晒雙方既版本。你親眼見到之事實可能唔夠全面。","可以話：「我哋一齊睇下係發生咗咩事」，跟住一齊解決。"],"characters":[{"name":"小明","emoji":"👦","initial_relationship":50},{"name":"小華","emoji":"👦","initial_relationship":50}],"options":[{"id":"s6-a","text":"「係呀！小華太衰啦！我都唔同佢玩！」","effects":[{"character":"小明","change":10,"moralChange":-15,"comment":"你同小明一齊排斥小華。但係之後你先知，小華係唔小心整壞既嘢，佢本來想道歉但搵唔倒機會。小華喊咗，你覺得自己做錯咗..."},{"character":"小華","change":-25,"moralChange":-10,"comment":"小華覺得被誤會，好傷心..."}],"next_scenario":"s7"},{"id":"s6-b","text":"乜都唔話","effects":[{"character":"小明","change":0,"moralChange":-5,"comment":"小明越話越嬲仲搵其他人一齊排斥小華。你雖然冇參與但係都冇阻止。見到小華一個你心裡唔舒服..."},{"character":"小華","change":-10,"moralChange":-5,"comment":"小華覺得自己一個人..."}],"next_scenario":"s7"},{"id":"s6-c","text":"「或者佢唔係故意？你有問過佢嗎？」","effects":[{"character":"小明","change":15,"moralChange":10,"comment":"小明諗咗下：「嗯...都係問下先...」之後發現係誤會，佢同小華和好咗！你幫佢哋化解咗爭執！"},{"character":"小華","change":10,"moralChange":8,"comment":"小華多謝你幫佢講说话！"}],"next_scenario":"s7"}],"location":"classroom","topicId":"emotions","creedIds":[1,5,7],"imagePrompt":"小明好嬲話：「我再都唔同小華玩啦！佢整壞咗我既玩具！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s7","title":"關卡7：安慰朋友","background":"操場・體育堂後","description":"小珍喊住搵你：「佢哋笑我跑得慢...我唔想上體育課啦...」","hints":["小美話唔關心事，但你見到佢喊緊。你信邊個？","有時朋友話「冇事」係因為唔想麻煩人，但佢哋其實需要關心。","陪伴靜靜咁坐低，問一句「你想唔想講？」已經係好大既安慰。"],"characters":[{"name":"小珍","emoji":"👧","initial_relationship":60}],"options":[{"id":"s7-a","text":"「唔好喊啦，你既確跑得慢呀」","effects":[{"character":"小珍","change":-20,"comment":"小珍喊得更大聲，覺得你唔明白佢。之後佢唔再好同你分享心事，你哋既友誼出現裂痕...","moralChange":-8}],"next_scenario":"s8"},{"id":"s7-b","text":"「冇所謂啦，唔好在意」","effects":[{"character":"小珍","change":-5,"comment":"小珍點點頭，但係你睇得出佢仲係好難過。下次體育課佢扮肚痛唔想參加。你觉得你既安慰好似冇幫到佢...","moralChange":5},{"character":"小珍","change":5,"comment":"至少有你在...","moralChange":5}],"next_scenario":"s8"},{"id":"s7-c","text":"「被笑一定好難過。跑步速度唔重要，重要的是你有參與！」","effects":[{"character":"小珍","change":20,"comment":"小珍即刻笑咗：「多謝你呀！你最明白我！」之後體育堂佢好積極咁參與！","moralChange":8}],"next_scenario":"s8"}],"location":"break","topicId":"respect","creedIds":[4,5],"imagePrompt":"小珍喊住搵你：「佢哋笑我跑得慢...我唔想上體育課啦...」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s8","title":"關卡8：一個人坐","background":"操場・晏晝","description":"你自己一個人坐係長椅度，望住其他同學度玩，心裡有啲難過...","hints":["如果冇人主動坐埋去，佢係咪永遠都會自己一個人？","唔同人唔敢主動，你係咪可以帶頭踏出第一步？","你坐過去話：「呢度有人嗎？」改變可能就係由你開始。"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50},{"name":"老師","emoji":"👩‍🏫","initial_relationship":60}],"options":[{"id":"s8-a","text":"繼續坐係度，覺得冇人鍾意我","effects":[{"character":"同學A","change":-5,"comment":"你成個下晝都坐係度，心情越來越低落。返到屋企你同媽媽話：「我冇朋友...」媽媽好擔心，但係你唔知點改變...","moralChange":-8}],"next_scenario":null},{"id":"s8-b","text":"搵老師傾下我既心情","effects":[{"character":"老師","change":15,"comment":"老師好好心機聽你講，話：「不如搵啲同學一齊玩啦？」之後老師幫你介紹咗幾個朋友，你逐步逐步融入咗！","moralChange":8}],"next_scenario":null},{"id":"s8-c","text":"去問其他同學：「我可以一齊玩嗎？」","effects":[{"character":"同學A","change":20,"comment":"你真係好勇敢！嗰個同學即刻話：「梗係可以啦！一齊啦！」你交咗新朋友，原來主動一啲都唔難！","moralChange":8}],"next_scenario":null}],"location":"break","topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"你自己一個人坐係長椅度，望住其他同學度玩，心裡有啲難過... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-c2","title":"關卡：杯葛","location":"classroom","background":"課室・小息","description":"有同学話如果你同某人一齊玩，就唔同你玩","hints":["如果要你放棄其他朋友先可以繼續係朋友，呢個係真友誼嗎？","真正既朋友會支持你擴闊社交圈，唔係限制你。","可以拒絕話「我想要你哋兩邊都係朋友」，如果佢唔接受，佢就唔係你想要既朋友。"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50},{"name":"小美","emoji":"👩‍🎓","initial_relationship":50}],"options":[{"id":"s-c2-a","text":"好啦，我唔同佢玩啦","effects":[{"character":"小傑","change":-20,"comment":"小傑望住你，唔出聲就走開咗","moralChange":-8},{"character":"小玲","change":5,"comment":"但你心裡有啲唔舒服","moralChange":-8}],"next_scenario":null},{"id":"s-c2-b","text":"我既朋友我自己選擇","effects":[{"character":"小傑","change":20,"comment":"小傑話多謝你，你哋既友情更加堅固","moralChange":8},{"character":"小玲","change":-10,"comment":"你好似釋然咗","moralChange":8}],"next_scenario":null}],"topicId":"respect","creedIds":[4,5],"imagePrompt":"有同学話如果你同某人一齊玩，就唔同你玩 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-b1","title":"關卡：語言暴力","location":"break","background":"操場・晏晝","description":"有同学話你：「你好曳！你同豬一樣！」","hints":["小慧係一個學生，犯錯係成長一部分。如果佢知道你會笑佢，佢會點？","言語暴力可以造成深刻既傷痕，有啲說話我哋以為係開玩笑，但聽落去既人一生都會記得。","如果冇嘢好聽，就唔好嘩眾取寵。可以話「呢個話題我哋改天聊啦」。"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50}],"options":[{"id":"s-b1-a","text":"話你都好曳啦","effects":[{"character":"小強","change":-20,"comment":"你同大打起來，要罰企","moralChange":-8}],"next_scenario":null},{"id":"s-b1-b","text":"話你咁樣講我，我好唔開心","effects":[{"character":"小強","change":10,"comment":"小強話我只是玩之嘛，之後冇再咁樣講","moralChange":8}],"next_scenario":null}],"topicId":"respect","creedIds":[4,5],"imagePrompt":"有同学話你：「你好曳！你同豬一樣！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-h1","title":"關卡：網上欺凌","location":"home","background":"家中・夜晚","description":"你發現有人係班Group度發你既相，加啱衰caption全班笑你","hints":["截圖可以永久保存，即使刪除咗都已經流出。你知道網上言論既後果嗎？","網上霸凌既傷害係持續性既，因為圖片可以被不斷轉發。","如果見到你唔鍾意既言論，可以report block。沉默既旁觀者其實變相幫兇。"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50}],"options":[{"id":"s-h1-a","text":"發脾氣鬧全班","effects":[{"character":"小傑","change":-15,"comment":"越好激動但冇人理，状況仲越鬧越大","moralChange":-8}],"next_scenario":null},{"id":"s-h1-b","text":"搵家長幫手","effects":[{"character":"小傑","change":5,"comment":"媽媽幫你report上去，發布者被記名","moralChange":8}],"next_scenario":null}],"topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"你發現有人係班Group度發你既相，加啱衰caption全班笑你 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-h2","title":"關卡：秘密被公開","location":"home","background":"家中・夜晚","description":"你發現小傑爆咗你既秘密出去，全班笑你","hints":["如果係你既秘密俾人公開，你會點？你希望點被對待？","信任係友誼既基礎，如果信任被打破，就好難修復。","如果你知道咗别人既秘密，問一問自己：「如果是我，我想佢點處理？」"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50}],"options":[{"id":"s-h2-a","text":"話我以後都唔同你做朋友","effects":[{"character":"小傑","change":-25,"comment":"小傑話洗鬼理你，你兩個反面","moralChange":-8}],"next_scenario":null},{"id":"s-h2-b","text":"原諒佢，但講多次不可以","effects":[{"character":"小傑","change":10,"comment":"小傑話sorry，你学識咗原諒同設定界線","moralChange":8}],"next_scenario":null}],"topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"你發現小傑爆咗你既秘密出去，全班笑你 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-h3","title":"關卡：電玩霸權","location":"home","background":"家中・夜晚","description":"你同表弟一齊打電玩，表弟話：「你住手！我話晒點玩！」","hints":["排隊係唯一可以去園地玩既方法。如果係你，你會唔會想每次都排？","輪流代表公平，而唔係邊個大聲就邊個玩。","可以提議：「不如我哋抽籤決定邊個下一個？」"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50}],"options":[{"id":"s-h3-a","text":"發脾氣唔玩","effects":[{"character":"表弟","change":-10,"comment":"表弟話正好，我可以自己玩","moralChange":-8}],"next_scenario":null},{"id":"s-h3-b","text":"話我哋輪流做主將","effects":[{"character":"表弟","change":15,"comment":"表弟話好啦，一人一關！你哋玩得好開心","moralChange":8}],"next_scenario":null}],"topicId":"emotions","creedIds":[1,5,7],"imagePrompt":"你同表弟一齊打電玩，表弟話：「你住手！我話晒點玩！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-h5","title":"關卡： family group排除","location":"home","background":"家中・夜晚","description":"WhatsApp family group入面，大家傾trip既時候冇叫埋你...","hints":["如果你俾屋企人忽略，你會係咩心情？你有冇試過表達？","有時家人專注於其他事情，唔係因為唔愛我，但忽視確實會傷害人。","可以說：「我兩想要你哋今晚陪我傾一傾計。」"],"characters":[{"name":"小傑","emoji":"👨","initial_relationship":50}],"options":[{"id":"s-h5-a","text":"問「點解唔叫我」","effects":[{"character":"爸爸","change":10,"comment":"爸爸話以為你唔想去...下次一定叫埋你","moralChange":8}],"next_scenario":null},{"id":"s-h5-b","text":"自己一個發脾氣，闹點解冇叫我","effects":[{"character":"爸爸","change":-15,"moralChange":-20,"comment":"爸爸話：「你自己冇出聲，點知我唔叫你？」..."}],"next_scenario":null},{"id":"s-h5-c","text":"主動走去問爸爸：「下次family trip可唔可以叫埋我？」","effects":[{"character":"爸爸","change":20,"moralChange":20,"comment":"爸爸笑話：「好呀，下次一定叫埋你！我以為你今次冇興趣...」"}],"next_scenario":null}],"topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"WhatsApp family group入面，大家傾trip既時候冇叫埋你... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-b3","title":"關卡：唔小心整親人","location":"break","background":"走廊・晏晝","description":"你跑既時候唔小心撞跌咗小美，佢膝頭哥擦損埋...","hints":["整跌花盆係意外，但呃人話係風吹跌就變成兩個問題。你係都會想承認錯誤？","承認錯誤需要勇氣，但係會令人更加尊重你。","可以話：「老師，對唔住，我整跌咗，我幫你執整佢。」"],"characters":[{"name":"小美","emoji":"👩‍🎓","initial_relationship":50}],"options":[{"id":"s-b3-a","text":"即刻走","effects":[{"character":"小美","change":-30,"comment":"小美喊住搵老師話你既衰嘢","moralChange":-8}],"next_scenario":null},{"id":"s-b3-b","text":"話對唔住！你有冇事？","effects":[{"character":"小美","change":15,"comment":"你扶埋佢去醫療室，變咗英雄","moralChange":8}],"next_scenario":null}],"topicId":"emotions","creedIds":[1,5,7],"imagePrompt":"你跑既時候唔小心撞跌咗小美，佢膝頭哥擦損埋... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-b4","title":"關卡：排擠","location":"break","background":"操場・晏晝","description":"你想join既同學玩，但佢話：「你呢個人曳曳，我們唔想你join」","hints":["被排除係group chat以外，係咩感覺？如果係你，你會點？","排擠係一種隱形既傷害，因為其他人可能根本唔知道。","如果唔關佢事先，可以主動走埋去：「我想要你一齊玩。」"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50}],"options":[{"id":"s-b4-a","text":"自己一個玩","effects":[{"character":"小傑","change":0,"comment":"你自己一個，但發現原來一個都可以好好玩","moralChange":5}],"next_scenario":null},{"id":"s-b4-b","text":"搵第二班朋友","effects":[{"character":"小傑","change":5,"comment":"搵到新朋友，仲開心","moralChange":8}],"next_scenario":null}],"topicId":"respect","creedIds":[4,5],"imagePrompt":"你想join既同學玩，但佢話：「你呢個人曳曳，我們唔想你join」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-c3","title":"關卡：抄橋","location":"classroom","background":"課室・上堂","description":"考試既時候，你見到隔離同學想睇你既答案...","hints":["借功課比人抄，你幫佢除咗一時，但佢係咪學識咗？你又損失啲咩？","抄功課唔會令你真正學識，而借出功課既你就係幫兇。","可以話：「我可以教你，但唔可以直接借你。」"],"characters":[{"name":"小傑","emoji":"👨‍🎓","initial_relationship":50}],"options":[{"id":"s-c3-a","text":"借比佢","effects":[{"character":"小傑","change":5,"comment":"但係之後你兩個都fail...老師話如果包庇都會照罰","moralChange":8}],"next_scenario":null},{"id":"s-c3-b","text":"話「我，都想做啱既事」","effects":[{"character":"小傑","change":10,"comment":"小傑話sorry，我自己想辦法","moralChange":8}],"next_scenario":null}],"topicId":"honesty","creedIds":[2,6],"imagePrompt":"考試既時候，你見到隔離同學想睇你既答案... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-c4","title":"關卡：呃老師","location":"classroom","background":"課室・上堂","description":"功課冇做，你諗緊如果要呃老師話「唔記得帶」...","hints":["呃老師話你媽媽有病所以唔記錄，你係佢，你會幾擔心？","呃人既快樂係短暫既，但被拆穿既後果係長期既。","遲到係小事，可以解釋遲到既原因，同埋遲到多久。"],"characters":[{"name":"老師","emoji":"👩‍🏫","initial_relationship":50}],"options":[{"id":"s-c4-a","text":"話冇做，sorry","effects":[{"character":"老師","change":10,"comment":"老師話有錯就改，下次做齊佢","moralChange":8}],"next_scenario":null},{"id":"s-c4-b","text":"呃話「唔記得帶」","effects":[{"character":"老師","change":-10,"comment":"老師話下次唔好再，仲留堂...好羞恥","moralChange":-8}],"next_scenario":null}],"topicId":"honesty","creedIds":[2,6],"imagePrompt":"功課冇做，你諗緊如果要呃老師話「唔記得帶」... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-c5","title":"道德關卡：考試作弊","background":"考試期間","description":"你發現你最好的朋友小明正在抄隔壁同學的答案。他成績一向不太好，如果被發現一定會被記過。你應該點做？","characters":[{"name":"小明","emoji":"👦","initial_relationship":70}],"hints":["如果你係小強，你希望朋友點幫你？幫你作弊定係阻止你？","一時既高分唔值得學壞規矩。你希望有真材實學定係得個高分？","友誼係包括喺朋友做錯時指出問題，呢個先係真正既朋友。"],"options":[{"id":"s-c5-a","text":"假装睇唔到，等佢自己決定","effects":[{"character":"小明","change":5,"moralChange":-10,"comment":"小明之後高分但被懷疑，你幫佢散除嫌疑..."}],"next_scenario":null},{"id":"s-c5-b","text":"輕聲提佢「有人望過來」提醒佢","effects":[{"character":"小明","change":15,"moralChange":10,"comment":"小明即刻停咗，之後多謝你提醒..."}],"next_scenario":null},{"id":"s-c5-c","text":"立即告知老師","effects":[{"character":"小明","change":-30,"moralChange":10,"comment":"小明被記過，覺得你出賣咗佢..."}],"next_scenario":null}],"topicId":"respect","creedIds":[4,5],"imagePrompt":"你發現你最好的朋友小明正在抄隔壁同學的答案。他成績一向不太好，如果被發現一定會被記過。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-c6","title":"道德關卡：拾金不昧","background":"小息時間・走廊","description":"你在走廊執到一百元，幾張紅色鈔票。你抬頭望見小明正低頭走過，唔知係咪佢丢既。你應該點做？","characters":[{"name":"小明","emoji":"👦","initial_relationship":60}],"hints":["一百元可以買很多零食，但係係唔係屬於你？如果係你丢咗，你希望點？","誠實會令人內心平安，而呃呃騙騙會令人終日提心吊膽。","如果唔記得系邊個丢既，可以話：「我丢低咗，應該有人來認領吧？」"],"options":[{"id":"s-c6-a","text":"自己收起來，認為「執到就係我」","effects":[{"character":"小明","change":-10,"moralChange":-20,"comment":"小明發現丢了錢，周圍搵，喊咗..."}],"next_scenario":null},{"id":"s-c6-b","text":"交去訓導處，等人認領","effects":[{"character":"小明","change":15,"moralChange":25,"comment":"小明找回金錢，多謝你！老師赞你誠實！"}],"next_scenario":null},{"id":"s-c6-c","text":"問小明係咪丢咗錢","effects":[{"character":"小明","change":20,"moralChange":15,"comment":"小明確認係佢既，多謝你拾金不昧！"}],"next_scenario":null}],"topicId":"honesty","creedIds":[2,6],"imagePrompt":"你在走廊執到一百元，幾張紅色鈔票。你抬頭望見小明正低頭走過，唔知係咪佢丢既。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-c7","title":"道德關卡：網絡欺凌","background":"回家後・手機","description":"你在同學群組看到有人post咗小宇的醜相片，大家都在笑。你知呢張相片係被恶意PS過的，但係小宇唔知件事。你應該點做？","characters":[{"name":"小宇","emoji":"👦","initial_relationship":50}],"hints":["旁觀者沉默，係另一種既加害。如果係你被欺負，你希望點？","沉默唔係安全，係軟弱既表現。如果你唔出聲，就係幫緊欺負你的人。","勇敢話：「我覺得呢個並唔好笑，小宇一定好唔開心。」"],"options":[{"id":"s-c7-a","text":"和朋友一齊笑","effects":[{"character":"小宇","change":-20,"moralChange":-25,"comment":"你參與咗網絡欺凌，小宇發現後打俾媽媽喊..."}],"next_scenario":null},{"id":"s-c7-b","text":"退出群組，當作睇唔到","effects":[{"character":"小宇","change":0,"moralChange":-5,"comment":"你逃避咗，但係問題仍然存在..."}],"next_scenario":null},{"id":"s-c7-c","text":"私信小宇告知情況，並公開指責","effects":[{"character":"小宇","change":25,"moralChange":-10,"comment":"你保護咗小宇，雖然俾人話你串，但係你做咗啱既嘢！"}],"next_scenario":null}],"topicId":"respect","creedIds":[4,5],"imagePrompt":"你在同學群組看到有人post咗小宇的醜相片，大家都在笑。你知呢張相片係被恶意PS過的，但係小宇唔知件事。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-c8","title":"道德關卡：誠實的勇氣","background":"課室・朝早","description":"你不小心撞跌咗同學的文具，整爛咗佢最鐘意的筆。你認為老師不會發現係你，但係你內心知道應該承認。你應該點做？","characters":[{"name":"小明","emoji":"👦","initial_relationship":55}],"hints":["承認錯誤令人更受尊重，但係需要勇氣。你覺得小美啲感受？","用呃呃騙騙得到既讚美係虛假既。誠信既人才值得真正既尊重。","勇於承認過失，係建立信任既第一步。"],"options":[{"id":"s-c8-a","text":"快速執起整番好，當作冇事發生","effects":[{"character":"小明","change":5,"moralChange":-15,"comment":"小明發現筆有問題但係唔知係你整爛，你僥倖走過..."}],"next_scenario":null},{"id":"s-c8-b","text":"主動承認「我整爛咗，對不起」","effects":[{"character":"小明","change":20,"moralChange":20,"comment":"小明話：「算啦，你主動承認係好孩子。」"}],"next_scenario":null},{"id":"s-c8-c","text":"走去店鋪買過一支賠償俾佢","effects":[{"character":"小明","change":25,"moralChange":25,"comment":"小明話：「你係我見過最有擔當既人！」"}],"next_scenario":null}],"topicId":"honesty","creedIds":[2,6],"imagePrompt":"你不小心撞跌咗同學的文具，整爛咗佢最鐘意的筆。你認為老師不會發現係你，但係你內心知道應該承認。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-c9","title":"道德關卡：誠實的勇氣","background":"課室・朝早","description":"老師表揚咗你今次考試做得好，但你心知肚明，小明先係真正答啱大多數題目既人——你只係抄咗佢。你應該點做？","characters":[{"name":"小明","emoji":"👦","initial_relationship":60}],"hints":["事實最終都會被發現，不攻自破。如果係遲早，你寧願主動承認知被動拆穿？","虛假既光環唔會為你帶來尊嚴，只會成為笑柄。","主動承認，然後感謝老師比機會你補救。"],"options":[{"id":"s-c9-a","text":"接受讚賞，暗暗開心就好","effects":[{"character":"小明","change":-15,"moralChange":-20,"comment":"小明知道咗，覺得你好無恥..."}],"next_scenario":null},{"id":"s-c9-b","text":"私下同老師說明真實情況","effects":[{"character":"小明","change":20,"moralChange":25,"comment":"老師讚你誠實，小明多謝你為他發聲！"}],"next_scenario":null},{"id":"s-c9-c","text":"主動同小明道歉話「對唔住，我抄咗你」","effects":[{"character":"小明","change":25,"moralChange":30,"comment":"小明原諒咗你，你感覺肩膀輕咗！"}],"next_scenario":null}],"topicId":"honesty","creedIds":[2,6],"imagePrompt":"老師表揚咗你今次考試做得好，但你心知肚明，小明先係真正答啱大多數題目既人——你只係抄咗佢。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-door1","title":"特別關卡：教室門口","background":"課室・門口","description":"放學時，大家爭住冲出去。門口有兩個人：一個係要出去既同學，另一個係老師。老師話：「排隊，先出先後。」但前面既小明話：「我趕時間！」然後衝埋去門口。你呢？","characters":[{"name":"小明","emoji":"👦","initial_relationship":50}],"options":[{"id":"s-door1-a","text":"跟小明一齊衝出去","effects":[{"character":"小明","change":10,"moralChange":-20,"comment":"小明話：「你係我朋友！」但老師皺眉...你學壞咗。"}],"next_scenario":null},{"id":"s-door1-b","text":"排隊，等候老師指示","effects":[{"character":"小明","change":-10,"moralChange":15,"comment":"老師點頭話：「乖。」小明走咗過話：「你唔夠朋友呀！」但你做咗啱嘅嘢。"}],"next_scenario":null},{"id":"s-door1-c","text":"幫老師叫大家排隊","effects":[{"character":"小明","change":-5,"moralChange":25,"comment":"同學們開始排隊，小明望住你：「你做組長呀？」老師話：「好孩子！」"}],"next_scenario":null}],"hints":["如果每個人都話自己趕時間，係咪就可以随嘟衝出去？排隊既意義係咩？","守規則代表尊重自己同尊重他人。如果係你排緊隊，有人突然插隊，你會點？","你可以話：「小明，等一等啦，好快就到你了。排隊係大家都開心。」"],"topicId":"emotions","creedIds":[1,5,7],"imagePrompt":"放學時，大家爭住冲出去。門口有兩個人：一個係要出去既同學，另一個係老師。老師話：「排隊，先出先後。」但前面既小明話：「我趕時間！」然後衝埋去門口。你呢？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-door2","title":"特別關卡：門與安全","background":"走廊・樓梯口","description":"你見到小鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？","characters":[{"name":"小鋒","emoji":"🚪","initial_relationship":50}],"hints":["走廊有你既同學、老師、仲有其他人。環境安全係每個人既責任。","如果你發現有危險，你應該點做？沉默旁觀定係出手幫忙？","關心集體安全，唔净係為咗自己，仲為咗你身邊既每一個人。"],"options":[{"id":"s-door2-a","text":"走埋去話：「小鋒，門就嚟開喇，小心呀！」","effects":[{"character":"小鋒","change":30,"moralChange":25,"comment":"小鋒即刻停低，望住你：「你點知？」你話：「我見到你爬嚟爬去，擔心你整傷。」佢笑咗：「多謝你！」"}],"next_scenario":null},{"id":"s-door2-b","text":"行開當睇唔到（因為話俾佢知可能會得罪佢）","effects":[{"character":"小鋒","change":0,"moralChange":-10,"comment":"門突然打開，小鋒整傷咗手指...你心裡有少少內咎，如果你早啲提醒佢就好..."}],"next_scenario":null},{"id":"s-door2-c","text":"立即走去通知老師","effects":[{"character":"小鋒","change":-15,"moralChange":15,"comment":"老師即時趕到制止咗危險情況，但小鋒有少少唔高興：「你通知老師？」..."}],"next_scenario":null}],"topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"你見到小鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-door3","title":"特別關卡：開門與關門","background":"課室・午休","description":"午休時，你見到門係開住，但外面好嘈，有啲同學喺走廊跑嚟跑去。風吹啲紙張周圍飛。老師未返課室。你應該點做？","characters":[],"hints":["紙張飛嚟飛去，老師係圖書館管理員話唔可以open door。你知道點解嗎？","有時規矩唔係為咗限制，而係為咗保護大家既權利。","可以問老師：問我可以幫手執紙張嗎？主動提出係尊重規則既表現。"],"options":[{"id":"s-door3-a","text":"行去閂門，然後幫手執紙張","effects":[{"character":"小明","change":5,"moralChange":20,"comment":"你輕輕閂上門，執起啲紙張。其他同學望住你，有人話：「你幾好喎。」"}],"next_scenario":null},{"id":"s-door3-b","text":"自己走去閂門，唔理其他同學","effects":[{"character":"小明","change":10,"moralChange":-5,"comment":"你閂埋門，但同學話：「你做嘢呀？我哋仲要出去！」你只係為咗自己舒服..."}],"next_scenario":null},{"id":"s-door3-c","text":"坐返低，等老師返嚟先","effects":[{"character":"小明","change":0,"moralChange":0,"comment":"你坐返低，老師好快就返嚟。老師自己閂咗門，執起啲紙張。你冇做錯，但都冇幫手。"}],"next_scenario":null}],"topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"午休時，你見到門係開住，但外面好嘈，有啲同學喺走廊跑嚟跑去。風吹啲紙張周圍飛。老師未返課室。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-door4","title":"特別關卡：老師開門遲到","background":"課室・門口","description":"放學時，老師遲遲未開門。大家喺門口等緊，好嘈吵。小明話：「不如我自己開啦！」但老師未允許。你點睇？","characters":[{"name":"小明","emoji":"👦","initial_relationship":50},{"name":"老師","emoji":"👩‍🏫","initial_relationship":60}],"hints":["老師話排隊，但你自己都有事要出去。等一等係好難嗎？","信任係需要時間建立，如果你相信老師有原因，你等一等等幾耐？","可以有禮貌問：老師，我想...但係...老師通常都會理解。"],"options":[{"id":"s-door4-a","text":"跟小明一齊自己開門","effects":[{"character":"小明","change":15,"moralChange":-15,"comment":"小明話：「你係我朋友！」但老師見到皺眉，你學壞咗。"}],"next_scenario":null},{"id":"s-door4-b","text":"勸小明等老師指示，服從安排","effects":[{"character":"小明","change":-5,"moralChange":15,"comment":"小明話：「你唔夠朋友呀！」但老師點頭話：「乖。」你做咗啱嘅嘢。"},{"character":"老師","change":10,"moralChange":5,"comment":"老師話：「好孩子，有紀律。」"}],"next_scenario":null},{"id":"s-door4-c","text":"主動話：「小明，等老師啦，我哋排隊」","effects":[{"character":"小明","change":5,"moralChange":20,"comment":"小明望住你，有人跟住排隊。老師話：「好孩子！」"},{"character":"老師","change":15,"moralChange":10,"comment":"老師及時開門，讚賞你既耐心。"}],"next_scenario":null}],"topicId":"emotions","creedIds":[1,5,7],"imagePrompt":"放學時，老師遲遲未開門。大家喺門口等緊，好嘈吵。小明話：「不如我自己開啦！」但老師未允許。你點睇？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-door6","title":"特別關卡：關門紀律","background":"課室・上午","description":"上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。小鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師...","characters":[{"name":"小鋒","emoji":"🚪","initial_relationship":50},{"name":"老師","emoji":"👩‍🏫","initial_relationship":55}],"hints":["幫手係好意，但如果你幫手反而做成更大問題，係幫忙定係幫倒忙？","有時好心都會變成壞事，關鍵係方法。你會點選擇？","可以問：我幫手關門，但要點樣做先唔會打擾到人？"],"options":[{"id":"s-door6-a","text":"笑小鋒：「你整到好大聲呀！」","effects":[{"character":"小鋒","change":-15,"moralChange":-10,"comment":"小鋒好尷尬，其他人笑。老師皺眉望你..."},{"character":"老師","change":-10,"moralChange":-5,"comment":"老師認為你唔尊重同學。"}],"next_scenario":null},{"id":"s-door6-b","text":"輕聲話小鋒：「下次温柔啲啦」","effects":[{"character":"小鋒","change":15,"moralChange":15,"comment":"小鋒多謝你體諒，點點頭。老師見到你關心同學，微笑。"},{"character":"老師","change":10,"moralChange":5,"comment":"老師欣賞你嘅成熟處理方式。"}],"next_scenario":null},{"id":"s-door6-c","text":"主動走埋去，輕手輕腳閂好門","effects":[{"character":"小鋒","change":10,"moralChange":20,"comment":"你示範咗點樣安靜關門。小鋒學到嘢，老師滿意。"},{"character":"老師","change":15,"moralChange":10,"comment":"老師向你點點頭，繼續上課。"}],"next_scenario":null}],"topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。小鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new1","title":"關卡：新嚮室借嘢","background":"洗手間・小息時間","description":"小明發現自己廁紙唔夠，向你借。你今日得少量，但足夠自己用...","hints":["如果你話借，最後發現自己都冇，係咪變成一個大話？","分享係美德，但要先確保自己係咪真係有。如果冇就如實話。","可以話：我真係好想幫你，但我今日冇帶，你可以問其他人嗎？"],"characters":[{"name":"小明","emoji":"👦","initial_relationship":50}],"options":[{"id":"s-new1-a","text":"全部借晒俾佢","effects":[{"character":"小明","change":20,"moralChange":10,"comment":"小明多謝你！但你自己就冇得用...第二節課忍得辛苦。"}],"next_scenario":null},{"id":"s-new1-b","text":"拒絕話：「我都要用啊」","effects":[{"character":"小明","change":-10,"moralChange":-5,"comment":"小明有啲失望但表示理解。你覺得有点過意唔去..."}],"next_scenario":null},{"id":"s-new1-c","text":"分一半俾佢","effects":[{"character":"小明","change":15,"moralChange":15,"comment":"小明話：「多謝你分俾我！」你兩個都夠用，好人好己。"}],"next_scenario":null}],"location":"toilet","topicId":"respect","creedIds":[4,5],"imagePrompt":"小明發現自己廁紙唔夠，向你借。你今日得少量，但足夠自己用... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new2","title":"關卡：排隊定插隊？","background":"禮堂・集合時間","description":"到你排隊拎飯既時候，有人突然插入你前面。你認出佢係高年級既大舊...","hints":["如果係你排緊隊，有人插隊，你會點？憤怒定係啞忍？","面對權威唔一定要硬碰，但都要有禮貌咁表達你既立場。","可以大膽問：唔好意思，請問你係排我前面嗎？"],"characters":[{"name":"大舊","emoji":"🧔","initial_relationship":30}],"options":[{"id":"s-new2-a","text":"大聲喝止：「你排後啲去！」","effects":[{"character":"大舊","change":-15,"moralChange":-10,"comment":"大舊瞪你一眼，但知道你岩道理，靜靜走回後面排..."}],"next_scenario":null},{"id":"s-new2-b","text":"默默忍受唔出聲","effects":[{"character":"大舊","change":0,"moralChange":-15,"comment":"你覺得委屈，但唔敢出聲。心裡不舒服，但又觉得自己改變不了..."}],"next_scenario":null},{"id":"s-new2-c","text":"請老師幫手維持秩序","effects":[{"character":"大舊","change":-10,"moralChange":5,"comment":"老師過來話：「同學，排隊係基本紀律。」大舊望了你一眼..."}],"next_scenario":null}],"location":"hall","topicId":"emotions","creedIds":[1,5,7],"imagePrompt":"到你排隊拎飯既時候，有人突然插入你前面。你認出佢係高年級既大舊... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new4","title":"關卡：雨天冇晒傘","background":"校門口・放學時間","description":"放學時突然落大雨，你帶咗遮，但同學小美冇帶，佢望住天有啲發愁...","hints":["幫人係好意，但如果你淋濕咗感冒，到底係幫咗邊個？","關心別人之前，要先確保自己有能力幫忙，否則反而變成負擔。","可以提議：不如我哋一齊搵其他同學借？"],"characters":[{"name":"小美","emoji":"👩‍🎓","initial_relationship":55}],"options":[{"id":"s-new4-a","text":"話：「我送你到車牌度，一齊遮啦」","effects":[{"character":"小美","change":20,"moralChange":15,"comment":"小美好開心：「多謝你！」你兩個夾住一齊撐，順利到達。"}],"next_scenario":null},{"id":"s-new4-b","text":"把遮借俾佢，自己跑走去車牌","effects":[{"character":"小美","change":15,"moralChange":15,"comment":"小美話：「但你點算？」你濕晒跑回車牌，小美拎住遮好感激..."}],"next_scenario":null},{"id":"s-new4-c","text":"話：「不如等等，可能一陣就停」","effects":[{"character":"小美","change":5,"moralChange":0,"comment":"你兩個喺有蓋走廊等，雨真係慢慢細咗。小美話：「算啦，等停先！」"}],"next_scenario":null}],"location":"rainy","topicId":"respect","creedIds":[4,5],"imagePrompt":"放學時突然落大雨，你帶咗遮，但同學小美冇帶，佢望住天有啲發愁... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new5","title":"關卡：運動場單雙槓","background":"運動場・體育課","description":"體育課試跳遠，你見到另一組既小杰係度呃老師，話自己跳咗幾遠，但明明就差啲...","hints":["如果你話借話有，結果冇，你點收科？你寧願一時爽定長遠信譽？","誠實係基本，但誠實為別人帶來幾大影響要先諗清楚。","如果你之前答錯咗，可以真誠道歉：對唔住，我之前記錯咗。"],"characters":[{"name":"小杰","emoji":"🏃","initial_relationship":50}],"options":[{"id":"s-new5-a","text":"當場話：「喂，小杰你未跳到咁遠喎」","effects":[{"character":"小杰","change":-20,"moralChange":10,"comment":"小杰呆咗，老師走過嚟再量一次。「哦，真係差啲，再跳一次啦。」小杰塊面紅晒..."}],"next_scenario":null},{"id":"s-new5-b","text":"走過去私下話：「老師叫你自己再跳過」","effects":[{"character":"小杰","change":-5,"moralChange":5,"comment":"小杰知你提醒咗，怒視你一眼但又乖乖再跳。「算你知啦！」"}],"next_scenario":null},{"id":"s-new5-c","text":"扮晒事不關己，继续練習自己既","effects":[{"character":"小杰","change":0,"moralChange":-20,"comment":"你心諗：「關我鬼事...」但又覺得小杰咁樣做係唔啱..."}],"next_scenario":null}],"location":"sports","topicId":"honesty","creedIds":[2,6],"imagePrompt":"體育課試跳遠，你見到另一組既小杰係度呃老師，話自己跳咗幾遠，但明明就差啲... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new6","title":"關卡：飯堂唔記得带錢","background":"飯堂・午膳時間","description":"你排緊隊，前面既小福突然話：「衰咗，我唔記得带銀包！」佢望住你...","hints":["你借錢俾人，但人哋最後唔還。你下一次仲借唔借？","借錢涉及還錢問題，都要確保對方係可以還到。先考慮清楚。","如果唔記得带錢，可以嘗試提議：我下次請你食。"],"characters":[{"name":"小福","emoji":"🍱","initial_relationship":50}],"options":[{"id":"s-new6-a","text":"話：「你要幾多？我借你啦」","effects":[{"character":"小福","change":20,"moralChange":10,"comment":"小福話：「多謝！下次还你！」你借咗30蚊俾佢..."}],"next_scenario":null},{"id":"s-new6-b","text":"話：「唔好意思，我今餐都唔夠」","effects":[{"character":"小福","change":-5,"moralChange":0,"comment":"小福有啲失望，但知道真係冇辦法。佢問後面同學..."}],"next_scenario":null},{"id":"s-new6-c","text":"話：「我請你啦，唔使還」","effects":[{"character":"小福","change":20,"moralChange":15,"comment":"小福好感激：「真係唔使還？太謝謝你！」"}],"next_scenario":null}],"location":"canteen","topicId":"respect","creedIds":[4,5],"imagePrompt":"你排緊隊，前面既小福突然話：「衰咗，我唔記得带銀包！」佢望住你... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new8","title":"關卡：唔記得带功课","background":"課室・朝早","description":"朝早老師話：「邊個未做完功课？」你心知自己就係其中一個，但你真係唔記得带張紙...","hints":["如果你冇帶功課，呃老師話冇帶到，同承認冇帶邊個嚴重？","承認錯誤係需要勇氣，但老師通常會明白，呃人先係大問題。","可以話：老師，對唔住，我今朝忘記咗，我明日補交可以嗎？"],"characters":[{"name":"老師","emoji":"👩‍🏫","initial_relationship":55}],"options":[{"id":"s-new8-a","text":"立即舉手話：「我唔記得带張紙，但係我做咗」","effects":[{"character":"老師","change":15,"moralChange":10,"comment":"老師話：「好，做咗就得，下次記得带。下課來我呢度補交。」"}],"next_scenario":null},{"id":"s-new8-b","text":"扮同學抄","effects":[{"character":"老師","change":-20,"moralChange":-15,"comment":"老師发現：「你兩個係同一個錯？抖你鶴係呃人！」你兩個被罚留堂..."}],"next_scenario":null},{"id":"s-new8-c","text":"縮埋一邊，希望老師唔注意到自己","effects":[{"character":"老師","change":-5,"moralChange":-5,"comment":"老師真係注意到你：「你呢位同學，唔記得带同未做都係兩件事喔。」你面紅了..."}],"next_scenario":null}],"location":"classroom","topicId":"emotions","creedIds":[1,5,7],"imagePrompt":"朝早老師話：「邊個未做完功课？」你心知自己就係其中一個，但你真係唔記得带張紙... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new9","title":"關卡：勇於承認","background":"洗手間・活動時間","description":"你整爛咗洗手間門口個鏡，心諗：「冇人仔注意到呢...」但你心知道自己衰咗...","hints":["承認錯誤需要好大勇氣，但係成長既必經階段。你叫過幾多次對唔住？","勇氣唔係天生就係，係靠一次一次咁練習出嚟。","今日邁出一步，主動承認，你就會發現其實冇想象中咁難。"],"characters":[{"name":"老師","emoji":"👩‍🏫","initial_relationship":50}],"options":[{"id":"s-new9-a","text":"主動走去找老師話：「對唔住，係我整爛個鏡」","effects":[{"character":"老師","change":20,"moralChange":25,"comment":"老師呆咗，然后話：「難得你有勇氣承認，你係好孩子。呢個我会記錄，但唔會罰你。」你心口大石放低！"}],"next_scenario":null},{"id":"s-new9-b","text":"走為上著，扮晒冇事","effects":[{"character":"老師","change":-10,"moralChange":-10,"comment":"你成日好驚，擔心老師會查監視器。同學叫你，你都心不在焉..."}],"next_scenario":null},{"id":"s-new9-c","text":"寫一張匿名紙條解釋事件","effects":[{"character":"老師","change":10,"moralChange":15,"comment":"老師收到匿名紙條，話：「有人整爛咗但願意承認，幾好。但我希望大家直接嚟搵我。」"}],"next_scenario":null}],"location":"toilet","topicId":"honesty","creedIds":[2,6],"imagePrompt":"你整爛咗洗手間門口個鏡，心諗：「冇人仔注意到呢...」但你心知道自己衰咗... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new10","title":"關卡：關懷新同學","background":"禮堂・新生簡介會","description":"今日有新同學小玲轉過來，佢坐係一角冇人理。你听到其他同學話：「呢個係新來ga咋嘛...」","hints":["新同學第一次嚟到，完全唔識人。你有冇諗過主動走過去打招呼？","新環境開始冇朋友係好孤獨既事，一句說話可以改變一切。","你可以行過去話：你好，我係...，你想唔想一齊食午餐？"],"characters":[{"name":"小玲","emoji":"👧","initial_relationship":50}],"options":[{"id":"s-new10-a","text":"走過去自我介紹：「你係新同學？我叫小明，請問你叫咩名？」","effects":[{"character":"小玲","change":25,"moralChange":15,"comment":"小玲呆咗，然后笑：「我叫小玲！多謝你嚟......」你帶佢認識其他同學！"}],"next_scenario":null},{"id":"s-new10-b","text":"對其他人話：「你哋唔好咁樣衰幾，新同學會難堪ga」","effects":[{"character":"小玲","change":10,"moralChange":10,"comment":"其他人縮一縮，但小玲望到你為佢出聲，心裡有啲感動..."}],"next_scenario":null},{"id":"s-new10-c","text":"自己玩自己，冇特别理踩","effects":[{"character":"小玲","change":-10,"moralChange":0,"comment":"小玲成日都係一個坐，見到你地傾偈好羡慕，但又唔敢行過去..."}],"next_scenario":null}],"location":"hall","topicId":"respect","creedIds":[4,5],"imagePrompt":"今日有新同學小玲轉過來，佢坐係一角冇人理。你听到其他同學話：「呢個係新來ga咋嘛...」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new11","title":"關卡：誠實面對","background":"圖書館・溫習時","description":"你借咗圖書館本書，到期咗都未睇完，本嚟可以攤30日，但圖書館話比你攤2本，你已經攤晒...","hints":["如果你圖書館借咗書，唔記得仲書，可能影響到其他人借唔借到。","圖書館既規則係為公平，如果人人都咁做就冇人借到。","可以盡快還書，或者打電話去圖書館話會晚少少還。"],"characters":[{"name":"圖書館老師","emoji":"👩‍🏫","initial_relationship":55}],"options":[{"id":"s-new11-a","text":"主動解釋：「我可以點樣還？我真係好想做功課但未做完」","effects":[{"character":"圖書館老師","change":20,"moralChange":20,"comment":"老師話：「我明白你有心，呢個我讓你先溫習，下周還就得。」"}],"next_scenario":null},{"id":"s-new11-b","text":"走去圖書館話：「我想要更多時間，可以嘛？」","effects":[{"character":"圖書館老師","change":15,"moralChange":10,"comment":"老師話：「好，基於你主動嚟傾，我可以再比你一個禮拜。但下次要早啲还啊。」"}],"next_scenario":null},{"id":"s-new11-c","text":"走去圖書館話：「我想要更多時間，可以嘛？」","effects":[{"character":"圖書館老師","change":15,"moralChange":10,"comment":"老師話：「好，基於你主動嚟傾，我可以再比你一個禮拜。但下次要早啲还啊。」"}],"next_scenario":null}],"location":"library","topicId":"honesty","creedIds":[2,6],"imagePrompt":"你借咗圖書館本書，到期咗都未睇完，本嚟可以攤30日，但圖書館話比你攤2本，你已經攤晒... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new12","title":"關卡：面对冲突","background":"運動場・課外活動","description":"足球比賽，小璋話你打佢，但你只係輕輕掽咗佢一下。佢向老師告你好大打人...","hints":["有時誤會係因為雙方理解唔同。你有冇試過先入為主覺得人哋係錯？","耐心解釋可以化解問題，但首先你要願意聆聽。","可以話：我聽到你咁講，我有啲唔明白，可以解釋多少少嗎？"],"characters":[{"name":"小璋","emoji":"⚽","initial_relationship":35},{"name":"老師","emoji":"👨‍🏫","initial_relationship":55}],"options":[{"id":"s-new12-a","text":"冷靜話俾老師知：「我係輕輕掽到，但佢話我大打人」","effects":[{"character":"小璋","change":-10,"moralChange":5,"comment":"老師話：「我明白，足球係要有身體接觸既運動。但小璋你話大打人就太誇張喇。」"}],"next_scenario":null},{"id":"s-new12-b","text":"大鬧：「你呃人！我只係掽到你！」","effects":[{"character":"小璋","change":-20,"moralChange":-10,"comment":"老師話：「你兩個冷靜啲！吵架唔可以解決問題。」你兩個都被罚坐下。"}],"next_scenario":null},{"id":"s-new12-c","text":"走向小璋：「我知你一定好嬲，但我真係唔係特登。你有冇邊度整親？」","effects":[{"character":"小璋","change":5,"moralChange":15,"comment":"小璋呆咗，没諗到你會行過去關心。佢話：「...我手臂有啲痛，但唔關你事。」"}],"next_scenario":null}],"location":"sports","topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"足球比賽，小璋話你打佢，但你只係輕輕掽咗佢一下。佢向老師告你好大打人... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new13","title":"關卡：誠實既勇氣","background":"課室・小息","description":"你整爛咗窗簾，但冇人睇到。老師問：「係邊個整爛嘅？」...","hints":["冇人睇到唔代表可以做假。如果耶穌知道你做緊咩，你會點做？","誠信係為咗自己，唔係為咗俾人睇到。良心係最後既審判官。","選擇誠實，即使冇人知道，因為你自己知道。"],"characters":[{"name":"老師","emoji":"👨‍🏫","initial_relationship":50}],"options":[{"id":"s-new13-a","text":"舉手：「老師，對唔住，係我整爛嘅。」","effects":[{"character":"老師","change":15,"moralChange":10,"comment":"老師微笑話：「你敢認就好，你係個有勇氣既人。」"}],"next_scenario":null},{"id":"s-new13-b","text":"話係風吹爛嘅，扮作唔關事","effects":[{"character":"老師","change":-15,"moralChange":-10,"comment":"老師話：「風係吹唔爛布簾既...」你心裏有啲唔舒服。"}],"next_scenario":null},{"id":"s-new13-c","text":"出信話：「我見到有人整爛，但我唔知係邊個。」","effects":[{"character":"老師","change":-5,"moralChange":0,"comment":"老師話：「你係見到，但選擇唔幫手搵答案。」"}],"next_scenario":null}],"location":"classroom","topicId":"honesty","creedIds":[2,6],"imagePrompt":"你整爛咗窗簾，但冇人睇到。老師問：「係邊個整爛嘅？」... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new15","title":"關卡：團隊合作","background":"教室・分組活動","description":"分組做 project，你發覺組員小明成日發夢，唔做嘢...","hints":["如果你見到同學唔專心，你可以點幫手？大聲提醒定係悄悄話？","可以提醒佢，幫助佢專心。但提醒都要顧及人哋既面子。","可以悄悄話：呢度老師話...或者遞張字條。"],"characters":[{"name":"小明","emoji":"👦","initial_relationship":35}],"options":[{"id":"s-new15-a","text":"請佢一齊做：「我地一組，你負責揀圖片好唔好？」","effects":[{"character":"小明","change":15,"moralChange":10,"comment":"小明笑：「好！我最鍾意揀圖！」佢開始認真做。"}],"next_scenario":null},{"id":"s-new15-b","text":"自己幫佢做晒，反正快啲","effects":[{"character":"小明","change":-5,"moralChange":-5,"comment":"小明繼續發夢，你做完晒但好攰。"}],"next_scenario":null},{"id":"s-new15-c","text":"鬧佢：「你做嘢啦！」","effects":[{"character":"小明","change":-20,"moralChange":-10,"comment":"小明嬲咗：「你憑咩鬧我！」組入面鬧大件事。"}],"next_scenario":null}],"location":"classroom","topicId":"emotions","creedIds":[1,5,7],"imagePrompt":"分組做 project，你發覺組員小明成日發夢，唔做嘢... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new16","title":"關卡：尊重別人","background":"電腦室・課堂活動","description":"同學小琳分享佢既畫，你覺得好樣衰，想笑...","hints":["如果你批評人哋的作品，人哋會點諗？每個人既作品都值得尊重。","即使你唔同意，都可以禮貌咁表達。你會希望點俾人批評？","可以話：我有些地方唔太明白，可唔可以解釋一下？"],"characters":[{"name":"小琳","emoji":"👧","initial_relationship":40}],"options":[{"id":"s-new16-a","text":"笑話：「哈哈哈哈！你畫啲乜嘢嚟嘅！」","effects":[{"character":"小琳","change":-25,"moralChange":-15,"comment":"小琳喊咗：「你做咩笑我...」其他同學望向你。"}],"next_scenario":null},{"id":"s-new16-b","text":"忍住笑，禮貌話：「我覺得可以再畫好啲。」","effects":[{"character":"小琳","change":5,"moralChange":5,"comment":"小琳話：「我再畫過啦...」佢冇太難過。"}],"next_scenario":null},{"id":"s-new16-c","text":"真心地讚：「呢度好有創意，我鍾意你用嘅顏色！」","effects":[{"character":"小琳","change":20,"moralChange":15,"comment":"小琳笑：「多謝你！我再畫多啲！」"}],"next_scenario":null}],"location":"computer","topicId":"respect","creedIds":[4,5],"imagePrompt":"同學小琳分享佢既畫，你覺得好樣衰，想笑... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new17","title":"關卡：聆聽他人","background":"圖書館・自習時間","description":"同學小華話佢屋企有事，聲音好細咁講，你專心睇書...","hints":["聆聽係一種尊重，等於話你講既嘢我當認真看待。你有冇試過真係用心聽？","聆聽唔係等緊打斷人，而係等緊明白。你可以視為一個學習機會。","試下等佢講完，你先回應。你會發現對話品質好唔同。"],"characters":[{"name":"小華","emoji":"👦","initial_relationship":35}],"options":[{"id":"s-new17-a","text":"停低睇書，專心聽佢講：「我聽緊，你繼續。」","effects":[{"character":"小華","change":25,"moralChange":15,"comment":"小華感動：「多謝你...我爸爸住院了。」你陪伴佢直到小息完結。"}],"next_scenario":null},{"id":"s-new17-b","text":"一邊睇書一邊聽，點頭回應","effects":[{"character":"小華","change":5,"moralChange":0,"comment":"小華：「嗯...算啦，冇嘢...」佢走開咗。"}],"next_scenario":null},{"id":"s-new17-c","text":"話：「我忙緊聽，你陣間再講。」","effects":[{"character":"小華","change":-20,"moralChange":-10,"comment":"小華冇出聲，但眼中有啲失望。"}],"next_scenario":null}],"location":"library","topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"同學小華話佢屋企有事，聲音好細咁講，你專心睇書... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new18","title":"關卡：承認錯誤","background":"操場・體育課","description":"你排籃球時唔小心整跌咗另一位同學，佢整損咗膝頭...","hints":["整跌人要道歉，係基本禮貌。但點解咁多人做唔到？","道歉唔係代表你認輸，但係代表你願意為自己既行為負責。","可以話：對唔住，我整跌咗你既...我幫你整返好。"],"characters":[{"name":"大雄","emoji":"🏃","initial_relationship":40}],"options":[{"id":"s-new18-a","text":"立刻道歉並扶起佢：「對唔住！我帶你去處理傷口！」","effects":[{"character":"大雄","change":20,"moralChange":15,"comment":"大雄：「算啦，唔洗咁緊張...但多謝你。」佢接受你去校務處。"}],"next_scenario":null},{"id":"s-new18-b","text":"話：「你自己唔小心，關我咩事！」","effects":[{"character":"大雄","change":-30,"moralChange":-20,"comment":"大雄嬲咗：「你整跌我竟然仲咁寸！」老師走埋嚟。"}],"next_scenario":null},{"id":"s-new18-c","text":"跑走咗，扮作冇事發生","effects":[{"character":"大雄","change":-25,"moralChange":-15,"comment":"其他同學話：「你整跌人就跑！」你名聲變差。"}],"next_scenario":null}],"location":"sports","topicId":"emotions","creedIds":[1,5,7],"imagePrompt":"你排籃球時唔小心整跌咗另一位同學，佢整損咗膝頭... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new19","title":"關卡：拒絕欺凌","background":"洗手間・小息時間","description":"你見到幾個同學埋堆笑一位同學，仲話低價錢要整佢...","hints":["欺凌係錯既，但旁觀者沉默就等於幫兇。你可以點幫手？","唔做旁觀者，你可以做幫手。一個簡單既行動可以改變局面。","可以走埋去話：你冇嘢嘛？或者通知老師。"],"characters":[{"name":"小志","emoji":"😢","initial_relationship":30}],"options":[{"id":"s-new19-a","text":"走出去話：「你地做咩蝦人！我要去告訴老師！」","effects":[{"character":"小志","change":25,"moralChange":20,"comment":"小志眼中有啲希望，其他人散去。老師讚你勇敢。"}],"next_scenario":null},{"id":"s-new19-b","text":"跟住笑：「哈哈哈！係囉，佢幾醜樣！」","effects":[{"character":"小志","change":-30,"moralChange":-20,"comment":"小志望向你，眼淚汪汪。你心入面有啲難受。"}],"next_scenario":null},{"id":"s-new19-c","text":"行開咗，扮作睇唔到","effects":[{"character":"小志","change":-10,"moralChange":-20,"comment":"你心入面有個聲音話：「其實我可以做多啲...」"}],"next_scenario":null}],"location":"toilet","topicId":"respect","creedIds":[4,5],"imagePrompt":"你見到幾個同學埋堆笑一位同學，仲話低價錢要整佢... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new20","title":"關卡：誠實回應","background":"課室・課堂討論","description":"老師問你同學小張既答案你係咪幫咗佢，你答係...","hints":["如果你幫朋友做完功課，係幫佢定係害佢？你想要友誼定係誠信？","幫助朋友係好事，但唔可以幫佢做曬。你幫佢解決一時，但佢冇學到。","可以話：我可以教你，但我唔會帮你做起。"],"characters":[{"name":"小張","emoji":"👦","initial_relationship":45},{"name":"老師","emoji":"👨‍🏫","initial_relationship":50}],"options":[{"id":"s-new20-a","text":"點頭：「係，我幫咗佢，因為佢唔識。」","effects":[{"character":"小張","change":15,"moralChange":10,"comment":"老師話：「你幫助同學係好事，但下次要鼓勵他自己做。」"}],"next_scenario":null},{"id":"s-new20-b","text":"話：「冇！我係自己答！」","effects":[{"character":"小張","change":-5,"moralChange":-15,"comment":"老師笑：「但你答法同小張一模一样喔...」你面紅咗。"}],"next_scenario":null},{"id":"s-new20-c","text":"話：「我地一齊諗，我解釋俾佢聽。」","effects":[{"character":"小張","change":20,"moralChange":15,"comment":"老師讚賞：「呢個係最好既學習方式！」"}],"next_scenario":null}],"location":"classroom","topicId":"conflict","creedIds":[2,5,7],"imagePrompt":"老師問你同學小張既答案你係咪幫咗佢，你答係... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-new22","title":"關卡：責任感","background":"課室・課後","description":"今日係你值日，但你好想走咗去同朋友玩...","hints":["責任係要完成既，就算唔想做。你上一次完成責任係幾時？","責任感唔係天生成，而係靠每一日每一件事累積出嚟。","完成呢個責任，你會為自己感到驕傲，即使冇人知。"],"characters":[{"name":"小琪","emoji":"👧","initial_relationship":40}],"options":[{"id":"s-new22-a","text":"留低做值日，做完先去玩","effects":[{"character":"小琪","change":15,"moralChange":15,"comment":"小琪話：「你做嘢咁叻！我陪你一齊整！」你做好值日先去玩。"}],"next_scenario":null},{"id":"s-new22-b","text":"話：「你幫我做啦，我請你食嘢！」","effects":[{"character":"小琪","change":-10,"moralChange":-10,"comment":"小琪皯眉：「但係老師話係你值日喔...」"}],"next_scenario":null},{"id":"s-new22-c","text":"跑走咗，扮作冇事","effects":[{"character":"小琪","change":-15,"moralChange":-15,"comment":"老師第二日話：「你走咗去，係唔負責任既表現。」"}],"next_scenario":null}],"location":"classroom","topicId":"emotions","creedIds":[1,5,7],"imagePrompt":"今日係你值日，但你好想走咗去同朋友玩... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"},{"id":"s-self-01","title":"自我保護：媽媽安慰","background":"家中・晚上","description":"你哭咗，媽媽輕輕幫你抹眼淚，問你發生咩事。","hints":["呢個係好接觸，因為係家人關心你。","好接觸會令你感覺安全同舒服。"],"characters":[{"name":"媽媽","emoji":"👩","initial_relationship":80}],"options":[{"id":"s-self-01-a","text":"接受安慰，話畀媽媽聽","effects":[{"character":"媽媽","change":10,"moralChange":15,"comment":"你好勇敢！媽媽好開心你信任佢。"}],"next_scenario":"s-self-02"},{"id":"s-self-01-b","text":"推開媽媽","effects":[{"character":"媽媽","change":-5,"moralChange":-10,"comment":"媽媽會擔心你..."}],"next_scenario":null}],"location":"home","topicId":"self-protection","creedIds":[1,5],"imagePrompt":"A young Chinese boy with teary eyes, gentle mother wiping tears, warm home setting, anime cartoon style, soft pastel, expressive, no text, 16:9"},{"id":"s-self-02","title":"自我保護：同學讚賞","background":"課室・小息","description":"同學輕輕拍你肩膀，讚你做得好。","hints":["呢個係好接觸，朋友之間嘅鼓勵。","好接觸要雙方都開心。"],"characters":[{"name":"同學","emoji":"👦","initial_relationship":60}],"options":[{"id":"s-self-02-a","text":"笑住接受","effects":[{"character":"同學","change":10,"moralChange":10,"comment":"你令朋友都開心！"}],"next_scenario":"s-self-03"},{"id":"s-self-02-b","text":"覺得奇怪，走開","effects":[{"character":"同學","change":-5,"moralChange":-5,"comment":"朋友可能會誤會..."}],"next_scenario":null}],"location":"classroom","topicId":"self-protection","creedIds":[1],"imagePrompt":"Happy boy patted on shoulder by smiling classmate, school playground, anime cartoon style, warm tones, no text, 16:9"},{"id":"s-self-03","title":"自我保護：陌生人摸大腿","background":"公園・玩耍","description":"一個陌生人突然摸你大腿，你覺得好唔舒服。","hints":["呢個係壞接觸！即刻離開。","壞接觸要大聲講「唔好」同搵大人。"],"characters":[{"name":"陌生人","emoji":"👤","initial_relationship":20}],"options":[{"id":"s-self-03-a","text":"大聲講「唔好」然後跑向媽媽","effects":[{"character":"陌生人","change":-20,"moralChange":20,"comment":"你好勇敢！安全第一！"}],"next_scenario":"s-self-04"},{"id":"s-self-03-b","text":"忍住唔聲張","effects":[{"character":"陌生人","change":5,"moralChange":-15,"comment":"記住：壞接觸一定要講出嚟！"}],"next_scenario":null}],"location":"park","topicId":"self-protection","creedIds":[5,7],"imagePrompt":"Young boy looking uncomfortable as stranger touches thigh, warning scene, anime cartoon style, expressive worried face, no text, 16:9"},{"id":"s-self-04","title":"自我保護：叔叔摸頭","background":"學校門口","description":"一個叔叔摸你頭髮說「乖乖」，你覺得怪怪地。","hints":["陌生人摸頭都可能係壞接觸。","即刻搵老師或媽媽。"],"options":[{"id":"s-self-04-a","text":"即刻跑去搵老師","effects":[{"moralChange":15,"comment":"正確！陌生人嘅好意都要小心。"}],"next_scenario":"s-self-05"},{"id":"s-self-04-b","text":"笑住留低","effects":[{"moralChange":-10,"comment":"記住安全最重要。"}],"next_scenario":null}],"location":"school_gate","topicId":"self-protection","creedIds":[5],"imagePrompt":"Young girl uneasy as uncle touches hair, park setting, anime cartoon style, worried expression, no text, 16:9"},{"id":"s-self-05","title":"自我保護：醫生檢查","background":"診所","description":"醫生要檢查你耳朵，媽媽喺度陪住。","hints":["有大人陪嘅醫療檢查係好接觸。","但陌生人單獨接觸就要小心。"],"options":[{"id":"s-self-05-a","text":"安心接受檢查","effects":[{"moralChange":10,"comment":"好接觸令你健康！"}],"next_scenario":"s-self-06"},{"id":"s-self-05-b","text":"推開醫生","effects":[{"moralChange":-5,"comment":"有媽媽陪就係安全嘅。"}],"next_scenario":null}],"location":"clinic","topicId":"self-protection","creedIds":[1],"imagePrompt":"Boy calmly having ear checked by doctor with mother beside, safe medical scene, anime cartoon style, reassuring, no text, 16:9"},{"id":"s-self-06","title":"自我保護：朋友握手","background":"課室・放學","description":"朋友伸出手想同你握手打招呼。","hints":["朋友之間嘅握手係好接觸。","記住分辨好壞接觸，你已經好厲害！"],"options":[{"id":"s-self-06-a","text":"開心握手","effects":[{"moralChange":15,"comment":"你完成自我保護學習！每日安全badge +10分"}],"next_scenario":null},{"id":"s-self-06-b","text":"唔想握手","effects":[{"moralChange":5,"comment":"尊重自己感覺都係正確。"}],"next_scenario":null}],"location":"classroom","topicId":"self-protection","creedIds":[1,5],"imagePrompt":"Two happy children shaking hands, classroom, anime cartoon style, bright positive, no text, 16:9"},{"id":"s-self-07","title":"社交距離：朋友講秘密","background":"課室・小息","description":"朋友想同你講秘密，坐喺手臂距離。","hints":["手臂距離係朋友之間嘅合宜距離。","太近會令對方唔舒服。"],"options":[{"id":"s-self-07-a","text":"保持手臂距離傾偈","effects":[{"moralChange":10,"comment":"你好識得尊重他人！"}],"next_scenario":"s-self-08"},{"id":"s-self-07-b","text":"貼住佢講","effects":[{"moralChange":-5,"comment":"記住保持距離。"}],"next_scenario":null}],"location":"classroom","topicId":"social-distance","creedIds":[1],"imagePrompt":"Boy and friend at arm's length whispering, classroom, anime cartoon style, no text, 16:9"},{"id":"s-self-08","title":"社交距離：陌生人買嘢","background":"便利店","description":"陌生人喺兩步距離買嘢，冇貼住你。","hints":["陌生人應該保持兩步距離。","呢個係安全嘅社交距離。"],"options":[{"id":"s-self-08-a","text":"安心繼續買嘢","effects":[{"moralChange":10,"comment":"正確！呢個距離好安全。"}],"next_scenario":"s-self-09"},{"id":"s-self-08-b","text":"覺得害怕，走開","effects":[{"moralChange":5,"comment":"保護自己感覺都係對嘅。"}],"next_scenario":null}],"location":"shop","topicId":"social-distance","creedIds":[5],"imagePrompt":"Boy standing two steps from stranger at shop, safe distance, anime cartoon style, no text, 16:9"},{"id":"s-self-09","title":"社交距離：家人擁抱","background":"家中","description":"媽媽想同你擁抱，你好開心。","hints":["家人之間零距離係好正常嘅。","只有信任嘅人先可以零距離。"],"options":[{"id":"s-self-09-a","text":"開心接受擁抱","effects":[{"moralChange":15,"comment":"家人嘅愛好寶貴！"}],"next_scenario":"s-self-10"},{"id":"s-self-09-b","text":"推開媽媽","effects":[{"moralChange":-5,"comment":"媽媽會傷心..."}],"next_scenario":null}],"location":"home","topicId":"social-distance","creedIds":[1],"imagePrompt":"Boy happily hugging mother, zero distance, warm family, anime cartoon style, no text, 16:9"},{"id":"s-self-10","title":"社交距離：公車太近","background":"公車","description":"陌生人喺公車上貼住你，你覺得好唔舒服。","hints":["呢個係太近！即刻企開啲。","陌生人太近係唔安全。"],"options":[{"id":"s-self-10-a","text":"即刻企開兩步","effects":[{"moralChange":15,"comment":"你好識保護自己！"}],"next_scenario":"s-self-11"},{"id":"s-self-10-b","text":"忍住唔郁","effects":[{"moralChange":-10,"comment":"太近要即刻離開！"}],"next_scenario":null}],"location":"bus","topicId":"social-distance","creedIds":[5,7],"imagePrompt":"Boy uncomfortable on bus with stranger too close, personal space invasion, anime cartoon style, worried, no text, 16:9"},{"id":"s-self-11","title":"社交距離：打球推人","background":"操場","description":"同學打波時大力推你，貼住你。","hints":["打波都唔可以太近推人。","即刻話畀老師聽。"],"options":[{"id":"s-self-11-a","text":"話畀老師聽","effects":[{"moralChange":10,"comment":"正確！保護自己同他人。"}],"next_scenario":"s-self-12"},{"id":"s-self-11-b","text":"推返去","effects":[{"moralChange":-10,"comment":"暴力唔係解決方法。"}],"next_scenario":null}],"location":"playground","topicId":"social-distance","creedIds":[5],"imagePrompt":"Boy being pushed during ball game, too close, playground, anime cartoon style, surprised, no text, 16:9"},{"id":"s-self-12","title":"社交距離：老師講故事","background":"課室","description":"老師講故事，你坐喺手臂距離聽。","hints":["老師同學生之間手臂距離係合宜。","你已經好識分辨社交距離！"],"options":[{"id":"s-self-12-a","text":"專心聽故事","effects":[{"moralChange":15,"comment":"你完成社交距離學習！badge +10分"}],"next_scenario":null},{"id":"s-self-12-b","text":"坐得太近","effects":[{"moralChange":-5,"comment":"記住保持手臂距離。"}],"next_scenario":null}],"location":"classroom","topicId":"social-distance","creedIds":[1,5],"imagePrompt":"Boy sitting at arm's length listening to teacher, appropriate distance, classroom, anime cartoon style, no text, 16:9"},{"id":"s-self-13","title":"陌生人：跟我走","background":"學校門口","description":"陌生人話：「我識你媽媽，跟我走。」","hints":["陌生人話識你家人都要小心！","即刻搵大人，唔好跟。"],"options":[{"id":"s-self-13-a","text":"即刻搵老師","effects":[{"moralChange":20,"comment":"你好勇敢！安全第一！"}],"next_scenario":"s-self-14"},{"id":"s-self-13-b","text":"跟住陌生人","effects":[{"moralChange":-20,"comment":"永遠唔好跟陌生人！"}],"next_scenario":null}],"location":"school_gate","topicId":"stranger-danger","creedIds":[5,7],"imagePrompt":"Stranger saying follow me, boy refusing, school gate, anime cartoon style, serious, no text, 16:9"},{"id":"s-self-14","title":"陌生人：畀糖果","background":"公園","description":"陌生人畀糖果你食。","hints":["唔好收陌生人嘅嘢！","即刻跑開。"],"options":[{"id":"s-self-14-a","text":"唔收，跑向人群","effects":[{"moralChange":15,"comment":"正確！保護自己！"}],"next_scenario":"s-self-15"},{"id":"s-self-14-b","text":"接受糖果","effects":[{"moralChange":-15,"comment":"陌生人嘅嘢唔可以食！"}],"next_scenario":null}],"location":"park","topicId":"stranger-danger","creedIds":[5],"imagePrompt":"Stranger offering candy, boy refusing and running, park, anime cartoon style, alert, no text, 16:9"},{"id":"s-self-15","title":"陌生人：問屋企","background":"學校","description":"陌生人問你屋企喺邊。","hints":["唔好話畀陌生人聽屋企位置！","即刻搵老師。"],"options":[{"id":"s-self-15-a","text":"唔答，搵老師","effects":[{"moralChange":15,"comment":"你好識保護自己！"}],"next_scenario":"s-self-16"},{"id":"s-self-15-b","text":"話畀佢聽","effects":[{"moralChange":-10,"comment":"屋企位置唔可以話畀陌生人！"}],"next_scenario":null}],"location":"school","topicId":"stranger-danger","creedIds":[5,7],"imagePrompt":"Stranger asking where you live, boy not answering, school, anime cartoon style, cautious, no text, 16:9"},{"id":"s-self-16","title":"陌生人：摸頭","background":"公園","description":"陌生人摸你頭話「好乖」。","hints":["陌生人摸頭都要大聲講「唔好」！","即刻離開。"],"options":[{"id":"s-self-16-a","text":"大聲講「唔好」","effects":[{"moralChange":15,"comment":"好勇敢！"}],"next_scenario":"s-self-17"},{"id":"s-self-16-b","text":"笑住留低","effects":[{"moralChange":-10,"comment":"陌生人摸你就要即刻離開！"}],"next_scenario":null}],"location":"park","topicId":"stranger-danger","creedIds":[5],"imagePrompt":"Stranger touching head, boy saying no loudly, anime cartoon style, worried, no text, 16:9"},{"id":"s-self-17","title":"陌生人：買玩具","background":"學校門口","description":"陌生人話帶你去買玩具。","hints":["陌生人話買嘢都唔可以跟！","跑向人群。"],"options":[{"id":"s-self-17-a","text":"跑向人群","effects":[{"moralChange":20,"comment":"你好聰明！"}],"next_scenario":"s-self-18"},{"id":"s-self-17-b","text":"跟住佢","effects":[{"moralChange":-20,"comment":"永遠唔好跟陌生人！"}],"next_scenario":null}],"location":"school_gate","topicId":"stranger-danger","creedIds":[5,7],"imagePrompt":"Stranger offering to buy toys, boy running to crowd, anime cartoon style, running, no text, 16:9"},{"id":"s-self-18","title":"陌生人：上車","background":"街頭","description":"陌生人叫你上車。","hints":["陌生人叫你上車＝危險！","大聲喊「救命」同跑。"],"options":[{"id":"s-self-18-a","text":"大聲喊「救命」跑開","effects":[{"moralChange":20,"comment":"你完成陌生人應對學習！badge +10分"}],"next_scenario":null},{"id":"s-self-18-b","text":"上車","effects":[{"moralChange":-25,"comment":"呢個好危險！"}],"next_scenario":null}],"location":"street","topicId":"stranger-danger","creedIds":[5,7],"imagePrompt":"Stranger asking boy to get in car, boy shouting help and running, danger scene, anime cartoon style, urgent, no text, 16:9"},{"id":"s-self-19","title":"求助：公園迷路","background":"公園","description":"你喺公園迷路，見到保安。","hints":["迷路要即刻搵大人！","大聲講「救命」。"],"options":[{"id":"s-self-19-a","text":"跑向保安求助","effects":[{"moralChange":15,"comment":"你好勇敢！"}],"next_scenario":"s-self-20"},{"id":"s-self-19-b","text":"自己亂走","effects":[{"moralChange":-10,"comment":"迷路要即刻求助！"}],"next_scenario":null}],"location":"park","topicId":"help-seeking","creedIds":[5,7],"imagePrompt":"Boy lost in park running to security guard, safe choice, anime cartoon style, brave, no text, 16:9"},{"id":"s-self-20","title":"求助：壞接觸後","background":"家中","description":"你遇到壞接觸，即刻搵媽媽。","hints":["壞接觸後要即刻話畀大人聽！","媽媽會保護你。"],"options":[{"id":"s-self-20-a","text":"即刻話畀媽媽聽","effects":[{"moralChange":20,"comment":"你好聰明！安全最重要。"}],"next_scenario":"s-self-21"},{"id":"s-self-20-b","text":"忍住唔講","effects":[{"moralChange":-15,"comment":"壞接觸一定要講出嚟！"}],"next_scenario":null}],"location":"home","topicId":"help-seeking","creedIds":[1,5],"imagePrompt":"Boy after bad touch running to tell mother, home, anime cartoon style, relieved, no text, 16:9"},{"id":"s-self-21","title":"求助：陌生人跟蹤","background":"街頭","description":"陌生人跟蹤你，你跑入學校搵老師。","hints":["有人跟蹤要即刻入安全地方！","話畀老師聽。"],"options":[{"id":"s-self-21-a","text":"跑入學校搵老師","effects":[{"moralChange":20,"comment":"你好識保護自己！"}],"next_scenario":"s-self-22"},{"id":"s-self-21-b","text":"繼續行","effects":[{"moralChange":-15,"comment":"跟蹤要即刻求助！"}],"next_scenario":null}],"location":"street","topicId":"help-seeking","creedIds":[5,7],"imagePrompt":"Boy followed by stranger running into school to tell teacher, safe escape, anime cartoon style, decisive, no text, 16:9"},{"id":"s-self-22","title":"求助：上廁所","background":"學校走廊","description":"你想上廁所但唔識路，見到老師。","hints":["唔識路要問老師！","老師會幫你。"],"options":[{"id":"s-self-22-a","text":"問老師幫手","effects":[{"moralChange":10,"comment":"問大人係正確！"}],"next_scenario":"s-self-23"},{"id":"s-self-22-b","text":"自己搵","effects":[{"moralChange":-5,"comment":"唔識路要即刻問人。"}],"next_scenario":null}],"location":"school_corridor","topicId":"help-seeking","creedIds":[1],"imagePrompt":"Boy needing toilet asking teacher for help, school corridor, anime cartoon style, shy but brave, no text, 16:9"},{"id":"s-self-23","title":"求助：感覺唔舒服","background":"家中","description":"你感覺唔舒服，話畀爸爸聽。","hints":["身體唔舒服要話畀家人聽！","家人會照顧你。"],"options":[{"id":"s-self-23-a","text":"話畀爸爸聽","effects":[{"moralChange":10,"comment":"信任家人好重要！"}],"next_scenario":"s-self-24"},{"id":"s-self-23-b","text":"忍住唔講","effects":[{"moralChange":-5,"comment":"感覺唔舒服要講出嚟。"}],"next_scenario":null}],"location":"home","topicId":"help-seeking","creedIds":[1],"imagePrompt":"Boy feeling unwell telling father, family support, anime cartoon style, tired but trusting, no text, 16:9"},{"id":"s-self-24","title":"求助：見到欺負","background":"操場","description":"你見到同學被欺負，即刻搵老師。","hints":["見到欺負要即刻搵老師！","你係勇敢嘅小勇士。"],"options":[{"id":"s-self-24-a","text":"即刻搵老師","effects":[{"moralChange":20,"comment":"你完成求助方法學習！badge +10分"}],"next_scenario":null},{"id":"s-self-24-b","text":"唔理","effects":[{"moralChange":-15,"comment":"見到欺負要即刻求助！"}],"next_scenario":null}],"location":"playground","topicId":"help-seeking","creedIds":[5,7],"imagePrompt":"Boy seeing classmate bullied running to tell teacher, playground, anime cartoon style, serious, no text, 16:9"},{"id":"s-self-25","title":"上課規則：舉手發言","background":"課室","description":"你想講嘢，應該點做？","hints":["想講嘢要舉手等老師叫。","直接喊會擾亂課堂。"],"options":[{"id":"s-self-25-a","text":"舉手等老師叫","effects":[{"moralChange":10,"comment":"你好有禮貌！"}],"next_scenario":"s-self-26"},{"id":"s-self-25-b","text":"直接喊","effects":[{"moralChange":-5,"comment":"老師會唔開心。"}],"next_scenario":null}],"location":"classroom","topicId":"classroom-rules","creedIds":[1],"imagePrompt":"Boy raising hand to speak, teacher calling on him, positive classroom, anime cartoon style, happy, no text, 16:9"},{"id":"s-self-26","title":"上課規則：坐好聽課","background":"課室","description":"老師講緊嘢，你應該點坐？","hints":["坐正聽課最專心。","企起身跑好危險。"],"options":[{"id":"s-self-26-a","text":"坐正聽老師講","effects":[{"moralChange":10,"comment":"你好專心！"}],"next_scenario":"s-self-27"},{"id":"s-self-26-b","text":"企起身跑","effects":[{"moralChange":-10,"comment":"呢個好危險同擾亂。"}],"next_scenario":null}],"location":"classroom","topicId":"classroom-rules","creedIds":[1,5],"imagePrompt":"Boy sitting properly listening to teacher, focused, classroom, anime cartoon style, calm, no text, 16:9"},{"id":"s-self-27","title":"上課規則：安靜聲音","background":"課室","description":"你同同學講嘢，應該用邊種聲音？","hints":["用細聲講大家舒服。","大聲喊叫會驚到同學。"],"options":[{"id":"s-self-27-a","text":"用細聲講嘢","effects":[{"moralChange":10,"comment":"你好識得尊重他人！"}],"next_scenario":"s-self-28"},{"id":"s-self-27-b","text":"大聲喊叫","effects":[{"moralChange":-5,"comment":"同學會驚。"}],"next_scenario":null}],"location":"classroom","topicId":"classroom-rules","creedIds":[1],"imagePrompt":"Boy using soft voice with classmates, everyone comfortable, classroom, anime cartoon style, gentle, no text, 16:9"},{"id":"s-self-28","title":"上課規則：收好玩具","background":"課室","description":"玩完玩具，你應該點做？","hints":["玩完要收埋，課室先乾淨。","亂丟好危險。"],"options":[{"id":"s-self-28-a","text":"玩完收埋","effects":[{"moralChange":10,"comment":"你好有責任感！"}],"next_scenario":"s-self-29"},{"id":"s-self-28-b","text":"亂丟玩具","effects":[{"moralChange":-5,"comment":"亂丟好危險。"}],"next_scenario":null}],"location":"classroom","topicId":"classroom-rules","creedIds":[1,5],"imagePrompt":"Boy neatly putting away toys, classroom clean, positive habit, anime cartoon style, satisfied, no text, 16:9"},{"id":"s-self-29","title":"上課規則：排隊","background":"課室","description":"輪到你做嘢，你應該點做？","hints":["排隊等輪到自己最公平。","推人搶前唔公平。"],"options":[{"id":"s-self-29-a","text":"排隊等輪到自己","effects":[{"moralChange":10,"comment":"你好有秩序！"}],"next_scenario":"s-self-30"},{"id":"s-self-29-b","text":"推人搶前","effects":[{"moralChange":-5,"comment":"推人搶前唔公平。"}],"next_scenario":null}],"location":"classroom","topicId":"classroom-rules","creedIds":[1],"imagePrompt":"Boy waiting patiently in line, orderly queue, school, anime cartoon style, calm and fair, no text, 16:9"},{"id":"s-self-30","title":"上課規則：聽老師指示","background":"課室","description":"老師話要做嘢，你應該點做？","hints":["聽老師指示最安全。","自己亂做會出事。"],"options":[{"id":"s-self-30-a","text":"聽老師指示做","effects":[{"moralChange":15,"comment":"你完成上課規則學習！badge +10分"}],"next_scenario":null},{"id":"s-self-30-b","text":"自己亂做","effects":[{"moralChange":-10,"comment":"自己亂做好危險。"}],"next_scenario":null}],"location":"classroom","topicId":"classroom-rules","creedIds":[1,5],"imagePrompt":"Boy following teacher's instruction carefully, safe action, classroom, anime cartoon style, focused, no text, 16:9"},{"id":"s-self-31","title":"尊重界線：唔好逼朋友買禮物","background":"校園","description":"小朋友拉住朋友衫角要求買禮物","hints":["朋友都有自己家庭","尊重界線最重要"],"options":[{"id":"s-self-31-a","text":"OK","effects":[{"moralChange":-15,"comment":"唔好逼人。"}],"next_scenario":null},{"id":"s-self-31-b","text":"唔好要求","effects":[{"moralChange":18,"comment":"你好識得尊重！"}],"next_scenario":"s-self-32"},{"id":"s-self-31-c","text":"即刻買","effects":[{"moralChange":-15,"comment":"唔好逼人。"}],"next_scenario":null}],"location":"playground","topicId":"gift-gratitude","creedIds":[5],"imagePrompt":"Young Chinese boy pulling friend's shirt asking for gift, worried friend, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"},{"id":"s-self-32","title":"感恩父母：爸爸返內地唔好要求","background":"屋企","description":"爸爸辛苦返工，香水應該點","hints":["爸爸賺錢好唔易","感恩父母最重要"],"options":[{"id":"s-self-32-a","text":"自己買","effects":[{"moralChange":18,"comment":"你好有責任感！"}],"next_scenario":"s-self-33"},{"id":"s-self-32-b","text":"叫爸爸買","effects":[{"moralChange":-15,"comment":"爸爸辛苦。"}],"next_scenario":null},{"id":"s-self-32-c","text":"唔好要求","effects":[{"moralChange":18,"comment":"你好識感恩！"}],"next_scenario":"s-self-33"}],"location":"home","topicId":"gift-gratitude","creedIds":[3,5],"imagePrompt":"Young Chinese boy with dad returning from work, boy not demanding gift, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"},{"id":"s-self-33","title":"尊重界線：朋友買禮物要問媽媽","background":"校園","description":"朋友話買俾你","hints":["每樣嘢都要問屋企人","尊重家庭界線"],"options":[{"id":"s-self-33-a","text":"好呀","effects":[{"moralChange":-15,"comment":"要問屋企人。"}],"next_scenario":null},{"id":"s-self-33-b","text":"要問媽媽","effects":[{"moralChange":18,"comment":"你好識得尊重！"}],"next_scenario":"s-self-34"},{"id":"s-self-33-c","text":"即刻要","effects":[{"moralChange":-15,"comment":"要問屋企人。"}],"next_scenario":null}],"location":"playground","topicId":"gift-gratitude","creedIds":[5],"imagePrompt":"Young Chinese boy talking to friend about gift, thinking to ask mom first, school, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"},{"id":"s-self-34","title":"感恩：收到禮物要多謝","background":"屋企","description":"收到禮物應該講咩","hints":["感恩令大家開心","多謝係最基本"],"options":[{"id":"s-self-34-a","text":"多謝","effects":[{"moralChange":18,"comment":"你好有禮貌！"}],"next_scenario":"s-self-35"},{"id":"s-self-34-b","text":"仲有冇","effects":[{"moralChange":-15,"comment":"要感恩。"}],"next_scenario":null},{"id":"s-self-34-c","text":"唔夠","effects":[{"moralChange":-15,"comment":"要感恩。"}],"next_scenario":null}],"location":"home","topicId":"gift-gratitude","creedIds":[3],"imagePrompt":"Young Chinese boy receiving gift, saying thank you happily, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"},{"id":"s-self-35","title":"理解朋友：朋友買唔到","background":"校園","description":"朋友話買唔到","hints":["朋友都有難處","理解比禮物重要"],"options":[{"id":"s-self-35-a","text":"嬲","effects":[{"moralChange":-15,"comment":"要理解。"}],"next_scenario":null},{"id":"s-self-35-b","text":"明白","effects":[{"moralChange":18,"comment":"你好善良！"}],"next_scenario":"s-self-36"},{"id":"s-self-35-c","text":"叫佢爸爸","effects":[{"moralChange":-15,"comment":"要理解。"}],"next_scenario":null}],"location":"playground","topicId":"gift-gratitude","creedIds":[5],"imagePrompt":"Young Chinese boy understanding friend cannot buy gift, empathetic expression, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"},{"id":"s-self-36","title":"知足不貪：見到貴玩具","background":"玩具店","description":"見到貴玩具應該點","hints":["已經有嘢要知足","唔貪心係美德"],"options":[{"id":"s-self-36-a","text":"即刻要","effects":[{"moralChange":-15,"comment":"要知足。"}],"next_scenario":null},{"id":"s-self-36-b","text":"儲錢自己買","effects":[{"moralChange":18,"comment":"你好有責任！"}],"next_scenario":null},{"id":"s-self-36-c","text":"感恩已有","effects":[{"moralChange":18,"comment":"你完成gift-gratitude學習！badge +10分"}],"next_scenario":null}],"location":"shop","topicId":"gift-gratitude","creedIds":[3,8],"imagePrompt":"Young Chinese boy seeing expensive toy but feeling grateful for what he has, content expression, toy shop, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"},{"id":"s-self-37","title":"責任感：自己嘅書包自己執","background":"課室・放學","description":"書包散晒喺地下，應該點？","hints":["自己嘅嘢自己負責","執書包係基本責任"],"options":[{"id":"s-self-37-a","text":"叫人幫手","effects":[{"moralChange":-15,"comment":"要自己做。"}],"next_scenario":null},{"id":"s-self-37-b","text":"自己執好","effects":[{"moralChange":18,"comment":"你好有責任感！"}],"next_scenario":"s-self-38"},{"id":"s-self-37-c","text":"唔理","effects":[{"moralChange":-15,"comment":"要自己做。"}],"next_scenario":null}],"location":"classroom","topicId":"responsibility","creedIds":[8,5],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy tidying his own school bag in classroom after school, responsible expression, warm tones, no text, no logos, 16:9"},{"id":"s-self-38","title":"責任感：功課自己做","background":"屋企・晚飯後","description":"功課好難，想叫媽媽幫手","hints":["自己嘅功課自己做","試下先最重要"],"options":[{"id":"s-self-38-a","text":"即刻叫媽媽","effects":[{"moralChange":-15,"comment":"要自己試。"}],"next_scenario":null},{"id":"s-self-38-b","text":"自己試下","effects":[{"moralChange":18,"comment":"你好勤力！"}],"next_scenario":"s-self-39"},{"id":"s-self-38-c","text":"抄朋友","effects":[{"moralChange":-15,"comment":"要自己做。"}],"next_scenario":null}],"location":"home","topicId":"responsibility","creedIds":[8,6],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy doing homework at home by himself, focused and responsible, warm home lighting, no text, no logos, 16:9"},{"id":"s-self-39","title":"責任感：水樽自己帶","background":"校園・小息","description":"忘記帶水樽，口渴點算？","hints":["出門前檢查自己嘅嘢","負責自己嘅需要"],"options":[{"id":"s-self-39-a","text":"問同學借","effects":[{"moralChange":-10,"comment":"下次要記得。"}],"next_scenario":null},{"id":"s-self-39-b","text":"下次記得帶","effects":[{"moralChange":18,"comment":"你好識得負責！"}],"next_scenario":"s-self-40"},{"id":"s-self-39-c","text":"唔飲","effects":[{"moralChange":-5,"comment":"健康都係責任。"}],"next_scenario":null}],"location":"playground","topicId":"responsibility","creedIds":[8],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy realizing he forgot water bottle at school, learning responsibility, warm tones, no text, no logos, 16:9"},{"id":"s-self-40","title":"責任感：幫手執垃圾","background":"飯堂","description":"見到地上有垃圾","hints":["愛護環境係人人責任","唔好等其他人"],"options":[{"id":"s-self-40-a","text":"假裝睇唔到","effects":[{"moralChange":-15,"comment":"要愛護學校。"}],"next_scenario":null},{"id":"s-self-40-b","text":"自己執走","effects":[{"moralChange":18,"comment":"你好愛護學校！"}],"next_scenario":"s-self-41"},{"id":"s-self-40-c","text":"叫清潔阿姨","effects":[{"moralChange":5,"comment":"自己做更好。"}],"next_scenario":null}],"location":"canteen","topicId":"responsibility","creedIds":[8,9],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy picking up litter in school canteen, responsible action, warm tones, no text, no logos, 16:9"},{"id":"s-self-41","title":"責任感：遲到要話老師知","background":"課室・朝早","description":"遲到咗，應該點？","hints":["遲到要負責講清楚","誠實最重要"],"options":[{"id":"s-self-41-a","text":"偷偷入去","effects":[{"moralChange":-15,"comment":"要誠實。"}],"next_scenario":null},{"id":"s-self-41-b","text":"同老師講清楚","effects":[{"moralChange":18,"comment":"你好有承擔！"}],"next_scenario":"s-self-42"},{"id":"s-self-41-c","text":"怪交通","effects":[{"moralChange":-10,"comment":"要自己負責時間。"}],"next_scenario":null}],"location":"classroom","topicId":"responsibility","creedIds":[8,2],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy explaining to teacher why he is late, honest and responsible, warm classroom, no text, no logos, 16:9"},{"id":"s-self-42","title":"責任感：完成任務有成就","background":"屋企・床頭","description":"今日自己做咗好多嘢","hints":["負責令自己成長","每件事都係學習"],"options":[{"id":"s-self-42-a","text":"覺得好累","effects":[{"moralChange":5,"comment":"休息都重要。"}],"next_scenario":null},{"id":"s-self-42-b","text":"好有成就感","effects":[{"moralChange":20,"comment":"你完成責任感學習！badge +10分"}],"next_scenario":null},{"id":"s-self-42-c","text":"下次唔做","effects":[{"moralChange":-15,"comment":"要堅持。"}],"next_scenario":null}],"location":"home","topicId":"responsibility","creedIds":[8,10],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling proud after completing tasks at home, warm satisfied expression, cozy bedroom, no text, no logos, 16:9"},{"id":"s-self-43","title":"誠信：唔好抄功課","background":"課室・小息","description":"朋友叫你抄佢功課","hints":["抄襲係唔誠實","自己做先有進步"],"options":[{"id":"s-self-43-a","text":"即刻抄","effects":[{"moralChange":-20,"comment":"要誠實。"}],"next_scenario":null},{"id":"s-self-43-b","text":"自己做","effects":[{"moralChange":18,"comment":"你好信實！"}],"next_scenario":"s-self-44"},{"id":"s-self-43-c","text":"話老師知","effects":[{"moralChange":10,"comment":"但要溫柔啲。"}],"next_scenario":null}],"location":"classroom","topicId":"integrity","creedIds":[2,5],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy refusing to copy homework, choosing honesty, school classroom, warm tones, no text, no logos, 16:9"},{"id":"s-self-44","title":"誠信：搵到嘢要還","background":"校園・操場","description":"搵到同學嘅文具盒","hints":["搵到嘢要還俾主人","誠信係美德"],"options":[{"id":"s-self-44-a","text":"自己留低","effects":[{"moralChange":-18,"comment":"要還俾人。"}],"next_scenario":null},{"id":"s-self-44-b","text":"交俾老師","effects":[{"moralChange":18,"comment":"你好誠實！"}],"next_scenario":"s-self-45"},{"id":"s-self-44-c","text":"問邊個嘅","effects":[{"moralChange":12,"comment":"好方法！"}],"next_scenario":null}],"location":"playground","topicId":"integrity","creedIds":[2,4],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy finding a pencil case and deciding to return it, honest expression, school playground, warm tones, no text, no logos, 16:9"},{"id":"s-self-45","title":"誠信：講真話","background":"屋企・客廳","description":"打破咗花樽，媽媽問邊個","hints":["講真話先係誠信","勇氣都係美德"],"options":[{"id":"s-self-45-a","text":"話唔知","effects":[{"moralChange":-18,"comment":"要誠實。"}],"next_scenario":null},{"id":"s-self-45-b","text":"講係自己打破","effects":[{"moralChange":20,"comment":"你好有勇氣！"}],"next_scenario":"s-self-46"},{"id":"s-self-45-c","text":"怪細佬","effects":[{"moralChange":-20,"comment":"絕對唔可以。"}],"next_scenario":null}],"location":"home","topicId":"integrity","creedIds":[2,8],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy honestly admitting he broke the vase at home, brave and truthful, warm living room, no text, no logos, 16:9"},{"id":"s-self-46","title":"誠信：唔好講大話","background":"校園・走廊","description":"朋友問你有冇做功課","hints":["講大話會失去信任","誠實先有朋友"],"options":[{"id":"s-self-46-a","text":"講大話話做咗","effects":[{"moralChange":-18,"comment":"要誠實。"}],"next_scenario":null},{"id":"s-self-46-b","text":"講真話","effects":[{"moralChange":18,"comment":"你好信實！"}],"next_scenario":"s-self-47"},{"id":"s-self-46-c","text":"走開","effects":[{"moralChange":-10,"comment":"要面對。"}],"next_scenario":null}],"location":"classroom","topicId":"integrity","creedIds":[2,5],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy telling the truth about not finishing homework to friend, honest moment, school corridor, warm tones, no text, no logos, 16:9"},{"id":"s-self-47","title":"誠信：考試唔好偷睇","background":"課室・測驗","description":"測驗見到朋友抄","hints":["偷睇係唔誠信","自己嘅成績自己負責"],"options":[{"id":"s-self-47-a","text":"自己都抄","effects":[{"moralChange":-20,"comment":"要誠信。"}],"next_scenario":null},{"id":"s-self-47-b","text":"專心自己做","effects":[{"moralChange":18,"comment":"你好正直！"}],"next_scenario":"s-self-48"},{"id":"s-self-47-c","text":"話老師知","effects":[{"moralChange":12,"comment":"但要溫柔。"}],"next_scenario":null}],"location":"classroom","topicId":"integrity","creedIds":[2,1],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy choosing not to cheat during test, focused on his own paper, classroom, warm tones, no text, no logos, 16:9"},{"id":"s-self-48","title":"誠信：信任係最大獎勵","background":"屋企・飯桌","description":"今日誠實得到讚賞","hints":["誠信會贏得信任","信任係最好嘅禮物"],"options":[{"id":"s-self-48-a","text":"覺得冇所謂","effects":[{"moralChange":5,"comment":"但信任好重要。"}],"next_scenario":null},{"id":"s-self-48-b","text":"好開心","effects":[{"moralChange":20,"comment":"你完成誠信學習！badge +10分"}],"next_scenario":null},{"id":"s-self-48-c","text":"下次都講大話","effects":[{"moralChange":-18,"comment":"要堅持誠信。"}],"next_scenario":null}],"location":"home","topicId":"integrity","creedIds":[2,10],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy and trusted by parents at dinner table, warm family moment, cozy home, no text, no logos, 16:9"},{"id":"s-self-49","title":"孝親：幫媽媽執屋企","background":"屋企・客廳","description":"媽媽好攰，想幫手","hints":["孝順父母係基本","幫手係愛嘅表現"],"options":[{"id":"s-self-49-a","text":"自己玩","effects":[{"moralChange":-15,"comment":"要孝順。"}],"next_scenario":null},{"id":"s-self-49-b","text":"幫手執","effects":[{"moralChange":18,"comment":"你好孝順！"}],"next_scenario":"s-self-50"},{"id":"s-self-49-c","text":"叫細佬做","effects":[{"moralChange":-10,"comment":"自己都應該做。"}],"next_scenario":null}],"location":"home","topicId":"filial-piety","creedIds":[10,8],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy helping mom tidy the living room at home, caring and filial, warm home lighting, no text, no logos, 16:9"},{"id":"s-self-50","title":"孝親：問候爸爸媽媽","background":"屋企・晚飯","description":"爸爸媽媽返到屋企","hints":["問候係尊重","關心家人最重要"],"options":[{"id":"s-self-50-a","text":"繼續玩電話","effects":[{"moralChange":-15,"comment":"要關心家人。"}],"next_scenario":null},{"id":"s-self-50-b","text":"主動問候","effects":[{"moralChange":18,"comment":"你好有禮貌！"}],"next_scenario":"s-self-51"},{"id":"s-self-50-c","text":"等佢哋問","effects":[{"moralChange":-5,"comment":"主動更好。"}],"next_scenario":null}],"location":"home","topicId":"filial-piety","creedIds":[10,5],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy warmly greeting parents when they come home, loving family moment, cozy home, no text, no logos, 16:9"},{"id":"s-self-51","title":"孝親：唔好同父母嘈","background":"屋企・客廳","description":"媽媽話唔畀你玩得多","hints":["同父母講話要有禮貌","尊重係孝順"],"options":[{"id":"s-self-51-a","text":"大聲頂嘴","effects":[{"moralChange":-20,"comment":"要尊重父母。"}],"next_scenario":null},{"id":"s-self-51-b","text":"冷靜講清楚","effects":[{"moralChange":18,"comment":"你好識得尊重！"}],"next_scenario":"s-self-52"},{"id":"s-self-51-c","text":"走入房","effects":[{"moralChange":-10,"comment":"要溝通。"}],"next_scenario":null}],"location":"home","topicId":"filial-piety","creedIds":[10,5],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy calmly talking to mom instead of arguing, respectful conversation at home, warm tones, no text, no logos, 16:9"},{"id":"s-self-52","title":"孝親：記住父母生日","background":"屋企・書桌","description":"媽媽生日快到","hints":["記住家人嘅重要日子","小小心意都係愛"],"options":[{"id":"s-self-52-a","text":"完全唔記得","effects":[{"moralChange":-15,"comment":"要關心父母。"}],"next_scenario":null},{"id":"s-self-52-b","text":"準備小禮物","effects":[{"moralChange":20,"comment":"你好孝順！"}],"next_scenario":"s-self-53"},{"id":"s-self-52-c","text":"問爸爸買","effects":[{"moralChange":8,"comment":"自己準備更好。"}],"next_scenario":null}],"location":"home","topicId":"filial-piety","creedIds":[10,8],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy making a small handmade gift for mom's birthday at desk, loving and thoughtful, warm home, no text, no logos, 16:9"},{"id":"s-self-53","title":"孝親：照顧生病嘅家人","background":"屋企・房間","description":"媽媽病咗","hints":["家人有難要幫手","孝順係行動"],"options":[{"id":"s-self-53-a","text":"自己玩","effects":[{"moralChange":-18,"comment":"要關心。"}],"next_scenario":null},{"id":"s-self-53-b","text":"幫手倒水","effects":[{"moralChange":18,"comment":"你好有愛心！"}],"next_scenario":"s-self-54"},{"id":"s-self-53-c","text":"叫爸爸","effects":[{"moralChange":5,"comment":"自己都應該幫。"}],"next_scenario":null}],"location":"home","topicId":"filial-piety","creedIds":[10,4],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy bringing water to sick mom in bed, caring filial action, warm bedroom lighting, no text, no logos, 16:9"},{"id":"s-self-54","title":"孝親：感恩父母養育","background":"屋企・飯桌","description":"今日一家人一齊食飯","hints":["父母養育好唔易","感恩係最大孝順"],"options":[{"id":"s-self-54-a","text":"覺得正常","effects":[{"moralChange":5,"comment":"但要感恩。"}],"next_scenario":null},{"id":"s-self-54-b","text":"多謝父母","effects":[{"moralChange":20,"comment":"你完成孝親學習！badge +10分"}],"next_scenario":null},{"id":"s-self-54-c","text":"快啲食","effects":[{"moralChange":-5,"comment":"要珍惜。"}],"next_scenario":null}],"location":"home","topicId":"filial-piety","creedIds":[10,3],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy saying thank you to parents at family dinner table, grateful and loving moment, warm cozy home, no text, no logos, 16:9"},{"id":"s-self-55","title":"堅毅：功課難都要試","background":"屋企・書桌","description":"功課好難，想放棄","hints":["堅毅係唔輕易放棄","試過先知自己可以"],"options":[{"id":"s-self-55-a","text":"即刻放棄","effects":[{"moralChange":-15,"comment":"要堅毅。"}],"next_scenario":null},{"id":"s-self-55-b","text":"再試一次","effects":[{"moralChange":18,"comment":"你好有毅力！"}],"next_scenario":"s-self-56"},{"id":"s-self-55-c","text":"叫人幫","effects":[{"moralChange":-10,"comment":"自己試先。"}],"next_scenario":null}],"location":"home","topicId":"perseverance","creedIds":[6,8],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy struggling with difficult homework but trying again at desk, determined expression, warm home lighting, no text, no logos, 16:9"},{"id":"s-self-56","title":"堅毅：學單車唔怕跌","background":"公園","description":"學踩單車跌咗好多次","hints":["跌倒係學習一部分","堅毅令你成功"],"options":[{"id":"s-self-56-a","text":"唔學啦","effects":[{"moralChange":-15,"comment":"要堅持。"}],"next_scenario":null},{"id":"s-self-56-b","text":"爬起身再試","effects":[{"moralChange":18,"comment":"你好堅強！"}],"next_scenario":"s-self-57"},{"id":"s-self-56-c","text":"叫爸爸扶","effects":[{"moralChange":-5,"comment":"自己試更好。"}],"next_scenario":null}],"location":"playground","topicId":"perseverance","creedIds":[6],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy getting up after falling off bicycle in park, resilient, warm afternoon light, no text, no logos, 16:9"},{"id":"s-self-57","title":"堅毅：溫書考試","background":"屋企・房間","description":"考試好難，溫書好攰","hints":["努力會有結果","堅毅係長期投資"],"options":[{"id":"s-self-57-a","text":"放棄溫書","effects":[{"moralChange":-18,"comment":"要堅毅。"}],"next_scenario":null},{"id":"s-self-57-b","text":"繼續溫","effects":[{"moralChange":18,"comment":"你好勤力！"}],"next_scenario":"s-self-58"},{"id":"s-self-57-c","text":"抄筆記","effects":[{"moralChange":-10,"comment":"自己溫更好。"}],"next_scenario":null}],"location":"home","topicId":"perseverance","creedIds":[6,2],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy studying hard for exam at night, persevering with tired but focused face, warm lamp light, no text, no logos, 16:9"},{"id":"s-self-58","title":"堅毅：做家務唔怕辛苦","background":"屋企・廚房","description":"幫媽媽洗碗好多碟","hints":["家務係責任","堅毅令你成長"],"options":[{"id":"s-self-58-a","text":"偷懶","effects":[{"moralChange":-15,"comment":"要負責。"}],"next_scenario":null},{"id":"s-self-58-b","text":"慢慢做完","effects":[{"moralChange":18,"comment":"你好有毅力！"}],"next_scenario":"s-self-59"},{"id":"s-self-58-c","text":"叫細佬做","effects":[{"moralChange":-10,"comment":"自己應該做。"}],"next_scenario":null}],"location":"home","topicId":"perseverance","creedIds":[6,8],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy washing many dishes in kitchen, persisting with effort, warm home, no text, no logos, 16:9"},{"id":"s-self-59","title":"堅毅：學新嘢唔怕錯","background":"課室","description":"老師問問題，唔識點算","hints":["錯咗都係學習","勇於嘗試係堅毅"],"options":[{"id":"s-self-59-a","text":"唔舉手","effects":[{"moralChange":-10,"comment":"要勇敢。"}],"next_scenario":null},{"id":"s-self-59-b","text":"舉手試答","effects":[{"moralChange":18,"comment":"你好有勇氣！"}],"next_scenario":"s-self-60"},{"id":"s-self-59-c","text":"抄朋友","effects":[{"moralChange":-15,"comment":"要自己學。"}],"next_scenario":null}],"location":"classroom","topicId":"perseverance","creedIds":[6,2],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy raising hand to answer in class even if unsure, brave and persevering, warm classroom, no text, no logos, 16:9"},{"id":"s-self-60","title":"堅毅：完成就係勝利","background":"屋企・床頭","description":"今日努力做咗好多嘢","hints":["每一次堅持都係勝利","堅毅令你更強"],"options":[{"id":"s-self-60-a","text":"覺得冇用","effects":[{"moralChange":5,"comment":"但你已經進步。"}],"next_scenario":null},{"id":"s-self-60-b","text":"好有成就","effects":[{"moralChange":20,"comment":"你完成堅毅學習！badge +10分"}],"next_scenario":null},{"id":"s-self-60-c","text":"下次放棄","effects":[{"moralChange":-15,"comment":"要堅持。"}],"next_scenario":null}],"location":"home","topicId":"perseverance","creedIds":[6,10],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy looking proud and accomplished after hard work at bedtime, warm satisfied expression, cozy room, no text, no logos, 16:9"},{"id":"s-self-61","title":"合作：小組活動要參與","background":"課室・小息","description":"小組做 poster，應該點？","hints":["合作令大家成功","每個人都有貢獻"],"options":[{"id":"s-self-61-a","text":"自己玩","effects":[{"moralChange":-15,"comment":"要合作。"}],"next_scenario":null},{"id":"s-self-61-b","text":"主動幫手","effects":[{"moralChange":18,"comment":"你好合作！"}],"next_scenario":"s-self-62"},{"id":"s-self-61-c","text":"等其他人","effects":[{"moralChange":-10,"comment":"要主動。"}],"next_scenario":null}],"location":"classroom","topicId":"cooperation","creedIds":[7,4],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy actively helping group make poster in classroom, cooperative and engaged, warm tones, no text, no logos, 16:9"},{"id":"s-self-62","title":"合作：輪流玩玩具","background":"公園","description":"只有一個鞦韆，大家想玩","hints":["輪流係合作精神","耐心等候"],"options":[{"id":"s-self-62-a","text":"霸住唔畀","effects":[{"moralChange":-18,"comment":"要合作。"}],"next_scenario":null},{"id":"s-self-62-b","text":"大家輪流","effects":[{"moralChange":18,"comment":"你好識合作！"}],"next_scenario":"s-self-63"},{"id":"s-self-62-c","text":"自己玩","effects":[{"moralChange":-10,"comment":"要分享。"}],"next_scenario":null}],"location":"playground","topicId":"cooperation","creedIds":[7,5],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy waiting his turn on the swing, cooperative and patient, park, warm tones, no text, no logos, 16:9"},{"id":"s-self-63","title":"合作：幫手完成任務","background":"飯堂","description":"飯堂要執枱，大家一齊做","hints":["一齊做最快完成","合作有快樂"],"options":[{"id":"s-self-63-a","text":"自己走","effects":[{"moralChange":-15,"comment":"要合作。"}],"next_scenario":null},{"id":"s-self-63-b","text":"一齊執","effects":[{"moralChange":18,"comment":"你好有團隊精神！"}],"next_scenario":"s-self-64"},{"id":"s-self-63-c","text":"等清潔工","effects":[{"moralChange":-5,"comment":"自己都應該幫。"}],"next_scenario":null}],"location":"canteen","topicId":"cooperation","creedIds":[7,9],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy helping classmates clean tables in canteen, teamwork, warm tones, no text, no logos, 16:9"},{"id":"s-self-64","title":"合作：聽從組長安排","background":"課室","description":"小組做 project，組長分配工作","hints":["跟從安排係合作","信任隊友"],"options":[{"id":"s-self-64-a","text":"自己做自己嘅","effects":[{"moralChange":-12,"comment":"要跟安排。"}],"next_scenario":null},{"id":"s-self-64-b","text":"跟從分配","effects":[{"moralChange":18,"comment":"你好合作！"}],"next_scenario":"s-self-65"},{"id":"s-self-64-c","text":"反對組長","effects":[{"moralChange":-15,"comment":"要尊重。"}],"next_scenario":null}],"location":"classroom","topicId":"cooperation","creedIds":[7,5],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy following group leader instructions in classroom project, cooperative, warm tones, no text, no logos, 16:9"},{"id":"s-self-65","title":"合作：鼓勵隊友","background":"操場","description":"隊友做運動好累","hints":["鼓勵係合作一部分","大家一齊加油"],"options":[{"id":"s-self-65-a","text":"自己跑","effects":[{"moralChange":-10,"comment":"要支持隊友。"}],"next_scenario":null},{"id":"s-self-65-b","text":"加油打氣","effects":[{"moralChange":18,"comment":"你好有團隊精神！"}],"next_scenario":"s-self-66"},{"id":"s-self-65-c","text":"叫佢放棄","effects":[{"moralChange":-18,"comment":"要支持。"}],"next_scenario":null}],"location":"playground","topicId":"cooperation","creedIds":[7,4],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy encouraging tired teammate during sports, supportive and cooperative, playground, warm tones, no text, no logos, 16:9"},{"id":"s-self-66","title":"合作：團隊勝利最開心","background":"屋企・床頭","description":"今日小組一齊完成任務","hints":["合作令大家成功","團隊精神最重要"],"options":[{"id":"s-self-66-a","text":"覺得自己最勁","effects":[{"moralChange":5,"comment":"但團隊更重要。"}],"next_scenario":null},{"id":"s-self-66-b","text":"好開心一齊做","effects":[{"moralChange":20,"comment":"你完成合作學習！badge +10分"}],"next_scenario":null},{"id":"s-self-66-c","text":"下次自己做","effects":[{"moralChange":-10,"comment":"要合作。"}],"next_scenario":null}],"location":"home","topicId":"cooperation","creedIds":[7,10],"imagePrompt":"Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy after successful group project at home, proud of teamwork, warm bedroom, no text, no logos, 16:9"}]`),oe=document.getElementById("app");P();ye();u.on("moral:updated",e=>{const t=p();if(e.studentId!==t)return;const n=document.getElementById("moral-bar");if(!n)return;const{percent:o,color:i}=Pe(e.score),s=n.querySelector(".moral-fill"),c=n.querySelector(".moral-num");s&&(s.style.width=o+"%",s.style.background=i),c&&(c.textContent=e.score)});u.on("sync:status",e=>{window._fcSyncStatus={...Ot(),...e};const t=document.getElementById("sync-badge");if(!t)return;const{status:n}=e;n==="syncing"?(t.textContent="🔄",t.title="同步中…",t.style.opacity="1"):n==="ok"?(t.textContent="✅",t.title="已同步",setTimeout(()=>{t.textContent="☁️",t.title="已連線"},2500)):n==="error"?(t.textContent="⚠️",t.title="同步失敗 — "+(e.error||""),t.style.opacity="1"):n==="offline"&&(t.textContent="📴",t.title="離線模式",t.style.opacity="1")});let w=null;u.on("sync:status",e=>{if(e.status==="offline"){if(w)return;w=document.createElement("div"),w.id="offline-banner",w.style.cssText=`
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: #ff4d4f;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      z-index: 9998;
+      font-weight: 500;
+    `,w.textContent="📴 離線模式 — 進度將在恢復連線後自動同步",document.body.appendChild(w)}else e.status==="online"&&w&&(w.remove(),w=null)});const Z=p();if(Z){const e=b(Z);Dt(Z,e)}window.FC=window.FC||{};let a={view:"role-select",student:null,subjectId:null,topicId:null,scenarioId:null,resultData:null,teacherMode:!1,role:null,gameMode:localStorage.getItem("fc_game_mode")||"relaxed"},S=null;async function Le(){if(!S){const e=await fe(()=>import("./teacher-C0YvunZm.js"),[],import.meta.url);S={renderLogin:e.renderLogin,renderTeacher:e.renderTeacher}}return S}function U(){a={...a,view:"home"},g()}window.FC.goHome=U;function qt(e){Ae(e),a={...a,view:"topic",topicId:e,subjectId:a.subjectId},g()}window.FC.goTopic=qt;function de(e){localStorage.setItem("fc_last_scenario",e),a={...a,view:"play",scenarioId:e},g()}window.FC.play=de;function Ut(e){const t=ut(a.scenarioId,e,a.subjectId);if(!t){console.error("[FC] chooseOption returned null, scenarioId=",a.scenarioId,"optionId=",e),U();return}a={...a,view:"result",resultData:t},g(),setTimeout(()=>{t.moralChange>=0?(A("success"),Yt(),Jt()):(A("fail"),Wt())},100)}window.FC.choose=Ut;function Yt(){const e=["#FFD700","#FF6B6B","#4ECDC4","#45B7D1","#96CEB4","#FFE66D"];for(let t=0;t<20;t++){const n=document.createElement("div");n.className="confetti-piece",n.style.left=Math.random()*90+5+"vw",n.style.top=Math.random()*30+10+"vh",n.style.background=e[Math.floor(Math.random()*e.length)],n.style.animationDelay=Math.random()*.5+"s",n.style.borderRadius=Math.random()>.5?"50%":"2px",document.body.appendChild(n),setTimeout(()=>n.remove(),2e3)}}function Jt(){const e=["🌟","✨","💫","⭐"];for(let t=0;t<6;t++){const n=document.createElement("div");n.className="star-float",n.textContent=e[Math.floor(Math.random()*e.length)],n.style.left=Math.random()*80+10+"vw",n.style.top=50+Math.random()*30+"vh",n.style.animationDelay=Math.random()*.8+"s",document.body.appendChild(n),setTimeout(()=>n.remove(),2e3)}}function Wt(){const e=document.createElement("div");e.className="star-float",e.textContent="💪",e.style.left="50%",e.style.top="50%",e.style.transform="translate(-50%,-50%)",e.style.fontSize="4em",e.style.animation="bounceIn 0.8s ease-out forwards",document.body.appendChild(e),setTimeout(()=>e.remove(),1500)}function Qt(){a.scenarioId?de(a.scenarioId):U()}window.FC.retry=Qt;function Zt(){a={...a,view:"progress"},g()}window.FC.goProgress=Zt;function en(){a={...a,view:"settings"},g()}window.FC.goSettings=en;async function Me(){await Le(),a={...a,view:"login"},g()}window.FC.goTeacher=Me;function tn(){if(!a.subjectId){Ve();return}const e=ce();if(!e.length){U();return}const t=e[Math.floor(Math.random()*e.length)];de(t.id)}window.FC.goRandom=tn;window.FC.testTTS=function(){const{speak:e}=window._fcAudio||{};e&&e("呢個係發音測試，請確認可以聽到聲音。如果聽到呢段說話，代表語音功能正常運作。")};window.FC.playGoodDeedBank=function(){var t;const e=vt();if(!e||!((t=e.questions)!=null&&t.length)){alert("銀行題目載入失敗，請重試。");return}a={...a,view:"bank-play"},g()};window.FC.bankChoose=function(e){const t=B();if(!t)return;const n=t.questions[t.currentIdx];if(!n)return;const o=Te(n,e);if(!o){console.error("[Bank] applyScenarioResult null");return}Ct(o.moralChange,n.title),a={...a,view:"bank-result",bankScenario:n,bankResult:o},g()};window.FC.bankNext=function(){const e=B();if(!e){FC.exitBank();return}if(e.status==="finished"||e.status==="bankrupt"){a={...a,view:"bank-summary"},g();return}_t(),a={...a,view:"bank-play"},g()};window.FC.exitBank=function(){wt(),a={...a,view:"hub"},g()};window.FC.confirmExitBank=function(){confirm("中途離開？今次遊戲進度會唔儲。")&&FC.exitBank()};window.FC._stopEvt=function(e){e&&(typeof e.stopPropagation=="function"&&e.stopPropagation(),typeof e.preventDefault=="function"&&e.preventDefault())};window.FC.setTTSLang=function(e){Ze(e);const{speak:t}=window._fcAudio||{};t&&t("語言切換測試，你聽到嘅係新嘅發音。"),a.view==="settings"&&g()};window.FC.getTTSLang=function(){return et()};window.FC.TTS_LANGS=ve;function Ve(){a={...a,view:"subject-select"},g()}window.FC.goSubjectSelect=Ve;function nn(e){xt(e),a={...a,subjectId:e,view:"home"},g()}window.FC.selectSubject=nn;function on(){a={...a,view:"role-select"},g()}window.FC.goRoleSelect=on;async function sn(e){a={...a,role:e,teacherMode:e==="teacher"},e==="teacher"?(await Le(),a={...a,view:"login"}):a={...a,view:"hub"},g()}window.FC.chooseRole=sn;function an(){a={...a,view:"hub"},g()}window.FC.goHub=an;function cn(e){localStorage.setItem("fc_game_mode",e),a={...a,gameMode:e},g(),setTimeout(()=>{document.querySelectorAll(".mode-card").forEach(o=>o.classList.remove("selected"));const n=document.querySelector(`.mode-card.${e}`);n&&(n.classList.add("selected"),n.style.transform="scale(1.05)",setTimeout(()=>{n.style.transform=""},300))},50)}window.FC.selectMode=cn;function rn(){a={...a,view:"mode-select"},g()}window.FC.goModeSelect=rn;function ln(){a={...a,view:"teacher-assign"},g()}window.FC.goTeacherAssign=ln;function Y(){try{return JSON.parse(localStorage.getItem("fc_teacher_config")||"{}")}catch{return console.warn("[FC] teacher_config corrupt, resetting"),{}}}function J(e){try{localStorage.setItem("fc_teacher_config",JSON.stringify(e))}catch(t){console.error("[FC] saveTeacherConfig failed:",t.message)}}window.FC.toggleTeacherFeature=function(e,t){e.classList.toggle("on");const n=e.classList.contains("on"),o=Y();o[t]=n,J(o),t==="timerEnabled"&&g()};window.FC.setTeacherTimer=function(e){const t=Y();t.timerSeconds=parseInt(e),J(t)};window.FC.setButtonSize=function(e){const t=Y();t.buttonSize=e,J(t),g()};window.FC.toggleAssignedTopic=function(e,t){const n=Y();n.assignedTopics||(n.assignedTopics=[]),t?n.assignedTopics.includes(e)||n.assignedTopics.push(e):n.assignedTopics=n.assignedTopics.filter(o=>o!==e),J(n)};window.FC.saveTeacherPIN=function(){var t,n;const e=((n=(t=document.getElementById("teacher-pin-input"))==null?void 0:t.value)==null?void 0:n.trim())||"admin";localStorage.setItem("fc_teacher_pin",e),alert("✅ PIN 已更新為："+e)};window.FC.saveTeacherConfig=function(){alert("✅ 老師設定已儲存！"),Me()};function dn(){a={...a,view:"student-select"},g()}window.FC.switchStudent=dn;function mn(){return`
+    <div class="container fade-in" style="max-width:460px;padding-top:40px">
+      <h2 style="text-align:center;margin-bottom:24px">👤 選擇學生</h2>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
+        ${je().map(t=>`
+          <div class="student-card" onclick="FC.selectStudent('${t.name}')">
+            <div class="avatar">${t.emoji||"👤"}</div>
+            <div class="info">
+              <div class="name">${t.name}</div>
+              <div class="sub">按此開始學習</div>
+            </div>
+            <div class="arrow">→</div>
+          </div>
+        `).join("")}
+      </div>
+      <div style="text-align:center;color:var(--text-light);margin-bottom:16px;font-size:0.9em">— 或新增學生 —</div>
+      <div style="background:var(--card);border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
+        <input id="new-student-name" type="text" inputmode="none" autocomplete="off" placeholder="輸入新學生名字"
+          style="width:100%;padding:14px;border:2px solid var(--border);border-radius:10px;font-size:1em;margin-bottom:10px;box-sizing:border-box" />
+        <button class="btn btn-success" style="width:100%" onclick="FC.addStudent()">➕ 新增學生</button>
+      </div>
+      <div style="margin-top:16px;text-align:center">
+        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
+      </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}window.FC.selectStudent=function(e){e!=="其他"&&(ze(e),a={...a,student:e,view:"home"},g())};window.FC.addStudent=function(){var n;const e=document.getElementById("new-student-name"),t=(n=e==null?void 0:e.value)==null?void 0:n.trim();t&&(ze(t),a={...a,student:t,view:"home"},g())};window.FC.doLogin=function(){var n;const e=localStorage.getItem("fc_teacher_pin")||"admin";if(((n=document.getElementById("teacher-pw"))==null?void 0:n.value)===e)a={...a,view:"teacher",teacherMode:!0},g();else{const o=document.getElementById("login-error");o&&(o.style.display="block")}};function gn(){return`
+    <div class="container fade-in" style="max-width:500px">
+      <h2 style="text-align:center;margin-bottom:20px">📚 選擇科目</h2>
+      <div class="subject-grid">
+        ${Ue().map(e=>`
+          <button class="subject-btn" style="background:${e.bgColor};border-color:${e.color}"
+            onclick="FC.selectSubject('${e.id}')">
+            <div style="font-size:2em">${e.emoji}</div>
+            <div style="font-weight:600;color:${e.color}">${e.title}</div>
+          </button>
+        `).join("")}
+      </div>
+      <div style="margin-top:12px;text-align:center">
+        <button class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
+      </div>
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `}window.FC.handleImport=function(e){var o;const t=(o=e.target.files)==null?void 0:o[0];if(!t)return;const n=new FileReader;n.onload=i=>{const s=Ee(i.target.result);s.ok?(alert("匯入成功！"),window.FC.goTeacher()):alert("匯入失敗："+s.error)},n.readAsText(t)};window.FC.exportAll=function(){const e=je(),t=new Blob([JSON.stringify(e,null,2)],{type:"application/json"}),n=URL.createObjectURL(t),o=document.createElement("a");o.href=n,o.download="全班進度.json",o.click(),URL.revokeObjectURL(n)};window.FC.speak=function(){const e=re(a.scenarioId);e&&Se(e)};window.FC.speakOpt=function(e){const t=re(a.scenarioId);if(!t)return;const n=t.options.find(o=>o.id===e);if(n){const{speak:o}=window._fcAudio||{};o&&o(n.text)}};window.FC.speakCreeds=function(){var e;(e=a.resultData)!=null&&e.creeds&&Ie(a.resultData.creeds)};window.FC.toggleVoice=function(e){const t=!X();_e(t),e&&e.classList.toggle("on",t),t&&!localStorage.getItem("fc_voice_seen")&&localStorage.setItem("fc_voice_seen","1")};window.FC.setFontSize=function(e){localStorage.setItem("fc_font_size",e),P();const t=document.querySelector('[data-for="fs"]');t&&(t.textContent=e<=18?"小":e<=22?"中":"大")};window.FC.setLineHeight=function(e){localStorage.setItem("fc_line_height",e),P();const t=document.querySelector('[data-for="lh"]');t&&(t.textContent=parseFloat(e).toFixed(1))};window.FC.setSpacing=function(e){localStorage.setItem("fc_spacing",e),P(),["narrow","medium","wide"].forEach(t=>{const n=document.getElementById("sp-"+t);n&&(n.className="btn "+(t===e?"btn-primary":"btn-outline"))})};window.FC.setSpeed=function(e){localStorage.setItem("fc_tts_speed",e);const t=document.querySelector('[data-for="speed"]');t&&(t.textContent=parseFloat(e).toFixed(2)+"x")};window.FC.resetSettings=function(){tt(),g()};window.FC.forceSync=async function(){const e=p();if(!e)return;const t=b(e);if((await le(e,t)).ok){const o=document.getElementById("settings-sync-status"),i=document.getElementById("settings-last-sync");o&&(o.textContent="✅ 已同步"),i&&(i.textContent=new Date().toLocaleString("zh-HK",{dateStyle:"short",timeStyle:"short"}))}};window.FC.exportMyData=function(){const e=p();if(!e)return;const t=gt(e),n=new Blob([t],{type:"application/json"}),o=URL.createObjectURL(n),i=document.createElement("a");i.href=o,i.download=`progress_${e}.json`,i.click(),URL.revokeObjectURL(o)};window.FC.importMyData=function(){const e=document.createElement("input");e.type="file",e.accept=".json",e.onchange=t=>{var i;const n=(i=t.target.files)==null?void 0:i[0];if(!n)return;const o=new FileReader;o.onload=s=>{const c=Ee(s.target.result);alert(c.ok?"匯入成功！":"匯入失敗："+c.error),c.ok&&g()},o.readAsText(n)},e.click()};function g(){var t;let e="";try{switch(a.view){case"role-select":e=kt();break;case"hub":e=St();break;case"mode-select":e=Pt(a.gameMode,a.subjectId);break;case"student-select":e=mn();break;case"subject-select":e=gn();break;case"login":e=S?S.renderLogin():'<div class="container"><p>載入中...</p></div>';break;case"teacher":e=S?S.renderTeacher():'<div class="container"><p>載入中...</p></div>';break;case"teacher-assign":e=Tt();break;case"home":e=Et(a.subjectId);break;case"topic":e=zt(a.topicId,a.subjectId);break;case"play":e=Bt(a.scenarioId,a.subjectId);break;case"result":e=At(a.resultData,a.subjectId);break;case"progress":e=Nt(a.subjectId);break;case"settings":e=Rt();break;case"bank-play":{const n=B(),o=((t=n==null?void 0:n.questions)==null?void 0:t[n==null?void 0:n.currentIdx])||null;e=It(o,n);break}case"bank-result":e=Ft(a.bankScenario,a.bankResult,B());break;case"bank-summary":e=$t(B());break;default:e='<div class="container"><p>頁面不存在</p></div>'}oe.innerHTML=e}catch(n){console.error("RENDER ERROR:",n.message,n.stack),oe.innerHTML=`<pre style="color:red;padding:20px">[FC] Render Error:
+`+n.message+`
+`+(n.stack||"").split(`
+`).slice(0,5).join(`
+`)+"</pre>"}}pt(Xt);try{g()}catch(e){console.error("RENDER ERROR:",e.message,e.stack),oe.innerHTML=`<pre style="color:red;padding:20px">[FC] Render Error:
+`+e.message+`
+`+(e.stack||"").split(`
+`).slice(0,5).join(`
+`)+"</pre>"}export{fe as _,Ue as a,je as g};

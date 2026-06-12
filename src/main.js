@@ -5,8 +5,11 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
          getDisplayProgress, initTopicProgress, initSubjectProgress, renderHome, renderTopicList,
          renderPlay, renderResult, renderProgress, renderSettings,
          playScenario, chooseOption, suggestNext,
-         renderRoleSelect, renderModeSelect, renderTeacherAssign,
+         renderRoleSelect, renderModeSelect, renderTeacherAssign, renderGameHub,
+         renderBankPlay, renderBankResult, renderBankSummary,
          GAME_MODES } from './engine.js';
+import { applyScenarioResult } from './domain/Moral.js';
+import { startBankRun, getBankRun, endBankRun, recordBankTransaction, advanceToNextQuestion, BANK_CONFIG } from './games/GoodDeedBank.js';
 import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
 import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
@@ -262,6 +265,64 @@ window.FC.testTTS = function() {
   if (speak) speak('呢個係發音測試，請確認可以聽到聲音。如果聽到呢段說話，代表語音功能正常運作。');
 };
 
+// ── 🏦 好人好事銀行 handlers ──
+window.FC.playGoodDeedBank = function() {
+  const run = startBankRun();
+  if (!run || !run.questions?.length) {
+    alert('銀行題目載入失敗，請重試。');
+    return;
+  }
+  state = { ...state, view: 'bank-play' };
+  render();
+};
+
+window.FC.bankChoose = function(optionId) {
+  const run = getBankRun();
+  if (!run) return;
+  const scenario = run.questions[run.currentIdx];
+  if (!scenario) return;
+  // 計算 moralChange（重用 domain 邏輯，唔經 markComplete — 呢個係獨立遊戲）
+  const result = applyScenarioResult(scenario, optionId, getStudent());
+  if (!result) {
+    console.error('[Bank] applyScenarioResult null');
+    return;
+  }
+  recordBankTransaction(result.moralChange, scenario.title);
+  state = {
+    ...state,
+    view: 'bank-result',
+    bankScenario: scenario,
+    bankResult: result,
+  };
+  render();
+};
+
+window.FC.bankNext = function() {
+  const run = getBankRun();
+  if (!run) { FC.exitBank(); return; }
+  // 局結束（finished / bankrupt）→ 結算
+  if (run.status === 'finished' || run.status === 'bankrupt') {
+    state = { ...state, view: 'bank-summary' };
+    render();
+    return;
+  }
+  advanceToNextQuestion();
+  state = { ...state, view: 'bank-play' };
+  render();
+};
+
+window.FC.exitBank = function() {
+  endBankRun();
+  state = { ...state, view: 'hub' };
+  render();
+};
+
+window.FC.confirmExitBank = function() {
+  if (confirm('中途離開？今次遊戲進度會唔儲。')) {
+    FC.exitBank();
+  }
+};
+
 // Event helper: 內嵌喺 inline handler 嗰陣用，避免 mobile browser touch 事件漏出去撞到 parent
 // 用法：onclick="FC._stopEvt(event); doStuff()"
 window.FC._stopEvt = function(e) {
@@ -309,12 +370,18 @@ export async function chooseRole(role) {
     await _loadTeacher();
     state = { ...state, view: 'login' };
   } else {
-    // Student: go to mode select
-    state = { ...state, view: 'mode-select' };
+    // Student: go to Game Hub (Blooket-style lobby)
+    state = { ...state, view: 'hub' };
   }
   render();
 }
 window.FC.chooseRole = chooseRole;
+
+export function goHub() {
+  state = { ...state, view: 'hub' };
+  render();
+}
+window.FC.goHub = goHub;
 
 export function selectMode(modeId) {
   localStorage.setItem('fc_game_mode', modeId);
@@ -617,6 +684,7 @@ function render() {
   try {
     switch (state.view) {
       case 'role-select':    html = renderRoleSelect(); break;
+      case 'hub':            html = renderGameHub(); break;
       case 'mode-select':    html = renderModeSelect(state.gameMode, state.subjectId); break;
       case 'student-select': html = renderStudentSelect(); break;
       case 'subject-select': html = renderSubjectSelect(); break;
@@ -629,6 +697,15 @@ function render() {
       case 'result': html = renderResult(state.resultData, state.subjectId); break;
       case 'progress': html = renderProgress(state.subjectId); break;
       case 'settings': html = renderSettings(); break;
+      // 🏦 好人好事銀行
+      case 'bank-play': {
+        const run = getBankRun();
+        const sc = run?.questions?.[run?.currentIdx] || null;
+        html = renderBankPlay(sc, run);
+        break;
+      }
+      case 'bank-result': html = renderBankResult(state.bankScenario, state.bankResult, getBankRun()); break;
+      case 'bank-summary': html = renderBankSummary(getBankRun()); break;
       default: html = '<div class="container"><p>頁面不存在</p></div>';
     }
     app.innerHTML = html;

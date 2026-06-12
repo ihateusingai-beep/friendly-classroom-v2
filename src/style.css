@@ -1076,3 +1076,159 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   min-width: 28px;
   text-align: right;
 }
+/* ── 🎮 Game Hub ── */
+.hub-screen { padding: 16px 0; }
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  max-width: 560px;
+  margin: 16px auto 0;
+}
+@media (max-width: 480px) {
+  .hub-grid { grid-template-columns: 1fr; }
+}
+.game-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 22px 16px;
+  border-radius: 20px;
+  border: 3px solid;
+  cursor: pointer;
+  min-height: 180px;
+  transition: transform 0.15s, box-shadow 0.2s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.game-card.available:hover { transform: translateY(-4px); box-shadow: 0 10px 28px rgba(0,0,0,0.18); }
+.game-card.available:active { transform: scale(0.97); }
+.game-card.locked:hover { /* 唔好彈起 */ }
+.gc-icon { font-size: 3em; line-height: 1; margin-bottom: 8px; }
+.gc-title { font-size: 1.15em; font-weight: 800; color: #1f2937; margin-bottom: 6px; }
+.gc-desc { font-size: 0.85em; color: #4b5563; line-height: 1.4; }
+.gc-tag {
+  position: absolute;
+  top: 10px; right: 10px;
+  font-size: 0.7em;
+  font-weight: 700;
+  background: rgba(255,255,255,0.85);
+  color: #6b7280;
+  padding: 3px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ── 🏦 好人好事銀行 ── */
+.bank-ledger {
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border: 2px solid #f59e0b;
+  border-radius: 16px;
+  padding: 14px 18px;
+  box-shadow: 0 2px 8px rgba(245,158,11,0.15);
+}
+.bl-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.bl-label { font-size: 0.95em; color: #92400e; }
+.bl-val { font-size: 1.1em; font-weight: 700; color: #1f2937; }
+.bl-val.positive { color: #16a34a; }
+.bl-val.negative { color: #dc2626; }
+.bl-val.neutral { color: #6b7280; }
+.bank-progress {
+  position: relative;
+  height: 14px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+.bank-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: linear-gradient(90deg, #facc15, #f59e0b);
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+.bank-target {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.7em;
+  color: #78350f;
+  font-weight: 700;
+  text-shadow: 0 0 2px rgba(255,255,255,0.7);
+}
+
+.bank-stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 16px;
+  border-radius: 20px;
+  margin: 18px auto;
+  max-width: 280px;
+  border: 3px dashed;
+  animation: stampIn 0.4s ease-out;
+}
+.bank-stamp.green { background: #d1fae5; border-color: #10b981; color: #065f46; }
+.bank-stamp.red   { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+.bank-stamp.gray  { background: #f3f4f6; border-color: #9ca3af; color: #4b5563; }
+.stamp-emoji { font-size: 2.6em; line-height: 1; margin-bottom: 6px; }
+.stamp-delta { font-size: 1.6em; font-weight: 800; }
+.stamp-label { font-size: 0.85em; opacity: 0.85; margin-top: 2px; }
+@keyframes stampIn {
+  0% { transform: scale(2) rotate(-12deg); opacity: 0; }
+  60% { transform: scale(0.9) rotate(2deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+.bank-balance-big .positive { color: #16a34a; }
+.bank-balance-big .negative { color: #dc2626; }
+.bank-balance-big .neutral  { color: #6b7280; }
+
+.bank-end-banner {
+  text-align: center;
+  padding: 16px 12px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1.05em;
+  margin: 14px 0;
+}
+.bank-end-banner.win   { background: #d1fae5; color: #065f46; border: 2px solid #10b981; }
+.bank-end-banner.lose  { background: #fee2e2; color: #991b1b; border: 2px solid #ef4444; }
+.bank-end-banner.end   { background: #dbeafe; color: #1e40af; border: 2px solid #3b82f6; }
+
+.ledger-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.02);
+  font-size: 0.9em;
+}
+.ledger-num {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: #9ca3af;
+  min-width: 28px;
+}
+.ledger-label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #4b5563;
+}
+.ledger-delta { font-weight: 700; }
+.ledger-delta.positive { color: #16a34a; }
+.ledger-delta.negative { color: #dc2626; }
+.ledger-delta.neutral  { color: #6b7280; }
