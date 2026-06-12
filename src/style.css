@@ -904,16 +904,106 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   color: #16a34a;
 }
 
-/* ---- Home greeting ---- */
-.home-greeting {
-  margin: 8px 0 18px;
-  padding: 14px 18px;
-  background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
-  border-radius: 14px;
-  border-left: 4px solid #7C3AED;
+/* ---- Home hero ---- */
+.home-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 8px 0 14px;
+  padding: 18px 20px;
+  background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 60%, #ddd6fe 100%);
+  border-radius: 16px;
+  border-left: 5px solid #7C3AED;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.08);
 }
-.greeting-line { font-size: 1.1em; font-weight: 700; color: #4c1d95; }
-.greeting-sub { font-size: 0.88em; color: #6b46c1; margin-top: 4px; line-height: 1.4; }
+.hero-greeting { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 0; }
+.hero-emoji { font-size: 2.6em; line-height: 1; }
+.hero-line { font-size: 1.15em; font-weight: 700; color: #4c1d95; }
+.hero-name { color: #7C3AED; }
+.hero-sub { font-size: 0.88em; color: #6b46c1; margin-top: 3px; line-height: 1.4; }
+.hero-stats { flex-shrink: 0; }
+
+/* ---- Streak chip ---- */
+.streak-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.65);
+  border: 2px solid #e9d5ff;
+  min-width: 78px;
+}
+.streak-stat .flame {
+  font-size: 1.7em;
+  line-height: 1;
+  display: inline-block;
+}
+.streak-stat .stat-num {
+  font-size: 1.3em;
+  font-weight: 800;
+  color: #4c1d95;
+  margin-top: 2px;
+  line-height: 1;
+}
+.streak-stat .stat-label {
+  font-size: 0.7em;
+  color: #6b46c1;
+  font-weight: 600;
+  margin-top: 2px;
+  letter-spacing: 0.3px;
+}
+.streak-stat.flame--hot {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border-color: #f59e0b;
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.25);
+}
+.streak-stat.flame--hot .flame { animation: flamePulse 1.4s ease-in-out infinite; }
+.streak-stat.flame--warm {
+  background: rgba(255,255,255,0.75);
+  border-color: #c4b5fd;
+}
+.streak-stat.flame--cold { opacity: 0.7; }
+@keyframes flamePulse {
+  0%, 100% { transform: scale(1) rotate(-2deg); }
+  50%      { transform: scale(1.15) rotate(2deg); }
+}
+
+/* ---- Daily creed card ---- */
+.daily-creed {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0 0 18px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+  border-radius: 14px;
+  border-left: 4px solid #f59e0b;
+}
+.creed-badge {
+  background: #f59e0b;
+  color: #fff;
+  font-size: 0.78em;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+.creed-body { flex: 1; min-width: 0; }
+.creed-title {
+  font-size: 0.95em;
+  font-weight: 700;
+  color: #92400e;
+  margin-bottom: 2px;
+}
+.creed-text {
+  font-size: 0.88em;
+  color: #78350f;
+  line-height: 1.4;
+}
 
 /* ---- Home footer 2x2 grid ---- */
 .home-footer-grid {
@@ -925,6 +1015,12 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
 .home-footer-grid .btn { justify-content: center; }
 @media (max-width: 480px) {
   .home-footer-grid { grid-template-columns: 1fr; }
+  .home-hero { padding: 14px 16px; }
+  .hero-emoji { font-size: 2em; }
+  .hero-line { font-size: 1em; }
+  .streak-stat { min-width: 64px; padding: 8px 10px; }
+  .streak-stat .flame { font-size: 1.4em; }
+  .streak-stat .stat-num { font-size: 1.1em; }
 }
 
 /* ---- 結果頁增強 ---- */

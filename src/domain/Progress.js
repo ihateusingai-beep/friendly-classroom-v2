@@ -34,6 +34,8 @@ export function markComplete(studentName, scenarioId, topicId, moralChange, subj
       if (!p.subjectProgress[subjectId]) p.subjectProgress[subjectId] = { completed: 0, total: 0 };
       p.subjectProgress[subjectId].completed++;
     }
+    // ── Streak 累積 ──
+    p.streak = _bumpStreak(p.streak);
     saveProgress(p);
 
     // 廣播事件
@@ -124,6 +126,8 @@ export function getStudentSummary(studentId) {
     completedCount: p.completedScenarios?.length || 0,
     topicCount: Object.keys(p.topicProgress || {}).length,
     lastPlayed: p.lastPlayed || null,
+    streak: p.streak?.current || 0,
+    streakLongest: p.streak?.longest || 0,
   };
 }
 
@@ -143,5 +147,31 @@ function _defaultProgress(name) {
     },
     totalMoralScore: 0,
     lastPlayed: null,
+    streak: { current: 0, longest: 0, lastDay: null },
   };
+}
+
+/**
+ * Streak 規則：
+ * - 同日重複 markComplete：idempotent（lastDay 對齊今日就唔加）
+ * - 連續下一日（lastDay === 昨日）：current + 1
+ * - 隔咗 ≥ 2 日：current reset 做 1
+ * - 由 0 開始（首次玩）：current = 1
+ */
+function _bumpStreak(streak) {
+  const s = streak || { current: 0, longest: 0, lastDay: null };
+  const today = new Date().toISOString().split('T')[0];
+  if (s.lastDay === today) return s;                    // 同日 idempotent
+  const yest = _yesterdayISO();
+  if (s.lastDay === yest) s.current += 1;               // 連續
+  else s.current = 1;                                    // 首次 / 斷咗
+  if (s.current > (s.longest || 0)) s.longest = s.current;
+  s.lastDay = today;
+  return s;
+}
+
+function _yesterdayISO() {
+  const d = new Date();
+  d.setDate(d.getDate() - 1);
+  return d.toISOString().split('T')[0];
 }

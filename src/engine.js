@@ -7,6 +7,7 @@ import { getTopic, TOPICS } from './topics.js';
 import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 import { getMoralBarData } from './domain/Moral.js';
 import { getProgress, isCompleted } from './domain/Progress.js';
+import { getDailyCreed } from './creeds.js';
 
 // ── 遊戲邏輯 delegate（from domain/ScenarioEngine） ──
 import {
@@ -540,6 +541,13 @@ export function renderMoralBar(studentId) {
 }
 
 export function renderHome(subjectId) {
+  const studentName = getStudent() || '同學';
+  const streak = getStudent() ? (getProgress(getStudent()).streak?.current || 0) : 0;
+  const longest = getStudent() ? (getProgress(getStudent()).streak?.longest || 0) : 0;
+  const dailyCreed = getDailyCreed();
+  const flameEmoji = streak >= 7 ? '🔥' : streak >= 3 ? '✨' : streak >= 1 ? '🌱' : '💤';
+  const flameClass = streak >= 7 ? 'flame--hot' : streak >= 1 ? 'flame--warm' : 'flame--cold';
+
   return `
     <div class="container fade-in">
       <div class="page-header">
@@ -550,9 +558,29 @@ export function renderHome(subjectId) {
 
       ${getStudent() ? renderMoralBar(getStudent()) : ''}
 
-      <div class="home-greeting">
-        <div class="greeting-line">揀個品格課題開始 🎯</div>
-        <div class="greeting-sub">情緒 · 尊重 · 誠實 · 衝突 — 每次答題儲起品格分</div>
+      <div class="home-hero">
+        <div class="hero-greeting">
+          <div class="hero-emoji">👋</div>
+          <div class="hero-text">
+            <div class="hero-line">你好，<span class="hero-name">${studentName}</span>！</div>
+            <div class="hero-sub">揀個品格課題開始 🎯</div>
+          </div>
+        </div>
+        <div class="hero-stats">
+          <div class="stat streak-stat ${flameClass}" title="${longest > 0 ? `最長紀錄 ${longest} 日` : '今日開始你嘅 streak！'}">
+            <span class="flame">${flameEmoji}</span>
+            <span class="stat-num">${streak}</span>
+            <span class="stat-label">日 streak</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="daily-creed">
+        <span class="creed-badge">🌟 今日信條</span>
+        <div class="creed-body">
+          <div class="creed-title">${dailyCreed.title}</div>
+          <div class="creed-text">${dailyCreed.text}</div>
+        </div>
       </div>
 
       <div class="topic-grid">

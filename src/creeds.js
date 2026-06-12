@@ -25,6 +25,25 @@ export function formatCreeds(ids) {
 }
 
 /**
+ * 每日信條 — 根據 yyyy-mm-dd 揀一條 creed，同一日 stable，第二日變。
+ * 用 djb2 hash 攞穩定 index（避免 random 喺 rerender 跳嚟跳去）。
+ */
+export function getDailyCreed() {
+  const today = new Date().toISOString().split('T')[0];
+  const idx = _dateHash(today) % CREEDS.length;
+  return CREEDS[idx];
+}
+
+function _dateHash(str) {
+  let h = 5381;
+  for (let i = 0; i < str.length; i++) {
+    h = ((h << 5) + h) + str.charCodeAt(i);
+    h |= 0;
+  }
+  return Math.abs(h);
+}
+
+/**
  * 根據選擇嘅 moral change 動態挑選 creeds subset：
  * - 正面選擇（moralChange > 0）：強調呢個情境下要實踐嘅正面信條
  * - 負面選擇（moralChange < 0）：用提醒類信條反思自己需要改善
