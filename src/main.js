@@ -232,6 +232,12 @@ export function goProgress() {
 }
 window.FC.goProgress = goProgress;
 
+export function goGameHub() {
+  state = { ...state, view: 'hub' };
+  render();
+}
+window.FC.goGameHub = goGameHub;
+
 export function goSettings() {
   state = { ...state, view: 'settings' };
   render();

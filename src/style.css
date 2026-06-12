@@ -840,8 +840,8 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   box-shadow: 0 12px 30px rgba(0,0,0,0.2);
 }
 .topic-card .emoji { font-size: 2.8em; display: block; margin-bottom: 8px; }
-.topic-card .title { font-weight: 700; font-size: 1.1em; }
-.topic-card .sub { font-size: 0.85em; opacity: 0.9; margin-top: 4px; }
+.topic-card .title { font-weight: 700; font-size: 1.15em; }
+.topic-card .sub { font-size: 0.95em; opacity: 0.92; margin-top: 6px; line-height: 1.35; }
 .topic-card .progress-bar {
   height: 6px;
   background: rgba(255,255,255,0.3);
@@ -854,6 +854,77 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   background: #fff;
   border-radius: 3px;
   transition: width 0.4s ease;
+}
+
+/* ---- Topic card 進度狀態 ---- */
+.topic-card.topic-status--new {
+  opacity: 0.78;
+  filter: saturate(0.85);
+}
+.topic-card.topic-status--new::after {
+  content: '✨ 從未開始';
+  position: absolute;
+  top: 10px; right: 12px;
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+  font-size: 0.75em;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+.topic-card.topic-status--done {
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.55) inset, 0 8px 24px rgba(0,0,0,0.18);
+}
+.topic-card.topic-status--done::after {
+  content: '✓';
+  position: absolute;
+  top: 10px; right: 12px;
+  background: #fff;
+  color: #16a34a;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.95em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+.topic-card .topic-status {
+  position: absolute;
+  bottom: 10px; right: 12px;
+  background: rgba(0,0,0,0.28);
+  color: #fff;
+  font-size: 0.78em;
+  padding: 3px 9px;
+  border-radius: 12px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+.topic-card.topic-status--done .topic-status {
+  background: rgba(255,255,255,0.92);
+  color: #16a34a;
+}
+
+/* ---- Home greeting ---- */
+.home-greeting {
+  margin: 8px 0 18px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
+  border-radius: 14px;
+  border-left: 4px solid #7C3AED;
+}
+.greeting-line { font-size: 1.1em; font-weight: 700; color: #4c1d95; }
+.greeting-sub { font-size: 0.88em; color: #6b46c1; margin-top: 4px; line-height: 1.4; }
+
+/* ---- Home footer 2x2 grid ---- */
+.home-footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 22px;
+}
+.home-footer-grid .btn { justify-content: center; }
+@media (max-width: 480px) {
+  .home-footer-grid { grid-template-columns: 1fr; }
 }
 
 /* ---- 結果頁增強 ---- */

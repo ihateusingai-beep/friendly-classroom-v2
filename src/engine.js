@@ -540,83 +540,59 @@ export function renderMoralBar(studentId) {
 }
 
 export function renderHome(subjectId) {
-  const subjectColor = getSubjectColor(subjectId);
-  const subjectBg = getSubjectBgColor(subjectId);
-  const gameMode = localStorage.getItem('fc_game_mode') || 'relaxed';
-  const modeInfo = GAME_MODES.find(m => m.id === gameMode) || GAME_MODES[0];
-
-  // TTS 測試（方便學生確認聲音正常）
-  const ttsTestHtml = isEnabled() ? `<button class="btn btn-outline" style="margin-bottom:12px;font-size:0.9em" onclick="FC.testTTS()">🔊 測試發音</button>` : '';
-
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goRoleSelect()">🏠</button>
+        <button class="back-btn" onclick="FC.goGameHub()">🎮</button>
         <h2>🌟 友愛教室</h2>
-        <button class="back-btn" style="background:${subjectBg};color:${subjectColor};border:2px solid ${subjectColor}"
-          onclick="FC.goSubjectSelect()">
-          ${getSubjectEmoji(subjectId) || '📚'}
-        </button>
+        <button class="back-btn" onclick="FC.switchStudent()" title="切換學生">🔄</button>
       </div>
 
       ${getStudent() ? renderMoralBar(getStudent()) : ''}
 
-      <!-- Mode badge + change button -->
-      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
-        <span class="mode-badge ${gameMode}" style="font-size:0.88em">
-          ${modeInfo.icon} ${modeInfo.title}
-        </span>
-        <button onclick="FC.goModeSelect()"
-          style="background:none;border:none;cursor:pointer;font-size:0.8em;color:var(--text-light);text-decoration:underline;padding:0">
-          更改模式
-        </button>
+      <div class="home-greeting">
+        <div class="greeting-line">揀個品格課題開始 🎯</div>
+        <div class="greeting-sub">情緒 · 尊重 · 誠實 · 衝突 — 每次答題儲起品格分</div>
       </div>
-
-      ${subjectId ? `
-      <div class="subject-banner" style="background:${subjectBg};border:2px solid ${subjectColor}">
-        <span style="font-size:1.5em">${getSubjectEmoji(subjectId)}</span>
-        <div>
-          <div style="font-weight:600;color:${subjectColor}">${getSubjectName(subjectId)}</div>
-          <div style="font-size:0.85em;color:var(--text-light)">按主題學習 → 智能漸進解鎖</div>
-        </div>
-        <button class="btn btn-sm" style="margin-left:auto;background:${subjectColor};color:white"
-          onclick="FC.goSubjectSelect()">切換科目</button>
-      </div>
-      ` : `
-      <div class="subject-banner" style="background:#f5f5f5;border:2px dashed #ccc;text-align:center;padding:16px">
-        <div style="margin-bottom:8px">📚 請先選擇科目</div>
-        <button class="btn btn-primary" onclick="FC.goSubjectSelect()">選擇科目</button>
-      </div>
-      `}
 
       <div class="topic-grid">
         ${TOPICS.map(t => {
           const p = getStudent() ? (getProgress(getStudent()).topicProgress[t.id] || {}) : {};
-          const pct = p.total ? Math.round((p.completed / p.total) * 100) : 0;
-          // sub 唔喺 TOPICS 入面，從 description 抽取第一句做 sub
+          const total = p.total || 0;
+          const done = p.completed || 0;
+          const pct = total ? Math.round((done / total) * 100) : 0;
           const sub = t.description?.split(/[，。,。]/)[0] || t.description || '';
+          let statusBadge = '';
+          let statusClass = '';
+          if (total === 0) {
+            statusClass = 'topic-status--new';
+            statusBadge = '<div class="topic-status">未開始</div>';
+          } else if (pct >= 100) {
+            statusClass = 'topic-status--done';
+            statusBadge = '<div class="topic-status">🏆 已精通</div>';
+          } else {
+            statusClass = 'topic-status--progress';
+            statusBadge = `<div class="topic-status">${done}/${total} · ${pct}%</div>`;
+          }
           return `
-            <div class="topic-card" style="background:${t.color}" onclick="FC.goTopic('${t.id}')">
+            <div class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${t.id}')">
               <span class="emoji">${t.emoji}</span>
               <div class="title">${t.title}</div>
               <div class="sub">${sub}</div>
-              ${getStudent() ? `
+              ${total > 0 ? `
                 <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-                <div class="sub">${p.completed || 0}/${p.total || 0} 已完成</div>
               ` : ''}
+              ${statusBadge}
             </div>
           `;
         }).join('')}
       </div>
 
-      <div class="action-row" style="margin-top:20px">
-        <button class="btn btn-outline" onclick="FC.goRandom()">🎲 自由模式</button>
+      <div class="home-footer-grid">
         <button class="btn btn-outline" onclick="FC.goProgress()">📊 我的進度</button>
-      </div>
-      ${ttsTestHtml}
-      <div class="action-row">
         <button class="btn btn-outline" onclick="FC.goSettings()">⚙️ 設定</button>
         <button class="btn btn-outline" onclick="FC.switchStudent()">🔄 切換學生</button>
+        <button class="btn btn-outline" onclick="FC.goGameHub()">🎮 返回 Game Hub</button>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
