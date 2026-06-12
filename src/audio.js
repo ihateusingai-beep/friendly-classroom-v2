@@ -249,9 +249,6 @@ export function preloadAudio(ids) {
   });
 }
 
-// 初始化
-applyCSS();
-
 window._fcAudio = {
   speakScenario,
   speakCreeds,

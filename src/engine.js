@@ -3,7 +3,7 @@
 // 所有 render* 函數保留在此檔案
 
 import { getSubjectColor, getSubjectBgColor, getSubjectName, getSubjectEmoji } from './subjects.js';
-import { getTopic } from './topics.js';
+import { getTopic, TOPICS } from './topics.js';
 import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 import { getMoralBarData } from './domain/Moral.js';
 import { getProgress, isCompleted } from './domain/Progress.js';
@@ -94,8 +94,8 @@ export const GAME_MODES = [
   },
 ];
 
-export function renderModeSelect(subjectId) {
-  const savedMode = localStorage.getItem('fc_game_mode') || 'relaxed';
+export function renderModeSelect(currentMode, subjectId) {
+  const savedMode = currentMode || localStorage.getItem('fc_game_mode') || 'relaxed';
 
   return `
     <div class="mode-screen fade-in">
@@ -105,7 +105,6 @@ export function renderModeSelect(subjectId) {
       </div>
 
       <div class="mode-header">
-        <h2>🎮 選擇遊戲模式</h2>
         <p>你鍾意點玩？揀一個模式開始！</p>
       </div>
 
@@ -154,14 +153,13 @@ export function renderModeSelect(subjectId) {
 
 // ── Teacher Assignment Config ──────────────────────────────────────────────
 export function renderTeacherAssign() {
-  const topics = [
-    { id: 'emotions', emoji: '🎭', title: '情緒與規範', sub: '管理情緒、守規矩', color: '#FF6B6B' },
-    { id: 'respect',  emoji: '🤝', title: '尊重與關懷', sub: '尊重別人、關心他人', color: '#4ECDC4' },
-    { id: 'honesty',  emoji: '⚖️', title: '誠實與責任', sub: '誠實面對、勇於承擔', color: '#45B7D1' },
-    { id: 'conflict', emoji: '💪', title: '衝突與求助', sub: '解決衝突、向人求助', color: '#96CEB4' },
-  ];
+  const topics = TOPICS.map(t => ({
+    ...t,
+    sub: t.description?.split(/[，。,。]/)[0] || '',
+  }));
 
-  const saved = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  let saved = {};
+  try { saved = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}'); } catch { saved = {}; }
   const config = {
     hintEnabled: saved.hintEnabled !== false,
     timerEnabled: saved.timerEnabled ?? false,
@@ -351,26 +349,23 @@ export function renderHome(subjectId) {
       `}
 
       <div class="topic-grid">
-        ${[
-          { id: 'emotions', emoji: '🎭', title: '情緒與規範', sub: '管理情緒、守規矩', color: '#FF6B6B' },
-          { id: 'respect',  emoji: '🤝', title: '尊重與關懷', sub: '尊重別人、關心他人', color: '#4ECDC4' },
-          { id: 'honesty',  emoji: '⚖️', title: '誠實與責任', sub: '誠實面對、勇於承擔', color: '#45B7D1' },
-          { id: 'conflict',  emoji: '💪', title: '衝突與求助', sub: '解決衝突、向人求助', color: '#96CEB4' },
-        ].map(t => {
+        ${TOPICS.map(t => {
           const p = getStudent() ? (getProgress(getStudent()).topicProgress[t.id] || {}) : {};
           const pct = p.total ? Math.round((p.completed / p.total) * 100) : 0;
+          // sub 唔喺 TOPICS 入面，從 description 抽取第一句做 sub
+          const sub = t.description?.split(/[，。,。]/)[0] || t.description || '';
           return `
             <div class="topic-card" style="background:${t.color}" onclick="FC.goTopic('${t.id}')">
               <span class="emoji">${t.emoji}</span>
               <div class="title">${t.title}</div>
-              <div class="sub">${t.sub}</div>
+              <div class="sub">${sub}</div>
               ${getStudent() ? `
                 <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
                 <div class="sub">${p.completed || 0}/${p.total || 0} 已完成</div>
               ` : ''}
             </div>
           `;
-        })}
+        }).join('')}
       </div>
 
       <div class="action-row" style="margin-top:20px">

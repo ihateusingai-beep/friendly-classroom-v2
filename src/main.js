@@ -282,10 +282,11 @@ export function goRoleSelect() {
 }
 window.FC.goRoleSelect = goRoleSelect;
 
-export function chooseRole(role) {
+export async function chooseRole(role) {
   state = { ...state, role, teacherMode: role === 'teacher' };
   if (role === 'teacher') {
-    // Go to teacher PIN login
+    // 預載 teacher chunk，避免 login 頁「載入中」閃一下
+    await _loadTeacher();
     state = { ...state, view: 'login' };
   } else {
     // Student: go to mode select
@@ -326,34 +327,50 @@ export function goTeacherAssign() {
 window.FC.goTeacherAssign = goTeacherAssign;
 
 // Teacher config helpers
+function getTeacherConfig() {
+  try {
+    return JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  } catch {
+    // corrupted value — reset to empty
+    console.warn('[FC] teacher_config corrupt, resetting');
+    return {};
+  }
+}
+function saveTeacherConfig(cfg) {
+  try {
+    localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
+  } catch (e) {
+    console.error('[FC] saveTeacherConfig failed:', e.message);
+  }
+}
 window.FC.toggleTeacherFeature = function(btn, key) {
   btn.classList.toggle('on');
   const val = btn.classList.contains('on');
-  const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  const cfg = getTeacherConfig();
   cfg[key] = val;
-  localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
+  saveTeacherConfig(cfg);
   if (key === 'timerEnabled') render();
 };
 window.FC.setTeacherTimer = function(val) {
-  const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  const cfg = getTeacherConfig();
   cfg.timerSeconds = parseInt(val);
-  localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
+  saveTeacherConfig(cfg);
 };
 window.FC.setButtonSize = function(size) {
-  const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  const cfg = getTeacherConfig();
   cfg.buttonSize = size;
-  localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
+  saveTeacherConfig(cfg);
   render();
 };
 window.FC.toggleAssignedTopic = function(topicId, checked) {
-  const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  const cfg = getTeacherConfig();
   if (!cfg.assignedTopics) cfg.assignedTopics = [];
   if (checked) {
     if (!cfg.assignedTopics.includes(topicId)) cfg.assignedTopics.push(topicId);
   } else {
     cfg.assignedTopics = cfg.assignedTopics.filter(t => t !== topicId);
   }
-  localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
+  saveTeacherConfig(cfg);
 };
 window.FC.saveTeacherPIN = function() {
   const pin = document.getElementById('teacher-pin-input')?.value?.trim() || 'admin';
@@ -575,23 +592,16 @@ window.FC.importMyData = function() {
 };
 
 // ── 渲染 ──
-function safeSetNames() {
-  document.querySelectorAll('.student-name').forEach((el, i) => {
-    const students = getAllStudents();
-    if (students[i]) el.textContent = students[i].name;
-  });
-}
-
 function render() {
   let html = '';
   try {
     switch (state.view) {
       case 'role-select':    html = renderRoleSelect(); break;
-      case 'mode-select':    html = renderModeSelect(state.subjectId); break;
+      case 'mode-select':    html = renderModeSelect(state.gameMode, state.subjectId); break;
       case 'student-select': html = renderStudentSelect(); break;
       case 'subject-select': html = renderSubjectSelect(); break;
       case 'login': html = _teacher ? _teacher.renderLogin() : '<div class="container"><p>載入中...</p></div>'; break;
-      case 'teacher': html = _teacher ? _teacher.renderTeacher() : '<div class="container"><p>載入中...</p></div>'; if (_teacher) safeSetNames(); break;
+      case 'teacher': html = _teacher ? _teacher.renderTeacher() : '<div class="container"><p>載入中...</p></div>'; break;
       case 'teacher-assign': html = renderTeacherAssign(); break;
       case 'home': html = renderHome(state.subjectId); break;
       case 'topic': html = renderTopicList(state.topicId, state.subjectId); break;
