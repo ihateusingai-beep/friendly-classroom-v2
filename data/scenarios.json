@@ -3103,14 +3103,23 @@
       "好接觸會令你感覺安全同舒服。"
     ],
     "characters": [
-      {"name": "媽媽", "emoji": "👩", "initial_relationship": 80}
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 80
+      }
     ],
     "options": [
       {
         "id": "s-self-01-a",
         "text": "接受安慰，話畀媽媽聽",
         "effects": [
-          {"character": "媽媽", "change": 10, "moralChange": 15, "comment": "你好勇敢！媽媽好開心你信任佢。"}
+          {
+            "character": "媽媽",
+            "change": 10,
+            "moralChange": 15,
+            "comment": "你好勇敢！媽媽好開心你信任佢。"
+          }
         ],
         "next_scenario": "s-self-02"
       },
@@ -3118,14 +3127,22 @@
         "id": "s-self-01-b",
         "text": "推開媽媽",
         "effects": [
-          {"character": "媽媽", "change": -5, "moralChange": -10, "comment": "媽媽會擔心你..."}
+          {
+            "character": "媽媽",
+            "change": -5,
+            "moralChange": -10,
+            "comment": "媽媽會擔心你..."
+          }
         ],
         "next_scenario": null
       }
     ],
     "location": "home",
     "topicId": "self-protection",
-    "creedIds": [1, 5],
+    "creedIds": [
+      1,
+      5
+    ],
     "imagePrompt": "A young Chinese boy with teary eyes, gentle mother wiping tears, warm home setting, anime cartoon style, soft pastel, expressive, no text, 16:9"
   },
   {
@@ -3138,25 +3155,45 @@
       "好接觸要雙方都開心。"
     ],
     "characters": [
-      {"name": "同學", "emoji": "👦", "initial_relationship": 60}
+      {
+        "name": "同學",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
     ],
     "options": [
       {
         "id": "s-self-02-a",
         "text": "笑住接受",
-        "effects": [{"character": "同學", "change": 10, "moralChange": 10, "comment": "你令朋友都開心！"}],
+        "effects": [
+          {
+            "character": "同學",
+            "change": 10,
+            "moralChange": 10,
+            "comment": "你令朋友都開心！"
+          }
+        ],
         "next_scenario": "s-self-03"
       },
       {
         "id": "s-self-02-b",
         "text": "覺得奇怪，走開",
-        "effects": [{"character": "同學", "change": -5, "moralChange": -5, "comment": "朋友可能會誤會..."}],
+        "effects": [
+          {
+            "character": "同學",
+            "change": -5,
+            "moralChange": -5,
+            "comment": "朋友可能會誤會..."
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "classroom",
     "topicId": "self-protection",
-    "creedIds": [1],
+    "creedIds": [
+      1
+    ],
     "imagePrompt": "Happy boy patted on shoulder by smiling classmate, school playground, anime cartoon style, warm tones, no text, 16:9"
   },
   {
@@ -3169,25 +3206,46 @@
       "壞接觸要大聲講「唔好」同搵大人。"
     ],
     "characters": [
-      {"name": "陌生人", "emoji": "👤", "initial_relationship": 20}
+      {
+        "name": "陌生人",
+        "emoji": "👤",
+        "initial_relationship": 20
+      }
     ],
     "options": [
       {
         "id": "s-self-03-a",
         "text": "大聲講「唔好」然後跑向媽媽",
-        "effects": [{"character": "陌生人", "change": -20, "moralChange": 20, "comment": "你好勇敢！安全第一！"}],
+        "effects": [
+          {
+            "character": "陌生人",
+            "change": -20,
+            "moralChange": 20,
+            "comment": "你好勇敢！安全第一！"
+          }
+        ],
         "next_scenario": "s-self-04"
       },
       {
         "id": "s-self-03-b",
         "text": "忍住唔聲張",
-        "effects": [{"character": "陌生人", "change": 5, "moralChange": -15, "comment": "記住：壞接觸一定要講出嚟！"}],
+        "effects": [
+          {
+            "character": "陌生人",
+            "change": 5,
+            "moralChange": -15,
+            "comment": "記住：壞接觸一定要講出嚟！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "park",
     "topicId": "self-protection",
-    "creedIds": [5, 7],
+    "creedIds": [
+      5,
+      7
+    ],
     "imagePrompt": "Young boy looking uncomfortable as stranger touches thigh, warning scene, anime cartoon style, expressive worried face, no text, 16:9"
   },
   {
@@ -3203,19 +3261,31 @@
       {
         "id": "s-self-04-a",
         "text": "即刻跑去搵老師",
-        "effects": [{"moralChange": 15, "comment": "正確！陌生人嘅好意都要小心。"}],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "正確！陌生人嘅好意都要小心。"
+          }
+        ],
         "next_scenario": "s-self-05"
       },
       {
         "id": "s-self-04-b",
         "text": "笑住留低",
-        "effects": [{"moralChange": -10, "comment": "記住安全最重要。"}],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "記住安全最重要。"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "school_gate",
     "topicId": "self-protection",
-    "creedIds": [5],
+    "creedIds": [
+      5
+    ],
     "imagePrompt": "Young girl uneasy as uncle touches hair, park setting, anime cartoon style, worried expression, no text, 16:9"
   },
   {
@@ -3231,19 +3301,31 @@
       {
         "id": "s-self-05-a",
         "text": "安心接受檢查",
-        "effects": [{"moralChange": 10, "comment": "好接觸令你健康！"}],
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "好接觸令你健康！"
+          }
+        ],
         "next_scenario": "s-self-06"
       },
       {
         "id": "s-self-05-b",
         "text": "推開醫生",
-        "effects": [{"moralChange": -5, "comment": "有媽媽陪就係安全嘅。"}],
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "有媽媽陪就係安全嘅。"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "clinic",
     "topicId": "self-protection",
-    "creedIds": [1],
+    "creedIds": [
+      1
+    ],
     "imagePrompt": "Boy calmly having ear checked by doctor with mother beside, safe medical scene, anime cartoon style, reassuring, no text, 16:9"
   },
   {
@@ -3259,19 +3341,32 @@
       {
         "id": "s-self-06-a",
         "text": "開心握手",
-        "effects": [{"moralChange": 15, "comment": "你完成自我保護學習！每日安全badge +10分"}],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你完成自我保護學習！每日安全badge +10分"
+          }
+        ],
         "next_scenario": null
       },
       {
         "id": "s-self-06-b",
         "text": "唔想握手",
-        "effects": [{"moralChange": 5, "comment": "尊重自己感覺都係正確。"}],
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "尊重自己感覺都係正確。"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "classroom",
     "topicId": "self-protection",
-    "creedIds": [1, 5],
+    "creedIds": [
+      1,
+      5
+    ],
     "imagePrompt": "Two happy children shaking hands, classroom, anime cartoon style, bright positive, no text, 16:9"
   },
   {
@@ -3287,19 +3382,31 @@
       {
         "id": "s-self-07-a",
         "text": "保持手臂距離傾偈",
-        "effects": [{"moralChange": 10, "comment": "你好識得尊重他人！"}],
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "你好識得尊重他人！"
+          }
+        ],
         "next_scenario": "s-self-08"
       },
       {
         "id": "s-self-07-b",
         "text": "貼住佢講",
-        "effects": [{"moralChange": -5, "comment": "記住保持距離。"}],
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "記住保持距離。"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "classroom",
     "topicId": "social-distance",
-    "creedIds": [1],
+    "creedIds": [
+      1
+    ],
     "imagePrompt": "Boy and friend at arm's length whispering, classroom, anime cartoon style, no text, 16:9"
   },
   {
@@ -3315,19 +3422,31 @@
       {
         "id": "s-self-08-a",
         "text": "安心繼續買嘢",
-        "effects": [{"moralChange": 10, "comment": "正確！呢個距離好安全。"}],
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "正確！呢個距離好安全。"
+          }
+        ],
         "next_scenario": "s-self-09"
       },
       {
         "id": "s-self-08-b",
         "text": "覺得害怕，走開",
-        "effects": [{"moralChange": 5, "comment": "保護自己感覺都係對嘅。"}],
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "保護自己感覺都係對嘅。"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "shop",
     "topicId": "social-distance",
-    "creedIds": [5],
+    "creedIds": [
+      5
+    ],
     "imagePrompt": "Boy standing two steps from stranger at shop, safe distance, anime cartoon style, no text, 16:9"
   },
   {
@@ -3343,19 +3462,31 @@
       {
         "id": "s-self-09-a",
         "text": "開心接受擁抱",
-        "effects": [{"moralChange": 15, "comment": "家人嘅愛好寶貴！"}],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "家人嘅愛好寶貴！"
+          }
+        ],
         "next_scenario": "s-self-10"
       },
       {
         "id": "s-self-09-b",
         "text": "推開媽媽",
-        "effects": [{"moralChange": -5, "comment": "媽媽會傷心..."}],
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "媽媽會傷心..."
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "home",
     "topicId": "social-distance",
-    "creedIds": [1],
+    "creedIds": [
+      1
+    ],
     "imagePrompt": "Boy happily hugging mother, zero distance, warm family, anime cartoon style, no text, 16:9"
   },
   {
@@ -3371,19 +3502,32 @@
       {
         "id": "s-self-10-a",
         "text": "即刻企開兩步",
-        "effects": [{"moralChange": 15, "comment": "你好識保護自己！"}],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你好識保護自己！"
+          }
+        ],
         "next_scenario": "s-self-11"
       },
       {
         "id": "s-self-10-b",
         "text": "忍住唔郁",
-        "effects": [{"moralChange": -10, "comment": "太近要即刻離開！"}],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "太近要即刻離開！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "bus",
     "topicId": "social-distance",
-    "creedIds": [5, 7],
+    "creedIds": [
+      5,
+      7
+    ],
     "imagePrompt": "Boy uncomfortable on bus with stranger too close, personal space invasion, anime cartoon style, worried, no text, 16:9"
   },
   {
@@ -3399,19 +3543,31 @@
       {
         "id": "s-self-11-a",
         "text": "話畀老師聽",
-        "effects": [{"moralChange": 10, "comment": "正確！保護自己同他人。"}],
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "正確！保護自己同他人。"
+          }
+        ],
         "next_scenario": "s-self-12"
       },
       {
         "id": "s-self-11-b",
         "text": "推返去",
-        "effects": [{"moralChange": -10, "comment": "暴力唔係解決方法。"}],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "暴力唔係解決方法。"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "playground",
     "topicId": "social-distance",
-    "creedIds": [5],
+    "creedIds": [
+      5
+    ],
     "imagePrompt": "Boy being pushed during ball game, too close, playground, anime cartoon style, surprised, no text, 16:9"
   },
   {
@@ -3427,19 +3583,32 @@
       {
         "id": "s-self-12-a",
         "text": "專心聽故事",
-        "effects": [{"moralChange": 15, "comment": "你完成社交距離學習！badge +10分"}],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你完成社交距離學習！badge +10分"
+          }
+        ],
         "next_scenario": null
       },
       {
         "id": "s-self-12-b",
         "text": "坐得太近",
-        "effects": [{"moralChange": -5, "comment": "記住保持手臂距離。"}],
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "記住保持手臂距離。"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "classroom",
     "topicId": "social-distance",
-    "creedIds": [1, 5],
+    "creedIds": [
+      1,
+      5
+    ],
     "imagePrompt": "Boy sitting at arm's length listening to teacher, appropriate distance, classroom, anime cartoon style, no text, 16:9"
   },
   {
@@ -3455,19 +3624,32 @@
       {
         "id": "s-self-13-a",
         "text": "即刻搵老師",
-        "effects": [{"moralChange": 20, "comment": "你好勇敢！安全第一！"}],
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你好勇敢！安全第一！"
+          }
+        ],
         "next_scenario": "s-self-14"
       },
       {
         "id": "s-self-13-b",
         "text": "跟住陌生人",
-        "effects": [{"moralChange": -20, "comment": "永遠唔好跟陌生人！"}],
+        "effects": [
+          {
+            "moralChange": -20,
+            "comment": "永遠唔好跟陌生人！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "school_gate",
     "topicId": "stranger-danger",
-    "creedIds": [5, 7],
+    "creedIds": [
+      5,
+      7
+    ],
     "imagePrompt": "Stranger saying follow me, boy refusing, school gate, anime cartoon style, serious, no text, 16:9"
   },
   {
@@ -3483,19 +3665,31 @@
       {
         "id": "s-self-14-a",
         "text": "唔收，跑向人群",
-        "effects": [{"moralChange": 15, "comment": "正確！保護自己！"}],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "正確！保護自己！"
+          }
+        ],
         "next_scenario": "s-self-15"
       },
       {
         "id": "s-self-14-b",
         "text": "接受糖果",
-        "effects": [{"moralChange": -15, "comment": "陌生人嘅嘢唔可以食！"}],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "陌生人嘅嘢唔可以食！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "park",
     "topicId": "stranger-danger",
-    "creedIds": [5],
+    "creedIds": [
+      5
+    ],
     "imagePrompt": "Stranger offering candy, boy refusing and running, park, anime cartoon style, alert, no text, 16:9"
   },
   {
@@ -3511,19 +3705,32 @@
       {
         "id": "s-self-15-a",
         "text": "唔答，搵老師",
-        "effects": [{"moralChange": 15, "comment": "你好識保護自己！"}],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你好識保護自己！"
+          }
+        ],
         "next_scenario": "s-self-16"
       },
       {
         "id": "s-self-15-b",
         "text": "話畀佢聽",
-        "effects": [{"moralChange": -10, "comment": "屋企位置唔可以話畀陌生人！"}],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "屋企位置唔可以話畀陌生人！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "school",
     "topicId": "stranger-danger",
-    "creedIds": [5, 7],
+    "creedIds": [
+      5,
+      7
+    ],
     "imagePrompt": "Stranger asking where you live, boy not answering, school, anime cartoon style, cautious, no text, 16:9"
   },
   {
@@ -3539,19 +3746,31 @@
       {
         "id": "s-self-16-a",
         "text": "大聲講「唔好」",
-        "effects": [{"moralChange": 15, "comment": "好勇敢！"}],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "好勇敢！"
+          }
+        ],
         "next_scenario": "s-self-17"
       },
       {
         "id": "s-self-16-b",
         "text": "笑住留低",
-        "effects": [{"moralChange": -10, "comment": "陌生人摸你就要即刻離開！"}],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "陌生人摸你就要即刻離開！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "park",
     "topicId": "stranger-danger",
-    "creedIds": [5],
+    "creedIds": [
+      5
+    ],
     "imagePrompt": "Stranger touching head, boy saying no loudly, anime cartoon style, worried, no text, 16:9"
   },
   {
@@ -3567,19 +3786,32 @@
       {
         "id": "s-self-17-a",
         "text": "跑向人群",
-        "effects": [{"moralChange": 20, "comment": "你好聰明！"}],
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你好聰明！"
+          }
+        ],
         "next_scenario": "s-self-18"
       },
       {
         "id": "s-self-17-b",
         "text": "跟住佢",
-        "effects": [{"moralChange": -20, "comment": "永遠唔好跟陌生人！"}],
+        "effects": [
+          {
+            "moralChange": -20,
+            "comment": "永遠唔好跟陌生人！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "school_gate",
     "topicId": "stranger-danger",
-    "creedIds": [5, 7],
+    "creedIds": [
+      5,
+      7
+    ],
     "imagePrompt": "Stranger offering to buy toys, boy running to crowd, anime cartoon style, running, no text, 16:9"
   },
   {
@@ -3595,19 +3827,32 @@
       {
         "id": "s-self-18-a",
         "text": "大聲喊「救命」跑開",
-        "effects": [{"moralChange": 20, "comment": "你完成陌生人應對學習！badge +10分"}],
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成陌生人應對學習！badge +10分"
+          }
+        ],
         "next_scenario": null
       },
       {
         "id": "s-self-18-b",
         "text": "上車",
-        "effects": [{"moralChange": -25, "comment": "呢個好危險！"}],
+        "effects": [
+          {
+            "moralChange": -25,
+            "comment": "呢個好危險！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "street",
     "topicId": "stranger-danger",
-    "creedIds": [5, 7],
+    "creedIds": [
+      5,
+      7
+    ],
     "imagePrompt": "Stranger asking boy to get in car, boy shouting help and running, danger scene, anime cartoon style, urgent, no text, 16:9"
   },
   {
@@ -3623,19 +3868,32 @@
       {
         "id": "s-self-19-a",
         "text": "跑向保安求助",
-        "effects": [{"moralChange": 15, "comment": "你好勇敢！"}],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你好勇敢！"
+          }
+        ],
         "next_scenario": "s-self-20"
       },
       {
         "id": "s-self-19-b",
         "text": "自己亂走",
-        "effects": [{"moralChange": -10, "comment": "迷路要即刻求助！"}],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "迷路要即刻求助！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "park",
     "topicId": "help-seeking",
-    "creedIds": [5, 7],
+    "creedIds": [
+      5,
+      7
+    ],
     "imagePrompt": "Boy lost in park running to security guard, safe choice, anime cartoon style, brave, no text, 16:9"
   },
   {
@@ -3651,19 +3909,32 @@
       {
         "id": "s-self-20-a",
         "text": "即刻話畀媽媽聽",
-        "effects": [{"moralChange": 20, "comment": "你好聰明！安全最重要。"}],
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你好聰明！安全最重要。"
+          }
+        ],
         "next_scenario": "s-self-21"
       },
       {
         "id": "s-self-20-b",
         "text": "忍住唔講",
-        "effects": [{"moralChange": -15, "comment": "壞接觸一定要講出嚟！"}],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "壞接觸一定要講出嚟！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "home",
     "topicId": "help-seeking",
-    "creedIds": [1, 5],
+    "creedIds": [
+      1,
+      5
+    ],
     "imagePrompt": "Boy after bad touch running to tell mother, home, anime cartoon style, relieved, no text, 16:9"
   },
   {
@@ -3679,19 +3950,32 @@
       {
         "id": "s-self-21-a",
         "text": "跑入學校搵老師",
-        "effects": [{"moralChange": 20, "comment": "你好識保護自己！"}],
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你好識保護自己！"
+          }
+        ],
         "next_scenario": "s-self-22"
       },
       {
         "id": "s-self-21-b",
         "text": "繼續行",
-        "effects": [{"moralChange": -15, "comment": "跟蹤要即刻求助！"}],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "跟蹤要即刻求助！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "street",
     "topicId": "help-seeking",
-    "creedIds": [5, 7],
+    "creedIds": [
+      5,
+      7
+    ],
     "imagePrompt": "Boy followed by stranger running into school to tell teacher, safe escape, anime cartoon style, decisive, no text, 16:9"
   },
   {
@@ -3707,19 +3991,31 @@
       {
         "id": "s-self-22-a",
         "text": "問老師幫手",
-        "effects": [{"moralChange": 10, "comment": "問大人係正確！"}],
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "問大人係正確！"
+          }
+        ],
         "next_scenario": "s-self-23"
       },
       {
         "id": "s-self-22-b",
         "text": "自己搵",
-        "effects": [{"moralChange": -5, "comment": "唔識路要即刻問人。"}],
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "唔識路要即刻問人。"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "school_corridor",
     "topicId": "help-seeking",
-    "creedIds": [1],
+    "creedIds": [
+      1
+    ],
     "imagePrompt": "Boy needing toilet asking teacher for help, school corridor, anime cartoon style, shy but brave, no text, 16:9"
   },
   {
@@ -3735,19 +4031,31 @@
       {
         "id": "s-self-23-a",
         "text": "話畀爸爸聽",
-        "effects": [{"moralChange": 10, "comment": "信任家人好重要！"}],
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "信任家人好重要！"
+          }
+        ],
         "next_scenario": "s-self-24"
       },
       {
         "id": "s-self-23-b",
         "text": "忍住唔講",
-        "effects": [{"moralChange": -5, "comment": "感覺唔舒服要講出嚟。"}],
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "感覺唔舒服要講出嚟。"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "home",
     "topicId": "help-seeking",
-    "creedIds": [1],
+    "creedIds": [
+      1
+    ],
     "imagePrompt": "Boy feeling unwell telling father, family support, anime cartoon style, tired but trusting, no text, 16:9"
   },
   {
@@ -3763,19 +4071,2141 @@
       {
         "id": "s-self-24-a",
         "text": "即刻搵老師",
-        "effects": [{"moralChange": 20, "comment": "你完成求助方法學習！badge +10分"}],
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成求助方法學習！badge +10分"
+          }
+        ],
         "next_scenario": null
       },
       {
         "id": "s-self-24-b",
         "text": "唔理",
-        "effects": [{"moralChange": -15, "comment": "見到欺負要即刻求助！"}],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "見到欺負要即刻求助！"
+          }
+        ],
         "next_scenario": null
       }
     ],
     "location": "playground",
     "topicId": "help-seeking",
-    "creedIds": [5, 7],
+    "creedIds": [
+      5,
+      7
+    ],
     "imagePrompt": "Boy seeing classmate bullied running to tell teacher, playground, anime cartoon style, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-25",
+    "title": "上課規則：舉手發言",
+    "background": "課室",
+    "description": "你想講嘢，應該點做？",
+    "hints": [
+      "想講嘢要舉手等老師叫。",
+      "直接喊會擾亂課堂。"
+    ],
+    "options": [
+      {
+        "id": "s-self-25-a",
+        "text": "舉手等老師叫",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "你好有禮貌！"
+          }
+        ],
+        "next_scenario": "s-self-26"
+      },
+      {
+        "id": "s-self-25-b",
+        "text": "直接喊",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "老師會唔開心。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "classroom-rules",
+    "creedIds": [
+      1
+    ],
+    "imagePrompt": "Boy raising hand to speak, teacher calling on him, positive classroom, anime cartoon style, happy, no text, 16:9"
+  },
+  {
+    "id": "s-self-26",
+    "title": "上課規則：坐好聽課",
+    "background": "課室",
+    "description": "老師講緊嘢，你應該點坐？",
+    "hints": [
+      "坐正聽課最專心。",
+      "企起身跑好危險。"
+    ],
+    "options": [
+      {
+        "id": "s-self-26-a",
+        "text": "坐正聽老師講",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "你好專心！"
+          }
+        ],
+        "next_scenario": "s-self-27"
+      },
+      {
+        "id": "s-self-26-b",
+        "text": "企起身跑",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "呢個好危險同擾亂。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "classroom-rules",
+    "creedIds": [
+      1,
+      5
+    ],
+    "imagePrompt": "Boy sitting properly listening to teacher, focused, classroom, anime cartoon style, calm, no text, 16:9"
+  },
+  {
+    "id": "s-self-27",
+    "title": "上課規則：安靜聲音",
+    "background": "課室",
+    "description": "你同同學講嘢，應該用邊種聲音？",
+    "hints": [
+      "用細聲講大家舒服。",
+      "大聲喊叫會驚到同學。"
+    ],
+    "options": [
+      {
+        "id": "s-self-27-a",
+        "text": "用細聲講嘢",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "你好識得尊重他人！"
+          }
+        ],
+        "next_scenario": "s-self-28"
+      },
+      {
+        "id": "s-self-27-b",
+        "text": "大聲喊叫",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "同學會驚。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "classroom-rules",
+    "creedIds": [
+      1
+    ],
+    "imagePrompt": "Boy using soft voice with classmates, everyone comfortable, classroom, anime cartoon style, gentle, no text, 16:9"
+  },
+  {
+    "id": "s-self-28",
+    "title": "上課規則：收好玩具",
+    "background": "課室",
+    "description": "玩完玩具，你應該點做？",
+    "hints": [
+      "玩完要收埋，課室先乾淨。",
+      "亂丟好危險。"
+    ],
+    "options": [
+      {
+        "id": "s-self-28-a",
+        "text": "玩完收埋",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "你好有責任感！"
+          }
+        ],
+        "next_scenario": "s-self-29"
+      },
+      {
+        "id": "s-self-28-b",
+        "text": "亂丟玩具",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "亂丟好危險。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "classroom-rules",
+    "creedIds": [
+      1,
+      5
+    ],
+    "imagePrompt": "Boy neatly putting away toys, classroom clean, positive habit, anime cartoon style, satisfied, no text, 16:9"
+  },
+  {
+    "id": "s-self-29",
+    "title": "上課規則：排隊",
+    "background": "課室",
+    "description": "輪到你做嘢，你應該點做？",
+    "hints": [
+      "排隊等輪到自己最公平。",
+      "推人搶前唔公平。"
+    ],
+    "options": [
+      {
+        "id": "s-self-29-a",
+        "text": "排隊等輪到自己",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "你好有秩序！"
+          }
+        ],
+        "next_scenario": "s-self-30"
+      },
+      {
+        "id": "s-self-29-b",
+        "text": "推人搶前",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "推人搶前唔公平。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "classroom-rules",
+    "creedIds": [
+      1
+    ],
+    "imagePrompt": "Boy waiting patiently in line, orderly queue, school, anime cartoon style, calm and fair, no text, 16:9"
+  },
+  {
+    "id": "s-self-30",
+    "title": "上課規則：聽老師指示",
+    "background": "課室",
+    "description": "老師話要做嘢，你應該點做？",
+    "hints": [
+      "聽老師指示最安全。",
+      "自己亂做會出事。"
+    ],
+    "options": [
+      {
+        "id": "s-self-30-a",
+        "text": "聽老師指示做",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你完成上課規則學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-30-b",
+        "text": "自己亂做",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "自己亂做好危險。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "classroom-rules",
+    "creedIds": [
+      1,
+      5
+    ],
+    "imagePrompt": "Boy following teacher's instruction carefully, safe action, classroom, anime cartoon style, focused, no text, 16:9"
+  },
+  {
+    "id": "s-self-31",
+    "title": "尊重界線：唔好逼朋友買禮物",
+    "background": "校園",
+    "description": "小朋友拉住朋友衫角要求買禮物",
+    "hints": [
+      "朋友都有自己家庭",
+      "尊重界線最重要"
+    ],
+    "options": [
+      {
+        "id": "s-self-31-a",
+        "text": "OK",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "唔好逼人。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-31-b",
+        "text": "唔好要求",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識得尊重！"
+          }
+        ],
+        "next_scenario": "s-self-32"
+      },
+      {
+        "id": "s-self-31-c",
+        "text": "即刻買",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "唔好逼人。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "gift-gratitude",
+    "creedIds": [
+      5
+    ],
+    "imagePrompt": "Young Chinese boy pulling friend's shirt asking for gift, worried friend, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-32",
+    "title": "感恩父母：爸爸返內地唔好要求",
+    "background": "屋企",
+    "description": "爸爸辛苦返工，香水應該點",
+    "hints": [
+      "爸爸賺錢好唔易",
+      "感恩父母最重要"
+    ],
+    "options": [
+      {
+        "id": "s-self-32-a",
+        "text": "自己買",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有責任感！"
+          }
+        ],
+        "next_scenario": "s-self-33"
+      },
+      {
+        "id": "s-self-32-b",
+        "text": "叫爸爸買",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "爸爸辛苦。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-32-c",
+        "text": "唔好要求",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識感恩！"
+          }
+        ],
+        "next_scenario": "s-self-33"
+      }
+    ],
+    "location": "home",
+    "topicId": "gift-gratitude",
+    "creedIds": [
+      3,
+      5
+    ],
+    "imagePrompt": "Young Chinese boy with dad returning from work, boy not demanding gift, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-33",
+    "title": "尊重界線：朋友買禮物要問媽媽",
+    "background": "校園",
+    "description": "朋友話買俾你",
+    "hints": [
+      "每樣嘢都要問屋企人",
+      "尊重家庭界線"
+    ],
+    "options": [
+      {
+        "id": "s-self-33-a",
+        "text": "好呀",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要問屋企人。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-33-b",
+        "text": "要問媽媽",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識得尊重！"
+          }
+        ],
+        "next_scenario": "s-self-34"
+      },
+      {
+        "id": "s-self-33-c",
+        "text": "即刻要",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要問屋企人。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "gift-gratitude",
+    "creedIds": [
+      5
+    ],
+    "imagePrompt": "Young Chinese boy talking to friend about gift, thinking to ask mom first, school, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-34",
+    "title": "感恩：收到禮物要多謝",
+    "background": "屋企",
+    "description": "收到禮物應該講咩",
+    "hints": [
+      "感恩令大家開心",
+      "多謝係最基本"
+    ],
+    "options": [
+      {
+        "id": "s-self-34-a",
+        "text": "多謝",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有禮貌！"
+          }
+        ],
+        "next_scenario": "s-self-35"
+      },
+      {
+        "id": "s-self-34-b",
+        "text": "仲有冇",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要感恩。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-34-c",
+        "text": "唔夠",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要感恩。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "gift-gratitude",
+    "creedIds": [
+      3
+    ],
+    "imagePrompt": "Young Chinese boy receiving gift, saying thank you happily, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-35",
+    "title": "理解朋友：朋友買唔到",
+    "background": "校園",
+    "description": "朋友話買唔到",
+    "hints": [
+      "朋友都有難處",
+      "理解比禮物重要"
+    ],
+    "options": [
+      {
+        "id": "s-self-35-a",
+        "text": "嬲",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要理解。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-35-b",
+        "text": "明白",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好善良！"
+          }
+        ],
+        "next_scenario": "s-self-36"
+      },
+      {
+        "id": "s-self-35-c",
+        "text": "叫佢爸爸",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要理解。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "gift-gratitude",
+    "creedIds": [
+      5
+    ],
+    "imagePrompt": "Young Chinese boy understanding friend cannot buy gift, empathetic expression, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-36",
+    "title": "知足不貪：見到貴玩具",
+    "background": "玩具店",
+    "description": "見到貴玩具應該點",
+    "hints": [
+      "已經有嘢要知足",
+      "唔貪心係美德"
+    ],
+    "options": [
+      {
+        "id": "s-self-36-a",
+        "text": "即刻要",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要知足。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-36-b",
+        "text": "儲錢自己買",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有責任！"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-36-c",
+        "text": "感恩已有",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你完成gift-gratitude學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "shop",
+    "topicId": "gift-gratitude",
+    "creedIds": [
+      3,
+      8
+    ],
+    "imagePrompt": "Young Chinese boy seeing expensive toy but feeling grateful for what he has, content expression, toy shop, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-37",
+    "title": "責任感：自己嘅書包自己執",
+    "background": "課室・放學",
+    "description": "書包散晒喺地下，應該點？",
+    "hints": [
+      "自己嘅嘢自己負責",
+      "執書包係基本責任"
+    ],
+    "options": [
+      {
+        "id": "s-self-37-a",
+        "text": "叫人幫手",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要自己做。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-37-b",
+        "text": "自己執好",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有責任感！"
+          }
+        ],
+        "next_scenario": "s-self-38"
+      },
+      {
+        "id": "s-self-37-c",
+        "text": "唔理",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要自己做。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "responsibility",
+    "creedIds": [
+      8,
+      5
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy tidying his own school bag in classroom after school, responsible expression, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-38",
+    "title": "責任感：功課自己做",
+    "background": "屋企・晚飯後",
+    "description": "功課好難，想叫媽媽幫手",
+    "hints": [
+      "自己嘅功課自己做",
+      "試下先最重要"
+    ],
+    "options": [
+      {
+        "id": "s-self-38-a",
+        "text": "即刻叫媽媽",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要自己試。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-38-b",
+        "text": "自己試下",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好勤力！"
+          }
+        ],
+        "next_scenario": "s-self-39"
+      },
+      {
+        "id": "s-self-38-c",
+        "text": "抄朋友",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要自己做。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "responsibility",
+    "creedIds": [
+      8,
+      6
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy doing homework at home by himself, focused and responsible, warm home lighting, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-39",
+    "title": "責任感：水樽自己帶",
+    "background": "校園・小息",
+    "description": "忘記帶水樽，口渴點算？",
+    "hints": [
+      "出門前檢查自己嘅嘢",
+      "負責自己嘅需要"
+    ],
+    "options": [
+      {
+        "id": "s-self-39-a",
+        "text": "問同學借",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "下次要記得。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-39-b",
+        "text": "下次記得帶",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識得負責！"
+          }
+        ],
+        "next_scenario": "s-self-40"
+      },
+      {
+        "id": "s-self-39-c",
+        "text": "唔飲",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "健康都係責任。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "responsibility",
+    "creedIds": [
+      8
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy realizing he forgot water bottle at school, learning responsibility, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-40",
+    "title": "責任感：幫手執垃圾",
+    "background": "飯堂",
+    "description": "見到地上有垃圾",
+    "hints": [
+      "愛護環境係人人責任",
+      "唔好等其他人"
+    ],
+    "options": [
+      {
+        "id": "s-self-40-a",
+        "text": "假裝睇唔到",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要愛護學校。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-40-b",
+        "text": "自己執走",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好愛護學校！"
+          }
+        ],
+        "next_scenario": "s-self-41"
+      },
+      {
+        "id": "s-self-40-c",
+        "text": "叫清潔阿姨",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "自己做更好。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "canteen",
+    "topicId": "responsibility",
+    "creedIds": [
+      8,
+      9
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy picking up litter in school canteen, responsible action, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-41",
+    "title": "責任感：遲到要話老師知",
+    "background": "課室・朝早",
+    "description": "遲到咗，應該點？",
+    "hints": [
+      "遲到要負責講清楚",
+      "誠實最重要"
+    ],
+    "options": [
+      {
+        "id": "s-self-41-a",
+        "text": "偷偷入去",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要誠實。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-41-b",
+        "text": "同老師講清楚",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有承擔！"
+          }
+        ],
+        "next_scenario": "s-self-42"
+      },
+      {
+        "id": "s-self-41-c",
+        "text": "怪交通",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "要自己負責時間。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "responsibility",
+    "creedIds": [
+      8,
+      2
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy explaining to teacher why he is late, honest and responsible, warm classroom, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-42",
+    "title": "責任感：完成任務有成就",
+    "background": "屋企・床頭",
+    "description": "今日自己做咗好多嘢",
+    "hints": [
+      "負責令自己成長",
+      "每件事都係學習"
+    ],
+    "options": [
+      {
+        "id": "s-self-42-a",
+        "text": "覺得好累",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "休息都重要。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-42-b",
+        "text": "好有成就感",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成責任感學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-42-c",
+        "text": "下次唔做",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要堅持。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "responsibility",
+    "creedIds": [
+      8,
+      10
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling proud after completing tasks at home, warm satisfied expression, cozy bedroom, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-43",
+    "title": "誠信：唔好抄功課",
+    "background": "課室・小息",
+    "description": "朋友叫你抄佢功課",
+    "hints": [
+      "抄襲係唔誠實",
+      "自己做先有進步"
+    ],
+    "options": [
+      {
+        "id": "s-self-43-a",
+        "text": "即刻抄",
+        "effects": [
+          {
+            "moralChange": -20,
+            "comment": "要誠實。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-43-b",
+        "text": "自己做",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好信實！"
+          }
+        ],
+        "next_scenario": "s-self-44"
+      },
+      {
+        "id": "s-self-43-c",
+        "text": "話老師知",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "但要溫柔啲。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "integrity",
+    "creedIds": [
+      2,
+      5
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy refusing to copy homework, choosing honesty, school classroom, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-44",
+    "title": "誠信：搵到嘢要還",
+    "background": "校園・操場",
+    "description": "搵到同學嘅文具盒",
+    "hints": [
+      "搵到嘢要還俾主人",
+      "誠信係美德"
+    ],
+    "options": [
+      {
+        "id": "s-self-44-a",
+        "text": "自己留低",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "要還俾人。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-44-b",
+        "text": "交俾老師",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好誠實！"
+          }
+        ],
+        "next_scenario": "s-self-45"
+      },
+      {
+        "id": "s-self-44-c",
+        "text": "問邊個嘅",
+        "effects": [
+          {
+            "moralChange": 12,
+            "comment": "好方法！"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "integrity",
+    "creedIds": [
+      2,
+      4
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy finding a pencil case and deciding to return it, honest expression, school playground, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-45",
+    "title": "誠信：講真話",
+    "background": "屋企・客廳",
+    "description": "打破咗花樽，媽媽問邊個",
+    "hints": [
+      "講真話先係誠信",
+      "勇氣都係美德"
+    ],
+    "options": [
+      {
+        "id": "s-self-45-a",
+        "text": "話唔知",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "要誠實。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-45-b",
+        "text": "講係自己打破",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你好有勇氣！"
+          }
+        ],
+        "next_scenario": "s-self-46"
+      },
+      {
+        "id": "s-self-45-c",
+        "text": "怪細佬",
+        "effects": [
+          {
+            "moralChange": -20,
+            "comment": "絕對唔可以。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "integrity",
+    "creedIds": [
+      2,
+      8
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy honestly admitting he broke the vase at home, brave and truthful, warm living room, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-46",
+    "title": "誠信：唔好講大話",
+    "background": "校園・走廊",
+    "description": "朋友問你有冇做功課",
+    "hints": [
+      "講大話會失去信任",
+      "誠實先有朋友"
+    ],
+    "options": [
+      {
+        "id": "s-self-46-a",
+        "text": "講大話話做咗",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "要誠實。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-46-b",
+        "text": "講真話",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好信實！"
+          }
+        ],
+        "next_scenario": "s-self-47"
+      },
+      {
+        "id": "s-self-46-c",
+        "text": "走開",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "要面對。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "integrity",
+    "creedIds": [
+      2,
+      5
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy telling the truth about not finishing homework to friend, honest moment, school corridor, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-47",
+    "title": "誠信：考試唔好偷睇",
+    "background": "課室・測驗",
+    "description": "測驗見到朋友抄",
+    "hints": [
+      "偷睇係唔誠信",
+      "自己嘅成績自己負責"
+    ],
+    "options": [
+      {
+        "id": "s-self-47-a",
+        "text": "自己都抄",
+        "effects": [
+          {
+            "moralChange": -20,
+            "comment": "要誠信。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-47-b",
+        "text": "專心自己做",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好正直！"
+          }
+        ],
+        "next_scenario": "s-self-48"
+      },
+      {
+        "id": "s-self-47-c",
+        "text": "話老師知",
+        "effects": [
+          {
+            "moralChange": 12,
+            "comment": "但要溫柔。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "integrity",
+    "creedIds": [
+      2,
+      1
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy choosing not to cheat during test, focused on his own paper, classroom, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-48",
+    "title": "誠信：信任係最大獎勵",
+    "background": "屋企・飯桌",
+    "description": "今日誠實得到讚賞",
+    "hints": [
+      "誠信會贏得信任",
+      "信任係最好嘅禮物"
+    ],
+    "options": [
+      {
+        "id": "s-self-48-a",
+        "text": "覺得冇所謂",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "但信任好重要。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-48-b",
+        "text": "好開心",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成誠信學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-48-c",
+        "text": "下次都講大話",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "要堅持誠信。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "integrity",
+    "creedIds": [
+      2,
+      10
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy and trusted by parents at dinner table, warm family moment, cozy home, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-49",
+    "title": "孝親：幫媽媽執屋企",
+    "background": "屋企・客廳",
+    "description": "媽媽好攰，想幫手",
+    "hints": [
+      "孝順父母係基本",
+      "幫手係愛嘅表現"
+    ],
+    "options": [
+      {
+        "id": "s-self-49-a",
+        "text": "自己玩",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要孝順。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-49-b",
+        "text": "幫手執",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好孝順！"
+          }
+        ],
+        "next_scenario": "s-self-50"
+      },
+      {
+        "id": "s-self-49-c",
+        "text": "叫細佬做",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "自己都應該做。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      10,
+      8
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy helping mom tidy the living room at home, caring and filial, warm home lighting, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-50",
+    "title": "孝親：問候爸爸媽媽",
+    "background": "屋企・晚飯",
+    "description": "爸爸媽媽返到屋企",
+    "hints": [
+      "問候係尊重",
+      "關心家人最重要"
+    ],
+    "options": [
+      {
+        "id": "s-self-50-a",
+        "text": "繼續玩電話",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要關心家人。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-50-b",
+        "text": "主動問候",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有禮貌！"
+          }
+        ],
+        "next_scenario": "s-self-51"
+      },
+      {
+        "id": "s-self-50-c",
+        "text": "等佢哋問",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "主動更好。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      10,
+      5
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy warmly greeting parents when they come home, loving family moment, cozy home, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-51",
+    "title": "孝親：唔好同父母嘈",
+    "background": "屋企・客廳",
+    "description": "媽媽話唔畀你玩得多",
+    "hints": [
+      "同父母講話要有禮貌",
+      "尊重係孝順"
+    ],
+    "options": [
+      {
+        "id": "s-self-51-a",
+        "text": "大聲頂嘴",
+        "effects": [
+          {
+            "moralChange": -20,
+            "comment": "要尊重父母。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-51-b",
+        "text": "冷靜講清楚",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識得尊重！"
+          }
+        ],
+        "next_scenario": "s-self-52"
+      },
+      {
+        "id": "s-self-51-c",
+        "text": "走入房",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "要溝通。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      10,
+      5
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy calmly talking to mom instead of arguing, respectful conversation at home, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-52",
+    "title": "孝親：記住父母生日",
+    "background": "屋企・書桌",
+    "description": "媽媽生日快到",
+    "hints": [
+      "記住家人嘅重要日子",
+      "小小心意都係愛"
+    ],
+    "options": [
+      {
+        "id": "s-self-52-a",
+        "text": "完全唔記得",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要關心父母。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-52-b",
+        "text": "準備小禮物",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你好孝順！"
+          }
+        ],
+        "next_scenario": "s-self-53"
+      },
+      {
+        "id": "s-self-52-c",
+        "text": "問爸爸買",
+        "effects": [
+          {
+            "moralChange": 8,
+            "comment": "自己準備更好。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      10,
+      8
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy making a small handmade gift for mom's birthday at desk, loving and thoughtful, warm home, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-53",
+    "title": "孝親：照顧生病嘅家人",
+    "background": "屋企・房間",
+    "description": "媽媽病咗",
+    "hints": [
+      "家人有難要幫手",
+      "孝順係行動"
+    ],
+    "options": [
+      {
+        "id": "s-self-53-a",
+        "text": "自己玩",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "要關心。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-53-b",
+        "text": "幫手倒水",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有愛心！"
+          }
+        ],
+        "next_scenario": "s-self-54"
+      },
+      {
+        "id": "s-self-53-c",
+        "text": "叫爸爸",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "自己都應該幫。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      10,
+      4
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy bringing water to sick mom in bed, caring filial action, warm bedroom lighting, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-54",
+    "title": "孝親：感恩父母養育",
+    "background": "屋企・飯桌",
+    "description": "今日一家人一齊食飯",
+    "hints": [
+      "父母養育好唔易",
+      "感恩係最大孝順"
+    ],
+    "options": [
+      {
+        "id": "s-self-54-a",
+        "text": "覺得正常",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "但要感恩。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-54-b",
+        "text": "多謝父母",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成孝親學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-54-c",
+        "text": "快啲食",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "要珍惜。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      10,
+      3
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy saying thank you to parents at family dinner table, grateful and loving moment, warm cozy home, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-55",
+    "title": "堅毅：功課難都要試",
+    "background": "屋企・書桌",
+    "description": "功課好難，想放棄",
+    "hints": [
+      "堅毅係唔輕易放棄",
+      "試過先知自己可以"
+    ],
+    "options": [
+      {
+        "id": "s-self-55-a",
+        "text": "即刻放棄",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要堅毅。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-55-b",
+        "text": "再試一次",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有毅力！"
+          }
+        ],
+        "next_scenario": "s-self-56"
+      },
+      {
+        "id": "s-self-55-c",
+        "text": "叫人幫",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "自己試先。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "perseverance",
+    "creedIds": [
+      6,
+      8
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy struggling with difficult homework but trying again at desk, determined expression, warm home lighting, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-56",
+    "title": "堅毅：學單車唔怕跌",
+    "background": "公園",
+    "description": "學踩單車跌咗好多次",
+    "hints": [
+      "跌倒係學習一部分",
+      "堅毅令你成功"
+    ],
+    "options": [
+      {
+        "id": "s-self-56-a",
+        "text": "唔學啦",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要堅持。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-56-b",
+        "text": "爬起身再試",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好堅強！"
+          }
+        ],
+        "next_scenario": "s-self-57"
+      },
+      {
+        "id": "s-self-56-c",
+        "text": "叫爸爸扶",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "自己試更好。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "perseverance",
+    "creedIds": [
+      6
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy getting up after falling off bicycle in park, resilient, warm afternoon light, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-57",
+    "title": "堅毅：溫書考試",
+    "background": "屋企・房間",
+    "description": "考試好難，溫書好攰",
+    "hints": [
+      "努力會有結果",
+      "堅毅係長期投資"
+    ],
+    "options": [
+      {
+        "id": "s-self-57-a",
+        "text": "放棄溫書",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "要堅毅。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-57-b",
+        "text": "繼續溫",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好勤力！"
+          }
+        ],
+        "next_scenario": "s-self-58"
+      },
+      {
+        "id": "s-self-57-c",
+        "text": "抄筆記",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "自己溫更好。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "perseverance",
+    "creedIds": [
+      6,
+      2
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy studying hard for exam at night, persevering with tired but focused face, warm lamp light, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-58",
+    "title": "堅毅：做家務唔怕辛苦",
+    "background": "屋企・廚房",
+    "description": "幫媽媽洗碗好多碟",
+    "hints": [
+      "家務係責任",
+      "堅毅令你成長"
+    ],
+    "options": [
+      {
+        "id": "s-self-58-a",
+        "text": "偷懶",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要負責。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-58-b",
+        "text": "慢慢做完",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有毅力！"
+          }
+        ],
+        "next_scenario": "s-self-59"
+      },
+      {
+        "id": "s-self-58-c",
+        "text": "叫細佬做",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "自己應該做。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "perseverance",
+    "creedIds": [
+      6,
+      8
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy washing many dishes in kitchen, persisting with effort, warm home, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-59",
+    "title": "堅毅：學新嘢唔怕錯",
+    "background": "課室",
+    "description": "老師問問題，唔識點算",
+    "hints": [
+      "錯咗都係學習",
+      "勇於嘗試係堅毅"
+    ],
+    "options": [
+      {
+        "id": "s-self-59-a",
+        "text": "唔舉手",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "要勇敢。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-59-b",
+        "text": "舉手試答",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有勇氣！"
+          }
+        ],
+        "next_scenario": "s-self-60"
+      },
+      {
+        "id": "s-self-59-c",
+        "text": "抄朋友",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要自己學。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "perseverance",
+    "creedIds": [
+      6,
+      2
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy raising hand to answer in class even if unsure, brave and persevering, warm classroom, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-60",
+    "title": "堅毅：完成就係勝利",
+    "background": "屋企・床頭",
+    "description": "今日努力做咗好多嘢",
+    "hints": [
+      "每一次堅持都係勝利",
+      "堅毅令你更強"
+    ],
+    "options": [
+      {
+        "id": "s-self-60-a",
+        "text": "覺得冇用",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "但你已經進步。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-60-b",
+        "text": "好有成就",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成堅毅學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-60-c",
+        "text": "下次放棄",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要堅持。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "perseverance",
+    "creedIds": [
+      6,
+      10
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy looking proud and accomplished after hard work at bedtime, warm satisfied expression, cozy room, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-61",
+    "title": "合作：小組活動要參與",
+    "background": "課室・小息",
+    "description": "小組做 poster，應該點？",
+    "hints": [
+      "合作令大家成功",
+      "每個人都有貢獻"
+    ],
+    "options": [
+      {
+        "id": "s-self-61-a",
+        "text": "自己玩",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要合作。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-61-b",
+        "text": "主動幫手",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好合作！"
+          }
+        ],
+        "next_scenario": "s-self-62"
+      },
+      {
+        "id": "s-self-61-c",
+        "text": "等其他人",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "要主動。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "cooperation",
+    "creedIds": [
+      7,
+      4
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy actively helping group make poster in classroom, cooperative and engaged, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-62",
+    "title": "合作：輪流玩玩具",
+    "background": "公園",
+    "description": "只有一個鞦韆，大家想玩",
+    "hints": [
+      "輪流係合作精神",
+      "耐心等候"
+    ],
+    "options": [
+      {
+        "id": "s-self-62-a",
+        "text": "霸住唔畀",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "要合作。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-62-b",
+        "text": "大家輪流",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識合作！"
+          }
+        ],
+        "next_scenario": "s-self-63"
+      },
+      {
+        "id": "s-self-62-c",
+        "text": "自己玩",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "要分享。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "cooperation",
+    "creedIds": [
+      7,
+      5
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy waiting his turn on the swing, cooperative and patient, park, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-63",
+    "title": "合作：幫手完成任務",
+    "background": "飯堂",
+    "description": "飯堂要執枱，大家一齊做",
+    "hints": [
+      "一齊做最快完成",
+      "合作有快樂"
+    ],
+    "options": [
+      {
+        "id": "s-self-63-a",
+        "text": "自己走",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要合作。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-63-b",
+        "text": "一齊執",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有團隊精神！"
+          }
+        ],
+        "next_scenario": "s-self-64"
+      },
+      {
+        "id": "s-self-63-c",
+        "text": "等清潔工",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "自己都應該幫。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "canteen",
+    "topicId": "cooperation",
+    "creedIds": [
+      7,
+      9
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy helping classmates clean tables in canteen, teamwork, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-64",
+    "title": "合作：聽從組長安排",
+    "background": "課室",
+    "description": "小組做 project，組長分配工作",
+    "hints": [
+      "跟從安排係合作",
+      "信任隊友"
+    ],
+    "options": [
+      {
+        "id": "s-self-64-a",
+        "text": "自己做自己嘅",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "要跟安排。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-64-b",
+        "text": "跟從分配",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好合作！"
+          }
+        ],
+        "next_scenario": "s-self-65"
+      },
+      {
+        "id": "s-self-64-c",
+        "text": "反對組長",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "要尊重。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "cooperation",
+    "creedIds": [
+      7,
+      5
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy following group leader instructions in classroom project, cooperative, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-65",
+    "title": "合作：鼓勵隊友",
+    "background": "操場",
+    "description": "隊友做運動好累",
+    "hints": [
+      "鼓勵係合作一部分",
+      "大家一齊加油"
+    ],
+    "options": [
+      {
+        "id": "s-self-65-a",
+        "text": "自己跑",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "要支持隊友。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-65-b",
+        "text": "加油打氣",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有團隊精神！"
+          }
+        ],
+        "next_scenario": "s-self-66"
+      },
+      {
+        "id": "s-self-65-c",
+        "text": "叫佢放棄",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "要支持。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "cooperation",
+    "creedIds": [
+      7,
+      4
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy encouraging tired teammate during sports, supportive and cooperative, playground, warm tones, no text, no logos, 16:9"
+  },
+  {
+    "id": "s-self-66",
+    "title": "合作：團隊勝利最開心",
+    "background": "屋企・床頭",
+    "description": "今日小組一齊完成任務",
+    "hints": [
+      "合作令大家成功",
+      "團隊精神最重要"
+    ],
+    "options": [
+      {
+        "id": "s-self-66-a",
+        "text": "覺得自己最勁",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "但團隊更重要。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-66-b",
+        "text": "好開心一齊做",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成合作學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-66-c",
+        "text": "下次自己做",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "要合作。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "cooperation",
+    "creedIds": [
+      7,
+      10
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy after successful group project at home, proud of teamwork, warm bedroom, no text, no logos, 16:9"
   }
 ]
