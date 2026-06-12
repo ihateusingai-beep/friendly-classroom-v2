@@ -16,7 +16,7 @@ export function renderLogin() {
         <button class="btn btn-primary" style="width:100%" onclick="FC.doLogin()">登入</button>
         <p id="login-error" style="color:var(--danger);text-align:center;margin-top:8px;display:none">密碼錯誤</p>
         <div style="margin-top:12px;text-align:center">
-          <button class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
+          <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
         </div>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
@@ -31,7 +31,7 @@ export function renderTeacher() {
     return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goHome()">←</button>
+        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
         <h2>📊 老師儀表板</h2>
       </div>
       <div class="teacher-panel">
@@ -44,7 +44,7 @@ export function renderTeacher() {
         <p style="font-size:0.85em;margin-top:8px">學生完成學習後會自動顯示在這裡</p>
       </div>
       <div style="margin-top:16px">
-        <button class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
+        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>`;
@@ -53,7 +53,7 @@ export function renderTeacher() {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goHome()">←</button>
+        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
         <h2>📊 老師儀表板</h2>
       </div>
 
@@ -114,8 +114,14 @@ export function renderTeacher() {
         <button class="btn btn-success" onclick="FC.exportAll()">📤 匯出全班</button>
       </div>
 
+      <div class="card">
+        <div style="font-weight:600;margin-bottom:10px">⚙️ 老師設定</div>
+        <p style="font-size:0.85em;color:var(--text-light);margin-bottom:8px">控制學生的功能開關、課題範圍、PIN</p>
+        <button class="btn btn-primary" onclick="FC.goTeacherAssign()">⚙️ 功能設定</button>
+      </div>
+
       <div style="margin-top:16px">
-        <button class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
+        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>

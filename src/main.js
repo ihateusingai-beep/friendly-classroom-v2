@@ -4,7 +4,9 @@ import './sw-register.js';  // PWA install + update prompt
 import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic,
          getDisplayProgress, initTopicProgress, initSubjectProgress, renderHome, renderTopicList,
          renderPlay, renderResult, renderProgress, renderSettings,
-         playScenario, chooseOption, suggestNext } from './engine.js';
+         playScenario, chooseOption, suggestNext,
+         renderRoleSelect, renderModeSelect, renderTeacherAssign,
+         GAME_MODES } from './engine.js';
 import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
 import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
@@ -104,13 +106,15 @@ window.FC = window.FC || {};
 
 // ── 狀態機 ──
 let state = {
-  view: 'home',      // home | topic | play | result | progress | settings | teacher | login | student-select | subject-select
+  view: 'role-select', // role-select | mode-select | student-select | subject-select | home | topic | play | result | progress | settings | login | teacher | teacher-assign
   student: null,
   subjectId: null,   // 🎯📐🔤🔬
   topicId: null,
   scenarioId: null,
   resultData: null,
   teacherMode: false,
+  role: null,        // 'student' | 'teacher'
+  gameMode: localStorage.getItem('fc_game_mode') || 'relaxed',
 };
 let lastPlayedScenarioId = null; // guard: 防 TTS 重複觸發
 
@@ -261,6 +265,96 @@ export function selectSubject(subjectId) {
 }
 window.FC.selectSubject = selectSubject;
 
+// ── Role Select (Entry Point) ──
+export function goRoleSelect() {
+  state = { ...state, view: 'role-select' };
+  render();
+}
+window.FC.goRoleSelect = goRoleSelect;
+
+export function chooseRole(role) {
+  state = { ...state, role, teacherMode: role === 'teacher' };
+  if (role === 'teacher') {
+    // Go to teacher PIN login
+    state = { ...state, view: 'login' };
+  } else {
+    // Student: go to mode select
+    state = { ...state, view: 'mode-select' };
+  }
+  render();
+}
+window.FC.chooseRole = chooseRole;
+
+export function selectMode(modeId) {
+  localStorage.setItem('fc_game_mode', modeId);
+  state = { ...state, gameMode: modeId };
+  render();
+  // Show brief confirmation
+  setTimeout(() => {
+    const cards = document.querySelectorAll('.mode-card');
+    cards.forEach(c => c.classList.remove('selected'));
+    const selected = document.querySelector(`.mode-card.${modeId}`);
+    if (selected) {
+      selected.classList.add('selected');
+      selected.style.transform = 'scale(1.05)';
+      setTimeout(() => { selected.style.transform = ''; }, 300);
+    }
+  }, 50);
+}
+window.FC.selectMode = selectMode;
+
+export function goModeSelect() {
+  state = { ...state, view: 'mode-select' };
+  render();
+}
+window.FC.goModeSelect = goModeSelect;
+
+export function goTeacherAssign() {
+  state = { ...state, view: 'teacher-assign' };
+  render();
+}
+window.FC.goTeacherAssign = goTeacherAssign;
+
+// Teacher config helpers
+window.FC.toggleTeacherFeature = function(btn, key) {
+  btn.classList.toggle('on');
+  const val = btn.classList.contains('on');
+  const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  cfg[key] = val;
+  localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
+  if (key === 'timerEnabled') render();
+};
+window.FC.setTeacherTimer = function(val) {
+  const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  cfg.timerSeconds = parseInt(val);
+  localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
+};
+window.FC.setButtonSize = function(size) {
+  const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  cfg.buttonSize = size;
+  localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
+  render();
+};
+window.FC.toggleAssignedTopic = function(topicId, checked) {
+  const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  if (!cfg.assignedTopics) cfg.assignedTopics = [];
+  if (checked) {
+    if (!cfg.assignedTopics.includes(topicId)) cfg.assignedTopics.push(topicId);
+  } else {
+    cfg.assignedTopics = cfg.assignedTopics.filter(t => t !== topicId);
+  }
+  localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
+};
+window.FC.saveTeacherPIN = function() {
+  const pin = document.getElementById('teacher-pin-input')?.value?.trim() || 'admin';
+  localStorage.setItem('fc_teacher_pin', pin);
+  alert('✅ PIN 已更新為：' + pin);
+};
+window.FC.saveTeacherConfig = function() {
+  alert('✅ 老師設定已儲存！');
+  goTeacher();
+};
+
 export function switchStudent() {
   state = { ...state, view: 'student-select' };
   render();
@@ -293,7 +387,7 @@ function renderStudentSelect() {
         <button class="btn btn-success" style="width:100%" onclick="FC.addStudent()">➕ 新增學生</button>
       </div>
       <div style="margin-top:16px;text-align:center">
-        <button class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
+        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
@@ -316,8 +410,9 @@ window.FC.addStudent = function() {
 
 // doLogin stays in main.js (reads DOM + updates state)
 window.FC.doLogin = function() {
+  const savedPin = localStorage.getItem('fc_teacher_pin') || 'admin';
   const pw = document.getElementById('teacher-pw')?.value;
-  if (pw === 'admin') {
+  if (pw === savedPin) {
     state = { ...state, view: 'teacher', teacherMode: true };
     render();
   } else {
@@ -481,10 +576,13 @@ function render() {
   let html = '';
   try {
     switch (state.view) {
+      case 'role-select':    html = renderRoleSelect(); break;
+      case 'mode-select':    html = renderModeSelect(state.subjectId); break;
       case 'student-select': html = renderStudentSelect(); break;
       case 'subject-select': html = renderSubjectSelect(); break;
       case 'login': html = _teacher ? _teacher.renderLogin() : '<div class="container"><p>載入中...</p></div>'; break;
       case 'teacher': html = _teacher ? _teacher.renderTeacher() : '<div class="container"><p>載入中...</p></div>'; if (_teacher) safeSetNames(); break;
+      case 'teacher-assign': html = renderTeacherAssign(); break;
       case 'home': html = renderHome(state.subjectId); break;
       case 'topic': html = renderTopicList(state.topicId, state.subjectId); break;
       case 'play': html = renderPlay(state.scenarioId, state.subjectId); break;

@@ -23,6 +23,262 @@ export { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
          playScenario, chooseOption, getScenarioStatus, initTopicProgress,
          initSubjectProgress, getDisplayProgress, suggestNext };
 
+// ── Role Select (Entry Screen) ──────────────────────────────────────────────
+export function renderRoleSelect() {
+  return `
+    <div class="role-screen">
+      <div class="logo">🎓</div>
+      <h1>友愛教室</h1>
+      <p class="tagline">選擇你的身份，開始學習！</p>
+
+      <div class="role-cards">
+        <div class="role-card student" onclick="FC.chooseRole('student')">
+          <div class="rc-icon">🧒</div>
+          <div class="rc-body">
+            <h3>學生模式</h3>
+            <p>自己揀遊戲模式、自己揀課題，自由探索學習</p>
+          </div>
+          <div class="rc-arrow">→</div>
+        </div>
+
+        <div class="role-card teacher" onclick="FC.chooseRole('teacher')">
+          <div class="rc-icon">👨‍🏫</div>
+          <div class="rc-body">
+            <h3>老師 / 家長模式</h3>
+            <p>設定功課範圍、控制功能開關、查看學習報告</p>
+          </div>
+          <div class="rc-arrow">→</div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;text-align:center">
+        <p style="font-size:0.8em;color:var(--text-light)">© Ken Cheng 製作</p>
+      </div>
+    </div>
+  `;
+}
+
+// ── Game Mode Select ────────────────────────────────────────────────────────
+export const GAME_MODES = [
+  {
+    id: 'relaxed',
+    icon: '🧘',
+    title: '輕鬆學習',
+    desc: '無計時、無限提示，慢慢做，慢慢學',
+    color: '#eab308',
+    bg: 'linear-gradient(135deg, #fef9c3, #fef08a)',
+  },
+  {
+    id: 'timed',
+    icon: '⚡',
+    title: '計時挑戰',
+    desc: '限時答題，計分，訓練答題速度',
+    color: '#3b82f6',
+    bg: 'linear-gradient(135deg, #dbeafe, #bfdbfe)',
+  },
+  {
+    id: 'combo',
+    icon: '🔥',
+    title: 'Combo 衝刺',
+    desc: '連續答啱分數倍增，挑戰最高 Combo 數',
+    color: '#ef4444',
+    bg: 'linear-gradient(135deg, #fee2e2, #fecaca)',
+  },
+  {
+    id: 'challenge',
+    icon: '🎯',
+    title: '挑戰模式',
+    desc: '計時 + Combo 混合，最強挑戰',
+    color: '#a855f7',
+    bg: 'linear-gradient(135deg, #f3e8ff, #e9d5ff)',
+  },
+];
+
+export function renderModeSelect(subjectId) {
+  const savedMode = localStorage.getItem('fc_game_mode') || 'relaxed';
+
+  return `
+    <div class="mode-screen fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
+        <h2>🎮 選擇遊戲模式</h2>
+      </div>
+
+      <div class="mode-header">
+        <h2>🎮 選擇遊戲模式</h2>
+        <p>你鍾意點玩？揀一個模式開始！</p>
+      </div>
+
+      <div class="mode-grid">
+        ${GAME_MODES.map(m => `
+          <div class="mode-card ${m.id} ${savedMode === m.id ? 'selected' : ''}"
+               style="background:${m.bg};border-color:${m.color}"
+               onclick="FC.selectMode('${m.id}')">
+            <div class="mc-icon">${m.icon}</div>
+            <div class="mc-title">${m.title}</div>
+            <div class="mc-desc">${m.desc}</div>
+          </div>
+        `).join('')}
+      </div>
+
+      <div style="text-align:center;margin-top:8px;margin-bottom:20px">
+        <p style="font-size:0.85em;color:var(--text-light)">
+          💡 模式可以在設定頁隨時更改
+        </p>
+      </div>
+
+      ${subjectId ? `
+        <div style="text-align:center">
+          <button class="btn btn-primary" style="min-width:220px;font-size:1.1em"
+            onclick="FC.goHome()">
+            ✅ 確定，開始學習 →
+          </button>
+        </div>
+      ` : `
+        <div style="text-align:center">
+          <button class="btn btn-primary" style="min-width:220px;font-size:1.1em"
+            onclick="FC.goSubjectSelect()">
+            📚 選擇課題 →
+          </button>
+        </div>
+      `}
+
+      <div style="text-align:center;margin-top:16px">
+        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
+      </div>
+
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+    </div>
+  `;
+}
+
+// ── Teacher Assignment Config ──────────────────────────────────────────────
+export function renderTeacherAssign() {
+  const topics = [
+    { id: 'emotions', emoji: '🎭', title: '情緒與規範', sub: '管理情緒、守規矩', color: '#FF6B6B' },
+    { id: 'respect',  emoji: '🤝', title: '尊重與關懷', sub: '尊重別人、關心他人', color: '#4ECDC4' },
+    { id: 'honesty',  emoji: '⚖️', title: '誠實與責任', sub: '誠實面對、勇於承擔', color: '#45B7D1' },
+    { id: 'conflict', emoji: '💪', title: '衝突與求助', sub: '解決衝突、向人求助', color: '#96CEB4' },
+  ];
+
+  const saved = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+  const config = {
+    hintEnabled: saved.hintEnabled !== false,
+    timerEnabled: saved.timerEnabled ?? false,
+    timerSeconds: saved.timerSeconds || 30,
+    comboEnabled: saved.comboEnabled ?? false,
+    buttonSize: saved.buttonSize || 'normal',
+    assignedTopics: saved.assignedTopics || [],
+  };
+
+  return `
+    <div class="container fade-in">
+      <div class="page-header">
+        <button class="back-btn" onclick="FC.goTeacher()">←</button>
+        <h2>⚙️ 功能設定</h2>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:700;font-size:1.05em;margin-bottom:14px">🔘 功能開關</div>
+
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">💡 提示功能</div>
+            <div class="ft-desc">學生可以睇提示</div>
+          </div>
+          <button class="toggle-switch ${config.hintEnabled ? 'on' : ''}"
+            onclick="FC.toggleTeacherFeature(this, 'hintEnabled')"></button>
+        </div>
+
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">⏱️ 計時功能</div>
+            <div class="ft-desc">開啟後每題限時答題</div>
+          </div>
+          <button class="toggle-switch ${config.timerEnabled ? 'on' : ''}"
+            onclick="FC.toggleTeacherFeature(this, 'timerEnabled')"></button>
+        </div>
+
+        ${config.timerEnabled ? `
+        <div style="padding:10px 0 14px 0">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <strong>答題時限</strong>
+            <span style="color:var(--primary);font-weight:600">${config.timerSeconds} 秒</span>
+          </div>
+          <input type="range" min="10" max="60" step="5" value="${config.timerSeconds}"
+            oninput="FC.setTeacherTimer(this.value)"
+            style="width:100%;accent-color:var(--primary)" />
+          <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)">
+            <span>10秒</span><span>30秒</span><span>60秒</span>
+          </div>
+        </div>
+        ` : ''}
+
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">🔥 Combo 系統</div>
+            <div class="ft-desc">開啟連續答啱加分</div>
+          </div>
+          <button class="toggle-switch ${config.comboEnabled ? 'on' : ''}"
+            onclick="FC.toggleTeacherFeature(this, 'comboEnabled')"></button>
+        </div>
+
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">👆 按鈕大小</div>
+            <div class="ft-desc">控制答題按鈕尺寸</div>
+          </div>
+          <div style="display:flex;gap:6px">
+            <button class="btn ${config.buttonSize==='large'?'btn-primary':'btn-outline'}"
+              style="padding:6px 12px;font-size:0.85em;min-height:36px"
+              onclick="FC.setButtonSize('large')">大</button>
+            <button class="btn ${config.buttonSize==='normal'?'btn-primary':'btn-outline'}"
+              style="padding:6px 12px;font-size:0.85em;min-height:36px"
+              onclick="FC.setButtonSize('normal')">中</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:700;font-size:1.05em;margin-bottom:12px">📋 課題範圍</div>
+        <p style="font-size:0.88em;color:var(--text-light);margin-bottom:12px">
+          勾選要考核的主題，留空 = 全部開放
+        </p>
+        ${topics.map(t => `
+          <label style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer">
+            <input type="checkbox" value="${t.id}"
+              ${config.assignedTopics.includes(t.id) || config.assignedTopics.length === 0 ? 'checked' : ''}
+              onchange="FC.toggleAssignedTopic('${t.id}', this.checked)"
+              style="width:22px;height:22px;accent-color:var(--primary)" />
+            <span style="font-size:1.2em">${t.emoji}</span>
+            <span style="font-weight:600">${t.title}</span>
+            <span style="margin-left:auto;font-size:0.82em;color:var(--text-light)">${t.sub}</span>
+          </label>
+        `).join('')}
+      </div>
+
+      <div class="card">
+        <div style="font-weight:700;font-size:1.05em;margin-bottom:10px">🔐 PIN 安全</div>
+        <p style="font-size:0.88em;color:var(--text-light);margin-bottom:12px">
+          老師模式 PIN（預設：admin）
+        </p>
+        <input type="password" id="teacher-pin-input" value="admin" maxlength="6"
+          placeholder="輸入新 PIN"
+          style="width:100%;padding:14px;border:2px solid var(--border);border-radius:12px;font-size:1em;box-sizing:border-box;margin-bottom:10px" />
+        <button class="btn btn-outline" style="width:100%;font-size:0.95em"
+          onclick="FC.saveTeacherPIN()">💾 儲存 PIN</button>
+      </div>
+
+      <div style="margin-top:16px">
+        <button class="btn btn-primary" style="width:100%"
+          onclick="FC.saveTeacherConfig()">✅ 儲存所有設定</button>
+      </div>
+
+      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:24px">© Ken Cheng 製作</div>
+    </div>
+  `;
+}
+
 // === 道德值 Bar（接受 studentId，pure function）===
 export function renderMoralBar(studentId) {
   if (!studentId) return '';
@@ -47,6 +303,8 @@ export function renderMoralBar(studentId) {
 export function renderHome(subjectId) {
   const subjectColor = getSubjectColor(subjectId);
   const subjectBg = getSubjectBgColor(subjectId);
+  const gameMode = localStorage.getItem('fc_game_mode') || 'relaxed';
+  const modeInfo = GAME_MODES.find(m => m.id === gameMode) || GAME_MODES[0];
 
   // TTS 測試（方便學生確認聲音正常）
   const ttsTestHtml = isEnabled() ? `<button class="btn btn-outline" style="margin-bottom:12px;font-size:0.9em" onclick="FC.testTTS()">🔊 測試發音</button>` : '';
@@ -54,7 +312,7 @@ export function renderHome(subjectId) {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.switchStudent()">👤</button>
+        <button class="back-btn" onclick="FC.goRoleSelect()">🏠</button>
         <h2>🌟 友愛教室</h2>
         <button class="back-btn" style="background:${subjectBg};color:${subjectColor};border:2px solid ${subjectColor}"
           onclick="FC.goSubjectSelect()">
@@ -63,6 +321,17 @@ export function renderHome(subjectId) {
       </div>
 
       ${getStudent() ? renderMoralBar(getStudent()) : ''}
+
+      <!-- Mode badge + change button -->
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:14px">
+        <span class="mode-badge ${gameMode}" style="font-size:0.88em">
+          ${modeInfo.icon} ${modeInfo.title}
+        </span>
+        <button onclick="FC.goModeSelect()"
+          style="background:none;border:none;cursor:pointer;font-size:0.8em;color:var(--text-light);text-decoration:underline;padding:0">
+          更改模式
+        </button>
+      </div>
 
       ${subjectId ? `
       <div class="subject-banner" style="background:${subjectBg};border:2px solid ${subjectColor}">
@@ -353,7 +622,7 @@ export function renderSettings() {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goHome()">←</button>
+        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
         <h2>⚙️ 個人化設定</h2>
       </div>
 

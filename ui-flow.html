@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friendly Classroom — UI Flow</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fafaf8;
+      --card: #ffffff;
+      --text: #1a1a1e;
+      --muted: #6b6b72;
+      --line: #e8e6e1;
+      --accent: #f59e0b;
+      --accent-light: #fef3c7;
+      --student: #10b981;
+      --student-light: #d1fae5;
+      --teacher: #6366f1;
+      --teacher-light: #e0e7ff;
+      --game: #f43f5e;
+      --game-light: #ffe4e6;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Outfit', 'Noto Sans TC', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 40px 20px 80px;
+    }
+
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    header .badge {
+      display: inline-block;
+      background: var(--accent-light);
+      color: #92400e;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ---- Flow Container ---- */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      position: relative;
+    }
+
+    /* Arrow connector between role cards and flow branches */
+    .flow-row::before {
+      content: "";
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 20px;
+      background: var(--line);
+    }
+
+    /* Vertical line from entry to fork */
+    .flow-entry::after {
+      content: "";
+      position: absolute;
+      bottom: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 20px;
+      background: var(--line);
+    }
+
+    .flow-entry {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin-bottom: 32px;
+    }
+
+    /* ---- Cards ---- */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+    }
+
+    .card-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .card-icon {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ---- Role cards ---- */
+    .role-card {
+      cursor: default;
+    }
+
+    .role-card.student .card-label { color: var(--student); }
+    .role-card.student { border-color: var(--student-light); background: linear-gradient(135deg, var(--card) 80%, var(--student-light) 100%); }
+    .role-card.teacher .card-label { color: var(--teacher); }
+    .role-card.teacher { border-color: var(--teacher-light); background: linear-gradient(135deg, var(--card) 80%, var(--teacher-light) 100%); }
+
+    /* ---- Flow cards ---- */
+    .flow-section {
+      margin-top: 40px;
+    }
+
+    .flow-section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .flow-section-header .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .flow-section-header .dot.student { background: var(--student); }
+    .flow-section-header .dot.teacher { background: var(--teacher); }
+
+    .flow-section-header h2 {
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .flow-section-header span {
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: auto;
+    }
+
+    .steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .step {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .student .step-num { background: var(--student-light); color: var(--student); }
+    .teacher .step-num { background: var(--teacher-light); color: var(--teacher); }
+
+    .step-body { flex: 1; }
+    .step-body h4 { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+    .step-body p { font-size: 12px; color: var(--muted); }
+
+    .step-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 20px;
+      flex-shrink: 0;
+    }
+
+    .tag-screen { background: var(--accent-light); color: #92400e; }
+    .tag-action { background: #f3f4f6; color: #374151; }
+    .tag-result { background: #dcfce7; color: #166534; }
+
+    /* ---- Game Mode Cards ---- */
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .mode-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .mode-card .emoji {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .mode-card h5 {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 3px;
+    }
+
+    .mode-card p {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ---- Arrows ---- */
+    .arrow {
+      display: flex;
+      justify-content: center;
+      padding: 4px 0;
+      color: var(--muted);
+    }
+
+    .arrow svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0.5;
+    }
+
+    /* ---- Result Page ---- */
+    .result-preview {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .result-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .result-card .icon { font-size: 20px; margin-bottom: 6px; }
+    .result-card h5 { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+    .result-card p { font-size: 11px; color: var(--muted); }
+
+    /* ---- Summary Bar ---- */
+    .summary {
+      margin-top: 56px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .summary h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .summary-item { text-align: center; }
+    .summary-item .num {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+
+    .summary-item .num.student { color: var(--student); }
+    .summary-item .num.teacher { color: var(--teacher); }
+    .summary-item .num.game { color: var(--game); }
+
+    .summary-item .desc { font-size: 12px; color: var(--muted); }
+
+    /* ---- Divider ---- */
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 0;
+    }
+
+    /* ---- Footer ---- */
+    .footer {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      h1 { font-size: 26px; }
+      .flow-row { grid-template-columns: 1fr; }
+      .flow-row::before { display: none; }
+      .mode-grid { grid-template-columns: 1fr 1fr; }
+      .result-preview { grid-template-columns: 1fr; }
+      .summary-grid { grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="badge">UI Flow</div>
+    <h1>Friendly Classroom — 遊戲流程圖</h1>
+    <p class="subtitle">小學生觸控版 · 雙模式並存</p>
+  </header>
+
+  <!-- Entry Point -->
+  <div class="flow-entry">
+    <div class="card" style="text-align:center; max-width:320px;">
+      <div style="font-size:40px; margin-bottom:10px;">🎓</div>
+      <h3 style="font-size:17px;">開始使用</h3>
+      <p style="font-size:13px; color:var(--muted); margin-top:4px;">選擇你的身份，開始學習！</p>
+    </div>
+  </div>
+
+  <div class="arrow">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+
+  <!-- Role Selection -->
+  <div class="flow-row" style="margin-bottom:40px;">
+    <div class="card role-card student">
+      <div class="card-label">🧒 學生模式</div>
+      <h3>自由任玩</h3>
+      <p>自己揀遊戲模式、自己揀課題</p>
+      <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;">
+        <span style="background:var(--student-light); color:var(--student); font-size:11px; font-weight:600; padding:3px 8px; border-radius:20px;">自由探索</span>
+        <span style="background:var(--student-light); color:var(--student); font-size:11px; font-weight:600; padding:3px 8px; border-radius:20px;">即時反饋</span>
+        <span style="background:var(--student-light); color:var(--student); font-size:11px; font-weight:600; padding:3px 8px; border-radius:20px;">⭐ 星星評分</span>
+      </div>
+    </div>
+
+    <div class="card role-card teacher">
+      <div class="card-label">👨‍🏫 老師 / 家長模式</div>
+      <h3>功課管理</h3>
+      <p>設定課題範圍、控制功能開關</p>
+      <div style="margin-top:12px; display:flex; gap:6px; flex-wrap:wrap;">
+        <span style="background:var(--teacher-light); color:var(--teacher); font-size:11px; font-weight:600; padding:3px 8px; border-radius:20px;">🔐 PIN 保護</span>
+        <span style="background:var(--teacher-light); color:var(--teacher); font-size:11px; font-weight:600; padding:3px 8px; border-radius:20px;">功課指派</span>
+        <span style="background:var(--teacher-light); color:var(--teacher); font-size:11px; font-weight:600; padding:3px 8px; border-radius:20px;">📊 報告</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Flow -->
+  <div class="flow-section">
+    <div class="flow-section-header">
+      <div class="dot student"></div>
+      <h2>學生模式流程</h2>
+      <span>🧒 自己揀、自己玩</span>
+    </div>
+
+    <div class="steps student">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>選擇遊戲模式</h4>
+          <p>4 種模式，睇清楚再揀</p>
+        </div>
+        <span class="step-tag tag-screen">📱 模式頁</span>
+      </div>
+
+      <!-- Mode Grid Inline -->
+      <div class="mode-grid" style="padding: 0 0 0 46px;">
+        <div class="mode-card">
+          <div class="emoji">🧘</div>
+          <h5>輕鬆學習</h5>
+          <p>無計時、無限提示</p>
+        </div>
+        <div class="mode-card">
+          <div class="emoji">⚡</div>
+          <h5>計時挑戰</h5>
+          <p>限時答題、計分</p>
+        </div>
+        <div class="mode-card">
+          <div class="emoji">🔥</div>
+          <h5>Combo 衝刺</h5>
+          <p>連續答啱分數倍增</p>
+        </div>
+        <div class="mode-card">
+          <div class="emoji">🎯</div>
+          <h5>挑戰模式</h5>
+          <p>計時 + Combo 混合</p>
+        </div>
+      </div>
+
+      <div class="arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>選擇課題</h4>
+          <p>按分類揀 topic → 再揀具體 scenario</p>
+        </div>
+        <span class="step-tag tag-screen">📚 課題頁</span>
+      </div>
+
+      <div class="arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>開始答題</h4>
+          <p>睇題目 → 揀答案 → 即時知道啱唔啱</p>
+        </div>
+        <span class="step-tag tag-action">🎮 答題頁</span>
+      </div>
+
+      <div class="arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>完成結算</h4>
+          <p>⭐⭐⭐ 星星評分 · 查看正確率 · 再玩一次</p>
+        </div>
+        <span class="step-tag tag-result">🏆 結果頁</span>
+      </div>
+
+      <!-- Result preview -->
+      <div class="result-preview" style="padding: 0 0 0 46px;">
+        <div class="result-card">
+          <div class="icon">⭐⭐⭐</div>
+          <h5>星星評分</h5>
+          <p>1–3 星，一看就知幾好</p>
+        </div>
+        <div class="result-card">
+          <div class="icon">📊</div>
+          <h5>正確率顯示</h5>
+          <p>答啱 / 總題數</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teacher Flow -->
+  <div class="flow-section">
+    <div class="flow-section-header">
+      <div class="dot teacher"></div>
+      <h2>老師 / 家長模式流程</h2>
+      <span>👨‍🏫 設定功課，指派學習</span>
+    </div>
+
+    <div class="steps teacher">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>輸入 PIN（4 位數字）</h4>
+          <p>首次使用可自行設定 PIN</p>
+        </div>
+        <span class="step-tag tag-screen">🔐 登入頁</span>
+      </div>
+
+      <div class="arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>選擇課題範圍</h4>
+          <p>勾選要考核的 scenario，可多選</p>
+        </div>
+        <span class="step-tag tag-screen">📋 課題設定</span>
+      </div>
+
+      <div class="arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>開關功能設定</h4>
+          <p>開 / 關提示、按鈕大小、計時等</p>
+        </div>
+        <span class="step-tag tag-action">⚙️ 設置頁</span>
+      </div>
+
+      <div class="arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>指派給學生</h4>
+          <p>學生開啟 app，直接進入指定功課，無法自行改課題</p>
+        </div>
+        <span class="step-tag tag-result">📨 指派完成</span>
+      </div>
+
+      <div class="arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>查看學習報告</h4>
+          <p>各學生的答題表現、正確率、需加強的課題</p>
+        </div>
+        <span class="step-tag tag-result">📊 報告頁</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- UX Summary -->
+  <div class="summary">
+    <h3>觸控 UX 設計要點</h3>
+    <div class="summary-grid">
+      <div class="summary-item">
+        <div class="num game">64px</div>
+        <div class="desc">最小按鈕尺寸</div>
+      </div>
+      <div class="summary-item">
+        <div class="num student">4 種</div>
+        <div class="desc">遊戲模式可選</div>
+      </div>
+      <div class="summary-item">
+        <div class="num teacher">🔐</div>
+        <div class="desc">PIN 保護老師模式</div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:20px;">
+      <div style="display:flex; gap:10px; align-items:flex-start;">
+        <span style="font-size:20px; flex-shrink:0;">👆</span>
+        <div>
+          <div style="font-size:13px; font-weight:600;">大按鈕 + 闊間距</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:2px;">手指粗 / 誤觸問題Bye</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:flex-start;">
+        <span style="font-size:20px; flex-shrink:0;">😀</span>
+        <div>
+          <div style="font-size:13px; font-weight:600;">Emoji 視覺引導</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:2px;">唔識字都知做咩</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:flex-start;">
+        <span style="font-size:20px; flex-shrink:0;">⭐</span>
+        <div>
+          <div style="font-size:13px; font-weight:600;">簡單即時評分</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:2px;">做完即知幾好，唔使家長解釋</div>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; align-items:flex-start;">
+        <span style="font-size:20px; flex-shrink:0;">🧒</span>
+        <div>
+          <div style="font-size:13px; font-weight:600;">老師控制學生範圍</div>
+          <div style="font-size:12px; color:var(--muted); margin-top:2px;">功課指定後學生只係揀 mode</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Friendly Classroom v2 · UI Flow · 2026-06-12
+  </div>
+
+</div>
+</body>
+</html>
