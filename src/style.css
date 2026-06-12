@@ -231,6 +231,20 @@ body {
 .btn-success { background: var(--success); color: #fff; }
 .btn-danger { background: var(--danger); color: #fff; }
 .btn-outline { background: transparent; border: 3px solid var(--primary); color: var(--primary); border-radius: 16px; }
+
+/* 選中狀態：給 language picker / mode picker 用，比 .btn-primary 更搶眼 */
+.btn[data-active="true"] {
+  background: var(--primary);
+  color: #fff;
+  border: 3px solid var(--primary);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.25), 0 4px 14px rgba(99, 102, 241, 0.4);
+  transform: translateY(-1px);
+  font-weight: 700;
+}
+.btn[data-active="true"]:hover {
+  /* 揀咗就唔好再彈起，避免重覆點擊時晃動 */
+  transform: translateY(-1px);
+}
 .btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .btn-small { padding: 12px 20px; min-height: 48px; font-size: 1em; }
 
@@ -437,6 +451,10 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   flex-shrink: 0;
   cursor: pointer;
   color: var(--text-light);
+  /* 確保 opt-read 疊喺 option-card 上面，touch event 唔會漏出去 */
+  position: relative;
+  z-index: 2;
+  touch-action: manipulation;
 }
 .option-card .opt-read:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
 

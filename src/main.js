@@ -262,12 +262,22 @@ window.FC.testTTS = function() {
   if (speak) speak('呢個係發音測試，請確認可以聽到聲音。如果聽到呢段說話，代表語音功能正常運作。');
 };
 
+// Event helper: 內嵌喺 inline handler 嗰陣用，避免 mobile browser touch 事件漏出去撞到 parent
+// 用法：onclick="FC._stopEvt(event); doStuff()"
+window.FC._stopEvt = function(e) {
+  if (!e) return;
+  if (typeof e.stopPropagation === 'function') e.stopPropagation();
+  if (typeof e.preventDefault === 'function') e.preventDefault();
+};
+
 // TTS 語言切換
 window.FC.setTTSLang = function(langId) {
   setTTSLang(langId);
   // 自動播一句 test 畀 user 即時聽到分別
   const { speak } = window._fcAudio || {};
   if (speak) speak('語言切換測試，你聽到嘅係新嘅發音。');
+  // 重新 render settings 頁，更新 active 狀態
+  if (state.view === 'settings') render();
 };
 window.FC.getTTSLang = function() { return getTTSLang(); };
 window.FC.TTS_LANGS = TTS_LANGS;

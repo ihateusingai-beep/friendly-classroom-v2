@@ -456,13 +456,18 @@ export function renderPlay(scenarioId, subjectId) {
                    class="opt-thumb" onerror="this.style.display='none'" />
               <span class="opt-badge">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
-              <button class="opt-read" onclick="event.stopPropagation();FC.speakOpt('${opt.id}')" title="朗讀">🔊</button>
+              <button type="button" class="opt-read"
+                onclick="FC._stopEvt(event);FC.speakOpt('${opt.id}')"
+                onmousedown="FC._stopEvt(event)"
+                ontouchstart="FC._stopEvt(event)"
+                ontouchend="FC._stopEvt(event)"
+                title="朗讀呢個選項">🔊</button>
             </div>
           `;
-        })}
+        }).join('')}
       </div>
 
-      <button class="voice-fab" onclick="FC.speak()" title="朗讀題目">🔊</button>
+      <button type="button" class="voice-fab" onclick="FC.speak()" title="朗讀題目">🔊</button>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
@@ -641,8 +646,9 @@ export function renderSettings() {
           </div>
           <div style="display:flex;flex-wrap:wrap;gap:6px">
             ${(window.FC?.TTS_LANGS || []).map(l => `
-              <button class="btn ${currentLang === l.id ? 'btn-primary' : 'btn-outline'}"
-                style="flex:1;min-width:0;font-size:0.88em;padding:8px 6px"
+              <button class="btn"
+                data-active="${currentLang === l.id}"
+                style="flex:1;min-width:0;font-size:0.88em;padding:8px 6px;${currentLang === l.id ? 'background:var(--primary);color:#fff;border:3px solid var(--primary);' : 'background:transparent;border:3px solid var(--primary);color:var(--primary);'}"
                 onclick="FC.setTTSLang('${l.id}')"
                 title="${l.hint}">${l.label}</button>
             `).join('')}

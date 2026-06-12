@@ -121,8 +121,15 @@ export const TTS_LANGS = [
   { id: 'zh-CN', label: '🇨🇳 普通話（中國大陸）', hint: 'zh-CN 中文 voice' },
 ];
 
-// 持久化嘅當前用戶選擇；'auto' = 第一次 load 時自動揀第一個 zh- voice
-let currentLang = localStorage.getItem('fc_tts_lang') || 'auto';
+// 持久化嘅當前用戶選擇
+// 第一次 load 冇 fc_tts_lang 紀錄時：預設 'zh-HK'（target 用戶係香港人）
+// 之後 user 揀 'auto' 先用 fallback chain
+const _savedLang = localStorage.getItem('fc_tts_lang');
+let currentLang = _savedLang || 'zh-HK';
+if (!_savedLang) {
+  // 寫返 localStorage，等之後 renderSettings 直接讀到
+  try { localStorage.setItem('fc_tts_lang', currentLang); } catch {}
+}
 
 // Cache 已揀嘅 voice object — 避免每次 speak() 都重新 scan 全 list
 let cachedVoice = null;
