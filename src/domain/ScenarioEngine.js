@@ -10,8 +10,17 @@ let currentTopic = null;
 let currentScenario = null;
 let scenarios = [];
 
+// 追蹤已 init 過嘅 (student, topic) / (student, subject) 組合，避免每次 render 重覆寫入 + 觸發 sync
+const initedTopicForStudent = new Set();   // key: `${student}|${topicId}`
+const initedSubjectForStudent = new Set();  // key: `${student}|${subjectId}`
+
 // ── Student ──
-export function setStudent(name) { currentStudent = name; }
+export function setStudent(name) {
+  currentStudent = name;
+  // 換學生後 init cache 都要清返，避免撈到舊學生嘅 record
+  initedTopicForStudent.clear();
+  initedSubjectForStudent.clear();
+}
 export function getStudent() { return currentStudent; }
 
 // ── Scenarios ──
@@ -37,8 +46,11 @@ export function chooseOption(scenarioId, optionId, subjectId) {
   if (!result) return null;
 
   // 寫入進度（會觸發 EventBus）
-  if (currentStudent) {
+  if (currentStudent && subjectId) {
     markComplete(currentStudent, scenario.id, scenario.topicId, result.moralChange, subjectId);
+  } else if (currentStudent && !subjectId) {
+    // Free mode fallback: 只累計 totalMoralScore + topic progress, 唔寫入 subjectProgress
+    markComplete(currentStudent, scenario.id, scenario.topicId, result.moralChange, null);
   }
 
   // 回傳完整 result（render layer 使用）
@@ -47,7 +59,7 @@ export function chooseOption(scenarioId, optionId, subjectId) {
     moralChange: result.moralChange,
     mainComment: result.mainComment,
     creeds: result.triggeredCreeds,
-    creedText: formatCreeds(scenario.creedIds || []),
+    creedText: formatCreeds(result.triggeredCreeds.map(c => c.id)),
     scenarioImage: scenario.image || null,
     scenarioTitle: scenario.title || '',
     outcomeImage: `assets/images/outcomes/${scenario.id}_opt${scenario.options.findIndex(o=>o.id===optionId)+1}.png`,
@@ -62,12 +74,21 @@ export function getScenarioStatus(scenarioId) {
 
 export function initTopicProgress(topicId) {
   if (!currentStudent) return;
+  const key = `${currentStudent}|${topicId}`;
+  if (initedTopicForStudent.has(key)) return;
+  initedTopicForStudent.add(key);
   const topicScenarios = getScenariosByTopic(topicId);
   updateTopicTotal(currentStudent, topicId, topicScenarios.length);
 }
 
 export function initSubjectProgress(subjectId) {
+  // TODO: scenarios.json 而家冇 subjectId field。當 data 加返之後，
+  // 喺度 filter 嗰個 subject 嘅 scenarios 先傳 total。
+  // 而家 fallback 用全部 scenarios 嘅長度，避免 0 嘅 dead state。
   if (!currentStudent || !subjectId) return;
+  const key = `${currentStudent}|${subjectId}`;
+  if (initedSubjectForStudent.has(key)) return;
+  initedSubjectForStudent.add(key);
   const all = getScenarios();
   updateSubjectTotal(currentStudent, subjectId, all.length);
 }

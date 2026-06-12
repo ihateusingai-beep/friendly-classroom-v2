@@ -1,7 +1,7 @@
 // 道德值核心 — 純函數，無 DOM 依賴
 // 支援未來 RPG/Blooket 直接呼叫
 
-import { getCreedsByIds } from '../creeds.js';
+import { getCreedsByIds, getTriggeredCreeds } from '../creeds.js';
 
 // ── 等級判定 ──
 export function getMoralLevel(score) {
@@ -35,7 +35,7 @@ export function applyScenarioResult(scenario, optionId, studentId) {
     if (eff.comment) mainComment = eff.comment;
   });
 
-  const triggeredCreeds = getCreedsByIds(scenario.creedIds || []);
+  const triggeredCreeds = getCreedsByIds(getTriggeredCreeds(scenario.creedIds || [], moralChange));
   const isPositive = moralChange >= 0;
 
   return {

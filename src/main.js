@@ -152,6 +152,11 @@ window.FC.play = play;
 
 export function choose(optionId) {
   const data = chooseOption(state.scenarioId, optionId, state.subjectId);
+  if (!data) {
+    console.error('[FC] chooseOption returned null, scenarioId=', state.scenarioId, 'optionId=', optionId);
+    goHome();
+    return;
+  }
   state = { ...state, view: 'result', resultData: data };
   render();
   // 情緒慶祝動畫 + SFX
@@ -239,6 +244,11 @@ export async function goTeacher() {
 window.FC.goTeacher = goTeacher;
 
 export function goRandom() {
+  // 自由模式仍需要揀 subjectId，否則 markComplete 會污染 subjectProgress
+  if (!state.subjectId) {
+    goSubjectSelect();
+    return;
+  }
   const all = getScenarios();
   if (!all.length) { goHome(); return; }
   const s = all[Math.floor(Math.random() * all.length)];

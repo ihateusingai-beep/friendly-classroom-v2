@@ -474,6 +474,9 @@ export function renderPlay(scenarioId, subjectId) {
 }
 
 export function renderResult(data, subjectId) {
+  if (!data) {
+    return '<div class="container fade-in"><p>⚠️ 結果載入失敗，請重試。</p><button class="btn btn-primary" onclick="FC.goHome()">← 返首頁</button></div>';
+  }
   const { option, moralChange, mainComment, creeds, creedText, scenarioImage, scenarioTitle } = data;
   const isGood = moralChange >= 0;
   const subColor = getSubjectColor(subjectId);

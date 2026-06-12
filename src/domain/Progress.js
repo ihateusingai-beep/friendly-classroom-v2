@@ -28,8 +28,12 @@ export function markComplete(studentName, scenarioId, topicId, moralChange, subj
     p.totalMoralScore = Math.max(0, (p.totalMoralScore || 0) + moralChange);
     if (!p.topicProgress[topicId]) p.topicProgress[topicId] = { completed: 0, total: 0 };
     p.topicProgress[topicId].completed++;
-    if (!p.subjectProgress[subjectId]) p.subjectProgress[subjectId] = { completed: 0, total: 0 };
-    p.subjectProgress[subjectId].completed++;
+    // subjectProgress 暫時停用：scenarios.json 冇 subjectId field，
+    // 等將來 data 有 subjectId 之後先 re-enable。留個 null guard 避免污染。
+    if (subjectId) {
+      if (!p.subjectProgress[subjectId]) p.subjectProgress[subjectId] = { completed: 0, total: 0 };
+      p.subjectProgress[subjectId].completed++;
+    }
     saveProgress(p);
 
     // 廣播事件
