@@ -150,11 +150,18 @@ export function renderBankPlay(scenario, run) {
         <div style="margin-top:8px">${scenario.description}</div>
       </div>
 
+      <div class="scenario-image-wrap">
+        <img src="assets/images/scenarios/${scenario.id}.png" alt="${scenario.title}" class="scenario-image"
+             onerror="this.style.display='none'" />
+      </div>
+
       <div class="options" style="margin-top:14px">
         ${scenario.options.map((opt, i) => {
           const labels = ['A', 'B', 'C', 'D'];
           return `
             <div class="option-card" onclick="FC.bankChoose('${opt.id}')">
+              <img src="assets/images/outcomes/${scenario.id}_opt${i+1}.png" alt=""
+                   class="opt-thumb" onerror="this.style.display='none'" />
               <span class="opt-badge">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
             </div>
@@ -189,6 +196,13 @@ export function renderBankResult(scenario, result, run) {
         <div class="stamp-delta">${isPositive ? '+' : ''}${delta} 元</div>
         <div class="stamp-label">${isPositive ? '存款' : isNeutral ? '無變化' : '扣款'}</div>
       </div>
+
+      ${result.outcomeImage ? `
+        <div class="outcome-image-wrap" style="margin:14px auto;max-width:340px;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
+          <img src="${result.outcomeImage}" alt="結果插圖" style="width:100%;display:block"
+               onerror="this.parentElement.style.display='none'" />
+        </div>
+      ` : ''}
 
       <div class="result-card ${isPositive ? 'good' : 'bad'}" id="result-card">
         <div class="result-emoji">${isPositive ? '🌟' : '💪'}</div>

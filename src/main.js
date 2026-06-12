@@ -287,6 +287,9 @@ window.FC.bankChoose = function(optionId) {
     console.error('[Bank] applyScenarioResult null');
     return;
   }
+  // 補 outcomeImage（同 ScenarioEngine.chooseOption 一樣嘅 path scheme）
+  const optIdx = scenario.options.findIndex(o => o.id === optionId);
+  result.outcomeImage = `assets/images/outcomes/${scenario.id}_opt${optIdx + 1}.png`;
   recordBankTransaction(result.moralChange, scenario.title);
   state = {
     ...state,
