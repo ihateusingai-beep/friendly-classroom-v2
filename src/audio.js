@@ -112,6 +112,69 @@ let enabled = true;
 let speaking = false;
 let currentAudio = null;
 
+// ── TTS 語言設定 ──
+// 用戶可自選：auto（auto-detect 跟 OS 預設）/ zh-HK（粵語）/ zh-TW（國語 — 兩岸通用 zh-TW fallback）/ zh-CN（普通話）
+export const TTS_LANGS = [
+  { id: 'auto',  label: '自動（按系統預設）',  hint: '跟 OS 第一個中文 voice' },
+  { id: 'zh-HK', label: '🇭🇰 粵語（香港）',    hint: '需要 OS/browser 裝咗粵語 voice' },
+  { id: 'zh-TW', label: '🇹🇼 國語（台灣 / 普通話通用）', hint: 'zh-TW 中文 voice, 兩岸都聽得明' },
+  { id: 'zh-CN', label: '🇨🇳 普通話（中國大陸）', hint: 'zh-CN 中文 voice' },
+];
+
+// 持久化嘅當前用戶選擇；'auto' = 第一次 load 時自動揀第一個 zh- voice
+let currentLang = localStorage.getItem('fc_tts_lang') || 'auto';
+
+// Cache 已揀嘅 voice object — 避免每次 speak() 都重新 scan 全 list
+let cachedVoice = null;
+
+// 確保 voices loaded（Web Speech API voices 係 async load，唔可以 assume 同步 ready）
+let voicesLoadedPromise = null;
+function ensureVoicesLoaded() {
+  if (voicesLoadedPromise) return voicesLoadedPromise;
+  voicesLoadedPromise = new Promise((resolve) => {
+    const synth = window.speechSynthesis;
+    if (!synth) return resolve([]);
+    let voices = synth.getVoices();
+    if (voices.length > 0) return resolve(voices);
+    // voices 仲未 load 完，bind event handler
+    const handler = () => {
+      voices = synth.getVoices();
+      if (voices.length > 0) {
+        synth.removeEventListener('voiceschanged', handler);
+        resolve(voices);
+      }
+    };
+    synth.addEventListener('voiceschanged', handler);
+    // 5 秒 timeout，避免 user 喺無 voice 嘅環境 hang 住
+    setTimeout(() => resolve(synth.getVoices() || []), 5000);
+  });
+  return voicesLoadedPromise;
+}
+
+// 根據 currentLang 同 OS voice list 揀 best match；只喺 lang 變 / voice list 變時先 re-compute
+async function pickBestVoice() {
+  const voices = await ensureVoicesLoaded();
+  if (!voices.length) return null;
+
+  // user explicit 揀咗 lang
+  if (currentLang !== 'auto') {
+    const exact = voices.find(v => v.lang === currentLang);
+    if (exact) return exact;
+    // 例如 user 揀 zh-HK 但 OS 冇 → 揀最接近嘅（zh-TW > zh-CN > 第一個 zh）
+    const langPrefix = currentLang.split('-')[0];
+    const partial = voices.find(v => v.lang.startsWith(langPrefix));
+    return partial || null;
+  }
+
+  // auto mode: 跟原本 fallback chain（zh-HK > zh-TW > zh-CN > zh > voices[0]）
+  return voices.find(v => v.lang === 'zh-HK') ||
+         voices.find(v => v.lang === 'zh-TW') ||
+         voices.find(v => v.lang === 'zh-CN') ||
+         voices.find(v => v.lang.includes('zh')) ||
+         voices[0] ||
+         null;
+}
+
 // ── 參數讀取 ──
 function getParams() {
   return {
@@ -204,32 +267,46 @@ export function speakCreeds(creeds) {
 }
 
 // 通用朗讀（使用 Web Speech API — Instant TTS，零延遲）
-export function speak(text) {
+export async function speak(text) {
   if (!text) return;
   if (speaking) window.speechSynthesis?.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'zh-HK';
+  utterance.lang = currentLang === 'auto' ? 'zh-HK' : currentLang;
   utterance.rate = getParams().speed || 0.85;
   utterance.pitch = 1.0;
-  const voices = window.speechSynthesis?.getVoices() || [];
-  // 優先揀 粵語 > 國語 > 其他
-  const preferred = voices.find(v => v.lang === 'zh-HK') ||
-                    voices.find(v => v.lang === 'zh-TW') ||
-                    voices.find(v => v.lang === 'zh-CN') ||
-                    voices.find(v => v.lang.includes('zh')) ||
-                    voices[0];
-  if (preferred) { utterance.voice = preferred; console.log('[FC TTS] Voice:', preferred.name); }
+  const voice = await pickBestVoice();
+  if (voice) {
+    utterance.voice = voice;
+    console.log('[FC TTS] Voice:', voice.name, '(' + voice.lang + ')');
+  } else {
+    console.warn('[FC TTS] No matching voice found for', currentLang);
+  }
   utterance.onstart = () => { speaking = true; console.log('[FC TTS] Speaking:', text.slice(0, 30)); };
   utterance.onend = () => { speaking = false; console.log('[FC TTS] Done'); };
   utterance.onerror = (e) => {
     speaking = false;
     console.error('[FC TTS] Error:', e.error);
-    // Fallback: try MP3 if Web Speech blocked by autoplay policy
     if (e.error === 'not-allowed') {
       console.log('[FC TTS] Autoplay blocked — user must interact first. Suggest enabling TTS in settings.');
     }
   };
   window.speechSynthesis?.speak(utterance);
+}
+
+export function setTTSLang(langId) {
+  if (!TTS_LANGS.find(l => l.id === langId)) {
+    console.warn('[FC TTS] Unknown lang:', langId);
+    return;
+  }
+  currentLang = langId;
+  cachedVoice = null; // 強制 pickBestVoice 重新 scan
+  voicesLoadedPromise = null; // 強制 re-detect
+  localStorage.setItem('fc_tts_lang', langId);
+  console.log('[FC TTS] Lang set to', langId);
+}
+
+export function getTTSLang() {
+  return currentLang;
 }
 
 // 重置設定

@@ -7,7 +7,7 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
          playScenario, chooseOption, suggestNext,
          renderRoleSelect, renderModeSelect, renderTeacherAssign,
          GAME_MODES } from './engine.js';
-import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX } from './audio.js';
+import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
 import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
 import { bus } from './domain/EventBus.js';
@@ -261,6 +261,16 @@ window.FC.testTTS = function() {
   const { speak } = window._fcAudio || {};
   if (speak) speak('呢個係發音測試，請確認可以聽到聲音。如果聽到呢段說話，代表語音功能正常運作。');
 };
+
+// TTS 語言切換
+window.FC.setTTSLang = function(langId) {
+  setTTSLang(langId);
+  // 自動播一句 test 畀 user 即時聽到分別
+  const { speak } = window._fcAudio || {};
+  if (speak) speak('語言切換測試，你聽到嘅係新嘅發音。');
+};
+window.FC.getTTSLang = function() { return getTTSLang(); };
+window.FC.TTS_LANGS = TTS_LANGS;
 
 export function goSubjectSelect() {
   state = { ...state, view: 'subject-select' };

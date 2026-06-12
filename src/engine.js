@@ -603,6 +603,7 @@ export function renderSettings() {
   const fontSize = localStorage.getItem('fc_font_size') || '18';
   const lineHeight = localStorage.getItem('fc_line_height') || '1.5';
   const spacing = localStorage.getItem('fc_spacing') || 'medium';
+  const currentLang = localStorage.getItem('fc_tts_lang') || 'auto';
 
   const fsLabel = fontSize <= 18 ? '小' : fontSize <= 22 ? '中' : '大';
   const enabled = isEnabled();
@@ -632,6 +633,20 @@ export function renderSettings() {
             <div style="font-size:0.85em;color:var(--text-light)">自動朗讀題目和信條</div>
           </div>
           <div class="toggle ${enabled ? 'on' : ''}" data-key="voice" onclick="FC.toggleVoice(this)"></div>
+        </div>
+        <div style="margin-bottom:12px">
+          <div style="margin-bottom:6px">
+            <strong>發音語言</strong>
+            <div style="font-size:0.82em;color:var(--text-light);margin-top:2px">揀錯會 load 國語而唔係粵語</div>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px">
+            ${(window.FC?.TTS_LANGS || []).map(l => `
+              <button class="btn ${currentLang === l.id ? 'btn-primary' : 'btn-outline'}"
+                style="flex:1;min-width:0;font-size:0.88em;padding:8px 6px"
+                onclick="FC.setTTSLang('${l.id}')"
+                title="${l.hint}">${l.label}</button>
+            `).join('')}
+          </div>
         </div>
         <div style="margin-bottom:10px">
           <div style="display:flex;justify-content:space-between;margin-bottom:6px">
