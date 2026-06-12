@@ -151,7 +151,7 @@ export function play(scenarioId) {
 window.FC.play = play;
 
 export function choose(optionId) {
-  const data = chooseOption(optionId, state.subjectId);
+  const data = chooseOption(state.scenarioId, optionId, state.subjectId);
   state = { ...state, view: 'result', resultData: data };
   render();
   // 情緒慶祝動畫 + SFX
