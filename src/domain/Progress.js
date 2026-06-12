@@ -139,10 +139,7 @@ function _defaultProgress(name) {
       conflict:   { completed: 0, total: 0 },
     },
     subjectProgress: {
-      math:    { completed: 0, total: 0 },
-      chinese: { completed: 0, total: 0 },
-      english: { completed: 0, total: 0 },
-      science: { completed: 0, total: 0 },
+      value:   { completed: 0, total: 0 },
     },
     totalMoralScore: 0,
     lastPlayed: null,

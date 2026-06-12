@@ -76,10 +76,10 @@ export function renderGameHub() {
           <div class="gc-tag">pilot</div>
         </div>
 
-        <div class="game-card available" onclick="FC.goSubjectSelect()" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-color:#3b82f6">
+        <div class="game-card available" onclick="FC.goSubjectSelect()" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#7C3AED">
           <div class="gc-icon">📖</div>
           <div class="gc-title">情境答題</div>
-          <div class="gc-desc">傳統自由模式，揀課題自學</div>
+          <div class="gc-desc">4 個品格課題自由探索：情緒、尊重、誠實、衝突</div>
         </div>
 
         <div class="game-card locked" style="background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:#ef4444;cursor:not-allowed;opacity:0.6">
@@ -576,7 +576,7 @@ export function renderHome(subjectId) {
       <div class="subject-banner" style="background:${subjectBg};border:2px solid ${subjectColor}">
         <span style="font-size:1.5em">${getSubjectEmoji(subjectId)}</span>
         <div>
-          <div style="font-weight:600;color:${subjectColor}">${getSubjectName(subjectId)}學模擬練習</div>
+          <div style="font-weight:600;color:${subjectColor}">${getSubjectName(subjectId)}</div>
           <div style="font-size:0.85em;color:var(--text-light)">按主題學習 → 智能漸進解鎖</div>
         </div>
         <button class="btn btn-sm" style="margin-left:auto;background:${subjectColor};color:white"
@@ -769,12 +769,9 @@ export function renderProgress(subjectId) {
   const total = p.totalMoralScore || 0;
   const completed = p.completedScenarios?.length || 0;
   const subColor = getSubjectColor(subjectId);
-  const subjects = [
-    { id: 'math',    title: '🎯 數學',    color: '#4285F4' },
-    { id: 'chinese', title: '📐 中文',    color: '#EA4335' },
-    { id: 'english', title: '🔤 英文',    color: '#34A853' },
-    { id: 'science', title: '🔬 常識',    color: '#9C27B0' },
-  ];
+        const subjects = [
+          { id: 'value', title: '🎯 價值觀教育', color: '#7C3AED' },
+        ];
 
   return `
     <div class="container fade-in">

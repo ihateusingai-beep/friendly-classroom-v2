@@ -111,7 +111,7 @@ window.FC = window.FC || {};
 let state = {
   view: 'role-select', // role-select | mode-select | student-select | subject-select | home | topic | play | result | progress | settings | login | teacher | teacher-assign
   student: null,
-  subjectId: null,   // 🎯📐🔤🔬
+  subjectId: null,   // 'value' = 價值觀教育（單一 subject；舊 4 個已收埋）
   topicId: null,
   scenarioId: null,
   resultData: null,
