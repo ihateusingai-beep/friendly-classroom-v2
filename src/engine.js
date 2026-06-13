@@ -3,7 +3,7 @@
 // 所有 render* 函數保留在此檔案
 
 import { getSubjectColor, getSubjectBgColor, getSubjectName, getSubjectEmoji } from './subjects.js';
-import { getTopic, TOPICS } from './topics.js';
+import { getTopic, TOPICS, VALUES, CARING } from './topics.js';
 import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 import { getMoralBarData } from './domain/Moral.js';
 import { getProgress, isCompleted } from './domain/Progress.js';
@@ -80,7 +80,7 @@ export function renderGameHub() {
         <div class="game-card available" onclick="FC.goSubjectSelect()" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#7C3AED">
           <div class="gc-icon">📖</div>
           <div class="gc-title">情境答題</div>
-          <div class="gc-desc">4 個品格課題自由探索：情緒、尊重、誠實、衝突</div>
+          <div class="gc-desc">17 個品格課題自由探索：12 個 EDB 價值觀 + 5 個友愛校園範疇</div>
         </div>
 
         <div class="game-card locked" style="background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:#ef4444;cursor:not-allowed;opacity:0.6">
@@ -583,37 +583,76 @@ export function renderHome(subjectId) {
         </div>
       </div>
 
-      <div class="topic-grid">
-        ${TOPICS.map(t => {
-          const p = getStudent() ? (getProgress(getStudent()).topicProgress[t.id] || {}) : {};
-          const total = p.total || 0;
-          const done = p.completed || 0;
-          const pct = total ? Math.round((done / total) * 100) : 0;
-          const sub = t.description?.split(/[，。,。]/)[0] || t.description || '';
-          let statusBadge = '';
-          let statusClass = '';
-          if (total === 0) {
-            statusClass = 'topic-status--new';
-            statusBadge = '<div class="topic-status">未開始</div>';
-          } else if (pct >= 100) {
-            statusClass = 'topic-status--done';
-            statusBadge = '<div class="topic-status">🏆 已精通</div>';
-          } else {
-            statusClass = 'topic-status--progress';
-            statusBadge = `<div class="topic-status">${done}/${total} · ${pct}%</div>`;
-          }
-          return `
-            <div class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${t.id}')">
-              <span class="emoji">${t.emoji}</span>
-              <div class="title">${t.title}</div>
-              <div class="sub">${sub}</div>
-              ${total > 0 ? `
-                <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
-              ` : ''}
-              ${statusBadge}
-            </div>
-          `;
-        }).join('')}
+      <div class="topic-section">
+        <h3 class="section-title">🪷 12 個價值觀（EDB 官方）</h3>
+        <div class="topic-grid">
+          ${VALUES.map(t => {
+            const p = getStudent() ? (getProgress(getStudent()).topicProgress[t.id] || {}) : {};
+            const total = p.total || 0;
+            const done = p.completed || 0;
+            const pct = total ? Math.round((done / total) * 100) : 0;
+            const sub = t.description?.split(/[，。,。]/)[0] || t.description || '';
+            let statusBadge = '';
+            let statusClass = '';
+            if (total === 0) {
+              statusClass = 'topic-status--new';
+              statusBadge = '<div class="topic-status">未開始</div>';
+            } else if (pct >= 100) {
+              statusClass = 'topic-status--done';
+              statusBadge = '<div class="topic-status">🏆 已精通</div>';
+            } else {
+              statusClass = 'topic-status--progress';
+              statusBadge = `<div class="topic-status">${done}/${total} · ${pct}%</div>`;
+            }
+            return `
+              <div class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${t.id}')">
+                <span class="emoji">${t.emoji}</span>
+                <div class="title">${t.title}</div>
+                <div class="sub">${sub}</div>
+                ${total > 0 ? `
+                  <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+                ` : ''}
+                ${statusBadge}
+              </div>
+            `;
+          }).join('')}
+        </div>
+      </div>
+
+      <div class="topic-section">
+        <h3 class="section-title">🌈 友愛校園 5 範疇（SEL / 安全）</h3>
+        <div class="topic-grid">
+          ${CARING.map(t => {
+            const p = getStudent() ? (getProgress(getStudent()).topicProgress[t.id] || {}) : {};
+            const total = p.total || 0;
+            const done = p.completed || 0;
+            const pct = total ? Math.round((done / total) * 100) : 0;
+            const sub = t.description?.split(/[，。,。]/)[0] || t.description || '';
+            let statusBadge = '';
+            let statusClass = '';
+            if (total === 0) {
+              statusClass = 'topic-status--new';
+              statusBadge = '<div class="topic-status">未開始</div>';
+            } else if (pct >= 100) {
+              statusClass = 'topic-status--done';
+              statusBadge = '<div class="topic-status">🏆 已精通</div>';
+            } else {
+              statusClass = 'topic-status--progress';
+              statusBadge = `<div class="topic-status">${done}/${total} · ${pct}%</div>`;
+            }
+            return `
+              <div class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${t.id}')">
+                <span class="emoji">${t.emoji}</span>
+                <div class="title">${t.title}</div>
+                <div class="sub">${sub}</div>
+                ${total > 0 ? `
+                  <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+                ` : ''}
+                ${statusBadge}
+              </div>
+            `;
+          }).join('')}
+        </div>
       </div>
 
       <div class="home-footer-grid">
@@ -856,19 +895,18 @@ export function renderProgress(subjectId) {
         }).join('')}
       </div>` : ''}
 
-      ${['emotions','respect','honesty','conflict'].map(tid => {
-        const tp = p.topicProgress[tid] || {};
+      ${TOPICS.map(tid => {
+        const tp = p.topicProgress[tid.id] || {};
         const pct = tp.total ? Math.round((tp.completed / tp.total) * 100) : 0;
-        const topic = getTopic(tid);
         return `
           <div class="card" style="margin-bottom:10px">
             <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-              <span style="font-size:1.2em">${topic?.emoji || ''}</span>
-              <strong>${topic?.title || tid}</strong>
+              <span style="font-size:1.2em">${tid.emoji}</span>
+              <strong>${tid.title}</strong>
               <span style="margin-left:auto;color:var(--text-light)">${tp.completed || 0}/${tp.total || 0}</span>
             </div>
             <div style="height:8px;background:var(--border);border-radius:4px;overflow:hidden">
-              <div style="height:100%;width:${pct}%;background:${topic?.color || 'var(--primary)'};border-radius:4px;transition:width 0.4s"></div>
+              <div style="height:100%;width:${pct}%;background:${tid.color};border-radius:4px;transition:width 0.4s"></div>
             </div>
           </div>
         `;

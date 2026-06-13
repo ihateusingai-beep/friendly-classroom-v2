@@ -1,287 +1,344 @@
-# 友愛教室 V2 — 完整規格書 (v2.2)
+# 友愛教室 V3 — 完整規格書 (v3.0)
 
-> 基於用戶反饋優化：MiniMax 圖像生成 + 精簡架構
+> 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
+>
+> *規格日期：2026-06-13 | v3.0*
 
 ---
 
 ## 1. 學習框架
 
-### 1.1 四個主題（直接對應學生核心問題）
-
-| 主題 | 聚焦問題 | 信條 |
-|------|---------|------|
-| 🎭 情緒與規範 | 推撞、爭執、不守規則 | #1守法 #5禮讓 #7合作 |
-| 🤝 尊重與關懷 | 言語攻撃、嘲笑、排擠、被孤立 | #4友愛 #5禮讓 |
-| ⚖️ 誠實與責任 | 整爛嘢走、呃人、呃老師 | #2信實 #6勤力 |
-| 💪 衝突與求助 | 被欺負、被人蝦、點求助 | #2信實 #5禮讓 #7合作 |
-
-### 1.2 場景分組（58個場景）
+### 1.1 核心設計：兩個獨立 domain
 
 ```
-🎭 情緒與規範
-├── s6    鬧交（話唔再玩）
-├── s-b3  唔小心整親人
-├── s-new2  排隊被打尖
-├── s-new18 整跌別人道歉
-├── s-door1 排隊冲門口
-├── s-door4 老師未允許自己開門
-├── s-new8  唔記得帶功課
-├── s-new22 想走堂
-├── s-new15 組員發夢自己暴躁
-├── s-h3   電玩被表弟恰
-├── s-new23 排隊推人
-└── s-new24 課室大叫
-
-🤝 尊重與關懷
-├── s1    嘲笑同學
-├── s-b4  被排擠（你想join人）
-├── s-b1  被言語攻擊
-├── s5    整蠱
-├── s-c2  杯葛（迫你揀人）
-├── s-new16 笑同學作品
-├── s7    安慰朋友
-├── s-new10 關懷新同學
-├── s-new4  雨天借遮
-├── s-new1  借廁紙
-├── s-new6  飯堂借錢
-├── s-c5   考試幫朋友作弊
-├── s-new19 見到欺凌
-├── s-c7   網絡欺凌旁觀者
-└── s-new25 網上笑人
-
-⚖️ 誠實與責任
-├── s4    花盆（整跌走唔走）
-├── s2    幫人匿贓
-├── s-c3  抄橋
-├── s-c4  呃老師
-├── s-c6  執錢不報
-├── s-c8  整爛同學文具
-├── s-c9  冒領讚賞
-├── s-new9  整爛洗手間鏡
-├── s-new11 圖書館逾期
-├── s-new13 整爛窗簾
-├── s-new5  運動場呃老師
-├── s-new26 整親野走
-├── s-new27 呃家長
-└── s-new28 呃同學
-
-💪 衝突與求助
-├── s3    新朋友冷落你
-├── s8    一個人坐
-├── s-h1  網上被 targeted
-├── s-h2  秘密被爆
-├── s-h5  家庭group排除
-├── s-new12 被冤枉打人
-├── s-new20 老師問誠實回答
-├── s-new17 聽人但心不在焉
-└── s-new29 被人蝦點求助
+友愛教室 V3
+├── 🪷 12 個價值觀（EDB 官方首要價值觀和態度）  ← public face
+│   ├── 堅毅 / 尊重他人 / 責任感 / 國民身份認同
+│   └── 承擔精神 / 誠信 / 仁愛 / 守法 / 同理心 / 勤勞 / 團結 / 孝親
+│
+└── 🌈 友愛校園 5 範疇（SEL / 安全 / 社交技巧）
+    ├── 身體自主 / 陌生人危險 / 求助技巧
+    └── 社交界線 / 衝突解決
 ```
 
-### 1.3 信條系統（10條）
+**設計理念**：
+- **🪷 12 個價值觀** 係對外公眾面：老師 / 家長 / 學生一睇就明「我哋教 12 個 value」
+- **🌈 友愛校園 5 範疇** 係 SEL / 安全 skill：對 SEN 學生嚟講同樣重要，但唔屬「value」
+- 兩個 domain 結構對稱、邏輯獨立：value 教「應該點做人」，caring 教「危險 / 衝突時點做」
 
-```javascript
-export const CREEDS = [
-  { id: 1, title: "守法的", text: "遵守校規，奉公守法" },
-  { id: 2, title: "信實的", text: "誠實負責，不欺騙人" },
-  { id: 3, title: "整潔的", text: "校服整潔，儀容端正" },
-  { id: 4, title: "友愛的", text: "關心別人，互相幫助" },
-  { id: 5, title: "禮讓的", text: "待人有禮，不易發怒" },
-  { id: 6, title: "勤力的", text: "上課專心，努力學習" },
-  { id: 7, title: "合作的", text: "遵守規則，積極參與" },
-  { id: 8, title: "獨立的", text: "自己的事，自己去做" },
-  { id: 9, title: "愛護學校的", text: "愛護公物，保護環境" },
-  { id: 10, title: "感恩的", text: "尊敬師長，孝順父母" }
-];
-```
+### 1.2 EDB 對齊 source
 
-每個場景配送 1-3 條相關信條，答題後展示。
+> 教育局「價值觀教育」官方網頁（`/tc/curriculum-development/4-key-tasks/moral-civic/index.html`）：
+>
+> 「學校可培育學生**十二種首要的價值觀和態度**，即：**『堅毅』、『尊重他人』、『責任感』、『國民身份認同』、『承擔精神』、『誠信』、『仁愛』、『守法』、『同理心』、『勤勞』、『團結』和『孝親』**」
 
-### 1.4 進度追蹤
+V3 框架嘅 12 個 value categories 100% 對正 EDB 官方 order（1-12），可向老師 / EDB cite source。
 
-```javascript
-// localStorage: fc_progress
-{
-  name: "學生名",
-  completedScenarios: ["s1", "s2", ...],
-  topicProgress: {
-    "emotions": { completed: 8, total: 12 },
-    "respect": { completed: 5, total: 15 },
-    "honesty": { completed: 3, total: 14 },
-    "conflict": { completed: 6, total: 9 }
-  },
-  totalMoralScore: 75,
-  lastPlayed: "2026-06-04"
-}
-```
+### 1.3 17 個 categories + 121 個 scenarios
+
+| Domain | 範疇 | topicId | scenarios | 顏色 |
+|---|---|---|---:|---|
+| 🪷 value | 堅毅 | `perseverance` | 5 | 🟢 #10B981 |
+| 🪷 value | 尊重他人 | `respect` | 14 | 🟢 #4ECDC4 |
+| 🪷 value | 責任感 | `responsibility` | 6 | 🟠 #F59E0B |
+| 🪷 value | 國民身份認同 | `national-identity` | 3 | 🔴 #EF4444 |
+| 🪷 value | 承擔精神 | `commitment` | 3 | 🔴 #DC2626 |
+| 🪷 value | 誠信 | `integrity` | 17 | 🔵 #3B82F6 |
+| 🪷 value | 仁愛 | `benevolence` | 4 | 🩷 #EC4899 |
+| 🪷 value | 守法 | `law-abiding` | 6 | 🟣 #6366F1 |
+| 🪷 value | 同理心 | `empathy` | 12 | 🟠 #F97316 |
+| 🪷 value | 勤勞 | `diligence` | 3 | 🟢 #84CC16 |
+| 🪷 value | 團結 | `solidarity` | 6 | 🔵 #06B6D4 |
+| 🪷 value | 孝親 | `filial-piety` | 7 | 🟣 #A855F7 |
+| 🌈 caring | 身體自主 | `body-autonomy` | 6 | 🩷 #BE185D |
+| 🌈 caring | 陌生人危險 | `stranger-safety` | 6 | 🔴 #B91C1C |
+| 🌈 caring | 求助技巧 | `help-seeking` | 6 | 🔵 #0EA5E9 |
+| 🌈 caring | 社交界線 | `social-boundary` | 6 | 🟣 #7C3AED |
+| 🌈 caring | 衝突解決 | `conflict-resolution` | 11 | 🟢 #059669 |
+| | | **Total** | **121** | |
+
+### 1.4 框架原則：value vs caring 點解分開
+
+| 維度 | 🪷 12 個價值觀 | 🌈 5 個友愛校園 |
+|---|---|---|
+| **性質** | 應該點做人 | 危險 / 衝突時點做 |
+| **教學目標** | 內化 value judgement | 學 skill / 應對 method |
+| **risk level** | 0（純 value） | 1-3（社交 / 安全 / critical） |
+| **EDB 對齊** | ✅ 直接 12 種首要 value | N/A（SEL / 安全補充） |
+| **家長接受度** | 高（politics free） | 中（家長怕嚇細路） |
+| **學生體驗** | 「我應該做個好人」 | 「我識得應對」 |
+| **scenario audience** | `["value"]` | `["caring"]` |
+| **riskLevel** | 0 | 1 (社交界線 / 衝突) ~ 3 (身體 / 陌生人) |
 
 ---
 
-## 2. 系統架構
+## 2. 信條系統
+
+### 2.1 12 條 EDB VALUE_CREEDS（id 1-12）
+
+每條對應一個 EDB 官方 value category：
+
+```javascript
+export const VALUE_CREEDS = [
+  { id: 1,  value: 'perseverance',      title: '堅毅的',      text: '我們是堅毅的：遇到困難不放棄，堅持到底' },
+  { id: 2,  value: 'respect',           title: '尊重他人的',  text: '我們是尊重他人的：尊重每個人，唔嘲笑唔排擠' },
+  { id: 3,  value: 'responsibility',    title: '負責任的',    text: '我們是負責任的：自己嘅嘢自己打理' },
+  { id: 4,  value: 'national-identity', title: '愛國的',      text: '我們是愛護香港、認識國家的' },
+  { id: 5,  value: 'commitment',        title: '勇於承擔的',  text: '我們是勇於承擔的：自己嘅選擇自己承擔' },
+  { id: 6,  value: 'integrity',         title: '誠信的',      text: '我們是誠信的：講真話，做個可信嘅人' },
+  { id: 7,  value: 'benevolence',       title: '仁愛的',      text: '我們是仁愛的：關心別人，主動幫忙' },
+  { id: 8,  value: 'law-abiding',       title: '守法的',      text: '我們是守法的：遵守校規，奉公守法' },
+  { id: 9,  value: 'empathy',           title: '同理心的',    text: '我們是同理心的：易地而處，感受他人嘅情緒' },
+  { id: 10, value: 'diligence',         title: '勤勞的',      text: '我們是勤勞的：努力練習，唔怕辛苦' },
+  { id: 11, value: 'solidarity',        title: '團結的',      text: '我們是團結的：與人合作，一齊努力' },
+  { id: 12, value: 'filial-piety',      title: '孝親的',      text: '我們是孝親的：尊敬父母，孝順家人' },
+];
+```
+
+### 2.2 LEGACY_CREEDS（id 13-22）
+
+保留 10 條舊信條做 LEGACY_CREEDS，**純粹用嚟向後兼容舊 progress data**。
+新 scenarios 一律用 VALUE_CREEDS（id 1-12）。
+
+```javascript
+export const LEGACY_CREEDS = [
+  { id: 13, title: "信實的",       text: "..." },
+  { id: 14, title: "整潔的",       text: "..." },
+  { id: 15, title: "友愛的",       text: "..." },
+  { id: 16, title: "禮讓的",       text: "..." },
+  { id: 17, title: "勤力的",       text: "..." },
+  { id: 18, title: "合作的",       text: "..." },
+  { id: 19, title: "獨立的",       text: "..." },
+  { id: 20, title: "愛護學校的",   text: "..." },
+  { id: 21, title: "感恩的",       text: "..." },
+  { id: 22, title: "守法的",       text: "..." },
+];
+```
+
+### 2.3 Creed migration
+
+舊 10 條信條（id 1-10）→ 新 LEGACY_CREEDS（id 13-22）：
+
+```javascript
+export const CREED_MIGRATION = {
+  1: 22,   // 守法
+  2: 13,   // 信實
+  3: 14,   // 整潔
+  4: 15,   // 友愛
+  5: 16,   // 禮讓
+  6: 17,   // 勤力
+  7: 18,   // 合作
+  8: 19,   // 獨立
+  9: 20,   // 愛護學校
+  10: 21,  // 感恩
+};
+```
+
+`importMyData` 嗰陣自動 migrate，user 唔覺。
+
+---
+
+## 3. 場景數據格式（升級版）
+
+### 3.1 V3 schema
+
+```json
+{
+  "id": "s1",
+  "title": "嘲笑同學",
+  "background": "課室・小息",
+  "description": "...",
+  "hints": [...],
+  "characters": [...],
+  "options": [...],
+  "location": "break",
+  "topicId": "respect",                // ✅ V3 沿用，但 value 用 12 EDB id
+  "creedIds": [2],                     // ✅ V3 用 EDB VALUE_CREEDS id 1-12
+  "imagePrompt": "...",
+  // ── V3 新增 fields ──
+  "valueCategory": "respect",          // 必填，對齊 VALUE_CREEDS.value
+  "domain": "value",                   // "value" | "caring"
+  "audience": ["value"],               // 陣列: ["value"] / ["caring"] / ["value", "caring"]
+  "riskLevel": 0,                      // 0=純value, 1=社交, 2=安全, 3=critical
+  "skills": ["語言尊重", "旁觀者介入"]   // 必填，string array
+}
+```
+
+### 3.2 Schema 規則
+
+| Field | Type | Required | 規則 |
+|---|---|---|---|
+| `id` | string | ✅ | unique，s-self-XX 格式 |
+| `title` | string | ✅ | 非空 |
+| `topicId` | string | ✅ | 17 個合法 id 其中之一 |
+| `valueCategory` | string | ✅ | 同 `topicId`（向後兼容） |
+| `domain` | enum | ✅ | `"value"` \| `"caring"` |
+| `audience` | array | ✅ | `["value"]` / `["caring"]` / 兩者 |
+| `riskLevel` | int 0-3 | ✅ | value=0, caring=1-3 |
+| `skills` | array | ✅ | 1+ 個 skill label |
+| `creedIds` | array | ✅ | 全 1-12（VALUE_CREEDS），13-22（LEGACY） |
+| `description` | string | ✅ | 場景描述 |
+| `hints` | array | ✅ | 1+ 個引導 hint |
+| `options` | array | ✅ | 2-4 個 option |
+| `options[].effects` | array | ✅ | 每 option 1+ 個 effect |
+| `options[].effects[].moralChange` | int | ✅ | 任意 integer |
+
+---
+
+## 4. Topic re-tag migration
+
+V2.2 → V3 自動 migration 表：
+
+| V2.2 topicId | V3 topicId | Domain | 動作 |
+|---|---|---|---|
+| `emotions` | `empathy` | value | direct rename |
+| `respect` | `respect` | value | direct rename |
+| `honesty` | `integrity` | value | 合併 |
+| `integrity` | `integrity` | value | 合併 |
+| `conflict` | `conflict-resolution` | caring | 搬入 caring |
+| `perseverance` | `perseverance` | value | 保留（s-self-58 個別去 diligence） |
+| `self-protection` | `body-autonomy` | caring | 搬入 caring |
+| `social-distance` | `social-boundary` | caring | 搬入 caring |
+| `stranger-danger` | `stranger-safety` | caring | 搬入 caring |
+| `help-seeking` | `help-seeking` | caring | 搬入 caring |
+| `cooperation` | `solidarity` | value | rename |
+| `classroom-rules` | `law-abiding` | value | rename |
+| `filial-piety` | `filial-piety` | value | rename |
+| `gift-gratitude` | `benevolence` | value | 保留（s-self-32/35/36 個別調整） |
+| `responsibility` | `responsibility` | value | rename |
+| _(none)_ | `diligence` | value | **新 category** |
+| _(none)_ | `commitment` | value | **新 category** |
+| _(none)_ | `national-identity` | value | **新 category** |
+
+總共 re-tag **112 個 scenarios**，淨係 metadata 改動（topicId + 新加 5 個 fields），value 內容 100% 保留。
+額外加 **9 個新 scenarios**（國民身份認同×3 + 承擔精神×3 + 勤勞×2 + 仁愛×1）填補新 categories。
+
+---
+
+## 5. 系統架構
 
 ```
 friendly-classroom-v2/
 ├── index.html              # 極簡 shell
 ├── package.json            # Vite + gh-pages
 ├── vite.config.js
+├── data/
+│   ├── scenarios.json              # V3: 121 scenarios
+│   └── scenarios.json.pre-v3.bak   # 備份
 ├── src/
 │   ├── main.js             # 入口 + 狀態機
-│   ├── scenarios.js        # 場景數據（58個）
-│   ├── creeds.js           # 10條學校信條
-│   ├── topics.js           # 主題定義
-│   ├── engine.js           # 遊戲邏輯
-│   ├── ui.js               # DOM 渲染
-│   ├── audio.js            # 語音朗讀（Web Speech API）
+│   ├── engine.js           # 渲染邏輯（renderHome/group-by-domain）
+│   ├── topics.js           # V3: 12 VALUES + 5 CARING
+│   ├── creeds.js           # V3: 12 VALUE_CREEDS + 10 LEGACY_CREEDS
+│   ├── subjects.js         # 單一 value subject
+│   ├── style.css
+│   ├── audio.js            # Web Speech API
 │   ├── progress.js         # localStorage 進度
 │   ├── miniMax.js          # MiniMax 圖像生成
-│   └── style.css           # 所有樣式
-├── data/
-│   └── scenarios.json      # 場景數據（可獨立編輯）
+│   ├── sync.js
+│   ├── teacher.js
+│   ├── sw-register.js
+│   ├── domain/
+│   │   ├── ScenarioEngine.js
+│   │   ├── Moral.js
+│   │   ├── Progress.js
+│   │   └── EventBus.js
+│   └── games/
+│       └── GoodDeedBank.js
+├── migrate_scenarios.py    # V3 migration script（一次性）
 └── .github/workflows/
-    └── deploy.yml          # 自動部署 GH Pages
+    └── deploy.yml
 ```
 
 ---
 
-## 3. 場景數據格式
+## 6. UI Flow（V3）
 
-```javascript
-{
-  id: "s1",
-  title: "嘲笑同學",
-  topicId: "respect",
-  background: "課室・小息",
-  description: "小傑指著正在玩既小宇話：「我哋一齊笑佢好唔好？佢著既衫咁樣好搞笑呀！」",
-  imagePrompt: "香港學校課室，兩個男仔指著另一個男仔笑，綠色校服，悲伤表情，FF XV Nomura動漫風格，溫暖色調，16:9",
-  hints: [
-    "語言暴力唔洗血，但一樣可以殺死人心",
-    "如果被笑既係你，你會希望旁觀者做啲咩？",
-    "善良既選擇係拒絕參與嘲笑"
-  ],
-  creedIds: [4, 7],
-  characters: [
-    { name: "小傑", emoji: "👦", initialRelationship: 50 },
-    { name: "小宇", emoji: "👦", initialRelationship: 50 }
-  ],
-  options: [
-    {
-      id: "s1-a",
-      text: "跟住一齊笑",
-      effects: [
-        { character: "小傑", change: 10, moralChange: -15, comment: "你同小傑笑得好開心！但係小宇低頭就走咗..." }
-      ]
-    },
-    {
-      id: "s1-b",
-      text: "靜靜地走開",
-      effects: [
-        { character: "小傑", change: 0, moralChange: -5, comment: "你走開咗，但係成晚在想..." }
-      ]
-    }
-  ]
-}
+```
+首頁（Role Select）
+└── 學生模式
+    └── 🎮 Game Hub
+        ├── 🏦 好人好事銀行
+        ├── 📖 情境答題 ─→ Subject Select
+        │                   └── Home（🪷 12 價值觀 + 🌈 5 友愛校園）
+        │                       └── Topic List（17 個範疇 grid）
+        │                           └── Scenario List
+        │                               └── Play → Result
+        ├── 🌷 關係花園 (coming soon)
+        └── 🎲 道德大富翁 (coming soon)
+```
+
+### 6.1 Home 頁 layout
+
+Home 頁分兩大 section：
+
+```
+🌟 友愛教室
+├── Moral Bar（⭐ 道德值）
+├── Greeting
+├── Daily Creed
+├── 🪷 12 個價值觀（EDB 官方）
+│   └── 12 個 topic card（grid 2-col）
+└── 🌈 友愛校園 5 範疇（SEL / 安全）
+    └── 5 個 topic card（grid 2-col）
 ```
 
 ---
 
-## 4. MiniMax 圖像生成
+## 7. 特殊教育 UX 考量（V3 沿用 V2.2）
 
-### Prompt 模板
-
-```javascript
-// 固定風格
-const STYLE = "FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio, Hong Kong school uniform";
-
-// 模板
-const imagePromptTemplate = (scenario) =>
-  `${scenario.description}, ${STYLE}`;
-
-// 觸發條件
-// - 新場景首次展示時生成
-// - 已生成則緩存到 localStorage
-```
-
-### 圖像緩存策略
-
-```javascript
-// localStorage: fc_images
-{
-  "s1": "data:image/jpeg;base64,...",
-  "s2": "https://...",
-  ...
-}
-```
-
----
-
-## 5. UI Flow
-
-```
-首頁
-├── 📚 學習主題 ──→ 主題列表 ──→ 場景列表 ──→ 遊玩
-├── 📊 我的進度 ──→ 進度圖（已完成/總數）
-├── 📥 匯入匯出
-└── ⚙️ 設定
-```
-
----
-
-## 6. 多學生模式 + 數據管理
-
-### 學生模式
-- 輸入名字 → 獨立 localStorage key `fc_progress_學生名`
-- 學習主題 → 做題目 → 進度自動儲存
-- 可 export 自己進度 JSON 備份
-
-### 老師模式（密碼保護）
-- 密碼：admin（可改）
-- 睇全班學生進度列表
-- 📥 匯入學生 JSON → 合併顯示
-- 📤 匯出全班數據備份
-
-### JSON 編輯（替代 teacher-editor）
-- 老師直接編輯 `data/scenarios.json`
-- 格式簡單，唔使特殊工具
-- 有問題我幫手改
-
----
-
-## 7. 特殊教育 UX 考量
-
-### 適配（語音/sound commands）
+### 7.1 適配
 - 大字 UI（預設 24px，可調至 32px）
 - 語音朗讀題目 + 選項（Web Speech API）
 - 減少文字量，多用圖示/emoji
 - 操作要有語音確認
 
-### 一般特殊教育原則
+### 7.2 SEN 原則
 - 一步驟一畫面，避免 multitasking
 - 正向 feedback 為主，減少負面打擊
 - 圖像優先於文字
 - 明確的視覺反饋（顏色/動畫）
 
----
-
-## 8. 待確認事項
-
-| 項目 | 狀態 |
-|------|------|
-| 四個主題分組 | ✅ 確認 |
-| 信條關聯 | ✅ 確認 |
-| MiniMax prompt 模板 | ✅ 確認 |
-| 多學生模式 | ✅ 確認 |
-| 老師 Dashboard + JSON 匯入/匯出 | ✅ 確認 |
-| Web Speech API 語音朗讀 | ✅ 確認 |
-| 校服外觀（MiniMax ref 圖） | ⚠️ 待你提供 |
-| 新場景創作 | ⚠️ 按需補充 |
+### 7.3 V3 新增
+- **risk level 顯式標記**：caring 範疇 scenarios 喺 play 頁面會顯示 risk badge（1/2/3），家長老師一睇就知
+- **creed message tone**：用 EDB 官方 wording（"我們是..." 句式），增強歸屬感
 
 ---
 
-## 9. 已刪除功能
+## 8. V2.2 → V3 變更總結
 
-- ❌ 自由模式（random跨課題）— 破壞學習階梯
+| 項目 | V2.2 | V3 |
+|---|---|---|
+| Topic 總數 | 4 | **17**（12 VALUES + 5 CARING） |
+| Value 框架 | 4 個「課題」 | **12 個 EDB 官方 value** |
+| Domain 結構 | 單一 | **雙 domain（value / caring）** |
+| Scenario 數 | 58 | **121**（re-tag 112 + new 9） |
+| Creed 數 | 10 | **22**（12 VALUE + 10 LEGACY） |
+| EDB 對齊 | ❌ | ✅ |
+| scenario.fields | id/title/topicId/creedIds | **+ valueCategory / domain / audience / riskLevel / skills** |
+
+---
+
+## 9. 待辦 sprint
+
+| Sprint | 工作 | 估時 |
+|---|---|---|
+| ✅ V3.0 framework freeze | topics.js / creeds.js / scenarios.json / engine.js | Done |
+| 🟡 S2: gen 13 個新 scenarios 補足空白 | 國民身份認同 3 + 承擔精神 3 + 仁愛 6 + 勤勞 4 | ~3-4 hr API gen |
+| 🟡 S3: gen outcome images for new scenarios | 9 new × 3 options = 27 images | ~30 min |
+| 🟡 S4: UI polish — section divider / domain card | 視覺收尾 | ~1 hr |
+| 🟢 S5: E2E test — 學生做完每個 category 至少 1 題 | 11 value + 5 caring = 16 條 test | ~1 hr |
+| 🟢 S6: 老師 mode 確認新 17 個 category toggle work | regression test | ~30 min |
+
+---
+
+## 10. 已移除功能
+
+- ❌ 自由模式（random 跨課題）— 破壞學習階梯
 - ❌ 🚪門課題（社交故事類）— 唔係德育題目
 - ❌ Phase 2 teacher-editor — 改為直接編輯 JSON
+- ❌ V2.2 嘅 4 大主題分組（emotions/respect/honesty/conflict）— 已被 12+5 取代
 
 ---
 
-*規格日期：2026-06-04 | v2.2*
+*規格日期：2026-06-13 | v3.0 | 取代 v2.2（2026-06-04）*

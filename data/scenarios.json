@@ -77,10 +77,21 @@
     "location": "break",
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "小傑指著正在玩既小宇話：「我哋一齊笑佢好唔好？佢著既衫咁樣好搞笑呀！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "小傑指著正在玩既小宇話：「我哋一齊笑佢好唔好？佢著既衫咁樣好搞笑呀！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s2",
@@ -147,12 +158,23 @@
       }
     ],
     "location": "break",
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "小強拉著你話：「幫我一個忙，我啱先拎咗啱嘢既玩具車，幫我匿埋佢！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "小強拉著你話：「幫我一個忙，我啱先拎咗啱嘢既玩具車，幫我匿埋佢！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s3",
@@ -219,13 +241,24 @@
       }
     ],
     "location": "break",
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "小美最近成日同新同學玩，都唔理你啦。你覺得心裡酸酸地... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "小美最近成日同新同學玩，都唔理你啦。你覺得心裡酸酸地... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s4",
@@ -303,12 +336,23 @@
       }
     ],
     "location": "classroom",
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "你見到小強唔小心整跌咗老師既花盆，但係佢同老師話：「係風吹跌既！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你見到小強唔小心整跌咗老師既花盆，但係佢同老師話：「係風吹跌既！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s5",
@@ -394,10 +438,21 @@
     "location": "break",
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "小芳偷偷同你講：「我哋將安安既水壺匿埋，等佢搵唔到好好笑！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "小芳偷偷同你講：「我哋將安安既水壺匿埋，等佢搵唔到好好笑！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s6",
@@ -481,13 +536,24 @@
       }
     ],
     "location": "classroom",
-    "topicId": "emotions",
+    "topicId": "empathy",
     "creedIds": [
-      1,
-      5,
-      7
+      22,
+      16,
+      18
     ],
-    "imagePrompt": "小明好嬲話：「我再都唔同小華玩啦！佢整壞咗我既玩具！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "小明好嬲話：「我再都唔同小華玩啦！佢整壞咗我既玩具！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s7",
@@ -556,10 +622,21 @@
     "location": "break",
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "小珍喊住搵你：「佢哋笑我跑得慢...我唔想上體育課啦...」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "小珍喊住搵你：「佢哋笑我跑得慢...我唔想上體育課啦...」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s8",
@@ -625,13 +702,24 @@
       }
     ],
     "location": "break",
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "你自己一個人坐係長椅度，望住其他同學度玩，心裡有啲難過... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你自己一個人坐係長椅度，望住其他同學度玩，心裡有啲難過... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s-c2",
@@ -698,10 +786,21 @@
     ],
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "有同學話如果你同某人一齊玩，就唔同你玩 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "有同學話如果你同某人一齊玩，就唔同你玩 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-b1",
@@ -751,10 +850,21 @@
     ],
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "有同學話你：「你好曳！你同豬一樣！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "有同學話你：「你好曳！你同豬一樣！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-h1",
@@ -802,13 +912,24 @@
         "next_scenario": null
       }
     ],
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "你發現有人係班Group度發你既相，加啱衰caption全班笑你 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你發現有人係班Group度發你既相，加啱衰caption全班笑你 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s-h2",
@@ -856,13 +977,24 @@
         "next_scenario": null
       }
     ],
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "你發現小傑爆咗你既祕密出去，全班笑你 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你發現小傑爆咗你既祕密出去，全班笑你 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s-h3",
@@ -910,13 +1042,24 @@
         "next_scenario": null
       }
     ],
-    "topicId": "emotions",
+    "topicId": "empathy",
     "creedIds": [
-      1,
-      5,
-      7
+      22,
+      16,
+      18
     ],
-    "imagePrompt": "你同表弟一齊打電玩，表弟話：「你住手！我話曬點玩！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你同表弟一齊打電玩，表弟話：「你住手！我話曬點玩！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-h5",
@@ -977,13 +1120,24 @@
         "next_scenario": null
       }
     ],
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "WhatsApp family group入面，大家傾trip既時候冇叫埋你... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "WhatsApp family group入面，大家傾trip既時候冇叫埋你... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s-b3",
@@ -1031,13 +1185,24 @@
         "next_scenario": null
       }
     ],
-    "topicId": "emotions",
+    "topicId": "empathy",
     "creedIds": [
-      1,
-      5,
-      7
+      22,
+      16,
+      18
     ],
-    "imagePrompt": "你跑既時候唔小心撞跌咗小美，佢膝頭哥擦損埋... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你跑既時候唔小心撞跌咗小美，佢膝頭哥擦損埋... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-b4",
@@ -1087,10 +1252,21 @@
     ],
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "你想join既同學玩，但佢話：「你呢個人曳曳，我們唔想你join」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你想join既同學玩，但佢話：「你呢個人曳曳，我們唔想你join」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-c3",
@@ -1138,12 +1314,23 @@
         "next_scenario": null
       }
     ],
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "考試既時候，你見到隔離同學想睇你既答案... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "考試既時候，你見到隔離同學想睇你既答案... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-c4",
@@ -1191,12 +1378,23 @@
         "next_scenario": null
       }
     ],
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "功課冇做，你諗緊如果要呃老師話「唔記得帶」... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "功課冇做，你諗緊如果要呃老師話「唔記得帶」... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-c5",
@@ -1258,10 +1456,21 @@
     ],
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "你發現你最好的朋友小明正在抄隔壁同學的答案。他成績一向不太好，如果被發現一定會被記過。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你發現你最好的朋友小明正在抄隔壁同學的答案。他成績一向不太好，如果被發現一定會被記過。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-c6",
@@ -1321,12 +1530,23 @@
         "next_scenario": null
       }
     ],
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "你在走廊執到一百元，幾張紅色鈔票。你抬頭望見小明正低頭走過，唔知係咪佢丟既。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你在走廊執到一百元，幾張紅色鈔票。你抬頭望見小明正低頭走過，唔知係咪佢丟既。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-c7",
@@ -1388,10 +1608,21 @@
     ],
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "你在同學群組看到有人post咗小宇的醜相片，大家都在笑。你知呢張相片係被惡意PS過的，但係小宇唔知件事。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你在同學群組看到有人post咗小宇的醜相片，大家都在笑。你知呢張相片係被惡意PS過的，但係小宇唔知件事。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-c8",
@@ -1451,16 +1682,27 @@
         "next_scenario": null
       }
     ],
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "你不小心撞跌咗同學的文具，整爛咗佢最鐘意的筆。你認為老師不會發現係你，但係你內心知道應該承認。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你不小心撞跌咗同學的文具，整爛咗佢最鐘意的筆。你認為老師不會發現係你，但係你內心知道應該承認。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-c9",
-    "title": "道德關卡：誠實的勇氣",
+    "title": "道德關卡：抄橋後的勇氣",
     "background": "課室・朝早",
     "description": "老師表揚咗你今次考試做得好，但你心知肚明，小明先係真正答啱大多數題目既人——你只係抄咗佢。你應該點做？",
     "characters": [
@@ -1516,12 +1758,23 @@
         "next_scenario": null
       }
     ],
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "老師表揚咗你今次考試做得好，但你心知肚明，小明先係真正答啱大多數題目既人——你只係抄咗佢。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "老師表揚咗你今次考試做得好，但你心知肚明，小明先係真正答啱大多數題目既人——你只係抄咗佢。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-door1",
@@ -1581,13 +1834,24 @@
       "守規則代表尊重自己同尊重他人。如果係你排緊隊，有人突然插隊，你會點？",
       "你可以話：「小明，等一等啦，好快就到你了。排隊係大家都開心。」"
     ],
-    "topicId": "emotions",
+    "topicId": "empathy",
     "creedIds": [
-      1,
-      5,
-      7
+      22,
+      16,
+      18
     ],
-    "imagePrompt": "放學時，大家爭住衝出去。門口有兩個人：一個係要出去既同學，另一個係老師。老師話：「排隊，先出先後。」但前面既小明話：「我趕時間！」然後衝埋去門口。你呢？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "放學時，大家爭住衝出去。門口有兩個人：一個係要出去既同學，另一個係老師。老師話：「排隊，先出先後。」但前面既小明話：「我趕時間！」然後衝埋去門口。你呢？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-door2",
@@ -1647,13 +1911,24 @@
         "next_scenario": null
       }
     ],
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "你見到小鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你見到小鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s-door3",
@@ -1707,13 +1982,24 @@
         "next_scenario": null
       }
     ],
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "午休時，你見到門係開住，但外面好嘈，有啲同學喺走廊跑嚟跑去。風吹啲紙張周圍飛。老師未返課室。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "午休時，你見到門係開住，但外面好嘈，有啲同學喺走廊跑嚟跑去。風吹啲紙張周圍飛。老師未返課室。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s-door4",
@@ -1790,13 +2076,24 @@
         "next_scenario": null
       }
     ],
-    "topicId": "emotions",
+    "topicId": "empathy",
     "creedIds": [
-      1,
-      5,
-      7
+      22,
+      16,
+      18
     ],
-    "imagePrompt": "放學時，老師遲遲未開門。大家喺門口等緊，好嘈吵。小明話：「不如我自己開啦！」但老師未允許。你點睇？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "放學時，老師遲遲未開門。大家喺門口等緊，好嘈吵。小明話：「不如我自己開啦！」但老師未允許。你點睇？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-door6",
@@ -1879,13 +2176,24 @@
         "next_scenario": null
       }
     ],
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。小鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。小鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s-new1",
@@ -1948,10 +2256,21 @@
     "location": "toilet",
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "小明發現自己廁紙唔夠，向你借。你今日得少量，但足夠自己用... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "小明發現自己廁紙唔夠，向你借。你今日得少量，但足夠自己用... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-new2",
@@ -2012,13 +2331,24 @@
       }
     ],
     "location": "hall",
-    "topicId": "emotions",
+    "topicId": "empathy",
     "creedIds": [
-      1,
-      5,
-      7
+      22,
+      16,
+      18
     ],
-    "imagePrompt": "到你排隊拎飯既時候，有人突然插入你前面。你認出佢係高年級既大舊... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "到你排隊拎飯既時候，有人突然插入你前面。你認出佢係高年級既大舊... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-new4",
@@ -2081,10 +2411,21 @@
     "location": "rainy",
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "放學時突然落大雨，你帶咗遮，但同學小美冇帶，佢望住天有啲發愁... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "放學時突然落大雨，你帶咗遮，但同學小美冇帶，佢望住天有啲發愁... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-new5",
@@ -2145,12 +2486,23 @@
       }
     ],
     "location": "sports",
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "體育課試跳遠，你見到另一組既小傑係度呃老師，話自己跳咗幾遠，但明明就差啲... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "體育課試跳遠，你見到另一組既小傑係度呃老師，話自己跳咗幾遠，但明明就差啲... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-new6",
@@ -2213,10 +2565,21 @@
     "location": "canteen",
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "你排緊隊，前面既小福突然話：「衰咗，我唔記得帶銀包！」佢望住你... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你排緊隊，前面既小福突然話：「衰咗，我唔記得帶銀包！」佢望住你... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-new8",
@@ -2277,13 +2640,24 @@
       }
     ],
     "location": "classroom",
-    "topicId": "emotions",
+    "topicId": "empathy",
     "creedIds": [
-      1,
-      5,
-      7
+      22,
+      16,
+      18
     ],
-    "imagePrompt": "朝早老師話：「邊個未做完功課？」你心知自己就係其中一個，但你真係唔記得帶張紙... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "朝早老師話：「邊個未做完功課？」你心知自己就係其中一個，但你真係唔記得帶張紙... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-new9",
@@ -2344,12 +2718,23 @@
       }
     ],
     "location": "toilet",
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "你整爛咗洗手間門口個鏡，心諗：「冇人仔注意到呢...」但你心知道自己衰咗... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你整爛咗洗手間門口個鏡，心諗：「冇人仔注意到呢...」但你心知道自己衰咗... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-new10",
@@ -2412,10 +2797,21 @@
     "location": "hall",
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "今日有新同學小玲轉過來，佢坐係一角冇人理。你聽到其他同學話：「呢個係新來ga咋嘛...」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "今日有新同學小玲轉過來，佢坐係一角冇人理。你聽到其他同學話：「呢個係新來ga咋嘛...」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-new11",
@@ -2476,12 +2872,23 @@
       }
     ],
     "location": "library",
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "你借咗圖書館本書，到期咗都未睇完，本嚟可以攤30日，但圖書館話比你攤2本，你已經攤曬... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你借咗圖書館本書，到期咗都未睇完，本嚟可以攤30日，但圖書館話比你攤2本，你已經攤曬... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-new12",
@@ -2547,13 +2954,24 @@
       }
     ],
     "location": "sports",
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "足球比賽，小璋話你打佢，但你只係輕輕掽咗佢一下。佢向老師告你好大打人... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "足球比賽，小璋話你打佢，但你只係輕輕掽咗佢一下。佢向老師告你好大打人... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s-new13",
@@ -2614,12 +3032,23 @@
       }
     ],
     "location": "classroom",
-    "topicId": "honesty",
+    "topicId": "integrity",
     "creedIds": [
-      2,
-      6
+      13,
+      17
     ],
-    "imagePrompt": "你整爛咗窗簾，但冇人睇到。老師問：「係邊個整爛嘅？」... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你整爛咗窗簾，但冇人睇到。老師問：「係邊個整爛嘅？」... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-new15",
@@ -2680,13 +3109,24 @@
       }
     ],
     "location": "classroom",
-    "topicId": "emotions",
+    "topicId": "empathy",
     "creedIds": [
-      1,
-      5,
-      7
+      22,
+      16,
+      18
     ],
-    "imagePrompt": "分組做 project，你發覺組員小明成日發夢，唔做嘢... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "分組做 project，你發覺組員小明成日發夢，唔做嘢... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-new16",
@@ -2749,10 +3189,21 @@
     "location": "computer",
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "同學小琳分享佢既畫，你覺得好樣衰，想笑... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "同學小琳分享佢既畫，你覺得好樣衰，想笑... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-new17",
@@ -2813,13 +3264,24 @@
       }
     ],
     "location": "library",
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "同學小華話佢屋企有事，聲音好細咁講，你專心睇書... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "同學小華話佢屋企有事，聲音好細咁講，你專心睇書... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s-new18",
@@ -2880,13 +3342,24 @@
       }
     ],
     "location": "sports",
-    "topicId": "emotions",
+    "topicId": "empathy",
     "creedIds": [
-      1,
-      5,
-      7
+      22,
+      16,
+      18
     ],
-    "imagePrompt": "你排籃球時唔小心整跌咗另一位同學，佢整損咗膝頭... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你排籃球時唔小心整跌咗另一位同學，佢整損咗膝頭... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-new19",
@@ -2949,10 +3422,21 @@
     "location": "toilet",
     "topicId": "respect",
     "creedIds": [
-      4,
-      5
+      15,
+      16
     ],
-    "imagePrompt": "你見到幾個同學埋堆笑一位同學，仲話低價錢要整佢... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "你見到幾個同學埋堆笑一位同學，仲話低價錢要整佢... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ]
   },
   {
     "id": "s-new20",
@@ -3018,13 +3502,24 @@
       }
     ],
     "location": "classroom",
-    "topicId": "conflict",
+    "topicId": "conflict-resolution",
     "creedIds": [
-      2,
-      5,
-      7
+      13,
+      16,
+      18
     ],
-    "imagePrompt": "老師問你同學小張既答案你係咪幫咗佢，你答係... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "老師問你同學小張既答案你係咪幫咗佢，你答係... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ]
   },
   {
     "id": "s-new22",
@@ -3085,13 +3580,24 @@
       }
     ],
     "location": "classroom",
-    "topicId": "emotions",
+    "topicId": "empathy",
     "creedIds": [
-      1,
-      5,
-      7
+      22,
+      16,
+      18
     ],
-    "imagePrompt": "今日係你值日，但你好想走咗去同朋友玩... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio"
+    "imagePrompt": "今日係你值日，但你好想走咗去同朋友玩... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-self-01",
@@ -3138,12 +3644,23 @@
       }
     ],
     "location": "home",
-    "topicId": "self-protection",
+    "topicId": "body-autonomy",
     "creedIds": [
-      1,
-      5
+      22,
+      16
     ],
-    "imagePrompt": "A young Chinese boy with teary eyes, gentle mother wiping tears, warm home setting, anime cartoon style, soft pastel, expressive, no text, 16:9"
+    "imagePrompt": "A young Chinese boy with teary eyes, gentle mother wiping tears, warm home setting, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ]
   },
   {
     "id": "s-self-02",
@@ -3190,11 +3707,22 @@
       }
     ],
     "location": "classroom",
-    "topicId": "self-protection",
+    "topicId": "body-autonomy",
     "creedIds": [
-      1
+      22
     ],
-    "imagePrompt": "Happy boy patted on shoulder by smiling classmate, school playground, anime cartoon style, warm tones, no text, 16:9"
+    "imagePrompt": "Happy boy patted on shoulder by smiling classmate, school playground, anime cartoon style, warm tones, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ]
   },
   {
     "id": "s-self-03",
@@ -3241,12 +3769,23 @@
       }
     ],
     "location": "park",
-    "topicId": "self-protection",
+    "topicId": "body-autonomy",
     "creedIds": [
-      5,
-      7
+      16,
+      18
     ],
-    "imagePrompt": "Young boy looking uncomfortable as stranger touches thigh, warning scene, anime cartoon style, expressive worried face, no text, 16:9"
+    "imagePrompt": "Young boy looking uncomfortable as stranger touches thigh, warning scene, anime cartoon style, expressive worried face, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ]
   },
   {
     "id": "s-self-04",
@@ -3282,11 +3821,22 @@
       }
     ],
     "location": "school_gate",
-    "topicId": "self-protection",
+    "topicId": "body-autonomy",
     "creedIds": [
-      5
+      16
     ],
-    "imagePrompt": "Young girl uneasy as uncle touches hair, park setting, anime cartoon style, worried expression, no text, 16:9"
+    "imagePrompt": "Young girl uneasy as uncle touches hair, park setting, anime cartoon style, worried expression, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ]
   },
   {
     "id": "s-self-05",
@@ -3322,11 +3872,22 @@
       }
     ],
     "location": "clinic",
-    "topicId": "self-protection",
+    "topicId": "body-autonomy",
     "creedIds": [
-      1
+      22
     ],
-    "imagePrompt": "Boy calmly having ear checked by doctor with mother beside, safe medical scene, anime cartoon style, reassuring, no text, 16:9"
+    "imagePrompt": "Boy calmly having ear checked by doctor with mother beside, safe medical scene, anime cartoon style, reassuring, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ]
   },
   {
     "id": "s-self-06",
@@ -3362,12 +3923,23 @@
       }
     ],
     "location": "classroom",
-    "topicId": "self-protection",
+    "topicId": "body-autonomy",
     "creedIds": [
-      1,
-      5
+      22,
+      16
     ],
-    "imagePrompt": "Two happy children shaking hands, classroom, anime cartoon style, bright positive, no text, 16:9"
+    "imagePrompt": "Two happy children shaking hands, classroom, anime cartoon style, bright positive, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ]
   },
   {
     "id": "s-self-07",
@@ -3403,11 +3975,22 @@
       }
     ],
     "location": "classroom",
-    "topicId": "social-distance",
+    "topicId": "social-boundary",
     "creedIds": [
-      1
+      22
     ],
-    "imagePrompt": "Boy and friend at arm's length whispering, classroom, anime cartoon style, no text, 16:9"
+    "imagePrompt": "Boy and friend at arm's length whispering, classroom, anime cartoon style, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ]
   },
   {
     "id": "s-self-08",
@@ -3443,11 +4026,22 @@
       }
     ],
     "location": "shop",
-    "topicId": "social-distance",
+    "topicId": "social-boundary",
     "creedIds": [
-      5
+      16
     ],
-    "imagePrompt": "Boy standing two steps from stranger at shop, safe distance, anime cartoon style, no text, 16:9"
+    "imagePrompt": "Boy standing two steps from stranger at shop, safe distance, anime cartoon style, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ]
   },
   {
     "id": "s-self-09",
@@ -3483,11 +4077,22 @@
       }
     ],
     "location": "home",
-    "topicId": "social-distance",
+    "topicId": "social-boundary",
     "creedIds": [
-      1
+      22
     ],
-    "imagePrompt": "Boy happily hugging mother, zero distance, warm family, anime cartoon style, no text, 16:9"
+    "imagePrompt": "Boy happily hugging mother, zero distance, warm family, anime cartoon style, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ]
   },
   {
     "id": "s-self-10",
@@ -3523,12 +4128,23 @@
       }
     ],
     "location": "bus",
-    "topicId": "social-distance",
+    "topicId": "social-boundary",
     "creedIds": [
-      5,
-      7
+      16,
+      18
     ],
-    "imagePrompt": "Boy uncomfortable on bus with stranger too close, personal space invasion, anime cartoon style, worried, no text, 16:9"
+    "imagePrompt": "Boy uncomfortable on bus with stranger too close, personal space invasion, anime cartoon style, worried, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ]
   },
   {
     "id": "s-self-11",
@@ -3564,11 +4180,22 @@
       }
     ],
     "location": "playground",
-    "topicId": "social-distance",
+    "topicId": "social-boundary",
     "creedIds": [
-      5
+      16
     ],
-    "imagePrompt": "Boy being pushed during ball game, too close, playground, anime cartoon style, surprised, no text, 16:9"
+    "imagePrompt": "Boy being pushed during ball game, too close, playground, anime cartoon style, surprised, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ]
   },
   {
     "id": "s-self-12",
@@ -3604,12 +4231,23 @@
       }
     ],
     "location": "classroom",
-    "topicId": "social-distance",
+    "topicId": "social-boundary",
     "creedIds": [
-      1,
-      5
+      22,
+      16
     ],
-    "imagePrompt": "Boy sitting at arm's length listening to teacher, appropriate distance, classroom, anime cartoon style, no text, 16:9"
+    "imagePrompt": "Boy sitting at arm's length listening to teacher, appropriate distance, classroom, anime cartoon style, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ]
   },
   {
     "id": "s-self-13",
@@ -3645,12 +4283,23 @@
       }
     ],
     "location": "school_gate",
-    "topicId": "stranger-danger",
+    "topicId": "stranger-safety",
     "creedIds": [
-      5,
-      7
+      16,
+      18
     ],
-    "imagePrompt": "Stranger saying follow me, boy refusing, school gate, anime cartoon style, serious, no text, 16:9"
+    "imagePrompt": "Stranger saying follow me, boy refusing, school gate, anime cartoon style, serious, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ]
   },
   {
     "id": "s-self-14",
@@ -3686,11 +4335,22 @@
       }
     ],
     "location": "park",
-    "topicId": "stranger-danger",
+    "topicId": "stranger-safety",
     "creedIds": [
-      5
+      16
     ],
-    "imagePrompt": "Stranger offering candy, boy refusing and running, park, anime cartoon style, alert, no text, 16:9"
+    "imagePrompt": "Stranger offering candy, boy refusing and running, park, anime cartoon style, alert, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ]
   },
   {
     "id": "s-self-15",
@@ -3726,12 +4386,23 @@
       }
     ],
     "location": "school",
-    "topicId": "stranger-danger",
+    "topicId": "stranger-safety",
     "creedIds": [
-      5,
-      7
+      16,
+      18
     ],
-    "imagePrompt": "Stranger asking where you live, boy not answering, school, anime cartoon style, cautious, no text, 16:9"
+    "imagePrompt": "Stranger asking where you live, boy not answering, school, anime cartoon style, cautious, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ]
   },
   {
     "id": "s-self-16",
@@ -3767,11 +4438,22 @@
       }
     ],
     "location": "park",
-    "topicId": "stranger-danger",
+    "topicId": "stranger-safety",
     "creedIds": [
-      5
+      16
     ],
-    "imagePrompt": "Stranger touching head, boy saying no loudly, anime cartoon style, worried, no text, 16:9"
+    "imagePrompt": "Stranger touching head, boy saying no loudly, anime cartoon style, worried, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ]
   },
   {
     "id": "s-self-17",
@@ -3807,12 +4489,23 @@
       }
     ],
     "location": "school_gate",
-    "topicId": "stranger-danger",
+    "topicId": "stranger-safety",
     "creedIds": [
-      5,
-      7
+      16,
+      18
     ],
-    "imagePrompt": "Stranger offering to buy toys, boy running to crowd, anime cartoon style, running, no text, 16:9"
+    "imagePrompt": "Stranger offering to buy toys, boy running to crowd, anime cartoon style, running, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ]
   },
   {
     "id": "s-self-18",
@@ -3848,12 +4541,23 @@
       }
     ],
     "location": "street",
-    "topicId": "stranger-danger",
+    "topicId": "stranger-safety",
     "creedIds": [
-      5,
-      7
+      16,
+      18
     ],
-    "imagePrompt": "Stranger asking boy to get in car, boy shouting help and running, danger scene, anime cartoon style, urgent, no text, 16:9"
+    "imagePrompt": "Stranger asking boy to get in car, boy shouting help and running, danger scene, anime cartoon style, urgent, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ]
   },
   {
     "id": "s-self-19",
@@ -3891,10 +4595,21 @@
     "location": "park",
     "topicId": "help-seeking",
     "creedIds": [
-      5,
-      7
+      16,
+      18
     ],
-    "imagePrompt": "Boy lost in park running to security guard, safe choice, anime cartoon style, brave, no text, 16:9"
+    "imagePrompt": "Boy lost in park running to security guard, safe choice, anime cartoon style, brave, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ]
   },
   {
     "id": "s-self-20",
@@ -3932,10 +4647,21 @@
     "location": "home",
     "topicId": "help-seeking",
     "creedIds": [
-      1,
-      5
+      22,
+      16
     ],
-    "imagePrompt": "Boy after bad touch running to tell mother, home, anime cartoon style, relieved, no text, 16:9"
+    "imagePrompt": "Boy after bad touch running to tell mother, home, anime cartoon style, relieved, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ]
   },
   {
     "id": "s-self-21",
@@ -3973,10 +4699,21 @@
     "location": "street",
     "topicId": "help-seeking",
     "creedIds": [
-      5,
-      7
+      16,
+      18
     ],
-    "imagePrompt": "Boy followed by stranger running into school to tell teacher, safe escape, anime cartoon style, decisive, no text, 16:9"
+    "imagePrompt": "Boy followed by stranger running into school to tell teacher, safe escape, anime cartoon style, decisive, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ]
   },
   {
     "id": "s-self-22",
@@ -4014,9 +4751,20 @@
     "location": "school_corridor",
     "topicId": "help-seeking",
     "creedIds": [
-      1
+      22
     ],
-    "imagePrompt": "Boy needing toilet asking teacher for help, school corridor, anime cartoon style, shy but brave, no text, 16:9"
+    "imagePrompt": "Boy needing toilet asking teacher for help, school corridor, anime cartoon style, shy but brave, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ]
   },
   {
     "id": "s-self-23",
@@ -4054,9 +4802,20 @@
     "location": "home",
     "topicId": "help-seeking",
     "creedIds": [
-      1
+      22
     ],
-    "imagePrompt": "Boy feeling unwell telling father, family support, anime cartoon style, tired but trusting, no text, 16:9"
+    "imagePrompt": "Boy feeling unwell telling father, family support, anime cartoon style, tired but trusting, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ]
   },
   {
     "id": "s-self-24",
@@ -4094,10 +4853,21 @@
     "location": "playground",
     "topicId": "help-seeking",
     "creedIds": [
-      5,
-      7
+      16,
+      18
     ],
-    "imagePrompt": "Boy seeing classmate bullied running to tell teacher, playground, anime cartoon style, serious, no text, 16:9"
+    "imagePrompt": "Boy seeing classmate bullied running to tell teacher, playground, anime cartoon style, serious, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ]
   },
   {
     "id": "s-self-25",
@@ -4144,11 +4914,22 @@
       }
     ],
     "location": "classroom",
-    "topicId": "classroom-rules",
+    "topicId": "law-abiding",
     "creedIds": [
-      1
+      22
     ],
-    "imagePrompt": "Boy raising hand to speak, teacher calling on him, positive classroom, anime cartoon style, happy, no text, 16:9"
+    "imagePrompt": "Boy raising hand to speak, teacher calling on him, positive classroom, anime cartoon style, happy, no text, 16:9",
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "遵守校規",
+      "排隊守紀",
+      "舉手發言"
+    ]
   },
   {
     "id": "s-self-26",
@@ -4195,12 +4976,23 @@
       }
     ],
     "location": "classroom",
-    "topicId": "classroom-rules",
+    "topicId": "law-abiding",
     "creedIds": [
-      1,
-      5
+      22,
+      16
     ],
-    "imagePrompt": "Boy sitting properly listening to teacher, focused, classroom, anime cartoon style, calm, no text, 16:9"
+    "imagePrompt": "Boy sitting properly listening to teacher, focused, classroom, anime cartoon style, calm, no text, 16:9",
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "遵守校規",
+      "排隊守紀",
+      "舉手發言"
+    ]
   },
   {
     "id": "s-self-27",
@@ -4247,11 +5039,22 @@
       }
     ],
     "location": "classroom",
-    "topicId": "classroom-rules",
+    "topicId": "law-abiding",
     "creedIds": [
-      1
+      22
     ],
-    "imagePrompt": "Boy using soft voice with classmates, everyone comfortable, classroom, anime cartoon style, gentle, no text, 16:9"
+    "imagePrompt": "Boy using soft voice with classmates, everyone comfortable, classroom, anime cartoon style, gentle, no text, 16:9",
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "遵守校規",
+      "排隊守紀",
+      "舉手發言"
+    ]
   },
   {
     "id": "s-self-28",
@@ -4298,12 +5101,23 @@
       }
     ],
     "location": "classroom",
-    "topicId": "classroom-rules",
+    "topicId": "law-abiding",
     "creedIds": [
-      1,
-      5
+      22,
+      16
     ],
-    "imagePrompt": "Boy neatly putting away toys, classroom clean, positive habit, anime cartoon style, satisfied, no text, 16:9"
+    "imagePrompt": "Boy neatly putting away toys, classroom clean, positive habit, anime cartoon style, satisfied, no text, 16:9",
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "遵守校規",
+      "排隊守紀",
+      "舉手發言"
+    ]
   },
   {
     "id": "s-self-29",
@@ -4350,11 +5164,22 @@
       }
     ],
     "location": "classroom",
-    "topicId": "classroom-rules",
+    "topicId": "law-abiding",
     "creedIds": [
-      1
+      22
     ],
-    "imagePrompt": "Boy waiting patiently in line, orderly queue, school, anime cartoon style, calm and fair, no text, 16:9"
+    "imagePrompt": "Boy waiting patiently in line, orderly queue, school, anime cartoon style, calm and fair, no text, 16:9",
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "遵守校規",
+      "排隊守紀",
+      "舉手發言"
+    ]
   },
   {
     "id": "s-self-30",
@@ -4401,12 +5226,23 @@
       }
     ],
     "location": "classroom",
-    "topicId": "classroom-rules",
+    "topicId": "law-abiding",
     "creedIds": [
-      1,
-      5
+      22,
+      16
     ],
-    "imagePrompt": "Boy following teacher's instruction carefully, safe action, classroom, anime cartoon style, focused, no text, 16:9"
+    "imagePrompt": "Boy following teacher's instruction carefully, safe action, classroom, anime cartoon style, focused, no text, 16:9",
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "遵守校規",
+      "排隊守紀",
+      "舉手發言"
+    ]
   },
   {
     "id": "s-self-31",
@@ -4453,11 +5289,22 @@
       }
     ],
     "location": "playground",
-    "topicId": "gift-gratitude",
+    "topicId": "benevolence",
     "creedIds": [
-      5
+      16
     ],
-    "imagePrompt": "Young Chinese boy pulling friend's shirt asking for gift, worried friend, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Young Chinese boy pulling friend's shirt asking for gift, worried friend, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢",
+      "分享資源"
+    ]
   },
   {
     "id": "s-self-32",
@@ -4504,12 +5351,23 @@
       }
     ],
     "location": "home",
-    "topicId": "gift-gratitude",
+    "topicId": "filial-piety",
     "creedIds": [
-      3,
-      5
+      14,
+      16
     ],
-    "imagePrompt": "Young Chinese boy with dad returning from work, boy not demanding gift, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Young Chinese boy with dad returning from work, boy not demanding gift, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ]
   },
   {
     "id": "s-self-33",
@@ -4556,11 +5414,22 @@
       }
     ],
     "location": "playground",
-    "topicId": "gift-gratitude",
+    "topicId": "benevolence",
     "creedIds": [
-      5
+      16
     ],
-    "imagePrompt": "Young Chinese boy talking to friend about gift, thinking to ask mom first, school, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Young Chinese boy talking to friend about gift, thinking to ask mom first, school, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢",
+      "分享資源"
+    ]
   },
   {
     "id": "s-self-34",
@@ -4607,11 +5476,22 @@
       }
     ],
     "location": "home",
-    "topicId": "gift-gratitude",
+    "topicId": "benevolence",
     "creedIds": [
-      3
+      14
     ],
-    "imagePrompt": "Young Chinese boy receiving gift, saying thank you happily, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Young Chinese boy receiving gift, saying thank you happily, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢",
+      "分享資源"
+    ]
   },
   {
     "id": "s-self-35",
@@ -4658,11 +5538,22 @@
       }
     ],
     "location": "playground",
-    "topicId": "gift-gratitude",
+    "topicId": "empathy",
     "creedIds": [
-      5
+      16
     ],
-    "imagePrompt": "Young Chinese boy understanding friend cannot buy gift, empathetic expression, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Young Chinese boy understanding friend cannot buy gift, empathetic expression, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-self-36",
@@ -4709,12 +5600,23 @@
       }
     ],
     "location": "shop",
-    "topicId": "gift-gratitude",
+    "topicId": "empathy",
     "creedIds": [
-      3,
-      8
+      14,
+      19
     ],
-    "imagePrompt": "Young Chinese boy seeing expensive toy but feeling grateful for what he has, content expression, toy shop, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Young Chinese boy seeing expensive toy but feeling grateful for what he has, content expression, toy shop, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ]
   },
   {
     "id": "s-self-37",
@@ -4763,10 +5665,21 @@
     "location": "classroom",
     "topicId": "responsibility",
     "creedIds": [
-      8,
-      5
+      19,
+      16
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy tidying his own school bag in classroom after school, responsible expression, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy tidying his own school bag in classroom after school, responsible expression, warm tones, no text, no logos, 16:9",
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "自我管理",
+      "完成 routine",
+      "帶齊物品"
+    ]
   },
   {
     "id": "s-self-38",
@@ -4815,10 +5728,21 @@
     "location": "home",
     "topicId": "responsibility",
     "creedIds": [
-      8,
-      6
+      19,
+      17
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy doing homework at home by himself, focused and responsible, warm home lighting, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy doing homework at home by himself, focused and responsible, warm home lighting, no text, no logos, 16:9",
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "自我管理",
+      "完成 routine",
+      "帶齊物品"
+    ]
   },
   {
     "id": "s-self-39",
@@ -4867,9 +5791,20 @@
     "location": "playground",
     "topicId": "responsibility",
     "creedIds": [
-      8
+      19
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy realizing he forgot water bottle at school, learning responsibility, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy realizing he forgot water bottle at school, learning responsibility, warm tones, no text, no logos, 16:9",
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "自我管理",
+      "完成 routine",
+      "帶齊物品"
+    ]
   },
   {
     "id": "s-self-40",
@@ -4918,10 +5853,21 @@
     "location": "canteen",
     "topicId": "responsibility",
     "creedIds": [
-      8,
-      9
+      19,
+      20
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy picking up litter in school canteen, responsible action, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy picking up litter in school canteen, responsible action, warm tones, no text, no logos, 16:9",
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "自我管理",
+      "完成 routine",
+      "帶齊物品"
+    ]
   },
   {
     "id": "s-self-41",
@@ -4970,10 +5916,21 @@
     "location": "classroom",
     "topicId": "responsibility",
     "creedIds": [
-      8,
-      2
+      19,
+      13
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy explaining to teacher why he is late, honest and responsible, warm classroom, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy explaining to teacher why he is late, honest and responsible, warm classroom, no text, no logos, 16:9",
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "自我管理",
+      "完成 routine",
+      "帶齊物品"
+    ]
   },
   {
     "id": "s-self-42",
@@ -5022,10 +5979,21 @@
     "location": "home",
     "topicId": "responsibility",
     "creedIds": [
-      8,
-      10
+      19,
+      21
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling proud after completing tasks at home, warm satisfied expression, cozy bedroom, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling proud after completing tasks at home, warm satisfied expression, cozy bedroom, no text, no logos, 16:9",
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "自我管理",
+      "完成 routine",
+      "帶齊物品"
+    ]
   },
   {
     "id": "s-self-43",
@@ -5074,10 +6042,21 @@
     "location": "classroom",
     "topicId": "integrity",
     "creedIds": [
-      2,
-      5
+      13,
+      16
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy refusing to copy homework, choosing honesty, school classroom, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy refusing to copy homework, choosing honesty, school classroom, warm tones, no text, no logos, 16:9",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-self-44",
@@ -5126,10 +6105,21 @@
     "location": "playground",
     "topicId": "integrity",
     "creedIds": [
-      2,
-      4
+      13,
+      15
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy finding a pencil case and deciding to return it, honest expression, school playground, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy finding a pencil case and deciding to return it, honest expression, school playground, warm tones, no text, no logos, 16:9",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-self-45",
@@ -5178,10 +6168,21 @@
     "location": "home",
     "topicId": "integrity",
     "creedIds": [
-      2,
-      8
+      13,
+      19
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy honestly admitting he broke the vase at home, brave and truthful, warm living room, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy honestly admitting he broke the vase at home, brave and truthful, warm living room, no text, no logos, 16:9",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-self-46",
@@ -5230,10 +6231,21 @@
     "location": "classroom",
     "topicId": "integrity",
     "creedIds": [
-      2,
-      5
+      13,
+      16
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy telling the truth about not finishing homework to friend, honest moment, school corridor, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy telling the truth about not finishing homework to friend, honest moment, school corridor, warm tones, no text, no logos, 16:9",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-self-47",
@@ -5282,10 +6294,21 @@
     "location": "classroom",
     "topicId": "integrity",
     "creedIds": [
-      2,
-      1
+      13,
+      22
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy choosing not to cheat during test, focused on his own paper, classroom, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy choosing not to cheat during test, focused on his own paper, classroom, warm tones, no text, no logos, 16:9",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-self-48",
@@ -5334,10 +6357,21 @@
     "location": "home",
     "topicId": "integrity",
     "creedIds": [
-      2,
-      10
+      13,
+      21
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy and trusted by parents at dinner table, warm family moment, cozy home, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy and trusted by parents at dinner table, warm family moment, cozy home, no text, no logos, 16:9",
+    "valueCategory": "integrity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ]
   },
   {
     "id": "s-self-49",
@@ -5386,10 +6420,21 @@
     "location": "home",
     "topicId": "filial-piety",
     "creedIds": [
-      10,
-      8
+      21,
+      19
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy helping mom tidy the living room at home, caring and filial, warm home lighting, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy helping mom tidy the living room at home, caring and filial, warm home lighting, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ]
   },
   {
     "id": "s-self-50",
@@ -5438,10 +6483,21 @@
     "location": "home",
     "topicId": "filial-piety",
     "creedIds": [
-      10,
-      5
+      21,
+      16
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy warmly greeting parents when they come home, loving family moment, cozy home, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy warmly greeting parents when they come home, loving family moment, cozy home, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ]
   },
   {
     "id": "s-self-51",
@@ -5490,10 +6546,21 @@
     "location": "home",
     "topicId": "filial-piety",
     "creedIds": [
-      10,
-      5
+      21,
+      16
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy calmly talking to mom instead of arguing, respectful conversation at home, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy calmly talking to mom instead of arguing, respectful conversation at home, warm tones, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ]
   },
   {
     "id": "s-self-52",
@@ -5542,10 +6609,21 @@
     "location": "home",
     "topicId": "filial-piety",
     "creedIds": [
-      10,
-      8
+      21,
+      19
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy making a small handmade gift for mom's birthday at desk, loving and thoughtful, warm home, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy making a small handmade gift for mom's birthday at desk, loving and thoughtful, warm home, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ]
   },
   {
     "id": "s-self-53",
@@ -5594,10 +6672,21 @@
     "location": "home",
     "topicId": "filial-piety",
     "creedIds": [
-      10,
-      4
+      21,
+      15
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy bringing water to sick mom in bed, caring filial action, warm bedroom lighting, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy bringing water to sick mom in bed, caring filial action, warm bedroom lighting, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ]
   },
   {
     "id": "s-self-54",
@@ -5646,10 +6735,21 @@
     "location": "home",
     "topicId": "filial-piety",
     "creedIds": [
-      10,
-      3
+      21,
+      14
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy saying thank you to parents at family dinner table, grateful and loving moment, warm cozy home, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy saying thank you to parents at family dinner table, grateful and loving moment, warm cozy home, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ]
   },
   {
     "id": "s-self-55",
@@ -5698,10 +6798,21 @@
     "location": "home",
     "topicId": "perseverance",
     "creedIds": [
-      6,
-      8
+      17,
+      19
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy struggling with difficult homework but trying again at desk, determined expression, warm home lighting, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy struggling with difficult homework but trying again at desk, determined expression, warm home lighting, no text, no logos, 16:9",
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "持續練習",
+      "接受失敗"
+    ]
   },
   {
     "id": "s-self-56",
@@ -5750,9 +6861,20 @@
     "location": "playground",
     "topicId": "perseverance",
     "creedIds": [
-      6
+      17
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy getting up after falling off bicycle in park, resilient, warm afternoon light, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy getting up after falling off bicycle in park, resilient, warm afternoon light, no text, no logos, 16:9",
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "持續練習",
+      "接受失敗"
+    ]
   },
   {
     "id": "s-self-57",
@@ -5801,10 +6923,21 @@
     "location": "home",
     "topicId": "perseverance",
     "creedIds": [
-      6,
-      2
+      17,
+      13
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy studying hard for exam at night, persevering with tired but focused face, warm lamp light, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy studying hard for exam at night, persevering with tired but focused face, warm lamp light, no text, no logos, 16:9",
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "持續練習",
+      "接受失敗"
+    ]
   },
   {
     "id": "s-self-58",
@@ -5851,12 +6984,23 @@
       }
     ],
     "location": "home",
-    "topicId": "perseverance",
+    "topicId": "diligence",
     "creedIds": [
-      6,
-      8
+      17,
+      19
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy washing many dishes in kitchen, persisting with effort, warm home, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy washing many dishes in kitchen, persisting with effort, warm home, no text, no logos, 16:9",
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "做家務",
+      "練習技能",
+      "溫書"
+    ]
   },
   {
     "id": "s-self-59",
@@ -5905,10 +7049,21 @@
     "location": "classroom",
     "topicId": "perseverance",
     "creedIds": [
-      6,
-      2
+      17,
+      13
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy raising hand to answer in class even if unsure, brave and persevering, warm classroom, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy raising hand to answer in class even if unsure, brave and persevering, warm classroom, no text, no logos, 16:9",
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "持續練習",
+      "接受失敗"
+    ]
   },
   {
     "id": "s-self-60",
@@ -5957,10 +7112,21 @@
     "location": "home",
     "topicId": "perseverance",
     "creedIds": [
-      6,
-      10
+      17,
+      21
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy looking proud and accomplished after hard work at bedtime, warm satisfied expression, cozy room, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy looking proud and accomplished after hard work at bedtime, warm satisfied expression, cozy room, no text, no logos, 16:9",
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "持續練習",
+      "接受失敗"
+    ]
   },
   {
     "id": "s-self-61",
@@ -6007,12 +7173,23 @@
       }
     ],
     "location": "classroom",
-    "topicId": "cooperation",
+    "topicId": "solidarity",
     "creedIds": [
-      7,
-      4
+      18,
+      15
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy actively helping group make poster in classroom, cooperative and engaged, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy actively helping group make poster in classroom, cooperative and engaged, warm tones, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ]
   },
   {
     "id": "s-self-62",
@@ -6059,12 +7236,23 @@
       }
     ],
     "location": "playground",
-    "topicId": "cooperation",
+    "topicId": "solidarity",
     "creedIds": [
-      7,
-      5
+      18,
+      16
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy waiting his turn on the swing, cooperative and patient, park, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy waiting his turn on the swing, cooperative and patient, park, warm tones, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ]
   },
   {
     "id": "s-self-63",
@@ -6111,12 +7299,23 @@
       }
     ],
     "location": "canteen",
-    "topicId": "cooperation",
+    "topicId": "solidarity",
     "creedIds": [
-      7,
-      9
+      18,
+      20
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy helping classmates clean tables in canteen, teamwork, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy helping classmates clean tables in canteen, teamwork, warm tones, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ]
   },
   {
     "id": "s-self-64",
@@ -6163,12 +7362,23 @@
       }
     ],
     "location": "classroom",
-    "topicId": "cooperation",
+    "topicId": "solidarity",
     "creedIds": [
-      7,
-      5
+      18,
+      16
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy following group leader instructions in classroom project, cooperative, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy following group leader instructions in classroom project, cooperative, warm tones, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ]
   },
   {
     "id": "s-self-65",
@@ -6215,12 +7425,23 @@
       }
     ],
     "location": "playground",
-    "topicId": "cooperation",
+    "topicId": "solidarity",
     "creedIds": [
-      7,
-      4
+      18,
+      15
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy encouraging tired teammate during sports, supportive and cooperative, playground, warm tones, no text, no logos, 16:9"
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy encouraging tired teammate during sports, supportive and cooperative, playground, warm tones, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ]
   },
   {
     "id": "s-self-66",
@@ -6267,11 +7488,2063 @@
       }
     ],
     "location": "home",
-    "topicId": "cooperation",
+    "topicId": "solidarity",
     "creedIds": [
-      7,
+      18,
+      21
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy after successful group project at home, proud of teamwork, warm bedroom, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ]
+  },
+  {
+    "id": "s-ni-01",
+    "title": "升旗禮：應該肅立",
+    "background": "學校・週會",
+    "description": "週會舉行升旗禮，你身邊有同學喺度傾計。你會點做？",
+    "hints": [
+      "升旗禮係莊嚴場合，肅立係基本尊重",
+      "你嘅態度代表你對國家嘅尊重"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-ni-01-a",
+        "text": "跟住傾計",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -5,
+            "moralChange": -10,
+            "comment": "升旗禮唔專心，係對國家唔尊重。"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-01-b",
+        "text": "自己肅立，唔理其他人",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 10,
+            "comment": "你肅立咗，做咗應該做嘅事！"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-01-c",
+        "text": "提議朋友都肅立",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 15,
+            "comment": "你帶動咗朋友一齊肅立，好榜樣！"
+          }
+        ]
+      }
+    ],
+    "location": "assembly",
+    "topicId": "national-identity",
+    "creedIds": [
+      4
+    ],
+    "valueCategory": "national-identity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "認識社區",
+      "尊重文化",
+      "公民責任"
+    ],
+    "imagePrompt": "Hong Kong school assembly hall, flag raising ceremony, students standing, green school polo uniform, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-ni-02",
+    "title": "保護環境：國民責任",
+    "background": "郊外・假日",
+    "description": "你去郊外行山，見到地上有垃圾。你會點做？",
+    "hints": [
+      "香港係我哋嘅家，愛護環境係國民責任",
+      "你嘅小動作可以影響其他人"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-ni-02-a",
+        "text": "當睇唔到，繼續行",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -5,
+            "moralChange": -10,
+            "comment": "環境係大家嘅，唔保護就會越嚟越差。"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-02-b",
+        "text": "自己執起放入垃圾袋",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 10,
+            "comment": "你主動保護環境，係好榜樣！"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-02-c",
+        "text": "叫埋朋友一齊執",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 15,
+            "comment": "你帶動埋朋友，影響力更加大！"
+          }
+        ]
+      }
+    ],
+    "location": "countryside",
+    "topicId": "national-identity",
+    "creedIds": [
+      4
+    ],
+    "valueCategory": "national-identity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "公民責任",
+      "環境保護"
+    ],
+    "imagePrompt": "Hong Kong countryside hiking trail, child picking up litter, green hills, blue sky, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-ni-03",
+    "title": "認識香港：維港係我哋嘅",
+    "background": "課室・常識堂",
+    "description": "老師問：「維多利亞港對香港有咩意義？」你答唔出。",
+    "hints": [
+      "維港係香港嘅標誌",
+      "認識自己住嘅地方係國民身份嘅基礎"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-ni-03-a",
+        "text": "扮聽唔到，唔出聲",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -5,
+            "moralChange": -5,
+            "comment": "唔識可以學，但逃避就唔會進步。"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-03-b",
+        "text": "坦白話唔識，問老師多啲資料",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 10,
+            "comment": "肯學先會識！"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-03-c",
+        "text": "答「係香港嘅港口」再舉手問多啲",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 15,
+            "comment": "答到又肯問，你已經係主動學習！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "national-identity",
+    "creedIds": [
+      4
+    ],
+    "valueCategory": "national-identity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "認識社區"
+    ],
+    "imagePrompt": "Hong Kong classroom, Victoria Harbour view through window, child raising hand, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-cm-01",
+    "title": "整跌花盆：主動承認",
+    "background": "走廊・放學",
+    "description": "你唔小心整跌咗老師嘅花盆，碎晒。",
+    "hints": [
+      "自己整親就應該自己承擔",
+      "誠實同承擔係兩件唔同嘅事，但都要做"
+    ],
+    "characters": [
+      {
+        "name": "老師",
+        "emoji": "👩‍🏫",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-cm-01-a",
+        "text": "扮冇事走咗去",
+        "effects": [
+          {
+            "character": "老師",
+            "change": -20,
+            "moralChange": -15,
+            "comment": "老師最後知道咗，你失去咗信任。"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-01-b",
+        "text": "主動返去話老師知",
+        "effects": [
+          {
+            "character": "老師",
+            "change": 10,
+            "moralChange": 15,
+            "comment": "老師讚你誠實又勇於承擔！"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-01-c",
+        "text": "主動清理碎片同道歉",
+        "effects": [
+          {
+            "character": "老師",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "你又認錯又承擔後果，老師以你為榮！"
+          }
+        ]
+      }
+    ],
+    "location": "corridor",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承認錯誤",
+      "承擔後果"
+    ],
+    "imagePrompt": "Hong Kong school corridor, broken flower pot on floor, child looking guilty, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-cm-02",
+    "title": "答應幫手：守諾言",
+    "background": "課室・小息",
+    "description": "你答應咗幫小明溫書，但小息想同朋友去玩。",
+    "hints": [
+      "承諾咗就要做",
+      "朋友重要，但承諾更重要"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-cm-02-a",
+        "text": "去玩，唔理小明",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "小明好失望，你破壞咗承諾。"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-02-b",
+        "text": "溫書完再去玩",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 15,
+            "moralChange": 15,
+            "comment": "你守承諾，小明好感激你！"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-02-c",
+        "text": "同朋友講遲啲先，玩完返嚟溫",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 5,
+            "moralChange": 10,
+            "comment": "你 pre-warn 咗小明，但承諾差啲冇做到。"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "守諾言",
+      "承擔後果"
+    ],
+    "imagePrompt": "Hong Kong school classroom, child studying with friend, open textbook, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-cm-03",
+    "title": "組長責任：組員缺席",
+    "background": "課室・分組活動",
+    "description": "你係組長，組員阿強甩底，你嘅組做唔到功課。",
+    "hints": [
+      "組長有責任帶領組員",
+      "唔係你嘅錯，但要承擔結果"
+    ],
+    "characters": [
+      {
+        "name": "組員",
+        "emoji": "👦",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-cm-03-a",
+        "text": "賴阿強，唔關我事",
+        "effects": [
+          {
+            "character": "組員",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "組長係要承擔多啲嘅，唔係推卸。"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-03-b",
+        "text": "自己做好自己嗰份，等阿強返嚟先算",
+        "effects": [
+          {
+            "character": "組員",
+            "change": 10,
+            "moralChange": 10,
+            "comment": "你承擔咗組長嘅責任！"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-03-c",
+        "text": "主動聯絡阿強同老師搵解決方法",
+        "effects": [
+          {
+            "character": "組員",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "你主動解決問題，係真正嘅承擔！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "commitment",
+    "creedIds": [
+      5,
+      11
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承擔後果",
+      "保護弱小",
+      "主動解決"
+    ],
+    "imagePrompt": "Hong Kong school classroom, group project, one child missing from desk, leader looking at empty chair, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-dl-01",
+    "title": "執房：自己嘅嘢自己理",
+    "background": "睡房・週末",
+    "description": "媽媽叫你自己執房，但你覺得好亂好煩。",
+    "hints": [
+      "自己嘅房自己理，係基本責任同勤勞",
+      "勤勞係由小習慣開始"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "s-dl-01-a",
+        "text": "扮執但其實冇執",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "媽媽發現你冇執，下次唔信你。"
+          }
+        ]
+      },
+      {
+        "id": "s-dl-01-b",
+        "text": "分幾次執完晒",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 10,
+            "moralChange": 10,
+            "comment": "你完成咗任務，媽媽好滿意！"
+          }
+        ]
+      },
+      {
+        "id": "s-dl-01-c",
+        "text": "執嘅時候順便整理書枱",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "你主動做多一步，係真正嘅勤勞！"
+          }
+        ]
+      }
+    ],
+    "location": "bedroom",
+    "topicId": "diligence",
+    "creedIds": [
       10
     ],
-    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy after successful group project at home, proud of teamwork, warm bedroom, no text, no logos, 16:9"
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "做家務",
+      "自我管理"
+    ],
+    "imagePrompt": "Hong Kong bedroom, messy room, child tidying up, clothes on bed, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-dl-02",
+    "title": "溫書：每日 30 分鐘",
+    "background": "書枱・考試前",
+    "description": "考試前一個禮拜，你每日溫書 30 分鐘定臨急抱佛腳？",
+    "hints": [
+      "勤勞係 routine，唔係 last minute",
+      "分散溫書記性好過臨急"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-dl-02-a",
+        "text": "考試前一晚先溫",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -15,
+            "comment": "臨急抱佛腳，成績唔好又傷身體。"
+          }
+        ]
+      },
+      {
+        "id": "s-dl-02-b",
+        "text": "每日 30 分鐘溫書",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 15,
+            "comment": "你勤力咗溫書，考試有信心！"
+          }
+        ]
+      },
+      {
+        "id": "s-dl-02-c",
+        "text": "每日 30 分鐘 + 整理 notes",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "你勤勞 + 有方法，係真正嘅聰明學習！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "溫書",
+      "練習技能",
+      "routine"
+    ],
+    "imagePrompt": "Hong Kong child studying at desk, open textbook and notes, desk lamp, evening light, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-bn-01",
+    "title": "雨天借遮",
+    "background": "校門口・放學",
+    "description": "你帶咗遮，見到鄰班同學阿珊冇帶遮，企喺度等。",
+    "hints": [
+      "仁愛係主動幫人",
+      "你嘅一個小動作可以幫人解決大問題"
+    ],
+    "characters": [
+      {
+        "name": "阿珊",
+        "emoji": "👧",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-01-a",
+        "text": "當睇唔到，自己撐遮走",
+        "effects": [
+          {
+            "character": "阿珊",
+            "change": -5,
+            "moralChange": -5,
+            "comment": "你錯過咗一個幫人嘅機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-01-b",
+        "text": "走過去話：「我哋一齊撐啦」",
+        "effects": [
+          {
+            "character": "阿珊",
+            "change": 20,
+            "moralChange": 15,
+            "comment": "阿珊好感激你，你做咗仁愛嘅事！"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-01-c",
+        "text": "借遮畀佢，自己去搵第二個方法",
+        "effects": [
+          {
+            "character": "阿珊",
+            "change": 25,
+            "moralChange": 20,
+            "comment": "你犧牲自己方便去幫人，係真正嘅仁愛！"
+          }
+        ]
+      }
+    ],
+    "location": "school-gate",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "分享資源"
+    ],
+    "imagePrompt": "Hong Kong school gate, raining, child holding umbrella offering to share with classmate, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-bn-02",
+    "title": "仁愛：幫助 SEN 同學",
+    "background": "操場・小息",
+    "description": "小息時，你見到有特殊需要嘅同學阿俊自己一個坐喺操場邊，個樣好孤獨。其他同學都走咗去玩。你會點做？",
+    "hints": [
+      "每個人都值得被關心，SEN 同學都係我哋嘅同學",
+      "你可以唔需要做好多，可能一個笑容、一句「一齊玩」就夠",
+      "仁愛唔係做大事，而係留意身邊需要幫助嘅人"
+    ],
+    "characters": [
+      {
+        "name": "阿俊",
+        "emoji": "🧒",
+        "initial_relationship": 30
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-02-a",
+        "text": "當睇唔到，同其他同學去玩",
+        "effects": [
+          {
+            "character": "阿俊",
+            "change": -5,
+            "moralChange": -10,
+            "comment": "阿俊繼續自己一個坐，你錯過咗關心佢嘅機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-02-b",
+        "text": "行過去坐低，問佢：「你想一齊玩嗎？」",
+        "effects": [
+          {
+            "character": "阿俊",
+            "change": 25,
+            "moralChange": 18,
+            "comment": "阿俊笑咗！佢話：「好呀，我哋一齊玩！」你做咗仁愛嘅事。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-02-c",
+        "text": "叫埋其他朋友一齊邀請阿俊加入",
+        "effects": [
+          {
+            "character": "阿俊",
+            "change": 35,
+            "moralChange": 22,
+            "comment": "阿俊加入咗大家嘅遊戲，佢好開心！仁愛可以感染身邊所有人。"
+          }
+        ]
+      }
+    ],
+    "location": "playground",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "包容差異",
+      "幫助弱勢"
+    ],
+    "imagePrompt": "Hong Kong primary school playground, child sitting alone on bench looking sad, another child approaching with smile, green school uniform, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9"
+  },
+  {
+    "id": "s-bn-03",
+    "title": "仁愛：扶婆婆過馬路",
+    "background": "街道・放學",
+    "description": "你放學經過馬路，見到一位婆婆拿住好多嘢，慢慢行緊過斑馬線，啲車就嚟。你會點做？",
+    "hints": [
+      "長者行動慢，車唔會等人",
+      "你嘅小幫手可以避免意外",
+      "仁愛唔分對象，邊個需要就幫"
+    ],
+    "characters": [
+      {
+        "name": "婆婆",
+        "emoji": "👵",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-03-a",
+        "text": "急住走，當睇唔到",
+        "effects": [
+          {
+            "character": "婆婆",
+            "change": -10,
+            "moralChange": -15,
+            "comment": "婆婆差啲畀車撞到，你錯過咗幫人嘅機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-03-b",
+        "text": "行過去問：「婆婆，我扶你過啦」",
+        "effects": [
+          {
+            "character": "婆婆",
+            "change": 30,
+            "moralChange": 20,
+            "comment": "婆婆好感激你，話：「多謝你呀乖孫！」你做咗仁愛嘅事。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-03-c",
+        "text": "扶婆婆過馬路 + 幫佢拎嘢",
+        "effects": [
+          {
+            "character": "婆婆",
+            "change": 40,
+            "moralChange": 25,
+            "comment": "婆婆好感動，話：「你真係好乖！」仁愛令世界更溫暖。"
+          }
+        ]
+      }
+    ],
+    "location": "street",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢"
+    ],
+    "imagePrompt": "Hong Kong street crosswalk, elderly woman with shopping bags slowly crossing, child approaching to help, traffic light, warm afternoon light, Studio Ghibli style, soft pastel watercolor, no text, 16:9"
+  },
+  {
+    "id": "s-bn-04",
+    "title": "仁愛：流浪貓好肚餓",
+    "background": "公園・假日",
+    "description": "你喺公園見到一隻瘦瘦哋嘅流浪貓，佢望住你「喵」咗一聲，個樣好肚餓。你會點做？",
+    "hints": [
+      "小動物都會肚餓，你嘅關心可以幫到佢",
+      "注意唔好亂摸陌生動物，但可以畀食物",
+      "仁愛可以畀人，亦可以畀小動物"
+    ],
+    "characters": [
+      {
+        "name": "流浪貓",
+        "emoji": "🐱",
+        "initial_relationship": 0
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-04-a",
+        "text": "當睇唔到，繼續行",
+        "effects": [
+          {
+            "character": "流浪貓",
+            "change": 0,
+            "moralChange": -8,
+            "comment": "流浪貓繼續捱餓，仁愛可以由小開始。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-04-b",
+        "text": "返屋企拎貓糧 + 水嚟餵佢",
+        "effects": [
+          {
+            "character": "流浪貓",
+            "change": 30,
+            "moralChange": 18,
+            "comment": "流浪貓食得好開心，仲舔你隻手！仁愛令生命更溫暖。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-04-c",
+        "text": "通知動物機構嚟幫手",
+        "effects": [
+          {
+            "character": "流浪貓",
+            "change": 25,
+            "moralChange": 22,
+            "comment": "你唔單止幫到佢，仲搵到長遠嘅幫助！仁愛可以更專業。"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢"
+    ],
+    "imagePrompt": "Hong Kong public park, thin stray cat looking up sadly, child approaching with food bowl, green grass, warm sunlight, Studio Ghibli style, soft pastel watercolor, no text, 16:9"
+  },
+  {
+    "id": "s-bn-05",
+    "title": "仁愛：朋友跌倒膝頭流血",
+    "background": "操場・體育堂",
+    "description": "體育堂時，你見到好朋友小明跑得太快跌倒，膝頭擦損出血，佢痛到標淚。你會點做？",
+    "hints": [
+      "朋友受傷嗰陣最需要人關心",
+      "你嘅陪伴比乜都重要",
+      "仁愛係：留意身邊嘅朋友，佢需要你就出現"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-05-a",
+        "text": "繼續跑，怕自己都受傷",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -15,
+            "moralChange": -12,
+            "comment": "小明好失望，佢需要你嘅時候你走咗。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-05-b",
+        "text": "即刻行過去，扶佢去健康室",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 25,
+            "moralChange": 18,
+            "comment": "小明好感激你！佢話：「多謝你陪我。」仁愛就係咁簡單。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-05-c",
+        "text": "陪小明去健康室 + 通知老師",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 30,
+            "moralChange": 22,
+            "comment": "小明好感動！佢話你係佢最好嘅朋友。仁愛 + 責任感 = 完美。"
+          }
+        ]
+      }
+    ],
+    "location": "playground",
+    "topicId": "benevolence",
+    "creedIds": [
+      7,
+      9
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "易地而處"
+    ],
+    "imagePrompt": "Hong Kong school playground, child fallen on ground with bleeding knee, another child rushing over to help, sports day setting, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9"
+  },
+  {
+    "id": "s-bn-06",
+    "title": "仁愛：同學冇帶午餐",
+    "background": "課室・午膳",
+    "description": "午膳時，你發現隔離枱嘅阿強冇帶飯，佢得一個人坐，個樣好慘。你會點做？",
+    "hints": [
+      "有時人哋唔講，但你睇得出佢需要幫",
+      "分享自己嘅嘢係仁愛嘅表現",
+      "你可以主動問，而唔係等人嚟搵你"
+    ],
+    "characters": [
+      {
+        "name": "阿強",
+        "emoji": "👦",
+        "initial_relationship": 40
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-06-a",
+        "text": "扮睇唔到，自己食自己嘅",
+        "effects": [
+          {
+            "character": "阿強",
+            "change": -5,
+            "moralChange": -10,
+            "comment": "阿強要捱餓到放學，仁愛可以由分享開始。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-06-b",
+        "text": "分一半自己嘅飯盒俾佢",
+        "effects": [
+          {
+            "character": "阿強",
+            "change": 30,
+            "moralChange": 20,
+            "comment": "阿強好感激你！佢話：「多謝你！」仁愛係分享。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-06-c",
+        "text": "分飯盒 + 陪佢一齊食",
+        "effects": [
+          {
+            "character": "阿強",
+            "change": 35,
+            "moralChange": 25,
+            "comment": "阿強笑返！佢話：「我哋做朋友啦！」仁愛可以建立友誼。"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "分享資源",
+      "易地而處"
+    ],
+    "imagePrompt": "Hong Kong school classroom, lunch time, child with empty lunch box looking sad, another child offering half of their lunch, green school uniform, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9"
+  },
+  {
+    "id": "s-bn-07",
+    "title": "仁愛：教弟妹做功課",
+    "background": "屋企・夜晚",
+    "description": "夜晚，6 歲嘅細佬搵你，話佢嘅數學功課唔識做，喊緊。你會點做？",
+    "hints": [
+      "家人之間互相幫助係仁愛",
+      "你可以教佢方法，而唔係幫佢做晒",
+      "耐心係仁愛嘅一部分"
+    ],
+    "characters": [
+      {
+        "name": "細佬",
+        "emoji": "👶",
+        "initial_relationship": 80
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-07-a",
+        "text": "「你自己做啦，我好忙」",
+        "effects": [
+          {
+            "character": "細佬",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "細佬繼續喊，佢覺得你唔關心佢。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-07-b",
+        "text": "停低自己嘅嘢，耐心教佢",
+        "effects": [
+          {
+            "character": "細佬",
+            "change": 25,
+            "moralChange": 18,
+            "comment": "細佬識做喇！佢好開心，仲攬你！仁愛由家人開始。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-07-c",
+        "text": "教佢方法 + 陪佢做完 + 讚佢",
+        "effects": [
+          {
+            "character": "細佬",
+            "change": 35,
+            "moralChange": 25,
+            "comment": "細佬做完仲話：「哥哥/姐姐 你好叻呀！」仁愛 + 耐心 = 最佳示範。"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "benevolence",
+    "creedIds": [
+      7,
+      12
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "耐心",
+      "照顧家人"
+    ],
+    "imagePrompt": "Hong Kong home setting, evening, older child helping younger sibling with math homework at table, warm lamp light, Studio Ghibli style, soft pastel watercolor, cozy atmosphere, no text, 16:9"
+  },
+  {
+    "id": "s-ni-04",
+    "title": "中國成就：天宮太空站",
+    "background": "課室・常識堂・電視節目",
+    "description": "老師播緊中國太空站「天宮」嘅新聞，話太空人喺太空站做實驗。你會點反應？",
+    "hints": [
+      "中國太空站係國家科技成就，我哋可以引以為榮",
+      "太空人要經過多年訓練同努力，係堅毅同勤勞嘅榜樣",
+      "認識國家科技發展，係國民身份嘅一部分"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-ni-04-a",
+        "text": "扮冇興趣，繼續畫公仔",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -5,
+            "moralChange": -8,
+            "comment": "認識國家成就係國民嘅基本態度，錯過咗學習機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-04-b",
+        "text": "專心睇，主動問老師太空人點沖涼",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你主動學習國家科技，太叻啦！"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-04-c",
+        "text": "返屋企同父母分享 + 查更多資料",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你唔只自己學，仲主動分享，係真正嘅國民素養！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "national-identity",
+    "creedIds": [
+      4
+    ],
+    "valueCategory": "national-identity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "認識社區",
+      "認識國家成就"
+    ],
+    "imagePrompt": "Hong Kong primary school classroom, students watching TV showing Chinese Tiangong space station, astronauts in space suit, green school uniform, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-ni-05",
+    "title": "中國成就：5G 通訊",
+    "background": "手機店・假日",
+    "description": "爸爸話換咗部 5G 手機，話 5G 係中國科技成就。下載嘢快好多。",
+    "hints": [
+      "5G 通訊係中國領先世界嘅科技之一",
+      "科技改變生活，我哋要認識國家嘅科技進步",
+      "國民身份認同可以係對科技成就嘅認識"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "s-ni-05-a",
+        "text": "「關我咩事，我只係想打機」",
+        "effects": [
+          {
+            "character": "爸爸",
+            "change": -5,
+            "moralChange": -8,
+            "comment": "錯過咗認識國家科技嘅機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-05-b",
+        "text": "「5G 同 4G 有咩分別？」",
+        "effects": [
+          {
+            "character": "爸爸",
+            "change": 15,
+            "moralChange": 15,
+            "comment": "你主動發問，爸爸好開心！你學到新嘢。"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-05-c",
+        "text": "同爸爸傾完，自己再上網查中國其他科技成就",
+        "effects": [
+          {
+            "character": "爸爸",
+            "change": 25,
+            "moralChange": 22,
+            "comment": "你主動學習國家成就，爸爸以你為榮！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "national-identity",
+    "creedIds": [
+      4
+    ],
+    "valueCategory": "national-identity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "認識國家成就",
+      "主動學習"
+    ],
+    "imagePrompt": "Hong Kong home living room, father and child looking at new 5G smartphone together, modern apartment setting, Studio Ghibli style, soft pastel watercolor, warm light, 16:9"
+  },
+  {
+    "id": "s-ni-06",
+    "title": "中華文化：故宮博物館",
+    "background": "西九文化區・週末",
+    "description": "爸爸媽媽帶你去香港故宮文化博物館，你睇到好多古代文物，覺得好靚。",
+    "hints": [
+      "中華文化有 5000 年歷史，文物係重要嘅傳承",
+      "香港故宮博物館係認識中華文化嘅好地方",
+      "國民身份包括對自己文化嘅欣賞同尊重"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "s-ni-06-a",
+        "text": "「好悶，快啲走啦」",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "錯過咗認識中華文化嘅寶貴機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-06-b",
+        "text": "慢慢睇，問媽媽呢啲文物嘅故事",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 20,
+            "moralChange": 18,
+            "comment": "你欣賞中華文化，媽媽好欣慰！"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-06-c",
+        "text": "聽導賞 + 影相 + 返屋企寫日記記低",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 30,
+            "moralChange": 25,
+            "comment": "你主動學習 + 記錄，係真正嘅文化傳承者！"
+          }
+        ]
+      }
+    ],
+    "location": "museum",
+    "topicId": "national-identity",
+    "creedIds": [
+      4
+    ],
+    "valueCategory": "national-identity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "欣賞文化",
+      "認識國家成就"
+    ],
+    "imagePrompt": "Hong Kong West Kowloon Palace Museum interior, child with mother looking at ancient Chinese artifacts, jade and bronze display, Studio Ghibli style, soft pastel watercolor, museum lighting, 16:9"
+  },
+  {
+    "id": "s-ni-07",
+    "title": "中國成就：廣深港高鐵",
+    "background": "高鐵站・旅遊",
+    "description": "你第一次坐廣深港高鐵，由香港去廣州探親戚，只需要 48 分鐘。",
+    "hints": [
+      "高鐵連接香港同內地城市，係跨境基建成就",
+      "高鐵方便咗我哋同內地親友嘅聯繫",
+      "國民身份包括對國家基建設施嘅認識同利用"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "s-ni-07-a",
+        "text": "上車就瞓覺，唔理周圍",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": -5,
+            "moralChange": -5,
+            "comment": "錯過咗體驗國家高鐵嘅機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-07-b",
+        "text": "望住窗外，問媽媽點解高鐵咁快",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 15,
+            "moralChange": 15,
+            "comment": "你主動了解國家基建，媽媽好開心！"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-07-c",
+        "text": "影相記錄 + 寫低感受 + 比較同地鐵嘅分別",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 25,
+            "moralChange": 22,
+            "comment": "你用心體驗國家成就，媽媽以你為榮！"
+          }
+        ]
+      }
+    ],
+    "location": "train",
+    "topicId": "national-identity",
+    "creedIds": [
+      4
+    ],
+    "valueCategory": "national-identity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "認識國家成就",
+      "認識社區"
+    ],
+    "imagePrompt": "Hong Kong West Kowloon High Speed Rail station platform, child and mother boarding sleek white high speed train, modern station architecture, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-ni-08",
+    "title": "中華文化：春節傳統",
+    "background": "屋企・農曆新年",
+    "description": "農曆新年，阿嫲教你自己寫揮春，你想寫「身體健康」。",
+    "hints": [
+      "春節係中華文化最重要嘅傳統節日",
+      "寫揮春、貼春聯係傳統習俗",
+      "認識傳統節日係文化傳承嘅一部分"
+    ],
+    "characters": [
+      {
+        "name": "阿嫲",
+        "emoji": "👵",
+        "initial_relationship": 80
+      }
+    ],
+    "options": [
+      {
+        "id": "s-ni-08-a",
+        "text": "「太難啦，我淨係想拎利是」",
+        "effects": [
+          {
+            "character": "阿嫲",
+            "change": -10,
+            "moralChange": -8,
+            "comment": "錯過咗學習傳統文化嘅機會，阿嫲有啲失望。"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-08-b",
+        "text": "跟阿嫲學，雖然寫得唔靚但好開心",
+        "effects": [
+          {
+            "character": "阿嫲",
+            "change": 25,
+            "moralChange": 18,
+            "comment": "你肯學傳統文化，阿嫲好欣慰！"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-08-c",
+        "text": "寫完貼喺大門 + 問阿嫲揮春嘅由來",
+        "effects": [
+          {
+            "character": "阿嫲",
+            "change": 35,
+            "moralChange": 25,
+            "comment": "你主動傳承文化，阿嫲開心到喊！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "national-identity",
+    "creedIds": [
+      4,
+      12
+    ],
+    "valueCategory": "national-identity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "欣賞文化",
+      "認識傳統",
+      "孝親"
+    ],
+    "imagePrompt": "Hong Kong home Chinese New Year setting, grandmother teaching grandchild calligraphy with brush, red paper, festive atmosphere, lanterns, Studio Ghibli style, soft pastel watercolor, warm light, 16:9"
+  },
+  {
+    "id": "s-ni-09",
+    "title": "中華文化：毛筆字",
+    "background": "課外活動中心・週末",
+    "description": "你參加毛筆書法班，老師教寫「仁」字。你覺得好難寫。",
+    "hints": [
+      "毛筆書法係中華文化嘅瑰寶",
+      "學寫「仁」字，正正係學做有仁愛嘅人",
+      "勤勞練習係學好書法嘅唯一方法"
+    ],
+    "characters": [
+      {
+        "name": "書法老師",
+        "emoji": "👨‍🏫",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-ni-09-a",
+        "text": "「太難喇，我放棄」",
+        "effects": [
+          {
+            "character": "書法老師",
+            "change": -5,
+            "moralChange": -10,
+            "comment": "中華文化要靠勤勞同堅毅，先會學識。"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-09-b",
+        "text": "繼續練，多寫幾次",
+        "effects": [
+          {
+            "character": "書法老師",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你勤勞練習，老師好滿意！"
+          }
+        ]
+      },
+      {
+        "id": "s-ni-09-c",
+        "text": "返屋企再練，問老師借字帖",
+        "effects": [
+          {
+            "character": "書法老師",
+            "change": 25,
+            "moralChange": 22,
+            "comment": "你勤勞 + 認真，係真正嘅中華文化傳承者！"
+          }
+        ]
+      }
+    ],
+    "location": "class",
+    "topicId": "national-identity",
+    "creedIds": [
+      4,
+      10
+    ],
+    "valueCategory": "national-identity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "欣賞文化",
+      "勤勞",
+      "認識傳統"
+    ],
+    "imagePrompt": "Hong Kong calligraphy class, child practicing Chinese character 仁 with brush on rice paper, ink stone and brushes, traditional setting, Studio Ghibli style, soft pastel watercolor, warm light, 16:9"
+  },
+  {
+    "id": "s-cm-04",
+    "title": "承擔精神：整爛同學文具主動賠",
+    "background": "課室・自修",
+    "description": "你唔小心整爛咗隔離同學嘅間尺，你諗緊點算。",
+    "hints": [
+      "整親人哋嘅嘢要承擔後果",
+      "主動賠償係負責任嘅表現",
+      "承擔精神：自己嘅選擇自己承擔"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "👦",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-cm-04-a",
+        "text": "「唔關我事，係佢自己唔擺好」",
+        "effects": [
+          {
+            "character": "同學",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你推卸責任，承擔精神係反詞。"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-04-b",
+        "text": "「對唔住，我整親，我賠返俾你」",
+        "effects": [
+          {
+            "character": "同學",
+            "change": 20,
+            "moralChange": 18,
+            "comment": "你勇於承擔，同學原諒你！"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-04-c",
+        "text": "道歉 + 即刻去文具舖買返同款賠 + 寫道歉卡",
+        "effects": [
+          {
+            "character": "同學",
+            "change": 30,
+            "moralChange": 25,
+            "comment": "你完整承擔後果，同學變咗你嘅好朋友！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承認錯誤",
+      "承擔後果",
+      "道歉"
+    ],
+    "imagePrompt": "Hong Kong school classroom, child holding broken ruler looking guilty at classmate, desk setting, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-cm-05",
+    "title": "承擔精神：照顧細路妹",
+    "background": "屋企・父母外出",
+    "description": "爸爸媽媽外出，叫你照顧4歲嘅細妹。細妹扭抱唔肯食飯。",
+    "hints": [
+      "答應照顧就係承擔",
+      "細妹扭脾氣要耐心",
+      "承擔精神包括處理突發情況"
+    ],
+    "characters": [
+      {
+        "name": "細妹",
+        "emoji": "👧",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "s-cm-05-a",
+        "text": "「你自己搞啦，我打緊機」",
+        "effects": [
+          {
+            "character": "細妹",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你推卸咗承擔，爸媽返嚟會好失望。"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-05-b",
+        "text": "停打機，哄佢食飯",
+        "effects": [
+          {
+            "character": "細妹",
+            "change": 20,
+            "moralChange": 18,
+            "comment": "你承擔起照顧者嘅責任，細妹開心食飯！"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-05-c",
+        "text": "陪佢玩 + 一齊食 + 等爸媽返嚟",
+        "effects": [
+          {
+            "character": "細妹",
+            "change": 30,
+            "moralChange": 25,
+            "comment": "你完全承擔咗責任，爸媽返嚟一定讚你！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "commitment",
+    "creedIds": [
+      5,
+      12
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承擔後果",
+      "照顧家人",
+      "耐心"
+    ],
+    "imagePrompt": "Hong Kong home living room, older sibling feeding and comforting crying younger sister, dining table, warm evening light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-cm-06",
+    "title": "承擔精神：舉報自己偷食",
+    "background": "廚房・夜晚",
+    "description": "你忍唔住偷食咗媽媽準備嘅生日蛋糕，媽媽未發現，但你內心好內疚。",
+    "hints": [
+      "做錯咗就應該自己講",
+      "承擔精神：自己嘅選擇自己承擔",
+      "誠實同承擔都係好重要嘅品格"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-cm-06-a",
+        "text": "扮冇事，等媽媽自己發現",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": -20,
+            "moralChange": -15,
+            "comment": "媽媽最後發現咗，你失去咗信任，仲要孭多個「講大話」嘅罪名。"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-06-b",
+        "text": "主動同媽媽講「對唔住，我偷食咗」",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 15,
+            "moralChange": 20,
+            "comment": "你主動承認，媽媽欣賞你嘅誠實！"
+          }
+        ]
+      },
+      {
+        "id": "s-cm-06-c",
+        "text": "道歉 + 承諾幫手整返個新蛋糕 + 唔再偷食",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 30,
+            "moralChange": 28,
+            "comment": "你完整承擔，媽媽以你嘅品格為榮！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "commitment",
+    "creedIds": [
+      5,
+      6
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承認錯誤",
+      "承擔後果",
+      "誠實"
+    ],
+    "imagePrompt": "Hong Kong home kitchen, child looking guilty at half-eaten birthday cake on table, looking down in shame, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-dl-03",
+    "title": "勤勞：練習鋼琴",
+    "background": "屋企・琴房",
+    "description": "媽媽叫你練琴 30 分鐘，但你覺得好悶，想打機。",
+    "hints": [
+      "學樂器要靠每日勤勞練習",
+      "30 分鐘其實好短，練完先打機",
+      "勤勞係累積嘅，唔練就唔會進步"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-dl-03-a",
+        "text": "偷偷關埋琴蓋去打機",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -12,
+            "comment": "你選擇偷懶，進步唔會嚟。"
+          }
+        ]
+      },
+      {
+        "id": "s-dl-03-b",
+        "text": "乖乖練 30 分鐘，再打機",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你勤勞練習，琴技一定進步！"
+          }
+        ]
+      },
+      {
+        "id": "s-dl-03-c",
+        "text": "練 30 分鐘 + 重覆最難嗰段 + 記低錯誤",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 22,
+            "comment": "你勤勞 + 有方法，係真正嘅聰明練習！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "練習技能",
+      "routine"
+    ],
+    "imagePrompt": "Hong Kong home piano room, child practicing piano with sheet music, focused expression, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-dl-04",
+    "title": "勤勞：幫手洗碗",
+    "background": "廚房・晚飯後",
+    "description": "晚飯後，媽媽好攰，碗盤堆積如山。你可以幫手。",
+    "hints": [
+      "家務係每個家庭成員嘅責任",
+      "媽媽攰嘅時候你應該幫手",
+      "勤勞由做家務開始"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      }
+    ],
+    "options": [
+      {
+        "id": "s-dl-04-a",
+        "text": "「媽你自己搞啦，我睇緊電視」",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": -15,
+            "moralChange": -12,
+            "comment": "媽媽好攰你都唔幫手，孝親 + 勤勞都 miss 咗。"
+          }
+        ]
+      },
+      {
+        "id": "s-dl-04-b",
+        "text": "關電視，主動幫手洗碗",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 25,
+            "moralChange": 22,
+            "comment": "你勤勞又孝順，媽媽好感動！"
+          }
+        ]
+      },
+      {
+        "id": "s-dl-04-c",
+        "text": "幫手洗碗 + 抹枱 + 倒垃圾",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 35,
+            "moralChange": 28,
+            "comment": "你勤勞 + 主動，媽媽開心到攬你！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10,
+      12
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "做家務",
+      "照顧家人"
+    ],
+    "imagePrompt": "Hong Kong home kitchen after dinner, child washing dishes at sink, stack of plates, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-dl-05",
+    "title": "勤勞：練字簿",
+    "background": "書枱・夜晚",
+    "description": "老師派返練字簿，你寫得唔好，媽媽話要你重寫。",
+    "hints": [
+      "勤勞練字係基本功",
+      "重寫唔係懲罰，而係改善嘅機會",
+      "寫好每隻字係勤勞 + 專注"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-dl-05-a",
+        "text": "「好煩呀，唔寫喇」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -12,
+            "comment": "你放棄勤勞，寫字唔會進步。"
+          }
+        ]
+      },
+      {
+        "id": "s-dl-05-b",
+        "text": "重寫一次，比之前認真",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你勤勞改善，下次一定寫得更好！"
+          }
+        ]
+      },
+      {
+        "id": "s-dl-05-c",
+        "text": "重寫兩次 + 對比第一次 + 記低寫得最好嘅字",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你勤勞 + 反思，係真正嘅學習高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "練習技能",
+      "routine"
+    ],
+    "imagePrompt": "Hong Kong home desk at night, child writing Chinese characters in practice book, desk lamp, focused expression, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-pv-01",
+    "title": "堅毅：學游水失敗",
+    "background": "泳池・暑期班",
+    "description": "你學游水第 3 堂，仲係驚水，一掂到水面就嗌。",
+    "hints": [
+      "學新嘢一定會遇到挫折",
+      "堅毅就係怕嘅時候繼續試",
+      "每個游得快嘅人都曾經驚過水"
+    ],
+    "characters": [
+      {
+        "name": "教練",
+        "emoji": "🏊",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-pv-01-a",
+        "text": "「我唔學喇，我要上岸」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -12,
+            "comment": "你放棄咗，堅毅永遠學唔到。"
+          }
+        ]
+      },
+      {
+        "id": "s-pv-01-b",
+        "text": "深呼吸，跟住教練嘅 step 再試",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 18,
+            "comment": "你堅持咗，可能仲未識游，但你贏咗自己！"
+          }
+        ]
+      },
+      {
+        "id": "s-pv-01-c",
+        "text": "繼續練 + 問教練一啲令自己安心嘅方法",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 22,
+            "comment": "你堅毅 + 搵方法，係真正嘅勇者！"
+          }
+        ]
+      }
+    ],
+    "location": "pool",
+    "topicId": "perseverance",
+    "creedIds": [
+      1
+    ],
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "接受失敗",
+      "持續練習"
+    ],
+    "imagePrompt": "Hong Kong public swimming pool, child wearing goggles at pool edge looking nervous, swimming instructor nearby, blue water, Studio Ghibli style, soft pastel watercolor, 16:9"
   }
 ]

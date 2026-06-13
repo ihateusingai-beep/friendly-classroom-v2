@@ -1,4 +1,4 @@
-import{g as s,a as c}from"./index-V_yFyBpz.js";const v={};function g(){return`
+import{g as s,a as c}from"./index-MzGRC4Oz.js";const v={};function g(){return`
     <div class="container fade-in">
       <div class="login-form">
         <h2 style="text-align:center;margin-bottom:20px">🔐 老師登入</h2>
@@ -83,7 +83,7 @@ import{g as s,a as c}from"./index-V_yFyBpz.js";const v={};function g(){return`
       </div>
       <div class="teacher-panel">
         <h2>📊 老師儀表板</h2>
-        <div class="subtitle">暂无学生数据</div>
+        <div class="subtitle">暫無學生數據</div>
       </div>
       <div style="text-align:center;padding:40px;color:var(--text-light)">
         <div style="font-size:3em;margin-bottom:12px">📭</div>
