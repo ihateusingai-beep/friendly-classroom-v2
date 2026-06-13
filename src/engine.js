@@ -668,14 +668,17 @@ export function renderPlay(scenarioId, subjectId) {
   const topic = getTopic(s.topicId);
   const subColor = getSubjectColor(subjectId);
 
+  // 題目進度：topic 內第幾題 / 共幾題
+  const topicScenarios = getScenariosByTopic(s.topicId);
+  const idxInTopic = topicScenarios.findIndex(x => x.id === s.id) + 1;
+  const totalInTopic = topicScenarios.length;
+
   return `
     <div class="container fade-in">
       <div class="page-header">
         <button class="back-btn" onclick="FC.goTopic('${s.topicId}')">←</button>
-        ${subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''}
-        <span class="play-top" style="flex:1;text-align:center">
-          <span class="topic-badge" style="background:${topic?.color || 'var(--primary)'}">${topic?.emoji || ''} ${topic?.title || ''}</span>
-        </span>
+        <h2 style="flex:1;text-align:center">${topic?.emoji || ''} ${topic?.title || ''}</h2>
+        <span class="play-progress">第 ${idxInTopic} / ${totalInTopic} 題</span>
       </div>
 
       <div class="play-top">
@@ -683,15 +686,18 @@ export function renderPlay(scenarioId, subjectId) {
         <div class="scenario-bg">📍 ${s.background || ''}</div>
       </div>
 
+      <div class="scenario-desc">
+        <button class="inline-voice-btn" onclick="FC.speak()" title="朗讀題目">🔊</button>
+        ${s.description}
+      </div>
+
       <div class="scenario-image-wrap">
         <img src="assets/images/scenarios/${s.id}.png" alt="${s.title}" class="scenario-image"
              onerror="this.style.display='none'" />
       </div>
 
-      <div class="scenario-desc">
-        <button class="inline-voice-btn" onclick="FC.speak()" title="朗讀題目">🔊</button>
-        ${s.description}
-      </div>
+      <div class="options-divider">— 揀你嘅選擇 —</div>
+
       <div class="options">
         ${s.options.map((opt, i) => {
           const labels = ['A', 'B', 'C', 'D'];

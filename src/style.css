@@ -347,7 +347,7 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
 .scenario-item .info .sub { font-size: 0.85em; color: var(--text-light); }
 
 /* ---- 遊玩頁面 ---- */
-.play-top { text-align: center; margin-bottom: 16px; }
+.play-top { text-align: left; margin-bottom: 14px; }
 .play-top .topic-badge {
   display: inline-block;
   padding: 4px 12px;
@@ -356,31 +356,40 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   color: #fff;
   margin-bottom: 8px;
 }
-.play-top .scenario-title { font-size: 1.3em; font-weight: 700; margin-bottom: 8px; }
-.play-top .scenario-bg { font-size: 0.9em; color: var(--text-light); margin-bottom: 12px; }
+.play-top .scenario-title { font-size: 1.25em; font-weight: 700; margin-bottom: 8px; line-height: 1.3; }
+.play-top .scenario-bg {
+  display: inline-block;
+  background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
+  border-left: 3px solid var(--accent-purple, #7C3AED);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.9em;
+  color: #4c1d95;
+  margin-bottom: 14px;
+}
 
 .scenario-desc {
   background: #fff;
   border-radius: var(--radius);
-  padding: 20px;
-  font-size: 1.1em;
-  line-height: 1.7;
-  margin-bottom: 16px;
+  padding: 16px 18px;
+  font-size: 1.05em;
+  line-height: 1.55;
+  margin-bottom: 14px;
   box-shadow: var(--shadow);
-  border-left: 6px solid var(--primary);
+  border-left: 4px solid var(--primary);
   position: relative;
 }
 .scenario-desc .inline-voice-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 12px;
+  right: 12px;
   background: var(--primary);
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  font-size: 1.1em;
+  width: 32px;
+  height: 32px;
+  font-size: 0.95em;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -389,65 +398,92 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
 }
 .scenario-desc .inline-voice-btn:hover { transform: scale(1.1); }
 
+.play-progress {
+  font-size: 0.78em;
+  color: var(--text-light);
+  background: var(--bg);
+  padding: 5px 11px;
+  border-radius: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.options-divider {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.82em;
+  margin: 18px 0 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
 /* ── 選項卡片（巨型化 Special Ed）── */
 .option-card {
   width: 100%;
-  padding: 20px 18px;
-  border: 3px solid var(--border);
-  border-radius: 16px;
+  padding: 14px 16px;
+  border: 2px solid var(--border);
+  border-radius: 14px;
   background: var(--card);
   text-align: left;
-  font-size: 1.25em;
+  font-size: 1.05em;
+  line-height: 1.45;
   cursor: pointer;
   transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  min-height: 72px;
+  gap: 12px;
+  min-height: 64px;
+  position: relative;
 }
 .option-card:hover {
-  border-color: var(--primary);
+  border-color: #7C3AED;
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(74,144,217,0.18);
+  box-shadow: 0 6px 20px rgba(124,58,237,0.18);
 }
 .option-card:active { transform: scale(0.99); }
 .option-card .opt-thumb {
-  width: 60px;
-  height: 60px;
+  width: 72px;
+  height: 72px;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 12px;
   flex-shrink: 0;
   border: 2px solid var(--border);
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);  /* fallback when image missing */
 }
 .option-card .opt-badge {
+  position: absolute;
+  top: -8px;
+  left: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  background: var(--primary);
+  width: 28px;
+  height: 28px;
+  background: #7C3AED;
   color: #fff;
+  border: 2px solid #fff;
   border-radius: 50%;
   font-weight: 800;
-  font-size: 1em;
-  flex-shrink: 0;
+  font-size: 0.85em;
+  box-shadow: 0 2px 6px rgba(124,58,237,0.3);
 }
 .option-card .opt-text {
   flex: 1;
   font-weight: 600;
   color: var(--text);
+  padding-left: 32px;  /* reserve room for overlay badge */
 }
 .option-card .opt-read {
-  width: 36px;
-  height: 36px;
+  width: 28px;
+  height: 28px;
   background: var(--bg);
-  border: 2px solid var(--border);
+  border: 1px solid var(--border);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.95em;
+  font-size: 0.8em;
   flex-shrink: 0;
   cursor: pointer;
   color: var(--text-light);
@@ -456,7 +492,7 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   z-index: 2;
   touch-action: manipulation;
 }
-.option-card .opt-read:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+.option-card .opt-read:hover { background: #7C3AED; color: #fff; border-color: #7C3AED; }
 
 .scenario-image-wrap {
   border-radius: var(--radius);
