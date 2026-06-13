@@ -960,6 +960,7 @@ export function renderSettings() {
   const lineHeight = localStorage.getItem('fc_line_height') || '1.5';
   const spacing = localStorage.getItem('fc_spacing') || 'medium';
   const currentLang = localStorage.getItem('fc_tts_lang') || 'auto';
+  const hcMode = localStorage.getItem('fc_hc_mode') === '1';
 
   const fsLabel = fontSize <= 18 ? '小' : fontSize <= 22 ? '中' : '大';
   const enabled = isEnabled();
@@ -1035,6 +1036,19 @@ export function renderSettings() {
           <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)" aria-hidden="true">
             <span>慢</span><span>正常</span><span>快</span>
           </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:14px">🌓 顯示模式</div>
+        <div class="setting-row">
+          <div>
+            <strong id="hc-toggle-label">高對比模式</strong>
+            <div style="font-size:0.85em;color:var(--text-light)">純黑/白、3px 強制 border、無漸變，適合光線不足或在戶外使用</div>
+          </div>
+          <button type="button" class="toggle ${hcMode ? 'on' : ''}" data-key="hc" onclick="FC.toggleHC(this)"
+            role="switch" aria-checked="${hcMode}" aria-labelledby="hc-toggle-label"
+            aria-label="高對比模式開關"></button>
         </div>
       </div>
 

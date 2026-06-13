@@ -801,6 +801,17 @@ window.FC.setSpacing = function(v) {
     if (btn) btn.className = 'btn ' + (s === v ? 'btn-primary' : 'btn-outline');
   });
 };
+
+// 🌓 高對比模式 — toggle data-hc attribute + 持久化
+window.FC.toggleHC = function(el) {
+  const next = !(localStorage.getItem('fc_hc_mode') === '1');
+  localStorage.setItem('fc_hc_mode', next ? '1' : '0');
+  if (el) el.classList.toggle('on', next);
+  // 立即套用（唔使 re-render 整頁）
+  applyCSS();
+  // SR: announce 切換咗咩
+  announceToSR(next ? '高對比模式開咗' : '高對比模式關咗');
+};
 window.FC.setSpeed = function(v) {
   localStorage.setItem('fc_tts_speed', v);
   const label = document.querySelector('[data-for="speed"]');

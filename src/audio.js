@@ -189,6 +189,7 @@ function getParams() {
     fontSize: parseInt(localStorage.getItem('fc_font_size') || '18'),
     lineHeight: parseFloat(localStorage.getItem('fc_line_height') || '1.5'),
     spacing: localStorage.getItem('fc_spacing') || 'medium',
+    highContrast: localStorage.getItem('fc_hc_mode') === '1',
   };
 }
 
@@ -199,6 +200,9 @@ export function applyCSS() {
   root.style.setProperty('--fc-font-size', p.fontSize + 'px');
   root.style.setProperty('--fc-line-height', p.lineHeight);
   root.style.setProperty('--fc-spacing', spacingMap[p.spacing] || '16px');
+  // HC mode: toggle data-hc attribute on <html>，CSS 跟住做 override
+  if (p.highContrast) root.setAttribute('data-hc', 'true');
+  else root.removeAttribute('data-hc');
 }
 
 // ── 音頻播放 ──
@@ -322,6 +326,7 @@ export function resetAllSettings() {
   localStorage.removeItem('fc_font_size');
   localStorage.removeItem('fc_line_height');
   localStorage.removeItem('fc_spacing');
+  localStorage.removeItem('fc_hc_mode');
   applyCSS();
 }
 

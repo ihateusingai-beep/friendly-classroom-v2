@@ -1655,3 +1655,186 @@ body:has(.action-cta-fab:not([hidden])) .container { padding-bottom: 80px; }
 .ledger-delta.positive { color: #16a34a; }
 .ledger-delta.negative { color: #dc2626; }
 .ledger-delta.neutral  { color: #6b7280; }
+
+/* ============================================
+   🌓 高對比模式 (High Contrast Mode)
+   ============================================
+   由 audio.js applyCSS() toggle fc_hc_mode 加 data-hc="true" 落 <html>
+   設計目標：純黑/純白 + 3px 強制 border + 無 gradient + 高彩度 primary
+   對應 WCAG AAA 7:1 對比度
+*/
+html[data-hc="true"] {
+  --primary: #0000ff;        /* 純藍 — 比 #4A90D9 對比度高 */
+  --primary-on: #ffff00;     /* 對應反白（hover/active 背景） */
+  --success: #008000;        /* 純綠 */
+  --danger: #cc0000;         /* 深紅 */
+  --warning: #b8860b;        /* 深金 */
+  --bg: #ffffff;             /* 純白背景 */
+  --card: #ffffff;
+  --text: #000000;           /* 純黑 text */
+  --text-light: #000000;     /* 原本 light gray 升級做黑，確保對比 */
+  --border: #000000;         /* 純黑 border */
+  --radius: 4px;             /* 收細圓角 */
+  --shadow: none;            /* 移除 shadow */
+  /* 個人化參數保持 */
+  /* --fc-font-size / --fc-line-height / --fc-spacing 由 JS 設定 */
+}
+html[data-hc="true"] body {
+  background: #ffffff;
+  color: #000000;
+  border: 0; /* 原生有 1px border 喺 body，取消 */
+}
+html[data-hc="true"] * {
+  /* 移除所有 gradient，改做純色 */
+  background-image: none !important;
+  /* box-shadow 太 subtle，HC 改做 outline 替代 */
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+html[data-hc="true"] *:focus-visible {
+  outline: 4px solid #ff0000 !important; /* 純紅 focus ring */
+  outline-offset: 2px !important;
+  border-radius: 4px;
+}
+/* 卡片、container：3px 黑 border + 無 shadow */
+html[data-hc="true"] .card,
+html[data-hc="true"] .container > div,
+html[data-hc="true"] .role-card,
+html[data-hc="true"] .game-card,
+html[data-hc="true"] .mode-card,
+html[data-hc="true"] .topic-card,
+html[data-hc="true"] .scenario-item,
+html[data-hc="true"] .option-card,
+html[data-hc="true"] .student-card,
+html[data-hc="true"] .progress-cell,
+html[data-hc="true"] .student-row,
+html[data-hc="true"] .mode-badge,
+html[data-hc="true"] .setting-row,
+html[data-hc="true"] .bank-summary,
+html[data-hc="true"] .login-form input,
+html[data-hc="true"] .privacy-notice {
+  border: 3px solid #000000 !important;
+  background: #ffffff !important;
+  color: #000000 !important;
+  text-decoration: none !important;
+}
+/* 已選中/active 狀態：黑底反白 */
+html[data-hc="true"] .btn-primary,
+html[data-hc="true"] .btn-success,
+html[data-hc="true"] .btn[data-active="true"],
+html[data-hc="true"] .toggle.on,
+html[data-hc="true"] .toggle-switch.on,
+html[data-hc="true"] .scenario-item.completed .check,
+html[data-hc="true"] .result-card .moral .plus {
+  background: #000000 !important;
+  color: #ffff00 !important;
+  border-color: #000000 !important;
+}
+html[data-hc="true"] .btn-primary *,
+html[data-hc="true"] .btn-success * {
+  color: #ffff00 !important;
+}
+html[data-hc="true"] .btn-outline {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 3px solid #000000 !important;
+}
+/* outline button (TTS lang picker etc) 揀咗之後黑底 */
+html[data-hc="true"] .btn[aria-checked="true"],
+html[data-hc="true"] .btn[aria-pressed="true"] {
+  background: #000000 !important;
+  color: #ffff00 !important;
+  border: 3px solid #000000 !important;
+}
+/* 鏈結 / 提示類文字加底色去 */
+html[data-hc="true"] a,
+html[data-hc="true"] .skip-link {
+  color: #0000ff !important;
+  text-decoration: underline !important;
+  font-weight: 700;
+}
+html[data-hc="true"] .skip-link {
+  background: #ffff00 !important;
+  color: #000000 !important;
+  border: 3px solid #000000 !important;
+  text-decoration: none !important;
+}
+html[data-hc="true"] .skip-link:focus {
+  background: #ff0000 !important;
+  color: #ffffff !important;
+  outline: 4px solid #000000 !important;
+}
+/* 文字層級 - 強制 weight 至少 600 提升可讀性 */
+html[data-hc="true"] h1,
+html[data-hc="true"] h2,
+html[data-hc="true"] h3,
+html[data-hc="true"] strong,
+html[data-hc="true"] b {
+  color: #000000 !important;
+  font-weight: 800 !important;
+}
+html[data-hc="true"] p,
+html[data-hc="true"] li,
+html[data-hc="true"] span,
+html[data-hc="true"] div {
+  color: #000000 !important;
+}
+html[data-hc="true"] small,
+html[data-hc="true"] [style*="color:var(--text-light)"] {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+/* icon / emoji 都變黑，確保係 ink layer */
+html[data-hc="true"] .emoji,
+html[data-hc="true"] [aria-hidden="true"] {
+  filter: grayscale(1) contrast(2);
+}
+/* 道德值 fill bar */
+html[data-hc="true"] .moral-fill {
+  background: #000000 !important;
+  border: 2px solid #000000;
+}
+html[data-hc="true"] .progress-fill,
+html[data-hc="true"] .progress-cell .bar-fill {
+  background: #000000 !important;
+}
+html[data-hc="true"] .progress-cell .bar-bg,
+html[data-hc="true"] .progress-bar {
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+}
+/* input / range */
+html[data-hc="true"] input[type="range"] {
+  accent-color: #000000 !important;
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  height: 8px;
+}
+html[data-hc="true"] input[type="text"],
+html[data-hc="true"] input[type="password"] {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 3px solid #000000 !important;
+  caret-color: #000000;
+}
+html[data-hc="true"] input[type="text"]:focus,
+html[data-hc="true"] input[type="password"]:focus {
+  outline: 4px solid #ff0000 !important;
+  outline-offset: 2px;
+}
+/* 結果頁 — 不同反饋用 icon + text-decoration 區分，唔靠 color */
+html[data-hc="true"] .result-card.positive,
+html[data-hc="true"] .bank-end-banner.win {
+  border-left: 8px solid #000000 !important;
+}
+html[data-hc="true"] .result-card.negative,
+html[data-hc="true"] .bank-end-banner.lose {
+  border-left: 8px dashed #000000 !important;
+}
+html[data-hc="true"] .result-card .moral .plus::before { content: "✓ "; font-weight: 900; }
+html[data-hc="true"] .result-card .moral .minus::before { content: "✗ "; font-weight: 900; }
+html[data-hc="true"] .result-card .moral .plus { text-decoration: underline; }
+html[data-hc="true"] .result-card .moral .minus { text-decoration: line-through; }
+/* confetti / star float / comfort 等裝飾 — 留返因為佢哋只係 short-lived 慶祝 layer */
+/* 強制 prefers-contrast 系統設定都觸發我哋嘅 mode（其他用戶唔影響） */
+/* 注意：冇做 @media (prefers-contrast: more) 因為 manual toggle 為主，避免覆蓋用戶自選 */
