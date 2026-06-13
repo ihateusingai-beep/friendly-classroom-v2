@@ -691,6 +691,27 @@ export function renderPlay(scenarioId, subjectId) {
         ${s.description}
       </div>
 
+      ${(s.hints && s.hints.length) ? `
+      <div class="hints-panel" id="hints-panel">
+        <button type="button" class="hints-toggle" onclick="FC.toggleHints()" aria-expanded="false" id="hints-toggle">
+          <span class="hints-icon">💡</span>
+          <span>提示</span>
+          <span class="hints-count">${s.hints.length}</span>
+          <span class="hints-chev" id="hints-chev">▾</span>
+        </button>
+        <div class="hints-list" id="hints-list" hidden>
+          ${s.hints.map((h, i) => `
+            <div class="hint-item" data-hint-idx="${i}" hidden>
+              <span class="hint-num">${i + 1}</span>
+              <span class="hint-text">${h}</span>
+            </div>
+          `).join('')}
+          <button type="button" class="hint-next" id="hint-next" onclick="FC.revealNextHint()">
+            睇下一個提示 →
+          </button>
+        </div>
+      </div>` : ''}
+
       <div class="scenario-image-wrap">
         <img src="assets/images/scenarios/${s.id}.png" alt="${s.title}" class="scenario-image"
              onerror="this.style.display='none'" />
@@ -701,12 +722,18 @@ export function renderPlay(scenarioId, subjectId) {
       <div class="options">
         ${s.options.map((opt, i) => {
           const labels = ['A', 'B', 'C', 'D'];
+          // 從 effects 拎第一個 moralChange 做「道德傾向」label
+          const firstEffect = (opt.effects || [])[0];
+          const mc = firstEffect ? Number(firstEffect.moralChange || 0) : 0;
+          const valueLabel = mc > 0 ? `＋${mc} 道德` : (mc < 0 ? `${mc} 道德` : '中性');
+          const valueClass = mc > 0 ? 'good' : (mc < 0 ? 'bad' : 'neutral');
           return `
             <div class="option-card" onclick="FC.choose('${opt.id}')">
               <img src="assets/images/outcomes/${s.id}_opt${i+1}.png" alt=""
                    class="opt-thumb" onerror="this.style.display='none'" />
               <span class="opt-badge">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
+              <span class="opt-value opt-value-${valueClass}" aria-hidden="true">${valueLabel}</span>
               <button type="button" class="opt-read"
                 onclick="FC._stopEvt(event);FC.speakOpt('${opt.id}')"
                 onmousedown="FC._stopEvt(event)"
@@ -763,7 +790,12 @@ export function renderResult(data, subjectId) {
              onerror="this.style.display='none'" />
       </div>` : ''}
 
-      <div class="action-row">
+      <div class="action-row" id="result-actions">
+        <button class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
+        <button class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
+      </div>
+
+      <div class="action-cta-fab" id="result-cta-fab" hidden>
         <button class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
         <button class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
       </div>

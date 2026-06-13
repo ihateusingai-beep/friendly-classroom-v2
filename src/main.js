@@ -605,6 +605,62 @@ window.FC.speakCreeds = function() {
   if (state.resultData?.creeds) speakCreeds(state.resultData.creeds);
 };
 
+// ── Hints panel ──
+let _hintsRevealed = 0;
+window.FC.toggleHints = function() {
+  const list = document.getElementById('hints-list');
+  const chev = document.getElementById('hints-chev');
+  const toggle = document.getElementById('hints-toggle');
+  if (!list) return;
+  const open = list.hasAttribute('hidden') ? false : true;
+  if (open) {
+    list.setAttribute('hidden', '');
+    if (chev) chev.textContent = '▾';
+    if (toggle) toggle.setAttribute('aria-expanded', 'false');
+  } else {
+    list.removeAttribute('hidden');
+    if (chev) chev.textContent = '▴';
+    if (toggle) toggle.setAttribute('aria-expanded', 'true');
+    // 第一次打開自動揭第一個
+    if (_hintsRevealed === 0) FC.revealNextHint();
+  }
+};
+window.FC.revealNextHint = function() {
+  const items = document.querySelectorAll('.hint-item');
+  const next = document.getElementById('hint-next');
+  if (_hintsRevealed >= items.length) return;
+  items[_hintsRevealed].removeAttribute('hidden');
+  _hintsRevealed++;
+  // 全部揭完 → 隱藏 next 按鈕
+  if (_hintsRevealed >= items.length) {
+    if (next) next.setAttribute('hidden', '');
+  }
+};
+// 每次 render 完重置 hints 計數
+const _origRender = render;
+render = function() {
+  _hintsRevealed = 0;
+  _origRender();
+  // 結果頁 floating CTA 邏輯
+  requestAnimationFrame(updateResultCtaFab);
+};
+function updateResultCtaFab() {
+  const actions = document.getElementById('result-actions');
+  const fab = document.getElementById('result-cta-fab');
+  if (!actions || !fab) return;
+  const rect = actions.getBoundingClientRect();
+  const offScreen = rect.top > window.innerHeight || rect.bottom < 0;
+  if (offScreen) fab.removeAttribute('hidden');
+  else fab.setAttribute('hidden', '');
+}
+// scroll / resize 時更新 floating CTA
+if (typeof window !== 'undefined') {
+  window.addEventListener('scroll', () => {
+    if (document.getElementById('result-cta-fab')) updateResultCtaFab();
+  }, { passive: true });
+  window.addEventListener('resize', updateResultCtaFab);
+}
+
 window.FC.toggleVoice = function(el) {
   const on = !isEnabled();
   setEnabled(on);
