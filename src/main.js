@@ -18,7 +18,7 @@ import { getMoralBarData } from './domain/Moral.js';
 import { initSync, syncNow, getSyncStatus } from './sync.js';
 import scenariosData from '../data/scenarios.json';
 
-// ── Vite HMR 破壞 DOM 寫入，强制停用 ──
+// ── Vite HMR 破壞 DOM 寫入，強制停用 ──
 if (import.meta.hot) { import.meta.hot.decline(); }
 
 // ── 初始化 ──
@@ -121,7 +121,7 @@ let state = {
 };
 let lastPlayedScenarioId = null; // guard: 防 TTS 重複觸發
 
-// ── 懒加载 teacher chunk（學生不會下載此檔案）──
+// ── 懶加載 teacher chunk（學生不會下載此檔案）──
 let _teacher = null;  // 動態加載後 cache
 
 async function _loadTeacher() {
@@ -245,7 +245,7 @@ export function goSettings() {
 window.FC.goSettings = goSettings;
 
 export async function goTeacher() {
-  // 懒加载 teacher chunk
+  // 懶加載 teacher chunk
   await _loadTeacher();
   state = { ...state, view: 'login' };
   render();

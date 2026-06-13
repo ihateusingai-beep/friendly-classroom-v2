@@ -1,10 +1,10 @@
-// 老师模块 — 懒加载 chunk（学生不会下载此文件）
-// 仅当用户点击「老師模式」时才触发 dynamic import()
+// 老師模塊 — 懶加載 chunk（學生不會下載此文件）
+// 僅當用戶點擊「老師模式」時才觸發 dynamic import()
 
 import { getAllStudents, importProgress } from './domain/Progress.js';
 import { getAllSubjects } from './subjects.js';
 
-// TEACHER_EMOJI 是老师页专属的学生头像映射
+// TEACHER_EMOJI 是老師頁專屬的學生頭像映射
 const TEACHER_EMOJI = {};
 
 export function renderLogin() {
@@ -36,7 +36,7 @@ export function renderTeacher() {
       </div>
       <div class="teacher-panel">
         <h2>📊 老師儀表板</h2>
-        <div class="subtitle">暂无学生数据</div>
+        <div class="subtitle">暫無學生數據</div>
       </div>
       <div style="text-align:center;padding:40px;color:var(--text-light)">
         <div style="font-size:3em;margin-bottom:12px">📭</div>
