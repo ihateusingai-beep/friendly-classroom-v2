@@ -180,20 +180,23 @@ function showOfflineReadyToast() {
 
   const toast = document.createElement('div');
   toast.id = 'pwa-toast';
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', 'polite');
   toast.style.cssText = `
     position: fixed;
     bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
-    background: #52c41a;
-    color: white;
+    background: #15803d;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 24px;
     font-size: 14px;
+    font-weight: 600;
     z-index: 9999;
     animation: fadeInUp 0.3s ease-out;
     white-space: nowrap;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
   `;
   toast.textContent = '✅ 已準備好離線使用';
   document.body.appendChild(toast);

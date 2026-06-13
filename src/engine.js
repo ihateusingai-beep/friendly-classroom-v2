@@ -28,28 +28,28 @@ export { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
 export function renderRoleSelect() {
   return `
     <div class="role-screen">
-      <div class="logo">🎓</div>
+      <div class="logo" aria-hidden="true">🎓</div>
       <h1>友愛教室</h1>
       <p class="tagline">選擇你的身份，開始學習！</p>
 
       <div class="role-cards">
-        <div class="role-card student" onclick="FC.chooseRole('student')">
-          <div class="rc-icon">🧒</div>
+        <button type="button" class="role-card student" onclick="FC.chooseRole('student')" aria-label="選擇學生模式：揀遊戲、學習社交禮貌，自由探索">
+          <div class="rc-icon" aria-hidden="true">🧒</div>
           <div class="rc-body">
-            <h3>學生模式</h3>
+            <h2>學生模式</h2>
             <p>揀遊戲、學習社交禮貌，自由探索</p>
           </div>
-          <div class="rc-arrow">→</div>
-        </div>
+          <div class="rc-arrow" aria-hidden="true">→</div>
+        </button>
 
-        <div class="role-card teacher" onclick="FC.chooseRole('teacher')">
-          <div class="rc-icon">👨‍🏫</div>
+        <button type="button" class="role-card teacher" onclick="FC.chooseRole('teacher')" aria-label="選擇老師或家長模式：設定功課範圍、控制功能開關、查看學習報告">
+          <div class="rc-icon" aria-hidden="true">👨‍🏫</div>
           <div class="rc-body">
-            <h3>老師 / 家長模式</h3>
+            <h2>老師 / 家長模式</h2>
             <p>設定功課範圍、控制功能開關、查看學習報告</p>
           </div>
-          <div class="rc-arrow">→</div>
-        </div>
+          <div class="rc-arrow" aria-hidden="true">→</div>
+        </button>
       </div>
 
       <div style="margin-top:32px;text-align:center">
@@ -65,41 +65,41 @@ export function renderGameHub() {
   return `
     <div class="hub-screen fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
-        <h2>🎮 揀個遊戲開始</h2>
+        <button type="button" class="back-btn" onclick="FC.goRoleSelect()" aria-label="返回主選單">←</button>
+        <h1>🎮 揀個遊戲開始</h1>
       </div>
 
       <div class="hub-grid">
-        <div class="game-card available" onclick="FC.playGoodDeedBank()" style="background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#eab308">
-          <div class="gc-icon">🏦</div>
+        <button type="button" class="game-card available" onclick="FC.playGoodDeedBank()" style="background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#eab308" aria-label="好人好事銀行（pilot）：做好事存款，衰嘢扣款，目標存到 $100 變品格富翁">
+          <div class="gc-icon" aria-hidden="true">🏦</div>
           <div class="gc-title">好人好事銀行</div>
           <div class="gc-desc">做好事存款，衰嘢扣款，目標存到 $100 變品格富翁！</div>
-          <div class="gc-tag">pilot</div>
-        </div>
+          <div class="gc-tag" aria-label="pilot 試玩版">pilot</div>
+        </button>
 
-        <div class="game-card available" onclick="FC.goSubjectSelect()" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#7C3AED">
-          <div class="gc-icon">📖</div>
+        <button type="button" class="game-card available" onclick="FC.goSubjectSelect()" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#7C3AED" aria-label="情境答題：17 個品格課題自由探索">
+          <div class="gc-icon" aria-hidden="true">📖</div>
           <div class="gc-title">情境答題</div>
           <div class="gc-desc">17 個品格課題自由探索：12 個 EDB 價值觀 + 5 個友愛校園範疇</div>
-        </div>
+        </button>
 
-        <div class="game-card locked" style="background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:#ef4444;cursor:not-allowed;opacity:0.6">
-          <div class="gc-icon">🌷</div>
+        <div class="game-card locked" style="background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:#ef4444;cursor:not-allowed;opacity:0.6" role="img" aria-label="關係花園（暫未推出）">
+          <div class="gc-icon" aria-hidden="true">🌷</div>
           <div class="gc-title">關係花園</div>
           <div class="gc-desc">（即將推出）</div>
-          <div class="gc-tag">coming soon</div>
+          <div class="gc-tag" aria-hidden="true">coming soon</div>
         </div>
 
-        <div class="game-card locked" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#a855f7;cursor:not-allowed;opacity:0.6">
-          <div class="gc-icon">🎲</div>
+        <div class="game-card locked" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#a855f7;cursor:not-allowed;opacity:0.6" role="img" aria-label="道德大富翁（暫未推出）">
+          <div class="gc-icon" aria-hidden="true">🎲</div>
           <div class="gc-title">道德大富翁</div>
           <div class="gc-desc">（即將推出）</div>
-          <div class="gc-tag">coming soon</div>
+          <div class="gc-tag" aria-hidden="true">coming soon</div>
         </div>
       </div>
 
       <div style="text-align:center;margin-top:20px">
-        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
@@ -156,16 +156,16 @@ export function renderBankPlay(scenario, run) {
              onerror="this.style.display='none'" />
       </div>
 
-      <div class="options" style="margin-top:14px">
+      <div class="options" style="margin-top:14px" role="radiogroup" aria-label="銀行題目選項">
         ${scenario.options.map((opt, i) => {
           const labels = ['A', 'B', 'C', 'D'];
           return `
-            <div class="option-card" onclick="FC.bankChoose('${opt.id}')">
+            <button type="button" class="option-card" onclick="FC.bankChoose('${opt.id}')" aria-label="選項 ${labels[i] || (i+1)}：${opt.text}">
               <img src="assets/images/outcomes/${scenario.id}_opt${i+1}.png" alt=""
-                   class="opt-thumb" onerror="this.style.display='none'" />
-              <span class="opt-badge">${labels[i] || (i+1)}</span>
+                   class="opt-thumb" onerror="this.style.display='none'" aria-hidden="true" />
+              <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
-            </div>
+            </button>
           `;
         }).join('')}
       </div>
@@ -175,7 +175,7 @@ export function renderBankPlay(scenario, run) {
 
 export function renderBankResult(scenario, result, run) {
   if (!result) {
-    return '<div class="container"><p>結果載入失敗</p><button class="btn btn-primary" onclick="FC.exitBank()">← 返 Game Hub</button></div>';
+    return '<div class="container"><p>結果載入失敗</p><button type="button" class="btn btn-primary" onclick="FC.exitBank()">← 返 Game Hub</button></div>';
   }
   const delta = result.moralChange || 0;
   const isPositive = delta > 0;
@@ -185,15 +185,19 @@ export function renderBankResult(scenario, result, run) {
   const isBankrupt = run.status === 'bankrupt';
   const isFinished = run.status === 'finished';
   const target = BANK_CONFIG.TARGET_BALANCE;
+  const announceText = isPositive ? `存款 ${delta} 元，目前結餘 ${balance} 元`
+    : isNeutral ? '無變化'
+    : `扣款 ${Math.abs(delta)} 元，目前結餘 ${balance} 元`;
 
   return `
     <div class="container fade-in" style="max-width:560px">
       <div class="page-header">
-        <h2>🏦 銀行結算</h2>
+        <h1>🏦 銀行結算</h1>
       </div>
+      <h2 class="sr-only" aria-live="polite" aria-atomic="true">${announceText}</h2>
 
-      <div class="bank-stamp ${isPositive ? 'green' : isNeutral ? 'gray' : 'red'}" id="bank-stamp">
-        <div class="stamp-emoji">${isPositive ? '💰' : isNeutral ? '➖' : '💸'}</div>
+      <div class="bank-stamp ${isPositive ? 'green' : isNeutral ? 'gray' : 'red'}" id="bank-stamp" role="status" aria-label="${announceText}">
+        <div class="stamp-emoji" aria-hidden="true">${isPositive ? '💰' : isNeutral ? '➖' : '💸'}</div>
         <div class="stamp-delta">${isPositive ? '+' : ''}${delta} 元</div>
         <div class="stamp-label">${isPositive ? '存款' : isNeutral ? '無變化' : '扣款'}</div>
       </div>
@@ -206,33 +210,33 @@ export function renderBankResult(scenario, result, run) {
       ` : ''}
 
       <div class="result-card ${isPositive ? 'good' : 'bad'}" id="result-card">
-        <div class="result-emoji">${isPositive ? '🌟' : '💪'}</div>
+        <div class="result-emoji" aria-hidden="true">${isPositive ? '🌟' : '💪'}</div>
         <div class="comment">${result.mainComment || ''}</div>
       </div>
 
       <div class="bank-balance-big" style="text-align:center;margin:18px 0">
         <div style="font-size:0.9em;color:var(--text-light)">目前結餘</div>
-        <div class="${delta > 0 ? 'positive' : delta < 0 ? 'negative' : 'neutral'}" style="font-size:2.4em;font-weight:800">$${balance}</div>
+        <div class="${delta > 0 ? 'positive' : delta < 0 ? 'negative' : 'neutral'}" style="font-size:2.4em;font-weight:800" aria-label="目前結餘 ${balance} 元">$${balance}</div>
         <div style="font-size:0.85em;color:var(--text-light)">目標 $${target}</div>
       </div>
 
       ${isWon ? `
-        <div class="bank-end-banner win">
+        <div class="bank-end-banner win" role="status">
           🎉 恭喜！你已經存到 $${balance}，係個「品格富翁」！
         </div>
       ` : isBankrupt ? `
-        <div class="bank-end-banner lose">
+        <div class="bank-end-banner lose" role="status">
           💔 結餘太低，破產喇。今次再嚟過！
         </div>
       ` : isFinished ? `
-        <div class="bank-end-banner end">
+        <div class="bank-end-banner end" role="status">
           🏁 全部 ${BANK_CONFIG.QUESTIONS_PER_RUN} 題做完喇！結餘：$${balance}
         </div>
       ` : ''}
 
       <div class="action-row" style="margin-top:18px">
-        <button class="btn btn-primary" onclick="FC.bankNext()">${isFinished || isBankrupt ? '✓ 結算' : '➡ 下一題'}</button>
-        <button class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
+        <button type="button" class="btn btn-primary" onclick="FC.bankNext()">${isFinished || isBankrupt ? '✓ 結算' : '➡ 下一題'}</button>
+        <button type="button" class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
       </div>
     </div>
   `;
@@ -250,28 +254,28 @@ export function renderBankSummary(run) {
   return `
     <div class="container fade-in" style="max-width:560px">
       <div class="page-header">
-        <h2>🏦 結算單</h2>
+        <h1>🏦 結算單</h1>
       </div>
 
-      <div class="bank-end-banner ${isWon ? 'win' : isBankrupt ? 'lose' : 'end'}" style="font-size:1.1em">
+      <div class="bank-end-banner ${isWon ? 'win' : isBankrupt ? 'lose' : 'end'}" style="font-size:1.1em" role="status">
         ${isWon ? '🎉 品格富翁達陣！' : isBankrupt ? '💔 今次破產喇' : '🏁 旅程結束'}
       </div>
 
-      <div class="progress-grid" style="margin:18px 0">
-        <div class="progress-cell">
-          <div class="num" style="color:${run.balance >= 0 ? '#22c55e' : '#ef4444'}">$${run.balance}</div>
+      <div class="progress-grid" style="margin:18px 0" role="list" aria-label="銀行結算統計">
+        <div class="progress-cell" role="listitem">
+          <div class="num" style="color:${run.balance >= 0 ? '#22c55e' : '#ef4444'}" aria-label="最終結餘 ${run.balance} 元">$${run.balance}</div>
           <div class="label">最終結餘</div>
         </div>
-        <div class="progress-cell">
-          <div class="num">+${totalGain}</div>
+        <div class="progress-cell" role="listitem">
+          <div class="num" aria-label="總存款 ${totalGain} 元">+${totalGain}</div>
           <div class="label">總存款</div>
         </div>
-        <div class="progress-cell">
-          <div class="num">${totalLoss}</div>
+        <div class="progress-cell" role="listitem">
+          <div class="num" aria-label="總扣款 ${totalLoss} 元">${totalLoss}</div>
           <div class="label">總扣款</div>
         </div>
-        <div class="progress-cell">
-          <div class="num">${goodCount}✓ ${badCount}✗</div>
+        <div class="progress-cell" role="listitem">
+          <div class="num" aria-label="好事 ${goodCount} 個，衰事 ${badCount} 個">${goodCount}✓ ${badCount}✗</div>
           <div class="label">好事 / 衰事</div>
         </div>
       </div>
@@ -279,12 +283,12 @@ export function renderBankSummary(run) {
       <div class="card" style="margin-bottom:14px">
         <div style="font-weight:600;margin-bottom:10px">📒 存摺紀錄</div>
         ${run.stamps.length === 0 ? '<div style="color:var(--text-light);font-size:0.9em;text-align:center;padding:12px">冇交易紀錄</div>' : `
-          <div style="display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto">
+          <div style="display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto" role="list" aria-label="存摺交易紀錄">
             ${run.stamps.map((s, i) => `
-              <div class="ledger-row">
-                <span class="ledger-num">#${i+1}</span>
+              <div class="ledger-row" role="listitem">
+                <span class="ledger-num" aria-hidden="true">#${i+1}</span>
                 <span class="ledger-label">${s.label || '—'}</span>
-                <span class="ledger-delta ${s.delta > 0 ? 'positive' : s.delta < 0 ? 'negative' : 'neutral'}">${s.delta > 0 ? '+' : ''}${s.delta} 元</span>
+                <span class="ledger-delta ${s.delta > 0 ? 'positive' : s.delta < 0 ? 'negative' : 'neutral'}" aria-label="${s.delta > 0 ? '存款' : s.delta < 0 ? '扣款' : '無變化'} ${Math.abs(s.delta)} 元">${s.delta > 0 ? '+' : ''}${s.delta} 元</span>
               </div>
             `).join('')}
           </div>
@@ -292,8 +296,8 @@ export function renderBankSummary(run) {
       </div>
 
       <div class="action-row">
-        <button class="btn btn-primary" onclick="FC.playGoodDeedBank()">🔄 再玩一次</button>
-        <button class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
+        <button type="button" class="btn btn-primary" onclick="FC.playGoodDeedBank()">🔄 再玩一次</button>
+        <button type="button" class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
@@ -342,23 +346,25 @@ export function renderModeSelect(currentMode, subjectId) {
   return `
     <div class="mode-screen fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
-        <h2>🎮 選擇遊戲模式</h2>
+        <button type="button" class="back-btn" onclick="FC.goRoleSelect()" aria-label="返回主選單">←</button>
+        <h1>🎮 選擇遊戲模式</h1>
       </div>
 
       <div class="mode-header">
         <p>你鍾意點玩？揀一個模式開始！</p>
       </div>
 
-      <div class="mode-grid">
+      <div class="mode-grid" role="radiogroup" aria-label="遊戲模式">
         ${GAME_MODES.map(m => `
-          <div class="mode-card ${m.id} ${savedMode === m.id ? 'selected' : ''}"
+          <button type="button" class="mode-card ${m.id} ${savedMode === m.id ? 'selected' : ''}"
                style="background:${m.bg};border-color:${m.color}"
-               onclick="FC.selectMode('${m.id}')">
-            <div class="mc-icon">${m.icon}</div>
+               onclick="FC.selectMode('${m.id}')"
+               role="radio" aria-checked="${savedMode === m.id}"
+               aria-label="${m.title}：${m.desc}${savedMode === m.id ? '（已選）' : ''}">
+            <div class="mc-icon" aria-hidden="true">${m.icon}</div>
             <div class="mc-title">${m.title}</div>
             <div class="mc-desc">${m.desc}</div>
-          </div>
+          </button>
         `).join('')}
       </div>
 
@@ -370,14 +376,14 @@ export function renderModeSelect(currentMode, subjectId) {
 
       ${subjectId ? `
         <div style="text-align:center">
-          <button class="btn btn-primary" style="min-width:220px;font-size:1.1em"
+          <button type="button" class="btn btn-primary" style="min-width:220px;font-size:1.1em"
             onclick="FC.goHome()">
             ✅ 確定，開始學習 →
           </button>
         </div>
       ` : `
         <div style="text-align:center">
-          <button class="btn btn-primary" style="min-width:220px;font-size:1.1em"
+          <button type="button" class="btn btn-primary" style="min-width:220px;font-size:1.1em"
             onclick="FC.goSubjectSelect()">
             📚 選擇課題 →
           </button>
@@ -385,7 +391,7 @@ export function renderModeSelect(currentMode, subjectId) {
       `}
 
       <div style="text-align:center;margin-top:16px">
-        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
       </div>
 
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
@@ -414,8 +420,8 @@ export function renderTeacherAssign() {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goTeacher()">←</button>
-        <h2>⚙️ 功能設定</h2>
+        <button type="button" class="back-btn" onclick="FC.goTeacher()" aria-label="返回老師主控台">←</button>
+        <h1>⚙️ 功能設定</h1>
       </div>
 
       <div class="card" style="margin-bottom:14px">
@@ -426,8 +432,9 @@ export function renderTeacherAssign() {
             <div class="ft-label">💡 提示功能</div>
             <div class="ft-desc">學生可以睇提示</div>
           </div>
-          <button class="toggle-switch ${config.hintEnabled ? 'on' : ''}"
-            onclick="FC.toggleTeacherFeature(this, 'hintEnabled')"></button>
+          <button type="button" class="toggle-switch ${config.hintEnabled ? 'on' : ''}"
+            onclick="FC.toggleTeacherFeature(this, 'hintEnabled')"
+            role="switch" aria-checked="${config.hintEnabled}" aria-label="提示功能開關"></button>
         </div>
 
         <div class="feature-toggle">
@@ -435,8 +442,9 @@ export function renderTeacherAssign() {
             <div class="ft-label">⏱️ 計時功能</div>
             <div class="ft-desc">開啟後每題限時答題</div>
           </div>
-          <button class="toggle-switch ${config.timerEnabled ? 'on' : ''}"
-            onclick="FC.toggleTeacherFeature(this, 'timerEnabled')"></button>
+          <button type="button" class="toggle-switch ${config.timerEnabled ? 'on' : ''}"
+            onclick="FC.toggleTeacherFeature(this, 'timerEnabled')"
+            role="switch" aria-checked="${config.timerEnabled}" aria-label="計時功能開關"></button>
         </div>
 
         ${config.timerEnabled ? `
@@ -459,8 +467,9 @@ export function renderTeacherAssign() {
             <div class="ft-label">🔥 Combo 系統</div>
             <div class="ft-desc">開啟連續答啱加分</div>
           </div>
-          <button class="toggle-switch ${config.comboEnabled ? 'on' : ''}"
-            onclick="FC.toggleTeacherFeature(this, 'comboEnabled')"></button>
+          <button type="button" class="toggle-switch ${config.comboEnabled ? 'on' : ''}"
+            onclick="FC.toggleTeacherFeature(this, 'comboEnabled')"
+            role="switch" aria-checked="${config.comboEnabled}" aria-label="Combo 系統開關"></button>
         </div>
 
         <div class="feature-toggle">
@@ -468,13 +477,15 @@ export function renderTeacherAssign() {
             <div class="ft-label">👆 按鈕大小</div>
             <div class="ft-desc">控制答題按鈕尺寸</div>
           </div>
-          <div style="display:flex;gap:6px">
-            <button class="btn ${config.buttonSize==='large'?'btn-primary':'btn-outline'}"
+          <div style="display:flex;gap:6px" role="radiogroup" aria-label="按鈕大小">
+            <button type="button" class="btn ${config.buttonSize==='large'?'btn-primary':'btn-outline'}"
               style="padding:6px 12px;font-size:0.85em;min-height:36px"
-              onclick="FC.setButtonSize('large')">大</button>
-            <button class="btn ${config.buttonSize==='normal'?'btn-primary':'btn-outline'}"
+              onclick="FC.setButtonSize('large')"
+              role="radio" aria-checked="${config.buttonSize==='large'}">大</button>
+            <button type="button" class="btn ${config.buttonSize==='normal'?'btn-primary':'btn-outline'}"
               style="padding:6px 12px;font-size:0.85em;min-height:36px"
-              onclick="FC.setButtonSize('normal')">中</button>
+              onclick="FC.setButtonSize('normal')"
+              role="radio" aria-checked="${config.buttonSize==='normal'}">中</button>
           </div>
         </div>
       </div>
@@ -502,15 +513,16 @@ export function renderTeacherAssign() {
         <p style="font-size:0.88em;color:var(--text-light);margin-bottom:12px">
           老師模式 PIN（預設：admin）
         </p>
+        <label for="teacher-pin-input" style="position:absolute;left:-9999px">老師模式 PIN</label>
         <input type="password" id="teacher-pin-input" value="admin" maxlength="6"
           placeholder="輸入新 PIN"
           style="width:100%;padding:14px;border:2px solid var(--border);border-radius:12px;font-size:1em;box-sizing:border-box;margin-bottom:10px" />
-        <button class="btn btn-outline" style="width:100%;font-size:0.95em"
+        <button type="button" class="btn btn-outline" style="width:100%;font-size:0.95em"
           onclick="FC.saveTeacherPIN()">💾 儲存 PIN</button>
       </div>
 
       <div style="margin-top:16px">
-        <button class="btn btn-primary" style="width:100%"
+        <button type="button" class="btn btn-primary" style="width:100%"
           onclick="FC.saveTeacherConfig()">✅ 儲存所有設定</button>
       </div>
 
@@ -551,31 +563,31 @@ export function renderHome(subjectId) {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goGameHub()">🎮</button>
-        <h2>🌟 友愛教室</h2>
-        <button class="back-btn" onclick="FC.switchStudent()" title="切換學生">🔄</button>
+        <button type="button" class="back-btn" onclick="FC.goGameHub()" aria-label="返回 Game Hub">🎮</button>
+        <h1>🌟 友愛教室</h1>
+        <button type="button" class="back-btn" onclick="FC.switchStudent()" title="切換學生" aria-label="切換學生">🔄</button>
       </div>
 
       ${getStudent() ? renderMoralBar(getStudent()) : ''}
 
       <div class="home-hero">
         <div class="hero-greeting">
-          <div class="hero-emoji">👋</div>
+          <div class="hero-emoji" aria-hidden="true">👋</div>
           <div class="hero-text">
             <div class="hero-line">你好，<span class="hero-name">${studentName}</span>！</div>
             <div class="hero-sub">揀個品格課題開始 🎯</div>
           </div>
         </div>
         <div class="hero-stats">
-          <div class="stat streak-stat ${flameClass}" title="${longest > 0 ? `最長紀錄 ${longest} 日` : '今日開始你嘅 streak！'}">
-            <span class="flame">${flameEmoji}</span>
+          <div class="stat streak-stat ${flameClass}" title="${longest > 0 ? `最長紀錄 ${longest} 日` : '今日開始你嘅 streak！'}" role="status" aria-label="連續學習 ${streak} 日${longest > 0 ? `，最長紀錄 ${longest} 日` : ''}">
+            <span class="flame" aria-hidden="true">${flameEmoji}</span>
             <span class="stat-num">${streak}</span>
             <span class="stat-label">日 streak</span>
           </div>
         </div>
       </div>
 
-      <div class="daily-creed">
+      <div class="daily-creed" role="region" aria-label="今日信條">
         <span class="creed-badge">🌟 今日信條</span>
         <div class="creed-body">
           <div class="creed-title">${dailyCreed.title}</div>
@@ -584,8 +596,8 @@ export function renderHome(subjectId) {
       </div>
 
       <div class="topic-section">
-        <h3 class="section-title">🪷 12 個價值觀（EDB 官方）</h3>
-        <div class="topic-grid">
+        <h2 class="section-title">🪷 12 個價值觀（EDB 官方）</h2>
+        <div class="topic-grid" role="list" aria-label="12 個 EDB 價值觀">
           ${VALUES.map(t => {
             const p = getStudent() ? (getProgress(getStudent()).topicProgress[t.id] || {}) : {};
             const total = p.total || 0;
@@ -594,34 +606,41 @@ export function renderHome(subjectId) {
             const sub = t.description?.split(/[，。,。]/)[0] || t.description || '';
             let statusBadge = '';
             let statusClass = '';
+            let statusText = '';
             if (total === 0) {
               statusClass = 'topic-status--new';
-              statusBadge = '<div class="topic-status">未開始</div>';
+              statusBadge = '<div class="topic-status" aria-hidden="true">未開始</div>';
+              statusText = '未開始';
             } else if (pct >= 100) {
               statusClass = 'topic-status--done';
-              statusBadge = '<div class="topic-status">🏆 已精通</div>';
+              statusBadge = '<div class="topic-status" aria-hidden="true">🏆 已精通</div>';
+              statusText = '已精通';
             } else {
               statusClass = 'topic-status--progress';
-              statusBadge = `<div class="topic-status">${done}/${total} · ${pct}%</div>`;
+              statusBadge = `<div class="topic-status" aria-hidden="true">${done}/${total} · ${pct}%</div>`;
+              statusText = `完成 ${done} 題，共 ${total} 題，${pct}%`;
             }
             return `
-              <div class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${t.id}')">
-                <span class="emoji">${t.emoji}</span>
+              <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${t.id}')"
+                aria-label="${t.title}，${sub}，${statusText}">
+                <span class="emoji" aria-hidden="true">${t.emoji}</span>
                 <div class="title">${t.title}</div>
                 <div class="sub">${sub}</div>
                 ${total > 0 ? `
-                  <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="${t.title} 進度">
+                    <div class="progress-fill" style="width:${pct}%"></div>
+                  </div>
                 ` : ''}
                 ${statusBadge}
-              </div>
+              </button>
             `;
           }).join('')}
         </div>
       </div>
 
       <div class="topic-section">
-        <h3 class="section-title">🌈 友愛校園 5 範疇（SEL / 安全）</h3>
-        <div class="topic-grid">
+        <h2 class="section-title">🌈 友愛校園 5 範疇（SEL / 安全）</h2>
+        <div class="topic-grid" role="list" aria-label="5 個友愛校園範疇">
           ${CARING.map(t => {
             const p = getStudent() ? (getProgress(getStudent()).topicProgress[t.id] || {}) : {};
             const total = p.total || 0;
@@ -630,36 +649,43 @@ export function renderHome(subjectId) {
             const sub = t.description?.split(/[，。,。]/)[0] || t.description || '';
             let statusBadge = '';
             let statusClass = '';
+            let statusText = '';
             if (total === 0) {
               statusClass = 'topic-status--new';
-              statusBadge = '<div class="topic-status">未開始</div>';
+              statusBadge = '<div class="topic-status" aria-hidden="true">未開始</div>';
+              statusText = '未開始';
             } else if (pct >= 100) {
               statusClass = 'topic-status--done';
-              statusBadge = '<div class="topic-status">🏆 已精通</div>';
+              statusBadge = '<div class="topic-status" aria-hidden="true">🏆 已精通</div>';
+              statusText = '已精通';
             } else {
               statusClass = 'topic-status--progress';
-              statusBadge = `<div class="topic-status">${done}/${total} · ${pct}%</div>`;
+              statusBadge = `<div class="topic-status" aria-hidden="true">${done}/${total} · ${pct}%</div>`;
+              statusText = `完成 ${done} 題，共 ${total} 題，${pct}%`;
             }
             return `
-              <div class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${t.id}')">
-                <span class="emoji">${t.emoji}</span>
+              <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${t.id}')"
+                aria-label="${t.title}，${sub}，${statusText}">
+                <span class="emoji" aria-hidden="true">${t.emoji}</span>
                 <div class="title">${t.title}</div>
                 <div class="sub">${sub}</div>
                 ${total > 0 ? `
-                  <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+                  <div class="progress-bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="${t.title} 進度">
+                    <div class="progress-fill" style="width:${pct}%"></div>
+                  </div>
                 ` : ''}
                 ${statusBadge}
-              </div>
+              </button>
             `;
           }).join('')}
         </div>
       </div>
 
       <div class="home-footer-grid">
-        <button class="btn btn-outline" onclick="FC.goProgress()">📊 我的進度</button>
-        <button class="btn btn-outline" onclick="FC.goSettings()">⚙️ 設定</button>
-        <button class="btn btn-outline" onclick="FC.switchStudent()">🔄 切換學生</button>
-        <button class="btn btn-outline" onclick="FC.goGameHub()">🎮 返回 Game Hub</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goProgress()">📊 我的進度</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goSettings()">⚙️ 設定</button>
+        <button type="button" class="btn btn-outline" onclick="FC.switchStudent()">🔄 切換學生</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goGameHub()">🎮 返回 Game Hub</button>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
@@ -675,26 +701,29 @@ export function renderTopicList(topicId, subjectId) {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goHome()">←</button>
-        <h2>${topic.emoji} ${topic.title}</h2>
+        <button type="button" class="back-btn" onclick="FC.goHome()" aria-label="返回主頁">←</button>
+        <h1>${topic.emoji} ${topic.title}</h1>
         ${subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''}
       </div>
       <p style="color:var(--text-light);margin-bottom:16px">${topic.description}</p>
 
-      <ul class="scenario-list">
+      <ul class="scenario-list" role="list" aria-label="${topic.title} 嘅 ${topicScenarios.length} 個情境">
         ${topicScenarios.map(s => {
           const done = getStudent() && isCompleted(getStudent(), s.id);
           return `
-            <li class="scenario-item ${done ? 'completed' : ''}" onclick="FC.play('${s.id}')">
-              <div class="check">${done ? '✓' : ''}</div>
-              <div class="info">
-                <div class="title">${s.title}</div>
-                <div class="sub">${s.background || ''}</div>
-              </div>
-              <span style="font-size:1.2em">→</span>
+            <li role="listitem">
+              <button type="button" class="scenario-item ${done ? 'completed' : ''}" onclick="FC.play('${s.id}')"
+                aria-label="${s.title}，${s.background || ''}${done ? '，已完成' : ''}">
+                <span class="check" aria-hidden="true">${done ? '✓' : ''}</span>
+                <span class="info">
+                  <span class="title">${s.title}</span>
+                  <span class="sub">${s.background || ''}</span>
+                </span>
+                <span aria-hidden="true" style="font-size:1.2em">→</span>
+              </button>
             </li>
           `;
-        })}
+        }).join('')}
       </ul>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
@@ -715,9 +744,9 @@ export function renderPlay(scenarioId, subjectId) {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goTopic('${s.topicId}')">←</button>
-        <h2 style="flex:1;text-align:center">${topic?.emoji || ''} ${topic?.title || ''}</h2>
-        <span class="play-progress">第 ${idxInTopic} / ${totalInTopic} 題</span>
+        <button type="button" class="back-btn" onclick="FC.goTopic('${s.topicId}')" aria-label="返回 ${topic?.title || '主題'}">←</button>
+        <h1 style="flex:1;text-align:center">${topic?.emoji || ''} ${topic?.title || ''}</h1>
+        <span class="play-progress" aria-label="第 ${idxInTopic} 題，共 ${totalInTopic} 題">第 ${idxInTopic} / ${totalInTopic} 題</span>
       </div>
 
       <div class="play-top">
@@ -726,22 +755,22 @@ export function renderPlay(scenarioId, subjectId) {
       </div>
 
       <div class="scenario-desc">
-        <button class="inline-voice-btn" onclick="FC.speak()" title="朗讀題目">🔊</button>
+        <button type="button" class="inline-voice-btn" onclick="FC.speak()" title="朗讀題目" aria-label="朗讀題目">🔊</button>
         ${s.description}
       </div>
 
       ${(s.hints && s.hints.length) ? `
       <div class="hints-panel" id="hints-panel">
-        <button type="button" class="hints-toggle" onclick="FC.toggleHints()" aria-expanded="false" id="hints-toggle">
-          <span class="hints-icon">💡</span>
+        <button type="button" class="hints-toggle" onclick="FC.toggleHints()" aria-expanded="false" aria-controls="hints-list" id="hints-toggle">
+          <span class="hints-icon" aria-hidden="true">💡</span>
           <span>提示</span>
-          <span class="hints-count">${s.hints.length}</span>
-          <span class="hints-chev" id="hints-chev">▾</span>
+          <span class="hints-count" aria-label="${s.hints.length} 個提示">${s.hints.length}</span>
+          <span class="hints-chev" id="hints-chev" aria-hidden="true">▾</span>
         </button>
         <div class="hints-list" id="hints-list" hidden>
           ${s.hints.map((h, i) => `
             <div class="hint-item" data-hint-idx="${i}" hidden>
-              <span class="hint-num">${i + 1}</span>
+              <span class="hint-num" aria-hidden="true">${i + 1}</span>
               <span class="hint-text">${h}</span>
             </div>
           `).join('')}
@@ -756,9 +785,9 @@ export function renderPlay(scenarioId, subjectId) {
              onerror="this.style.display='none'" />
       </div>
 
-      <div class="options-divider">— 揀你嘅選擇 —</div>
+      <div class="options-divider" aria-hidden="true">— 揀你嘅選擇 —</div>
 
-      <div class="options">
+      <div class="options" role="radiogroup" aria-label="${s.title} 嘅選擇題">
         ${s.options.map((opt, i) => {
           const labels = ['A', 'B', 'C', 'D'];
           // 從 effects 拎第一個 moralChange 做「道德傾向」label
@@ -767,10 +796,11 @@ export function renderPlay(scenarioId, subjectId) {
           const valueLabel = mc > 0 ? `＋${mc} 道德` : (mc < 0 ? `${mc} 道德` : '中性');
           const valueClass = mc > 0 ? 'good' : (mc < 0 ? 'bad' : 'neutral');
           return `
-            <div class="option-card" onclick="FC.choose('${opt.id}')">
+            <button type="button" class="option-card" onclick="FC.choose('${opt.id}')"
+              aria-label="選項 ${labels[i] || (i+1)}：${opt.text}，${valueLabel}">
               <img src="assets/images/outcomes/${s.id}_opt${i+1}.png" alt=""
-                   class="opt-thumb" onerror="this.style.display='none'" />
-              <span class="opt-badge">${labels[i] || (i+1)}</span>
+                   class="opt-thumb" onerror="this.style.display='none'" aria-hidden="true" />
+              <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
               <span class="opt-value opt-value-${valueClass}" aria-hidden="true">${valueLabel}</span>
               <button type="button" class="opt-read"
@@ -778,13 +808,14 @@ export function renderPlay(scenarioId, subjectId) {
                 onmousedown="FC._stopEvt(event)"
                 ontouchstart="FC._stopEvt(event)"
                 ontouchend="FC._stopEvt(event)"
-                title="朗讀呢個選項">🔊</button>
-            </div>
+                title="朗讀呢個選項"
+                aria-label="朗讀選項 ${labels[i] || (i+1)}">🔊</button>
+            </button>
           `;
         }).join('')}
       </div>
 
-      <button type="button" class="voice-fab" onclick="FC.speak()" title="朗讀題目">🔊</button>
+      <button type="button" class="voice-fab" onclick="FC.speak()" title="朗讀題目" aria-label="朗讀題目">🔊</button>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
@@ -792,14 +823,16 @@ export function renderPlay(scenarioId, subjectId) {
 
 export function renderResult(data, subjectId) {
   if (!data) {
-    return '<div class="container fade-in"><p>⚠️ 結果載入失敗，請重試。</p><button class="btn btn-primary" onclick="FC.goHome()">← 返首頁</button></div>';
+    return '<div class="container fade-in"><p>⚠️ 結果載入失敗，請重試。</p><button type="button" class="btn btn-primary" onclick="FC.goHome()">← 返首頁</button></div>';
   }
   const { option, moralChange, mainComment, creeds, creedText, scenarioImage, scenarioTitle } = data;
   const isGood = moralChange >= 0;
   const subColor = getSubjectColor(subjectId);
+  const scoreText = `${isGood ? '加咗 ' : '減咗 '}${Math.abs(moralChange)} 道德分${isGood ? '，做得好好！' : '，下次再努力。'}`;
 
   return `
     <div class="container fade-in" id="result-root">
+      <h1 class="sr-only" aria-live="polite" aria-atomic="true">${scenarioTitle}嘅結果：${scoreText}</h1>
       ${subjectId ? `<div style="text-align:center;margin-bottom:8px">
         <span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>
       </div>` : ''}
@@ -807,16 +840,16 @@ export function renderResult(data, subjectId) {
       <div class="scenario-image-wrap" style="max-height:180px;margin-bottom:16px;border-radius:16px;overflow:hidden">
         <img src="${scenarioImage}" alt="${scenarioTitle}" style="width:100%;max-height:180px;object-fit:cover" />
       </div>` : ''}
-      <div class="result-card ${isGood ? 'good' : 'bad'}" id="result-card">
-        <div class="result-emoji">${isGood ? '🌟' : '💪'}</div>
+      <div class="result-card ${isGood ? 'good' : 'bad'}" id="result-card" role="status" aria-label="${scoreText}">
+        <div class="result-emoji" aria-hidden="true">${isGood ? '🌟' : '💪'}</div>
         <div class="comment">${mainComment || '你做出了選擇！'}</div>
-        <div class="moral-score">${isGood ? '＋' : ''}${moralChange} 道德分</div>
+        <div class="moral-score" aria-label="${scoreText}">${isGood ? '＋' : ''}${moralChange} 道德分</div>
       </div>
 
-      <div class="creed-show">
+      <div class="creed-show" role="region" aria-label="學校信條">
         <div class="creed-header">
           <div class="label">🌟 學校信條</div>
-          <button class="inline-voice-btn" onclick="FC.speakCreeds()" title="朗讀信條">🔊</button>
+          <button type="button" class="inline-voice-btn" onclick="FC.speakCreeds()" title="朗讀信條" aria-label="朗讀信條">🔊</button>
         </div>
         <div class="items">
           ${(creedText || []).map(c => `<div class="item">${c}</div>`).join('')}
@@ -830,16 +863,16 @@ export function renderResult(data, subjectId) {
       </div>` : ''}
 
       <div class="action-row" id="result-actions">
-        <button class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
-        <button class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
+        <button type="button" class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
       </div>
 
       <div class="action-cta-fab" id="result-cta-fab" hidden>
-        <button class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
-        <button class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
+        <button type="button" class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
       </div>
 
-      <button class="voice-fab" onclick="FC.speakCreeds()" title="朗讀信條">🔊</button>
+      <button type="button" class="voice-fab" onclick="FC.speakCreeds()" title="朗讀信條" aria-label="朗讀信條">🔊</button>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
   `;
@@ -857,22 +890,22 @@ export function renderProgress(subjectId) {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goHome()">←</button>
-        <h2>📊 我的進度</h2>
+        <button type="button" class="back-btn" onclick="FC.goHome()" aria-label="返回主頁">←</button>
+        <h1>📊 我的進度</h1>
         ${subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''}
       </div>
 
-      <div class="progress-grid">
-        <div class="progress-cell big">
-          <div class="num">${total}</div>
+      <div class="progress-grid" role="list" aria-label="學習統計">
+        <div class="progress-cell big" role="listitem">
+          <div class="num" aria-label="總道德分 ${total}">${total}</div>
           <div class="label">🎯 總道德分</div>
         </div>
-        <div class="progress-cell">
-          <div class="num">${completed}</div>
+        <div class="progress-cell" role="listitem">
+          <div class="num" aria-label="已完成 ${completed} 個場景">${completed}</div>
           <div class="label">📝 已完成場景</div>
         </div>
-        <div class="progress-cell">
-          <div class="num">${p.lastPlayed || '—'}</div>
+        <div class="progress-cell" role="listitem">
+          <div class="num" aria-label="最近遊玩 ${p.lastPlayed || '從未'}">${p.lastPlayed || '—'}</div>
           <div class="label">🗓️ 最近遊玩</div>
         </div>
       </div>
@@ -913,8 +946,8 @@ export function renderProgress(subjectId) {
       }).join('')}
 
       <div class="action-row">
-        <button class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出進度</button>
-        <button class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
+        <button type="button" class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出進度</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
@@ -944,8 +977,8 @@ export function renderSettings() {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.goRoleSelect()">←</button>
-        <h2>⚙️ 個人化設定</h2>
+        <button type="button" class="back-btn" onclick="FC.goRoleSelect()" aria-label="返回主選單">←</button>
+        <h1>⚙️ 個人化設定</h1>
       </div>
 
       <div class="card" style="margin-bottom:14px">
@@ -954,12 +987,12 @@ export function renderSettings() {
           揀過嘅每個選項都會記低喺本地，包括 category 同答得啱唔啱。
           匯出 CSV 畀老師，就可以分析邊個 category 答錯率最高。
         </div>
-        <div id="analytics-summary" style="font-size:0.88em;color:var(--text-light);margin-bottom:10px;padding:8px 10px;background:var(--bg-soft, #f7f7fa);border-radius:8px">
+        <div id="analytics-summary" style="font-size:0.88em;color:var(--text-light);margin-bottom:10px;padding:8px 10px;background:var(--bg-soft, #f7f7fa);border-radius:8px" aria-live="polite" aria-atomic="true">
           載入中…
         </div>
         <div class="action-row">
-          <button class="btn btn-primary" onclick="FC.exportAnalyticsCSV()" style="flex:1">📤 匯出學習記錄 (CSV)</button>
-          <button class="btn btn-outline" onclick="FC.clearAnalytics()" style="font-size:0.85em">🗑️ 清除</button>
+          <button type="button" class="btn btn-primary" onclick="FC.exportAnalyticsCSV()" style="flex:1">📤 匯出學習記錄 (CSV)</button>
+          <button type="button" class="btn btn-outline" onclick="FC.clearAnalytics()" style="font-size:0.85em">🗑️ 清除</button>
         </div>
       </div>
 
@@ -967,35 +1000,39 @@ export function renderSettings() {
         <div style="font-weight:600;margin-bottom:14px">🔊 語音朗讀</div>
         <div class="setting-row" style="margin-bottom:12px">
           <div>
-            <strong>開 / 關</strong>
+            <strong id="voice-toggle-label">開 / 關</strong>
             <div style="font-size:0.85em;color:var(--text-light)">自動朗讀題目和信條</div>
           </div>
-          <div class="toggle ${enabled ? 'on' : ''}" data-key="voice" onclick="FC.toggleVoice(this)"></div>
+          <button type="button" class="toggle ${enabled ? 'on' : ''}" data-key="voice" onclick="FC.toggleVoice(this)"
+            role="switch" aria-checked="${enabled}" aria-labelledby="voice-toggle-label"
+            aria-label="語音朗讀開關"></button>
         </div>
         <div style="margin-bottom:12px">
           <div style="margin-bottom:6px">
             <strong>發音語言</strong>
             <div style="font-size:0.82em;color:var(--text-light);margin-top:2px">揀錯會 load 國語而唔係粵語</div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:6px">
+          <div style="display:flex;flex-wrap:wrap;gap:6px" role="radiogroup" aria-label="發音語言">
             ${(window.FC?.TTS_LANGS || []).map(l => `
-              <button class="btn"
+              <button type="button" class="btn"
                 data-active="${currentLang === l.id}"
                 style="flex:1;min-width:0;font-size:0.88em;padding:8px 6px;${currentLang === l.id ? 'background:var(--primary);color:#fff;border:3px solid var(--primary);' : 'background:transparent;border:3px solid var(--primary);color:var(--primary);'}"
                 onclick="FC.setTTSLang('${l.id}')"
-                title="${l.hint}">${l.label}</button>
+                title="${l.hint}"
+                role="radio" aria-checked="${currentLang === l.id}">${l.label}</button>
             `).join('')}
           </div>
         </div>
         <div style="margin-bottom:10px">
           <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-            <strong>朗讀速度</strong>
+            <label for="speed-range"><strong>朗讀速度</strong></label>
             <span class="val-label" style="color:var(--primary);font-weight:600" data-for="speed">${parseFloat(speed).toFixed(2)}x</span>
           </div>
-          <input type="range" min="0.5" max="1.5" step="0.05" value="${speed}"
+          <input id="speed-range" type="range" min="0.5" max="1.5" step="0.05" value="${speed}"
             oninput="FC.setSpeed(this.value)"
+            aria-label="朗讀速度，目前 ${parseFloat(speed).toFixed(2)}x"
             style="width:100%;accent-color:var(--primary)" />
-          <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)">
+          <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)" aria-hidden="true">
             <span>慢</span><span>正常</span><span>快</span>
           </div>
         </div>
@@ -1005,35 +1042,37 @@ export function renderSettings() {
         <div style="font-weight:600;margin-bottom:14px">📝 文字顯示</div>
         <div style="margin-bottom:12px">
           <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-            <strong>字體大小</strong>
+            <label for="fs-range"><strong>字體大小</strong></label>
             <span class="val-label" style="color:var(--primary);font-weight:600" data-for="fs">${fsLabel}</span>
           </div>
-          <input type="range" min="16" max="32" step="2" value="${fontSize}"
+          <input id="fs-range" type="range" min="16" max="32" step="2" value="${fontSize}"
             oninput="FC.setFontSize(this.value)"
+            aria-label="字體大小，目前 ${fontSize} 像素（${fsLabel}）"
             style="width:100%;accent-color:var(--primary)" />
-          <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)">
+          <div style="display:flex;justify-content:space-between;font-size:0.8em;color:var(--text-light)" aria-hidden="true">
             <span>Aa</span><span style="font-size:1.2em">Aa</span><span style="font-size:1.5em">Aa</span>
           </div>
         </div>
         <div style="margin-bottom:12px">
           <div style="display:flex;justify-content:space-between;margin-bottom:6px">
-            <strong>行距</strong>
+            <label for="lh-range"><strong>行距</strong></label>
             <span class="val-label" style="color:var(--primary);font-weight:600" data-for="lh">${lineHeight}</span>
           </div>
-          <input type="range" min="1.2" max="2.2" step="0.1" value="${lineHeight}"
+          <input id="lh-range" type="range" min="1.2" max="2.2" step="0.1" value="${lineHeight}"
             oninput="FC.setLineHeight(this.value)"
+            aria-label="行距，目前 ${lineHeight}"
             style="width:100%;accent-color:var(--primary)" />
         </div>
         <div>
           <div style="margin-bottom:6px"><strong>間格</strong></div>
-          <div style="display:flex;gap:8px">
-            <button class="btn ${spacing==='narrow'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('narrow')" id="sp-narrow" style="flex:1;padding:8px;font-size:0.9em">窄</button>
-            <button class="btn ${spacing==='medium'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('medium')" id="sp-medium" style="flex:1;padding:8px;font-size:0.9em">中</button>
-            <button class="btn ${spacing==='wide'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('wide')" id="sp-wide" style="flex:1;padding:8px;font-size:0.9em">闊</button>
+          <div style="display:flex;gap:8px" role="radiogroup" aria-label="間距">
+            <button type="button" class="btn ${spacing==='narrow'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('narrow')" id="sp-narrow" role="radio" aria-checked="${spacing==='narrow'}" style="flex:1;padding:8px;font-size:0.9em">窄</button>
+            <button type="button" class="btn ${spacing==='medium'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('medium')" id="sp-medium" role="radio" aria-checked="${spacing==='medium'}" style="flex:1;padding:8px;font-size:0.9em">中</button>
+            <button type="button" class="btn ${spacing==='wide'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('wide')" id="sp-wide" role="radio" aria-checked="${spacing==='wide'}" style="flex:1;padding:8px;font-size:0.9em">闊</button>
           </div>
         </div>
         <div style="margin-top:12px;text-align:center">
-          <button class="btn btn-outline" onclick="FC.resetSettings()" style="color:var(--text-light);font-size:0.85em">🔄 重置所有設定</button>
+          <button type="button" class="btn btn-outline" onclick="FC.resetSettings()" style="color:var(--text-light);font-size:0.85em">🔄 重置所有設定</button>
         </div>
       </div>
 
@@ -1044,27 +1083,27 @@ export function renderSettings() {
           &nbsp;·&nbsp;上次同步：<span id="settings-last-sync">${lastSync}</span>
         </div>
         <div class="action-row">
-          <button class="btn btn-outline" onclick="FC.forceSync()">🔄 立即同步</button>
-          <button class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出</button>
-          <button class="btn btn-outline" onclick="FC.importMyData()">📥 匯入</button>
+          <button type="button" class="btn btn-outline" onclick="FC.forceSync()">🔄 立即同步</button>
+          <button type="button" class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出</button>
+          <button type="button" class="btn btn-outline" onclick="FC.importMyData()">📥 匯入</button>
         </div>
       </div>
 
       <div class="card">
         <div style="font-weight:600;margin-bottom:10px">👥 資料管理</div>
         <div class="action-row">
-          <button class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出我的進度</button>
-          <button class="btn btn-outline" onclick="FC.importMyData()">📥 匯入進度</button>
+          <button type="button" class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出我的進度</button>
+          <button type="button" class="btn btn-outline" onclick="FC.importMyData()">📥 匯入進度</button>
         </div>
       </div>
 
       <div class="card">
         <div style="font-weight:600;margin-bottom:10px">🔐 老師模式</div>
-        <button class="btn btn-primary" onclick="FC.goTeacher()">進入老師模式</button>
+        <button type="button" class="btn btn-primary" onclick="FC.goTeacher()">進入老師模式</button>
       </div>
 
-      <div class="privacy-notice" style="background:#fffbe6;border:1px solid #faad14;border-radius:12px;padding:16px;margin-top:24px;font-size:14px;color:#8a6d3b">
-        <h4 style="margin-bottom:8px">🔒 資料收集說明</h4>
+      <div class="privacy-notice" role="region" aria-label="資料收集說明" style="background:#fffbe6;border:1px solid #faad14;border-radius:12px;padding:16px;margin-top:24px;font-size:14px;color:#8a6d3b">
+        <h2 style="margin-bottom:8px;font-size:1em">🔒 資料收集說明</h2>
         <p>本應用使用瀏覽器本地儲存（localStorage）保存以下資料：</p>
         <ul style="margin:8px 0 0 20px">
           <li>個人化設定（字體大小、行距、朗讀速度）</li>

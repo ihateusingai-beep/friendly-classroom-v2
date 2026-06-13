@@ -1,1 +1,7 @@
 node_modules/.cache/
+# Intermediate / one-off scripts not part of the app
+*.py
+data/*.bak
+data/.DS_Store
+.tools-cache/
+

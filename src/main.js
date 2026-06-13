@@ -27,6 +27,11 @@ const app = document.getElementById('app');
 applyCSS(); // 套用個人化 CSS 參數
 initSFX();  // 初始化遊戲音效
 
+// SR announce when skip-link jumps to main (move focus to <main> so SR picks it up)
+document.querySelector('.skip-link')?.addEventListener('click', () => {
+  setTimeout(() => app.focus({ preventScroll: true }), 50);
+});
+
 // ── EventBus：道德值 Bar 即時更新 ──
 bus.on('moral:updated', (e) => {
   const current = getStudent();
@@ -74,18 +79,20 @@ bus.on('sync:status', (e) => {
     if (offlineBannerEl) return;
     offlineBannerEl = document.createElement('div');
     offlineBannerEl.id = 'offline-banner';
+    offlineBannerEl.setAttribute('role', 'status');
+    offlineBannerEl.setAttribute('aria-live', 'polite');
     offlineBannerEl.style.cssText = `
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      background: #ff4d4f;
-      color: white;
+      background: #b91c1c;
+      color: #ffffff;
       text-align: center;
       padding: 10px;
       font-size: 14px;
       z-index: 9998;
-      font-weight: 500;
+      font-weight: 600;
     `;
     offlineBannerEl.textContent = '📴 離線模式 — 進度將在恢復連線後自動同步';
     document.body.appendChild(offlineBannerEl);
@@ -522,27 +529,29 @@ function renderStudentSelect() {
   const saved = getAllStudents();  // 從 progress.js 動態讀取
   return `
     <div class="container fade-in" style="max-width:460px;padding-top:40px">
-      <h2 style="text-align:center;margin-bottom:24px">👤 選擇學生</h2>
-      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px">
+      <h1 style="text-align:center;margin-bottom:24px">👤 選擇學生</h1>
+      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px" role="list" aria-label="已登記嘅學生">
         ${saved.map(student => `
-          <div class="student-card" onclick="FC.selectStudent('${student.name}')">
-            <div class="avatar">${student.emoji || '👤'}</div>
-            <div class="info">
-              <div class="name">${student.name}</div>
-              <div class="sub">按此開始學習</div>
-            </div>
-            <div class="arrow">→</div>
-          </div>
+          <button type="button" class="student-card" onclick="FC.selectStudent('${student.name}')" role="listitem"
+            aria-label="選擇學生 ${student.name}，按此開始學習">
+            <span class="avatar" aria-hidden="true">${student.emoji || '👤'}</span>
+            <span class="info">
+              <span class="name">${student.name}</span>
+              <span class="sub">按此開始學習</span>
+            </span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </button>
         `).join('')}
       </div>
       <div style="text-align:center;color:var(--text-light);margin-bottom:16px;font-size:0.9em">— 或新增學生 —</div>
       <div style="background:var(--card);border-radius:14px;padding:16px;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
+        <label for="new-student-name" class="sr-only">新學生名字</label>
         <input id="new-student-name" type="text" inputmode="none" autocomplete="off" placeholder="輸入新學生名字"
           style="width:100%;padding:14px;border:2px solid var(--border);border-radius:10px;font-size:1em;margin-bottom:10px;box-sizing:border-box" />
-        <button class="btn btn-success" style="width:100%" onclick="FC.addStudent()">➕ 新增學生</button>
+        <button type="button" class="btn btn-success" style="width:100%" onclick="FC.addStudent()">➕ 新增學生</button>
       </div>
       <div style="margin-top:16px;text-align:center">
-        <button class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
@@ -580,18 +589,19 @@ window.FC.doLogin = function() {
 function renderSubjectSelect() {
   return `
     <div class="container fade-in" style="max-width:500px">
-      <h2 style="text-align:center;margin-bottom:20px">📚 選擇科目</h2>
-      <div class="subject-grid">
+      <h1 style="text-align:center;margin-bottom:20px">📚 選擇科目</h1>
+      <div class="subject-grid" role="list" aria-label="科目清單">
         ${getAllSubjects().map(sub => `
-          <button class="subject-btn" style="background:${sub.bgColor};border-color:${sub.color}"
-            onclick="FC.selectSubject('${sub.id}')">
-            <div style="font-size:2em">${sub.emoji}</div>
-            <div style="font-weight:600;color:${sub.color}">${sub.title}</div>
+          <button type="button" class="subject-btn" style="background:${sub.bgColor};border-color:${sub.color}"
+            onclick="FC.selectSubject('${sub.id}')" role="listitem"
+            aria-label="選擇科目 ${sub.title}">
+            <span style="font-size:2em" aria-hidden="true">${sub.emoji}</span>
+            <span style="font-weight:600;color:${sub.color}">${sub.title}</span>
           </button>
         `).join('')}
       </div>
       <div style="margin-top:12px;text-align:center">
-        <button class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
       </div>
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
     </div>
