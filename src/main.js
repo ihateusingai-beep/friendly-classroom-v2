@@ -16,6 +16,7 @@ import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.j
 import { bus } from './domain/EventBus.js';
 import { getMoralBarData } from './domain/Moral.js';
 import { initSync, syncNow, getSyncStatus } from './sync.js';
+import { logInteraction, markScenarioShown, exportInteractionsCSV, getStats, clearInteractions } from './domain/Analytics.js';
 import scenariosData from '../data/scenarios.json';
 
 // ── Vite HMR 破壞 DOM 寫入，強制停用 ──
@@ -148,6 +149,7 @@ window.FC.goTopic = goTopic;
 
 export function play(scenarioId) {
   localStorage.setItem('fc_last_scenario', scenarioId); // guard: TTS trigger
+  markScenarioShown(); // analytics: response time 起點
   state = { ...state, view: 'play', scenarioId };
   render();
 }
@@ -159,6 +161,23 @@ export function choose(optionId) {
     console.error('[FC] chooseOption returned null, scenarioId=', state.scenarioId, 'optionId=', optionId);
     goHome();
     return;
+  }
+  // analytics: log this interaction (老師想知邊個 category 答錯率高)
+  try {
+    const sc = playScenario(state.scenarioId);
+    if (sc) {
+      const optIdx = sc.options.findIndex(o => o.id === optionId);
+      logInteraction({
+        scenarioId: sc.id,
+        topicId: sc.topicId,
+        category: sc.valueCategory || '',
+        optionId,
+        optionIndex: optIdx >= 0 ? optIdx + 1 : 0,
+        moralChange: data.moralChange,
+      }, state.student, state.gameMode);
+    }
+  } catch (e) {
+    console.warn('[FC] analytics log failed:', e.message);
   }
   state = { ...state, view: 'result', resultData: data };
   render();
@@ -297,6 +316,19 @@ window.FC.bankChoose = function(optionId) {
   const optIdx = scenario.options.findIndex(o => o.id === optionId);
   result.outcomeImage = `assets/images/outcomes/${scenario.id}_opt${optIdx + 1}.png`;
   recordBankTransaction(result.moralChange, scenario.title);
+  // analytics: 銀行遊戲嘅 interaction 都 log
+  try {
+    logInteraction({
+      scenarioId: scenario.id,
+      topicId: scenario.topicId,
+      category: scenario.valueCategory || '',
+      optionId,
+      optionIndex: optIdx >= 0 ? optIdx + 1 : 0,
+      moralChange: result.moralChange,
+    }, getStudent(), 'bank');
+  } catch (e) {
+    console.warn('[FC] bank analytics log failed:', e.message);
+  }
   state = {
     ...state,
     view: 'bank-result',
@@ -701,6 +733,61 @@ window.FC.resetSettings = function() {
   render();
 };
 
+// ── Analytics export (Phase 1: 純 client-side, 老師攞 CSV 走) ──
+window.FC.exportAnalyticsCSV = function() {
+  try {
+    const result = exportInteractionsCSV();
+    if (result.count === 0) {
+      alert('📊 仲未有學習記錄\n\n先玩幾個 scenario 先有 log 喺 localStorage。');
+      return;
+    }
+    alert(`✅ 已匯出 ${result.count} 條學習記錄\n\n檔案：${result.filename}\n\n可以分享畀老師 / 拖入 Excel / Google Sheet 開。`);
+  } catch (e) {
+    console.error('[FC] exportAnalyticsCSV failed:', e.message);
+    alert('❌ 匯出失敗：' + e.message);
+  }
+};
+
+window.FC.clearAnalytics = function() {
+  if (!confirm('⚠️ 確定清除所有學習記錄？\n\n清除後將無法復原。')) return;
+  clearInteractions();
+  render();
+};
+
+window.FC.getAnalyticsStats = getStats;
+
+// ── 更新 settings 頁嘅 analytics summary ──
+function updateAnalyticsSummary() {
+  const el = document.getElementById('analytics-summary');
+  if (!el) return;
+  try {
+    const stats = getStats();
+    if (stats.totalRows === 0) {
+      el.textContent = '📭 仲未有學習記錄 — 玩幾個 scenario 就會見到。';
+      return;
+    }
+    // 揾 top 3 答錯率最高嘅 categories
+    const cats = Object.entries(stats.byCategory)
+      .filter(([k]) => k && k !== '(uncategorized)')
+      .sort((a, b) => b[1].wrongRate - a[1].wrongRate)
+      .slice(0, 3);
+    const lines = [
+      `📝 總作答：${stats.totalRows} 題 · ✅ 答啱率：${(stats.correctRate * 100).toFixed(0)}%` +
+        (stats.avgResponseTimeMs ? ` · ⏱️ 平均 ${(stats.avgResponseTimeMs / 1000).toFixed(1)}s` : ''),
+    ];
+    if (cats.length) {
+      lines.push('📊 答錯率最高：');
+      cats.forEach(([name, c], i) => {
+        lines.push(`  ${i + 1}. ${name} — ${(c.wrongRate * 100).toFixed(0)}% (${c.wrong}/${c.total})`);
+      });
+    }
+    el.innerHTML = lines.map(l => l.replace(/\n/g, '<br>')).join('<br>')
+      .replace(/(答錯率最高：)/g, '<strong>$1</strong>');
+  } catch (e) {
+    el.textContent = '⚠️ 載入失敗：' + e.message;
+  }
+}
+
 // ── Force sync ──
 window.FC.forceSync = async function() {
   const name = getStudent();
@@ -774,6 +861,8 @@ function render() {
       default: html = '<div class="container"><p>頁面不存在</p></div>';
     }
     app.innerHTML = html;
+    // Post-render hooks
+    if (state.view === 'settings') updateAnalyticsSummary();
   } catch(e) {
     console.error('RENDER ERROR:', e.message, e.stack);
     app.innerHTML = '<pre style="color:red;padding:20px">[FC] Render Error:\n' + e.message + '\n' + (e.stack||'').split('\n').slice(0,5).join('\n') + '</pre>';

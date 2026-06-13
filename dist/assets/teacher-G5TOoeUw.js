@@ -1,4 +1,4 @@
-import{g as s,a as c}from"./index-MzGRC4Oz.js";const v={};function g(){return`
+import{g as s,a as c}from"./index-9jHtEmUX.js";const v={};function g(){return`
     <div class="container fade-in">
       <div class="login-form">
         <h2 style="text-align:center;margin-bottom:20px">🔐 老師登入</h2>

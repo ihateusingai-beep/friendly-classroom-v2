@@ -949,6 +949,21 @@ export function renderSettings() {
       </div>
 
       <div class="card" style="margin-bottom:14px">
+        <div style="font-weight:600;margin-bottom:8px">📊 學習記錄</div>
+        <div style="font-size:0.9em;color:var(--text-light);margin-bottom:10px">
+          揀過嘅每個選項都會記低喺本地，包括 category 同答得啱唔啱。
+          匯出 CSV 畀老師，就可以分析邊個 category 答錯率最高。
+        </div>
+        <div id="analytics-summary" style="font-size:0.88em;color:var(--text-light);margin-bottom:10px;padding:8px 10px;background:var(--bg-soft, #f7f7fa);border-radius:8px">
+          載入中…
+        </div>
+        <div class="action-row">
+          <button class="btn btn-primary" onclick="FC.exportAnalyticsCSV()" style="flex:1">📤 匯出學習記錄 (CSV)</button>
+          <button class="btn btn-outline" onclick="FC.clearAnalytics()" style="font-size:0.85em">🗑️ 清除</button>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:14px">
         <div style="font-weight:600;margin-bottom:14px">🔊 語音朗讀</div>
         <div class="setting-row" style="margin-bottom:12px">
           <div>
@@ -1054,8 +1069,10 @@ export function renderSettings() {
         <ul style="margin:8px 0 0 20px">
           <li>個人化設定（字體大小、行距、朗讀速度）</li>
           <li>學習進度及題目記錄</li>
+          <li>每題作答記錄（category、選項、答得啱唔啱、用咗幾耐）</li>
         </ul>
-        <p style="margin-top:8px">📌 離線使用時，進度仍保存在本地。恢復連線後自動同步。</p>
+        <p style="margin-top:8px">📌 學生名字會以 hash 儲存，唔會明文。離線使用時，進度仍保存在本地。恢復連線後自動同步。</p>
+        <p style="margin-top:4px">🚫 <strong>唔會上傳去任何 server</strong>，純本地儲存。可隨時喺「📊 學習記錄」清除。</p>
       </div>
 
       <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
