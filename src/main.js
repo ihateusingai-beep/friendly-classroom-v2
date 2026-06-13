@@ -13,6 +13,7 @@ import { startBankRun, getBankRun, endBankRun, recordBankTransaction, advanceToN
 import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
 import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
+import { getTopic as getTopicMeta } from './topics.js';
 import { bus } from './domain/EventBus.js';
 import { getMoralBarData } from './domain/Moral.js';
 import { initSync, syncNow, getSyncStatus } from './sync.js';
@@ -31,6 +32,44 @@ initSFX();  // 初始化遊戲音效
 document.querySelector('.skip-link')?.addEventListener('click', () => {
   setTimeout(() => app.focus({ preventScroll: true }), 50);
 });
+
+// ── SR announcer ──
+// 給 screen reader 用嘅 polite live region。寫 textContent 會自動 announce。
+// 用 lazy create，唔一定每頁都 in DOM（speak scenario 用 <h1 class="sr-only" aria-live> 已經有，
+// 但用統一 helper 可以由 main.js 主動 announce 例如「題目 3，關於勤勞」）
+let _srAnnouncer = null;
+function getSrAnnouncer() {
+  if (!_srAnnouncer) {
+    _srAnnouncer = document.getElementById('sr-announcer');
+  }
+  return _srAnnouncer;
+}
+
+function announceToSR(text) {
+  const live = getSrAnnouncer();
+  if (!live) return;
+  // 先清空再寫返，trigger SR 重讀（textContent set 相同 value 唔會 re-announce）
+  live.textContent = '';
+  // 用 rAF 確保清空先生效，再 set 新 value
+  requestAnimationFrame(() => { live.textContent = text; });
+}
+
+// 場景題目載入時用 — 喺 <main> 換 scenario 內容後 trigger SR
+// 文字：題目 3 嘅「勤勞」 — 用 quote 包住，幫 SR 讀
+function announceScenarioLoad(scenario, opts = {}) {
+  if (!scenario) return;
+  const topic = scenario.topicId ? getTopicMeta(scenario.topicId) : null;
+  const topicName = topic?.title || '';
+  const idx = opts.index;
+  const total = opts.total;
+  const gameName = opts.gameName || ''; // '銀行' / '自由探索' etc
+  const parts = [];
+  if (idx && total) parts.push(`題目 ${idx}，共 ${total} 題`);
+  if (gameName) parts.push(gameName);
+  if (topicName) parts.push(`主題：${topicName}`);
+  parts.push(`題目：${scenario.title}`);
+  announceToSR(parts.join('，'));
+}
 
 // ── EventBus：道德值 Bar 即時更新 ──
 bus.on('moral:updated', (e) => {
@@ -159,6 +198,17 @@ export function play(scenarioId) {
   markScenarioShown(); // analytics: response time 起點
   state = { ...state, view: 'play', scenarioId };
   render();
+  // SR: announce 載入新題目（題目編號 + 主題 + 題目名）
+  const sc = playScenario(scenarioId);
+  if (sc) {
+    const topicScenarios = getScenariosByTopic(sc.topicId);
+    const idx = topicScenarios.findIndex(s => s.id === scenarioId) + 1;
+    announceScenarioLoad(sc, {
+      index: idx,
+      total: topicScenarios.length,
+      gameName: '自由探索',
+    });
+  }
 }
 window.FC.play = play;
 
@@ -306,6 +356,15 @@ window.FC.playGoodDeedBank = function() {
   }
   state = { ...state, view: 'bank-play' };
   render();
+  // SR: announce 銀行第一題
+  const first = run.questions[run.currentIdx];
+  if (first) {
+    announceScenarioLoad(first, {
+      index: run.currentIdx + 1,
+      total: run.questions.length,
+      gameName: '好人好事銀行',
+    });
+  }
 };
 
 window.FC.bankChoose = function(optionId) {
@@ -357,6 +416,15 @@ window.FC.bankNext = function() {
   advanceToNextQuestion();
   state = { ...state, view: 'bank-play' };
   render();
+  // SR: announce 下一題
+  const next = run.questions[run.currentIdx];
+  if (next) {
+    announceScenarioLoad(next, {
+      index: run.currentIdx + 1,
+      total: run.questions.length,
+      gameName: '好人好事銀行',
+    });
+  }
 };
 
 window.FC.exitBank = function() {
