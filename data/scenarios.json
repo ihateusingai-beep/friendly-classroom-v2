@@ -3332,7 +3332,7 @@
     "id": "s-self-06",
     "title": "自我保護：朋友握手",
     "background": "課室・放學",
-    "description": "朋友伸出手想同你握手打招呼。",
+    "description": "朋友行埋嚟笑住伸出手，想同你握手打招呼。",
     "hints": [
       "朋友之間嘅握手係好接觸。",
       "記住分辨好壞接觸，你已經好厲害！"
@@ -3453,7 +3453,7 @@
     "id": "s-self-09",
     "title": "社交距離：家人擁抱",
     "background": "家中",
-    "description": "媽媽想同你擁抱，你好開心。",
+    "description": "媽媽打開雙手想同你擁抱，你見到媽媽好開心。",
     "hints": [
       "家人之間零距離係好正常嘅。",
       "只有信任嘅人先可以零距離。"
@@ -3534,7 +3534,7 @@
     "id": "s-self-11",
     "title": "社交距離：打球推人",
     "background": "操場",
-    "description": "同學打波時大力推你，貼住你。",
+    "description": "同學打波時好大力推你，貼到你身上。你覺得唔舒服。",
     "hints": [
       "打波都唔可以太近推人。",
       "即刻話畀老師聽。"
@@ -3553,7 +3553,7 @@
       },
       {
         "id": "s-self-11-b",
-        "text": "推返去",
+        "text": "大力推返佢",
         "effects": [
           {
             "moralChange": -10,
@@ -3656,7 +3656,7 @@
     "id": "s-self-14",
     "title": "陌生人：畀糖果",
     "background": "公園",
-    "description": "陌生人畀糖果你食。",
+    "description": "喺公園玩嘅時候，陌生人行埋嚟畀糖果你食。",
     "hints": [
       "唔好收陌生人嘅嘢！",
       "即刻跑開。"
@@ -3696,7 +3696,7 @@
     "id": "s-self-15",
     "title": "陌生人：問屋企",
     "background": "學校",
-    "description": "陌生人問你屋企喺邊。",
+    "description": "喺學校附近，陌生人行埋嚟問你屋企喺邊。",
     "hints": [
       "唔好話畀陌生人聽屋企位置！",
       "即刻搵老師。"
@@ -3737,7 +3737,7 @@
     "id": "s-self-16",
     "title": "陌生人：摸頭",
     "background": "公園",
-    "description": "陌生人摸你頭話「好乖」。",
+    "description": "喺公園玩嘅時候，陌生人伸手摸你頭話「好乖」。",
     "hints": [
       "陌生人摸頭都要大聲講「唔好」！",
       "即刻離開。"
@@ -3749,7 +3749,7 @@
         "effects": [
           {
             "moralChange": 15,
-            "comment": "好勇敢！"
+            "comment": "你識得大聲講「唔好」，保護自己！"
           }
         ],
         "next_scenario": "s-self-17"
@@ -3777,7 +3777,7 @@
     "id": "s-self-17",
     "title": "陌生人：買玩具",
     "background": "學校門口",
-    "description": "陌生人話帶你去買玩具。",
+    "description": "放學時，陌生人話要帶你去買玩具。",
     "hints": [
       "陌生人話買嘢都唔可以跟！",
       "跑向人群。"
@@ -3789,14 +3789,14 @@
         "effects": [
           {
             "moralChange": 20,
-            "comment": "你好聰明！"
+            "comment": "你識得跑向人群搵安全嘅地方！"
           }
         ],
         "next_scenario": "s-self-18"
       },
       {
         "id": "s-self-17-b",
-        "text": "跟住佢",
+        "text": "跟住陌生人走",
         "effects": [
           {
             "moralChange": -20,
@@ -3818,7 +3818,7 @@
     "id": "s-self-18",
     "title": "陌生人：上車",
     "background": "街頭",
-    "description": "陌生人叫你上車。",
+    "description": "喺街頭，陌生人打開車門叫你上佢架車。",
     "hints": [
       "陌生人叫你上車＝危險！",
       "大聲喊「救命」同跑。"
@@ -3837,7 +3837,7 @@
       },
       {
         "id": "s-self-18-b",
-        "text": "上車",
+        "text": "聽話上佢架車",
         "effects": [
           {
             "moralChange": -25,
@@ -3859,7 +3859,7 @@
     "id": "s-self-19",
     "title": "求助：公園迷路",
     "background": "公園",
-    "description": "你喺公園迷路，見到保安。",
+    "description": "你喺公園搵唔到媽媽，見到一個著制服嘅保安。",
     "hints": [
       "迷路要即刻搵大人！",
       "大聲講「救命」。"
@@ -3871,7 +3871,7 @@
         "effects": [
           {
             "moralChange": 15,
-            "comment": "你好勇敢！"
+            "comment": "你識得主動搵大人幫手！"
           }
         ],
         "next_scenario": "s-self-20"
@@ -3900,7 +3900,7 @@
     "id": "s-self-20",
     "title": "求助：壞接觸後",
     "background": "家中",
-    "description": "你遇到壞接觸，即刻搵媽媽。",
+    "description": "你遇到壞接觸，你即時搵媽媽幫手。",
     "hints": [
       "壞接觸後要即刻話畀大人聽！",
       "媽媽會保護你。"
@@ -3960,7 +3960,7 @@
       },
       {
         "id": "s-self-21-b",
-        "text": "繼續行",
+        "text": "繼續自己行",
         "effects": [
           {
             "moralChange": -15,
@@ -4001,7 +4001,7 @@
       },
       {
         "id": "s-self-22-b",
-        "text": "自己搵",
+        "text": "自己搵廁所",
         "effects": [
           {
             "moralChange": -5,
@@ -4022,7 +4022,7 @@
     "id": "s-self-23",
     "title": "求助：感覺唔舒服",
     "background": "家中",
-    "description": "你感覺唔舒服，話畀爸爸聽。",
+    "description": "你感覺身體唔舒服，想搵屋企人幫手。",
     "hints": [
       "身體唔舒服要話畀家人聽！",
       "家人會照顧你。"
@@ -4081,7 +4081,7 @@
       },
       {
         "id": "s-self-24-b",
-        "text": "唔理",
+        "text": "當冇睇到",
         "effects": [
           {
             "moralChange": -15,
@@ -4103,30 +4103,41 @@
     "id": "s-self-25",
     "title": "上課規則：舉手發言",
     "background": "課室",
-    "description": "你想講嘢，應該點做？",
+    "description": "上堂時你有問題想問老師，但老師正講緊嘢。你好想出聲，你會……",
     "hints": [
-      "想講嘢要舉手等老師叫。",
+      "舉手等老師叫你先出聲係基本禮貌。",
       "直接喊會擾亂課堂。"
     ],
     "options": [
       {
         "id": "s-self-25-a",
-        "text": "舉手等老師叫",
+        "text": "舉手等老師叫你",
         "effects": [
           {
-            "moralChange": 10,
-            "comment": "你好有禮貌！"
+            "moralChange": 15,
+            "comment": "你好有禮貌，老師會好快叫你！"
           }
         ],
-        "next_scenario": "s-self-26"
+        "next_scenario": null
       },
       {
         "id": "s-self-25-b",
-        "text": "直接喊",
+        "text": "等下課先再問老師",
         "effects": [
           {
-            "moralChange": -5,
-            "comment": "老師會唔開心。"
+            "moralChange": 8,
+            "comment": "等下課問都係一個方法。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-25-c",
+        "text": "大聲叫「老師！」",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "直接喊會擾亂課堂同學。"
           }
         ],
         "next_scenario": null
@@ -4143,30 +4154,41 @@
     "id": "s-self-26",
     "title": "上課規則：坐好聽課",
     "background": "課室",
-    "description": "老師講緊嘢，你應該點坐？",
+    "description": "老師喺前面講緊一個重要嘅故事，你坐喺自己位。你會……",
     "hints": [
-      "坐正聽課最專心。",
-      "企起身跑好危險。"
+      "坐正聽老師講可以專心學到嘢。",
+      "周圍走會擾亂課堂。"
     ],
     "options": [
       {
         "id": "s-self-26-a",
-        "text": "坐正聽老師講",
+        "text": "坐正專心聽老師講",
         "effects": [
           {
-            "moralChange": 10,
-            "comment": "你好專心！"
+            "moralChange": 15,
+            "comment": "你專心又守規矩！"
           }
         ],
-        "next_scenario": "s-self-27"
+        "next_scenario": null
       },
       {
         "id": "s-self-26-b",
-        "text": "企起身跑",
+        "text": "坐喺度周圍望",
+        "effects": [
+          {
+            "moralChange": -3,
+            "comment": "雖然冇做壞事，但會錯失學習機會。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-26-c",
+        "text": "企起身四圍走",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "呢個好危險同擾亂。"
+            "comment": "走嚟走去會擾亂同學。"
           }
         ],
         "next_scenario": null
@@ -4184,30 +4206,41 @@
     "id": "s-self-27",
     "title": "上課規則：安靜聲音",
     "background": "課室",
-    "description": "你同同學講嘢，應該用邊種聲音？",
+    "description": "上堂期間你想同隔離同學講關於一隻小貓嘅事。你會用咩聲音？",
     "hints": [
-      "用細聲講大家舒服。",
-      "大聲喊叫會驚到同學。"
+      "細聲講嘢唔會影響老師同其他同學。",
+      "大聲講嘢會擾亂課堂。"
     ],
     "options": [
       {
         "id": "s-self-27-a",
-        "text": "用細聲講嘢",
+        "text": "用細細聲講嘢",
         "effects": [
           {
-            "moralChange": 10,
-            "comment": "你好識得尊重他人！"
+            "moralChange": 15,
+            "comment": "你識得體諒其他同學！"
           }
         ],
-        "next_scenario": "s-self-28"
+        "next_scenario": null
       },
       {
         "id": "s-self-27-b",
-        "text": "大聲喊叫",
+        "text": "寫紙仔傳俾同學",
         "effects": [
           {
-            "moralChange": -5,
-            "comment": "同學會驚。"
+            "moralChange": 5,
+            "comment": "雖然唔出聲，但都可能會影響專心。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-27-c",
+        "text": "大聲叫同學聽",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "大聲講嘢會擾亂成個課室。"
           }
         ],
         "next_scenario": null
@@ -4224,30 +4257,41 @@
     "id": "s-self-28",
     "title": "上課規則：收好玩具",
     "background": "課室",
-    "description": "玩完玩具，你應該點做？",
+    "description": "玩完積木或者玩具，老師話要收拾準備下個活動。你會……",
     "hints": [
-      "玩完要收埋，課室先乾淨。",
-      "亂丟好危險。"
+      "玩完收埋係基本責任。",
+      "亂丟玩具會令其他同學搵唔到。"
     ],
     "options": [
       {
         "id": "s-self-28-a",
-        "text": "玩完收埋",
+        "text": "自己玩完自己收埋",
         "effects": [
           {
-            "moralChange": 10,
-            "comment": "你好有責任感！"
+            "moralChange": 15,
+            "comment": "你負責任又有條理！"
           }
         ],
-        "next_scenario": "s-self-29"
+        "next_scenario": null
       },
       {
         "id": "s-self-28-b",
-        "text": "亂丟玩具",
+        "text": "「等人嚟執啦」就走開",
         "effects": [
           {
-            "moralChange": -5,
-            "comment": "亂丟好危險。"
+            "moralChange": -3,
+            "comment": "自己玩嘅嘢應該自己收。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-28-c",
+        "text": "亂咁丟玩具周圍",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "亂丟玩具會整爛其他嘢。"
           }
         ],
         "next_scenario": null
@@ -4265,30 +4309,41 @@
     "id": "s-self-29",
     "title": "上課規則：排隊",
     "background": "課室",
-    "description": "輪到你做嘢，你應該點做？",
+    "description": "去音樂堂嘅時候要排隊等入去，個個同學都排緊隊。你會……",
     "hints": [
-      "排隊等輪到自己最公平。",
-      "推人搶前唔公平。"
+      "排隊係公平嘅做法，每個人都輪到。",
+      "推人搶前會整傷人又失朋友。"
     ],
     "options": [
       {
         "id": "s-self-29-a",
-        "text": "排隊等輪到自己",
+        "text": "乖乖排隊等輪到自己",
         "effects": [
           {
-            "moralChange": 10,
-            "comment": "你好有秩序！"
+            "moralChange": 15,
+            "comment": "你守規矩又有耐性！"
           }
         ],
-        "next_scenario": "s-self-30"
+        "next_scenario": null
       },
       {
         "id": "s-self-29-b",
-        "text": "推人搶前",
+        "text": "「可以早啲入去嗎」問老師",
         "effects": [
           {
-            "moralChange": -5,
-            "comment": "推人搶前唔公平。"
+            "moralChange": 5,
+            "comment": "問老師可以，但都要守規矩。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-29-c",
+        "text": "推開前面嘅同學搶前",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "推人搶前會整傷人又會失朋友。"
           }
         ],
         "next_scenario": null
@@ -4305,15 +4360,15 @@
     "id": "s-self-30",
     "title": "上課規則：聽老師指示",
     "background": "課室",
-    "description": "老師話要做嘢，你應該點做？",
+    "description": "老師派發工作紙，話：「請同學完成第 1 至第 5 題。」你會點做？",
     "hints": [
-      "聽老師指示最安全。",
-      "自己亂做會出事。"
+      "聽老師指示做最安全又最有效。",
+      "自己亂做會做錯晒。"
     ],
     "options": [
       {
         "id": "s-self-30-a",
-        "text": "聽老師指示做",
+        "text": "聽老師指示做第 1-5 題",
         "effects": [
           {
             "moralChange": 15,
@@ -4324,11 +4379,22 @@
       },
       {
         "id": "s-self-30-b",
-        "text": "自己亂做",
+        "text": "問清楚先開始做",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "問清楚都好，但聽指示已經夠清晰。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-30-c",
+        "text": "自己揀想做的題目",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "自己亂做好危險。"
+            "comment": "自己亂做會做錯晒又交唔到功課。"
           }
         ],
         "next_scenario": null
@@ -4346,41 +4412,41 @@
     "id": "s-self-31",
     "title": "尊重界線：唔好逼朋友買禮物",
     "background": "校園",
-    "description": "小朋友拉住朋友衫角要求買禮物",
+    "description": "小息時，你見到朋友買咗個新玩具。你好想佢送俾你，拉住佢衫角唔放。朋友面有難色，唔知點算。你會點做？",
     "hints": [
-      "朋友都有自己家庭",
-      "尊重界線最重要"
+      "朋友有權決定自己嘅嘢點用。",
+      "你都可以表達「我都想要」，但唔可以強迫人哋送。"
     ],
     "options": [
       {
         "id": "s-self-31-a",
-        "text": "OK",
+        "text": "「好呀，你送俾我啦」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "唔好逼人。"
+            "comment": "勉強朋友送嘢，會破壞友誼。朋友有權拒絕。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-31-b",
-        "text": "唔好要求",
+        "text": "「我自己儲錢買，唔使你送」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好識得尊重！"
+            "comment": "你好識得尊重朋友嘅界線！"
           }
         ],
         "next_scenario": "s-self-32"
       },
       {
         "id": "s-self-31-c",
-        "text": "即刻買",
+        "text": "「你即刻送俾我啦」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "唔好逼人。"
+            "comment": "主動逼朋友送嘢，會令友誼受損。"
           }
         ],
         "next_scenario": null
@@ -4397,15 +4463,15 @@
     "id": "s-self-32",
     "title": "感恩父母：爸爸返內地唔好要求",
     "background": "屋企",
-    "description": "爸爸辛苦返工，香水應該點",
+    "description": "爸爸返咗一日工好攰，坐喺梳化抖下。你見到玩具店有個新模型好靚，你會……",
     "hints": [
-      "爸爸賺錢好唔易",
-      "感恩父母最重要"
+      "爸爸賺錢返工好辛苦，要感恩佢。",
+      "儲利是錢自己買係負責任嘅做法。"
     ],
     "options": [
       {
         "id": "s-self-32-a",
-        "text": "自己買",
+        "text": "「我儲利是錢自己買」",
         "effects": [
           {
             "moralChange": 18,
@@ -4416,22 +4482,22 @@
       },
       {
         "id": "s-self-32-b",
-        "text": "叫爸爸買",
+        "text": "「爸爸你買俾我啦」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "爸爸辛苦。"
+            "comment": "爸爸辛苦返工，唔可以加佢負擔。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-32-c",
-        "text": "唔好要求",
+        "text": "「我唔需要喇」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好識感恩！"
+            "comment": "你好識得體諒爸爸！"
           }
         ],
         "next_scenario": "s-self-33"
@@ -4449,41 +4515,41 @@
     "id": "s-self-33",
     "title": "尊重界線：朋友買禮物要問媽媽",
     "background": "校園",
-    "description": "朋友話買俾你",
+    "description": "朋友話：「我媽媽生日，我想買花送佢，但我冇錢買。」你會點幫佢？",
     "hints": [
-      "每樣嘢都要問屋企人",
-      "尊重家庭界線"
+      "每樣嘢都要先問屋企人先決定。",
+      "朋友有困難，你可以陪佢一齊想辦法。"
     ],
     "options": [
       {
         "id": "s-self-33-a",
-        "text": "好呀",
+        "text": "「好呀，我哋去公園摘花」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要問屋企人。"
+            "comment": "公園嘅花唔可以隨便摘，要問先。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-33-b",
-        "text": "要問媽媽",
+        "text": "「不如我哋返去問媽媽」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好識得尊重！"
+            "comment": "你好識得尊重家庭界線！"
           }
         ],
         "next_scenario": "s-self-34"
       },
       {
         "id": "s-self-33-c",
-        "text": "即刻要",
+        "text": "「你搵老師幫手啦」",
         "effects": [
           {
-            "moralChange": -15,
-            "comment": "要問屋企人。"
+            "moralChange": 8,
+            "comment": "搵老師幫手係一個方法，但都應該先問屋企人。"
           }
         ],
         "next_scenario": null
@@ -4500,41 +4566,41 @@
     "id": "s-self-34",
     "title": "感恩：收到禮物要多謝",
     "background": "屋企",
-    "description": "收到禮物應該講咩",
+    "description": "朋友送咗一份小禮物俾你。你打開睇，會點反應？",
     "hints": [
-      "感恩令大家開心",
-      "多謝係最基本"
+      "感恩令大家開心，多謝係最基本嘅禮貌。",
+      "收到禮物後問「仲有冇」係貪心嘅表現。"
     ],
     "options": [
       {
         "id": "s-self-34-a",
-        "text": "多謝",
+        "text": "「多謝你呀！我好鍾意」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好有禮貌！"
+            "comment": "你好有禮貌，朋友聽到好開心！"
           }
         ],
         "next_scenario": "s-self-35"
       },
       {
         "id": "s-self-34-b",
-        "text": "仲有冇",
+        "text": "「仲有冇其他禮物呀」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要感恩。"
+            "comment": "貪心嘅反應會令朋友唔開心。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-34-c",
-        "text": "唔夠",
+        "text": "「我唔要呢個禮物」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要感恩。"
+            "comment": "朋友嘅心意要珍惜，直接拒絕會傷人。"
           }
         ],
         "next_scenario": null
@@ -4551,41 +4617,41 @@
     "id": "s-self-35",
     "title": "理解朋友：朋友買唔到",
     "background": "校園",
-    "description": "朋友話買唔到",
+    "description": "朋友好失望咁話：「我本新書太貴，我媽媽唔肯買俾我。」你會……",
     "hints": [
-      "朋友都有難處",
-      "理解比禮物重要"
+      "朋友都有難處，唔可以怪佢。",
+      "理解同陪伴比禮物更重要。"
     ],
     "options": [
       {
         "id": "s-self-35-a",
-        "text": "嬲",
+        "text": "「咁你再努力啲啦」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要理解。"
+            "comment": "朋友已經好努力，怪佢會令佢更難過。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-35-b",
-        "text": "明白",
+        "text": "「明白呀，我以前都試過」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好善良！"
+            "comment": "你嘅同理心令朋友好安慰！"
           }
         ],
         "next_scenario": "s-self-36"
       },
       {
         "id": "s-self-35-c",
-        "text": "叫佢爸爸",
+        "text": "「不如我哋一齊去圖書館借」",
         "effects": [
           {
-            "moralChange": -15,
-            "comment": "要理解。"
+            "moralChange": 15,
+            "comment": "用其他方法解決問題，好叻！"
           }
         ],
         "next_scenario": null
@@ -4602,41 +4668,41 @@
     "id": "s-self-36",
     "title": "知足不貪：見到貴玩具",
     "background": "玩具店",
-    "description": "見到貴玩具應該點",
+    "description": "你同媽媽經過玩具店，你見到個好靚嘅模型但好貴。你屋企已經有個類似嘅，你會……",
     "hints": [
-      "已經有嘢要知足",
-      "唔貪心係美德"
+      "已經有類似嘅嘢要學識知足。",
+      "儲錢自己買係負責任嘅做法。"
     ],
     "options": [
       {
         "id": "s-self-36-a",
-        "text": "即刻要",
+        "text": "「媽媽即刻買俾我啦」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要知足。"
+            "comment": "亂花錢又唔知足，會令屋企負擔好重。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-36-b",
-        "text": "儲錢自己買",
+        "text": "「我儲利是錢自己買」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好有責任！"
+            "comment": "你有責任感又識得計劃！"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-36-c",
-        "text": "感恩已有",
+        "text": "「屋企已經有類似嘅喇」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你完成gift-gratitude學習！badge +10分"
+            "comment": "你完成 gift-gratitude 學習！badge +10分"
           }
         ],
         "next_scenario": null
@@ -4654,26 +4720,26 @@
     "id": "s-self-37",
     "title": "責任感：自己嘅書包自己執",
     "background": "課室・放學",
-    "description": "書包散曬喺地下，應該點？",
+    "description": "放學時間到，你發現自己嘅書包散曬嘢喺地下，筆、簿、午餐盒跌晒一地。你會點做？",
     "hints": [
-      "自己嘅嘢自己負責",
-      "執書包係基本責任"
+      "自己嘅嘢自己執好係負責任嘅表現。",
+      "叫朋友幫手可以係好選擇，但自己先試下。"
     ],
     "options": [
       {
         "id": "s-self-37-a",
-        "text": "叫人幫手",
+        "text": "叫朋友幫手執",
         "effects": [
           {
-            "moralChange": -15,
-            "comment": "要自己做。"
+            "moralChange": -10,
+            "comment": "朋友可以幫手，但自己嘅嘢自己負責會更好。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-37-b",
-        "text": "自己執好",
+        "text": "自己慢慢執返好",
         "effects": [
           {
             "moralChange": 18,
@@ -4684,11 +4750,11 @@
       },
       {
         "id": "s-self-37-c",
-        "text": "唔理",
+        "text": "由得佢散喺度",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要自己做。"
+            "comment": "自己嘅嘢唔理，會令其他人行路時踢到。"
           }
         ],
         "next_scenario": null
@@ -4706,41 +4772,41 @@
     "id": "s-self-38",
     "title": "責任感：功課自己做",
     "background": "屋企・晚飯後",
-    "description": "功課好難，想叫媽媽幫手",
+    "description": "晚飯後你做功課，遇到一條好難嘅數學題。你想放棄，你會……",
     "hints": [
-      "自己嘅功課自己做",
-      "試下先最重要"
+      "自己先試下，唔識先問媽媽。",
+      "抄朋友功課係唔誠實嘅行為。"
     ],
     "options": [
       {
         "id": "s-self-38-a",
-        "text": "即刻叫媽媽",
+        "text": "即刻叫媽媽嚟教",
         "effects": [
           {
-            "moralChange": -15,
-            "comment": "要自己試。"
+            "moralChange": -10,
+            "comment": "自己先試下先問人，會學到更多。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-38-b",
-        "text": "自己試下",
+        "text": "自己慢慢試下計",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好勤力！"
+            "comment": "你好勤力肯嘗試！"
           }
         ],
         "next_scenario": "s-self-39"
       },
       {
         "id": "s-self-38-c",
-        "text": "抄朋友",
+        "text": "等朋友嘅功課嚟抄",
         "effects": [
           {
-            "moralChange": -15,
-            "comment": "要自己做。"
+            "moralChange": -18,
+            "comment": "抄功課係唔誠實，學唔到嘢又會內疚。"
           }
         ],
         "next_scenario": null
@@ -4758,41 +4824,41 @@
     "id": "s-self-39",
     "title": "責任感：水樽自己帶",
     "background": "校園・小息",
-    "description": "忘記帶水樽，口渴點算？",
+    "description": "小息時間，你發現自己唔記得帶水樽，口好渴。你會……",
     "hints": [
-      "出門前檢查自己嘅嘢",
-      "負責自己嘅需要"
+      "自己嘅嘢自己記得帶係負責任。",
+      "健康都好重要，記得飲水。"
     ],
     "options": [
       {
         "id": "s-self-39-a",
-        "text": "問同學借",
+        "text": "問同學借少少水",
         "effects": [
           {
-            "moralChange": -10,
-            "comment": "下次要記得。"
+            "moralChange": -8,
+            "comment": "應急可以，但下次要記得自己帶。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-39-b",
-        "text": "下次記得帶",
+        "text": "下次一定記得帶",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好識得負責！"
+            "comment": "你識得從錯誤中學習！"
           }
         ],
         "next_scenario": "s-self-40"
       },
       {
         "id": "s-self-39-c",
-        "text": "唔飲",
+        "text": "忍住唔飲",
         "effects": [
           {
             "moralChange": -5,
-            "comment": "健康都係責任。"
+            "comment": "健康都係責任，記得下次帶水。"
           }
         ],
         "next_scenario": null
@@ -4809,41 +4875,41 @@
     "id": "s-self-40",
     "title": "責任感：幫手執垃圾",
     "background": "飯堂",
-    "description": "見到地上有垃圾",
+    "description": "喺飯堂食完飯，你見到地下有個紙巾同膠水樽。大家都準備離開，你會……",
     "hints": [
-      "愛護環境係人人責任",
-      "唔好等其他人"
+      "愛護學校環境係每個學生嘅責任。",
+      "自己動手執係好榜樣，其他人會跟住做。"
     ],
     "options": [
       {
         "id": "s-self-40-a",
-        "text": "假裝睇唔到",
+        "text": "假裝睇唔到就走",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要愛護學校。"
+            "comment": "當冇事會令學校越嚟越污糟。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-40-b",
-        "text": "自己執走",
+        "text": "自己動手執返",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好愛護學校！"
+            "comment": "你愛護學校，係好榜樣！"
           }
         ],
         "next_scenario": "s-self-41"
       },
       {
         "id": "s-self-40-c",
-        "text": "叫清潔阿姨",
+        "text": "叫清潔阿姨嚟執",
         "effects": [
           {
             "moralChange": 5,
-            "comment": "自己做更好。"
+            "comment": "自己動手會更好。"
           }
         ],
         "next_scenario": null
@@ -4861,41 +4927,41 @@
     "id": "s-self-41",
     "title": "責任感：遲到要話老師知",
     "background": "課室・朝早",
-    "description": "遲到咗，應該點？",
+    "description": "朝早你遲到咗，課室門口望到老師。你會……",
     "hints": [
-      "遲到要負責講清楚",
-      "誠實最重要"
+      "誠實面對遲到係負責任嘅表現。",
+      "找藉口只會令問題更複雜。"
     ],
     "options": [
       {
         "id": "s-self-41-a",
-        "text": "偷偷入去",
+        "text": "偷偷閂門入去",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要誠實。"
+            "comment": "偷偷入去會擾亂課堂又唔誠實。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-41-b",
-        "text": "同老師講清楚",
+        "text": "大聲報告老師",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好有承擔！"
+            "comment": "你好有承擔！老師會明白。"
           }
         ],
         "next_scenario": "s-self-42"
       },
       {
         "id": "s-self-41-c",
-        "text": "怪交通",
+        "text": "怪巴士塞車",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "要自己負責時間。"
+            "comment": "找藉口推卸責任，唔可以改變遲到嘅事實。"
           }
         ],
         "next_scenario": null
@@ -4913,26 +4979,26 @@
     "id": "s-self-42",
     "title": "責任感：完成任務有成就",
     "background": "屋企・床頭",
-    "description": "今日自己做咗好多嘢",
+    "description": "今日你返學前自己著校服、執書包、放學自己執齊所有嘢。瞓覺前你會點諗？",
     "hints": [
-      "負責令自己成長",
-      "每件事都係學習"
+      "為自己嘅努力感到驕傲係好事。",
+      "堅持每日做就會變成好習慣。"
     ],
     "options": [
       {
         "id": "s-self-42-a",
-        "text": "覺得好累",
+        "text": "覺得自己好攰",
         "effects": [
           {
             "moralChange": 5,
-            "comment": "休息都重要。"
+            "comment": "休息同努力都同樣重要。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-42-b",
-        "text": "好有成就感",
+        "text": "覺得好有成就感",
         "effects": [
           {
             "moralChange": 20,
@@ -4943,11 +5009,11 @@
       },
       {
         "id": "s-self-42-c",
-        "text": "下次唔做",
+        "text": "下次都唔做啦",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要堅持。"
+            "comment": "放棄會令之前嘅努力白費。"
           }
         ],
         "next_scenario": null
@@ -4965,41 +5031,41 @@
     "id": "s-self-43",
     "title": "誠信：唔好抄功課",
     "background": "課室・小息",
-    "description": "朋友叫你抄佢功課",
+    "description": "測驗前，朋友走過嚟話：「我份功課喺度，你抄啦。」你會……",
     "hints": [
-      "抄襲係唔誠實",
-      "自己做先有進步"
+      "抄功課係欺騙，學唔到嘢又內疚。",
+      "朋友有困難可以幫佢，但唔係幫佢作弊。"
     ],
     "options": [
       {
         "id": "s-self-43-a",
-        "text": "即刻抄",
+        "text": "「好呀，畀我抄」",
         "effects": [
           {
             "moralChange": -20,
-            "comment": "要誠實。"
+            "comment": "抄功課係欺騙行為，老師同自己都會失望。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-43-b",
-        "text": "自己做",
+        "text": "「唔好啦，我自己做」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好信實！"
+            "comment": "你信實又有承擔！"
           }
         ],
         "next_scenario": "s-self-44"
       },
       {
         "id": "s-self-43-c",
-        "text": "話老師知",
+        "text": "「我同你一齊搵老師問」",
         "effects": [
           {
-            "moralChange": 10,
-            "comment": "但要溫柔啲。"
+            "moralChange": 12,
+            "comment": "用其他方法解決，但都要留意唔好直接篤朋友。"
           }
         ],
         "next_scenario": null
@@ -5017,41 +5083,41 @@
     "id": "s-self-44",
     "title": "誠信：搵到嘢要還",
     "background": "校園・操場",
-    "description": "搵到同學嘅文具盒",
+    "description": "喺操場你跌咗低，起身發現地下有個文具盒，唔知係邊個嘅。你會……",
     "hints": [
-      "搵到嘢要還俾主人",
-      "誠信係美德"
+      "唔屬於自己嘅嘢應該歸還。",
+      "主動搵失主係負責任嘅表現。"
     ],
     "options": [
       {
         "id": "s-self-44-a",
-        "text": "自己留低",
+        "text": "放入自己袋",
         "effects": [
           {
             "moralChange": -18,
-            "comment": "要還俾人。"
+            "comment": "拎咗唔屬於自己嘅嘢，會失去朋友嘅信任。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-44-b",
-        "text": "交俾老師",
+        "text": "交俾老師幫手搵",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好誠實！"
+            "comment": "你誠實又負責任！"
           }
         ],
         "next_scenario": "s-self-45"
       },
       {
         "id": "s-self-44-c",
-        "text": "問邊個嘅",
+        "text": "問附近同學係邊個嘅",
         "effects": [
           {
             "moralChange": 12,
-            "comment": "好方法！"
+            "comment": "主動搵失主都係好方法！"
           }
         ],
         "next_scenario": null
@@ -5069,41 +5135,41 @@
     "id": "s-self-45",
     "title": "誠信：講真話",
     "background": "屋企・客廳",
-    "description": "打破咗花樽，媽媽問邊個",
+    "description": "你喺客廳玩波，唔小心打破咗媽媽最鍾意嘅花樽。媽媽返嚟問：「邊個打破我嘅花樽？」你會……",
     "hints": [
-      "講真話先係誠信",
-      "勇氣都係美德"
+      "講真話需要勇氣，但係最正確嘅選擇。",
+      "怪人哋只會令自己更內疚。"
     ],
     "options": [
       {
         "id": "s-self-45-a",
-        "text": "話唔知",
+        "text": "「唔知喎，唔係我」",
         "effects": [
           {
             "moralChange": -18,
-            "comment": "要誠實。"
+            "comment": "講大話會令自己好內疚，媽媽遲早都會知道。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-45-b",
-        "text": "講係自己打破",
+        "text": "「媽媽對唔住，係我打破嘅」",
         "effects": [
           {
             "moralChange": 20,
-            "comment": "你好有勇氣！"
+            "comment": "你嘅勇氣會令媽媽更加欣賞你！"
           }
         ],
         "next_scenario": "s-self-46"
       },
       {
         "id": "s-self-45-c",
-        "text": "怪細佬",
+        "text": "「係細佬整嘅」",
         "effects": [
           {
             "moralChange": -20,
-            "comment": "絕對唔可以。"
+            "comment": "誣賴人係好嚴重嘅錯，會失去屋企人嘅信任。"
           }
         ],
         "next_scenario": null
@@ -5121,41 +5187,41 @@
     "id": "s-self-46",
     "title": "誠信：唔好講大話",
     "background": "校園・走廊",
-    "description": "朋友問你有冇做功課",
+    "description": "朋友問你：「你有冇做功課？我唔想返學被老師鬧。」你今日真係未做。你會點答？",
     "hints": [
-      "講大話會失去信任",
-      "誠實先有朋友"
+      "講真話需要勇氣，朋友會尊重你。",
+      "逃避唔可以解決問題。"
     ],
     "options": [
       {
         "id": "s-self-46-a",
-        "text": "講大話話做咗",
+        "text": "「做咗呀」",
         "effects": [
           {
             "moralChange": -18,
-            "comment": "要誠實。"
+            "comment": "講大話令自己同朋友都會承擔後果。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-46-b",
-        "text": "講真話",
+        "text": "「未做呀，我哋一齊做啦」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好信實！"
+            "comment": "你信實又肯幫朋友！"
           }
         ],
         "next_scenario": "s-self-47"
       },
       {
         "id": "s-self-46-c",
-        "text": "走開",
+        "text": "「唔講喇」就走開",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "要面對。"
+            "comment": "逃避唔係辦法，面對會更有勇氣。"
           }
         ],
         "next_scenario": null
@@ -5173,41 +5239,41 @@
     "id": "s-self-47",
     "title": "誠信：考試唔好偷睇",
     "background": "課室・測驗",
-    "description": "測驗見到朋友抄",
+    "description": "考試期間，你望到隔離同學偷偷拎出書抄。你會……",
     "hints": [
-      "偷睇係唔誠信",
-      "自己嘅成績自己負責"
+      "自己誠實答卷最緊要。",
+      "篤人可以係好選擇，但要用恰當嘅方法。"
     ],
     "options": [
       {
         "id": "s-self-47-a",
-        "text": "自己都抄",
+        "text": "「我都可以偷睇」",
         "effects": [
           {
             "moralChange": -20,
-            "comment": "要誠信。"
+            "comment": "考試作弊會失去信用，學唔到真正嘅知識。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-47-b",
-        "text": "專心自己做",
+        "text": "「我自己專心答卷」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好正直！"
+            "comment": "你正直又專心！"
           }
         ],
         "next_scenario": "s-self-48"
       },
       {
         "id": "s-self-47-c",
-        "text": "話老師知",
+        "text": "「我舉手話老師知」",
         "effects": [
           {
             "moralChange": 12,
-            "comment": "但要溫柔。"
+            "comment": "舉報係好方法，但要留意唔好傷害同學嘅尊嚴。"
           }
         ],
         "next_scenario": null
@@ -5225,26 +5291,26 @@
     "id": "s-self-48",
     "title": "誠信：信任係最大獎勵",
     "background": "屋企・飯桌",
-    "description": "今日誠實得到讚賞",
+    "description": "今日你因為講真話得到老師讚賞。返到屋企你會點諗？",
     "hints": [
-      "誠信會贏得信任",
-      "信任係最好嘅禮物"
+      "誠實帶來嘅信任係最寶貴嘅獎勵。",
+      "繼續保持誠實會令更多人信任你。"
     ],
     "options": [
       {
         "id": "s-self-48-a",
-        "text": "覺得冇所謂",
+        "text": "「好普通啫」",
         "effects": [
           {
             "moralChange": 5,
-            "comment": "但信任好重要。"
+            "comment": "但信任係好寶貴嘅嘢，要珍惜。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-48-b",
-        "text": "好開心",
+        "text": "「我好開心」",
         "effects": [
           {
             "moralChange": 20,
@@ -5255,11 +5321,11 @@
       },
       {
         "id": "s-self-48-c",
-        "text": "下次都講大話",
+        "text": "「下次都係講返大話啦」",
         "effects": [
           {
             "moralChange": -18,
-            "comment": "要堅持誠信。"
+            "comment": "放棄誠信會令之前嘅努力白費。"
           }
         ],
         "next_scenario": null
@@ -5277,41 +5343,41 @@
     "id": "s-self-49",
     "title": "孝親：幫媽媽執屋企",
     "background": "屋企・客廳",
-    "description": "媽媽好攰，想幫手",
+    "description": "媽媽放工返嚟好攰，坐喺梳化。你見到地下有玩具同衣物散滿地，你會……",
     "hints": [
-      "孝順父母係基本",
-      "幫手係愛嘅表現"
+      "媽媽返嚟仲要做家務，你可以幫手分擔。",
+      "幫手做家務係孝順嘅表現。"
     ],
     "options": [
       {
         "id": "s-self-49-a",
-        "text": "自己玩",
+        "text": "自己繼續玩玩具",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要孝順。"
+            "comment": "眼白白睇媽媽辛苦而唔幫手，會令媽媽更攰。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-49-b",
-        "text": "幫手執",
+        "text": "幫手執玩具同衫",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好孝順！"
+            "comment": "你好孝順又體諒媽媽！"
           }
         ],
         "next_scenario": "s-self-50"
       },
       {
         "id": "s-self-49-c",
-        "text": "叫細佬做",
+        "text": "叫細佬去執",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "自己都應該做。"
+            "comment": "自己都應該做，唔可以推俾細佬。"
           }
         ],
         "next_scenario": null
@@ -5329,41 +5395,41 @@
     "id": "s-self-50",
     "title": "孝親：問候爸爸媽媽",
     "background": "屋企・晚飯",
-    "description": "爸爸媽媽返到屋企",
+    "description": "爸爸媽媽返咗一日工開門返屋企，你攞緊電話玩遊戲。你會……",
     "hints": [
-      "問候係尊重",
-      "關心家人最重要"
+      "主動問候家人係有禮貌嘅表現。",
+      "一個簡單嘅「返嚟喇」就令家人好溫暖。"
     ],
     "options": [
       {
         "id": "s-self-50-a",
-        "text": "繼續玩電話",
+        "text": "繼續玩電話唔理佢",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要關心家人。"
+            "comment": "忽略家人會令佢哋覺得唔被重視。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-50-b",
-        "text": "主動問候",
+        "text": "主動行去問候",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好有禮貌！"
+            "comment": "你好有禮貌，爸爸媽媽會好開心！"
           }
         ],
         "next_scenario": "s-self-51"
       },
       {
         "id": "s-self-50-c",
-        "text": "等佢哋問",
+        "text": "等佢哋自己嚟搵你",
         "effects": [
           {
             "moralChange": -5,
-            "comment": "主動更好。"
+            "comment": "主動問候會更好。"
           }
         ],
         "next_scenario": null
@@ -5381,41 +5447,41 @@
     "id": "s-self-51",
     "title": "孝親：唔好同父母嘈",
     "background": "屋企・客廳",
-    "description": "媽媽話唔畀你玩得多",
+    "description": "媽媽話：「你今日玩咗好耐電話，要休息喇。」你覺得未夠，你會……",
     "hints": [
-      "同父母講話要有禮貌",
-      "尊重係孝順"
+      "媽媽係為你好，冷靜溝通會令佢明白你。",
+      "大聲頂嘴會令大家都唔開心。"
     ],
     "options": [
       {
         "id": "s-self-51-a",
-        "text": "大聲頂嘴",
+        "text": "大聲頂嘴鬧返佢",
         "effects": [
           {
             "moralChange": -20,
-            "comment": "要尊重父母。"
+            "comment": "頂嘴係唔尊重媽媽，會令關係變差。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-51-b",
-        "text": "冷靜講清楚",
+        "text": "冷靜咁講自己嘅諗法",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好識得尊重！"
+            "comment": "你識得尊重媽媽又表達自己！"
           }
         ],
         "next_scenario": "s-self-52"
       },
       {
         "id": "s-self-51-c",
-        "text": "走入房",
+        "text": "唔出聲走入房",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "要溝通。"
+            "comment": "走開唔溝通，會令媽媽擔心。"
           }
         ],
         "next_scenario": null
@@ -5433,41 +5499,41 @@
     "id": "s-self-52",
     "title": "孝親：記住父母生日",
     "background": "屋企・書桌",
-    "description": "媽媽生日快到",
+    "description": "媽媽生日就快到，你見到日曆寫住個日期。你會點做？",
     "hints": [
-      "記住家人嘅重要日子",
-      "小小心意都係愛"
+      "記住父母生日係孝順嘅表現。",
+      "自己準備嘅小禮物比用錢買嘅更珍貴。"
     ],
     "options": [
       {
         "id": "s-self-52-a",
-        "text": "完全唔記得",
+        "text": "「我完全唔記得呀」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要關心父母。"
+            "comment": "唔記得父母生日，會令媽媽好失望。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-52-b",
-        "text": "準備小禮物",
+        "text": "自己畫張卡送佢",
         "effects": [
           {
             "moralChange": 20,
-            "comment": "你好孝順！"
+            "comment": "你好孝順，媽媽收到一定好感動！"
           }
         ],
         "next_scenario": "s-self-53"
       },
       {
         "id": "s-self-52-c",
-        "text": "問爸爸買",
+        "text": "叫爸爸買禮物送佢",
         "effects": [
           {
             "moralChange": 8,
-            "comment": "自己準備更好。"
+            "comment": "自己親手準備更有心意。"
           }
         ],
         "next_scenario": null
@@ -5485,41 +5551,41 @@
     "id": "s-self-53",
     "title": "孝親：照顧生病嘅家人",
     "background": "屋企・房間",
-    "description": "媽媽病咗",
+    "description": "媽媽病咗，瞓喺床休息，聲音好虛弱。你聽到佢叫：「俾杯水我……」你會……",
     "hints": [
-      "家人有難要幫手",
-      "孝順係行動"
+      "照顧生病嘅家人係孝順嘅表現。",
+      "爸爸忙嘅時候你都可以幫手。"
     ],
     "options": [
       {
         "id": "s-self-53-a",
-        "text": "自己玩",
+        "text": "繼續自己玩唔理佢",
         "effects": [
           {
             "moralChange": -18,
-            "comment": "要關心。"
+            "comment": "媽媽病咗仲要叫喊你，會好傷心。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-53-b",
-        "text": "幫手倒水",
+        "text": "即刻去倒杯暖水",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好有愛心！"
+            "comment": "你嘅愛心令媽媽好安慰！"
           }
         ],
         "next_scenario": "s-self-54"
       },
       {
         "id": "s-self-53-c",
-        "text": "叫爸爸",
+        "text": "「叫爸爸啦」就走開",
         "effects": [
           {
             "moralChange": 5,
-            "comment": "自己都應該幫。"
+            "comment": "自己都應該幫手照顧。"
           }
         ],
         "next_scenario": null
@@ -5537,26 +5603,26 @@
     "id": "s-self-54",
     "title": "孝親：感恩父母養育",
     "background": "屋企・飯桌",
-    "description": "今日一家人一齊食飯",
+    "description": "今日一家人一齊坐喺飯枱食飯，媽媽煮咗你至愛嘅餸。你會……",
     "hints": [
-      "父母養育好唔易",
-      "感恩係最大孝順"
+      "一家人齊齊整整食飯係好幸福嘅事。",
+      "對家人表達感恩會令大家都開心。"
     ],
     "options": [
       {
         "id": "s-self-54-a",
-        "text": "覺得正常",
+        "text": "覺得好普通冇咩特別",
         "effects": [
           {
             "moralChange": 5,
-            "comment": "但要感恩。"
+            "comment": "但要珍惜呢份幸福。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-54-b",
-        "text": "多謝父母",
+        "text": "「多謝爸爸媽媽煮飯」",
         "effects": [
           {
             "moralChange": 20,
@@ -5567,11 +5633,11 @@
       },
       {
         "id": "s-self-54-c",
-        "text": "快啲食",
+        "text": "快快食完就閃",
         "effects": [
           {
             "moralChange": -5,
-            "comment": "要珍惜。"
+            "comment": "一家人食飯係溝通嘅時間，要珍惜。"
           }
         ],
         "next_scenario": null
@@ -5589,41 +5655,41 @@
     "id": "s-self-55",
     "title": "堅毅：功課難都要試",
     "background": "屋企・書桌",
-    "description": "功課好難，想放棄",
+    "description": "做功課時遇到一條好難嘅數學題，你諗咗好耐都唔識。你想放棄，你會……",
     "hints": [
-      "堅毅係唔輕易放棄",
-      "試過先知自己可以"
+      "遇到困難唔放棄先會學到嘢。",
+      "可以先試自己，唔識先問人。"
     ],
     "options": [
       {
         "id": "s-self-55-a",
-        "text": "即刻放棄",
+        "text": "「太難喇，我放棄啦」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要堅毅。"
+            "comment": "放棄永遠學唔到新嘢。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-55-b",
-        "text": "再試一次",
+        "text": "深呼吸再諗多一次",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好有毅力！"
+            "comment": "你嘅毅力會令你成功！"
           }
         ],
         "next_scenario": "s-self-56"
       },
       {
         "id": "s-self-55-c",
-        "text": "叫人幫",
+        "text": "即刻叫媽媽嚟幫",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "自己試先。"
+            "comment": "自己先試下先問人，會學到更多。"
           }
         ],
         "next_scenario": null
@@ -5641,41 +5707,41 @@
     "id": "s-self-56",
     "title": "堅毅：學單車唔怕跌",
     "background": "公園",
-    "description": "學踩單車跌咗好多次",
+    "description": "爸爸教你踩單車，你已經跌咗五六次，膝頭有少少損。你想放棄，你會……",
     "hints": [
-      "跌倒係學習一部分",
-      "堅毅令你成功"
+      "每個技能都需要練習，跌低係正常嘅。",
+      "放棄就永遠學唔識。"
     ],
     "options": [
       {
         "id": "s-self-56-a",
-        "text": "唔學啦",
+        "text": "「唔學喇，我返屋企」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要堅持。"
+            "comment": "放棄咗就永遠學唔識。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-56-b",
-        "text": "爬起身再試",
+        "text": "抹咗眼淚再爬上去",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好堅強！"
+            "comment": "你堅強又勇敢！"
           }
         ],
         "next_scenario": "s-self-57"
       },
       {
         "id": "s-self-56-c",
-        "text": "叫爸爸扶",
+        "text": "「爸爸扶住我踩」",
         "effects": [
           {
             "moralChange": -5,
-            "comment": "自己試更好。"
+            "comment": "自己試下會學得更快。"
           }
         ],
         "next_scenario": null
@@ -5692,41 +5758,41 @@
     "id": "s-self-57",
     "title": "堅毅：溫書考試",
     "background": "屋企・房間",
-    "description": "考試好難，溫書好攰",
+    "description": "聽日就考試，你溫咗兩個鐘書覺得好攰，有啲內容仲未睇完。你會……",
     "hints": [
-      "努力會有結果",
-      "堅毅係長期投資"
+      "最後衝刺雖然辛苦，但係值得嘅。",
+      "放棄溫書會令之前嘅努力白費。"
     ],
     "options": [
       {
         "id": "s-self-57-a",
-        "text": "放棄溫書",
+        "text": "「太攰喇，我瞓覺先」",
         "effects": [
           {
             "moralChange": -18,
-            "comment": "要堅毅。"
+            "comment": "放棄溫書會令聽日考試表現受影響。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-57-b",
-        "text": "繼續溫",
+        "text": "再溫多一個鐘就收工",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好勤力！"
+            "comment": "你勤力又識得堅持！"
           }
         ],
         "next_scenario": "s-self-58"
       },
       {
         "id": "s-self-57-c",
-        "text": "抄筆記",
+        "text": "「聽日再算啦」就走開",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "自己溫更好。"
+            "comment": "今日嘅努力會令你更有自信。"
           }
         ],
         "next_scenario": null
@@ -5744,41 +5810,41 @@
     "id": "s-self-58",
     "title": "堅毅：做家務唔怕辛苦",
     "background": "屋企・廚房",
-    "description": "幫媽媽洗碗好多碟",
+    "description": "媽媽煮完飯，你幫手洗碗。枱面仲有十幾個碗碟，你覺得攰，你會……",
     "hints": [
-      "家務係責任",
-      "堅毅令你成長"
+      "堅持做完先休息係負責任。",
+      "叫細佬做可以，但都要分擔。"
     ],
     "options": [
       {
         "id": "s-self-58-a",
-        "text": "偷懶",
+        "text": "「我攰喇」就走開唔做",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要負責。"
+            "comment": "做一半就走，會留低工作俾媽媽。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-58-b",
-        "text": "慢慢做完",
+        "text": "慢慢一個一個做完佢",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好有毅力！"
+            "comment": "你嘅毅力會令媽媽好安慰！"
           }
         ],
         "next_scenario": "s-self-59"
       },
       {
         "id": "s-self-58-c",
-        "text": "叫細佬做",
+        "text": "「細佬你嚟幫手啦」",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "自己應該做。"
+            "comment": "自己答應做嘅嘢應該堅持做完。"
           }
         ],
         "next_scenario": null
@@ -5796,41 +5862,41 @@
     "id": "s-self-59",
     "title": "堅毅：學新嘢唔怕錯",
     "background": "課室",
-    "description": "老師問問題，唔識點算",
+    "description": "上堂時老師問：「邊個知道答案？」你其實都唔太肯定但有少少頭緒。你會……",
     "hints": [
-      "錯咗都係學習",
-      "勇於嘗試係堅毅"
+      "舉手試答係勇敢嘅表現，答錯都冇所謂。",
+      "抄朋友答案係欺騙行為。"
     ],
     "options": [
       {
         "id": "s-self-59-a",
-        "text": "唔舉手",
+        "text": "「我唔識」就唔舉手",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "要勇敢。"
+            "comment": "唔試就永遠唔知道自己識唔識。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-59-b",
-        "text": "舉手試答",
+        "text": "「我試下答」就舉手",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好有勇氣！"
+            "comment": "你嘅勇氣令老師都好欣賞！"
           }
         ],
         "next_scenario": "s-self-60"
       },
       {
         "id": "s-self-59-c",
-        "text": "抄朋友",
+        "text": "偷偷睇朋友嘅答案",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要自己學。"
+            "comment": "抄人哋答案學唔到自己嘅嘢。"
           }
         ],
         "next_scenario": null
@@ -5848,26 +5914,26 @@
     "id": "s-self-60",
     "title": "堅毅：完成就係勝利",
     "background": "屋企・床頭",
-    "description": "今日努力做咗好多嘢",
+    "description": "今日你完成咗溫書、做咗家務、仲幫媽媽執屋企，瞓覺前你會點諗？",
     "hints": [
-      "每一次堅持都係勝利",
-      "堅毅令你更強"
+      "為自己嘅努力感到驕傲。",
+      "堅持落去每天都會進步。"
     ],
     "options": [
       {
         "id": "s-self-60-a",
-        "text": "覺得冇用",
+        "text": "「其實都冇乜用」",
         "effects": [
           {
             "moralChange": 5,
-            "comment": "但你已經進步。"
+            "comment": "但你今日已經好努力，已經有進步。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-60-b",
-        "text": "好有成就",
+        "text": "「我覺得自己好犀利」",
         "effects": [
           {
             "moralChange": 20,
@@ -5878,11 +5944,11 @@
       },
       {
         "id": "s-self-60-c",
-        "text": "下次放棄",
+        "text": "「下次都係放棄好過」",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要堅持。"
+            "comment": "放棄會令之前嘅努力全部白費。"
           }
         ],
         "next_scenario": null
@@ -5900,41 +5966,41 @@
     "id": "s-self-61",
     "title": "合作：小組活動要參與",
     "background": "課室・小息",
-    "description": "小組做 poster，應該點？",
+    "description": "小息時老師話：「下節要做小組 poster，四個人一組。」組員即刻開始分工，你會……",
     "hints": [
-      "合作令大家成功",
-      "每個人都有貢獻"
+      "主動參與小組活動會學到更多。",
+      "等其他人做晒自己先加入會嚇親組員。"
     ],
     "options": [
       {
         "id": "s-self-61-a",
-        "text": "自己玩",
+        "text": "自己玩自己嘅嘢",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要合作。"
+            "comment": "小組活動唔參與會拖累其他組員。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-61-b",
-        "text": "主動幫手",
+        "text": "主動問：「我幫手做咩？」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好合作！"
+            "comment": "你嘅主動令組員都好開心！"
           }
         ],
         "next_scenario": "s-self-62"
       },
       {
         "id": "s-self-61-c",
-        "text": "等其他人",
+        "text": "等其他人嚟叫我先做",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "要主動。"
+            "comment": "主動參與會更好。"
           }
         ],
         "next_scenario": null
@@ -5952,41 +6018,41 @@
     "id": "s-self-62",
     "title": "合作：輪流玩玩具",
     "background": "公園",
-    "description": "只有一個鞦韆，大家想玩",
+    "description": "公園得一個鞦韆，三個小朋友都爭住想玩。你排第二，前面仲有兩個人。你會……",
     "hints": [
-      "輪流係合作精神",
-      "耐心等候"
+      "分享同輪流係合作嘅基礎。",
+      "霸住唔畀人玩會失去朋友。"
     ],
     "options": [
       {
         "id": "s-self-62-a",
-        "text": "霸住唔畀",
+        "text": "霸住鞦韆唔走",
         "effects": [
           {
             "moralChange": -18,
-            "comment": "要合作。"
+            "comment": "霸住唔分享會令其他小朋友唔鍾意你。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-62-b",
-        "text": "大家輪流",
+        "text": "排隊等輪到自己",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好識合作！"
+            "comment": "你識得合作同分享！"
           }
         ],
         "next_scenario": "s-self-63"
       },
       {
         "id": "s-self-62-c",
-        "text": "自己玩",
+        "text": "走去做其他嘢唔玩",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "要分享。"
+            "comment": "直接放棄唔係最佳選擇。"
           }
         ],
         "next_scenario": null
@@ -6004,41 +6070,41 @@
     "id": "s-self-63",
     "title": "合作：幫手完成任務",
     "background": "飯堂",
-    "description": "飯堂要執枱，大家一齊做",
+    "description": "飯堂食完飯，老師話：「大家一齊執枱同掃地。」同學們開始行動，你會……",
     "hints": [
-      "一齊做最快完成",
-      "合作有快樂"
+      "一齊做嘢可以更快完成，又可以建立友誼。",
+      "自己走開會加重其他人嘅負擔。"
     ],
     "options": [
       {
         "id": "s-self-63-a",
-        "text": "自己走",
+        "text": "自己閂門走人",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要合作。"
+            "comment": "走開會加重其他人嘅負擔。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-63-b",
-        "text": "一齊執",
+        "text": "「我嚟幫手掃地」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好有團隊精神！"
+            "comment": "你嘅團隊精神令大家都好欣賞！"
           }
         ],
         "next_scenario": "s-self-64"
       },
       {
         "id": "s-self-63-c",
-        "text": "等清潔工",
+        "text": "等清潔工嚟執",
         "effects": [
           {
             "moralChange": -5,
-            "comment": "自己都應該幫。"
+            "comment": "自己都應該出一分力。"
           }
         ],
         "next_scenario": null
@@ -6056,41 +6122,41 @@
     "id": "s-self-64",
     "title": "合作：聽從組長安排",
     "background": "課室",
-    "description": "小組做 project，組長分配工作",
+    "description": "小組做 group project，組長話：「你負責畫圖。」但你想做報告。你會……",
     "hints": [
-      "跟從安排係合作",
-      "信任隊友"
+      "聽從組長安排係合作嘅基本。",
+      "有唔同意見可以用冷靜嘅方式提出。"
     ],
     "options": [
       {
         "id": "s-self-64-a",
-        "text": "自己做自己嘅",
+        "text": "自己做自己鍾意嘅部分",
         "effects": [
           {
             "moralChange": -12,
-            "comment": "要跟安排。"
+            "comment": "唔跟安排會令小組工作混亂。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-64-b",
-        "text": "跟從分配",
+        "text": "先答應，之後有需要再商量",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好合作！"
+            "comment": "你識得跟從安排又識變通！"
           }
         ],
         "next_scenario": "s-self-65"
       },
       {
         "id": "s-self-64-c",
-        "text": "反對組長",
+        "text": "當面反對組長嘅安排",
         "effects": [
           {
             "moralChange": -15,
-            "comment": "要尊重。"
+            "comment": "當面反對會令組長好難做。"
           }
         ],
         "next_scenario": null
@@ -6108,41 +6174,41 @@
     "id": "s-self-65",
     "title": "合作：鼓勵隊友",
     "background": "操場",
-    "description": "隊友做運動好累",
+    "description": "運動會跑接力賽，你嘅隊友跑得好慢，喘晒氣，好想放棄。你會……",
     "hints": [
-      "鼓勵係合作一部分",
-      "大家一齊加油"
+      "隊友需要你嘅支持同鼓勵。",
+      "叫佢放棄會令佢失去信心。"
     ],
     "options": [
       {
         "id": "s-self-65-a",
-        "text": "自己跑",
+        "text": "「我跑先啦」就自己走",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "要支持隊友。"
+            "comment": "隊友需要你嘅支持，唔可以放低佢。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-65-b",
-        "text": "加油打氣",
+        "text": "「加油呀！你得嘅！」",
         "effects": [
           {
             "moralChange": 18,
-            "comment": "你好有團隊精神！"
+            "comment": "你嘅鼓勵會令隊友充滿力量！"
           }
         ],
         "next_scenario": "s-self-66"
       },
       {
         "id": "s-self-65-c",
-        "text": "叫佢放棄",
+        "text": "「算啦，放棄啦」",
         "effects": [
           {
             "moralChange": -18,
-            "comment": "要支持。"
+            "comment": "叫佢放棄會令佢以後更易放棄。"
           }
         ],
         "next_scenario": null
@@ -6160,26 +6226,26 @@
     "id": "s-self-66",
     "title": "合作：團隊勝利最開心",
     "background": "屋企・床頭",
-    "description": "今日小組一齊完成任務",
+    "description": "今日你哋小組一齊完成咗一個好難嘅任務，全組都攞到獎勵。你會……",
     "hints": [
-      "合作令大家成功",
-      "團隊精神最重要"
+      "團隊成功係每個成員嘅功勞。",
+      "保持合作會令下個任務更順利。"
     ],
     "options": [
       {
         "id": "s-self-66-a",
-        "text": "覺得自己最勁",
+        "text": "「我做得最多功」",
         "effects": [
           {
             "moralChange": 5,
-            "comment": "但團隊更重要。"
+            "comment": "團隊成果係每個人嘅功勞。"
           }
         ],
         "next_scenario": null
       },
       {
         "id": "s-self-66-b",
-        "text": "好開心一齊做",
+        "text": "「多謝大家一齊努力」",
         "effects": [
           {
             "moralChange": 20,
@@ -6190,11 +6256,11 @@
       },
       {
         "id": "s-self-66-c",
-        "text": "下次自己做",
+        "text": "「下次我自己做啦」",
         "effects": [
           {
             "moralChange": -10,
-            "comment": "要合作。"
+            "comment": "放棄合作會錯失好多樂趣。"
           }
         ],
         "next_scenario": null
