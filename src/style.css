@@ -1838,3 +1838,47 @@ html[data-hc="true"] .result-card .moral .minus { text-decoration: line-through;
 /* confetti / star float / comfort 等裝飾 — 留返因為佢哋只係 short-lived 慶祝 layer */
 /* 強制 prefers-contrast 系統設定都觸發我哋嘅 mode（其他用戶唔影響） */
 /* 注意：冇做 @media (prefers-contrast: more) 因為 manual toggle 為主，避免覆蓋用戶自選 */
+
+/* ============================================
+   🎬 減少動畫模式 (Reduced Motion Mode)
+   ============================================
+   由 main.js toggleRM() 設 fc_rm_mode = '1' 後加 data-rm="true" 落 <html>
+   設計目標：完全停掉 transition / animation，保留功能性 feedback（顏色/state 即時切）
+   對應 WCAG 2.3.3 (Animation from Interactions, AAA)
+*/
+html[data-rm="true"] *,
+html[data-rm="true"] *::before,
+html[data-rm="true"] *::after {
+  animation-duration: 0.001ms !important;
+  animation-delay: 0ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  transition-delay: 0ms !important;
+  scroll-behavior: auto !important;
+}
+/* 慶祝層（confetti / star float）喺 RM mode 直接唔 spawn — 透過 class 喺 JS 邊度 gate。
+   CSS 唔使理：data-rm 時 JS 已經 skip triggerConfetti / triggerStarFloat / triggerComfort。*/
+/* 結果卡 bounceIn / pulse 都要立即 stop（避免「卡住」嘅幻覺） */
+html[data-rm="true"] .result-card.good,
+html[data-rm="true"] .result-card.bad,
+html[data-rm="true"] .result-emoji,
+html[data-rm="true"] .voice-fab.speaking,
+html[data-rm="true"] .streak-stat.flame--hot .flame,
+html[data-rm="true"] .fade-in,
+html[data-rm="true"] .action-cta-fab,
+html[data-rm="true"] .confetti-piece,
+html[data-rm="true"] .star-float,
+html[data-rm="true"] .bank-stamp {
+  animation: none !important;
+  transform: none !important;
+}
+/* range thumb 嘅 pulse feedback 都停 */
+html[data-rm="true"] .toggle,
+html[data-rm="true"] .toggle::after {
+  transition: none !important;
+}
+/* visual toast (announce fallback) — 仍然 show 唔需要 animation 入埸，opacity 直接 set */
+html[data-rm="true"] #fc-announce-toast {
+  transition: none !important;
+  animation: none !important;
+}

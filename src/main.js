@@ -45,13 +45,73 @@ function getSrAnnouncer() {
   return _srAnnouncer;
 }
 
+// Visual toast (announce fallback for non-SR users)
+// SR live region 對 screen reader 自動 announce，但對視力正常嘅用戶冇視覺提示。
+// 呢個 toast 顯示喺底部 2.5s 自動消失 — 唔影響 SR behaviour，
+// 只係畀普通用戶都睇到「題目載入咗 / 切咗語言」等關鍵事件。
+let _toastEl = null;
+let _toastTimer = null;
+function getToastEl() {
+  if (_toastEl) return _toastEl;
+  _toastEl = document.createElement('div');
+  _toastEl.id = 'fc-announce-toast';
+  _toastEl.setAttribute('role', 'status');     // a11y：本身係 status，唔阻 screen reader 重複 announce
+  _toastEl.setAttribute('aria-live', 'polite'); // 對 SR 額外做一次 announce
+  _toastEl.setAttribute('aria-atomic', 'true');
+  // inline CSS 而唔寫 style.css — 咁唔使煩 style.css 嘅 cascade
+  _toastEl.style.cssText = [
+    'position: fixed',
+    'bottom: 24px',
+    'left: 50%',
+    'transform: translateX(-50%)',
+    'max-width: 90vw',
+    'padding: 12px 20px',
+    'background: rgba(15, 23, 42, 0.95)',     // slate-900
+    'color: #ffffff',
+    'border-radius: 12px',
+    'box-shadow: 0 8px 24px rgba(0,0,0,0.25)',
+    'font-size: 15px',
+    'font-weight: 500',
+    'line-height: 1.4',
+    'text-align: center',
+    'z-index: 9999',
+    'pointer-events: none',                    // 唔阻 click
+    'opacity: 0',                              // 預設隱藏，由 JS 控制 fade
+    'transition: opacity 0.25s ease-out, transform 0.25s ease-out',
+  ].join(';');
+  document.body.appendChild(_toastEl);
+  return _toastEl;
+}
+function showAnnounceToast(text) {
+  // 如果 cached node 已經 detached（被測試/手動 remove 走），reset cache 強制 re-create
+  if (_toastEl && !_toastEl.isConnected) _toastEl = null;
+  // Reduced motion: 即時 show/hide，唔做 fade
+  const rm = document.documentElement.hasAttribute('data-rm');
+  const el = getToastEl();
+  el.textContent = text;
+  el.style.opacity = '1';
+  el.style.transform = rm ? 'translateX(-50%)' : 'translateX(-50%) translateY(0)';
+  if (_toastTimer) clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => {
+    el.style.opacity = '0';
+    el.style.transform = rm ? 'translateX(-50%)' : 'translateX(-50%) translateY(8px)';
+    setTimeout(() => {
+      if (el.style.opacity === '0') el.textContent = '';
+    }, 300);
+  }, 2500);
+}
+
 function announceToSR(text) {
+  // 1) 寫入 SR live region（SR 自動 announce）
   const live = getSrAnnouncer();
-  if (!live) return;
-  // 先清空再寫返，trigger SR 重讀（textContent set 相同 value 唔會 re-announce）
-  live.textContent = '';
-  // 用 rAF 確保清空先生效，再 set 新 value
-  requestAnimationFrame(() => { live.textContent = text; });
+  if (live) {
+    // 先清空再寫返，trigger SR 重讀（textContent set 相同 value 唔會 re-announce）
+    live.textContent = '';
+    // 用 rAF 確保清空先生效，再 set 新 value
+    requestAnimationFrame(() => { live.textContent = text; });
+  }
+  // 2) Visual fallback — 底部 toast 畀非 SR 用戶都睇得到
+  showAnnounceToast(text);
 }
 
 // 場景題目載入時用 — 喺 <main> 換 scenario 內容後 trigger SR
@@ -241,13 +301,17 @@ export function choose(optionId) {
   // 情緒慶祝動畫 + SFX
   setTimeout(() => {
     const isGood = data.moralChange >= 0;
+    // 減少動畫模式下 skip 視覺慶祝 layer（confetti / star / comfort）
+    // SFX 仍然播（聲音唔會 trigger 前庭障礙）
     if (isGood) {
       playSFX('success');
-      triggerConfetti();
-      triggerStarFloat();
+      if (!_isReducedMotion()) {
+        triggerConfetti();
+        triggerStarFloat();
+      }
     } else {
       playSFX('fail');
-      triggerComfort();
+      if (!_isReducedMotion()) triggerComfort();
     }
   }, 100);
 }
@@ -812,6 +876,23 @@ window.FC.toggleHC = function(el) {
   // SR: announce 切換咗咩
   announceToSR(next ? '高對比模式開咗' : '高對比模式關咗');
 };
+
+// 🎬 減少動畫模式 — toggle data-rm attribute + 持久化
+// 對稱 HC 嘅 pattern：data-rm on <html> → CSS 停掉 transition/animation
+// 唔 auto-hook prefers-reduced-motion（同 HC 一樣 manual 為主，避免覆蓋用戶自選）
+window.FC.toggleReducedMotion = function(el) {
+  const next = !(localStorage.getItem('fc_rm_mode') === '1');
+  localStorage.setItem('fc_rm_mode', next ? '1' : '0');
+  if (el) el.classList.toggle('on', next);
+  applyCSS();
+  announceToSR(next ? '減少動畫開咗' : '減少動畫關咗');
+};
+
+// 慶祝 layer 喺 reduced motion 模式下直接 skip（即使 CSS override 都慳返 render）
+// 對應 main.js 嘅 triggerConfetti / triggerStarFloat / triggerComfort
+function _isReducedMotion() {
+  return document.documentElement.hasAttribute('data-rm');
+}
 window.FC.setSpeed = function(v) {
   localStorage.setItem('fc_tts_speed', v);
   const label = document.querySelector('[data-for="speed"]');

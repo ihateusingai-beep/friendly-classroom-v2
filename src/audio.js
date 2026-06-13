@@ -190,6 +190,7 @@ function getParams() {
     lineHeight: parseFloat(localStorage.getItem('fc_line_height') || '1.5'),
     spacing: localStorage.getItem('fc_spacing') || 'medium',
     highContrast: localStorage.getItem('fc_hc_mode') === '1',
+    reducedMotion: localStorage.getItem('fc_rm_mode') === '1',
   };
 }
 
@@ -203,6 +204,9 @@ export function applyCSS() {
   // HC mode: toggle data-hc attribute on <html>，CSS 跟住做 override
   if (p.highContrast) root.setAttribute('data-hc', 'true');
   else root.removeAttribute('data-hc');
+  // Reduced motion mode: toggle data-rm attribute on <html>，CSS 跟住做 override
+  if (p.reducedMotion) root.setAttribute('data-rm', 'true');
+  else root.removeAttribute('data-rm');
 }
 
 // ── 音頻播放 ──
@@ -327,6 +331,7 @@ export function resetAllSettings() {
   localStorage.removeItem('fc_line_height');
   localStorage.removeItem('fc_spacing');
   localStorage.removeItem('fc_hc_mode');
+  localStorage.removeItem('fc_rm_mode');
   applyCSS();
 }
 

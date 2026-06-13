@@ -961,6 +961,10 @@ export function renderSettings() {
   const spacing = localStorage.getItem('fc_spacing') || 'medium';
   const currentLang = localStorage.getItem('fc_tts_lang') || 'auto';
   const hcMode = localStorage.getItem('fc_hc_mode') === '1';
+  const rmMode = localStorage.getItem('fc_rm_mode') === '1';
+  // 系統 prefers-reduced-motion 偵測（only 當用戶未手動揀過）
+  let osRMPref = false;
+  try { osRMPref = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches || false; } catch {}
 
   const fsLabel = fontSize <= 18 ? '小' : fontSize <= 22 ? '中' : '大';
   const enabled = isEnabled();
@@ -1049,6 +1053,15 @@ export function renderSettings() {
           <button type="button" class="toggle ${hcMode ? 'on' : ''}" data-key="hc" onclick="FC.toggleHC(this)"
             role="switch" aria-checked="${hcMode}" aria-labelledby="hc-toggle-label"
             aria-label="高對比模式開關"></button>
+        </div>
+        <div class="setting-row" style="margin-top:12px">
+          <div>
+            <strong id="rm-toggle-label">減少動畫</strong>
+            <div style="font-size:0.85em;color:var(--text-light)">停掉過場動畫同慶祝效果${osRMPref && !rmMode ? '（系統已偵測到偏好）' : ''}</div>
+          </div>
+          <button type="button" class="toggle ${rmMode ? 'on' : ''}" data-key="rm" onclick="FC.toggleReducedMotion(this)"
+            role="switch" aria-checked="${rmMode}" aria-labelledby="rm-toggle-label"
+            aria-label="減少動畫開關"></button>
         </div>
       </div>
 
