@@ -126,14 +126,66 @@ export async function syncNow(studentName, progress) {
   }
 }
 
-// ── Retry pending sync ───────────────────────────────────────────────────────
-let pendingSync = null;
+// ── Persistent sync queue (P0-1) ─────────────────────────────────────────────
+// Phase 1 fix: previous single-slot `pendingSync` only kept the latest action.
+// 100 actions queued offline would lose 99; the server would then overwrite
+// the local record with a stale snapshot. This FIFO queue is coalesced per
+// student (older snapshots are strictly dominated) and persisted across reloads.
+const QUEUE_KEY = 'fc_sync_queue';
+const QUEUE_MAX = 50; // hard cap to prevent unbounded growth
 
-function retryPendingSync() {
-  if (pendingSync) {
-    syncNow(pendingSync.name, pendingSync.progress);
-    pendingSync = null;
+function _loadQueue() {
+  try {
+    const raw = localStorage.getItem(QUEUE_KEY);
+    const arr = JSON.parse(raw);
+    return Array.isArray(arr) ? arr : [];
+  } catch (e) {
+    console.warn('[sync] queue load failed:', e);
+    return [];
   }
+}
+
+function _saveQueue(q) {
+  try {
+    localStorage.setItem(QUEUE_KEY, JSON.stringify(q));
+  } catch (e) {
+    console.warn('[sync] queue persist failed:', e);
+  }
+}
+
+let flushInFlight = false;
+
+async function _flushQueue() {
+  if (flushInFlight || !isOnline) return;
+  const queue = _loadQueue();
+  if (queue.length === 0) return;
+  flushInFlight = true;
+  try {
+    while (true) {
+      const q = _loadQueue();
+      if (q.length === 0) break;
+      const head = q[0];
+      const result = await syncNow(head.name, head.progress);
+      if (!result.ok) {
+        // backpressure: stop on first failure, retry on next online event
+        break;
+      }
+      // pop the head we just synced
+      _saveQueue(q.slice(1));
+    }
+  } finally {
+    flushInFlight = false;
+  }
+}
+
+function _scheduleFlush() {
+  // microtask defer so multiple enqueues coalesce
+  queueMicrotask(() => { _flushQueue(); });
+}
+
+// ── Retry pending sync ───────────────────────────────────────────────────────
+function retryPendingSync() {
+  _flushQueue();
 }
 
 // ── Teacher auth ─────────────────────────────────────────────────────────────
@@ -215,8 +267,17 @@ export function initSync(studentName, progress) {
 
 // ── Queue sync (call this instead of syncNow when you want to defer) ──────────
 export function queueSync(studentName, progress) {
-  pendingSync = { name: studentName, progress };
+  if (!studentName || !progress) return;
+  const queue = _loadQueue();
+  // Coalesce: drop any earlier snapshot for the same student (strictly dominated)
+  const filtered = queue.filter(p => p.name !== studentName);
+  filtered.push({ name: studentName, progress, queuedAt: Date.now() });
+  // hard cap to prevent unbounded growth on long offline periods
+  const trimmed = filtered.length > QUEUE_MAX
+    ? filtered.slice(filtered.length - QUEUE_MAX)
+    : filtered;
+  _saveQueue(trimmed);
   if (isOnline) {
-    syncNow(studentName, progress);
+    _scheduleFlush();
   }
 }

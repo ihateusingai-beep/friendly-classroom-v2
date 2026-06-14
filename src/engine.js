@@ -8,6 +8,7 @@ import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 import { getMoralBarData } from './domain/Moral.js';
 import { getProgress, isCompleted } from './domain/Progress.js';
 import { getDailyCreed } from './creeds.js';
+import { escapeJsString } from './util/escape.js';
 
 // ── 遊戲邏輯 delegate（from domain/ScenarioEngine） ──
 import {
@@ -175,7 +176,7 @@ export function renderBankPlay(scenario, run) {
         ${scenario.options.map((opt, i) => {
           const labels = ['A', 'B', 'C', 'D'];
           return `
-            <button type="button" class="option-card" onclick="FC.bankChoose('${opt.id}')" aria-label="選項 ${labels[i] || (i+1)}：${opt.text}">
+            <button type="button" class="option-card" onclick="FC.bankChoose('${escapeJsString(opt.id)}')" aria-label="選項 ${labels[i] || (i+1)}：${escapeAttr(opt.text)}">
               <img src="assets/images/outcomes/${scenario.id}_opt${i+1}.png" alt=""
                    class="opt-thumb" onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" aria-hidden="true" />
               <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
@@ -381,7 +382,7 @@ export function renderModeSelect(currentMode, subjectId) {
         ${GAME_MODES.map(m => `
           <button type="button" class="mode-card ${m.id} ${savedMode === m.id ? 'selected' : ''}"
                style="background:${m.bg};border-color:${m.color}"
-               onclick="FC.selectMode('${m.id}')"
+               onclick="FC.selectMode('${escapeJsString(m.id)}')"
                role="radio" aria-checked="${savedMode === m.id}"
                aria-label="${m.title}：${m.desc}${savedMode === m.id ? '（已選）' : ''}">
             <div class="mc-icon" aria-hidden="true">${m.icon}</div>
@@ -666,7 +667,7 @@ export function renderHome(subjectId) {
               statusText = `完成 ${done} 題，共 ${total} 題，${pct}%`;
             }
             return `
-              <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${t.id}')"
+              <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${escapeJsString(t.id)}')"
                 aria-label="${t.title}，${sub}，${statusText}">
                 <span class="emoji" aria-hidden="true">${t.emoji}</span>
                 <div class="title">${t.title}</div>
@@ -709,7 +710,7 @@ export function renderHome(subjectId) {
               statusText = `完成 ${done} 題，共 ${total} 題，${pct}%`;
             }
             return `
-              <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${t.id}')"
+              <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${escapeJsString(t.id)}')"
                 aria-label="${t.title}，${sub}，${statusText}">
                 <span class="emoji" aria-hidden="true">${t.emoji}</span>
                 <div class="title">${t.title}</div>
@@ -757,7 +758,7 @@ export function renderTopicList(topicId, subjectId) {
           const done = getStudent() && isCompleted(getStudent(), s.id);
           return `
             <li role="listitem">
-              <button type="button" class="scenario-item ${done ? 'completed' : ''}" onclick="FC.play('${s.id}')"
+              <button type="button" class="scenario-item ${done ? 'completed' : ''}" onclick="FC.play('${escapeJsString(s.id)}')"
                 aria-label="${s.title}，${s.background || ''}${done ? '，已完成' : ''}">
                 <span class="check" aria-hidden="true">${done ? '✓' : ''}</span>
                 <span class="info">
@@ -789,7 +790,7 @@ export function renderPlay(scenarioId, subjectId) {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goTopic('${s.topicId}')" aria-label="返回 ${topic?.title || '主題'}">←</button>
+        <button type="button" class="back-btn" onclick="FC.goTopic('${escapeJsString(s.topicId)}')" aria-label="返回 ${escapeAttr(topic?.title || '主題')}">←</button>
         <h1 style="flex:1;text-align:center">${topic?.emoji || ''} ${topic?.title || ''}</h1>
         <span class="play-progress" aria-label="第 ${idxInTopic} 題，共 ${totalInTopic} 題">第 ${idxInTopic} / ${totalInTopic} 題</span>
       </div>
@@ -841,7 +842,7 @@ export function renderPlay(scenarioId, subjectId) {
           const valueLabel = mc > 0 ? `＋${mc} 道德` : (mc < 0 ? `${mc} 道德` : '中性');
           const valueClass = mc > 0 ? 'good' : (mc < 0 ? 'bad' : 'neutral');
           return `
-            <button type="button" class="option-card" onclick="FC.choose('${opt.id}')"
+            <button type="button" class="option-card" onclick="FC.choose('${escapeJsString(opt.id)}')"
               aria-label="選項 ${labels[i] || (i+1)}：${opt.text}，${valueLabel}">
               <img src="assets/images/outcomes/${s.id}_opt${i+1}.png" alt=""
                    class="opt-thumb" onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" aria-hidden="true" />
@@ -911,18 +912,18 @@ export function renderResult(data, subjectId) {
         <button type="button" class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
         ${(function() {
           const next = suggestNext(getCurrentScenario()?.topicId);
-          return next ? `<button type="button" class="btn btn-primary" onclick="FC.play('${next.id}')">下一題 →</button>` : '';
+          return next ? `<button type="button" class="btn btn-primary" onclick="FC.play('${escapeJsString(next.id)}')">下一題 →</button>` : '';
         })()}
-        <button type="button" class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goTopic('${escapeJsString(getCurrentScenario()?.topicId)}')">← 返回主題</button>
       </div>
 
       <div class="action-cta-fab" id="result-cta-fab" hidden>
         <button type="button" class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
         ${(function() {
           const next = suggestNext(getCurrentScenario()?.topicId);
-          return next ? `<button type="button" class="btn btn-primary" onclick="FC.play('${next.id}')">下一題 →</button>` : '';
+          return next ? `<button type="button" class="btn btn-primary" onclick="FC.play('${escapeJsString(next.id)}')">下一題 →</button>` : '';
         })()}
-        <button type="button" class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
+        <button type="button" class="btn btn-outline" onclick="FC.goTopic('${escapeJsString(getCurrentScenario()?.topicId)}')">← 返回主題</button>
       </div>
 
       <button type="button" class="voice-fab" onclick="FC.speakCreeds()" title="朗讀信條" aria-label="朗讀信條">🔊</button>

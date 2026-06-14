@@ -5,20 +5,41 @@
 import { bus } from './EventBus.js';
 
 const PREFIX = 'fc_progress_';
+const SCHEMA_VERSION = 1;
 
 // ── 現有 API（完全向後相容）──
 export function getProgress(studentName) {
   try {
     const raw = localStorage.getItem(PREFIX + studentName);
-    return raw ? JSON.parse(raw) : _defaultProgress(studentName);
+    if (!raw) return _defaultProgress(studentName);
+    const parsed = JSON.parse(raw);
+    // Phase 1 (S4+S5): apply topic migration + schema version on read
+    const migrated = _migrateOnRead(parsed);
+    return migrated;
   } catch {
     return _defaultProgress(studentName);
   }
 }
 
 export function saveProgress(progress) {
-  progress.lastPlayed = new Date().toISOString().split('T')[0];
-  localStorage.setItem(PREFIX + progress.name, JSON.stringify(progress));
+  progress.lastPlayed = _todayHKT();
+  progress.schemaVersion = SCHEMA_VERSION;
+  const key = PREFIX + progress.name;
+  const payload = JSON.stringify(progress);
+  try {
+    localStorage.setItem(key, payload);
+    return true;
+  } catch (e) {
+    // Phase 1 (S2): quota + serialization guard
+    if (e && e.name === 'QuotaExceededError') {
+      bus.emit('progress:save-failed', { name: progress.name, error: 'quota' });
+      console.warn('[Progress] quota exceeded for', progress.name);
+    } else {
+      bus.emit('progress:save-failed', { name: progress.name, error: e?.message || 'unknown' });
+      console.warn('[Progress] save failed:', e);
+    }
+    return false;
+  }
 }
 
 export function markComplete(studentName, scenarioId, topicId, moralChange, subjectId) {
@@ -137,14 +158,22 @@ export function getStudentSummary(studentId) {
 //   honesty       → integrity (合併)
 //   conflict      → conflict-resolution
 // 呢啲 key 只係 legacy progress data 殘留 — _defaultProgress 同 migrate helper
-// 都唔再 init 佢哋。舊 user 嘅 localStorage 仲有嘅，留俾 follow-up
-// `migrateTopicProgressKeys()` 清（見 importProgress）。
+// 都唔再 init 佢哋。舊 user 嘅 localStorage 仲有嘅，喺 getProgress 嗰陣 lazy-prune。
 // ─────────────────────────────────────────────────────────────────────────────
 export const V22_DEAD_TOPIC_IDS = ['emotions', 'honesty', 'conflict'];
+
+// V2.2 → V3 topic key migration. Phase 1 (S4): applied at read time so user
+// data with old keys still maps to the right topic in the UI.
+const TOPIC_KEY_MIGRATION = {
+  emotions: 'empathy',
+  honesty: 'integrity',
+  conflict: 'conflict-resolution',
+};
 
 // ── Internal ──
 function _defaultProgress(name) {
   return {
+    schemaVersion: SCHEMA_VERSION,
     name,
     completedScenarios: [],
     // V3: topicProgress 唔再 pre-init。`updateTopicTotal()` 喺學生第一次入個
@@ -160,6 +189,55 @@ function _defaultProgress(name) {
   };
 }
 
+// Phase 1 (S4 + S5): read-time migration. Idempotent — safe to run on every read.
+function _migrateOnRead(p) {
+  if (!p || typeof p !== 'object') return p;
+
+  // S5: stamp schemaVersion on legacy records
+  if (p.schemaVersion == null) p.schemaVersion = SCHEMA_VERSION;
+
+  // S4: rename V2.2 dead topic keys to V3 ids; preserve max(completed, total)
+  if (p.topicProgress && typeof p.topicProgress === 'object') {
+    for (const oldKey of V22_DEAD_TOPIC_IDS) {
+      if (p.topicProgress[oldKey]) {
+        const newKey = TOPIC_KEY_MIGRATION[oldKey];
+        const oldEntry = p.topicProgress[oldKey];
+        const newEntry = p.topicProgress[newKey] || { completed: 0, total: 0 };
+        newEntry.completed = Math.max(newEntry.completed || 0, oldEntry.completed || 0);
+        newEntry.total     = Math.max(newEntry.total     || 0, oldEntry.total     || 0);
+        p.topicProgress[newKey] = newEntry;
+        delete p.topicProgress[oldKey];
+      }
+    }
+  }
+
+  return p;
+}
+
+// Phase 1 (S5b): HKT-correct day for streak/lastPlayed.
+// en-CA gives ISO-style YYYY-MM-DD; `timeZone` keeps the result anchored to HKT
+// regardless of the user's local clock. This fixes the 00:00-08:00 HKT bug
+// where plays were attributed to the previous UTC day.
+function _todayHKT() {
+  try {
+    return new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Asia/Hong_Kong',
+      year: 'numeric', month: '2-digit', day: '2-digit',
+    }).format(new Date()); // "2026-06-14"
+  } catch {
+    // Intl unavailable — fall back to UTC (Safari < 10, very old browsers)
+    return new Date().toISOString().split('T')[0];
+  }
+}
+
+function _yesterdayHKT() {
+  const today = _todayHKT();
+  const [y, m, d] = today.split('-').map(Number);
+  const dt = new Date(Date.UTC(y, m - 1, d));
+  dt.setUTCDate(dt.getUTCDate() - 1);
+  return dt.toISOString().split('T')[0];
+}
+
 /**
  * Streak 規則：
  * - 同日重複 markComplete：idempotent（lastDay 對齊今日就唔加）
@@ -169,18 +247,12 @@ function _defaultProgress(name) {
  */
 function _bumpStreak(streak) {
   const s = streak || { current: 0, longest: 0, lastDay: null };
-  const today = new Date().toISOString().split('T')[0];
+  const today = _todayHKT();
   if (s.lastDay === today) return s;                    // 同日 idempotent
-  const yest = _yesterdayISO();
+  const yest = _yesterdayHKT();
   if (s.lastDay === yest) s.current += 1;               // 連續
   else s.current = 1;                                    // 首次 / 斷咗
   if (s.current > (s.longest || 0)) s.longest = s.current;
   s.lastDay = today;
   return s;
-}
-
-function _yesterdayISO() {
-  const d = new Date();
-  d.setDate(d.getDate() - 1);
-  return d.toISOString().split('T')[0];
 }

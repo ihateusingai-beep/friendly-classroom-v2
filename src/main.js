@@ -671,8 +671,8 @@ function renderStudentSelect() {
       <h1 style="text-align:center;margin-bottom:24px">👤 選擇學生</h1>
       <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px" role="list" aria-label="已登記嘅學生">
         ${saved.map(student => `
-          <button type="button" class="student-card" onclick="FC.selectStudent('${student.name}')" role="listitem"
-            aria-label="選擇學生 ${student.name}，按此開始學習">
+          <button type="button" class="student-card" onclick="FC.selectStudent('${escapeAttr(student.name)}')" role="listitem"
+            aria-label="選擇學生 ${escapeAttr(student.name)}，按此開始學習">
             <span class="avatar" aria-hidden="true">${student.emoji || '👤'}</span>
             <span class="info">
               <span class="name">${student.name}</span>
@@ -1043,6 +1043,9 @@ function renderWithTransition(updateFn) {
 function navRender() {
   renderWithTransition(render);
 }
+
+// ── HTML attribute escaping (Phase 1 S3: XSS guard) ──
+import { escapeAttr, escapeJsString } from './util/escape.js';
 
 // ── 渲染 ──
 function renderErrorFallback(e) {

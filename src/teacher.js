@@ -3,6 +3,7 @@
 
 import { getAllStudents, importProgress } from './domain/Progress.js';
 import { getAllSubjects } from './subjects.js';
+import { escapeAttr } from './util/escape.js';
 
 // TEACHER_EMOJI 是老師頁專屬的學生頭像映射
 const TEACHER_EMOJI = {};
@@ -70,10 +71,10 @@ export function renderTeacher() {
           const emoji = TEACHER_EMOJI[s.name] || '👤';
           const grade = total >= 200 ? '🌟' : total >= 100 ? '⭐' : total >= 50 ? '✨' : '💫';
           return `
-          <div class="student-row" role="listitem" aria-label="學生 ${s.name}，完成 ${completed} 個場景，最近 ${s.lastPlayed || '—'}，道德分 ${total}，等級 ${grade}">
+          <div class="student-row" role="listitem" aria-label="學生 ${escapeAttr(s.name)}，完成 ${completed} 個場景，最近 ${s.lastPlayed || '—'}，道德分 ${total}，等級 ${grade}">
             <span class="avatar" aria-hidden="true">${emoji}</span>
             <span class="info">
-              <span class="name">${s.name}</span>
+              <span class="name">${escapeAttr(s.name)}</span>
               <span class="meta">完成 ${completed} 個場景 · 最近 ${s.lastPlayed || '—'}</span>
             </span>
             <span class="stat-badge">
