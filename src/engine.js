@@ -6,10 +6,12 @@ import { getSubjectColor, getSubjectBgColor, getSubjectName, getSubjectEmoji } f
 import { getTopic, TOPICS, VALUES, CARING } from './topics.js';
 import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 import { getMoralBarData } from './domain/Moral.js';
-import { getProgress, isCompleted } from './domain/Progress.js';
+import { getProgress, isCompleted, getStudentSummary } from './domain/Progress.js';
 import { getDailyCreed } from './creeds.js';
 import { escapeJsString } from './util/escape.js';
 import { renderFooter, renderEmptyState } from './components/chrome.js';
+import { bankRiskLabel, BANK_RISK } from './constants/bank.js';
+import { getTeacherConfig } from './storage.js';
 
 // ── 遊戲邏輯 delegate（from domain/ScenarioEngine） ──
 import {
@@ -35,7 +37,7 @@ export function renderRoleSelect() {
       <p class="tagline">選擇你的身份，開始學習！</p>
 
       <div class="role-cards">
-        <button type="button" class="role-card student" onclick="FC.chooseRole('student')" aria-label="選擇學生模式：揀遊戲、學習社交禮貌，自由探索">
+        <button type="button" class="role-card student" data-action="chooseRole" data-arg="student" aria-label="選擇學生模式：揀遊戲、學習社交禮貌，自由探索">
           <div class="rc-icon" aria-hidden="true">🧒</div>
           <div class="rc-body">
             <h2>學生模式</h2>
@@ -44,7 +46,7 @@ export function renderRoleSelect() {
           <div class="rc-arrow" aria-hidden="true">→</div>
         </button>
 
-        <button type="button" class="role-card teacher" onclick="FC.chooseRole('teacher')" aria-label="選擇老師或家長模式：設定功課範圍、控制功能開關、查看學習報告">
+        <button type="button" class="role-card teacher" data-action="chooseRole" data-arg="teacher" aria-label="選擇老師或家長模式：設定功課範圍、控制功能開關、查看學習報告">
           <div class="rc-icon" aria-hidden="true">👨‍🏫</div>
           <div class="rc-body">
             <h2>老師 / 家長模式</h2>
@@ -65,23 +67,20 @@ export function renderRoleSelect() {
 // 學生揀「學生模式」後去呢度。4 個 game card：好人好事銀行 / 情境答題 / 仲有 2 個 coming soon
 export function renderGameHub() {
   // S11: 讀銀行當前難度設定，喺 bank card 入面 surface
-  let bankRiskTag = '';
-  try {
-    const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
-    const lvl = (cfg.bankMaxRiskLevel ?? 1);
-    const labels = { 0: '只 value', 1: '≤1（低）', 2: '≤2（中）', 3: '全開' };
-    bankRiskTag = `<div class="gc-meta" style="font-size:0.78em;color:var(--text-light);margin-top:6px">🎯 題目難度：${labels[lvl] || labels[1]}</div>`;
-  } catch {}
+  // Phase 3 (S14+S17): use cached getTeacherConfig() instead of raw LS parse
+  const cfg = getTeacherConfig();
+  const lvl = cfg.bankMaxRiskLevel ?? BANK_RISK.MILD;
+  const bankRiskTag = `<div class="gc-meta" style="font-size:0.78em;color:var(--text-light);margin-top:6px">🎯 題目難度：${bankRiskLabel(lvl)}</div>`;
 
   return `
     <div class="hub-screen fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goRoleSelect()" aria-label="返回主選單">←</button>
+        <button type="button" class="back-btn" data-action="goRoleSelect" aria-label="返回主選單">←</button>
         <h1>🎮 揀個遊戲開始</h1>
       </div>
 
       <div class="hub-grid">
-        <button type="button" class="game-card available" onclick="FC.playGoodDeedBank()" style="background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#eab308" aria-label="好人好事銀行（pilot）：做好事存款，衰嘢扣款，目標存到 $100 變品格富翁">
+        <button type="button" class="game-card available" data-action="playGoodDeedBank" style="background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#eab308" aria-label="好人好事銀行（pilot）：做好事存款，衰嘢扣款，目標存到 $100 變品格富翁">
           <div class="gc-icon" aria-hidden="true">🏦</div>
           <div class="gc-title">好人好事銀行</div>
           <div class="gc-desc">做好事存款，衰嘢扣款，目標存到 $100 變品格富翁！</div>
@@ -89,7 +88,7 @@ export function renderGameHub() {
           <div class="gc-tag" aria-label="pilot 試玩版">pilot</div>
         </button>
 
-        <button type="button" class="game-card available" onclick="FC.goSubjectSelect()" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#7C3AED" aria-label="情境答題：17 個品格課題自由探索">
+        <button type="button" class="game-card available" data-action="goSubjectSelect" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#7C3AED" aria-label="情境答題：17 個品格課題自由探索">
           <div class="gc-icon" aria-hidden="true">📖</div>
           <div class="gc-title">情境答題</div>
           <div class="gc-desc">17 個品格課題自由探索：12 個 EDB 價值觀 + 5 個友愛校園範疇</div>
@@ -111,7 +110,7 @@ export function renderGameHub() {
       </div>
 
       <div style="text-align:center;margin-top:20px">
-        <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
+        <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回</button>
       </div>
       ${renderFooter()}
     </div>
@@ -135,14 +134,13 @@ export function renderBankPlay(scenario, run) {
   const pct = Math.min(100, Math.max(0, (balance / target) * 100));
   const balanceClass = balance > 0 ? 'positive' : balance < 0 ? 'negative' : 'neutral';
   // S11: 顯示當局 risk ceiling
-  const riskLabels = { 0: '只 value', 1: '≤1（低）', 2: '≤2（中）', 3: '全開' };
-  const riskLvl = run.maxRisk ?? 1;
-  const riskTag = `<div class="bank-risk-tag" style="font-size:0.78em;color:var(--text-light);text-align:center;margin-top:4px" aria-label="本局題目難度上限 ${riskLabels[riskLvl] || ''}">🎯 題目難度：${riskLabels[riskLvl] || '≤1（低）'}</div>`;
+  const riskLvl = run.maxRisk ?? BANK_RISK.MILD;
+  const riskTag = `<div class="bank-risk-tag" style="font-size:0.78em;color:var(--text-light);text-align:center;margin-top:4px" aria-label="本局題目難度上限 ${bankRiskLabel(riskLvl)}">🎯 題目難度：${bankRiskLabel(riskLvl)}</div>`;
 
   return `
     <div class="container fade-in" style="max-width:560px">
       <div class="page-header">
-        <button class="back-btn" onclick="FC.confirmExitBank()">←</button>
+        <button class="back-btn" data-action="confirmExitBank">←</button>
         <h2>🏦 好人好事銀行</h2>
         ${riskTag}
       </div>
@@ -177,7 +175,7 @@ export function renderBankPlay(scenario, run) {
       <div class="options" style="margin-top:14px" role="radiogroup" aria-label="銀行題目選項">
         ${scenario.options.map((opt, i) => {
           return `
-            <button type="button" class="option-card" onclick="FC.bankChoose('${escapeJsString(opt.id)}')" aria-label="選項 ${labels[i] || (i+1)}：${escapeAttr(opt.text)}">
+            <button type="button" class="option-card" data-action="bankChoose" data-arg="${escapeAttr(opt.id)}" aria-label="選項 ${labels[i] || (i+1)}：${escapeAttr(opt.text)}">
               <img src="assets/images/outcomes/${scenario.id}_opt${i+1}.png" alt=""
                    loading="lazy" decoding="async"
                    class="opt-thumb" onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" aria-hidden="true" />
@@ -254,8 +252,8 @@ export function renderBankResult(scenario, result, run) {
       ` : ''}
 
       <div class="action-row" style="margin-top:18px">
-        <button type="button" class="btn btn-primary" onclick="FC.bankNext()">${isFinished || isBankrupt ? '✓ 結算' : '➡ 下一題'}</button>
-        <button type="button" class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
+        <button type="button" class="btn btn-primary" data-action="bankNext">${isFinished || isBankrupt ? '✓ 結算' : '➡ 下一題'}</button>
+        <button type="button" class="btn btn-outline" data-action="exitBank">← 返 Game Hub</button>
       </div>
     </div>
   `;
@@ -272,9 +270,8 @@ export function renderBankSummary(run) {
   // S11: count caring / risk-2+ 喺 ledger 上面 surface，俾老師 / 學生知道呢局難度分佈
   const caringCount = run.questions.filter(s => s.domain === 'caring' || (s.riskLevel != null && s.riskLevel > 0)).length;
   const valueCount = run.questions.length - caringCount;
-  const riskLabels = { 0: '只 value', 1: '≤1（低）', 2: '≤2（中）', 3: '全開' };
   const filterLine = `<div class="bank-summary-filter" style="font-size:0.85em;color:var(--text-light);text-align:center;margin:8px 0 14px 0">
-    🎯 難度設定：${riskLabels[run.maxRisk ?? 1] || '≤1（低）'} · 本局 ${valueCount} 個 value + ${caringCount} 個 caring
+    🎯 難度設定：${bankRiskLabel(run.maxRisk)} · 本局 ${valueCount} 個 value + ${caringCount} 個 caring
   </div>`;
 
   return `
@@ -323,8 +320,8 @@ export function renderBankSummary(run) {
       </div>
 
       <div class="action-row">
-        <button type="button" class="btn btn-primary" onclick="FC.playGoodDeedBank()">🔄 再玩一次</button>
-        <button type="button" class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
+        <button type="button" class="btn btn-primary" data-action="playGoodDeedBank">🔄 再玩一次</button>
+        <button type="button" class="btn btn-outline" data-action="exitBank">← 返 Game Hub</button>
       </div>
       ${renderFooter()}
     </div>
@@ -373,7 +370,7 @@ export function renderModeSelect(currentMode, subjectId) {
   return `
     <div class="mode-screen fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goRoleSelect()" aria-label="返回主選單">←</button>
+        <button type="button" class="back-btn" data-action="goRoleSelect" aria-label="返回主選單">←</button>
         <h1>🎮 選擇遊戲模式</h1>
       </div>
 
@@ -385,7 +382,7 @@ export function renderModeSelect(currentMode, subjectId) {
         ${GAME_MODES.map(m => `
           <button type="button" class="mode-card ${m.id} ${savedMode === m.id ? 'selected' : ''}"
                style="background:${m.bg};border-color:${m.color}"
-               onclick="FC.selectMode('${escapeJsString(m.id)}')"
+               data-action="selectMode" data-arg="${escapeAttr(m.id)}"
                role="radio" aria-checked="${savedMode === m.id}"
                aria-label="${m.title}：${m.desc}${savedMode === m.id ? '（已選）' : ''}">
             <div class="mc-icon" aria-hidden="true">${m.icon}</div>
@@ -404,21 +401,21 @@ export function renderModeSelect(currentMode, subjectId) {
       ${subjectId ? `
         <div style="text-align:center">
           <button type="button" class="btn btn-primary" style="min-width:220px;font-size:1.1em"
-            onclick="FC.goHome()">
+            data-action="goHome">
             ✅ 確定，開始學習 →
           </button>
         </div>
       ` : `
         <div style="text-align:center">
           <button type="button" class="btn btn-primary" style="min-width:220px;font-size:1.1em"
-            onclick="FC.goSubjectSelect()">
+            data-action="goSubjectSelect">
             📚 選擇課題 →
           </button>
         </div>
       `}
 
       <div style="text-align:center;margin-top:16px">
-        <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
+        <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回</button>
       </div>
 
       ${renderFooter()}
@@ -448,7 +445,7 @@ export function renderTeacherAssign() {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goTeacher()" aria-label="返回老師主控台">←</button>
+        <button type="button" class="back-btn" data-action="goTeacher" aria-label="返回老師主控台">←</button>
         <h1>⚙️ 功能設定</h1>
       </div>
 
@@ -461,7 +458,7 @@ export function renderTeacherAssign() {
             <div class="ft-desc">學生可以睇提示</div>
           </div>
           <button type="button" class="toggle-switch ${config.hintEnabled ? 'on' : ''}"
-            onclick="FC.toggleTeacherFeature(this, 'hintEnabled')"
+            data-action="toggleTeacherFeature" data-arg2="hintEnabled"
             role="switch" aria-checked="${config.hintEnabled}" aria-label="提示功能開關"></button>
         </div>
 
@@ -471,7 +468,7 @@ export function renderTeacherAssign() {
             <div class="ft-desc">開啟後每題限時答題</div>
           </div>
           <button type="button" class="toggle-switch ${config.timerEnabled ? 'on' : ''}"
-            onclick="FC.toggleTeacherFeature(this, 'timerEnabled')"
+            data-action="toggleTeacherFeature" data-arg2="timerEnabled"
             role="switch" aria-checked="${config.timerEnabled}" aria-label="計時功能開關"></button>
         </div>
 
@@ -496,7 +493,7 @@ export function renderTeacherAssign() {
             <div class="ft-desc">開啟連續答啱加分</div>
           </div>
           <button type="button" class="toggle-switch ${config.comboEnabled ? 'on' : ''}"
-            onclick="FC.toggleTeacherFeature(this, 'comboEnabled')"
+            data-action="toggleTeacherFeature" data-arg2="comboEnabled"
             role="switch" aria-checked="${config.comboEnabled}" aria-label="Combo 系統開關"></button>
         </div>
 
@@ -515,7 +512,7 @@ export function renderTeacherAssign() {
               <button type="button"
                 class="btn ${config.bankMaxRiskLevel===opt.v ? 'btn-primary' : 'btn-outline'}"
                 style="padding:6px 10px;font-size:0.82em;min-height:36px"
-                onclick="FC.setBankMaxRisk(${opt.v})"
+                data-action="setBankMaxRisk" data-arg="${opt.v}"
                 role="radio" aria-checked="${config.bankMaxRiskLevel===opt.v}">${opt.label}</button>
             `).join('')}
           </div>
@@ -529,11 +526,11 @@ export function renderTeacherAssign() {
           <div style="display:flex;gap:6px" role="radiogroup" aria-label="按鈕大小">
             <button type="button" class="btn ${config.buttonSize==='large'?'btn-primary':'btn-outline'}"
               style="padding:6px 12px;font-size:0.85em;min-height:36px"
-              onclick="FC.setButtonSize('large')"
+              data-action="setButtonSize" data-arg="large"
               role="radio" aria-checked="${config.buttonSize==='large'}">大</button>
             <button type="button" class="btn ${config.buttonSize==='normal'?'btn-primary':'btn-outline'}"
               style="padding:6px 12px;font-size:0.85em;min-height:36px"
-              onclick="FC.setButtonSize('normal')"
+              data-action="setButtonSize" data-arg="normal"
               role="radio" aria-checked="${config.buttonSize==='normal'}">中</button>
           </div>
         </div>
@@ -567,12 +564,12 @@ export function renderTeacherAssign() {
           placeholder="輸入新 PIN"
           style="width:100%;padding:14px;border:2px solid var(--border);border-radius:12px;font-size:1em;box-sizing:border-box;margin-bottom:10px" />
         <button type="button" class="btn btn-outline" style="width:100%;font-size:0.95em"
-          onclick="FC.saveTeacherPIN()">💾 儲存 PIN</button>
+          data-action="saveTeacherPIN">💾 儲存 PIN</button>
       </div>
 
       <div style="margin-top:16px">
         <button type="button" class="btn btn-primary" style="width:100%"
-          onclick="FC.saveTeacherConfig()">✅ 儲存所有設定</button>
+          data-action="saveTeacherConfig">✅ 儲存所有設定</button>
       </div>
 
       ${renderFooter({ marginTop: '24px' })}
@@ -625,7 +622,7 @@ function _renderTopicCard(t, tp) {
     statusText = `完成 ${done} 題，共 ${total} 題，${pct}%`;
   }
   return `
-    <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${escapeJsString(t.id)}')"
+              <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" data-action="goTopic" data-arg="${escapeAttr(t.id)}"
       aria-label="${t.title}，${sub}，${statusText}">
       <span class="emoji" aria-hidden="true">${t.emoji}</span>
       <div class="title">${t.title}</div>
@@ -655,9 +652,9 @@ export function renderHome(subjectId) {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goGameHub()" aria-label="返回 Game Hub">🎮</button>
+        <button type="button" class="back-btn" data-action="goGameHub" aria-label="返回 Game Hub">🎮</button>
         <h1>🌟 友愛教室</h1>
-        <button type="button" class="back-btn" onclick="FC.switchStudent()" title="切換學生" aria-label="切換學生">🔄</button>
+        <button type="button" class="back-btn" data-action="switchStudent" title="切換學生" aria-label="切換學生">🔄</button>
       </div>
 
       ${getStudent() ? renderMoralBar(getStudent()) : ''}
@@ -702,10 +699,10 @@ export function renderHome(subjectId) {
       </div>
 
       <div class="home-footer-grid">
-        <button type="button" class="btn btn-outline" onclick="FC.goProgress()">📊 我的進度</button>
-        <button type="button" class="btn btn-outline" onclick="FC.goSettings()">⚙️ 設定</button>
-        <button type="button" class="btn btn-outline" onclick="FC.switchStudent()">🔄 切換學生</button>
-        <button type="button" class="btn btn-outline" onclick="FC.goGameHub()">🎮 返回 Game Hub</button>
+        <button type="button" class="btn btn-outline" data-action="goProgress">📊 我的進度</button>
+        <button type="button" class="btn btn-outline" data-action="goSettings">⚙️ 設定</button>
+        <button type="button" class="btn btn-outline" data-action="switchStudent">🔄 切換學生</button>
+        <button type="button" class="btn btn-outline" data-action="goGameHub">🎮 返回 Game Hub</button>
       </div>
       ${renderFooter()}
     </div>
@@ -721,7 +718,7 @@ export function renderTopicList(topicId, subjectId) {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goHome()" aria-label="返回主頁">←</button>
+        <button type="button" class="back-btn" data-action="goHome" aria-label="返回主頁">←</button>
         <h1>${topic.emoji} ${topic.title}</h1>
         ${subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''}
       </div>
@@ -732,7 +729,7 @@ export function renderTopicList(topicId, subjectId) {
           const done = getStudent() && isCompleted(getStudent(), s.id);
           return `
             <li role="listitem">
-              <button type="button" class="scenario-item ${done ? 'completed' : ''}" onclick="FC.play('${escapeJsString(s.id)}')"
+              <button type="button" class="scenario-item ${done ? 'completed' : ''}" data-action="play" data-arg="${escapeAttr(s.id)}"
                 aria-label="${s.title}，${s.background || ''}${done ? '，已完成' : ''}">
                 <span class="check" aria-hidden="true">${done ? '✓' : ''}</span>
                 <span class="info">
@@ -764,7 +761,7 @@ export function renderPlay(scenarioId, subjectId) {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goTopic('${escapeJsString(s.topicId)}')" aria-label="返回 ${escapeAttr(topic?.title || '主題')}">←</button>
+        <button type="button" class="back-btn" data-action="goTopic" data-arg="${escapeAttr(s.topicId)}" aria-label="返回 ${escapeAttr(topic?.title || '主題')}">←</button>
         <h1 style="flex:1;text-align:center">${topic?.emoji || ''} ${topic?.title || ''}</h1>
         <span class="play-progress" aria-label="第 ${idxInTopic} 題，共 ${totalInTopic} 題">第 ${idxInTopic} / ${totalInTopic} 題</span>
       </div>
@@ -775,13 +772,13 @@ export function renderPlay(scenarioId, subjectId) {
       </div>
 
       <div class="scenario-desc">
-        <button type="button" class="inline-voice-btn" onclick="FC.speak()" title="朗讀題目" aria-label="朗讀題目">🔊</button>
+        <button type="button" class="inline-voice-btn" data-action="speak" title="朗讀題目" aria-label="朗讀題目">🔊</button>
         ${s.description}
       </div>
 
       ${(s.hints && s.hints.length) ? `
       <div class="hints-panel" id="hints-panel">
-        <button type="button" class="hints-toggle" onclick="FC.toggleHints()" aria-expanded="false" aria-controls="hints-list" id="hints-toggle">
+        <button type="button" class="hints-toggle" data-action="toggleHints" aria-expanded="false" aria-controls="hints-list" id="hints-toggle">
           <span class="hints-icon" aria-hidden="true">💡</span>
           <span>提示</span>
           <span class="hints-count" aria-label="${s.hints.length} 個提示">${s.hints.length}</span>
@@ -794,7 +791,7 @@ export function renderPlay(scenarioId, subjectId) {
               <span class="hint-text">${h}</span>
             </div>
           `).join('')}
-          <button type="button" class="hint-next" id="hint-next" onclick="FC.revealNextHint()">
+          <button type="button" class="hint-next" id="hint-next" data-action="revealNextHint">
             睇下一個提示 →
           </button>
         </div>
@@ -817,7 +814,7 @@ export function renderPlay(scenarioId, subjectId) {
           const valueLabel = mc > 0 ? `＋${mc} 道德` : (mc < 0 ? `${mc} 道德` : '中性');
           const valueClass = mc > 0 ? 'good' : (mc < 0 ? 'bad' : 'neutral');
           return `
-            <button type="button" class="option-card" onclick="FC.choose('${escapeJsString(opt.id)}')"
+            <button type="button" class="option-card" data-action="choose" data-arg="${escapeAttr(opt.id)}"
               aria-label="選項 ${labels[i] || (i+1)}：${opt.text}，${valueLabel}">
               <img src="assets/images/outcomes/${s.id}_opt${i+1}.png" alt=""
                    class="opt-thumb" loading="lazy" decoding="async"
@@ -826,10 +823,7 @@ export function renderPlay(scenarioId, subjectId) {
               <span class="opt-text">${opt.text}</span>
               <span class="opt-value opt-value-${valueClass}" aria-hidden="true">${valueLabel}</span>
               <button type="button" class="opt-read"
-                onclick="FC._stopEvt(event);FC.speakOpt('${opt.id}')"
-                onmousedown="FC._stopEvt(event)"
-                ontouchstart="FC._stopEvt(event)"
-                ontouchend="FC._stopEvt(event)"
+                data-action="speakOpt" data-arg="${escapeAttr(opt.id)}"
                 title="朗讀呢個選項"
                 aria-label="朗讀選項 ${labels[i] || (i+1)}">🔊</button>
             </button>
@@ -837,7 +831,7 @@ export function renderPlay(scenarioId, subjectId) {
         }).join('')}
       </div>
 
-      <button type="button" class="voice-fab" onclick="FC.speak()" title="朗讀題目" aria-label="朗讀題目">🔊</button>
+      <button type="button" class="voice-fab" data-action="speak" title="朗讀題目" aria-label="朗讀題目">🔊</button>
       ${renderFooter()}
     </div>
   `;
@@ -872,7 +866,7 @@ export function renderResult(data, subjectId) {
       <div class="creed-show" role="region" aria-label="學校信條">
         <div class="creed-header">
           <div class="label">🌟 學校信條</div>
-          <button type="button" class="inline-voice-btn" onclick="FC.speakCreeds()" title="朗讀信條" aria-label="朗讀信條">🔊</button>
+          <button type="button" class="inline-voice-btn" data-action="speakCreeds" title="朗讀信條" aria-label="朗讀信條">🔊</button>
         </div>
         <div class="items">
           ${(creedText || []).map(c => `<div class="item">${c}</div>`).join('')}
@@ -887,33 +881,34 @@ export function renderResult(data, subjectId) {
       </div>` : ''}
 
       <div class="action-row" id="result-actions">
-        <button type="button" class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
+        <button type="button" class="btn btn-primary" data-action="retry">🔄 再做一次</button>
         ${(function() {
           const next = suggestNext(getCurrentScenario()?.topicId);
-          return next ? `<button type="button" class="btn btn-primary" onclick="FC.play('${escapeJsString(next.id)}')">下一題 →</button>` : '';
+          return next ? `<button type="button" class="btn btn-primary" data-action="play" data-arg="${escapeAttr(next.id)}">下一題 →</button>` : '';
         })()}
-        <button type="button" class="btn btn-outline" onclick="FC.goTopic('${escapeJsString(getCurrentScenario()?.topicId)}')">← 返回主題</button>
+        <button type="button" class="btn btn-outline" data-action="goTopic" data-arg="${escapeAttr(getCurrentScenario()?.topicId || '')}">← 返回主題</button>
       </div>
 
       <div class="action-cta-fab" id="result-cta-fab" hidden>
-        <button type="button" class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
+        <button type="button" class="btn btn-primary" data-action="retry">🔄 再做一次</button>
         ${(function() {
           const next = suggestNext(getCurrentScenario()?.topicId);
-          return next ? `<button type="button" class="btn btn-primary" onclick="FC.play('${escapeJsString(next.id)}')">下一題 →</button>` : '';
+          return next ? `<button type="button" class="btn btn-primary" data-action="play" data-arg="${escapeAttr(next.id)}">下一題 →</button>` : '';
         })()}
-        <button type="button" class="btn btn-outline" onclick="FC.goTopic('${escapeJsString(getCurrentScenario()?.topicId)}')">← 返回主題</button>
+        <button type="button" class="btn btn-outline" data-action="goTopic" data-arg="${escapeAttr(getCurrentScenario()?.topicId || '')}">← 返回主題</button>
       </div>
 
-      <button type="button" class="voice-fab" onclick="FC.speakCreeds()" title="朗讀信條" aria-label="朗讀信條">🔊</button>
+      <button type="button" class="voice-fab" data-action="speakCreeds" title="朗讀信條" aria-label="朗讀信條">🔊</button>
       ${renderFooter()}
     </div>
   `;
 }
 
 export function renderProgress(subjectId) {
-  const p = getProgress(getStudent());
-  const total = p.totalMoralScore || 0;
-  const completed = p.completedScenarios?.length || 0;
+  // Phase 3 (S19): use the canonical summary instead of hand-rolled reads.
+  const summary = getStudentSummary(getStudent());
+  const total = summary.score;
+  const completed = summary.completedCount;
   const subColor = getSubjectColor(subjectId);
         const subjects = [
           { id: 'value', title: '🎯 價值觀教育', color: '#7C3AED' },
@@ -922,7 +917,7 @@ export function renderProgress(subjectId) {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goHome()" aria-label="返回主頁">←</button>
+        <button type="button" class="back-btn" data-action="goHome" aria-label="返回主頁">←</button>
         <h1>📊 我的進度</h1>
         ${subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''}
       </div>
@@ -978,8 +973,8 @@ export function renderProgress(subjectId) {
       }).join('')}
 
       <div class="action-row">
-        <button type="button" class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出進度</button>
-        <button type="button" class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
+        <button type="button" class="btn btn-outline" data-action="exportMyData">📤 匯出進度</button>
+        <button type="button" class="btn btn-outline" data-action="goHome">← 返回首頁</button>
       </div>
       ${renderFooter()}
     </div>
@@ -1014,7 +1009,7 @@ export function renderSettings() {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goRoleSelect()" aria-label="返回主選單">←</button>
+        <button type="button" class="back-btn" data-action="goRoleSelect" aria-label="返回主選單">←</button>
         <h1>⚙️ 個人化設定</h1>
       </div>
 
@@ -1028,8 +1023,8 @@ export function renderSettings() {
           載入中…
         </div>
         <div class="action-row">
-          <button type="button" class="btn btn-primary" onclick="FC.exportAnalyticsCSV()" style="flex:1">📤 匯出學習記錄 (CSV)</button>
-          <button type="button" class="btn btn-outline" onclick="FC.clearAnalytics()" style="font-size:0.85em">🗑️ 清除</button>
+          <button type="button" class="btn btn-primary" data-action="exportAnalyticsCSV" style="flex:1">📤 匯出學習記錄 (CSV)</button>
+          <button type="button" class="btn btn-outline" data-action="clearAnalytics" style="font-size:0.85em">🗑️ 清除</button>
         </div>
       </div>
 
@@ -1040,7 +1035,7 @@ export function renderSettings() {
             <strong id="voice-toggle-label">開 / 關</strong>
             <div style="font-size:0.85em;color:var(--text-light)">自動朗讀題目和信條</div>
           </div>
-          <button type="button" class="toggle ${enabled ? 'on' : ''}" data-key="voice" onclick="FC.toggleVoice(this)"
+          <button type="button" class="toggle ${enabled ? 'on' : ''}" data-key="voice" data-action="toggleVoice"
             role="switch" aria-checked="${enabled}" aria-labelledby="voice-toggle-label"
             aria-label="語音朗讀開關"></button>
         </div>
@@ -1054,7 +1049,7 @@ export function renderSettings() {
               <button type="button" class="btn"
                 data-active="${currentLang === l.id}"
                 style="flex:1;min-width:0;font-size:0.88em;padding:8px 6px;${currentLang === l.id ? 'background:var(--primary);color:#fff;border:3px solid var(--primary);' : 'background:transparent;border:3px solid var(--primary);color:var(--primary);'}"
-                onclick="FC.setTTSLang('${l.id}')"
+                data-action="setTTSLang" data-arg="${escapeAttr(l.id)}"
                 title="${l.hint}"
                 role="radio" aria-checked="${currentLang === l.id}">${l.label}</button>
             `).join('')}
@@ -1082,7 +1077,7 @@ export function renderSettings() {
             <strong id="hc-toggle-label">高對比模式</strong>
             <div style="font-size:0.85em;color:var(--text-light)">純黑/白、3px 強制 border、無漸變，適合光線不足或在戶外使用</div>
           </div>
-          <button type="button" class="toggle ${hcMode ? 'on' : ''}" data-key="hc" onclick="FC.toggleHC(this)"
+          <button type="button" class="toggle ${hcMode ? 'on' : ''}" data-key="hc" data-action="toggleHC"
             role="switch" aria-checked="${hcMode}" aria-labelledby="hc-toggle-label"
             aria-label="高對比模式開關"></button>
         </div>
@@ -1091,7 +1086,7 @@ export function renderSettings() {
             <strong id="rm-toggle-label">減少動畫</strong>
             <div style="font-size:0.85em;color:var(--text-light)">停掉過場動畫同慶祝效果${osRMPref && !rmMode ? '（系統已偵測到偏好）' : ''}</div>
           </div>
-          <button type="button" class="toggle ${rmMode ? 'on' : ''}" data-key="rm" onclick="FC.toggleReducedMotion(this)"
+          <button type="button" class="toggle ${rmMode ? 'on' : ''}" data-key="rm" data-action="toggleReducedMotion"
             role="switch" aria-checked="${rmMode}" aria-labelledby="rm-toggle-label"
             aria-label="減少動畫開關"></button>
         </div>
@@ -1125,13 +1120,13 @@ export function renderSettings() {
         <div>
           <div style="margin-bottom:6px"><strong>間格</strong></div>
           <div style="display:flex;gap:8px" role="radiogroup" aria-label="間距">
-            <button type="button" class="btn ${spacing==='narrow'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('narrow')" id="sp-narrow" role="radio" aria-checked="${spacing==='narrow'}" style="flex:1;padding:8px;font-size:0.9em">窄</button>
-            <button type="button" class="btn ${spacing==='medium'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('medium')" id="sp-medium" role="radio" aria-checked="${spacing==='medium'}" style="flex:1;padding:8px;font-size:0.9em">中</button>
-            <button type="button" class="btn ${spacing==='wide'?'btn-primary':'btn-outline'}" onclick="FC.setSpacing('wide')" id="sp-wide" role="radio" aria-checked="${spacing==='wide'}" style="flex:1;padding:8px;font-size:0.9em">闊</button>
+            <button type="button" class="btn ${spacing==='narrow'?'btn-primary':'btn-outline'}" data-action="setSpacing" data-arg="narrow" id="sp-narrow" role="radio" aria-checked="${spacing==='narrow'}" style="flex:1;padding:8px;font-size:0.9em">窄</button>
+            <button type="button" class="btn ${spacing==='medium'?'btn-primary':'btn-outline'}" data-action="setSpacing" data-arg="medium" id="sp-medium" role="radio" aria-checked="${spacing==='medium'}" style="flex:1;padding:8px;font-size:0.9em">中</button>
+            <button type="button" class="btn ${spacing==='wide'?'btn-primary':'btn-outline'}" data-action="setSpacing" data-arg="wide" id="sp-wide" role="radio" aria-checked="${spacing==='wide'}" style="flex:1;padding:8px;font-size:0.9em">闊</button>
           </div>
         </div>
         <div style="margin-top:12px;text-align:center">
-          <button type="button" class="btn btn-outline" onclick="FC.resetSettings()" style="color:var(--text-light);font-size:0.85em">🔄 重置所有設定</button>
+          <button type="button" class="btn btn-outline" data-action="resetSettings" style="color:var(--text-light);font-size:0.85em">🔄 重置所有設定</button>
         </div>
       </div>
 
@@ -1142,23 +1137,23 @@ export function renderSettings() {
           &nbsp;·&nbsp;上次同步：<span id="settings-last-sync">${lastSync}</span>
         </div>
         <div class="action-row">
-          <button type="button" class="btn btn-outline" onclick="FC.forceSync()">🔄 立即同步</button>
-          <button type="button" class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出</button>
-          <button type="button" class="btn btn-outline" onclick="FC.importMyData()">📥 匯入</button>
+          <button type="button" class="btn btn-outline" data-action="forceSync">🔄 立即同步</button>
+          <button type="button" class="btn btn-outline" data-action="exportMyData">📤 匯出</button>
+          <button type="button" class="btn btn-outline" data-action="importMyData">📥 匯入</button>
         </div>
       </div>
 
       <div class="card">
         <div style="font-weight:600;margin-bottom:10px">👥 資料管理</div>
         <div class="action-row">
-          <button type="button" class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出我的進度</button>
-          <button type="button" class="btn btn-outline" onclick="FC.importMyData()">📥 匯入進度</button>
+          <button type="button" class="btn btn-outline" data-action="exportMyData">📤 匯出我的進度</button>
+          <button type="button" class="btn btn-outline" data-action="importMyData">📥 匯入進度</button>
         </div>
       </div>
 
       <div class="card">
         <div style="font-weight:600;margin-bottom:10px">🔐 老師模式</div>
-        <button type="button" class="btn btn-primary" onclick="FC.goTeacher()">進入老師模式</button>
+        <button type="button" class="btn btn-primary" data-action="goTeacher">進入老師模式</button>
       </div>
 
       <div class="privacy-notice" role="region" aria-label="資料收集說明" style="background:#fffbe6;border:1px solid #faad14;border-radius:12px;padding:16px;margin-top:24px;font-size:14px;color:#8a6d3b">

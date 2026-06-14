@@ -28,6 +28,7 @@ export function saveProgress(progress) {
   const payload = JSON.stringify(progress);
   try {
     localStorage.setItem(key, payload);
+    invalidateStudentCache();
     return true;
   } catch (e) {
     // Phase 1 (S2): quota + serialization guard
@@ -98,6 +99,44 @@ export function getAllStudents() {
     }
   }
   return students;
+}
+
+// Phase 3 (S18): memoized version of getAllStudents. Invalidated by
+// `bus.emit('progress:save-failed', ...)` not firing for quota; rebuilt
+// lazily on the next getAllStudents() call after a TTL. For 10 students
+// the saving is 10 localStorage reads + 10 JSON.parse, which is fine,
+// but the teacher dashboard calls this on every render — caching saves
+// repeated work.
+const _STUDENT_CACHE_TTL_MS = 3_000;
+let _studentCache = null;
+let _studentCacheAt = 0;
+
+function _readAllStudents() {
+  const out = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    if (key && key.startsWith(PREFIX)) {
+      try {
+        out.push(JSON.parse(localStorage.getItem(key)));
+      } catch {}
+    }
+  }
+  return out;
+}
+
+export function getAllStudentsCached() {
+  if (_studentCache && (Date.now() - _studentCacheAt) < _STUDENT_CACHE_TTL_MS) {
+    return _studentCache;
+  }
+  _studentCache = _readAllStudents();
+  _studentCacheAt = Date.now();
+  return _studentCache;
+}
+
+/** Invalidate the student cache (call after importProgress / addStudent). */
+export function invalidateStudentCache() {
+  _studentCache = null;
+  _studentCacheAt = 0;
 }
 
 export function importProgress(jsonData) {

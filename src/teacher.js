@@ -1,7 +1,7 @@
 // 老師模塊 — 懶加載 chunk（學生不會下載此文件）
 // 僅當用戶點擊「老師模式」時才觸發 dynamic import()
 
-import { getAllStudents, importProgress } from './domain/Progress.js';
+import { getAllStudents, importProgress, getStudentSummary, getAllStudentsCached } from './domain/Progress.js';
 import { getAllSubjects } from './subjects.js';
 import { escapeAttr } from './util/escape.js';
 import { renderFooter, renderEmptyState } from './components/chrome.js';
@@ -16,10 +16,10 @@ export function renderLogin() {
         <h1 style="text-align:center;margin-bottom:20px">🔐 老師登入</h1>
         <label for="teacher-pw" class="sr-only">老師密碼</label>
         <input id="teacher-pw" type="password" autocomplete="current-password" placeholder="輸入密碼" />
-        <button type="button" class="btn btn-primary" style="width:100%" onclick="FC.doLogin()">登入</button>
+        <button type="button" class="btn btn-primary" style="width:100%" data-action="doLogin">登入</button>
         <p id="login-error" role="alert" style="color:var(--danger);text-align:center;margin-top:8px;display:none">密碼錯誤</p>
         <div style="margin-top:12px;text-align:center">
-          <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
+          <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回</button>
         </div>
       </div>
       ${renderFooter()}
@@ -34,7 +34,7 @@ export function renderTeacher() {
     return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goRoleSelect()" aria-label="返回主選單">←</button>
+        <button type="button" class="back-btn" data-action="goRoleSelect" aria-label="返回主選單">←</button>
         <h1>📊 老師儀表板</h1>
       </div>
       <div class="teacher-panel">
@@ -43,7 +43,7 @@ export function renderTeacher() {
       </div>
       ${renderEmptyState({ emoji: '📭', title: '暫時沒有學生數據', hint: '學生完成學習後會自動顯示在這裡' })}
       <div style="margin-top:16px">
-        <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
+        <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回首頁</button>
       </div>
       ${renderFooter()}
     </div>`;
@@ -52,7 +52,7 @@ export function renderTeacher() {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" onclick="FC.goRoleSelect()" aria-label="返回主選單">←</button>
+        <button type="button" class="back-btn" data-action="goRoleSelect" aria-label="返回主選單">←</button>
         <h1>📊 老師儀表板</h1>
       </div>
 
@@ -63,8 +63,10 @@ export function renderTeacher() {
 
       <div style="display:flex;flex-direction:column;gap:10px" role="list" aria-label="學生清單">
         ${students.map(s => {
-          const total = s.totalMoralScore || 0;
-          const completed = s.completedScenarios?.length || 0;
+          // Phase 3 (S19): use the canonical summary shape
+          const sum = getStudentSummary(s.name);
+          const total = sum.score;
+          const completed = sum.completedCount;
           const emoji = TEACHER_EMOJI[s.name] || '👤';
           const grade = total >= 200 ? '🌟' : total >= 100 ? '⭐' : total >= 50 ? '✨' : '💫';
           return `
@@ -113,17 +115,17 @@ export function renderTeacher() {
 
       <div class="card">
         <div style="font-weight:600;margin-bottom:10px">📤 匯出全班數據</div>
-        <button type="button" class="btn btn-success" onclick="FC.exportAll()">📤 匯出全班</button>
+        <button type="button" class="btn btn-success" data-action="exportAll">📤 匯出全班</button>
       </div>
 
       <div class="card">
         <div style="font-weight:600;margin-bottom:10px">⚙️ 老師設定</div>
         <p style="font-size:0.85em;color:var(--text-light);margin-bottom:8px">控制學生的功能開關、課題範圍、PIN</p>
-        <button type="button" class="btn btn-primary" onclick="FC.goTeacherAssign()">⚙️ 功能設定</button>
+        <button type="button" class="btn btn-primary" data-action="goTeacherAssign">⚙️ 功能設定</button>
       </div>
 
       <div style="margin-top:16px">
-        <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
+        <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回首頁</button>
       </div>
       ${renderFooter()}
     </div>

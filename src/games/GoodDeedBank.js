@@ -17,26 +17,17 @@
 // 預設 1（bankMaxRiskLevel 讀 localStorage；冇 set = default 1）
 
 import { getScenarios } from '../domain/ScenarioEngine.js';
+// Phase 3 (S15): BANK_RISK, normalizeBankMaxRisk, bankRiskLabel
+// now live in src/constants/bank.js — single source of truth.
+import { normalizeBankMaxRisk, BANK_RISK } from '../constants/bank.js';
 
 const TARGET_BALANCE = 100;     // 達到呢個數 = 品格富翁
 const BANKRUPT_THRESHOLD = -50; // 結餘跌穿呢個 = 破產 end state
 const QUESTIONS_PER_RUN = 8;    // 每局 N 題
 
-// 合法 risk ceiling 0..3，4 = sentinel "全開"（內部用 Number.POSITIVE_INFINITY）
-const VALID_MAX_RISK = new Set([0, 1, 2, 3]);
-
-// 將 user-facing 數字（0/1/2/3）normalize，唔合法 fallback 1
-// 注意：null / undefined / 非數字 → 1（default），但 0 要明確傳先接受
-export function normalizeBankMaxRisk(val) {
-  if (val === null || val === undefined || val === '') return 1;
-  const n = Number(val);
-  if (!Number.isFinite(n)) return 1;
-  return VALID_MAX_RISK.has(n) ? n : 1;
-}
-
 // Filter scenarios by max risk level。scenario.riskLevel missing = 當 0 對待
 function filterByRisk(scenarios, maxRisk) {
-  if (maxRisk >= 3) return scenarios; // 3 = 全開 shortcut
+  if (maxRisk >= BANK_RISK.ALL) return scenarios; // 3 = 全開 shortcut
   return scenarios.filter(s => Number(s.riskLevel ?? 0) <= maxRisk);
 }
 
@@ -132,16 +123,5 @@ export const BANK_CONFIG = {
   TARGET_BALANCE,
   BANKRUPT_THRESHOLD,
   QUESTIONS_PER_RUN,
-  DEFAULT_MAX_RISK: 1,  // S11 default：低 caring 都唔包（適合小一）
+  DEFAULT_MAX_RISK: BANK_RISK.MILD,  // Phase 3: 引用 constants
 };
-
-// user-facing label，用喺 Game Hub 提示 / SR announce
-export const BANK_RISK_LABELS = {
-  0: '只價值觀（無 caring）',
-  1: '輕 caring（default）',
-  2: '中 caring',
-  3: '全難度',
-};
-export function bankRiskLabel(level) {
-  return BANK_RISK_LABELS[normalizeBankMaxRisk(level)] || BANK_RISK_LABELS[1];
-}
