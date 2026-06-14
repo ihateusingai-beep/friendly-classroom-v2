@@ -129,6 +129,7 @@ export function renderBankPlay(scenario, run) {
   }
   const total = BANK_CONFIG.QUESTIONS_PER_RUN;
   const idx = run.currentIdx + 1; // 1-based for display
+  const labels = ['A', 'B', 'C', 'D'];
   const balance = run.balance;
   const target = BANK_CONFIG.TARGET_BALANCE;
   const pct = Math.min(100, Math.max(0, (balance / target) * 100));
