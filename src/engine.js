@@ -9,6 +9,7 @@ import { getMoralBarData } from './domain/Moral.js';
 import { getProgress, isCompleted } from './domain/Progress.js';
 import { getDailyCreed } from './creeds.js';
 import { escapeJsString } from './util/escape.js';
+import { renderFooter, renderEmptyState } from './components/chrome.js';
 
 // ── 遊戲邏輯 delegate（from domain/ScenarioEngine） ──
 import {
@@ -112,7 +113,7 @@ export function renderGameHub() {
       <div style="text-align:center;margin-top:20px">
         <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
       </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -125,7 +126,7 @@ import {
 
 export function renderBankPlay(scenario, run) {
   if (!scenario) {
-    return '<div class="container"><p>題目載入失敗</p></div>';
+    return renderEmptyState({ emoji: '⚠️', title: '題目載入失敗', actionLabel: '← 返 Game Hub', onAction: 'FC.exitBank()' });
   }
   const total = BANK_CONFIG.QUESTIONS_PER_RUN;
   const idx = run.currentIdx + 1; // 1-based for display
@@ -169,15 +170,16 @@ export function renderBankPlay(scenario, run) {
 
       <div class="scenario-image-wrap">
         <img src="assets/images/scenarios/${scenario.id}.png" alt="${scenario.title}" class="scenario-image"
+             loading="eager" fetchpriority="high"
              onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
       </div>
 
       <div class="options" style="margin-top:14px" role="radiogroup" aria-label="銀行題目選項">
         ${scenario.options.map((opt, i) => {
-          const labels = ['A', 'B', 'C', 'D'];
           return `
             <button type="button" class="option-card" onclick="FC.bankChoose('${escapeJsString(opt.id)}')" aria-label="選項 ${labels[i] || (i+1)}：${escapeAttr(opt.text)}">
               <img src="assets/images/outcomes/${scenario.id}_opt${i+1}.png" alt=""
+                   loading="lazy" decoding="async"
                    class="opt-thumb" onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" aria-hidden="true" />
               <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
@@ -191,7 +193,7 @@ export function renderBankPlay(scenario, run) {
 
 export function renderBankResult(scenario, result, run) {
   if (!result) {
-    return '<div class="container"><p>結果載入失敗</p><button type="button" class="btn btn-primary" onclick="FC.exitBank()">← 返 Game Hub</button></div>';
+    return renderEmptyState({ emoji: '⚠️', title: '結果載入失敗', actionLabel: '← 返 Game Hub', onAction: 'FC.exitBank()' });
   }
   const delta = result.moralChange || 0;
   const isPositive = delta > 0;
@@ -221,7 +223,8 @@ export function renderBankResult(scenario, result, run) {
       ${result.outcomeImage ? `
         <div class="outcome-image-wrap" style="margin:14px auto;max-width:340px;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
           <img src="${result.outcomeImage}" alt="結果插圖" style="width:100%;display:block"
-               onerror="this.parentElement.style.display='none'" />
+               loading="lazy" decoding="async"
+               onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
         </div>
       ` : ''}
 
@@ -259,7 +262,7 @@ export function renderBankResult(scenario, result, run) {
 }
 
 export function renderBankSummary(run) {
-  if (!run) return '<div class="container"><p>冇紀錄</p></div>';
+  if (!run) return renderEmptyState({ emoji: '🫥', title: '冇紀錄' });
   const isWon = run.status === 'finished' && run.balance >= BANK_CONFIG.TARGET_BALANCE;
   const isBankrupt = run.status === 'bankrupt';
   const totalGain = run.stamps.filter(s => s.delta > 0).reduce((a, b) => a + b.delta, 0);
@@ -323,7 +326,7 @@ export function renderBankSummary(run) {
         <button type="button" class="btn btn-primary" onclick="FC.playGoodDeedBank()">🔄 再玩一次</button>
         <button type="button" class="btn btn-outline" onclick="FC.exitBank()">← 返 Game Hub</button>
       </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -418,7 +421,7 @@ export function renderModeSelect(currentMode, subjectId) {
         <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
       </div>
 
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -572,7 +575,7 @@ export function renderTeacherAssign() {
           onclick="FC.saveTeacherConfig()">✅ 儲存所有設定</button>
       </div>
 
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:24px">© Ken Cheng 製作</div>
+      ${renderFooter({ marginTop: '24px' })}
     </div>
   `;
 }
@@ -598,10 +601,53 @@ export function renderMoralBar(studentId) {
   `;
 }
 
+// Phase 2 (S8): pure helper that renders one topic card given the topic +
+// the pre-fetched progress entry. No localStorage reads inside the loop.
+function _renderTopicCard(t, tp) {
+  const total = tp.total || 0;
+  const done = tp.completed || 0;
+  const pct = total ? Math.round((done / total) * 100) : 0;
+  const sub = t.description?.split(/[，。,。]/)[0] || t.description || '';
+  let statusBadge = '';
+  let statusClass = '';
+  let statusText = '';
+  if (total === 0) {
+    statusClass = 'topic-status--new';
+    statusBadge = '<div class="topic-status" aria-hidden="true">未開始</div>';
+    statusText = '未開始';
+  } else if (pct >= 100) {
+    statusClass = 'topic-status--done';
+    statusBadge = '<div class="topic-status" aria-hidden="true">🏆 已精通</div>';
+    statusText = '已精通';
+  } else {
+    statusClass = 'topic-status--progress';
+    statusBadge = `<div class="topic-status" aria-hidden="true">${done}/${total} · ${pct}%</div>`;
+    statusText = `完成 ${done} 題，共 ${total} 題，${pct}%`;
+  }
+  return `
+    <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${escapeJsString(t.id)}')"
+      aria-label="${t.title}，${sub}，${statusText}">
+      <span class="emoji" aria-hidden="true">${t.emoji}</span>
+      <div class="title">${t.title}</div>
+      <div class="sub">${sub}</div>
+      ${total > 0 ? `
+        <div class="progress-bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="${t.title} 進度">
+          <div class="progress-fill" style="width:${pct}%"></div>
+        </div>
+      ` : ''}
+      ${statusBadge}
+    </button>
+  `;
+}
+
 export function renderHome(subjectId) {
+  // Phase 2 (S8): hoist the progress read so we hit localStorage ONCE per
+  // render, not 17 times. Saves ~14 reads + 14 JSON.parse per home nav.
   const studentName = getStudent() || '同學';
-  const streak = getStudent() ? (getProgress(getStudent()).streak?.current || 0) : 0;
-  const longest = getStudent() ? (getProgress(getStudent()).streak?.longest || 0) : 0;
+  const progress = getStudent() ? getProgress(getStudent()) : null;
+  const streak = progress?.streak?.current || 0;
+  const longest = progress?.streak?.longest || 0;
+  const topicProgress = progress?.topicProgress || {};
   const dailyCreed = getDailyCreed();
   const flameEmoji = streak >= 7 ? '🔥' : streak >= 3 ? '✨' : streak >= 1 ? '🌱' : '💤';
   const flameClass = streak >= 7 ? 'flame--hot' : streak >= 1 ? 'flame--warm' : 'flame--cold';
@@ -644,86 +690,14 @@ export function renderHome(subjectId) {
       <div class="topic-section">
         <h2 class="section-title">🪷 12 個價值觀（EDB 官方）</h2>
         <div class="topic-grid" role="list" aria-label="12 個 EDB 價值觀">
-          ${VALUES.map(t => {
-            const p = getStudent() ? (getProgress(getStudent()).topicProgress[t.id] || {}) : {};
-            const total = p.total || 0;
-            const done = p.completed || 0;
-            const pct = total ? Math.round((done / total) * 100) : 0;
-            const sub = t.description?.split(/[，。,。]/)[0] || t.description || '';
-            let statusBadge = '';
-            let statusClass = '';
-            let statusText = '';
-            if (total === 0) {
-              statusClass = 'topic-status--new';
-              statusBadge = '<div class="topic-status" aria-hidden="true">未開始</div>';
-              statusText = '未開始';
-            } else if (pct >= 100) {
-              statusClass = 'topic-status--done';
-              statusBadge = '<div class="topic-status" aria-hidden="true">🏆 已精通</div>';
-              statusText = '已精通';
-            } else {
-              statusClass = 'topic-status--progress';
-              statusBadge = `<div class="topic-status" aria-hidden="true">${done}/${total} · ${pct}%</div>`;
-              statusText = `完成 ${done} 題，共 ${total} 題，${pct}%`;
-            }
-            return `
-              <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${escapeJsString(t.id)}')"
-                aria-label="${t.title}，${sub}，${statusText}">
-                <span class="emoji" aria-hidden="true">${t.emoji}</span>
-                <div class="title">${t.title}</div>
-                <div class="sub">${sub}</div>
-                ${total > 0 ? `
-                  <div class="progress-bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="${t.title} 進度">
-                    <div class="progress-fill" style="width:${pct}%"></div>
-                  </div>
-                ` : ''}
-                ${statusBadge}
-              </button>
-            `;
-          }).join('')}
+          ${VALUES.map(t => _renderTopicCard(t, topicProgress[t.id] || {})).join('')}
         </div>
       </div>
 
       <div class="topic-section">
         <h2 class="section-title">🌈 友愛校園 5 範疇（SEL / 安全）</h2>
         <div class="topic-grid" role="list" aria-label="5 個友愛校園範疇">
-          ${CARING.map(t => {
-            const p = getStudent() ? (getProgress(getStudent()).topicProgress[t.id] || {}) : {};
-            const total = p.total || 0;
-            const done = p.completed || 0;
-            const pct = total ? Math.round((done / total) * 100) : 0;
-            const sub = t.description?.split(/[，。,。]/)[0] || t.description || '';
-            let statusBadge = '';
-            let statusClass = '';
-            let statusText = '';
-            if (total === 0) {
-              statusClass = 'topic-status--new';
-              statusBadge = '<div class="topic-status" aria-hidden="true">未開始</div>';
-              statusText = '未開始';
-            } else if (pct >= 100) {
-              statusClass = 'topic-status--done';
-              statusBadge = '<div class="topic-status" aria-hidden="true">🏆 已精通</div>';
-              statusText = '已精通';
-            } else {
-              statusClass = 'topic-status--progress';
-              statusBadge = `<div class="topic-status" aria-hidden="true">${done}/${total} · ${pct}%</div>`;
-              statusText = `完成 ${done} 題，共 ${total} 題，${pct}%`;
-            }
-            return `
-              <button type="button" class="topic-card ${statusClass}" style="background:${t.color}" onclick="FC.goTopic('${escapeJsString(t.id)}')"
-                aria-label="${t.title}，${sub}，${statusText}">
-                <span class="emoji" aria-hidden="true">${t.emoji}</span>
-                <div class="title">${t.title}</div>
-                <div class="sub">${sub}</div>
-                ${total > 0 ? `
-                  <div class="progress-bar" role="progressbar" aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="${t.title} 進度">
-                    <div class="progress-fill" style="width:${pct}%"></div>
-                  </div>
-                ` : ''}
-                ${statusBadge}
-              </button>
-            `;
-          }).join('')}
+          ${CARING.map(t => _renderTopicCard(t, topicProgress[t.id] || {})).join('')}
         </div>
       </div>
 
@@ -733,7 +707,7 @@ export function renderHome(subjectId) {
         <button type="button" class="btn btn-outline" onclick="FC.switchStudent()">🔄 切換學生</button>
         <button type="button" class="btn btn-outline" onclick="FC.goGameHub()">🎮 返回 Game Hub</button>
       </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -771,14 +745,14 @@ export function renderTopicList(topicId, subjectId) {
           `;
         }).join('')}
       </ul>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
 
 export function renderPlay(scenarioId, subjectId) {
   const s = playScenario(scenarioId);
-  if (!s) return '<div class="container"><p>場景不存在</p></div>';
+  if (!s) return renderEmptyState({ emoji: '🫥', title: '場景不存在', actionLabel: '← 返首頁', onAction: 'FC.goHome()' });
   const topic = getTopic(s.topicId);
   const subColor = getSubjectColor(subjectId);
 
@@ -828,6 +802,7 @@ export function renderPlay(scenarioId, subjectId) {
 
       <div class="scenario-image-wrap">
         <img src="assets/images/scenarios/${s.id}.png" alt="${s.title}" class="scenario-image"
+             loading="eager" fetchpriority="high"
              onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
       </div>
 
@@ -845,7 +820,8 @@ export function renderPlay(scenarioId, subjectId) {
             <button type="button" class="option-card" onclick="FC.choose('${escapeJsString(opt.id)}')"
               aria-label="選項 ${labels[i] || (i+1)}：${opt.text}，${valueLabel}">
               <img src="assets/images/outcomes/${s.id}_opt${i+1}.png" alt=""
-                   class="opt-thumb" onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" aria-hidden="true" />
+                   class="opt-thumb" loading="lazy" decoding="async"
+                   onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" aria-hidden="true" />
               <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
               <span class="opt-value opt-value-${valueClass}" aria-hidden="true">${valueLabel}</span>
@@ -862,14 +838,14 @@ export function renderPlay(scenarioId, subjectId) {
       </div>
 
       <button type="button" class="voice-fab" onclick="FC.speak()" title="朗讀題目" aria-label="朗讀題目">🔊</button>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
 
 export function renderResult(data, subjectId) {
   if (!data) {
-    return '<div class="container fade-in"><p>⚠️ 結果載入失敗，請重試。</p><button type="button" class="btn btn-primary" onclick="FC.goHome()">← 返首頁</button></div>';
+    return renderEmptyState({ emoji: '⚠️', title: '結果載入失敗，請重試。', actionLabel: '← 返首頁', onAction: 'FC.goHome()' });
   }
   const { option, moralChange, mainComment, creeds, creedText, scenarioImage, scenarioTitle } = data;
   const isGood = moralChange >= 0;
@@ -884,7 +860,8 @@ export function renderResult(data, subjectId) {
       </div>` : ''}
       ${scenarioImage ? `
       <div class="scenario-image-wrap" style="max-height:180px;margin-bottom:16px;border-radius:16px;overflow:hidden">
-        <img src="${scenarioImage}" alt="${scenarioTitle}" style="width:100%;max-height:180px;object-fit:cover" />
+        <img src="${scenarioImage}" alt="${scenarioTitle}" style="width:100%;max-height:180px;object-fit:cover"
+             loading="lazy" decoding="async" />
       </div>` : ''}
       <div class="result-card ${isGood ? 'good' : 'bad'}" id="result-card" role="status" aria-label="${scoreText}">
         <div class="result-emoji" aria-hidden="true">${isGood ? '🌟' : '💪'}</div>
@@ -905,6 +882,7 @@ export function renderResult(data, subjectId) {
       ${data.outcomeImage ? `
       <div class="outcome-image-wrap" style="margin-top:16px;border-radius:16px;overflow:hidden">
         <img src="${data.outcomeImage}" alt="結果圖" style="width:100%;border-radius:16px"
+             loading="lazy" decoding="async"
              onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
       </div>` : ''}
 
@@ -927,7 +905,7 @@ export function renderResult(data, subjectId) {
       </div>
 
       <button type="button" class="voice-fab" onclick="FC.speakCreeds()" title="朗讀信條" aria-label="朗讀信條">🔊</button>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -1003,7 +981,7 @@ export function renderProgress(subjectId) {
         <button type="button" class="btn btn-outline" onclick="FC.exportMyData()">📤 匯出進度</button>
         <button type="button" class="btn btn-outline" onclick="FC.goHome()">← 返回首頁</button>
       </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -1195,7 +1173,7 @@ export function renderSettings() {
         <p style="margin-top:4px">🚫 <strong>唔會上傳去任何 server</strong>，純本地儲存。可隨時喺「📊 學習記錄」清除。</p>
       </div>
 
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }

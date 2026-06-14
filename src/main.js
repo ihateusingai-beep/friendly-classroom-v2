@@ -692,7 +692,7 @@ function renderStudentSelect() {
       <div style="margin-top:16px;text-align:center">
         <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
       </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -742,7 +742,7 @@ function renderSubjectSelect() {
       <div style="margin-top:12px;text-align:center">
         <button type="button" class="btn btn-outline" onclick="FC.goHome()">← 返回</button>
       </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -1046,6 +1046,7 @@ function navRender() {
 
 // ── HTML attribute escaping (Phase 1 S3: XSS guard) ──
 import { escapeAttr, escapeJsString } from './util/escape.js';
+import { renderFooter, renderEmptyState, renderLoading, renderSkeleton } from './components/chrome.js';
 
 // ── 渲染 ──
 function renderErrorFallback(e) {
@@ -1079,8 +1080,8 @@ function render() {
       case 'mode-select':    html = renderModeSelect(state.gameMode, state.subjectId); break;
       case 'student-select': html = renderStudentSelect(); break;
       case 'subject-select': html = renderSubjectSelect(); break;
-      case 'login': html = _teacher ? _teacher.renderLogin() : '<div class="container"><p>載入中...</p></div>'; break;
-      case 'teacher': html = _teacher ? _teacher.renderTeacher() : '<div class="container"><p>載入中...</p></div>'; break;
+      case 'login': html = _teacher ? _teacher.renderLogin() : renderLoading('載入中...'); break;
+      case 'teacher': html = _teacher ? _teacher.renderTeacher() : renderLoading('載入中...'); break;
       case 'teacher-assign': html = renderTeacherAssign(); break;
       case 'home': html = renderHome(state.subjectId); break;
       case 'topic': html = renderTopicList(state.topicId, state.subjectId); break;

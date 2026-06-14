@@ -4,6 +4,7 @@
 import { getAllStudents, importProgress } from './domain/Progress.js';
 import { getAllSubjects } from './subjects.js';
 import { escapeAttr } from './util/escape.js';
+import { renderFooter, renderEmptyState } from './components/chrome.js';
 
 // TEACHER_EMOJI 是老師頁專屬的學生頭像映射
 const TEACHER_EMOJI = {};
@@ -21,7 +22,7 @@ export function renderLogin() {
           <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回</button>
         </div>
       </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }
@@ -40,15 +41,11 @@ export function renderTeacher() {
         <h2 class="sr-only">📊 老師儀表板</h2>
         <div class="subtitle">暫無學生數據</div>
       </div>
-      <div style="text-align:center;padding:40px;color:var(--text-light)">
-        <div style="font-size:3em;margin-bottom:12px" aria-hidden="true">📭</div>
-        <p>暫時沒有學生數據</p>
-        <p style="font-size:0.85em;margin-top:8px">學生完成學習後會自動顯示在這裡</p>
-      </div>
+      ${renderEmptyState({ emoji: '📭', title: '暫時沒有學生數據', hint: '學生完成學習後會自動顯示在這裡' })}
       <div style="margin-top:16px">
         <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
       </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>`;
   }
 
@@ -128,7 +125,7 @@ export function renderTeacher() {
       <div style="margin-top:16px">
         <button type="button" class="btn btn-outline" onclick="FC.goRoleSelect()">← 返回首頁</button>
       </div>
-      <div class="footer" style="text-align:center;padding:16px;font-size:14px;color:var(--text-light);border-top:1px solid var(--border);margin-top:auto">© Ken Cheng 製作</div>
+      ${renderFooter()}
     </div>
   `;
 }

@@ -1,0 +1,41 @@
+name: CI — tests + a11y + build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Unit tests (vitest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Install (with playwright for a11y)
+        run: npm install
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run smoke tests
+        run: npm test
+      # Phase 2 (S12) — a11y audit only on push to main (slow + requires preview server)
+      - name: Build
+        run: npm run build
+      - name: Start preview server
+        run: |
+          npx vite preview --port 4174 --host 127.0.0.1 &
+          PREVIEW_PID=$!
+          sleep 3
+      - name: Run a11y audit
+        run: npm run audit:a11y || (echo "::warning::a11y audit reported issues — see /tmp/fc-audit" && exit 0)
+        # We don't fail the build on a11y violations yet — audit is observational.
+        # Uncomment the next line to gate merges on axe violations:
+        # run: npm run audit:a11y

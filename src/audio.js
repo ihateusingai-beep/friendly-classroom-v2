@@ -236,31 +236,7 @@ function playLocal(src) {
   speaking = true;
 }
 
-// 播放本地 MP3（預生成） + TTS fallback
-function playLocalWithFallback(src, text) {
-  stopSpeaking();
-  const url = audioBase + src;
-  console.log('[FC Audio] Playing:', url);
-  currentAudio = new Audio(url);
-  currentAudio.onended = () => { speaking = false; currentAudio = null; console.log('[FC Audio] Done'); };
-  currentAudio.onerror = (e) => {
-    console.log('[FC Audio] MP3 not found, using TTS fallback');
-    currentAudio = null;
-    // Fallback to Web Speech API
-    speak(text);
-  };
-  currentAudio.oncanplaythrough = () => {
-    speaking = true;
-    currentAudio.play().catch(e => {
-      console.log('[FC Audio] Play failed, using TTS fallback');
-      speaking = false;
-      currentAudio = null;
-      speak(text);
-    });
-  };
-}
-
-// 播放場景音頻
+// 播放場景音頻// 播放場景音頻
 export function speakScenario(scenario) {
   console.log('[FC Audio] speakScenario called, enabled:', enabled, 'speaking:', speaking, 'scenario:', scenario);
   if (!enabled) { console.log('[FC Audio] Blocked: voice not enabled'); return; }
@@ -335,13 +311,9 @@ export function resetAllSettings() {
   applyCSS();
 }
 
-// 預加載（可選）
-export function preloadAudio(ids) {
-  ids.forEach(id => {
-    const audio = new Audio(audioBase + 'scenarios/' + id + '.mp3');
-    audio.preload = 'auto';
-  });
-}
+// 預加載（可選）— Phase 2 (S10): 刪除 scenarios/ audio 後 preloadAudio 已經
+// 指住不存在嘅路徑。保留 playLocal 因為 creeds/ 仲用緊。
+// export function preloadAudio(ids) { ... } — DEAD
 
 window._fcAudio = {
   speakScenario,
@@ -349,7 +321,6 @@ window._fcAudio = {
   speak,
   setEnabled,
   isEnabled,
-  preloadAudio,
   applyCSS,
   playSFX,
   initSFX,
