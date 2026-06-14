@@ -1,7 +1,40 @@
-node_modules/.cache/
+# Dependencies
+node_modules/
+
+# Build output (deployed via gh-pages / GitHub Actions from a separate branch)
+dist/
+dist-temp/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Logs
+*.log
+gen_images.log
+
+# Backups
+*.bak
+data/*.bak
+data/.DS_Store
+.tools-cache/
+
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+
 # Intermediate / one-off scripts not part of the app
 *.py
 data/*.bak
 data/.DS_Store
 .tools-cache/
 
+# Vite cache
+node_modules/.cache/
+.vite/
