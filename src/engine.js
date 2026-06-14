@@ -62,6 +62,15 @@ export function renderRoleSelect() {
 // ── Game Hub (Blooket-style lobby) ───────────────────────────────────────────
 // 學生揀「學生模式」後去呢度。4 個 game card：好人好事銀行 / 情境答題 / 仲有 2 個 coming soon
 export function renderGameHub() {
+  // S11: 讀銀行當前難度設定，喺 bank card 入面 surface
+  let bankRiskTag = '';
+  try {
+    const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
+    const lvl = (cfg.bankMaxRiskLevel ?? 1);
+    const labels = { 0: '只 value', 1: '≤1（低）', 2: '≤2（中）', 3: '全開' };
+    bankRiskTag = `<div class="gc-meta" style="font-size:0.78em;color:var(--text-light);margin-top:6px">🎯 題目難度：${labels[lvl] || labels[1]}</div>`;
+  } catch {}
+
   return `
     <div class="hub-screen fade-in">
       <div class="page-header">
@@ -74,6 +83,7 @@ export function renderGameHub() {
           <div class="gc-icon" aria-hidden="true">🏦</div>
           <div class="gc-title">好人好事銀行</div>
           <div class="gc-desc">做好事存款，衰嘢扣款，目標存到 $100 變品格富翁！</div>
+          ${bankRiskTag}
           <div class="gc-tag" aria-label="pilot 試玩版">pilot</div>
         </button>
 
@@ -122,12 +132,17 @@ export function renderBankPlay(scenario, run) {
   const target = BANK_CONFIG.TARGET_BALANCE;
   const pct = Math.min(100, Math.max(0, (balance / target) * 100));
   const balanceClass = balance > 0 ? 'positive' : balance < 0 ? 'negative' : 'neutral';
+  // S11: 顯示當局 risk ceiling
+  const riskLabels = { 0: '只 value', 1: '≤1（低）', 2: '≤2（中）', 3: '全開' };
+  const riskLvl = run.maxRisk ?? 1;
+  const riskTag = `<div class="bank-risk-tag" style="font-size:0.78em;color:var(--text-light);text-align:center;margin-top:4px" aria-label="本局題目難度上限 ${riskLabels[riskLvl] || ''}">🎯 題目難度：${riskLabels[riskLvl] || '≤1（低）'}</div>`;
 
   return `
     <div class="container fade-in" style="max-width:560px">
       <div class="page-header">
         <button class="back-btn" onclick="FC.confirmExitBank()">←</button>
         <h2>🏦 好人好事銀行</h2>
+        ${riskTag}
       </div>
 
       <div class="bank-ledger">
@@ -250,12 +265,20 @@ export function renderBankSummary(run) {
   const totalLoss = run.stamps.filter(s => s.delta < 0).reduce((a, b) => a + b.delta, 0);
   const goodCount = run.stamps.filter(s => s.delta > 0).length;
   const badCount = run.stamps.filter(s => s.delta < 0).length;
+  // S11: count caring / risk-2+ 喺 ledger 上面 surface，俾老師 / 學生知道呢局難度分佈
+  const caringCount = run.questions.filter(s => s.domain === 'caring' || (s.riskLevel != null && s.riskLevel > 0)).length;
+  const valueCount = run.questions.length - caringCount;
+  const riskLabels = { 0: '只 value', 1: '≤1（低）', 2: '≤2（中）', 3: '全開' };
+  const filterLine = `<div class="bank-summary-filter" style="font-size:0.85em;color:var(--text-light);text-align:center;margin:8px 0 14px 0">
+    🎯 難度設定：${riskLabels[run.maxRisk ?? 1] || '≤1（低）'} · 本局 ${valueCount} 個 value + ${caringCount} 個 caring
+  </div>`;
 
   return `
     <div class="container fade-in" style="max-width:560px">
       <div class="page-header">
         <h1>🏦 結算單</h1>
       </div>
+      ${filterLine}
 
       <div class="bank-end-banner ${isWon ? 'win' : isBankrupt ? 'lose' : 'end'}" style="font-size:1.1em" role="status">
         ${isWon ? '🎉 品格富翁達陣！' : isBankrupt ? '💔 今次破產喇' : '🏁 旅程結束'}
@@ -283,7 +306,7 @@ export function renderBankSummary(run) {
       <div class="card" style="margin-bottom:14px">
         <div style="font-weight:600;margin-bottom:10px">📒 存摺紀錄</div>
         ${run.stamps.length === 0 ? '<div style="color:var(--text-light);font-size:0.9em;text-align:center;padding:12px">冇交易紀錄</div>' : `
-          <div style="display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto" role="list" aria-label="存摺交易紀錄">
+          <div class="ledger-scroll" role="list" aria-label="存摺交易紀錄">
             ${run.stamps.map((s, i) => `
               <div class="ledger-row" role="listitem">
                 <span class="ledger-num" aria-hidden="true">#${i+1}</span>
@@ -413,6 +436,7 @@ export function renderTeacherAssign() {
     timerEnabled: saved.timerEnabled ?? false,
     timerSeconds: saved.timerSeconds || 30,
     comboEnabled: saved.comboEnabled ?? false,
+    bankMaxRiskLevel: saved.bankMaxRiskLevel ?? 1,  // S11: 銀行題目風險 ceiling
     buttonSize: saved.buttonSize || 'normal',
     assignedTopics: saved.assignedTopics || [],
   };
@@ -470,6 +494,27 @@ export function renderTeacherAssign() {
           <button type="button" class="toggle-switch ${config.comboEnabled ? 'on' : ''}"
             onclick="FC.toggleTeacherFeature(this, 'comboEnabled')"
             role="switch" aria-checked="${config.comboEnabled}" aria-label="Combo 系統開關"></button>
+        </div>
+
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">🏦 銀行題目難度</div>
+            <div class="ft-desc">限制好人好事銀行抽題嘅 risk level 上限</div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap" role="radiogroup" aria-label="銀行題目難度">
+            ${[
+              { v: 0, label: '只 value' },
+              { v: 1, label: '≤1（低）' },
+              { v: 2, label: '≤2（中）' },
+              { v: 3, label: '全開' },
+            ].map(opt => `
+              <button type="button"
+                class="btn ${config.bankMaxRiskLevel===opt.v ? 'btn-primary' : 'btn-outline'}"
+                style="padding:6px 10px;font-size:0.82em;min-height:36px"
+                onclick="FC.setBankMaxRisk(${opt.v})"
+                role="radio" aria-checked="${config.bankMaxRiskLevel===opt.v}">${opt.label}</button>
+            `).join('')}
+          </div>
         </div>
 
         <div class="feature-toggle">
@@ -864,11 +909,19 @@ export function renderResult(data, subjectId) {
 
       <div class="action-row" id="result-actions">
         <button type="button" class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
+        ${(function() {
+          const next = suggestNext(getCurrentScenario()?.topicId);
+          return next ? `<button type="button" class="btn btn-primary" onclick="FC.play('${next.id}')">下一題 →</button>` : '';
+        })()}
         <button type="button" class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
       </div>
 
       <div class="action-cta-fab" id="result-cta-fab" hidden>
         <button type="button" class="btn btn-primary" onclick="FC.retry()">🔄 再做一次</button>
+        ${(function() {
+          const next = suggestNext(getCurrentScenario()?.topicId);
+          return next ? `<button type="button" class="btn btn-primary" onclick="FC.play('${next.id}')">下一題 →</button>` : '';
+        })()}
         <button type="button" class="btn btn-outline" onclick="FC.goTopic('${getCurrentScenario()?.topicId}')">← 返回主題</button>
       </div>
 
