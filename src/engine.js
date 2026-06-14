@@ -631,7 +631,7 @@ export function renderHome(subjectId) {
   return `
     <div class="container fade-in">
       ${renderPageHeader({
-        emoji: '🌟', title: '友愛教室', back: 'game-hub', backLabel: '返回 Game Hub',
+        emoji: '🌟', title: '友愛教室', back: 'hub', backLabel: '返回 Game Hub',
         rightButton: `<button type="button" class="back-btn" data-action="switchStudent" title="切換學生" aria-label="切換學生">🔄</button>`
       })}
 
