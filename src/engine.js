@@ -172,17 +172,7 @@ export function renderBankPlay(scenario, run) {
       </div>
 
       <div class="options" style="margin-top:14px" role="radiogroup" aria-label="銀行題目選項">
-        ${scenario.options.map((opt, i) => {
-          return `
-            <button type="button" class="option-card" data-action="bankChoose" data-arg="${escapeAttr(opt.id)}" aria-label="選項 ${labels[i] || (i+1)}：${escapeAttr(opt.text)}">
-              <img src="assets/images/outcomes/${scenario.id}_opt${i+1}.png" alt=""
-                   loading="lazy" decoding="async"
-                   class="opt-thumb" aria-hidden="true" />
-              <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
-              <span class="opt-text">${opt.text}</span>
-            </button>
-          `;
-        }).join('')}
+        ${scenario.options.map((opt, i) => renderBankOptionCard({ scenarioId: scenario.id, opt, index: i })).join('')}
       </div>
     </div>
   `;
@@ -746,11 +736,11 @@ export function renderPlay(scenarioId, subjectId) {
 
   return `
     <div class="container fade-in">
-      <div class="page-header">
-        <button type="button" class="back-btn" data-action="goTopic" data-arg="${escapeAttr(s.topicId)}" aria-label="返回 ${escapeAttr(topic?.title || '主題')}">←</button>
-        <h1 style="flex:1;text-align:center">${topic?.emoji || ''} ${topic?.title || ''}</h1>
-        <span class="play-progress" aria-label="第 ${idxInTopic} 題，共 ${totalInTopic} 題">第 ${idxInTopic} / ${totalInTopic} 題</span>
-      </div>
+      ${renderPageHeader({
+        titleHTML: `<h1 style="flex:1;text-align:center">${escapeAttr(topic?.emoji || '')} ${escapeAttr(topic?.title || '')}</h1>`,
+        back: 'topic', backLabel: `返回 ${topic?.title || '主題'}`, backArg: s.topicId,
+        rightButton: `<span class="play-progress" aria-label="第 ${idxInTopic} 題，共 ${totalInTopic} 題">第 ${idxInTopic} / ${totalInTopic} 題</span>`
+      })}
 
       <div class="play-top">
         <div class="scenario-title">${s.title}</div>
@@ -792,29 +782,7 @@ export function renderPlay(scenarioId, subjectId) {
       <div class="options-divider" aria-hidden="true">— 揀你嘅選擇 —</div>
 
       <div class="options" role="radiogroup" aria-label="${s.title} 嘅選擇題">
-        ${s.options.map((opt, i) => {
-          const labels = ['A', 'B', 'C', 'D'];
-          // 從 effects 拎第一個 moralChange 做「道德傾向」label
-          const firstEffect = (opt.effects || [])[0];
-          const mc = firstEffect ? Number(firstEffect.moralChange || 0) : 0;
-          const valueLabel = mc > 0 ? `＋${mc} 道德` : (mc < 0 ? `${mc} 道德` : '中性');
-          const valueClass = mc > 0 ? 'good' : (mc < 0 ? 'bad' : 'neutral');
-          return `
-            <button type="button" class="option-card" data-action="choose" data-arg="${escapeAttr(opt.id)}"
-              aria-label="選項 ${labels[i] || (i+1)}：${opt.text}，${valueLabel}">
-              <img src="assets/images/outcomes/${s.id}_opt${i+1}.png" alt=""
-                   class="opt-thumb" loading="lazy" decoding="async"
- aria-hidden="true" />
-              <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
-              <span class="opt-text">${opt.text}</span>
-              <span class="opt-value opt-value-${valueClass}" aria-hidden="true">${valueLabel}</span>
-              <button type="button" class="opt-read"
-                data-action="speakOpt" data-arg="${escapeAttr(opt.id)}"
-                title="朗讀呢個選項"
-                aria-label="朗讀選項 ${labels[i] || (i+1)}">🔊</button>
-            </button>
-          `;
-        }).join('')}
+        ${s.options.map((opt, i) => renderOptionCard({ scenarioId: s.id, opt, index: i, isBank: false, showMoral: true })).join('')}
       </div>
 
       <button type="button" class="voice-fab" data-action="speak" title="朗讀題目" aria-label="朗讀題目">🔊</button>
@@ -902,11 +870,10 @@ export function renderProgress(subjectId) {
 
   return `
     <div class="container fade-in">
-      <div class="page-header">
-        <button type="button" class="back-btn" data-action="goHome" aria-label="返回主頁">←</button>
-        <h1>📊 我的進度</h1>
-        ${subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''}
-      </div>
+${renderPageHeader({
+        emoji: '📊', title: '我的進度', back: 'home', backLabel: '返回主頁',
+        rightButton: subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''
+      })}
 
       <div class="progress-grid" role="list" aria-label="學習統計">
         <div class="progress-cell big" role="listitem">
@@ -994,10 +961,7 @@ export function renderSettings() {
 
   return `
     <div class="container fade-in">
-      <div class="page-header">
-        <button type="button" class="back-btn" data-action="goRoleSelect" aria-label="返回主選單">←</button>
-        <h1>⚙️ 個人化設定</h1>
-      </div>
+${renderPageHeader({ emoji: '⚙️', title: '個人化設定', back: 'role-select', backLabel: '返回主選單' })}
 
       <div class="card" style="margin-bottom:14px">
         <div style="font-weight:600;margin-bottom:8px">📊 學習記錄</div>

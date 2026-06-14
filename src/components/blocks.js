@@ -24,13 +24,15 @@ export { renderFooter, renderEmptyState, renderLoading, renderSkeleton };
  *    noHeader?:   boolean,  // skip wrapping div.page-header, just return content
  *  }} cfg
  */
-export function renderPageHeader({ emoji, title, back, backLabel = '返回', backArg, rightButton, noHeader = false }) {
+export function renderPageHeader({ emoji, title, titleHTML, back, backLabel = '返回', backArg, rightButton, noHeader = false }) {
   let content = '';
   if (back) {
     const extra = backArg !== undefined ? ` data-arg2="${escapeAttr(backArg)}"` : '';
     content += `<button type="button" class="back-btn" data-action="navigate" data-arg="${escapeAttr(back)}"${extra} aria-label="${escapeAttr(backLabel)}">←</button>`;
   }
-  content += `<h1>${emoji ? emoji + ' ' : ''}${title}</h1>`;
+  content += titleHTML !== undefined
+    ? titleHTML
+    : `<h1>${emoji ? emoji + ' ' : ''}${title}</h1>`;
   if (rightButton) content += rightButton;
   if (noHeader) return content;
   return `<div class="page-header">${content}</div>`;
@@ -51,12 +53,18 @@ const OPTION_LABELS = ['A', 'B', 'C', 'D'];
  */
 export function renderOptionCard({ scenarioId, opt, index, isBank = false, showMoral = false }) {
   const label = OPTION_LABELS[index] || String(index + 1);
-  const action = isBank ? 'bank-choose' : 'choose';
+  const action = isBank ? 'bankChoose' : 'choose';
   const imgSrc = `assets/images/outcomes/${scenarioId}_opt${index + 1}.png`;
 
+  // Derive moral change: prefer opt.moralChange; fall back to effects[0].moralChange
+  // (original renderPlay extracted from effects[] for the play scenarios).
+  const firstEffect = (opt.effects || [])[0];
+  const mc = opt.moralChange !== undefined
+    ? Number(opt.moralChange)
+    : (firstEffect ? Number(firstEffect.moralChange || 0) : 0);
+
   let moralHtml = '';
-  if (showMoral && opt.moralChange !== undefined) {
-    const mc = opt.moralChange;
+  if (showMoral) {
     const valueLabel = mc > 0 ? `＋${mc} 道德` : mc < 0 ? `${mc} 道德` : '中性';
     const valueClass = mc > 0 ? 'good' : mc < 0 ? 'bad' : 'neutral';
     moralHtml = `<span class="opt-value opt-value-${valueClass}" aria-hidden="true">${valueLabel}</span>`;
@@ -107,7 +115,7 @@ export function renderBankOptionCard({ scenarioId, opt, index }) {
   const label = OPTION_LABELS[index] || String(index + 1);
   const imgSrc = `assets/images/outcomes/${scenarioId}_opt${index + 1}.png`;
   return `
-    <button type="button" class="option-card" data-action="bank-choose" data-arg="${escapeAttr(opt.id)}"
+    <button type="button" class="option-card" data-action="bankChoose" data-arg="${escapeAttr(opt.id)}"
       aria-label="選項 ${label}：${escapeAttr(opt.text)}">
       <img src="${imgSrc}" alt="" class="opt-thumb" loading="lazy" decoding="async" aria-hidden="true" />
       <span class="opt-badge" aria-hidden="true">${label}</span>
