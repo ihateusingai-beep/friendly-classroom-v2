@@ -18,6 +18,7 @@ import { bus } from './domain/EventBus.js';
 import { getMoralBarData } from './domain/Moral.js';
 import { initSync, syncNow, getSyncStatus } from './sync.js';
 import { logInteraction, markScenarioShown, exportInteractionsCSV, getStats, clearInteractions } from './domain/Analytics.js';
+import { navigate as _navigate, wireNav } from './nav.js';
 // Phase 3 (S13): scenarios.json (259 items, 259KB) is now lazy-loaded via
 // `loadScenarios()`. Saves 56% of bundle (~110KB gz → ~50KB gz) by deferring
 // the JSON.parse of the full scenario tree until the first time the user
@@ -1163,6 +1164,14 @@ function _setupDelegates(rootEl) {
       while (el && el !== rootEl) {
         const action = el.dataset && el.dataset.action;
         if (action) {
+          // Phase 5: data-action="navigate" — universal navigation action.
+          // data-arg = view name, data-arg2 = primary arg (e.g. topicId).
+          // Falls through to window.FC[action] if not "navigate".
+          if (action === 'navigate') {
+            e.preventDefault();
+            _navigate(el.dataset.arg, el.dataset.arg2);
+            return;
+          }
           const fn = window.FC?.[action];
           if (typeof fn === 'function') {
             e.preventDefault();
@@ -1253,6 +1262,13 @@ function render() {
 
 // ── 啟動 ──
 // Phase 3 (S13): scenarios.json no longer loaded at boot. The first render
+
+// Wire nav.js callbacks. `navigate()` resolves the view + arg and calls
+// these locally-defined functions. Done after render/navRender/setView are
+// defined above so nav.js never has to know about main.js internals.
+wireNav({ setView, navRender, render });
+// path that needs it (subject-select → play). For the very first render, scenarios=[] is fine — renderRoleSelect
+// and renderStudentSelect don't need them.
 // path that needs it (subject-select → play) awaits loadScenarios() before
 // continuing. For the very first render, scenarios=[] is fine — renderRoleSelect
 // and renderStudentSelect don't need them.
