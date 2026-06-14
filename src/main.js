@@ -35,7 +35,12 @@ export async function loadScenarios() {
 if (import.meta.hot) { import.meta.hot.decline(); }
 
 // ── 初始化 ──
+// Phase 4 (S25): split into a persistent #app shell + transient #fc-view.
+//   #app      — never replaced; holds #fc-view
+//   #fc-view  — where the rendered HTML lives; replaced via replaceChildren
+//                 so siblings (moral-bar, sync-badge, offline-banner) survive
 const app = document.getElementById('app');
+const view = document.getElementById('fc-view');
 applyCSS(); // 套用個人化 CSS 參數
 initSFX();  // 初始化遊戲音效
 
@@ -225,18 +230,64 @@ if (_currentStudent) {
 // ── 全域 FC 初始化（防止 undefined error） ──
 window.FC = window.FC || {};
 
-// ── 狀態機 ──
+// ── 狀態機 (Phase 4 S20: factory + setView) ──
+//
+// `state.view` is the routing enum. Each view has a `VIEWS[view]` factory
+// that returns a fresh sub-state for that view (with view-specific fields
+// nulled out). Use `setView(view, extraPatch)` to transition cleanly; the
+// 26 hand-rolled `state = { ...state, view: 'X' }` sites have been migrated
+// to this helper. `state = { ...state, ... }` is still allowed for non-
+// view-changing patches (e.g. student swap) but is centralized via setState.
+
+export const VIEWS = Object.freeze({
+  'role-select':    () => ({ subjectId: null, topicId: null, scenarioId: null, resultData: null }),
+  'mode-select':    (p) => ({ subjectId: null, topicId: null, scenarioId: null, resultData: null, gameMode: p?.gameMode }),
+  'student-select': () => ({ subjectId: null, topicId: null, scenarioId: null, resultData: null }),
+  'subject-select': () => ({ topicId: null, scenarioId: null, resultData: null }),
+  'home':           (p) => ({ topicId: null, scenarioId: null, resultData: null, subjectId: p?.subjectId ?? state.subjectId }),
+  'topic':          (p) => ({ topicId: p?.topicId, scenarioId: null, resultData: null, subjectId: p?.subjectId ?? state.subjectId }),
+  'play':           (p) => ({ topicId: null, scenarioId: p?.scenarioId, resultData: null }),
+  'result':         (p) => ({ resultData: p?.resultData, subjectId: p?.subjectId ?? state.subjectId }),
+  'progress':       (p) => ({ topicId: null, scenarioId: null, resultData: null, subjectId: p?.subjectId ?? state.subjectId }),
+  'settings':       () => ({}),
+  'login':          () => ({}),
+  'teacher':        () => ({ topicId: null, scenarioId: null, resultData: null }),
+  'teacher-assign': () => ({}),
+  'hub':            () => ({}),
+  'bank-play':      () => ({}),
+  'bank-result':    (p) => ({ bankScenario: p?.bankScenario, bankResult: p?.bankResult }),
+  'bank-summary':   () => ({}),
+});
+
 let state = {
-  view: 'role-select', // role-select | mode-select | student-select | subject-select | home | topic | play | result | progress | settings | login | teacher | teacher-assign
+  view: 'role-select',
   student: null,
-  subjectId: null,   // 'value' = 價值觀教育（單一 subject；舊 4 個已收埋）
+  subjectId: null,
   topicId: null,
   scenarioId: null,
   resultData: null,
   teacherMode: false,
-  role: null,        // 'student' | 'teacher'
+  role: null,
   gameMode: localStorage.getItem('fc_game_mode') || 'relaxed',
+  bankScenario: null,
+  bankResult: null,
 };
+
+/**
+ * Transition to a view, applying the view's reset patch + any extra fields.
+ * Use this instead of `state = { ...state, view: 'X' }` for view changes.
+ * @param {string} view — one of VIEWS keys
+ * @param {Object} [extra] — additional fields (e.g. { topicId, subjectId })
+ */
+export function setView(view, extra = {}) {
+  const factory = VIEWS[view];
+  if (!factory) {
+    console.warn(`[state] unknown view: ${view}`);
+    return;
+  }
+  state = { ...state, view, ...factory(extra), ...extra };
+}
+
 let lastPlayedScenarioId = null; // guard: 防 TTS 重複觸發
 
 // ── 懶加載 teacher chunk（學生不會下載此檔案）──
@@ -251,12 +302,24 @@ async function _loadTeacher() {
 }
 
 // ── 路由 ──
+/**
+ * Navigate to the home view (subject-aware). Triggered by `data-action="goHome"`.
+ * @returns {void}
+ */
 export function goHome() {
-  state = { ...state, view: 'home' };
+  setView('home');
   navRender();
 }
 window.FC.goHome = goHome;
 
+/** Reload the page (used by error fallback). */
+window.FC.reload = function() { location.reload(); };
+
+/**
+ * Navigate to a topic list. Awaits scenarios.json load if not yet loaded.
+ * @param {string} topicId
+ * @returns {void|Promise<void>}
+ */
 export function goTopic(topicId) {
   // Phase 3 (S13): ensure scenarios are loaded before we enter topic view
   // (which calls getScenariosByTopic via initTopicProgress).
@@ -264,18 +327,23 @@ export function goTopic(topicId) {
     return loadScenarios().then(() => { goTopic(topicId); });
   }
   initTopicProgress(topicId);
-  state = { ...state, view: 'topic', topicId, subjectId: state.subjectId };
+  setView('topic', { topicId });
   navRender();
 }
 window.FC.goTopic = goTopic;
 
+/**
+ * Start a scenario. Awaits scenarios.json load if not yet loaded.
+ * @param {string} scenarioId
+ * @returns {void|Promise<void>}
+ */
 export function play(scenarioId) {
   if (!_scenariosLoaded) {
     return loadScenarios().then(() => play(scenarioId));
   }
   localStorage.setItem('fc_last_scenario', scenarioId); // guard: TTS trigger
   markScenarioShown(); // analytics: response time 起點
-  state = { ...state, view: 'play', scenarioId };
+  setView('play', { scenarioId });
   render();
   // SR: announce 載入新題目（題目編號 + 主題 + 題目名）
   const sc = playScenario(scenarioId);
@@ -315,7 +383,7 @@ export function choose(optionId) {
   } catch (e) {
     console.warn('[FC] analytics log failed:', e.message);
   }
-  state = { ...state, view: 'result', resultData: data };
+  setView('result', { resultData: data });
   render();
   // 情緒慶祝動畫 + SFX
   setTimeout(() => {
@@ -386,19 +454,19 @@ window.FC.retry = retry;
 
 export function goProgress() {
   // 移除 student-select，直接去進度頁
-  state = { ...state, view: 'progress' };
+  setView('progress');
   render();
 }
 window.FC.goProgress = goProgress;
 
 export function goGameHub() {
-  state = { ...state, view: 'hub' };
+  setView('hub');
   render();
 }
 window.FC.goGameHub = goGameHub;
 
 export function goSettings() {
-  state = { ...state, view: 'settings' };
+  setView('settings');
   render();
 }
 window.FC.goSettings = goSettings;
@@ -406,7 +474,7 @@ window.FC.goSettings = goSettings;
 export async function goTeacher() {
   // 懶加載 teacher chunk
   await _loadTeacher();
-  state = { ...state, view: 'login' };
+  setView('login');
   render();
 }
 window.FC.goTeacher = goTeacher;
@@ -441,7 +509,7 @@ window.FC.playGoodDeedBank = async function() {
     alert('銀行題目載入失敗，請重試。');
     return;
   }
-  state = { ...state, view: 'bank-play' };
+  setView('bank-play');
   render();
   // SR: announce 銀行第一題
   const first = run.questions[run.currentIdx];
@@ -496,12 +564,12 @@ window.FC.bankNext = function() {
   if (!run) { FC.exitBank(); return; }
   // 局結束（finished / bankrupt）→ 結算
   if (run.status === 'finished' || run.status === 'bankrupt') {
-    state = { ...state, view: 'bank-summary' };
+  setView('bank-summary');
     render();
     return;
   }
   advanceToNextQuestion();
-  state = { ...state, view: 'bank-play' };
+  setView('bank-play');
   render();
   // SR: announce 下一題
   const next = run.questions[run.currentIdx];
@@ -516,7 +584,7 @@ window.FC.bankNext = function() {
 
 window.FC.exitBank = function() {
   endBankRun();
-  state = { ...state, view: 'hub' };
+  setView('hub');
   render();
 };
 
@@ -547,41 +615,42 @@ window.FC.getTTSLang = function() { return getTTSLang(); };
 window.FC.TTS_LANGS = TTS_LANGS;
 
 export function goSubjectSelect() {
-  state = { ...state, view: 'subject-select' };
+  setView('subject-select');
   render();
 }
 window.FC.goSubjectSelect = goSubjectSelect;
 
 export function selectSubject(subjectId) {
   initSubjectProgress(subjectId);
-  state = { ...state, subjectId, view: 'home' };
+  setView('home', { subjectId });
   render();
 }
 window.FC.selectSubject = selectSubject;
 
 // ── Role Select (Entry Point) ──
 export function goRoleSelect() {
-  state = { ...state, view: 'role-select' };
+  setView('role-select');
   render();
 }
 window.FC.goRoleSelect = goRoleSelect;
 
 export async function chooseRole(role) {
   state = { ...state, role, teacherMode: role === 'teacher' };
+  // not a view change — keep the spread (S20 allows non-view patches)
   if (role === 'teacher') {
     // 預載 teacher chunk，避免 login 頁「載入中」閃一下
     await _loadTeacher();
-    state = { ...state, view: 'login' };
+  setView('login');
   } else {
     // Student: go to Game Hub (Blooket-style lobby)
-    state = { ...state, view: 'hub' };
+  setView('hub');
   }
   render();
 }
 window.FC.chooseRole = chooseRole;
 
 export function goHub() {
-  state = { ...state, view: 'hub' };
+  setView('hub');
   render();
 }
 window.FC.goHub = goHub;
@@ -589,6 +658,7 @@ window.FC.goHub = goHub;
 export function selectMode(modeId) {
   localStorage.setItem('fc_game_mode', modeId);
   state = { ...state, gameMode: modeId };
+  // not a view change — keep the spread
   render();
   // Show brief confirmation
   setTimeout(() => {
@@ -605,13 +675,13 @@ export function selectMode(modeId) {
 window.FC.selectMode = selectMode;
 
 export function goModeSelect() {
-  state = { ...state, view: 'mode-select' };
+  setView('mode-select');
   render();
 }
 window.FC.goModeSelect = goModeSelect;
 
 export function goTeacherAssign() {
-  state = { ...state, view: 'teacher-assign' };
+  setView('teacher-assign');
   render();
 }
 window.FC.goTeacherAssign = goTeacherAssign;
@@ -680,7 +750,7 @@ window.FC.saveTeacherConfig = function() {
 };
 
 export function switchStudent() {
-  state = { ...state, view: 'student-select' };
+  setView('student-select');
   render();
 }
 window.FC.switchStudent = switchStudent;
@@ -692,7 +762,7 @@ function renderStudentSelect() {
   return `
     <div class="container fade-in" style="max-width:460px;padding-top:40px">
       <h1 style="text-align:center;margin-bottom:24px">👤 選擇學生</h1>
-      <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:20px" role="list" aria-label="已登記嘅學生">
+      <div class="fc-flex-col-gap fc-mb-20" role="list" aria-label="已登記嘅學生">
         ${saved.map(student => `
           <button type="button" class="student-card" onclick="FC.selectStudent('${escapeAttr(student.name)}')" role="listitem"
             aria-label="選擇學生 ${escapeAttr(student.name)}，按此開始學習">
@@ -710,7 +780,7 @@ function renderStudentSelect() {
         <label for="new-student-name" class="sr-only">新學生名字</label>
         <input id="new-student-name" type="text" inputmode="none" autocomplete="off" placeholder="輸入新學生名字"
           style="width:100%;padding:14px;border:2px solid var(--border);border-radius:10px;font-size:1em;margin-bottom:10px;box-sizing:border-box" />
-        <button type="button" class="btn btn-success" style="width:100%" data-action="addStudent">➕ 新增學生</button>
+        <button type="button" class="btn btn-success" class="fc-w-100" data-action="addStudent">➕ 新增學生</button>
       </div>
       <div style="margin-top:16px;text-align:center">
         <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回首頁</button>
@@ -722,29 +792,8 @@ function renderStudentSelect() {
 window.FC.selectStudent = function(name) {
   if (name === '其他') return;
   setStudent(name);
-  state = { ...state, student: name, view: 'home' };
+  setView('home', { student: name });
   render();
-};
-window.FC.addStudent = function() {
-  const input = document.getElementById('new-student-name');
-  const name = input?.value?.trim();
-  if (!name) return;
-  setStudent(name);
-  state = { ...state, student: name, view: 'home' };
-  render();
-};
-
-// doLogin stays in main.js (reads DOM + updates state)
-window.FC.doLogin = function() {
-  const savedPin = localStorage.getItem('fc_teacher_pin') || 'admin';
-  const pw = document.getElementById('teacher-pw')?.value;
-  if (pw === savedPin) {
-    state = { ...state, view: 'teacher', teacherMode: true };
-    render();
-  } else {
-    const err = document.getElementById('login-error');
-    if (err) { err.style.display = 'block'; }
-  }
 };
 
 // ── 科目選擇 ──
@@ -1067,6 +1116,15 @@ function navRender() {
   renderWithTransition(render);
 }
 
+/** Phase 4 (S25): parse an HTML string into nodes and patch #fc-view. */
+function _setViewHTML(html) {
+  // Use <template> to parse without injecting into the live document first.
+  // This preserves any live event listeners on sibling nodes of #fc-view.
+  const t = document.createElement('template');
+  t.innerHTML = html.trim();
+  view.replaceChildren(t.content);
+}
+
 // ── Event delegation (Phase 3 S16) ──────────────────────────────────────────
 // Replaces inline `onclick="FC.foo('${x}')"` strings with `data-action="foo"`
 // attributes. The single listener below dispatches by data-action + data-arg.
@@ -1082,12 +1140,23 @@ function navRender() {
 // pass the second arg via data-arg2. The dispatcher reads window.FC[name]
 // dynamically so it auto-picks up new handlers.
 
-const _DELEGATE_EVENTS = ['click'];
+const _DELEGATE_EVENTS = ['click', 'error'];
 
 function _setupDelegates(rootEl) {
   if (!rootEl || rootEl.__fcDelegated) return;
   rootEl.__fcDelegated = true;
-  for (const ev of _DELEGATE_EVENTS) {
+  // Phase 4 (S21): delegated `error` listener for <img> fallback.
+  // Listens on capture phase because image errors don't bubble reliably
+  // (Safari/old browsers). Sets opacity + alt in one place instead of
+  // 7 inline `onerror` strings.
+  rootEl.addEventListener('error', (e) => {
+    const t = e.target;
+    if (t && t.tagName === 'IMG') {
+      t.style.opacity = '0.3';
+      t.alt = '（插圖暫不可用）';
+    }
+  }, true);
+  for (const ev of _DELEGATE_EVENTS.filter(x => x !== 'error')) {
     rootEl.addEventListener(ev, (e) => {
       // walk up to the closest [data-action]
       let el = e.target;
@@ -1116,16 +1185,17 @@ function _setupDelegates(rootEl) {
 // ── HTML attribute escaping (Phase 1 S3: XSS guard) ──
 import { escapeAttr, escapeJsString } from './util/escape.js';
 import { renderFooter, renderEmptyState, renderLoading, renderSkeleton } from './components/chrome.js';
+import { t } from './i18n.js';
 
 // ── 渲染 ──
 function renderErrorFallback(e) {
   return `
     <div class="container fade-in" role="alert" aria-live="assertive">
-      <div class="card" style="text-align:center;padding:32px 20px">
+      <div class="card fc-center" style="padding:32px 20px">
         <div style="font-size:3em;margin-bottom:12px" aria-hidden="true">⚠️</div>
-        <h2 style="margin-bottom:8px">哎呀，呢頁載入出咗問題</h2>
-        <p style="color:var(--text-light);margin-bottom:16px">
-          我哋已經記錄咗呢個錯誤。你可以返主頁重試，<br>或者重新整理整個瀏覽器。
+        <h2 style="margin-bottom:8px">${t('error.fallbackTitle')}</h2>
+        <p class="fc-muted fc-mb-16">
+          ${t('error.fallbackHint')}
         </p>
         <details style="text-align:left;background:var(--bg);border-radius:8px;padding:12px;margin-bottom:16px;font-size:0.85em">
           <summary style="cursor:pointer;font-weight:600">🔍 技術細節</summary>
@@ -1133,7 +1203,7 @@ function renderErrorFallback(e) {
         </details>
         <div class="action-row" style="justify-content:center">
           <button type="button" class="btn btn-primary" data-action="goHome">← 返主頁</button>
-          <button type="button" class="btn btn-outline" onclick="location.reload()">🔄 重新整理</button>
+          <button type="button" class="btn btn-outline" data-action="reload">${t('error.fallbackReload')}</button>
         </div>
       </div>
     </div>
@@ -1169,15 +1239,15 @@ function render() {
       case 'bank-summary': html = renderBankSummary(getBankRun()); break;
       default: html = '<div class="container"><p>頁面不存在</p></div>';
     }
-    app.innerHTML = html;
+    _setViewHTML(html);
     // Phase 3 (S16): wire event delegation for data-action handlers
-    _setupDelegates(app);
+    _setupDelegates(view);
     // Post-render hooks
     if (state.view === 'settings') updateAnalyticsSummary();
   } catch(e) {
     console.error('[FC] RENDER ERROR:', e.message, e.stack);
-    app.innerHTML = renderErrorFallback(e);
-    _setupDelegates(app);
+    _setViewHTML(renderErrorFallback(e));
+    _setupDelegates(view);
   }
 }
 
@@ -1190,6 +1260,6 @@ try {
   render();
 } catch(e) {
   console.error('[FC] RENDER ERROR:', e.message, e.stack);
-  app.innerHTML = renderErrorFallback(e);
-  _setupDelegates(app);
+  _setViewHTML(renderErrorFallback(e));
+  _setupDelegates(view);
 }

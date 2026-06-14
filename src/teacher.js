@@ -16,7 +16,7 @@ export function renderLogin() {
         <h1 style="text-align:center;margin-bottom:20px">🔐 老師登入</h1>
         <label for="teacher-pw" class="sr-only">老師密碼</label>
         <input id="teacher-pw" type="password" autocomplete="current-password" placeholder="輸入密碼" />
-        <button type="button" class="btn btn-primary" style="width:100%" data-action="doLogin">登入</button>
+        <button type="button" class="btn btn-primary" class="fc-w-100" data-action="doLogin">登入</button>
         <p id="login-error" role="alert" style="color:var(--danger);text-align:center;margin-top:8px;display:none">密碼錯誤</p>
         <div style="margin-top:12px;text-align:center">
           <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回</button>
@@ -42,7 +42,7 @@ export function renderTeacher() {
         <div class="subtitle">暫無學生數據</div>
       </div>
       ${renderEmptyState({ emoji: '📭', title: '暫時沒有學生數據', hint: '學生完成學習後會自動顯示在這裡' })}
-      <div style="margin-top:16px">
+      <div class="fc-mt-16">
         <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回首頁</button>
       </div>
       ${renderFooter()}
@@ -61,7 +61,7 @@ export function renderTeacher() {
         <div class="subtitle">共 ${students.length} 位學生</div>
       </div>
 
-      <div style="display:flex;flex-direction:column;gap:10px" role="list" aria-label="學生清單">
+      <div class="fc-flex-col-gap" role="list" aria-label="學生清單">
         ${students.map(s => {
           // Phase 3 (S19): use the canonical summary shape
           const sum = getStudentSummary(s.name);
@@ -85,7 +85,7 @@ export function renderTeacher() {
         }).join('')}
       </div>
 
-      <div class="card" style="margin-top:16px">
+      <div class="card" class="fc-mt-16">
         <div style="font-weight:600;margin-bottom:10px">📚 科目總覽</div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px" role="list" aria-label="科目總覽" class="subject-grid">
           ${getAllSubjects().map(sub => {
@@ -124,7 +124,7 @@ export function renderTeacher() {
         <button type="button" class="btn btn-primary" data-action="goTeacherAssign">⚙️ 功能設定</button>
       </div>
 
-      <div style="margin-top:16px">
+      <div class="fc-mt-16">
         <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回首頁</button>
       </div>
       ${renderFooter()}

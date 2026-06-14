@@ -109,7 +109,7 @@ export function renderGameHub() {
         </div>
       </div>
 
-      <div style="text-align:center;margin-top:20px">
+      <div class="fc-center-20">
         <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回</button>
       </div>
       ${renderFooter()}
@@ -160,16 +160,16 @@ export function renderBankPlay(scenario, run) {
         </div>
       </div>
 
-      <div class="scenario-desc" style="margin-top:16px">
+      <div class="scenario-desc" class="fc-mt-16">
         <strong>${scenario.title}</strong>
         <div style="color:var(--text-light);font-size:0.92em;margin-top:6px">📍 ${scenario.background || ''}</div>
-        <div style="margin-top:8px">${scenario.description}</div>
+        <div class="fc-mt-8">${scenario.description}</div>
       </div>
 
       <div class="scenario-image-wrap">
         <img src="assets/images/scenarios/${scenario.id}.png" alt="${scenario.title}" class="scenario-image"
              loading="eager" fetchpriority="high"
-             onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
+ />
       </div>
 
       <div class="options" style="margin-top:14px" role="radiogroup" aria-label="銀行題目選項">
@@ -178,7 +178,7 @@ export function renderBankPlay(scenario, run) {
             <button type="button" class="option-card" data-action="bankChoose" data-arg="${escapeAttr(opt.id)}" aria-label="選項 ${labels[i] || (i+1)}：${escapeAttr(opt.text)}">
               <img src="assets/images/outcomes/${scenario.id}_opt${i+1}.png" alt=""
                    loading="lazy" decoding="async"
-                   class="opt-thumb" onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" aria-hidden="true" />
+                   class="opt-thumb" aria-hidden="true" />
               <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
             </button>
@@ -222,7 +222,7 @@ export function renderBankResult(scenario, result, run) {
         <div class="outcome-image-wrap" style="margin:14px auto;max-width:340px;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
           <img src="${result.outcomeImage}" alt="結果插圖" style="width:100%;display:block"
                loading="lazy" decoding="async"
-               onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
+ />
         </div>
       ` : ''}
 
@@ -234,7 +234,7 @@ export function renderBankResult(scenario, result, run) {
       <div class="bank-balance-big" style="text-align:center;margin:18px 0">
         <div style="font-size:0.9em;color:var(--text-light)">目前結餘</div>
         <div class="${delta > 0 ? 'positive' : delta < 0 ? 'negative' : 'neutral'}" style="font-size:2.4em;font-weight:800" aria-label="目前結餘 ${balance} 元">$${balance}</div>
-        <div style="font-size:0.85em;color:var(--text-light)">目標 $${target}</div>
+        <div class="fc-muted-sm">目標 $${target}</div>
       </div>
 
       ${isWon ? `
@@ -392,21 +392,21 @@ export function renderModeSelect(currentMode, subjectId) {
         `).join('')}
       </div>
 
-      <div style="text-align:center;margin-top:8px;margin-bottom:20px">
-        <p style="font-size:0.85em;color:var(--text-light)">
+      <div class="fc-center-20 fc-mb-20">
+        <p class="fc-muted-sm">
           💡 模式可以在設定頁隨時更改
         </p>
       </div>
 
       ${subjectId ? `
-        <div style="text-align:center">
+        <div class="fc-center">
           <button type="button" class="btn btn-primary" style="min-width:220px;font-size:1.1em"
             data-action="goHome">
             ✅ 確定，開始學習 →
           </button>
         </div>
       ` : `
-        <div style="text-align:center">
+        <div class="fc-center">
           <button type="button" class="btn btn-primary" style="min-width:220px;font-size:1.1em"
             data-action="goSubjectSelect">
             📚 選擇課題 →
@@ -414,7 +414,7 @@ export function renderModeSelect(currentMode, subjectId) {
         </div>
       `}
 
-      <div style="text-align:center;margin-top:16px">
+      <div class="fc-center-top">
         <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回</button>
       </div>
 
@@ -567,8 +567,8 @@ export function renderTeacherAssign() {
           data-action="saveTeacherPIN">💾 儲存 PIN</button>
       </div>
 
-      <div style="margin-top:16px">
-        <button type="button" class="btn btn-primary" style="width:100%"
+      <div class="fc-mt-16">
+        <button type="button" class="btn btn-primary" class="fc-w-100"
           data-action="saveTeacherConfig">✅ 儲存所有設定</button>
       </div>
 
@@ -800,7 +800,7 @@ export function renderPlay(scenarioId, subjectId) {
       <div class="scenario-image-wrap">
         <img src="assets/images/scenarios/${s.id}.png" alt="${s.title}" class="scenario-image"
              loading="eager" fetchpriority="high"
-             onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
+ />
       </div>
 
       <div class="options-divider" aria-hidden="true">— 揀你嘅選擇 —</div>
@@ -818,7 +818,7 @@ export function renderPlay(scenarioId, subjectId) {
               aria-label="選項 ${labels[i] || (i+1)}：${opt.text}，${valueLabel}">
               <img src="assets/images/outcomes/${s.id}_opt${i+1}.png" alt=""
                    class="opt-thumb" loading="lazy" decoding="async"
-                   onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" aria-hidden="true" />
+ aria-hidden="true" />
               <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
               <span class="opt-value opt-value-${valueClass}" aria-hidden="true">${valueLabel}</span>
@@ -877,7 +877,7 @@ export function renderResult(data, subjectId) {
       <div class="outcome-image-wrap" style="margin-top:16px;border-radius:16px;overflow:hidden">
         <img src="${data.outcomeImage}" alt="結果圖" style="width:100%;border-radius:16px"
              loading="lazy" decoding="async"
-             onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
+ />
       </div>` : ''}
 
       <div class="action-row" id="result-actions">
@@ -1033,7 +1033,7 @@ export function renderSettings() {
         <div class="setting-row" style="margin-bottom:12px">
           <div>
             <strong id="voice-toggle-label">開 / 關</strong>
-            <div style="font-size:0.85em;color:var(--text-light)">自動朗讀題目和信條</div>
+            <div class="fc-muted-sm">自動朗讀題目和信條</div>
           </div>
           <button type="button" class="toggle ${enabled ? 'on' : ''}" data-key="voice" data-action="toggleVoice"
             role="switch" aria-checked="${enabled}" aria-labelledby="voice-toggle-label"
@@ -1075,16 +1075,16 @@ export function renderSettings() {
         <div class="setting-row">
           <div>
             <strong id="hc-toggle-label">高對比模式</strong>
-            <div style="font-size:0.85em;color:var(--text-light)">純黑/白、3px 強制 border、無漸變，適合光線不足或在戶外使用</div>
+            <div class="fc-muted-sm">純黑/白、3px 強制 border、無漸變，適合光線不足或在戶外使用</div>
           </div>
           <button type="button" class="toggle ${hcMode ? 'on' : ''}" data-key="hc" data-action="toggleHC"
             role="switch" aria-checked="${hcMode}" aria-labelledby="hc-toggle-label"
             aria-label="高對比模式開關"></button>
         </div>
-        <div class="setting-row" style="margin-top:12px">
+        <div class="setting-row" class="fc-mt-12">
           <div>
             <strong id="rm-toggle-label">減少動畫</strong>
-            <div style="font-size:0.85em;color:var(--text-light)">停掉過場動畫同慶祝效果${osRMPref && !rmMode ? '（系統已偵測到偏好）' : ''}</div>
+            <div class="fc-muted-sm">停掉過場動畫同慶祝效果${osRMPref && !rmMode ? '（系統已偵測到偏好）' : ''}</div>
           </div>
           <button type="button" class="toggle ${rmMode ? 'on' : ''}" data-key="rm" data-action="toggleReducedMotion"
             role="switch" aria-checked="${rmMode}" aria-labelledby="rm-toggle-label"
@@ -1164,7 +1164,7 @@ export function renderSettings() {
           <li>學習進度及題目記錄</li>
           <li>每題作答記錄（category、選項、答得啱唔啱、用咗幾耐）</li>
         </ul>
-        <p style="margin-top:8px">📌 學生名字會以 hash 儲存，唔會明文。離線使用時，進度仍保存在本地。恢復連線後自動同步。</p>
+        <p class="fc-mt-8">📌 學生名字會以 hash 儲存，唔會明文。離線使用時，進度仍保存在本地。恢復連線後自動同步。</p>
         <p style="margin-top:4px">🚫 <strong>唔會上傳去任何 server</strong>，純本地儲存。可隨時喺「📊 學習記錄」清除。</p>
       </div>
 
