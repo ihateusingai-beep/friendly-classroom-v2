@@ -8,7 +8,7 @@ import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 import { getMoralBarData } from './domain/Moral.js';
 import { getProgress, isCompleted, getStudentSummary } from './domain/Progress.js';
 import { getDailyCreed } from './creeds.js';
-import { escapeJsString } from './util/escape.js';
+import { escapeAttr, escapeJsString } from './util/escape.js';
 import { renderFooter, renderEmptyState } from './components/chrome.js';
 import { bankRiskLabel, BANK_RISK } from './constants/bank.js';
 import { getTeacherConfig } from './storage.js';
