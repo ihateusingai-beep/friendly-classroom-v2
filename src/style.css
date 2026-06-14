@@ -230,18 +230,35 @@ button.student-card:focus-visible {
 .toggle-switch.on::after { transform: translateX(22px); }
 
 :root {
-  --primary: #4A90D9;
-  --success: #52c41a;
-  --danger: #ff4d4f;
-  --warning: #faad14;
-  --bg: #f5f7fa;
-  --card: #ffffff;
-  --text: #333;
-  --text-light: #666;
-  --border: #e8e8e8;
-  --radius: 16px;
-  --shadow: 0 4px 16px rgba(0,0,0,0.08);
-  /* 個人化參數（JS 動態設定） */
+  /* === 原始色票 (Raw palette — DON'T use these directly in components) === */
+  --c-primary: #4A90D9;
+  --c-success: #52c41a;
+  --c-danger:  #ff4d4f;
+  --c-warning: #faad14;
+  --c-bg:      #f5f7fa;
+  --c-card:    #ffffff;
+  --c-text:    #333;
+  --c-text-2:  #666;
+  --c-border:  #e8e8e8;
+
+  /* === 語意 token (Use these in components) === */
+  --primary:   var(--c-primary);
+  --success:   var(--c-success);
+  --danger:    var(--c-danger);
+  --warning:   var(--c-warning);
+  --bg:        var(--c-bg);
+  --card:      var(--c-card);
+  --text:      var(--c-text);
+  --text-light: var(--c-text-2);
+  --border:    var(--c-border);
+
+  /* === 系統 token === */
+  --radius:    16px;
+  --shadow:    0 4px 16px rgba(0,0,0,.08);
+  --shadow-1:  0 2px 8px rgba(0,0,0,.06);
+  --shadow-2:  0 6px 24px rgba(0,0,0,.1);
+
+  /* === 個人化參數（JS 動態設定） === */
   --fc-font-size: 18px;
   --fc-line-height: 1.5;
   --fc-spacing: 16px;
@@ -1463,7 +1480,47 @@ body:has(.action-cta-fab:not([hidden])) .container { padding-bottom: 80px; }
   .progress-grid { grid-template-columns: 1fr; }
   .progress-cell.big { grid-column: span 1; }
   .subject-grid { grid-template-columns: repeat(2, 1fr); }
-}/* ---- NT-D Moral Bar（固定於 student 頁頂部）---- */
+}/* ---- Loading Skeleton (async operations) ---- */
+@keyframes skeleton-pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+.skeleton {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--border) 0%, rgba(0,0,0,0.04) 50%, var(--border) 100%);
+  background-size: 200% 100%;
+  border-radius: 6px;
+  animation: skeleton-pulse 1.2s ease-in-out infinite;
+  vertical-align: middle;
+}
+.skeleton-text-sm { height: 14px; }
+.skeleton-text-md { height: 18px; }
+.skeleton-block   { height: 80px; width: 100%; }
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+}
+
+/* ---- View Transitions API (Chrome/Edge 111+) ---- */
+/* 頁面切換時 #app 嘅 old/new 狀態做 cross-fade + 微微 slide */
+::view-transition-old(root) {
+  animation: vt-fade-out 0.18s ease-out forwards;
+}
+::view-transition-new(root) {
+  animation: vt-fade-in 0.22s ease-out forwards;
+}
+@keyframes vt-fade-out {
+  to { opacity: 0; transform: translateY(-4px); }
+}
+@keyframes vt-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation: none; }
+}
+
+/* ---- NT-D Moral Bar（固定於 student 頁頂部）---- */
 .moral-bar-fixed {
   position: sticky;
   top: 0;

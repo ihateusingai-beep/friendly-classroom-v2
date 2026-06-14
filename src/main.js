@@ -242,14 +242,14 @@ async function _loadTeacher() {
 // ── 路由 ──
 export function goHome() {
   state = { ...state, view: 'home' };
-  render();
+  navRender();
 }
 window.FC.goHome = goHome;
 
 export function goTopic(topicId) {
   initTopicProgress(topicId);
   state = { ...state, view: 'topic', topicId, subjectId: state.subjectId };
-  render();
+  navRender();
 }
 window.FC.goTopic = goTopic;
 
@@ -629,6 +629,13 @@ window.FC.setButtonSize = function(size) {
   saveTeacherConfig(cfg);
   render();
 };
+// S11: 銀行題目風險 ceiling。0=value only / 1=default / 2=mid / 3=all
+window.FC.setBankMaxRisk = function(level) {
+  const cfg = getTeacherConfig();
+  cfg.bankMaxRiskLevel = level;
+  saveTeacherConfig(cfg);
+  render();
+};
 window.FC.toggleAssignedTopic = function(topicId, checked) {
   const cfg = getTeacherConfig();
   if (!cfg.assignedTopics) cfg.assignedTopics = [];
@@ -958,17 +965,29 @@ function updateAnalyticsSummary() {
   }
 }
 
+// ── Loading skeleton helpers (settings badges) ──
+function setSyncStatusLoading() {
+  const badge = document.getElementById('settings-sync-status');
+  const lastSync = document.getElementById('settings-last-sync');
+  if (badge) badge.innerHTML = '<span class="skeleton skeleton-text-sm" style="width:80px"></span>';
+  if (lastSync) lastSync.innerHTML = '<span class="skeleton skeleton-text-sm" style="width:120px"></span>';
+}
+
 // ── Force sync ──
 window.FC.forceSync = async function() {
   const name = getStudent();
   if (!name) return;
   const p = getProgress(name);
+  setSyncStatusLoading();
   const result = await syncNow(name, p);
   if (result.ok) {
     const badge = document.getElementById('settings-sync-status');
     const lastSync = document.getElementById('settings-last-sync');
     if (badge) badge.textContent = '✅ 已同步';
     if (lastSync) lastSync.textContent = new Date().toLocaleString('zh-HK', { dateStyle: 'short', timeStyle: 'short' });
+  } else {
+    const badge = document.getElementById('settings-sync-status');
+    if (badge) badge.textContent = '❌ 同步失敗';
   }
 };
 
@@ -1000,7 +1019,54 @@ window.FC.importMyData = function() {
   input.click();
 };
 
+// ── View Transitions wrapper (page-level animation when browser supports it) ──
+// 支援度：Chrome 111+ / Edge 111+。Safari/Firefox 自動 fallback 直接 render。
+const supportsViewTransitions = typeof document !== 'undefined'
+  && 'startViewTransition' in document;
+
+function renderWithTransition(updateFn) {
+  // Reduced motion user 跳過動畫
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    updateFn();
+    return;
+  }
+  if (supportsViewTransitions) {
+    document.startViewTransition(updateFn);
+  } else {
+    updateFn();
+  }
+}
+
+// ── 統一導航：包住 render() 觸發 View Transition ──
+// 任何 page-level 切換（唔係 in-place update）應該用呢個。
+// 例外：in-place update 例如 settings toggle、analytics refresh 用 render() 直接。
+function navRender() {
+  renderWithTransition(render);
+}
+
 // ── 渲染 ──
+function renderErrorFallback(e) {
+  return `
+    <div class="container fade-in" role="alert" aria-live="assertive">
+      <div class="card" style="text-align:center;padding:32px 20px">
+        <div style="font-size:3em;margin-bottom:12px" aria-hidden="true">⚠️</div>
+        <h2 style="margin-bottom:8px">哎呀，呢頁載入出咗問題</h2>
+        <p style="color:var(--text-light);margin-bottom:16px">
+          我哋已經記錄咗呢個錯誤。你可以返主頁重試，<br>或者重新整理整個瀏覽器。
+        </p>
+        <details style="text-align:left;background:var(--bg);border-radius:8px;padding:12px;margin-bottom:16px;font-size:0.85em">
+          <summary style="cursor:pointer;font-weight:600">🔍 技術細節</summary>
+          <pre style="white-space:pre-wrap;margin-top:8px;color:var(--danger)">${e.message}</pre>
+        </details>
+        <div class="action-row" style="justify-content:center">
+          <button type="button" class="btn btn-primary" onclick="FC.goHome()">← 返主頁</button>
+          <button type="button" class="btn btn-outline" onclick="location.reload()">🔄 重新整理</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
 function render() {
   let html = '';
   try {
@@ -1034,8 +1100,8 @@ function render() {
     // Post-render hooks
     if (state.view === 'settings') updateAnalyticsSummary();
   } catch(e) {
-    console.error('RENDER ERROR:', e.message, e.stack);
-    app.innerHTML = '<pre style="color:red;padding:20px">[FC] Render Error:\n' + e.message + '\n' + (e.stack||'').split('\n').slice(0,5).join('\n') + '</pre>';
+    console.error('[FC] RENDER ERROR:', e.message, e.stack);
+    app.innerHTML = renderErrorFallback(e);
   }
 }
 
@@ -1044,6 +1110,6 @@ setScenarios(scenariosData);
 try {
   render();
 } catch(e) {
-  console.error('RENDER ERROR:', e.message, e.stack);
-  app.innerHTML = '<pre style="color:red;padding:20px">[FC] Render Error:\n' + e.message + '\n' + (e.stack||'').split('\n').slice(0,5).join('\n') + '</pre>';
+  console.error('[FC] RENDER ERROR:', e.message, e.stack);
+  app.innerHTML = renderErrorFallback(e);
 }
