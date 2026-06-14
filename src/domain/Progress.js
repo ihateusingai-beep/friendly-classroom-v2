@@ -131,17 +131,26 @@ export function getStudentSummary(studentId) {
   };
 }
 
+// ── V2.2 dead topic IDs (no longer in scenarios.json / topics.js TOPICS) ──────
+// 喺 V3 重整時，emotions/honesty/conflict 已經 migrate 去 V3 id：
+//   emotions      → empathy
+//   honesty       → integrity (合併)
+//   conflict      → conflict-resolution
+// 呢啲 key 只係 legacy progress data 殘留 — _defaultProgress 同 migrate helper
+// 都唔再 init 佢哋。舊 user 嘅 localStorage 仲有嘅，留俾 follow-up
+// `migrateTopicProgressKeys()` 清（見 importProgress）。
+// ─────────────────────────────────────────────────────────────────────────────
+export const V22_DEAD_TOPIC_IDS = ['emotions', 'honesty', 'conflict'];
+
 // ── Internal ──
 function _defaultProgress(name) {
   return {
     name,
     completedScenarios: [],
-    topicProgress: {
-      emotions: { completed: 0, total: 0 },
-      respect:    { completed: 0, total: 0 },
-      honesty:    { completed: 0, total: 0 },
-      conflict:   { completed: 0, total: 0 },
-    },
+    // V3: topicProgress 唔再 pre-init。`updateTopicTotal()` 喺學生第一次入個
+    // topic 嗰陣 lazy-init 對應 entry。Pre-init V2.2 keys (emotions/honesty/
+    // conflict) 只會喺舊 user 嘅 localStorage 殘留，呢度保持空 object 即可。
+    topicProgress: {},
     subjectProgress: {
       value:   { completed: 0, total: 0 },
     },
