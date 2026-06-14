@@ -10141,5 +10141,8527 @@
       "正面影響"
     ],
     "imagePrompt": "Hong Kong school sports field, athletes standing at attention during national anthem after receiving medal, podium in background, sunny day, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-67",
+    "title": "堅毅：練琴第20次都係錯",
+    "background": "屋企・鋼琴前・晚上",
+    "description": "媽媽安排你每晚練琴30分鐘。但你練咗一首新歌20次，每次都喺同一個小節撞錯音，好挫折。你想放棄，你會……",
+    "hints": [
+      "每個音樂家都經歷過撞板，重複練習就會進步",
+      "錯誤係學習嘅一部分，跌低先識起身",
+      "放棄只會令你之前嘅努力白費"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-67-a",
+        "text": "大力閂琴蓋，話「我唔學喇！」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "一撞板就放棄，永遠學唔到新嘢。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-67-b",
+        "text": "再練5次，錯咗就由嗰度重頭開始",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 15,
+            "comment": "你願意重複撞板，呢個就係堅毅！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-67-c",
+        "text": "請媽媽示範嗰個小節，再單獨練嗰幾個音",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你主動搵方法突破，係高手嘅學習法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "perseverance",
+    "creedIds": [
+      1
+    ],
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "持續練習",
+      "主動求教"
+    ],
+    "imagePrompt": "Young Chinese child sitting at piano in warm home evening light, focused expression, sheet music on stand, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-68",
+    "title": "堅毅：跑步跑到攰到想停",
+    "background": "學校・田徑場・體育堂",
+    "description": "體育堂老師測試1500米，你跑到第3圈已經好攰，個肺好痛，腳好似千斤重。你想停低，你會……",
+    "hints": [
+      "長跑考驗嘅係意志，唔只係體能",
+      "慢慢調整呼吸、保持節奏就會好啲",
+      "堅持多一步，就會發現原來自己得"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-68-a",
+        "text": "停低行路，等其他同學追過嚟",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -12,
+            "comment": "放棄咗就輸俾自己，下一圈你一定會後悔。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-68-b",
+        "text": "慢啲跑，調整呼吸，繼續行到終點",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你識得調節自己，呢個就係堅毅！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-68-c",
+        "text": "同自己講「再一圈就得」，一啖一啖跑完",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你用目標分散痛苦，係真正嘅鬥士！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "perseverance",
+    "creedIds": [
+      1
+    ],
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "持續練習",
+      "自我鼓勵"
+    ],
+    "imagePrompt": "Hong Kong primary school running track, child in green school uniform running with determined expression, sunlight, other children in background, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-69",
+    "title": "堅毅：砌LEGO砌到天黑",
+    "background": "屋企・客廳・週末",
+    "description": "你砌緊一盒2000粒嘅LEGO城堡，由朝早砌到夜晚，已經砌咗6個鐘。最後嗰座橋好難睇說明書都搞唔掂，你攰到眼瞓。你會……",
+    "hints": [
+      "大型 LEGO 作品需要時間同耐性",
+      "瞓醒先砌通常會有新靈感",
+      "放棄嘅話，2000粒心血就白費"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-69-a",
+        "text": "拆晒啲零件，話「我唔玩喇」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -18,
+            "moralChange": -18,
+            "comment": "差少少先完成就放棄，6個鐘嘅努力白費。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-69-b",
+        "text": "砌多少少先瞓，聽日精神再砌",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 10,
+            "comment": "你識得分配時間，呢個就係智慧嘅堅毅。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-69-c",
+        "text": "再砌多1個鐘，唔成功就瞓醒再嚟",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你努力到最後一刻，係真嘅LEGO大師！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "perseverance",
+    "creedIds": [
+      1
+    ],
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "持續練習",
+      "完成目標"
+    ],
+    "imagePrompt": "Hong Kong child sitting on floor surrounded by colorful LEGO bricks, half-built castle, evening warm light, focused expression, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-70",
+    "title": "堅毅：寫字寫到攰",
+    "background": "屋企・書枱・晚上",
+    "description": "老師話要重寫嗰10個寫得唔好嘅生字，你已經重寫3次，每次都寫到第5個就好攰想停。你會……",
+    "hints": [
+      "寫字係肌肉記憶，重複先會靚",
+      "用間尺、慢啲寫就會穩定",
+      "寫好一個生字 = 終身受用"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-70-a",
+        "text": "扮寫完，遮住幾個交功課就算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "欺騙自己 = 欺騙老師，錯過咗練習機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-70-b",
+        "text": "深呼吸，每個字都慢慢寫完",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你調整心態慢慢做，呢個就係耐性！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-70-c",
+        "text": "寫完後同自己講「我真係盡咗力」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你用肯定自己完成目標，太棒喇！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "perseverance",
+    "creedIds": [
+      1
+    ],
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "持續練習",
+      "耐性",
+      "自我肯定"
+    ],
+    "imagePrompt": "Hong Kong child at desk with Chinese character practice book, brush and pencil, warm desk lamp light at night, focused expression, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-71",
+    "title": "堅毅：背英文生字背唔晒",
+    "background": "屋企・房間・考試前",
+    "description": "聽日英文默書20個生字，你背咗3次只能記住12個。時間已經10點，你眼瞓但又驚聽日默書零分。你會……",
+    "hints": [
+      "瞓覺時大腦會自動整理記憶",
+      "唔好熬夜，瞓醒精神背更有效率",
+      "盡咗力就接受結果，唔好俾太大壓力自己"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-71-a",
+        "text": "通宵背，唔記得就抄10次",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "熬夜傷身又冇效率，聽日默書更差。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-71-b",
+        "text": "瞓覺前再快速睇2次，瞓醒再睇1次",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你識得分配精神，呢個就係聰明嘅努力。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-71-c",
+        "text": "用記憶法（圖像／諧音）重組12個生字再記多4個",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你主動搵更好方法，係高手學習法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "perseverance",
+    "creedIds": [
+      1
+    ],
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "持續練習",
+      "接受失敗",
+      "主動求教"
+    ],
+    "imagePrompt": "Hong Kong child at bedroom desk with English vocabulary book and flashcards, late night, slightly tired expression, warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-72",
+    "title": "堅毅：煮新菜式燶咗",
+    "background": "屋企・廚房・下午",
+    "description": "媽媽教你炒蛋，第一次油溫太高，啲蛋燶咗一陣黑煙。你想放棄叫外賣，你會……",
+    "hints": [
+      "第一次煮嘢失敗好正常",
+      "細火、油少少、再試一次就會成功",
+      "照顧自己嘅能力係一世嘅"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-72-a",
+        "text": "「算喇，叫外賣啦」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "一次失敗就放棄，學唔到任何生活技能。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-72-b",
+        "text": "用細火同少油再試多次",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你調整方法再嚟，呢個就係學嘢！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-72-c",
+        "text": "問媽媽點解燶咗，再示範一次俾你睇",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你主動求教再自己嚟，係生活智慧！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "perseverance",
+    "creedIds": [
+      1
+    ],
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "持續練習",
+      "主動求教"
+    ],
+    "imagePrompt": "Hong Kong child in home kitchen with frying pan and eggs, slight smoke, gentle mother nearby, afternoon sunlight, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-73",
+    "title": "堅毅：跌倒擦傷繼續跑",
+    "background": "學校・操場・小息",
+    "description": "小息跑跑吓，你仆親擦損咗膝頭，滲緊血，運動褲都染紅咗少少。你本來約咗朋友再跑一場，你會……",
+    "hints": [
+      "擦損唔係大傷，清潔包紮就好",
+      "如果好痛就休息，但唔好因少少傷就放棄",
+      "適當休息再戰係運動家精神"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-73-a",
+        "text": "坐喺度喊，再唔跑喇",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "少少傷就放棄，朋友會覺得你唔可靠。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-73-b",
+        "text": "去健康院處理傷口，休息一場下次再跑",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你識得照顧自己再戰，呢個就係成熟！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-73-c",
+        "text": "去洗傷口貼膠布，繼續同朋友跑",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你冇被挫折打敗，係真正嘅運動家！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "perseverance",
+    "creedIds": [
+      1
+    ],
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "接受失敗",
+      "照顧自己"
+    ],
+    "imagePrompt": "Hong Kong primary school playground, child with bandaged knee, determined expression, friends in background, sunshine, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-74",
+    "title": "堅毅：第一次上台講故事",
+    "background": "學校・演講廳・早會",
+    "description": "老師揀你喺早會向全校分享一本你睇過嘅書。你背咗3晚，但企上台一刻緊張到腦空白，講咗兩句就唔記得下一句。你會……",
+    "hints": [
+      "深呼吸、放慢速度、睇住一個友善嘅人",
+      "緊張好正常，越講越順",
+      "失敗都係經驗，下次會更好"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-74-a",
+        "text": "走返落台唔講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -18,
+            "moralChange": -18,
+            "comment": "一次怯場就放棄，全校都記住你嘅退縮。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-74-b",
+        "text": "深呼吸，慢慢講，唔記得就睇書本",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 16,
+            "comment": "你識得調節緊張，呢個就係成長！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-74-c",
+        "text": "用自己嘅話講返出嚟，唔跟原稿",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 25,
+            "comment": "你突破框架用自己嘅聲音，係真正嘅演講家！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "perseverance",
+    "creedIds": [
+      1
+    ],
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "克服挫折",
+      "自我鼓勵",
+      "突破舒適圈"
+    ],
+    "imagePrompt": "Hong Kong primary school assembly hall, child standing on stage with microphone, schoolmates in audience, spotlight, gentle expression, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-75",
+    "title": "堅毅：摺衫摺到第10件",
+    "background": "屋企・睡房・週末",
+    "description": "媽媽叫你自己摺衫放好，你由第1件摺到第10件已經好攰。望住仲有5件未摺，你會……",
+    "hints": [
+      "自己嘅嘢自己打理係責任",
+      "完成最後幾件會有成功感",
+      "放棄嘅話下次會更難開始"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-75-a",
+        "text": "偷偷推入衣櫥就算「摺咗」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -12,
+            "comment": "呃自己 = 呃媽媽，唔係真正嘅完成。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-75-b",
+        "text": "聽住音樂一件一件慢慢摺完",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你搵到令過程愉快嘅方法，呢個就係智慧。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-75-c",
+        "text": "分3疊先做，休息再做完最後5件",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 22,
+            "comment": "你識得分階段完成，係成熟嘅表現！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "perseverance",
+    "creedIds": [
+      1
+    ],
+    "valueCategory": "perseverance",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "持續練習",
+      "完成目標",
+      "routine"
+    ],
+    "imagePrompt": "Hong Kong child in bedroom folding clothes on bed, neat piles of shirts, gentle afternoon light, focused content expression, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-76",
+    "title": "身體自主：同學睇你換衫",
+    "background": "學校・體育堂・更衣室",
+    "description": "體育堂換衫時，同學小強望住你換衫仲笑。你覺得唔舒服，你會……",
+    "hints": [
+      "身體係私隱，邊度都唔應該被強迫展示",
+      "say no 唔使理由",
+      "更衣室可以即刻搵老師幫手"
+    ],
+    "characters": [
+      {
+        "name": "小強",
+        "emoji": "👦",
+        "initial_relationship": 40
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-76-a",
+        "text": "扮冇事，快快換完走人",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -12,
+            "comment": "你冇保護自己嘅身體界線，小強會以為你接受。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-76-b",
+        "text": "大聲話「唔好望！我換緊衫」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你清晰設立界線，呢個就係身體自主！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-76-c",
+        "text": "即時搵體育老師反映呢件事",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你主動搵信任大人處理，係最安全嘅方法！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "say no",
+      "身體界線",
+      "搵老師"
+    ],
+    "imagePrompt": "Hong Kong primary school changing room, child clutching PE uniform to chest, uncomfortable expression, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-77",
+    "title": "身體自主：姨姨錫嘴",
+    "background": "親戚屋企・新年",
+    "description": "新年去親戚屋企拜年，姨姨成日想錫你嘴，你唔想俾人錫嘴但又怕失禮。你會……",
+    "hints": [
+      "親人都要尊重你嘅身體界線",
+      "可以錫面珠唔一定要錫嘴",
+      "say no 唔使內疚"
+    ],
+    "characters": [
+      {
+        "name": "姨姨",
+        "emoji": "👩",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-77-a",
+        "text": "硬食咗錫嘴，扮笑",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你犧牲自己嘅界線，姨姨唔知你唔舒服。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-77-b",
+        "text": "側頭避開，畀佢錫面珠",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 10,
+            "comment": "你用巧妙方法保護自己，呢個就係智慧！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-77-c",
+        "text": "直接話「姨姨我想錫面珠多啲」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你清晰表達意願，係好榜樣！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "身體界線",
+      "表達意願"
+    ],
+    "imagePrompt": "Hong Kong Chinese New Year family gathering, grandmother reaching to embrace shy child who turns head gently, festive red decorations, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-78",
+    "title": "身體自主：朋友強行攬你",
+    "background": "課室・小息",
+    "description": "小息時你攬吓朋友傾偈，但朋友突然大力攬到你好實，你想推開但又怕傷感情。你會……",
+    "hints": [
+      "唔舒服就要表達",
+      "朋友應該尊重你嘅意願",
+      "say no 唔代表唔鍾意個朋友"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-78-a",
+        "text": "硬食住唔出聲",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你壓抑自己嘅感受，朋友唔知你唔舒服。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-78-b",
+        "text": "輕聲話「唔好咁大力，我唔太舒服」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你溫柔地設立界線，呢個就係溝通！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-78-c",
+        "text": "大力推開，話「我講過唔鍾意咁」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你清晰咁設立界線，係身體自主嘅榜樣！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "身體界線",
+      "say stop"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, friend tightly hugging another child who looks uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-79",
+    "title": "身體自主：醫生檢查要媽媽陪",
+    "background": "診所・下午",
+    "description": "你傷風睇醫生，醫生話要聽你個胸同睇喉嚨，但你想媽媽陪住。你會……",
+    "hints": [
+      "醫生檢查係正常嘅，但你絕對有權要家人陪",
+      "你有權 say stop 要求家人陪",
+      "信任大人陪住會令你更安心"
+    ],
+    "characters": [
+      {
+        "name": "醫生",
+        "emoji": "👨‍⚕️",
+        "initial_relationship": 60
+      },
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 80
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-79-a",
+        "text": "唔出聲，硬住頭皮俾醫生檢查",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你壓抑自己嘅需要，下次會更驚。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-79-b",
+        "text": "望住媽媽，等佢明白你嘅意思",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 10,
+            "comment": "你用眼神求助，呢個都係方法之一。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-79-c",
+        "text": "直接話「醫生我想媽媽陪住我」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你直接表達需要，係身體自主嘅重要一步！"
+          }
+        ]
+      }
+    ],
+    "location": "clinic",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "身體界線",
+      "搵信任大人",
+      "表達意願"
+    ],
+    "imagePrompt": "Hong Kong child in clinic room, doctor with stethoscope, mother standing nearby, child uncertain expression, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-80",
+    "title": "身體自主：表哥拖你入房",
+    "background": "親戚屋企・暑假",
+    "description": "暑假喺表哥屋企過夜，表哥拉你入佢房話「教你玩新嘢」，你覺得唔對路。你會……",
+    "hints": [
+      "直覺話唔對路就 trust 個感覺",
+      "絕對有權 say no 唔入去",
+      "即刻搵屋企大人講"
+    ],
+    "characters": [
+      {
+        "name": "表哥",
+        "emoji": "👦",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-80-a",
+        "text": "怕得失表哥，跟住入去",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -18,
+            "moralChange": -20,
+            "comment": "信任直覺先保護自己，呢個係錯誤選擇。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-80-b",
+        "text": "大聲話「我唔想入去！」就走開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 16,
+            "comment": "你 trust 自己嘅直覺，呢個就係身體自主！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-80-c",
+        "text": "即刻去搵姨姨／姑姐講呢件事",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你主動搵信任大人，係最正確嘅處理！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "say no",
+      "say stop",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong child at cousin's apartment doorway, cousin pulling arm, child pulling away with concerned expression, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-81",
+    "title": "身體自主：朋友迫你拖手",
+    "background": "公園・玩耍",
+    "description": "同朋友喺公園玩，佢想拖住你手行，你想自己行。你會……",
+    "hints": [
+      "朋友都唔可以強迫你",
+      "say no 唔使解釋",
+      "可以話「我想自己行」"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-81-a",
+        "text": "勉強拖住，唔想佢唔開心",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你勉強自己，朋友以為你鍾意。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-81-b",
+        "text": "笑住話「我哋跑吓好過啦」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你巧妙地化解，係溝通高手！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-81-c",
+        "text": "直接話「我想自己行，唔好拖我」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你清晰設立界線，係成熟嘅表現！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "身體界線",
+      "say stop"
+    ],
+    "imagePrompt": "Hong Kong children at park, one child holding out hand, another child stepping back with gentle smile, sunshine, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-82",
+    "title": "身體自主：校巴司機摸你頭",
+    "background": "校巴・放學",
+    "description": "搭校巴放學，司機叔叔好鍾意摸你頭，你唔想俾人摸頭但驚佢唔載你。你會……",
+    "hints": [
+      "身體界線包括頭部",
+      "say no 唔使驚佢唔載",
+      "可以返到屋企同爸媽講"
+    ],
+    "characters": [
+      {
+        "name": "司機",
+        "emoji": "👨",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-82-a",
+        "text": "默默忍受，唔敢出聲",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你壓抑感受，司機以為你鍾意。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-82-b",
+        "text": "縮開少少，扮睇窗外",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 5,
+            "moralChange": 8,
+            "comment": "你用身體語言表達，係方法之一。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-82-c",
+        "text": "出聲話「叔叔我唔想俾人摸頭」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你勇敢表達，係身體自主嘅榜樣！"
+          }
+        ]
+      }
+    ],
+    "location": "school_bus",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "say no",
+      "身體界線",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong child on school bus, driver reaching toward child, child leaning away with concerned expression, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-83",
+    "title": "身體自主：同學迫你玩搔癢",
+    "background": "課室・小息",
+    "description": "小息時同學小強捉住你搔你腋下搔癢，你笑住但其實唔想。你會……",
+    "hints": [
+      "身體界線包括搔癢",
+      "玩都唔可以強迫",
+      "say no 唔使覺得掃興"
+    ],
+    "characters": [
+      {
+        "name": "小強",
+        "emoji": "👦",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-83-a",
+        "text": "笑住但唔出聲，繼續俾佢搔",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你冇表達，小強以為你 enjoy 緊。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-83-b",
+        "text": "笑住推開佢，話「夠喇夠喇」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 10,
+            "comment": "你溫和設立界線，係平衡嘅做法。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-83-c",
+        "text": "停低笑，正經話「我唔鍾意俾人搔癢」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你清晰表達身體界線，係身體自主！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "身體界線"
+    ],
+    "imagePrompt": "Hong Kong primary classroom during break, child tickling another who is laughing but uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-84",
+    "title": "身體自主：鄰居叔叔拖你入屋",
+    "background": "電梯大堂・晚上",
+    "description": "你搭電梯返屋企，鄰居叔叔話「上嚟叔叔屋企食糖」，你唔識佢。你會……",
+    "hints": [
+      "唔識嘅人絕對唔可以跟",
+      "say no 唔使理由",
+      "返到屋企即時講俾爸媽聽"
+    ],
+    "characters": [
+      {
+        "name": "鄰居",
+        "emoji": "👨",
+        "initial_relationship": 30
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-84-a",
+        "text": "「好呀」就跟住上佢屋企",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "絕對唔可以跟陌生人入屋，呢個好危險。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-84-b",
+        "text": "「唔喇，我媽媽喺屋企等我」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你禮貌地 say no，係安全嘅做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-84-c",
+        "text": "即時跑返屋企同爸媽講呢件事",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你主動搵爸媽報告，係最安全嘅做法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "say no",
+      "say stop",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong residential building lift lobby at night, neighbor reaching out, child stepping back with alarmed expression, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-85",
+    "title": "承擔精神：打破同學水壺主動賠",
+    "background": "課室・自修",
+    "description": "你唔小心撞跌咗隔離同學個新水壺，跌爛咗個蓋。同學未發覺，你會……",
+    "hints": [
+      "自己整爛就要自己承擔",
+      "主動講會得到對方諒解",
+      "逃避只會令你內疚"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-85-a",
+        "text": "扮冇事，靜靜推返正",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -15,
+            "comment": "你逃避責任，內心會一直內疚。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-85-b",
+        "text": "同同學講句「對唔住」但唔提賠",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 8,
+            "comment": "你肯認錯，但未完全承擔後果。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-85-c",
+        "text": "同同學講「對唔住，係我整爛，我賠返俾你」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你勇於承擔，係真漢子！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承認錯誤",
+      "承擔後果",
+      "勇於承擔"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, broken water bottle on desk, child looking guilty, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-86",
+    "title": "承擔精神：答應照顧弟弟冇做到",
+    "background": "屋企・客廳・下午",
+    "description": "媽媽出街前叫你照顧3歲細佬半個鐘，但你掛住打機，細佬跌落地喊。你會……",
+    "hints": [
+      "承諾咗就要負責",
+      "細佬受傷係你嘅責任",
+      "即刻補救同時承認錯誤"
+    ],
+    "characters": [
+      {
+        "name": "細佬",
+        "emoji": "👶",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-86-a",
+        "text": "扮唔知，等媽媽返嚟自己發現",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -18,
+            "moralChange": -18,
+            "comment": "你逃避責任，細佬會覺得你唔可靠。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-86-b",
+        "text": "即刻抱起細佬，之後同媽媽講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你即時補救，呢個就係承擔！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-86-c",
+        "text": "即刻抱起細佬＋打電話同媽媽講＋以後收起遊戲機先照顧佢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你即刻補救、主動匯報、改變方法，係完美嘅承擔！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承擔後果",
+      "照顧家人",
+      "承認錯誤"
+    ],
+    "imagePrompt": "Hong Kong home living room, child reaching for crying toddler on floor, scattered toys, afternoon light, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-87",
+    "title": "承擔精神：野餐垃圾自己執",
+    "background": "公園・野餐",
+    "description": "一家人去公園野餐，食完嘢有一堆膠袋、食物盒、飲品罐。爸媽叫你自己執。你會……",
+    "hints": [
+      "自己製造嘅垃圾自己處理",
+      "公園清潔需要每個人參與",
+      "承擔令下次野餐更舒服"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-87-a",
+        "text": "扮聽唔到，去玩其他嘢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -12,
+            "comment": "你逃避責任，爸爸媽媽要幫你執手尾。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-87-b",
+        "text": "隨便執幾件就算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 5,
+            "moralChange": 5,
+            "comment": "你做咗，但未盡全力，承擔半桶水。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-87-c",
+        "text": "同爸爸一齊分類膠袋、紙、罐，帶去回收筒",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你主動做得徹底，係環保承擔者！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承擔責任",
+      "環保意識",
+      "完成 routine"
+    ],
+    "imagePrompt": "Hong Kong family picnic in park, child sorting trash bags into separate piles, father helping, green grass, sunshine, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-88",
+    "title": "承擔精神：交功課遲到",
+    "background": "課室・朝早",
+    "description": "你今日返學差少少遲到，但你記起功課未交，喺走廊猶豫：趕返屋企攞 vs 返課室再算。你會……",
+    "hints": [
+      "功課遲交有相應後果，但要誠實",
+      "唔可以話「有交」但其實冇帶",
+      "承擔後果比起講大話好"
+    ],
+    "characters": [
+      {
+        "name": "老師",
+        "emoji": "👨‍🏫",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-88-a",
+        "text": "返課室扮交咗功課",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -18,
+            "moralChange": -20,
+            "comment": "講大話 = 雙重失誤，誠信都冇埋。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-88-b",
+        "text": "返課室同老師講「對唔住功課漏咗帶」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 12,
+            "comment": "你誠實認錯，係承擔嘅第一步！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-88-c",
+        "text": "同老師講「對唔住，我即日補交」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你誠實+即時補救，係完美嘅承擔！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承認錯誤",
+      "承擔後果",
+      "誠實"
+    ],
+    "imagePrompt": "Hong Kong child at classroom door looking worried, teacher at desk, school corridor, morning light, FF XV Nomura anime style, character design, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-89",
+    "title": "承擔精神：值日生記住抹枱",
+    "background": "課室・午膳後",
+    "description": "今日輪到你做值日生，午膳後要抹枱掃地。但你約咗朋友去操場打波，朋友嚟催你。你會……",
+    "hints": [
+      "值日生係你嘅責任",
+      "朋友可以等，但責任唔可以走",
+      "做完先玩，玩得更安心"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-89-a",
+        "text": "跑出去打波，聽日先算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你走甩責任，組員要幫你做晒。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-89-b",
+        "text": "叫朋友等5分鐘，你抹完先走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你守住責任同時管理友誼，係智慧！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-89-c",
+        "text": "同朋友講「我做晒先嚟，你打先一場」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你責任行先，友誼亦冇失，係完美！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承擔責任",
+      "管理友誼",
+      "完成 routine"
+    ],
+    "imagePrompt": "Hong Kong primary classroom after lunch, child wiping desk with cloth, friend waiting at door impatiently, sunlight, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-90",
+    "title": "承擔精神：跌爛爸爸眼鏡",
+    "background": "屋企・客廳・晚上",
+    "description": "你玩波時唔小心跌爛咗爸爸副新眼鏡，但你驚爸爸鬧你。你會……",
+    "hints": [
+      "主動講比被發現好",
+      "誠實嘅小朋友會被原諒",
+      "承擔代表願意承後果"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-90-a",
+        "text": "收藏起爛眼鏡，扮冇事",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -20,
+            "moralChange": -22,
+            "comment": "你逃避，遲早會被發現，後果更大。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-90-b",
+        "text": "等爸爸自己發現再算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -10,
+            "comment": "你被動等待，錯過承擔嘅機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-90-c",
+        "text": "即刻同爸爸講「對唔住爸爸我跌爛咗」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你勇敢承擔，爸爸會更尊重你！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承認錯誤",
+      "承擔後果",
+      "勇於承擔"
+    ],
+    "imagePrompt": "Hong Kong home evening, child holding broken eyeglass frames looking worried, father sitting on sofa, warm lamplight, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-91",
+    "title": "承擔精神：組長帶領小組",
+    "background": "課室・分組活動",
+    "description": "你係小組長，老師要你哋做一份poster。但有組員hea做，你好心急。你會……",
+    "hints": [
+      "組長嘅責任係帶領同協調",
+      "唔係自己晒做",
+      "鼓勵同分工係承擔"
+    ],
+    "characters": [
+      {
+        "name": "組員",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-91-a",
+        "text": "全部自己晒做",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你唔識分配，組員冇學到嘢。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-91-b",
+        "text": "鬧組員「點解你咁hea」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -5,
+            "moralChange": -5,
+            "comment": "你情緒化處理，組員會更抗拒。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-91-c",
+        "text": "了解組員難處，再重新分工互相支持",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 24,
+            "comment": "你做咗真正嘅組長，係承擔嘅榜樣！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承擔責任",
+      "帶領",
+      "鼓勵隊友"
+    ],
+    "imagePrompt": "Hong Kong primary classroom group activity, group leader talking to reluctant teammate, poster on table, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-92",
+    "title": "承擔精神：返學帶漏功課",
+    "background": "課室・班主任課",
+    "description": "老師收功課時你先發現漏咗帶，旁邊同學話「我幫你講話你有交」。你會……",
+    "hints": [
+      "幫你講大話唔係真朋友",
+      "誠實面對先有機會補救",
+      "承擔錯誤係成長"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "老師",
+        "emoji": "👨‍🏫",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-92-a",
+        "text": "「好呀」俾同學幫你講大話",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -20,
+            "moralChange": -22,
+            "comment": "你默許大話，連累埋同學，雙重失誤。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-92-b",
+        "text": "叫同學唔好幫你講，自己同老師認錯",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你拒絕大話，係承擔嘅第一步！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-92-c",
+        "text": "同老師講「對唔住漏帶，我即日補交」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你誠實+承擔+補救，係完美示範！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承認錯誤",
+      "承擔後果",
+      "拒絕大話"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child looking guilty at empty desk, teacher collecting books, classmate whispering, morning light, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-93",
+    "title": "承擔精神：照顧家中寵物",
+    "background": "屋企・客廳",
+    "description": "你答應媽媽餵金魚、換水，但你有時忘記。金魚缸開始有污糟味。你會……",
+    "hints": [
+      "照顧寵物係承諾",
+      "唔記得就要主動補救",
+      "可以設鬧鐘提自己"
+    ],
+    "characters": [
+      {
+        "name": "金魚",
+        "emoji": "🐟",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-93-a",
+        "text": "等媽媽發現就算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你忽略承諾，金魚可能會病。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-93-b",
+        "text": "即刻換水+餵食",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 10,
+            "comment": "你即時補救，係承擔嘅行動。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-93-c",
+        "text": "即日換水+寫低餵食時間表+設鬧鐘",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 24,
+            "comment": "你主動建立系統，係負責任嘅主人！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "commitment",
+    "creedIds": [
+      5
+    ],
+    "valueCategory": "commitment",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "承擔責任",
+      "照顧寵物",
+      "建立 routine"
+    ],
+    "imagePrompt": "Hong Kong child caring for goldfish in home fish tank, child adding water, fish food, warm living room, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-94",
+    "title": "勤勞：練習寫書法",
+    "background": "屋企・書枱・週末",
+    "description": "媽媽安排你每個週末練習毛筆字一個鐘。今日練習寫「永」字，你寫到第15張仲係歪嘅。你會……",
+    "hints": [
+      "書法要重複練習先會穩定",
+      "錯誤嘅字可以留作比較進步",
+      "放棄就永遠寫唔好"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-94-a",
+        "text": "收埋啲唔靚嘅字，扮練完",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你呃自己，媽媽下次會更失望。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-94-b",
+        "text": "再練5張，比較下邊張最好",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你反覆練習同檢討，係勤勞！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-94-c",
+        "text": "上網睇教學短片調整筆觸，再練5張",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你主動搵方法改善，係高手嘅勤勞！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "練習技能",
+      "重複練習",
+      "持續練習"
+    ],
+    "imagePrompt": "Hong Kong child practicing Chinese calligraphy with brush, ink stone, paper on desk, traditional setting, focused expression, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-95",
+    "title": "勤勞：打掃自己房間",
+    "background": "屋企・睡房",
+    "description": "你嘅房間亂到落腳都有衣服同玩具，媽媽話要你自己打掃。但打掃好花時間。你會……",
+    "hints": [
+      "自己房自己打理",
+      "分階段做比較唔攰",
+      "整齊嘅房令人精神好"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-95-a",
+        "text": "推返床底就算整理完",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你自欺欺人，下次打掃更難。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-95-b",
+        "text": "聽住音樂分3區打掃",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你用方法令打掃更輕鬆，係智慧！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-95-c",
+        "text": "認真分類、摺衫、放好書本，完成後影相比媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你徹底整理，係勤勞嘅模範！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "做家務",
+      "自我管理",
+      "完成 routine"
+    ],
+    "imagePrompt": "Hong Kong child tidying messy bedroom, sorting clothes, books and toys, sunny window light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-96",
+    "title": "勤勞：練習鋼琴辛苦",
+    "background": "屋企・鋼琴前",
+    "description": "鋼琴老師話你指法唔啱，要你由基本指法重新練過。你覺得悶晒，但媽媽監住你練。你會……",
+    "hints": [
+      "基本功係進步嘅根基",
+      "悶嘅練習先係長功夫",
+      "練好基本就會彈到更難嘅歌"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-96-a",
+        "text": "扮練緊，其實發緊呆",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你浪費時間，下次上堂會更困難。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-96-b",
+        "text": "跟住媽媽指示重複練",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你聽從指導反覆練，係基本嘅勤勞。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-96-c",
+        "text": "問媽媽點解要咁練，理解背後原因再練",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你明白為咗咩練，練得更有效率！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "練習技能",
+      "重複練習",
+      "routine"
+    ],
+    "imagePrompt": "Hong Kong child at piano practicing finger exercises, mother watching nearby, evening warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-97",
+    "title": "勤勞：練習朗誦比賽",
+    "background": "屋企・房間・比賽前",
+    "description": "你參加咗學校朗誦比賽，仲有3日就比賽。你背稿但有幾段成日食螺絲。你會……",
+    "hints": [
+      "熟能生巧",
+      "對住鏡練可以改善表情",
+      "重複再重複就會穩定"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-97-a",
+        "text": "「算喇，食螺絲就食螺絲啦」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你放棄準備，比賽時一定會怯。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-97-b",
+        "text": "每日對住鏡讀3次",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你建立 routine，係基本嘅勤勞。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-97-c",
+        "text": "對鏡讀+錄影自己睇+請媽媽扮評判",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你用多重方法練習，係高手準備法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "練習技能",
+      "重複練習",
+      "自我改善"
+    ],
+    "imagePrompt": "Hong Kong child practicing recitation in bedroom, holding poem book, looking at mirror, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-98",
+    "title": "勤勞：做完功課先溫書",
+    "background": "屋企・書枱・晚上",
+    "description": "今晚有兩份功課同溫書，你揀先做功課溫書，溫到11點攰到唔想再做功課。你會……",
+    "hints": [
+      "完成先係目標",
+      "時間管理好重要",
+      "唔好半途而廢"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-98-a",
+        "text": "瞓覺，聽日返學再算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你半途放棄，遲交功課嘅後果更大。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-98-b",
+        "text": "再頂多30分鐘做晒功課",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你堅持完成，係勤勞嘅表現。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-98-c",
+        "text": "再頂30分鐘做功課+反思點解時間管理差",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你完成並反思改進，係成熟嘅勤勞！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "完成目標",
+      "時間管理",
+      "routine"
+    ],
+    "imagePrompt": "Hong Kong child at desk late at night, books and homework scattered, sleepy expression but determined, warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-99",
+    "title": "勤勞：執書包準備明天",
+    "background": "屋企・睡房・睡前",
+    "description": "媽媽話過瞓覺前要執好書包，但你已經好眼瞓，想直接瞓。你會……",
+    "hints": [
+      "執書包係基本 routine",
+      "準備好聽日會更順利",
+      "少少堅持就唔使明早趕"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-99-a",
+        "text": "直接瞓，明朝早再算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你明早會好趕，可能漏帶嘢。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-99-b",
+        "text": "5分鐘快快執好",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 10,
+            "comment": "你快速完成，係基本嘅勤勞。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-99-c",
+        "text": "執好書包+對住時間表check 3次",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 22,
+            "comment": "你認真準備，係負責任嘅勤勞！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "routine",
+      "自我管理",
+      "完成 routine"
+    ],
+    "imagePrompt": "Hong Kong child packing school bag at night, checking list, sleepy but determined, bedroom lamplight, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-100",
+    "title": "勤勞：暑假練習游泳",
+    "background": "泳池・暑期班",
+    "description": "暑假你報咗游泳班，但第4堂你仲係驚水，每次落水都好驚。你想放棄，你會……",
+    "hints": [
+      "恐懼可以慢慢克服",
+      "多次練習就會適應",
+      "放棄就永遠學唔識"
+    ],
+    "characters": [
+      {
+        "name": "教練",
+        "emoji": "👨",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-100-a",
+        "text": "扮病唔去堂",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你逃避恐懼，浪費咗學費同時間。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-100-b",
+        "text": "再落水，搵教練陪你淺水區",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你搵方法克服，係勤勞嘅表現。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-100-c",
+        "text": "同教練講你嘅恐懼，由淺水深呼吸練習開始",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你主動溝通+系統練習，係高手克服法！"
+          }
+        ]
+      }
+    ],
+    "location": "pool",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "練習技能",
+      "持續練習",
+      "克服挫折"
+    ],
+    "imagePrompt": "Hong Kong child in public swimming pool, holding pool edge looking nervous, summer sunlight, instructor nearby, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-101",
+    "title": "勤勞：練習寫作",
+    "background": "屋企・書枱",
+    "description": "老師話你寫作唔夠豐富，要你每星期寫一篇周記。你寫咗頭兩篇覺得好難就冇寫。你會……",
+    "hints": [
+      "寫作係靠累積",
+      "寫少少好過冇寫",
+      "從生活小事件開始"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-101-a",
+        "text": "放棄周記，下星期扮有寫",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你放棄又講大話，雙重失誤。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-101-b",
+        "text": "今日寫一篇短短嘅生活記錄",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你重新開始，係勤勞嘅起步。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-101-c",
+        "text": "每星期記低3件開心/難過嘅事+請媽媽幫手睇",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你建立系統+搵支援，係勤勞高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "持續練習",
+      "完成 routine",
+      "自我管理"
+    ],
+    "imagePrompt": "Hong Kong child at desk with notebook, writing slowly with focused expression, morning light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-102",
+    "title": "勤勞：自己準備上學",
+    "background": "屋企・早上",
+    "description": "媽媽叫你自己準備上學：着校服、執書包、帶水壺、食早餐。但你習慣媽媽幫你做。你會……",
+    "hints": [
+      "自己嘅事自己做",
+      "獨立係一種勤勞",
+      "由小步開始"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-102-a",
+        "text": "等媽媽幫手",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你依賴人，永遠學唔識獨立。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-102-b",
+        "text": "自己準備但要好耐",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你肯嘗試，係勤勞嘅開始。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-102-c",
+        "text": "前一晚準備好晒+早起15分鐘",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你用時間管理建立習慣，係高手獨立法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "diligence",
+    "creedIds": [
+      10
+    ],
+    "valueCategory": "diligence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "自我管理",
+      "routine",
+      "獨立"
+    ],
+    "imagePrompt": "Hong Kong child getting dressed in school uniform, packing school bag, morning sunlight, independent and determined, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-103",
+    "title": "求助：商場同媽媽失散",
+    "background": "商場・下午",
+    "description": "你同媽媽喺商場行到一半，跟住人群望咗一望，再回頭媽媽唔見咗。你會……",
+    "hints": [
+      "唔好亂跑，要留喺原地",
+      "搵商場服務台或保安",
+      "唔可以跟陌生人走"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-103-a",
+        "text": "自己周圍跑搵媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你亂跑會更危險，媽媽會搵唔到你。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-103-b",
+        "text": "搵商場服務台請廣播搵媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你識得搵專業幫手，係求助高手！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-103-c",
+        "text": "搵服務台廣播+喺度等+攞媽媽電話",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 25,
+            "comment": "你用多重方法確保安全，係完美示範！"
+          }
+        ]
+      }
+    ],
+    "location": "mall",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵保安",
+      "搵信任大人",
+      "保護自己"
+    ],
+    "imagePrompt": "Hong Kong shopping mall, lost child looking worried near service counter, busy shoppers in background, anime cartoon style, soft pastel, brave, no text, 16:9"
+  },
+  {
+    "id": "s-self-104",
+    "title": "求助：被高年級同學欺負",
+    "background": "學校・操場・放學",
+    "description": "放學時幾個高年級同學搶你銀包，話「借嚟用吓」。你會……",
+    "hints": [
+      "唔可以啞忍",
+      "搵老師或校工幫手",
+      "保護自己先重要"
+    ],
+    "characters": [
+      {
+        "name": "高年級同學",
+        "emoji": "👦",
+        "initial_relationship": 20
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-104-a",
+        "text": "「好啦」就俾佢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -20,
+            "moralChange": -22,
+            "comment": "你啞忍，佢哋會搶得更頻密。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-104-b",
+        "text": "大聲話「唔係你嘅！搵老師！」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你敢出聲，係求助嘅第一步！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-104-c",
+        "text": "即時跑向最近老師或校工求助",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你主動搵專業保護，係最安全嘅做法！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "保護自己",
+      "say no"
+    ],
+    "imagePrompt": "Hong Kong school playground, older student threatening younger child, child looking scared, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-105",
+    "title": "求助：家中電器壞咗",
+    "background": "屋企・客廳・晚上",
+    "description": "你自己喺屋企，電視突然啪啪響有煙味，你會……",
+    "hints": [
+      "即時離開電器",
+      "搵信任大人",
+      "唔好自己整"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-105-a",
+        "text": "自己走去熄電制",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "雖然熄電制合理，但你可以搵大人幫手。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-105-b",
+        "text": "離開客廳+打電話俾媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 15,
+            "comment": "你保護自己再求助，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-105-c",
+        "text": "離開客廳+打俾媽媽+打999求助（如果嚴重）",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用多重方法應對緊急情況，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵信任大人",
+      "搵家長",
+      "保護自己"
+    ],
+    "imagePrompt": "Hong Kong child in home living room, looking worried at malfunctioning TV with smoke, evening light, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-106",
+    "title": "求助：被狗追",
+    "background": "街道・放學",
+    "description": "你放學行緊屋企，突然有隻大狗向你跑過嚟。你會……",
+    "hints": [
+      "唔好跑，越跑狗越追",
+      "企定唔郁，雙手握拳",
+      "搵附近大人或店舖求助"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-106-a",
+        "text": "尖叫跑走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你跑會觸發狗嘅追擊本能，更危險。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-106-b",
+        "text": "企定+大聲叫人幫手",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你冷靜應對，係求助嘅正確方法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-106-c",
+        "text": "企定+大叫「走開！」+退向最近店舖",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你冷靜+主動搵安全地方，係高手應對！"
+          }
+        ]
+      }
+    ],
+    "location": "outdoor",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "保護自己",
+      "搵信任大人",
+      "冷靜應對"
+    ],
+    "imagePrompt": "Hong Kong street, child frozen in fear as large dog approaches, retreating toward shop, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-107",
+    "title": "求助：屋企有人暈低",
+    "background": "屋企・客廳・下午",
+    "description": "你返到屋企，嫲嫲喺梳化暈低咗，冇反應。你會……",
+    "hints": [
+      "即時打 999",
+      "講清楚地址同情況",
+      "唔好自己搬動傷病者"
+    ],
+    "characters": [
+      {
+        "name": "嫲嫲",
+        "emoji": "👵",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-107-a",
+        "text": "自己走去搖醒佢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -18,
+            "comment": "你唔應該搬動暈倒嘅人，要快啲搵專業幫手。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-107-b",
+        "text": "打俾媽媽問點做",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 8,
+            "comment": "你搵家人求助，但浪費咗寶貴時間。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-107-c",
+        "text": "即時打 999+講地址+聽從指示",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你冷靜打 999，係生命攸關嘅正確做法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "報警 999",
+      "搵信任大人",
+      "緊急應對"
+    ],
+    "imagePrompt": "Hong Kong home living room, grandmother collapsed on sofa, child holding phone with emergency call, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-108",
+    "title": "求助：朋友跌倒受傷",
+    "background": "公園・玩耍",
+    "description": "朋友喺公園跑跑吓仆親，膝頭流緊血喊緊。你會……",
+    "hints": [
+      "搵附近大人幫手",
+      "唔好亂咁郁受傷嘅腳",
+      "可以搵公園管理員"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-108-a",
+        "text": "自己搵樹葉幫朋友止血",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "樹葉唔乾淨，可能會令傷口發炎。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-108-b",
+        "text": "叫朋友坐低+自己跑搵大人幫手",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你冷靜分配任務，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-108-c",
+        "text": "陪住朋友+打俾朋友媽媽+搵公園管理員",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你多管齊下保護朋友，係高手應對！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵信任大人",
+      "保護朋友",
+      "冷靜應對"
+    ],
+    "imagePrompt": "Hong Kong child sitting with crying friend with bleeding knee at park, looking around for help, anime cartoon style, soft pastel, brave, no text, 16:9"
+  },
+  {
+    "id": "s-self-109",
+    "title": "求助：火警鐘響",
+    "background": "商場・下午",
+    "description": "你同媽媽喺商場，火警鐘突然響起，大家都開始疏散。你會……",
+    "hints": [
+      "跟住大人疏散",
+      "唔好乘搭電梯",
+      "保持冷靜"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 85
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-109-a",
+        "text": "驚到坐低喊",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你慌張會阻礙疏散，要冷靜。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-109-b",
+        "text": "跟住媽媽行樓梯疏散",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你跟住大人走，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-109-c",
+        "text": "跟住媽媽+幫手叫其他小朋友一齊走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你唔只保護自己仲幫人，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "mall",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "保護自己",
+      "搵信任大人",
+      "冷靜應對"
+    ],
+    "imagePrompt": "Hong Kong shopping mall evacuation, fire alarm lights, mother and child walking calmly down stairs, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-110",
+    "title": "求助：唔識做功課",
+    "background": "屋企・書枱・晚上",
+    "description": "數學功課有條題你睇咗半個鐘都唔識，你唔想問怕顯得蠢。你會……",
+    "hints": [
+      "問問題唔代表蠢",
+      "老師同學都係好幫手",
+      "唔識扮識先係真正嘅蠢"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-110-a",
+        "text": "亂寫個答案交功課",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你錯過學嘢機會，下次都唔識。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-110-b",
+        "text": "問媽媽點做",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你主動求助，係學習嘅智慧！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-110-c",
+        "text": "問媽媽+自己再試做+寫低做法",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你由求助到內化，係高手學習法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動求助",
+      "搵家長",
+      "學習"
+    ],
+    "imagePrompt": "Hong Kong child at desk with math textbook, scratching head, looking at mother sitting nearby, evening light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-111",
+    "title": "求助：網上有人欺凌你",
+    "background": "屋企・房間・晚上",
+    "description": "你玩網上遊戲，有人不停話你係 loser 同廢物，你覺得好嬲好唔開心。你會……",
+    "hints": [
+      "網上欺凌都係欺凌，要同大人講",
+      "唔好回罵",
+      "可以 block + 報告"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-111-a",
+        "text": "同佢對罵",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "對罵只會令情況更差，你會更嬲。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-111-b",
+        "text": "block 佢+同媽媽講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你保護自己+搵幫手，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-111-c",
+        "text": "block 佢+報告平台+同爸媽講+寫低感受",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用完整方法應對網絡欺凌，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵信任大人",
+      "搵家長",
+      "保護自己"
+    ],
+    "imagePrompt": "Hong Kong child at computer screen showing chat messages with bullying, looking sad, evening room light, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-112",
+    "title": "守法：過馬路要等綠燈",
+    "background": "街道・放學",
+    "description": "你趕住返屋企，馬路對面已經冇車，綠燈又未到，你想衝過去。你會……",
+    "hints": [
+      "紅綠燈係保障你嘅安全",
+      "唔可以因為冇車就衝",
+      "等30秒可能救你一命"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-112-a",
+        "text": "趁冇車跑過去",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你違反交通規則，可能被車撞。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-112-b",
+        "text": "乖乖等綠燈",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你守規矩，係守法的榜樣！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-112-c",
+        "text": "等綠燈+用斑馬線+望清楚兩邊",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你守規+細心，係完美嘅守法！"
+          }
+        ]
+      }
+    ],
+    "location": "outdoor",
+    "topicId": "law-abiding",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "遵守校規",
+      "過馬路",
+      "公共場所守規"
+    ],
+    "imagePrompt": "Hong Kong pedestrian crossing with red traffic light, child waiting on curb, busy street, anime cartoon style, soft pastel, happy, no text, 16:9"
+  },
+  {
+    "id": "s-self-113",
+    "title": "守法：排隊打飯",
+    "background": "學校・飯堂・午膳",
+    "description": "午膳打飯時你排隊排到好尾，前面仲有10個人。你肚餓到暈，好想打尖。你會……",
+    "hints": [
+      "排隊係基本規則",
+      "打尖會令後面嘅人更唔公平",
+      "排隊係對其他人嘅尊重"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-113-a",
+        "text": "偷偷行前打尖",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你違反規則，後面嘅人會唔公平。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-113-b",
+        "text": "耐心等輪到自己",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你守規矩，係守法的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-113-c",
+        "text": "等時同朋友傾計+用時間諗下今日學咩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你令等待變得有意义，係守法的智慧！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "law-abiding",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "排隊守紀",
+      "遵守校規",
+      "耐性"
+    ],
+    "imagePrompt": "Hong Kong primary school canteen, children queuing for lunch with trays, warm indoor light, anime cartoon style, soft pastel, happy, no text, 16:9"
+  },
+  {
+    "id": "s-self-114",
+    "title": "守法：上堂要舉手",
+    "background": "課室・班主任課",
+    "description": "老師問問題你識答，但舉手要等好耐，你好想直接講。你會……",
+    "hints": [
+      "舉手發言係課室規則",
+      "輪候係公平",
+      "守規則令課堂有效"
+    ],
+    "characters": [
+      {
+        "name": "老師",
+        "emoji": "👨‍🏫",
+        "initial_relationship": 65
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-114-a",
+        "text": "直接大聲答",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你違反課室規則，阻礙課堂進行。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-114-b",
+        "text": "舉手等老師叫",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你守規矩，係守法的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-114-c",
+        "text": "舉手+眼神接觸老師示意",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你守規又主動，係高手做法！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "law-abiding",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "舉手發言",
+      "遵守校規",
+      "輪候"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child raising hand to answer, teacher at board, morning light, anime cartoon style, soft pastel, happy, no text, 16:9"
+  },
+  {
+    "id": "s-self-115",
+    "title": "守法：睇電視要限時",
+    "background": "屋企・客廳・晚上",
+    "description": "爸媽話每日最多睇電視1個鐘，但你想追多集卡通。你會……",
+    "hints": [
+      "家規都係規則",
+      "守規係為你健康",
+      "明天可以繼續睇"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-115-a",
+        "text": "偷睇多集，扮冇超時",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你違反家規，傷害眼睛同信任。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-115-b",
+        "text": "乖乖熄電視做其他嘢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你守家規，係守法的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-115-c",
+        "text": "問媽媽可唔可以睇完呢集先停",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你守規又會商量，係成熟嘅守法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "law-abiding",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "遵守校規",
+      "公共場所守規",
+      "routine"
+    ],
+    "imagePrompt": "Hong Kong child watching TV in living room, evening lamplight, considering turning off, anime cartoon style, soft pastel, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-116",
+    "title": "守法：公眾地方保持安靜",
+    "background": "圖書館・下午",
+    "description": "你同朋友去圖書館溫書，但朋友笑住傾偈，圖書管理員望緊你哋。你會……",
+    "hints": [
+      "圖書館要安靜",
+      "提醒朋友係朋友嘅責任",
+      "公共場所守規係公民責任"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-116-a",
+        "text": "同朋友一齊笑",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你違反圖書館規則，影響其他人。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-116-b",
+        "text": "同朋友細聲話「呢度要安靜」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你守規則+提醒朋友，係守法榜樣！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-116-c",
+        "text": "友善提醒朋友+建議去公園傾偈",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你守規則+諗解決方法，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "library",
+    "topicId": "law-abiding",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "公共場所守規",
+      "提醒朋友",
+      "守規則"
+    ],
+    "imagePrompt": "Hong Kong public library, child whispering to friend, books and study tables, quiet atmosphere, anime cartoon style, soft pastel, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-117",
+    "title": "守法：唔可以亂拋垃圾",
+    "background": "公園・玩耍",
+    "description": "你食完雪糕，個包裝袋你想就咁丟喺地下。但隔離有垃圾桶。你會……",
+    "hints": [
+      "保持環境清潔係公民責任",
+      "垃圾桶好近",
+      "影響其他人用公園"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-117-a",
+        "text": "「好近呀唔緊要啦」就丟地下",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你污染環境，影響其他人。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-117-b",
+        "text": "行去垃圾桶掉",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你做咗基本嘅公民責任！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-117-c",
+        "text": "掉入垃圾桶+順手執起地下其他垃圾",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你唔只守規仲主動改善環境，係公民模範！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "law-abiding",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "公共場所守規",
+      "環保意識",
+      "守規則"
+    ],
+    "imagePrompt": "Hong Kong child at park, dropping ice cream wrapper into trash bin, sunny day, anime cartoon style, soft pastel, happy, no text, 16:9"
+  },
+  {
+    "id": "s-self-118",
+    "title": "守法：考試唔可以偷睇",
+    "background": "課室・考試",
+    "description": "考試中你有條題唔識，隔離同學嘅答案你睇到。你會……",
+    "hints": [
+      "作弊係違反校規",
+      "誠實考試先至學到嘢",
+      "作弊抓到會被記過"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-118-a",
+        "text": "偷睇隔離嘅答案",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -20,
+            "moralChange": -22,
+            "comment": "你作弊，違反校規又冇學到嘢。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-118-b",
+        "text": "唔睇，自己做晒",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你誠實考試，係守法的榜樣！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-118-c",
+        "text": "唔睇+做完自己嘅+接受分數結果",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你誠實又接受結果，係完美嘅守法！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "law-abiding",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "遵守校規",
+      "誠實",
+      "守規則"
+    ],
+    "imagePrompt": "Hong Kong primary classroom exam scene, child writing answers at desk, eyes forward, morning light, anime cartoon style, soft pastel, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-119",
+    "title": "守法：搭車要讓座",
+    "background": "巴士・下午",
+    "description": "你搭巴士返屋企，車廂好滿，有個孕婦企喺你隔離。你會……",
+    "hints": [
+      "讓座係美德",
+      "孕婦同老人家優先",
+      "你可以企住"
+    ],
+    "characters": [
+      {
+        "name": "孕婦",
+        "emoji": "🤰",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-119-a",
+        "text": "扮睇唔到繼續坐",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你冇讓座，孕婦會企得好辛苦。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-119-b",
+        "text": "起身讓座",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你讓座，係守法的榜樣！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-119-c",
+        "text": "起身讓座+扶孕婦坐好",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你讓座+體貼，係公民模範！"
+          }
+        ]
+      }
+    ],
+    "location": "outdoor",
+    "topicId": "law-abiding",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "公共場所守規",
+      "讓座",
+      "公民責任"
+    ],
+    "imagePrompt": "Hong Kong double-decker bus interior, child standing to give seat to pregnant woman, anime cartoon style, soft pastel, happy, no text, 16:9"
+  },
+  {
+    "id": "s-self-120",
+    "title": "守法：校規唔可以帶零食",
+    "background": "學校・校門",
+    "description": "你想帶薯片返學校食，但學校規定唔可以帶零食。你會……",
+    "hints": [
+      "校規有佢嘅原因",
+      "零食影響健康同課堂",
+      "可以零食放學先食"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-120-a",
+        "text": "收埋喺書包偷帶返學",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你違反校規，被發現會被記過。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-120-b",
+        "text": "聽話唔帶返學",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你守校規，係守法嘅榜樣！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-120-c",
+        "text": "問老師點解唔可以帶+放學食",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你守規又理解背後原因，係成熟嘅守法！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "law-abiding",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "law-abiding",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "遵守校規",
+      "守規則",
+      "問為什麼"
+    ],
+    "imagePrompt": "Hong Kong child at school gate, holding snack and bag, considering leaving snack at home, morning sun, anime cartoon style, soft pastel, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-121",
+    "title": "責任感：自己早起準備",
+    "background": "屋企・早上",
+    "description": "媽媽叫你設鬧鐘自己起身準備返學。但鬧鐘響咗你按停再瞓，返到學校遲到。你會……",
+    "hints": [
+      "自己嘅責任自己負",
+      "鬧鐘響就起，唔好按停",
+      "遲到會影響全班"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-121-a",
+        "text": "「反正遲咗，唔返喇」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -20,
+            "moralChange": -20,
+            "comment": "你放棄一整日學業，責任感都冇埋。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-121-b",
+        "text": "快快出門返學",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 10,
+            "comment": "你承擔後果，係基本嘅責任感。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-121-c",
+        "text": "返學+同老師講「對唔住遲到」+今晚早啲瞓",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你承擔+反省+改善，係責任感高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "responsibility",
+    "creedIds": [
+      3
+    ],
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "自我管理",
+      "routine",
+      "完成 routine"
+    ],
+    "imagePrompt": "Hong Kong child waking up to alarm clock in morning, school uniform ready on chair, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-122",
+    "title": "責任感：做家課唔抄",
+    "background": "屋企・書枱・晚上",
+    "description": "功課好難你唔想做，朋友提議你抄佢嘅功課。你會……",
+    "hints": [
+      "抄功課係作弊",
+      "唔識可以問但唔可以抄",
+      "自己做先學到嘢"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-122-a",
+        "text": "「好呀」就抄朋友嘅",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -18,
+            "moralChange": -20,
+            "comment": "你抄功課，欺騙自己又欺騙老師。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-122-b",
+        "text": "自己做，唔識就留空+問老師",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你誠實做功課，係責任感嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-122-c",
+        "text": "自己做+問老師/媽媽+寫低學到嘅嘢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你主動學嘢，係責任感高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "responsibility",
+    "creedIds": [
+      3
+    ],
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "做家課",
+      "自我管理",
+      "誠實"
+    ],
+    "imagePrompt": "Hong Kong child at desk with homework book, writing carefully, evening warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-123",
+    "title": "責任感：幫手洗碗",
+    "background": "屋企・廚房・晚飯後",
+    "description": "媽媽煮完飯好攰，叫你幫手洗碗。但你想睇電視。你會……",
+    "hints": [
+      "分擔家務係責任",
+      "媽媽都需要休息",
+      "小幫手可以換大休息"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-123-a",
+        "text": "扮睇緊電視聽唔到",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你逃避家務，媽媽會好攰。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-123-b",
+        "text": "幫手洗碗",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你分擔家務，係責任感嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-123-c",
+        "text": "洗碗+抹枱+收好廚房",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你主動做晒全套，係責任感模範！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "responsibility",
+    "creedIds": [
+      3
+    ],
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "做家務",
+      "照顧家人",
+      "完成 routine"
+    ],
+    "imagePrompt": "Hong Kong child washing dishes in kitchen, mother resting nearby, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-124",
+    "title": "責任感：帶齊返學物品",
+    "background": "屋企・門口・早上",
+    "description": "出門口時你發現唔記得帶音樂堂嘅樂器，返屋企攞會遲到。你會……",
+    "hints": [
+      "前一晚執書包係好習慣",
+      "遲到要承擔後果",
+      "樂器可以下堂先帶"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-124-a",
+        "text": "扮冇嘢就返學",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你逃避問題，音樂堂會被記曠課。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-124-b",
+        "text": "返屋企攞+接受遲到後果",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你承擔後果補救，係責任感！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-124-c",
+        "text": "返屋企攞+同老師講「對唔住遲到」+晚上設執書包 routine",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你補救+改善系統，係責任感高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "responsibility",
+    "creedIds": [
+      3
+    ],
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "帶齊物品",
+      "自我管理",
+      "建立 routine"
+    ],
+    "imagePrompt": "Hong Kong child at front door realizing forgot music instrument, morning light, considering going back, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-125",
+    "title": "責任感：照顧家中植物",
+    "background": "屋企・窗台",
+    "description": "媽媽買咗盆新植物，叫你每日淋水。但你忘咗幾日，植物開始黃葉。你會……",
+    "hints": [
+      "承諾照顧就要做到",
+      "可以設鬧鐘提醒",
+      "植物都係生命"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-125-a",
+        "text": "等媽媽自己發現",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略責任，植物可能會死。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-125-b",
+        "text": "即刻淋水+同媽媽講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你即時補救+誠實，係責任感！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-125-c",
+        "text": "淋水+設每日鬧鐘+研究點樣救返棵植物",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你主動改善+求知，係責任感高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "responsibility",
+    "creedIds": [
+      3
+    ],
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "routine",
+      "自我管理",
+      "照顧生命"
+    ],
+    "imagePrompt": "Hong Kong child tending to wilting plant on windowsill, morning sunlight, holding water can, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-126",
+    "title": "責任感：做組長分配工作",
+    "background": "課室・分組活動",
+    "description": "你係組長，老師叫小組做poster。組員話「你做晒啦我哋玩」。你會……",
+    "hints": [
+      "組長要帶領分配",
+      "唔係幫組員做晒",
+      "可以一齊傾分工"
+    ],
+    "characters": [
+      {
+        "name": "組員",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-126-a",
+        "text": "「好啦我做晒」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你縱容組員逃避，唔係真正嘅組長。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-126-b",
+        "text": "同組員一齊傾分工",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你帶領分配，係組長責任感！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-126-c",
+        "text": "傾分工+設定時限+互相鼓勵",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用系統帶領，係高手組長！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "responsibility",
+    "creedIds": [
+      3
+    ],
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "自我管理",
+      "帶領",
+      "完成 routine"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, group leader talking to teammates, poster on table, morning light, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-127",
+    "title": "責任感：執拾玩具",
+    "background": "屋企・客廳・晚上",
+    "description": "你玩完lego、玩具車、啤牌，散滿一地。媽媽叫你自己執。你會……",
+    "hints": [
+      "自己玩完自己執",
+      "分門別類放好",
+      "下次搵玩具更容易"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-127-a",
+        "text": "推入櫃桶就算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你敷衍，下次玩會搵唔到嘢。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-127-b",
+        "text": "自己執好返",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你做完自己嘅責任，係好榜樣！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-127-c",
+        "text": "分門別類執+用盒仔標明+下次玩完即執",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你建立系統，係責任感高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "responsibility",
+    "creedIds": [
+      3
+    ],
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "完成 routine",
+      "自我管理",
+      "建立系統"
+    ],
+    "imagePrompt": "Hong Kong child sorting scattered toys and Lego into labeled boxes, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-128",
+    "title": "責任感：交齊功課",
+    "background": "課室・朝早",
+    "description": "老師收功課時你發現少交咗一份功課，可能塞咗喺書包底。你會……",
+    "hints": [
+      "即時補救唔好等",
+      "誠實同老師講",
+      "以後要 check 清楚"
+    ],
+    "characters": [
+      {
+        "name": "老師",
+        "emoji": "👨‍🏫",
+        "initial_relationship": 65
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-128-a",
+        "text": "扮冇事，唔出聲",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你逃避責任，功課會愈積愈多。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-128-b",
+        "text": "即刻搵出嚟交俾老師",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你即時補救，係責任感嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-128-c",
+        "text": "搵出嚟交+同老師講「對唔住漏咗」+設定交功課 checklist",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你補救+改善系統，係責任感高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "responsibility",
+    "creedIds": [
+      3
+    ],
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "做家課",
+      "自我管理",
+      "建立 routine"
+    ],
+    "imagePrompt": "Hong Kong child at classroom desk looking through school bag for missing homework, morning light, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-129",
+    "title": "責任感：自己著校服",
+    "background": "屋企・睡房・早上",
+    "description": "媽媽叫你著校服準備返學，你發覺校服未摺，要自己摺。你會……",
+    "hints": [
+      "自己嘅衫自己摺",
+      "摺衫係基本自我管理",
+      "可以前一晚摺好"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-129-a",
+        "text": "拎件皺嘅直接著",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略自我管理，外表唔整齊。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-129-b",
+        "text": "自己快速摺好",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你完成 routine，係責任感！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-129-c",
+        "text": "摺好+研究點摺先靚+以後前一晚摺好",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你改善方法+建立 routine，係責任感高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "responsibility",
+    "creedIds": [
+      3
+    ],
+    "valueCategory": "responsibility",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "routine",
+      "自我管理",
+      "完成 routine"
+    ],
+    "imagePrompt": "Hong Kong child folding school uniform in bedroom, morning sunlight, careful and focused, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-130",
+    "title": "社交界線：同學想睇你電話",
+    "background": "課室・小息",
+    "description": "同學小強借你部電話玩下，跟住開始睇你 WhatsApp 同相簿。你會……",
+    "hints": [
+      "私隱係身體界線嘅延伸",
+      "say no 唔使內疚",
+      "朋友都唔可以侵犯私隱"
+    ],
+    "characters": [
+      {
+        "name": "小強",
+        "emoji": "👦",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-130-a",
+        "text": "扮冇嘢，俾佢繼續睇",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你放棄私隱，朋友會以為你接受。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-130-b",
+        "text": "拎返電話話「呢個係我私隱」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你保護私隱，係社交界線嘅榜樣！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-130-c",
+        "text": "拎返電話+清楚話界線+解釋點解咁重要",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你保護+教育，係社交界線高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "保護私隱",
+      "say no",
+      "say stop"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child taking back phone from friend who was looking at private messages, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-131",
+    "title": "社交界線：朋友講朋友壞話",
+    "background": "校巴・放學",
+    "description": "朋友喺校巴度同你講另一個朋友嘅壞話，叫你唔好同佢做朋友。你會……",
+    "hints": [
+      "唔應該參與講人是非",
+      "可以做個好朋友但唔做壞話嘅傳聲筒",
+      "直接話唔想聽"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-131-a",
+        "text": "一齊講+附和",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你參與是非，破壞咗另一個朋友嘅名譽。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-131-b",
+        "text": "「我唔想講人是非」就停",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你守住界線，係正義嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-131-c",
+        "text": "「我哋唔應該咁講」+建議傾其他嘢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你主動保護朋友名譽，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school_bus",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "保護朋友"
+    ],
+    "imagePrompt": "Hong Kong child on school bus, friend whispering gossip, child looking uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-132",
+    "title": "社交界線：同學迫你入 WhatsApp group",
+    "background": "課室・小息",
+    "description": "同學想你加入一個 WhatsApp group，但你唔想。你會……",
+    "hints": [
+      "say no 唔需要解釋",
+      "可以話「我而家唔想加入」",
+      "可以 block 或靜音"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-132-a",
+        "text": "勉強加入",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你勉強自己，會被困擾。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-132-b",
+        "text": "「我而家唔想加入」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你清楚表達，係社交界線嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-132-c",
+        "text": "清楚表達+解釋點解+建議其他聯絡方式",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你表達清晰又體諒，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "身體界線",
+      "保護私隱"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, friend showing phone with WhatsApp group, child politely declining, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-133",
+    "title": "社交界線：朋友迫你分享零食",
+    "background": "課室・小息",
+    "description": "你帶咗自己嘅零食，朋友話「你嗰啲要分我哋食㗎嘛」。你會……",
+    "hints": [
+      "自己嘅嘢可以選擇分享",
+      "say no 唔代表細氣",
+      "朋友要尊重你嘅選擇"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-133-a",
+        "text": "「好啦」就俾佢哋",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你被朋友情緒勒索，自己冇咗零食。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-133-b",
+        "text": "「我想留返自己食」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你清楚表達，係社交界線嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-133-c",
+        "text": "清楚表達+提議下次可以一齊買",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你守界又提議方案，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "表達意願"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child holding snack box, friends reaching for it, child looking thoughtful, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-134",
+    "title": "社交界線：朋友講笑過咗火",
+    "background": "操場・小息",
+    "description": "朋友用你個花名笑你，你覺得過咗火想喊。你會……",
+    "hints": [
+      "花名可以係開玩笑但都可以係欺凌",
+      "say no 唔代表你玩唔起",
+      "情緒係真實嘅"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-134-a",
+        "text": "笑住扮冇嘢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你壓抑感受，朋友以為你 OK 會繼續。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-134-b",
+        "text": "「你再咁講我真係嬲」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你表達感受，係社交界線嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-134-c",
+        "text": "「我哋傾下你點解鍾意咁叫我」+表達感受",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你冷靜溝通又守界，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "playground",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "表達感受"
+    ],
+    "imagePrompt": "Hong Kong school playground, child looking hurt as friend laughs, child on verge of tears, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-135",
+    "title": "社交界線：朋友偷睇你日記",
+    "background": "屋企・睡房",
+    "description": "朋友嚟你屋企玩時偷睇你本日記。你下次會點做？",
+    "hints": [
+      "日記係絕對私隱",
+      "可以收埋或鎖起",
+      "say no 唔代表唔鍾意朋友"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-135-a",
+        "text": "扮唔知",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你唔出聲，朋友會以為可以再睇。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-135-b",
+        "text": "下次收起日記+同朋友講呢樣係私隱",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你保護私隱+溝通，係社交界線嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-135-c",
+        "text": "收起日記+清楚表達界線+話「呢樣你唔可以睇」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你清晰+直接，係高手私隱保護！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "保護私隱",
+      "say no",
+      "say stop"
+    ],
+    "imagePrompt": "Hong Kong child putting diary in locked drawer, friend sitting nearby, bedroom afternoon light, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-136",
+    "title": "社交界線：同學迫你一齊整蠱人",
+    "background": "課室・小息",
+    "description": "同學話「一齊整蠱小英啦」，佢哋準備整蠱小英。你會……",
+    "hints": [
+      "整蠱可以變成欺凌",
+      "say no 唔代表唔合群",
+      "保護無辜嘅人係好事"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-136-a",
+        "text": "一齊整蠱",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -18,
+            "comment": "你參與欺凌，會傷害小英。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-136-b",
+        "text": "「我唔想整蠱人」就走開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你守住界線，係正義嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-136-c",
+        "text": "「呢樣唔好笑」+建議叫小英嚟一齊玩+保護佢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你保護無辜嘅人，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "保護朋友"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, group of children planning prank on another child, one child looking uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-137",
+    "title": "社交界線：朋友想你分享家庭狀況",
+    "background": "公園・玩耍",
+    "description": "朋友問「你哋屋企有冇錢」、「你爸爸做咩工」，你想講又想保護家人私隱。你會……",
+    "hints": [
+      "家庭狀況係私隱",
+      "可以話「呢樣我唔想講」",
+      "唔使比較屋企有幾好"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-137-a",
+        "text": "「有錢㗎」吹大咗講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你講大話保護自己，但會愈講愈多。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-137-b",
+        "text": "「呢樣我唔想講」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你保護私隱，係社交界線嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-137-c",
+        "text": "「呢樣我唔想講」+轉話題講開心嘅嘢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你保護私隱+識轉移，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "保護私隱",
+      "say no",
+      "say stop"
+    ],
+    "imagePrompt": "Hong Kong children at park, friend asking personal questions, child looking thoughtful and saying no, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-138",
+    "title": "社交界線：朋友想攬你叫救命",
+    "background": "校巴・放學",
+    "description": "朋友喺校巴度熱到想除衫，問你「你除唔除」/「你個袋入面有咩」/「俾我攬吓」。你會……",
+    "hints": [
+      "say no 唔需要解釋",
+      "朋友都要尊重界線",
+      "可以話「我覺得唔舒服」"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-138-a",
+        "text": "勉強俾佢攬",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略自己嘅感受，朋友會繼續。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-138-b",
+        "text": "「我唔想咁樣」就推開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你守住界線，係身體自主嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-138-c",
+        "text": "「我唔想俾人攬」+解釋+要求對方尊重",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你清晰+教育，係社交界線高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school_bus",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "身體界線"
+    ],
+    "imagePrompt": "Hong Kong child on school bus looking uncomfortable as friend reaches out, child pulling away, anime cartoon style, soft pastel, expressive, no text, 16:9"
+  },
+  {
+    "id": "s-self-139",
+    "title": "團結：小組活動要參與",
+    "background": "課室・分組活動",
+    "description": "你哋小組要做poster，但你想自己畫晒唔想其他人幫手。你會……",
+    "hints": [
+      "小組合作需要每個人參與",
+      "分工先有效率",
+      "聽吓其他組員嘅意見"
+    ],
+    "characters": [
+      {
+        "name": "組員",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-139-a",
+        "text": "「我畫晒啦你哋唔使做」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你剝削咗組員參與嘅機會，唔係合作。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-139-b",
+        "text": "同組員一齊傾分工",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你帶領合作，係團結嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-139-c",
+        "text": "傾分工+聆聽每個人意見+互相鼓勵",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你帶領+聆聽，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, group of children working together on poster, sharing materials, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-140",
+    "title": "團結：陸運會打氣",
+    "background": "學校・田徑場・陸運會",
+    "description": "陸運會，你同班同學一齊為 4×100 接力隊打氣。隊友跌棒輸咗，你會……",
+    "hints": [
+      "唔可以取笑跌棒嘅隊友",
+      "團結係無論贏輸都支持",
+      "鼓勵比批評更有用"
+    ],
+    "characters": [
+      {
+        "name": "隊友",
+        "emoji": "🧒",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-140-a",
+        "text": "笑話跌棒嘅隊友",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你傷害隊友，破壞咗班嘅團結。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-140-b",
+        "text": "拍一拍隊友話「下次加油」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你鼓勵隊友，係團結嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-140-c",
+        "text": "拍一拍+讚其他隊友表現+一齊檢討下次點改善",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你帶領士氣+分析改善，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "鼓勵隊友",
+      "小組合作",
+      "支持"
+    ],
+    "imagePrompt": "Hong Kong school sports day, relay team on track, teammates encouraging fallen runner, sunshine, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-141",
+    "title": "團結：班際比賽",
+    "background": "學校・體育堂",
+    "description": "你班同另一班比賽，但班中有人唔積極，怨「點解要我做」。你會……",
+    "hints": [
+      "班際比賽要每個人都參與",
+      "唔做嘅人都係班一份子",
+      "鼓勵比批評好"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-141-a",
+        "text": "「唔做就算啦佢」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你放棄咗同學，唔係真正嘅班。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-141-b",
+        "text": "同同學講「你一齊嚟啦，一齊做會開心啲」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你鼓勵同學，係團結嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-141-c",
+        "text": "鼓勵+搵到同學擅長嘅嘢+分工合作",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你帶領+配對，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "鼓勵隊友",
+      "小組合作",
+      "帶領"
+    ],
+    "imagePrompt": "Hong Kong primary school sports class, two classes competing, teammates encouraging each other, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-142",
+    "title": "團結：話劇排練",
+    "background": "課室・課後活動",
+    "description": "你哋小組要排一個話劇，但你嘅角色比較細，你覺得唔公平想放棄。你會……",
+    "hints": [
+      "每個角色都重要",
+      "細角色都可以演得好好",
+      "為咗團隊努力"
+    ],
+    "characters": [
+      {
+        "name": "組員",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-142-a",
+        "text": "「我唔玩喇」就走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你放棄咗整個團隊嘅努力。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-142-b",
+        "text": "留低同組員一齊練好自己嘅角色",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你為團隊付出，係團結嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-142-c",
+        "text": "努力練好自己角色+幫手做道具+提議增加戲份",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你主動付出+諗解決方法，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "付出"
+    ],
+    "imagePrompt": "Hong Kong primary classroom after school, group of children rehearsing drama, one child practicing small role, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-143",
+    "title": "團結：幫新同學融入",
+    "background": "課室・小息",
+    "description": "班上新嚟咗一個新同學，佢自己一個坐冇人理。你會……",
+    "hints": [
+      "新同學需要支持",
+      "主動打招呼好重要",
+      "小幫助可以令人融入"
+    ],
+    "characters": [
+      {
+        "name": "新同學",
+        "emoji": "🧒",
+        "initial_relationship": 30
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-143-a",
+        "text": "扮睇唔到",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略新同學，佢會好孤獨。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-143-b",
+        "text": "行過去打招呼+邀請一齊玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你主動幫助，係團結嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-143-c",
+        "text": "打招呼+介紹其他同學+邀請一齊食 lunch",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面幫助新同學融入，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "鼓勵隊友",
+      "主動"
+    ],
+    "imagePrompt": "Hong Kong primary classroom during break, new student sitting alone, another child approaching with smile, anime cartoon style, soft pastel watercolor, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-144",
+    "title": "團結：合作社一起賣物",
+    "background": "學校・合作社",
+    "description": "你哋合作社要一齊賣物籌款，但分配工作時有人冇攞到想要嘅崗位，你會……",
+    "hints": [
+      "每個崗位都重要",
+      "可以輪換",
+      "支持團隊先至重要"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-144-a",
+        "text": "「我要嗰個崗位」就同人爭",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你為咗自己破壞咗團隊。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-144-b",
+        "text": "接受分配+支持同學做好",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你支持團隊，係團結嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-144-c",
+        "text": "接受+提議輪換制度+互相補位",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你建立制度，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "支持"
+    ],
+    "imagePrompt": "Hong Kong primary school cooperative shop, children working together at stall, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-145",
+    "title": "團結：打掃班房",
+    "background": "課室・放學後",
+    "description": "班主任話班房太亂要每組打掃，但你哋組有人想早走，你會……",
+    "hints": [
+      "班房整潔係全班責任",
+      "可以快速分工",
+      "守望相助"
+    ],
+    "characters": [
+      {
+        "name": "組員",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-145-a",
+        "text": "「佢哋走咗我做晒啦」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你縱容逃避，縱容壞風氣。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-145-b",
+        "text": "叫組員一齊分3個區打掃",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你帶領合作，係團結嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-145-c",
+        "text": "分區打掃+15分鐘限時+互相檢查",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用系統帶領，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "帶領"
+    ],
+    "imagePrompt": "Hong Kong primary classroom after school, group of children cleaning together with brooms and cloths, sunset light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-146",
+    "title": "團結：校隊訓練",
+    "background": "學校・操場・放學",
+    "description": "你係校隊一員，教練叫大家跑 10 圈，跑得快嘅可以休息，跑得慢嘅要加操。你會……",
+    "hints": [
+      "唔好放棄隊友",
+      "互相鼓勵完成",
+      "團隊精神大於個人"
+    ],
+    "characters": [
+      {
+        "name": "隊友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-146-a",
+        "text": "跑快啲休息，等其他隊友加操",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你為咗自己放棄隊友，唔係團隊。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-146-b",
+        "text": "陪跑得慢嘅隊友一齊跑",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你支持隊友，係團結嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-146-c",
+        "text": "陪隊友跑+鼓勵話「我哋一齊」+互相帶節奏",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你帶領士氣，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "鼓勵隊友",
+      "小組合作",
+      "支持"
+    ],
+    "imagePrompt": "Hong Kong school track after school, teammates running together, supporting slower runner, sunset light, FF XV Nomura anime style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-147",
+    "title": "團結：朋友失落時陪伴",
+    "background": "公園・下午",
+    "description": "朋友考試失手好唔開心，你會……",
+    "hints": [
+      "朋友唔開心時要陪佢",
+      "聆聽好重要",
+      "唔使講咩大道理"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-147-a",
+        "text": "「考試咋嘛，下次再嚟過啦」就叫人去玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略朋友嘅感受，佢會更孤獨。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-147-b",
+        "text": "陪住佢，聽佢講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你陪伴聆聽，係團結嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-147-c",
+        "text": "陪+聆聽+分享自己嘅失敗經歷+鼓勵",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你深度支持朋友，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "聆聽",
+      "支持",
+      "陪伴"
+    ],
+    "imagePrompt": "Hong Kong child sitting on park bench with sad friend, putting hand on shoulder, afternoon sun, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-148",
+    "title": "陌生人：跟我走有糖食",
+    "background": "學校門口・放學",
+    "description": "放學時有個陌生叔叔話「跟我走有糖食」。你會……",
+    "hints": [
+      "絕對唔可以跟陌生人走",
+      "say no + 即刻走返學校",
+      "搵老師或校工幫手"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-148-a",
+        "text": "「好呀」就跟他走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "跟陌生人走非常危險，你會失蹤。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-148-b",
+        "text": "「唔喇」就走返學校搵老師",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你 say no + 搵老師，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-148-c",
+        "text": "say no + 即刻跑返學校 + 叫老師留意呢個人",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你主動保護自己同其他人，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "say no",
+      "搵老師"
+    ],
+    "imagePrompt": "Hong Kong school gate after school, stranger reaching out to child, child stepping back alarmed, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-149",
+    "title": "陌生人：上車話送你返屋企",
+    "background": "街道・下午",
+    "description": "你喺街上等媽媽，有個陌生阿姨話「我送你返屋企啦，車喺前面」。你會……",
+    "hints": [
+      "陌生人永遠唔可以上車",
+      "企喺人多的地方等",
+      "打電話俾媽媽"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👩",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-149-a",
+        "text": "「好呀」就跟佢上車",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "上陌生人的車非常危險，絕對唔可以。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-149-b",
+        "text": "「唔喇，我媽媽嚟緊」就企人多的地方",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你 say no + 搵安全位置，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-149-c",
+        "text": "say no + 走返便利店 + 請店員幫你打俾媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你主動搵專業保護，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "outdoor",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "say no",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong street, stranger offering ride to child, child stepping back alarmed, busy road in background, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-150",
+    "title": "陌生人：開門話係爸爸朋友",
+    "background": "屋企・門口・晚上",
+    "description": "你一個喺屋企，有人敲門話「我係爸爸嘅朋友，開門」。你會……",
+    "hints": [
+      "唔可以隨便開門",
+      "門要有貓眼或防盜鏈",
+      "打電話俾爸媽確認"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-150-a",
+        "text": "「等一等」就開門",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "唔可以隨便開門，你會有危險。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-150-b",
+        "text": "「爸爸唔喺屋企」+ 唔開門 + 打俾媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你保護自己+搵爸媽，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-150-c",
+        "text": "唔開門+透過貓眼問+打俾爸爸確認+報警如果唔對路",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你用多重方法保護自己，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不開門",
+      "say no",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong apartment door, child looking through peephole, person standing outside, evening light, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-151",
+    "title": "陌生人：問路跟住你",
+    "background": "街道・下午",
+    "description": "有個陌生叔叔問你路，跟住越行越近跟住你。你會……",
+    "hints": [
+      "問路嘅人唔應該跟住你",
+      "即刻行去人多嘅地方",
+      "可以入舖頭求助"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-151-a",
+        "text": "繼續行，希望佢自己走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你忽略危險訊號，陌生人可能係壞人。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-151-b",
+        "text": "即刻行去便利店/警察崗",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你搵安全地方，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-151-c",
+        "text": "行去便利店 + 大聲講「我要搵媽媽」+ 叫店員留意",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你用聲音同地點雙重保護，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "outdoor",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "say no",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong street, child walking fast toward convenience store, stranger following behind, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-152",
+    "title": "陌生人：上網識朋友約見面",
+    "background": "屋企・房間",
+    "description": "你喺網上識咗一個「同齡朋友」，對方話想約你喺公園見面。你會……",
+    "hints": [
+      "網上識嘅人唔可以單獨見",
+      "一定要有家長陪同",
+      "可以嘅話唔好見"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-152-a",
+        "text": "自己一個去見",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "網友可能係任何人，唔可以單獨見。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-152-b",
+        "text": "同爸媽講，等佢哋陪你一齊去",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你搵爸媽陪，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-152-c",
+        "text": "同爸媽講+商量+最後決定唔好見網友",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你同爸媽商量+安全優先，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "搵信任大人",
+      "不跟陌生人",
+      "保護自己"
+    ],
+    "imagePrompt": "Hong Kong child at computer in bedroom, chatting with someone online, looking thoughtful, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-153",
+    "title": "陌生人：停低影相",
+    "background": "公園・下午",
+    "description": "你喺公園玩，有個陌生人用電話對住你影相，你覺得唔對路。你會……",
+    "hints": [
+      "唔應該被陌生人影相",
+      "即時走開",
+      "通知家長或公園管理員"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-153-a",
+        "text": "企喺度唔敢郁",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你忽略危險，陌生人可能會靠近。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-153-b",
+        "text": "即刻走開+搵公園管理員",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你走開+搵專業保護，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-153-c",
+        "text": "走開+叫管理員+記低佢外貌+叫爸媽報警",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你用多重方法保護自己，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "say no",
+      "保護自己",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong park, stranger taking photos with phone, child looking alarmed and stepping back, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-154",
+    "title": "陌生人：問你屋企住邊",
+    "background": "電梯大堂",
+    "description": "有個陌生叔叔喺電梯大堂問你「你哋屋企住邊層」。你會……",
+    "hints": [
+      "屋企地址係私隱",
+      "絕對唔可以講",
+      "say no + 走開"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-154-a",
+        "text": "「X 樓 X 室」就答咗",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -20,
+            "moralChange": -22,
+            "comment": "你透露咗屋企地址，陌生人可能會搵上門。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-154-b",
+        "text": "「我唔會講」就走開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你保護私隱，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-154-c",
+        "text": "say no + 唔回應 + 即刻入電梯 + 返到屋企同爸媽講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你全面保護+匯報，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "say no",
+      "保護私隱",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong residential lift lobby, stranger asking child question, child backing away with hand up, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-155",
+    "title": "陌生人：上網問電話",
+    "background": "屋企・房間",
+    "description": "有個唔識嘅人喺網上問你電話號碼話要做朋友。你會……",
+    "hints": [
+      "唔可以俾電話號碼陌生人",
+      "網上私隱好重要",
+      "同爸媽講"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-155-a",
+        "text": "「好呀」就俾電話",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -20,
+            "moralChange": -22,
+            "comment": "你俾咗電話陌生人，會被滋擾。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-155-b",
+        "text": "「唔會俾」+ block 佢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你保護私隱，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-155-c",
+        "text": "block + 報告平台 + 同爸媽講 + 寫低對話",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你全面保護自己，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "保護私隱",
+      "不收禮物",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong child at computer in bedroom, stranger asking for phone number, child looking concerned, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-156",
+    "title": "陌生人：送禮物話做朋友",
+    "background": "校門口・放學",
+    "description": "放學時有個陌生叔叔送個新玩具俾你話做朋友。你會……",
+    "hints": [
+      "唔可以收陌生人禮物",
+      "say no + 即刻走",
+      "禮物背後可能有企圖"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-156-a",
+        "text": "「好呀」就收咗",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "陌生人嘅禮物可能係誘餌，非常危險。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-156-b",
+        "text": "「我唔識你」就走開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你 say no + 走開，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-156-c",
+        "text": "say no + 即刻返學校搵老師 + 叫老師留意呢個人",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你保護自己+保護其他同學，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不收禮物",
+      "say no",
+      "搵老師"
+    ],
+    "imagePrompt": "Hong Kong school gate after school, stranger offering toy to child, child stepping back alarmed, anime cartoon style, soft pastel, serious, no text, 16:9"
+  },
+  {
+    "id": "s-self-157",
+    "title": "孝親：幫媽媽做家務",
+    "background": "屋企・廚房・晚飯後",
+    "description": "媽媽煮完飯好攰，叫你幫手洗碗或摺衫。你會……",
+    "hints": [
+      "孝親唔係物質",
+      "幫手做家務就係孝順",
+      "媽媽都會老，你都會長大"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 85
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-157-a",
+        "text": "「我好攰」就坐低睇電視",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略媽媽嘅辛勞，唔係孝順。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-157-b",
+        "text": "「好呀」就幫手做一樣",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你幫手，係孝親嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-157-c",
+        "text": "「媽媽你坐低休息」就洗碗+摺衫+抹枱",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你主動照顧媽媽，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "幫手做家務",
+      "照顧家人",
+      "感恩"
+    ],
+    "imagePrompt": "Hong Kong mother and child in home kitchen, child washing dishes, mother resting on chair, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-158",
+    "title": "孝親：媽媽生日",
+    "background": "屋企・客廳",
+    "description": "媽媽生日就嚟到，你零用錢唔多，想送份禮物。你會……",
+    "hints": [
+      "禮物貴唔係最重要",
+      "手寫卡或幫手做嘢已經好珍貴",
+      "孝心比物質重要"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 85
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-158-a",
+        "text": "「冇錢咩都唔送」就算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略媽媽嘅生日，唔係孝順。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-158-b",
+        "text": "用零用錢買張心意卡寫低感謝嘅話",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你用心意表達，係孝親嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-158-c",
+        "text": "手寫卡 + 自己整早餐 + 全日幫手做家務",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用全日行動表達孝心，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "感恩",
+      "照顧家人",
+      "聆聽"
+    ],
+    "imagePrompt": "Hong Kong child making handmade birthday card at home desk for mother, evening light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-159",
+    "title": "孝親：爸爸返夜",
+    "background": "屋企・客廳・晚上",
+    "description": "爸爸OT返到好夜先返嚟，你聽到門聲但你已經準備瞓。你會……",
+    "hints": [
+      "簡單問候係孝心",
+      "可以留定宵夜",
+      "爸媽工作都係為咗你"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-159-a",
+        "text": "扮瞓著，唔理爸爸",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你錯過咗關心爸爸嘅機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-159-b",
+        "text": "走出嚟同爸爸講句「辛苦喇」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你簡單問候，係孝親嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-159-c",
+        "text": "出嚟問候+留定宵夜+攬吓爸爸",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面照顧爸爸，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "照顧家人",
+      "聆聽",
+      "感恩"
+    ],
+    "imagePrompt": "Hong Kong father returning home late, child greeting him with warm hug at door, evening hallway light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-160",
+    "title": "孝親：嫲嫲行路慢",
+    "background": "商場・下午",
+    "description": "嫲嫲同你行商場，佢行得好慢，你想行快啲去玩具部。你會……",
+    "hints": [
+      "老人家行得慢係正常",
+      "陪住佢慢慢行",
+      "可以幫佢攞嘢"
+    ],
+    "characters": [
+      {
+        "name": "嫲嫲",
+        "emoji": "👵",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-160-a",
+        "text": "「你慢慢行」就自己跑咗去",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你丟低咗嫲嫲，唔係孝親。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-160-b",
+        "text": "陪住嫲嫲慢慢行",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你陪伴，係孝親嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-160-c",
+        "text": "陪住行+幫手攞袋+講笑話令佢開心",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面照顧嫲嫲，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "mall",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "陪伴",
+      "照顧家人",
+      "聆聽"
+    ],
+    "imagePrompt": "Hong Kong child walking slowly with grandmother in shopping mall, holding her bag, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-161",
+    "title": "孝親：父母吵架",
+    "background": "屋企・客廳・晚上",
+    "description": "你聽到爸爸媽媽喺房鬧交好大聲，你會……",
+    "hints": [
+      "父母嘅事佢哋自己解決",
+      "唔需要介入",
+      "可以搵個安全地方"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 80
+      },
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 85
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-161-a",
+        "text": "走去大聲叫佢哋唔好嘈",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你介入大人嘅事，可能會令情況更差。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-161-b",
+        "text": "返自己房+搵信任嘅大人傾",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你保護自己，係成熟嘅做法。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-161-c",
+        "text": "返房+等佢哋冷靜+之後寫封信俾佢哋表達感受",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你冷靜+智慧表達，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "聆聽",
+      "照顧家人",
+      "情緒管理"
+    ],
+    "imagePrompt": "Hong Kong child in bedroom with door closed, parents arguing in background, evening light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-162",
+    "title": "孝親：教嫲嫲用手機",
+    "background": "屋企・客廳",
+    "description": "嫲嫲唔識用手機睇 WhatsApp，你想自己用。你會……",
+    "hints": [
+      "教長輩用科技係孝心",
+      "耐性好重要",
+      "可以一齊學"
+    ],
+    "characters": [
+      {
+        "name": "嫲嫲",
+        "emoji": "👵",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-162-a",
+        "text": "「你自己慢慢搵啦」就自己玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你冇耐性，嫲嫲會好孤獨。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-162-b",
+        "text": "教嫲嫲基本點按",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你肯教，係孝親嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-162-c",
+        "text": "一對一慢慢教+寫低步驟+之後跟進",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用系統教嫲嫲，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "照顧家人",
+      "陪伴",
+      "耐性"
+    ],
+    "imagePrompt": "Hong Kong child teaching grandmother how to use smartphone, sitting together on sofa, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-163",
+    "title": "孝親：爸爸病咗",
+    "background": "屋企・客廳",
+    "description": "爸爸感冒病咗瞓喺床，媽媽返緊工。你會……",
+    "hints": [
+      "家人病咗要照顧",
+      "可以幫手攞水、叫外賣",
+      "唔好打擾佢休息"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-163-a",
+        "text": "自己玩遊戲，唔理爸爸",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你忽略病咗嘅爸爸，唔係孝親。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-163-b",
+        "text": "幫爸爸攞水+問佢要唔要嘢食",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你照顧爸爸，係孝親嘅表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-163-c",
+        "text": "攞水+叫外賣+定時問候+寫低照顧事項",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面照顧，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "照顧家人",
+      "陪伴",
+      "聆聽"
+    ],
+    "imagePrompt": "Hong Kong child bringing water to sick father lying in bed, gentle morning light, Studio Ghibli style, soft pastel watercolor, 16:9"
+  },
+  {
+    "id": "s-self-164",
+    "title": "孝親：同爸媽去飲茶",
+    "background": "酒樓・早上",
+    "description": "周日同爸媽去飲茶，爸媽問你想食咩，你淨係想要自己鍾意嘅嘢。你會……",
+    "hints": [
+      "可以表達意願",
+      "但要留意爸媽想食咩",
+      "孝親係互相"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 80
+      },
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 85
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-164-a",
+        "text": "「我要蝦餃燒賣」就淨叫自己嘅",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你忽略爸媽嘅意願。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-164-b",
+        "text": "「我想食 X，你哋想食咩？」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你表達意願又聆聽，係孝親！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-164-c",
+        "text": "「你哋想食咩先？我再揀」+幫手倒茶",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你照顧爸媽又主動服務，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "restaurant",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "聆聽",
+      "照顧家人",
+      "感恩"
+    ],
+    "imagePrompt": "Hong Kong family at dim sum restaurant, child pouring tea for parents, morning sunlight, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-165",
+    "title": "仁愛：同學跌傷扶起佢",
+    "background": "操場・小息",
+    "description": "小息時同學跌倒擦損膝頭，佢坐喺地喊。你會……",
+    "hints": [
+      "受傷嘅人需要幫助",
+      "可以扶佢去健康院",
+      "可以叫老師"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-165-a",
+        "text": "走過去睇一眼就走開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你忽略咗受傷嘅同學，唔係仁愛。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-165-b",
+        "text": "扶佢起身+陪佢去健康院",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你幫助受傷嘅人，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-165-c",
+        "text": "扶佢+搵老師+陪佢等媽媽嚟+之後慰問",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面照顧，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "易地而處",
+      "照顧"
+    ],
+    "imagePrompt": "Hong Kong school playground, child helping fallen classmate stand up, morning light, anime cartoon style, expressive faces, warm tones, no text, 16:9"
+  },
+  {
+    "id": "s-self-166",
+    "title": "仁愛：捐出零用錢",
+    "background": "學校・早會",
+    "description": "學校搞籌款活動幫助山區小朋友。你零用錢可以買零食，但老師話可以捐出嚟。你會……",
+    "hints": [
+      "分享係仁愛",
+      "山區小朋友需要幫助",
+      "可以分階段捐"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-166-a",
+        "text": "「我冇錢」就算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你唔想分享，錯過助人嘅機會。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-166-b",
+        "text": "捐出一部分零用錢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你願意分享，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-166-c",
+        "text": "捐零用錢+寫信鼓勵山區小朋友",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用行動+文字雙重關心，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "分享資源",
+      "易地而處"
+    ],
+    "imagePrompt": "Hong Kong primary school assembly, child donating money to charity collection box, morning light, anime cartoon style, expressive, warm tones, no text, 16:9"
+  },
+  {
+    "id": "s-self-167",
+    "title": "仁愛：朋友唔開心",
+    "background": "課室・午膳",
+    "description": "你發現朋友食 lunch 嘅時候一個人坐，個樣好唔開心。你會……",
+    "hints": [
+      "朋友唔開心要關心",
+      "唔使問好多嘢",
+      "陪伴已經好好"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-167-a",
+        "text": "當冇睇到，唔理",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略朋友，佢會更孤獨。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-167-b",
+        "text": "坐埋去問「你ok嗎？」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你主動關心，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-167-c",
+        "text": "坐埋去+聆聽+分享自己嘅午餐+約下課一齊行",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面關心朋友，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "聆聽",
+      "陪伴"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child sitting with sad friend during lunch, sharing food, anime cartoon style, expressive, warm tones, no text, 16:9"
+  },
+  {
+    "id": "s-self-168",
+    "title": "仁愛：幫手照顧弟妹",
+    "background": "屋企・客廳",
+    "description": "爸媽唔喺屋企，你要照顧細佬細妹。但細妹扭抱唔肯食飯。你會……",
+    "hints": [
+      "照顧弟妹係家人責任",
+      "可以分散佢注意",
+      "耐心好重要"
+    ],
+    "characters": [
+      {
+        "name": "細妹",
+        "emoji": "👧",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-168-a",
+        "text": "「唔關我事」就返房",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你忽略細妹，唔係好哥哥/姐姐。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-168-b",
+        "text": "抱住佢+慢慢餵佢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你照顧細妹，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-168-c",
+        "text": "抱住+講故事分散注意+餵飯+之後同佢一齊玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面照顧，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "照顧家人",
+      "耐心",
+      "主動關心"
+    ],
+    "imagePrompt": "Hong Kong child holding younger sibling, feeding dinner, evening home light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-169",
+    "title": "仁愛：教同學功課",
+    "background": "課室・小息",
+    "description": "同學問你數學功課一題點做，你想繼續去玩。你會……",
+    "hints": [
+      "幫助同學係仁愛",
+      "可以5分鐘就教完",
+      "之後可以一齊玩"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-169-a",
+        "text": "「我都唔識」就走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你拒絕幫助，可能係大話。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-169-b",
+        "text": "5分鐘教完再去玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你肯幫助，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-169-c",
+        "text": "5分鐘教+教完一齊玩+之後約補習",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你深入幫助同學，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "耐心",
+      "分享"
+    ],
+    "imagePrompt": "Hong Kong primary classroom during break, child teaching classmate math at desk, morning light, anime cartoon style, expressive, warm tones, no text, 16:9"
+  },
+  {
+    "id": "s-self-170",
+    "title": "衝突解決：同學撞到你唔道歉",
+    "background": "走廊・放學",
+    "description": "同學跑跑吓撞到你跌低，佢扮冇事繼續跑。你會……",
+    "hints": [
+      "你有權要求道歉",
+      "冷靜表達比發嬲好",
+      "搵老師如果對方唔理"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "👦",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-170-a",
+        "text": "起身追住鬧佢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你用衝突回應衝突，會令情況更差。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-170-b",
+        "text": "冷靜講「你撞到我，請你道歉」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你表達感受+要求，係衝突解決！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-170-c",
+        "text": "冷靜表達+對方唔理就搵老師+事後傾返",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你冷靜+多步驟，係衝突高手！"
+          }
+        ]
+      }
+    ],
+    "location": "corridor",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      11,
+      9
+    ],
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "imagePrompt": "Hong Kong school corridor, child fallen on floor, another child running away, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-171",
+    "title": "衝突解決：朋友話你蝦佢",
+    "background": "課室・小息",
+    "description": "你同朋友傾偈，佢突然話「你蝦我」就走開。你唔知自己做錯咩。你會……",
+    "hints": [
+      "對方嘅感受都係真實",
+      "唔係即刻反駁",
+      "聆聽同澄清"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 65
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-171-a",
+        "text": "「我冇呀！」就反駁",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你即刻反駁，朋友會更嬲。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-171-b",
+        "text": "「對唔住，你覺得我點咗？」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你承認+問清楚，係衝突解決！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-171-c",
+        "text": "「對唔住」+聆聽佢感受+澄清誤解+約下次傾返",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你深度解決衝突，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      11,
+      9
+    ],
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say sorry",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child looking hurt as friend walks away, afternoon light, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-172",
+    "title": "衝突解決：兩人搶玩具",
+    "background": "公園・玩耍",
+    "description": "你同另一個小朋友都想玩同一個玩具，搶緊。你會……",
+    "hints": [
+      "玩具可以輪住玩",
+      "可以搵另一個玩具",
+      "搵大人幫手"
+    ],
+    "characters": [
+      {
+        "name": "小朋友",
+        "emoji": "🧒",
+        "initial_relationship": 40
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-172-a",
+        "text": "搶贏為止",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你用暴力解決，會受傷又傷人。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-172-b",
+        "text": "「我哋輪流玩」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你提議共識，係衝突解決！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-172-c",
+        "text": "輪流玩+計時+之後一齊玩其他嘢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你建立制度，係衝突高手！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      11,
+      9
+    ],
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "搵共識",
+      "聆聽對方",
+      "輪流"
+    ],
+    "imagePrompt": "Hong Kong park, two children about to fight over toy, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-173",
+    "title": "衝突解決：同學話你講大話",
+    "background": "課室・小息",
+    "description": "你講咗你嘅經歷，同學話「你講大話！你去過嘅地方我都去過！」你會……",
+    "hints": [
+      "唔需要即時反駁",
+      "講事實",
+      "唔好貶低對方"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-173-a",
+        "text": "「你先去過！」就反駁",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你用衝突回應，會越講越嬲。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-173-b",
+        "text": "「我講嘅係我嘅經歷，你唔信可以問我媽媽」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你冷靜澄清，係衝突解決！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-173-c",
+        "text": "冷靜澄清+接受對方唔信+之後唔好再講呢個話題",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你冷靜+智慧處理，係衝突高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      11,
+      9
+    ],
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child explaining calmly while another child argues, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-174",
+    "title": "同理心：朋友爸爸病咗",
+    "background": "課室・朝早",
+    "description": "朋友返到學校好唔開心，話爸爸病咗住院。你會……",
+    "hints": [
+      "朋友需要陪伴",
+      "唔使講好多",
+      "可以寫卡鼓勵"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-174-a",
+        "text": "「唔好咁嬲啦」就轉話題",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略朋友嘅感受，佢會更孤獨。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-174-b",
+        "text": "「對唔住，你爸爸會好㗎」+攬吓佢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你安慰朋友，係同理心！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-174-c",
+        "text": "陪伴+聆聽+寫卡鼓勵+約下課一齊行",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你深度支持朋友，係同理心高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "empathy",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "安慰"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child comforting sad friend who learned father is in hospital, morning light, anime cartoon style, expressive, warm tones, no text, 16:9"
+  },
+  {
+    "id": "s-self-175",
+    "title": "同理心：新移民同學",
+    "background": "課室・小息",
+    "description": "班上新嚟咗一個內地新移民同學，佢廣東話唔好，被其他同學笑。你會……",
+    "hints": [
+      "新嚟嘅人需要支持",
+      "每個人都有適應期",
+      "幫助融入係同理心"
+    ],
+    "characters": [
+      {
+        "name": "新同學",
+        "emoji": "🧒",
+        "initial_relationship": 30
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-175-a",
+        "text": "同其他人一齊笑",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你參與欺凌，新同學會好孤獨。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-175-b",
+        "text": "走去同新同學講「我哋一齊玩」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你主動幫助，係同理心！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-175-c",
+        "text": "幫新同學融入+教佢廣東話+叫其他人一齊玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面幫助，係同理心高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "empathy",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "理解情緒"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child welcoming new student who speaks different dialect, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-176",
+    "title": "同理心：朋友考試失手",
+    "background": "課室・放學",
+    "description": "朋友考試失手好唔開心，擔心畀屋企人鬧。你會……",
+    "hints": [
+      "唔係佢想嘅",
+      "聆聽佢嘅擔心",
+      "幫佢諗解決方法"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-176-a",
+        "text": "「考試咋嘛，下次再嚟過」就走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你忽略朋友嘅擔心，佢會更焦慮。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-176-b",
+        "text": "「你都努力咗，唔好太嬲自己」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你安慰+肯定，係同理心！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-176-c",
+        "text": "陪伴+聆聽+肯定努力+陪佢一齊溫下次+提議同屋企人講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你深度支持，係同理心高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "empathy",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "empathy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "易地而處",
+      "聆聽",
+      "say sorry"
+    ],
+    "imagePrompt": "Hong Kong child sitting with sad friend after bad exam, after school, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+  },
+  {
+    "id": "s-self-177",
+    "title": "尊重：同學間嘢用唔同",
+    "background": "課室・小息",
+    "description": "同學用嘅文具同你哋唔同，有人笑「你用咁樣嘅筆」。你會……",
+    "hints": [
+      "每個人都可以用自己鍾意嘅嘢",
+      "唔應該取笑人哋嘅選擇",
+      "尊重差異"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-177-a",
+        "text": "笑埋一份",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你參與嘲笑，唔係尊重。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-177-b",
+        "text": "「每個人都可以用自己鍾意嘅嘢」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你為同學發聲，係尊重！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-177-c",
+        "text": "「每個人都可以用自己鍾意嘅」+讚同學嘅筆+建議分享",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你支持+讚，係尊重高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "respect",
+    "creedIds": [
+      2
+    ],
+    "valueCategory": "respect",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "語言尊重",
+      "包容差異",
+      "旁觀者介入"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child defending classmate with different stationery, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
   }
 ]
