@@ -13,7 +13,7 @@ from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Optional
 
-from fastapi import FastAPI, HTTPException, Query, BackgroundTasks
+from fastapi import FastAPI, HTTPException, Query, BackgroundTasks, UploadFile, File, Form, Header
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse, JSONResponse
@@ -27,8 +27,8 @@ TEACHER_PASSWORD = os.getenv("TEACHER_PASSWORD", "admin")
 ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "*")
 JWT_SECRET = os.getenv("JWT_SECRET", secrets.token_hex(32))
 
-DATA_DIR = Path(__file__).parent / "data"
-DATA_DIR.mkdir(exist_ok=True)
+DATA_DIR = Path(os.getenv("DATA_DIR", str(Path(__file__).parent / "data")))
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 # ── In-memory session store (teacher tokens) ────────────────────────────────
 # token -> expiry timestamp
@@ -228,7 +228,7 @@ async def delete_student(
 
 # ── Teacher: Export All ──────────────────────────────────────────────────────
 @app.get("/api/teacher/export")
-async def export_all(x_teacher_token: Optional[str] = None):
+async def export_all(x_teacher_token: Optional[str] = Header(None, alias="X-Teacher-Token")):
     """Export all student data as a single JSON (for backup/restore)."""
     _require_teacher(x_teacher_token)
 
@@ -245,12 +245,164 @@ async def export_all(x_teacher_token: Optional[str] = None):
     )
 
 # ── Teacher: Import ───────────────────────────────────────────────────────────
+def _safe_stem(stem: str) -> Optional[str]:
+    """Validate a backup key (filename stem) — reject anything that could escape DATA_DIR.
+
+    Mirrors `_student_file()` sanitization: alnum + `_` + `-`, must be non-empty.
+    Rejects if the original stem contains characters that would be stripped
+    (e.g. `../etc/passwd` → `etcpasswd` is unsafe-looking, even though path
+    can't escape — we want to surface the attempt, not silently rename it).
+    """
+    if not stem or not isinstance(stem, str):
+        return None
+    safe = "".join(c for c in stem if c.isalnum() or c in ("_", "-")).strip()
+    if not safe:
+        return None
+    # Reject if sanitization altered the stem — operator probably mistyped a
+    # path-like key. Keeps `/api/teacher/students` listings clean.
+    if safe != stem.strip():
+        return None
+    return safe
+
+
+def _merge_student_records(existing: dict, incoming: dict) -> dict:
+    """Merge two student records. Mirrors `/api/sync` semantics:
+
+    - completedScenarios: union
+    - totalMoralScore: max
+    - topicProgress / subjectProgress: per-key take max(completed) and max(total)
+    - lastPlayed: latest non-empty
+    - syncedAt: max timestamp
+    - name / deviceId: incoming wins (most recent)
+    """
+    name = incoming.get("name") or existing.get("name", "")
+    merged = {
+        "name": name,
+        "completedScenarios": list(
+            set(existing.get("completedScenarios", []) + incoming.get("completedScenarios", []))
+        ),
+        "topicProgress": {},
+        "subjectProgress": {},
+        "totalMoralScore": max(
+            existing.get("totalMoralScore", 0) or 0,
+            incoming.get("totalMoralScore", 0) or 0,
+        ),
+        "lastPlayed": incoming.get("lastPlayed") or existing.get("lastPlayed"),
+        "syncedAt": max(
+            existing.get("syncedAt", "") or "",
+            incoming.get("syncedAt", "") or "",
+        ),
+        "deviceId": incoming.get("deviceId") or existing.get("deviceId"),
+    }
+
+    # Topic progress: per-topic max(completed), max(total)
+    tp_existing = existing.get("topicProgress", {}) or {}
+    tp_incoming = incoming.get("topicProgress", {}) or {}
+    for tid in set(tp_existing) | set(tp_incoming):
+        a = tp_existing.get(tid, {}) or {}
+        b = tp_incoming.get(tid, {}) or {}
+        merged["topicProgress"][tid] = {
+            "completed": max(a.get("completed", 0) or 0, b.get("completed", 0) or 0),
+            "total": max(a.get("total", 0) or 0, b.get("total", 0) or 0),
+        }
+
+    # Subject progress: same pattern
+    sp_existing = existing.get("subjectProgress", {}) or {}
+    sp_incoming = incoming.get("subjectProgress", {}) or {}
+    for sid in set(sp_existing) | set(sp_incoming):
+        a = sp_existing.get(sid, {}) or {}
+        b = sp_incoming.get(sid, {}) or {}
+        merged["subjectProgress"][sid] = {
+            "completed": max(a.get("completed", 0) or 0, b.get("completed", 0) or 0),
+            "total": max(a.get("total", 0) or 0, b.get("total", 0) or 0),
+        }
+
+    # Streak: take the record with the longer current streak
+    s_in = incoming.get("streak") or {}
+    s_ex = existing.get("streak") or {}
+    if s_in or s_ex:
+        merged["streak"] = (
+            s_in
+            if (s_in.get("current", 0) or 0) >= (s_ex.get("current", 0) or 0)
+            else s_ex
+        )
+
+    return merged
+
+
 @app.post("/api/teacher/import")
-async def import_students(x_teacher_token: Optional[str] = None, background: BackgroundTasks = None):
-    """Import a JSON backup (multipart file upload)."""
-    # For now, let the frontend handle import via sync endpoint
-    # This endpoint is for full backup restore
-    raise HTTPException(501, "Import via file upload not yet implemented — use sync endpoint")
+async def import_students(
+    x_teacher_token: Optional[str] = Header(None, alias="X-Teacher-Token"),
+    file: UploadFile = File(...),
+    merge: bool = Form(True),
+):
+    """Import a JSON backup produced by `/api/teacher/export`.
+
+    Body: multipart/form-data with a `file` field (the JSON).
+    Form: `merge=true` (default) merges with existing records; `merge=false` overwrites.
+
+    Returns: {ok, written, skipped, replaced, merge}
+    """
+    _require_teacher(x_teacher_token)
+
+    # Read & parse
+    raw = await file.read()
+    try:
+        payload = json.loads(raw)
+    except json.JSONDecodeError as e:
+        raise HTTPException(400, f"Invalid JSON: {e.msg} at line {e.lineno}")
+
+    if not isinstance(payload, dict):
+        raise HTTPException(400, "Backup must be a JSON object keyed by student stem")
+
+    written: list[str] = []
+    replaced: list[str] = []
+    skipped: list[str] = []
+    merged_count = 0
+
+    for stem, record in payload.items():
+        safe = _safe_stem(stem)
+        if not safe or not isinstance(record, dict):
+            skipped.append(str(stem))
+            continue
+        if "name" not in record:
+            skipped.append(stem)
+            continue
+
+        out_path = DATA_DIR / f"{safe}.json"
+        if out_path.exists() and merge:
+            try:
+                existing = json.loads(out_path.read_text())
+            except Exception:
+                existing = {}
+            final = _merge_student_records(existing, record)
+            merged_count += 1
+        else:
+            # New file (or replace mode): sanitize record, ensure name present
+            final = {
+                "name": record.get("name", safe),
+                "completedScenarios": list(record.get("completedScenarios", []) or []),
+                "topicProgress": dict(record.get("topicProgress", {}) or {}),
+                "subjectProgress": dict(record.get("subjectProgress", {}) or {}),
+                "totalMoralScore": int(record.get("totalMoralScore", 0) or 0),
+                "lastPlayed": record.get("lastPlayed"),
+                "syncedAt": record.get("syncedAt", "") or "",
+                "deviceId": record.get("deviceId"),
+            }
+            if out_path.exists():
+                replaced.append(safe)
+
+        out_path.write_text(json.dumps(final, ensure_ascii=False, indent=2))
+        written.append(safe)
+
+    return {
+        "ok": True,
+        "merge": merge,
+        "written": written,
+        "replaced": replaced,
+        "merged": merged_count,
+        "skipped": skipped,
+    }
 
 # ── Static files (serves built app if running from project root) ─────────────
 dist_path = Path(__file__).parent.parent / "dist"
