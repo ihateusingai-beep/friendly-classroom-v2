@@ -10,6 +10,7 @@ import { getProgress, isCompleted, getStudentSummary } from './domain/Progress.j
 import { getDailyCreed } from './creeds.js';
 import { escapeAttr, escapeJsString } from './util/escape.js';
 import { renderFooter, renderEmptyState } from './components/chrome.js';
+import { renderPageHeader, renderOptionCard, renderOptions, renderBankOptionCard } from './components/blocks.js';
 import { bankRiskLabel, BANK_RISK } from './constants/bank.js';
 import { getTeacherConfig } from './storage.js';
 
@@ -74,10 +75,7 @@ export function renderGameHub() {
 
   return `
     <div class="hub-screen fade-in">
-      <div class="page-header">
-        <button type="button" class="back-btn" data-action="goRoleSelect" aria-label="返回主選單">←</button>
-        <h1>🎮 揀個遊戲開始</h1>
-      </div>
+      ${renderPageHeader({ emoji: '🎮', title: '揀個遊戲開始', back: 'role-select', backLabel: '返回主選單' })}
 
       <div class="hub-grid">
         <button type="button" class="game-card available" data-action="playGoodDeedBank" style="background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#eab308" aria-label="好人好事銀行（pilot）：做好事存款，衰嘢扣款，目標存到 $100 變品格富翁">
@@ -208,9 +206,7 @@ export function renderBankResult(scenario, result, run) {
 
   return `
     <div class="container fade-in" style="max-width:560px">
-      <div class="page-header">
-        <h1>🏦 銀行結算</h1>
-      </div>
+      ${renderPageHeader({ emoji: '🏦', title: '銀行結算' })}
       <h2 class="sr-only" aria-live="polite" aria-atomic="true">${announceText}</h2>
 
       <div class="bank-stamp ${isPositive ? 'green' : isNeutral ? 'gray' : 'red'}" id="bank-stamp" role="status" aria-label="${announceText}">
@@ -277,9 +273,7 @@ export function renderBankSummary(run) {
 
   return `
     <div class="container fade-in" style="max-width:560px">
-      <div class="page-header">
-        <h1>🏦 結算單</h1>
-      </div>
+      ${renderPageHeader({ emoji: '🏦', title: '結算單' })}
       ${filterLine}
 
       <div class="bank-end-banner ${isWon ? 'win' : isBankrupt ? 'lose' : 'end'}" style="font-size:1.1em" role="status">
@@ -370,10 +364,7 @@ export function renderModeSelect(currentMode, subjectId) {
 
   return `
     <div class="mode-screen fade-in">
-      <div class="page-header">
-        <button type="button" class="back-btn" data-action="goRoleSelect" aria-label="返回主選單">←</button>
-        <h1>🎮 選擇遊戲模式</h1>
-      </div>
+      ${renderPageHeader({ emoji: '🎮', title: '選擇遊戲模式', back: 'role-select', backLabel: '返回主選單' })}
 
       <div class="mode-header">
         <p>你鍾意點玩？揀一個模式開始！</p>
@@ -445,10 +436,7 @@ export function renderTeacherAssign() {
 
   return `
     <div class="container fade-in">
-      <div class="page-header">
-        <button type="button" class="back-btn" data-action="goTeacher" aria-label="返回老師主控台">←</button>
-        <h1>⚙️ 功能設定</h1>
-      </div>
+      ${renderPageHeader({ emoji: '⚙️', title: '功能設定', back: 'teacher', backLabel: '返回老師主控台' })}
 
       <div class="card" style="margin-bottom:14px">
         <div style="font-weight:700;font-size:1.05em;margin-bottom:14px">🔘 功能開關</div>
@@ -652,11 +640,10 @@ export function renderHome(subjectId) {
 
   return `
     <div class="container fade-in">
-      <div class="page-header">
-        <button type="button" class="back-btn" data-action="goGameHub" aria-label="返回 Game Hub">🎮</button>
-        <h1>🌟 友愛教室</h1>
-        <button type="button" class="back-btn" data-action="switchStudent" title="切換學生" aria-label="切換學生">🔄</button>
-      </div>
+      ${renderPageHeader({
+        emoji: '🌟', title: '友愛教室', back: 'game-hub', backLabel: '返回 Game Hub',
+        rightButton: `<button type="button" class="back-btn" data-action="switchStudent" title="切換學生" aria-label="切換學生">🔄</button>`
+      })}
 
       ${getStudent() ? renderMoralBar(getStudent()) : ''}
 
@@ -718,11 +705,9 @@ export function renderTopicList(topicId, subjectId) {
 
   return `
     <div class="container fade-in">
-      <div class="page-header">
-        <button type="button" class="back-btn" data-action="goHome" aria-label="返回主頁">←</button>
-        <h1>${topic.emoji} ${topic.title}</h1>
-        ${subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''}
-      </div>
+      ${renderPageHeader({ title: `${topic.emoji} ${topic.title}`, back: 'home', backLabel: '返回主頁', backArg: undefined,
+        rightButton: subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''
+      })}
       <p style="color:var(--text-light);margin-bottom:16px">${topic.description}</p>
 
       <ul class="scenario-list" role="list" aria-label="${topic.title} 嘅 ${topicScenarios.length} 個情境">
