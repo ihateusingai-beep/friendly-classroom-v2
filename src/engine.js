@@ -168,7 +168,7 @@ export function renderBankPlay(scenario, run) {
 
       <div class="scenario-image-wrap">
         <img src="assets/images/scenarios/${scenario.id}.png" alt="${scenario.title}" class="scenario-image"
-             onerror="this.style.display='none'" />
+             onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
       </div>
 
       <div class="options" style="margin-top:14px" role="radiogroup" aria-label="銀行題目選項">
@@ -177,7 +177,7 @@ export function renderBankPlay(scenario, run) {
           return `
             <button type="button" class="option-card" onclick="FC.bankChoose('${opt.id}')" aria-label="選項 ${labels[i] || (i+1)}：${opt.text}">
               <img src="assets/images/outcomes/${scenario.id}_opt${i+1}.png" alt=""
-                   class="opt-thumb" onerror="this.style.display='none'" aria-hidden="true" />
+                   class="opt-thumb" onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" aria-hidden="true" />
               <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
             </button>
@@ -559,7 +559,7 @@ export function renderTeacherAssign() {
           老師模式 PIN（預設：admin）
         </p>
         <label for="teacher-pin-input" style="position:absolute;left:-9999px">老師模式 PIN</label>
-        <input type="password" id="teacher-pin-input" value="admin" maxlength="6"
+        <input type="password" id="teacher-pin-input" value="admin" maxlength="6" autocomplete="current-password"
           placeholder="輸入新 PIN"
           style="width:100%;padding:14px;border:2px solid var(--border);border-radius:12px;font-size:1em;box-sizing:border-box;margin-bottom:10px" />
         <button type="button" class="btn btn-outline" style="width:100%;font-size:0.95em"
@@ -827,7 +827,7 @@ export function renderPlay(scenarioId, subjectId) {
 
       <div class="scenario-image-wrap">
         <img src="assets/images/scenarios/${s.id}.png" alt="${s.title}" class="scenario-image"
-             onerror="this.style.display='none'" />
+             onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
       </div>
 
       <div class="options-divider" aria-hidden="true">— 揀你嘅選擇 —</div>
@@ -844,7 +844,7 @@ export function renderPlay(scenarioId, subjectId) {
             <button type="button" class="option-card" onclick="FC.choose('${opt.id}')"
               aria-label="選項 ${labels[i] || (i+1)}：${opt.text}，${valueLabel}">
               <img src="assets/images/outcomes/${s.id}_opt${i+1}.png" alt=""
-                   class="opt-thumb" onerror="this.style.display='none'" aria-hidden="true" />
+                   class="opt-thumb" onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" aria-hidden="true" />
               <span class="opt-badge" aria-hidden="true">${labels[i] || (i+1)}</span>
               <span class="opt-text">${opt.text}</span>
               <span class="opt-value opt-value-${valueClass}" aria-hidden="true">${valueLabel}</span>
@@ -904,7 +904,7 @@ export function renderResult(data, subjectId) {
       ${data.outcomeImage ? `
       <div class="outcome-image-wrap" style="margin-top:16px;border-radius:16px;overflow:hidden">
         <img src="${data.outcomeImage}" alt="結果圖" style="width:100%;border-radius:16px"
-             onerror="this.style.display='none'" />
+             onerror="this.style.opacity='0.3';this.alt='（插圖暫不可用）'" />
       </div>` : ''}
 
       <div class="action-row" id="result-actions">
@@ -958,7 +958,7 @@ export function renderProgress(subjectId) {
           <div class="label">📝 已完成場景</div>
         </div>
         <div class="progress-cell" role="listitem">
-          <div class="num" aria-label="最近遊玩 ${p.lastPlayed || '從未'}">${p.lastPlayed || '—'}</div>
+          <div class="num" aria-label="最近遊玩 ${p.lastPlayed || '從未'}">${p.lastPlayed ? new Date(p.lastPlayed).toLocaleDateString('zh-HK', { month: 'short', day: 'numeric' }) : '—'}</div>
           <div class="label">🗓️ 最近遊玩</div>
         </div>
       </div>

@@ -13,7 +13,7 @@ export function renderLogin() {
       <div class="login-form">
         <h1 style="text-align:center;margin-bottom:20px">🔐 老師登入</h1>
         <label for="teacher-pw" class="sr-only">老師密碼</label>
-        <input id="teacher-pw" type="password" placeholder="輸入密碼" />
+        <input id="teacher-pw" type="password" autocomplete="current-password" placeholder="輸入密碼" />
         <button type="button" class="btn btn-primary" style="width:100%" onclick="FC.doLogin()">登入</button>
         <p id="login-error" role="alert" style="color:var(--danger);text-align:center;margin-top:8px;display:none">密碼錯誤</p>
         <div style="margin-top:12px;text-align:center">
@@ -87,7 +87,7 @@ export function renderTeacher() {
 
       <div class="card" style="margin-top:16px">
         <div style="font-weight:600;margin-bottom:10px">📚 科目總覽</div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px" role="list" aria-label="科目總覽">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px" role="list" aria-label="科目總覽" class="subject-grid">
           ${getAllSubjects().map(sub => {
             const totalCompleted = students.reduce((acc, s) => acc + (s.subjectProgress?.[sub.id]?.completed || 0), 0);
             const totalPossible = students.reduce((acc, s) => acc + (s.subjectProgress?.[sub.id]?.total || 0), 0);

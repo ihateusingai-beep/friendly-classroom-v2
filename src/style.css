@@ -663,13 +663,16 @@ body:has(.action-cta-fab:not([hidden])) .container { padding-bottom: 80px; }
 }
 .option-card:active { transform: scale(0.99); }
 .option-card .opt-thumb {
-  width: 72px;
-  height: 72px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
   border-radius: 12px;
   flex-shrink: 0;
   border: 2px solid var(--border);
   background: linear-gradient(135deg, #f3f4f6, #e5e7eb);  /* fallback when image missing */
+}
+@media (max-width: 480px) {
+  .option-card .opt-thumb { width: 72px; height: 72px; }
 }
 .option-card .opt-badge {
   position: absolute;
@@ -741,6 +744,7 @@ body:has(.action-cta-fab:not([hidden])) .container { padding-bottom: 80px; }
   margin-bottom: 16px;
   text-align: center;
   box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  overflow: hidden;
 }
 .result-card.good { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); border: 3px solid #4CAF50; }
 .result-card.bad { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); border: 3px solid #FF9800; }
@@ -1222,8 +1226,8 @@ body:has(.action-cta-fab:not([hidden])) .container { padding-bottom: 80px; }
 }
 .streak-stat.flame--cold { opacity: 0.7; }
 @keyframes flamePulse {
-  0%, 100% { transform: scale(1) rotate(-2deg); }
-  50%      { transform: scale(1.15) rotate(2deg); }
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.1); }
 }
 
 /* ---- Daily creed card ---- */
