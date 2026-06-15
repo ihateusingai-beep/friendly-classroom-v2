@@ -20,6 +20,17 @@
 //   setBankMaxRisk, toggleAssignedTopic,
 //   saveTeacherPIN, saveTeacherConfig
 
+// Self-init window.FC at module-load time. Required because main.js
+// `import './domain/IO.js'` evaluates this module's top level before
+// main.js has had a chance to run any non-import code. The other
+// domain modules do the same. Idempotent and safe.
+// Using a top-level side-effect expression in a function wrapper to
+// defeat Vite/Rollup's "window is always defined" DCE pass.
+(() => {
+  if (typeof window === 'undefined') return;
+  if (!window.FC) window.FC = {};
+})();
+
 let _render = null;
 let _getStudent = null;
 let _getAllStudents = null;
