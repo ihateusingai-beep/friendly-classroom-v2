@@ -86,7 +86,7 @@ export function renderGameHub() {
           <div class="gc-tag" aria-label="pilot 試玩版">pilot</div>
         </button>
 
-        <button type="button" class="game-card available" data-action="goSubjectSelect" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#7C3AED" aria-label="情境答題：17 個品格課題自由探索">
+        <button type="button" class="game-card available" data-action="navigate" data-arg="subject-select" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#7C3AED" aria-label="情境答題：17 個品格課題自由探索">
           <div class="gc-icon" aria-hidden="true">📖</div>
           <div class="gc-title">情境答題</div>
           <div class="gc-desc">17 個品格課題自由探索：12 個 EDB 價值觀 + 5 個友愛校園範疇</div>
@@ -108,7 +108,7 @@ export function renderGameHub() {
       </div>
 
       <div class="fc-center-20">
-        <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="role-select">← 返回</button>
       </div>
       ${renderFooter()}
     </div>
@@ -383,21 +383,21 @@ export function renderModeSelect(currentMode, subjectId) {
       ${subjectId ? `
         <div class="fc-center">
           <button type="button" class="btn btn-primary" style="min-width:220px;font-size:1.1em"
-            data-action="goHome">
+            data-action="navigate" data-arg="home">
             ✅ 確定，開始學習 →
           </button>
         </div>
       ` : `
         <div class="fc-center">
           <button type="button" class="btn btn-primary" style="min-width:220px;font-size:1.1em"
-            data-action="goSubjectSelect">
+            data-action="navigate" data-arg="subject-select">
             📚 選擇課題 →
           </button>
         </div>
       `}
 
       <div class="fc-center-top">
-        <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="role-select">← 返回</button>
       </div>
 
       ${renderFooter()}
@@ -709,10 +709,10 @@ export function renderHome(subjectId) {
       </div>
 
       <div class="home-footer-grid">
-        <button type="button" class="btn btn-outline" data-action="goProgress">📊 我的進度</button>
-        <button type="button" class="btn btn-outline" data-action="goSettings">⚙️ 設定</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="progress">📊 我的進度</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="settings">⚙️ 設定</button>
         <button type="button" class="btn btn-outline" data-action="switchStudent">🔄 切換學生</button>
-        <button type="button" class="btn btn-outline" data-action="goGameHub">🎮 返回 Game Hub</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="hub">🎮 返回 Game Hub</button>
       </div>
       ${renderFooter()}
     </div>
@@ -959,7 +959,7 @@ ${renderPageHeader({
 
       <div class="action-row">
         <button type="button" class="btn btn-outline" data-action="exportMyData">📤 匯出進度</button>
-        <button type="button" class="btn btn-outline" data-action="goHome">← 返回首頁</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="home">← 返回首頁</button>
       </div>
       ${renderFooter()}
     </div>

@@ -303,15 +303,15 @@ async function _loadTeacher() {
 }
 
 // ── 路由 ──
-/**
- * Navigate to the home view (subject-aware). Triggered by `data-action="goHome"`.
- * @returns {void}
- */
-export function goHome() {
-  setView('home');
-  navRender();
-}
-window.FC.goHome = goHome;
+//
+// Sprint 1 (Track A1): retired pure navigation stubs (goHome, goProgress,
+// goGameHub, goSettings, goSubjectSelect, goRoleSelect, goHub, goModeSelect,
+// goTeacherAssign). They were one-line wrappers around setView + render, and
+// all of their inline `data-action="go*"` call sites have been migrated to
+// `data-action="navigate" data-arg="..."` (which routes through nav.js).
+// The remaining 3 navigation-style handlers below — goTopic, goTeacher,
+// goRandom — have real side effects (load scenarios, load teacher chunk,
+// random pick) and are kept.
 
 /** Reload the page (used by error fallback). */
 window.FC.reload = function() { location.reload(); };
@@ -453,18 +453,6 @@ export function retry() {
 }
 window.FC.retry = retry;
 
-export function goProgress() {
-  // 移除 student-select，直接去進度頁
-  setView('progress');
-  render();
-}
-window.FC.goProgress = goProgress;
-
-export function goGameHub() {
-  setView('hub');
-  render();
-}
-window.FC.goGameHub = goGameHub;
 
 /**
  * Phase 6 (home page declutter): set the topic-domain filter
@@ -481,11 +469,6 @@ export function setHomeFilter(filter) {
 }
 window.FC.setHomeFilter = setHomeFilter;
 
-export function goSettings() {
-  setView('settings');
-  render();
-}
-window.FC.goSettings = goSettings;
 
 export async function goTeacher() {
   // 懶加載 teacher chunk
@@ -498,13 +481,13 @@ window.FC.goTeacher = goTeacher;
 export async function goRandom() {
   // 自由模式仍需要揀 subjectId，否則 markComplete 會污染 subjectProgress
   if (!state.subjectId) {
-    goSubjectSelect();
+    _navigate('subject-select');
     return;
   }
   // Phase 3 (S13): ensure scenarios are loaded before random pick
   if (!_scenariosLoaded) await loadScenarios();
   const all = getScenarios();
-  if (!all.length) { goHome(); return; }
+  if (!all.length) { _navigate('home'); return; }
   const s = all[Math.floor(Math.random() * all.length)];
   play(s.id);
 }
@@ -630,11 +613,6 @@ window.FC.setTTSLang = function(langId) {
 window.FC.getTTSLang = function() { return getTTSLang(); };
 window.FC.TTS_LANGS = TTS_LANGS;
 
-export function goSubjectSelect() {
-  setView('subject-select');
-  render();
-}
-window.FC.goSubjectSelect = goSubjectSelect;
 
 export function selectSubject(subjectId) {
   initSubjectProgress(subjectId);
@@ -644,11 +622,6 @@ export function selectSubject(subjectId) {
 window.FC.selectSubject = selectSubject;
 
 // ── Role Select (Entry Point) ──
-export function goRoleSelect() {
-  setView('role-select');
-  render();
-}
-window.FC.goRoleSelect = goRoleSelect;
 
 export async function chooseRole(role) {
   state = { ...state, role, teacherMode: role === 'teacher' };
@@ -665,11 +638,6 @@ export async function chooseRole(role) {
 }
 window.FC.chooseRole = chooseRole;
 
-export function goHub() {
-  setView('hub');
-  render();
-}
-window.FC.goHub = goHub;
 
 export function selectMode(modeId) {
   localStorage.setItem('fc_game_mode', modeId);
@@ -688,19 +656,7 @@ export function selectMode(modeId) {
     }
   }, 50);
 }
-window.FC.selectMode = selectMode;
 
-export function goModeSelect() {
-  setView('mode-select');
-  render();
-}
-window.FC.goModeSelect = goModeSelect;
-
-export function goTeacherAssign() {
-  setView('teacher-assign');
-  render();
-}
-window.FC.goTeacherAssign = goTeacherAssign;
 
 // Teacher config helpers
 function getTeacherConfig() {
@@ -780,7 +736,7 @@ function renderStudentSelect() {
       <h1 style="text-align:center;margin-bottom:24px">👤 選擇學生</h1>
       <div class="fc-flex-col-gap fc-mb-20" role="list" aria-label="已登記嘅學生">
         ${saved.map(student => `
-          <button type="button" class="student-card" onclick="FC.selectStudent('${escapeAttr(student.name)}')" role="listitem"
+          <button type="button" class="student-card" data-action="selectStudent" data-arg="${escapeAttr(student.name)}" role="listitem"
             aria-label="選擇學生 ${escapeAttr(student.name)}，按此開始學習">
             <span class="avatar" aria-hidden="true">${student.emoji || '👤'}</span>
             <span class="info">
@@ -799,7 +755,7 @@ function renderStudentSelect() {
         <button type="button" class="btn btn-success" class="fc-w-100" data-action="addStudent">➕ 新增學生</button>
       </div>
       <div style="margin-top:16px;text-align:center">
-        <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回首頁</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="role-select">← 返回首頁</button>
       </div>
       ${renderFooter()}
     </div>
@@ -820,7 +776,7 @@ function renderSubjectSelect() {
       <div class="subject-grid" role="list" aria-label="科目清單">
         ${getAllSubjects().map(sub => `
           <button type="button" class="subject-btn" style="background:${sub.bgColor};border-color:${sub.color}"
-            onclick="FC.selectSubject('${sub.id}')" role="listitem"
+            data-action="selectSubject" data-arg="${escapeAttr(sub.id)}" role="listitem"
             aria-label="選擇科目 ${sub.title}">
             <span style="font-size:2em" aria-hidden="true">${sub.emoji}</span>
             <span style="font-weight:600;color:${sub.color}">${sub.title}</span>
@@ -828,7 +784,7 @@ function renderSubjectSelect() {
         `).join('')}
       </div>
       <div style="margin-top:12px;text-align:center">
-        <button type="button" class="btn btn-outline" data-action="goHome">← 返回</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="home">← 返回</button>
       </div>
       ${renderFooter()}
     </div>
@@ -1226,7 +1182,7 @@ function renderErrorFallback(e) {
           <pre style="white-space:pre-wrap;margin-top:8px;color:var(--danger)">${e.message}</pre>
         </details>
         <div class="action-row" style="justify-content:center">
-          <button type="button" class="btn btn-primary" data-action="goHome">← 返主頁</button>
+          <button type="button" class="btn btn-primary" data-action="navigate" data-arg="home">← 返主頁</button>
           <button type="button" class="btn btn-outline" data-action="reload">${t('error.fallbackReload')}</button>
         </div>
       </div>

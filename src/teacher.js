@@ -19,7 +19,7 @@ export function renderLogin() {
         <button type="button" class="btn btn-primary" class="fc-w-100" data-action="doLogin">登入</button>
         <p id="login-error" role="alert" style="color:var(--danger);text-align:center;margin-top:8px;display:none">密碼錯誤</p>
         <div style="margin-top:12px;text-align:center">
-          <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回</button>
+          <button type="button" class="btn btn-outline" data-action="navigate" data-arg="role-select">← 返回</button>
         </div>
       </div>
       ${renderFooter()}
@@ -34,7 +34,7 @@ export function renderTeacher() {
     return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" data-action="goRoleSelect" aria-label="返回主選單">←</button>
+        <button type="button" class="back-btn" data-action="navigate" data-arg="role-select" aria-label="返回主選單">←</button>
         <h1>📊 老師儀表板</h1>
       </div>
       <div class="teacher-panel">
@@ -43,7 +43,7 @@ export function renderTeacher() {
       </div>
       ${renderEmptyState({ emoji: '📭', title: '暫時沒有學生數據', hint: '學生完成學習後會自動顯示在這裡' })}
       <div class="fc-mt-16">
-        <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回首頁</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="role-select">← 返回首頁</button>
       </div>
       ${renderFooter()}
     </div>`;
@@ -52,7 +52,7 @@ export function renderTeacher() {
   return `
     <div class="container fade-in">
       <div class="page-header">
-        <button type="button" class="back-btn" data-action="goRoleSelect" aria-label="返回主選單">←</button>
+        <button type="button" class="back-btn" data-action="navigate" data-arg="role-select" aria-label="返回主選單">←</button>
         <h1>📊 老師儀表板</h1>
       </div>
 
@@ -121,11 +121,11 @@ export function renderTeacher() {
       <div class="card">
         <div style="font-weight:600;margin-bottom:10px">⚙️ 老師設定</div>
         <p style="font-size:0.85em;color:var(--text-light);margin-bottom:8px">控制學生的功能開關、課題範圍、PIN</p>
-        <button type="button" class="btn btn-primary" data-action="goTeacherAssign">⚙️ 功能設定</button>
+          <button type="button" class="btn btn-primary" data-action="navigate" data-arg="teacher-assign">⚙️ 功能設定</button>
       </div>
 
       <div class="fc-mt-16">
-        <button type="button" class="btn btn-outline" data-action="goRoleSelect">← 返回首頁</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="role-select">← 返回首頁</button>
       </div>
       ${renderFooter()}
     </div>
