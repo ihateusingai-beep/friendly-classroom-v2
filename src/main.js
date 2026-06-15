@@ -1,4 +1,11 @@
 // 友愛教室 V2 — main.js
+
+// MUST come before any import that runs `window.FC.X = ...` at module
+// top level. The domain modules (Student/Auth/Play/Hub/IO) register
+// their handlers eagerly when imported, so window.FC must already exist
+// by the time we import them below.
+window.FC = window.FC || {};
+
 import './style.css';
 import './sw-register.js';  // PWA install + update prompt
 import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic,
@@ -155,7 +162,8 @@ if (_currentStudent) {
 // getSubjectColor / getSubjectBgColor 已從 ./subjects.js import
 
 // ── 全域 FC 初始化（防止 undefined error） ──
-window.FC = window.FC || {};
+// (moved to top-of-file so domain modules can register window.FC.* at
+//  module-load time without hitting undefined)
 
 // ── 狀態機 (Phase 4 S20: factory + setView) ──
 //
