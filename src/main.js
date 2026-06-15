@@ -27,6 +27,13 @@ import { initSync, syncNow, getSyncStatus } from './sync.js';
 import { logInteraction, markScenarioShown, exportInteractionsCSV, getStats, clearInteractions } from './domain/Analytics.js';
 import { navigate as _navigate, wireNav } from './nav.js';
 import { announceToSR, announceScenarioLoad } from './components/Toast.js';
+
+// ── 慶祝 layer 喺 reduced motion 模式下直接 skip（即使 CSS override 都慳返 render）
+// 對應 Play.js 嘅 triggerConfetti / triggerStarFloat / triggerComfort
+function _isReducedMotion() {
+  return document.documentElement.hasAttribute('data-rm');
+}
+
 // Sprint 2 / Track A2: split main.js into domain modules. Each module is
 // wired with main.js locals (setView / render / scenario engine) to keep
 // a single source of truth and avoid circular deps. window.FC.* exports
