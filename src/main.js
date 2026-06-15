@@ -466,6 +466,21 @@ export function goGameHub() {
 }
 window.FC.goGameHub = goGameHub;
 
+/**
+ * Phase 6 (home page declutter): set the topic-domain filter
+ * (value / caring / all) and re-render home.
+ * Triggers from the filter-tab buttons rendered by renderHome().
+ */
+export function setHomeFilter(filter) {
+  if (!['value', 'caring', 'all'].includes(filter)) {
+    console.warn('[FC] setHomeFilter: invalid filter', filter);
+    return;
+  }
+  localStorage.setItem('fc_home_filter', filter);
+  render();
+}
+window.FC.setHomeFilter = setHomeFilter;
+
 export function goSettings() {
   setView('settings');
   render();

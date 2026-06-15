@@ -40,6 +40,11 @@ export const STORAGE_KEYS = Object.freeze({
   // Game mode (free / relaxed / challenge — per student)
   GAME_MODE: 'fc_game_mode',
 
+  // Home view filter ('value' | 'caring' | 'all') — which topic-domain
+  // section(s) to show on the home page. Defaults to 'value' when student
+  // picked 價值觀教育; 'caring' for 友愛校園; 'all' if no subject yet.
+  HOME_FILTER: 'fc_home_filter',
+
   // Analytics
   INTERACTIONS: 'fc_interactions_v1',
 

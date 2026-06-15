@@ -371,6 +371,45 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   grid-template-columns: repeat(2, 1fr);
   gap: 12px;
 }
+
+/* ---- Phase 6: Home filter tabs (value / caring / all) ---- */
+.home-filter-row {
+  display: flex;
+  gap: 6px;
+  margin: 0 0 12px 0;
+  padding: 4px;
+  background: var(--bg-soft, #f7f7fa);
+  border-radius: 12px;
+}
+.home-filter-tab {
+  flex: 1;
+  padding: 8px 6px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: var(--text-light, #666);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.home-filter-tab:hover { background: rgba(0, 0, 0, 0.04); }
+.home-filter-tab.active {
+  background: var(--card-bg, #fff);
+  color: var(--text, #1a1a1a);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+.home-filter-count {
+  font-size: 0.78em;
+  color: var(--text-light, #999);
+  font-weight: 500;
+}
+.home-filter-tab.active .home-filter-count { color: var(--text-light, #666); }
 .topic-card {
   padding: 20px;
   border-radius: var(--radius);

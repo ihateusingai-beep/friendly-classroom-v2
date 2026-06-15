@@ -628,6 +628,39 @@ export function renderHome(subjectId) {
   const flameEmoji = streak >= 7 ? '🔥' : streak >= 3 ? '✨' : streak >= 1 ? '🌱' : '💤';
   const flameClass = streak >= 7 ? 'flame--hot' : streak >= 1 ? 'flame--warm' : 'flame--cold';
 
+  // Phase 6: subject-domain filter — split the 17 topics into
+  // 🪷 價值觀 (12) / 🌈 友愛校園 (5) / 全部 (17) tabs to declutter the home
+  // grid. Default tracks the student's subject choice (selectsubject already
+  // narrows by domain); 全部 is an explicit escape hatch.
+  const allowedFilters = ['value', 'caring', 'all'];
+  const stored = (typeof localStorage !== 'undefined'
+    && localStorage.getItem('fc_home_filter')) || '';
+  let filter = allowedFilters.includes(stored) ? stored : '';
+  if (!filter) {
+    // No saved preference — derive from current subjectId.
+    // subjectId semantics in this app: 'value' (EDB 12 values) / 'caring'
+    // (友愛校園 5) / anything else (uncategorized) → 'all'.
+    if (subjectId === 'value') filter = 'value';
+    else if (subjectId === 'caring') filter = 'caring';
+    else filter = 'all';
+  }
+  const visibleTopics = filter === 'all'
+    ? TOPICS
+    : TOPICS.filter(t => t.domain === filter);
+  const filterTab = (key, label, count) => {
+    const isActive = filter === key;
+    return `<button type="button" class="home-filter-tab ${isActive ? 'active' : ''}"
+        data-action="setHomeFilter" data-arg="${key}"
+        aria-pressed="${isActive}" aria-label="顯示${label}，共 ${count} 個">${label} <span class="home-filter-count">${count}</span></button>`;
+  };
+  const valuesCount = TOPICS.filter(t => t.domain === 'value').length;
+  const caringCount = TOPICS.filter(t => t.domain === 'caring').length;
+  const sectionTitle = filter === 'all'
+    ? '🪷🌈 全部 17 個品格課題'
+    : (filter === 'value'
+        ? '🪷 12 個 EDB 官方價值觀'
+        : '🌈 5 個友愛校園範疇（SEL / 安全）');
+
   return `
     <div class="container fade-in">
       ${renderPageHeader({
@@ -662,17 +695,16 @@ export function renderHome(subjectId) {
         </div>
       </div>
 
-      <div class="topic-section">
-        <h2 class="section-title">🪷 12 個價值觀（EDB 官方）</h2>
-        <div class="topic-grid" role="list" aria-label="12 個 EDB 價值觀">
-          ${VALUES.map(t => _renderTopicCard(t, topicProgress[t.id] || {})).join('')}
-        </div>
+      <div class="home-filter-row" role="tablist" aria-label="課題分類過濾">
+        ${filterTab('value', '🪷 價值觀', valuesCount)}
+        ${filterTab('caring', '🌈 友愛校園', caringCount)}
+        ${filterTab('all', '📚 全部', TOPICS.length)}
       </div>
 
       <div class="topic-section">
-        <h2 class="section-title">🌈 友愛校園 5 範疇（SEL / 安全）</h2>
-        <div class="topic-grid" role="list" aria-label="5 個友愛校園範疇">
-          ${CARING.map(t => _renderTopicCard(t, topicProgress[t.id] || {})).join('')}
+        <h2 class="section-title">${sectionTitle}</h2>
+        <div class="topic-grid" role="list" aria-label="${sectionTitle}">
+          ${visibleTopics.map(t => _renderTopicCard(t, topicProgress[t.id] || {})).join('')}
         </div>
       </div>
 
