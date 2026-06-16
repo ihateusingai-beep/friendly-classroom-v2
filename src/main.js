@@ -17,7 +17,7 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
          GAME_MODES } from './engine.js';
 import { applyScenarioResult } from './domain/Moral.js';
 import { startBankRun, getBankRun, endBankRun, recordBankTransaction, advanceToNextQuestion, BANK_CONFIG } from './games/GoodDeedBank.js';
-import { speakScenario, speakCreeds, isSpeaking, stopSpeaking, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
+import { speakScenario, speakCreeds, speak, isSpeaking, stopSpeaking, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
 import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
 import { getTopic as getTopicMeta } from './topics.js';
