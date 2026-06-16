@@ -82,6 +82,12 @@ export function updateSubjectTotal(studentName, subjectId, total) {
   const p = getProgress(studentName);
   if (!p.subjectProgress[subjectId]) {
     p.subjectProgress[subjectId] = { completed: 0, total };
+  } else if (p.subjectProgress[subjectId].total === total) {
+    // No-op: same value already persisted. Avoids the `lastPlayed`
+    // bump + storage write that saveProgress() would otherwise incur
+    // on every re-call (the engine may call this on every render
+    // until the first chunk lands and a real total is computable).
+    return;
   } else {
     p.subjectProgress[subjectId].total = total;
   }

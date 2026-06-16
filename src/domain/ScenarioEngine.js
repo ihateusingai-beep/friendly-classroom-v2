@@ -7,15 +7,15 @@ import { getCreedsByIds, formatCreeds } from '../creeds.js';
 
 // Sprint 3 / Track B1: per-topic scenario chunk loading.
 //
-// Before: a single 514KB scenarios.json was lazy-imported whole on the
-// first call to loadScenarios(). Each topic click parsed all 259 items
-// even though the student would only ever see ~15.
+// data/scenarios/<topic-id>.json — 17 per-topic chunks (~20-28KB each,
+// total ~376KB). Bundler-friendly glob gives us a static path map;
+// loadScenarios() resolves every chunk in parallel for paths that
+// need the full set (Good-Deed Bank random pick), and
+// loadScenariosForTopic(id) lazily loads just one chunk on demand.
 //
-// Now: data/scenarios.json is split into 17 per-topic chunks
-// (data/scenarios/<topic-id>.json, ~20-28KB each). Bundler-friendly glob
-// gives us a static path map; loadScenarios() resolves every chunk in
-// parallel for paths that need the full set (Good-Deed Bank random pick),
-// and loadScenariosForTopic(id) lazily loads just one chunk on demand.
+// Sprint 4 / A1: each scenario now carries a `subjectId` field
+// (value | caring) so initSubjectProgress() can write a subject-
+// specific total instead of falling back to all-scenarios.
 //
 // The id→topic reverse index is populated during chunk merges, so
 // getScenarioById(id) can resolve the owning topic and load that one
@@ -26,11 +26,13 @@ let currentTopic = null;
 let currentScenario = null;
 let scenarios = [];
 
-// 追蹤已 init 過嘅 (student, topic) / (student, subject) 組合，避免每次 render
-// 重覆寫入 + 觸發 sync. Declared at top so setStudent() can clear() them on
-// student switch without a forward-reference.
+// 追蹤已 init 過嘅 (student, topic) 組合，避免每次 render 重覆寫入 + 觸發 sync.
+// Declared at top so setStudent() can clear() it on student switch without
+// a forward-reference. Subject-level dedupe is intentionally absent: the
+// engine needs to re-call updateSubjectTotal() on every render until the
+// first chunk lands, and updateSubjectTotal() itself is idempotent (it
+// no-ops when the value hasn't changed).
 const initedTopicForStudent = new Set();   // key: `${student}|${topicId}`
-const initedSubjectForStudent = new Set();  // key: `${student}|${subjectId}`
 
 // Per-topic load state. _loadedTopics tracks which chunks are merged into
 // the in-memory cache; _pendingLoads de-dupes concurrent load requests.
@@ -63,8 +65,6 @@ function _mergeChunk(topicId, arr) {
     _scenarioToTopic.set(s.id, topicId);
   }
   _loadedTopics.add(topicId);
-  // Drain any pending subject-total writes — see initSubjectProgress.
-  _refreshPendingTotals();
 }
 
 // ── Student ──
@@ -72,7 +72,6 @@ export function setStudent(name) {
   currentStudent = name;
   // 換學生後 init cache 都要清返，避免撈到舊學生嘅 record
   initedTopicForStudent.clear();
-  initedSubjectForStudent.clear();
 }
 export function getStudent() { return currentStudent; }
 
@@ -189,8 +188,8 @@ export function getScenarioStatus(scenarioId) {
   return isCompleted(currentStudent, scenarioId) ? 'completed' : 'available';
 }
 
-// (initedTopicForStudent / initedSubjectForStudent are declared at the top of
-// this module so setStudent() can clear() them without a forward reference.)
+// (initedTopicForStudent is declared at the top of this module so
+// setStudent() can clear() it without a forward reference.)
 
 export function initTopicProgress(topicId) {
   if (!currentStudent) return;
@@ -202,43 +201,17 @@ export function initTopicProgress(topicId) {
 }
 
 export function initSubjectProgress(subjectId) {
-  // TODO: scenarios.json 而家冇 subjectId field。當 data 加返之後，
-  // 喺度 filter 嗰個 subject 嘅 scenarios 先傳 total。
-  // 而家 fallback 用全部 scenarios 嘅長度，避免 0 嘅 dead state。
+  // Sprint 4 / A1: scenarios now carry `subjectId` so we can filter
+  // the total to the chosen subject instead of writing all-scenarios
+  // (which was misleading — 184 of 259 belong to 'value', 75 to
+  // 'caring'). Per-topic lazy load means the cache may still be empty
+  // on the first call; the next render after a chunk lands will
+  // re-enter here with a real value. updateSubjectTotal() skips the
+  // storage write when the value hasn't changed, so this is safe to
+  // call every render.
   if (!currentStudent || !subjectId) return;
-  const key = `${currentStudent}|${subjectId}`;
-  if (initedSubjectForStudent.has(key)) return;
-  initedSubjectForStudent.add(key);
-  const all = getScenarios();
-  if (all.length === 0) {
-    // Per-topic lazy load means scenarios cache is empty when the
-    // student first picks a subject. Don't write 0 (would lock in
-    // 0/0 for the subject progress bar) — wait for the first chunk
-    // merge to fire _refreshPendingTotals(), which will write the
-    // correct total.
-    _pendingSubjectRefreshes.add(key);
-    return;
-  }
-  updateSubjectTotal(currentStudent, subjectId, all.length);
-}
-
-// Pending subject-total writes for students who picked a subject before
-// any chunk was loaded. Drained by _refreshPendingTotals() once the
-// first chunk lands.
-const _pendingSubjectRefreshes = new Set();
-
-// Called by the engine right after a chunk merges into the cache, so
-// any subject picked before data loaded gets a real total. Internal
-// API — exported only so the chunk-merge path can call it.
-export function _refreshPendingTotals() {
-  if (_pendingSubjectRefreshes.size === 0) return;
-  const len = getScenarios().length;
-  if (len === 0) return;
-  for (const k of _pendingSubjectRefreshes) {
-    const [s, sid] = k.split('|');
-    updateSubjectTotal(s, sid, len);
-  }
-  _pendingSubjectRefreshes.clear();
+  const total = getScenarios().filter(s => s.subjectId === subjectId).length;
+  updateSubjectTotal(currentStudent, subjectId, total);
 }
 
 export function getDisplayProgress() {

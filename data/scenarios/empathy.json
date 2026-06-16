@@ -98,7 +98,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-h3",
@@ -163,7 +164,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-b3",
@@ -228,7 +230,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-door1",
@@ -305,7 +308,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-door4",
@@ -399,7 +403,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new2",
@@ -477,7 +482,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new8",
@@ -555,7 +561,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new15",
@@ -633,7 +640,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new18",
@@ -711,7 +719,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new22",
@@ -789,7 +798,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-35",
@@ -851,7 +861,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-36",
@@ -914,7 +925,8 @@
 "易地而處",
 "聆聽",
 "理解情緒"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-174",
@@ -992,7 +1004,8 @@
 "聆聽",
 "安慰"
 ],
-"imagePrompt": "Hong Kong primary classroom, child comforting sad friend who learned father is in hospital, morning light, anime cartoon style, expressive, warm tones, no text, 16:9"
+"imagePrompt": "Hong Kong primary classroom, child comforting sad friend who learned father is in hospital, morning light, anime cartoon style, expressive, warm tones, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-175",
@@ -1070,7 +1083,8 @@
 "聆聽",
 "理解情緒"
 ],
-"imagePrompt": "Hong Kong primary classroom, child welcoming new student who speaks different dialect, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom, child welcoming new student who speaks different dialect, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-176",
@@ -1148,6 +1162,7 @@
 "聆聽",
 "say sorry"
 ],
-"imagePrompt": "Hong Kong child sitting with sad friend after bad exam, after school, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong child sitting with sad friend after bad exam, after school, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "value"
 }
 ]

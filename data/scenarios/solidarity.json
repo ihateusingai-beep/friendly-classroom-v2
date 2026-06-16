@@ -60,7 +60,8 @@
 "小組合作",
 "輪流分享",
 "鼓勵隊友"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-62",
@@ -123,7 +124,8 @@
 "小組合作",
 "輪流分享",
 "鼓勵隊友"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-63",
@@ -186,7 +188,8 @@
 "小組合作",
 "輪流分享",
 "鼓勵隊友"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-64",
@@ -249,7 +252,8 @@
 "小組合作",
 "輪流分享",
 "鼓勵隊友"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-65",
@@ -312,7 +316,8 @@
 "小組合作",
 "輪流分享",
 "鼓勵隊友"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-66",
@@ -375,7 +380,8 @@
 "小組合作",
 "輪流分享",
 "鼓勵隊友"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-139",
@@ -453,7 +459,8 @@
 "輪流分享",
 "鼓勵隊友"
 ],
-"imagePrompt": "Hong Kong primary classroom, group of children working together on poster, sharing materials, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom, group of children working together on poster, sharing materials, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-140",
@@ -531,7 +538,8 @@
 "小組合作",
 "支持"
 ],
-"imagePrompt": "Hong Kong school sports day, relay team on track, teammates encouraging fallen runner, sunshine, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong school sports day, relay team on track, teammates encouraging fallen runner, sunshine, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-141",
@@ -609,7 +617,8 @@
 "小組合作",
 "帶領"
 ],
-"imagePrompt": "Hong Kong primary school sports class, two classes competing, teammates encouraging each other, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong primary school sports class, two classes competing, teammates encouraging each other, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-142",
@@ -687,7 +696,8 @@
 "輪流分享",
 "付出"
 ],
-"imagePrompt": "Hong Kong primary classroom after school, group of children rehearsing drama, one child practicing small role, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong primary classroom after school, group of children rehearsing drama, one child practicing small role, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-143",
@@ -765,7 +775,8 @@
 "鼓勵隊友",
 "主動"
 ],
-"imagePrompt": "Hong Kong primary classroom during break, new student sitting alone, another child approaching with smile, anime cartoon style, soft pastel watercolor, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom during break, new student sitting alone, another child approaching with smile, anime cartoon style, soft pastel watercolor, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-144",
@@ -843,7 +854,8 @@
 "輪流分享",
 "支持"
 ],
-"imagePrompt": "Hong Kong primary school cooperative shop, children working together at stall, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong primary school cooperative shop, children working together at stall, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-145",
@@ -921,7 +933,8 @@
 "輪流分享",
 "帶領"
 ],
-"imagePrompt": "Hong Kong primary classroom after school, group of children cleaning together with brooms and cloths, sunset light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong primary classroom after school, group of children cleaning together with brooms and cloths, sunset light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-146",
@@ -999,7 +1012,8 @@
 "小組合作",
 "支持"
 ],
-"imagePrompt": "Hong Kong school track after school, teammates running together, supporting slower runner, sunset light, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong school track after school, teammates running together, supporting slower runner, sunset light, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-147",
@@ -1077,6 +1091,7 @@
 "支持",
 "陪伴"
 ],
-"imagePrompt": "Hong Kong child sitting on park bench with sad friend, putting hand on shoulder, afternoon sun, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child sitting on park bench with sad friend, putting hand on shoulder, afternoon sun, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 }
 ]

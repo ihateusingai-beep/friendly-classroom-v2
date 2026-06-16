@@ -60,7 +60,8 @@
 "自我管理",
 "完成 routine",
 "帶齊物品"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-38",
@@ -123,7 +124,8 @@
 "自我管理",
 "完成 routine",
 "帶齊物品"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-39",
@@ -185,7 +187,8 @@
 "自我管理",
 "完成 routine",
 "帶齊物品"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-40",
@@ -248,7 +251,8 @@
 "自我管理",
 "完成 routine",
 "帶齊物品"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-41",
@@ -311,7 +315,8 @@
 "自我管理",
 "完成 routine",
 "帶齊物品"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-42",
@@ -374,7 +379,8 @@
 "自我管理",
 "完成 routine",
 "帶齊物品"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-121",
@@ -447,7 +453,8 @@
 "routine",
 "完成 routine"
 ],
-"imagePrompt": "Hong Kong child waking up to alarm clock in morning, school uniform ready on chair, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+"imagePrompt": "Hong Kong child waking up to alarm clock in morning, school uniform ready on chair, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-122",
@@ -525,7 +532,8 @@
 "自我管理",
 "誠實"
 ],
-"imagePrompt": "Hong Kong child at desk with homework book, writing carefully, evening warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child at desk with homework book, writing carefully, evening warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-123",
@@ -603,7 +611,8 @@
 "照顧家人",
 "完成 routine"
 ],
-"imagePrompt": "Hong Kong child washing dishes in kitchen, mother resting nearby, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child washing dishes in kitchen, mother resting nearby, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-124",
@@ -676,7 +685,8 @@
 "自我管理",
 "建立 routine"
 ],
-"imagePrompt": "Hong Kong child at front door realizing forgot music instrument, morning light, considering going back, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child at front door realizing forgot music instrument, morning light, considering going back, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-125",
@@ -754,7 +764,8 @@
 "自我管理",
 "照顧生命"
 ],
-"imagePrompt": "Hong Kong child tending to wilting plant on windowsill, morning sunlight, holding water can, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child tending to wilting plant on windowsill, morning sunlight, holding water can, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-126",
@@ -832,7 +843,8 @@
 "帶領",
 "完成 routine"
 ],
-"imagePrompt": "Hong Kong primary classroom, group leader talking to teammates, poster on table, morning light, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom, group leader talking to teammates, poster on table, morning light, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-127",
@@ -910,7 +922,8 @@
 "自我管理",
 "建立系統"
 ],
-"imagePrompt": "Hong Kong child sorting scattered toys and Lego into labeled boxes, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child sorting scattered toys and Lego into labeled boxes, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-128",
@@ -988,7 +1001,8 @@
 "自我管理",
 "建立 routine"
 ],
-"imagePrompt": "Hong Kong child at classroom desk looking through school bag for missing homework, morning light, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong child at classroom desk looking through school bag for missing homework, morning light, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-129",
@@ -1061,6 +1075,7 @@
 "自我管理",
 "完成 routine"
 ],
-"imagePrompt": "Hong Kong child folding school uniform in bedroom, morning sunlight, careful and focused, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child folding school uniform in bedroom, morning sunlight, careful and focused, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 }
 ]

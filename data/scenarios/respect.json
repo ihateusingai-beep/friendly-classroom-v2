@@ -91,7 +91,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s5",
@@ -191,7 +192,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s7",
@@ -274,7 +276,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-c2",
@@ -355,7 +358,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-b1",
@@ -419,7 +423,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-b4",
@@ -483,7 +488,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-c5",
@@ -559,7 +565,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-c7",
@@ -635,7 +642,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new1",
@@ -712,7 +720,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new4",
@@ -789,7 +798,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new6",
@@ -866,7 +876,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new10",
@@ -943,7 +954,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new16",
@@ -1020,7 +1032,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-new19",
@@ -1097,7 +1110,8 @@
 "語言尊重",
 "包容差異",
 "旁觀者介入"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-177",
@@ -1175,6 +1189,7 @@
 "包容差異",
 "旁觀者介入"
 ],
-"imagePrompt": "Hong Kong primary classroom, child defending classmate with different stationery, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom, child defending classmate with different stationery, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "value"
 }
 ]

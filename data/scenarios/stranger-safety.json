@@ -49,7 +49,8 @@
 "不跟陌生人",
 "不收禮物",
 "搵大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-14",
@@ -100,7 +101,8 @@
 "不跟陌生人",
 "不收禮物",
 "搵大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-15",
@@ -152,7 +154,8 @@
 "不跟陌生人",
 "不收禮物",
 "搵大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-16",
@@ -203,7 +206,8 @@
 "不跟陌生人",
 "不收禮物",
 "搵大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-17",
@@ -255,7 +259,8 @@
 "不跟陌生人",
 "不收禮物",
 "搵大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-18",
@@ -307,7 +312,8 @@
 "不跟陌生人",
 "不收禮物",
 "搵大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-148",
@@ -385,7 +391,8 @@
 "say no",
 "搵老師"
 ],
-"imagePrompt": "Hong Kong school gate after school, stranger reaching out to child, child stepping back alarmed, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong school gate after school, stranger reaching out to child, child stepping back alarmed, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-149",
@@ -463,7 +470,8 @@
 "say no",
 "搵信任大人"
 ],
-"imagePrompt": "Hong Kong street, stranger offering ride to child, child stepping back alarmed, busy road in background, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong street, stranger offering ride to child, child stepping back alarmed, busy road in background, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-150",
@@ -541,7 +549,8 @@
 "say no",
 "搵信任大人"
 ],
-"imagePrompt": "Hong Kong apartment door, child looking through peephole, person standing outside, evening light, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong apartment door, child looking through peephole, person standing outside, evening light, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-151",
@@ -619,7 +628,8 @@
 "say no",
 "搵信任大人"
 ],
-"imagePrompt": "Hong Kong street, child walking fast toward convenience store, stranger following behind, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong street, child walking fast toward convenience store, stranger following behind, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-152",
@@ -692,7 +702,8 @@
 "不跟陌生人",
 "保護自己"
 ],
-"imagePrompt": "Hong Kong child at computer in bedroom, chatting with someone online, looking thoughtful, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong child at computer in bedroom, chatting with someone online, looking thoughtful, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-153",
@@ -770,7 +781,8 @@
 "保護自己",
 "搵信任大人"
 ],
-"imagePrompt": "Hong Kong park, stranger taking photos with phone, child looking alarmed and stepping back, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong park, stranger taking photos with phone, child looking alarmed and stepping back, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-154",
@@ -848,7 +860,8 @@
 "保護私隱",
 "搵信任大人"
 ],
-"imagePrompt": "Hong Kong residential lift lobby, stranger asking child question, child backing away with hand up, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong residential lift lobby, stranger asking child question, child backing away with hand up, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-155",
@@ -921,7 +934,8 @@
 "不收禮物",
 "搵信任大人"
 ],
-"imagePrompt": "Hong Kong child at computer in bedroom, stranger asking for phone number, child looking concerned, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong child at computer in bedroom, stranger asking for phone number, child looking concerned, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-156",
@@ -999,6 +1013,7 @@
 "say no",
 "搵老師"
 ],
-"imagePrompt": "Hong Kong school gate after school, stranger offering toy to child, child stepping back alarmed, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong school gate after school, stranger offering toy to child, child stepping back alarmed, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 }
 ]

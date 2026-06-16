@@ -48,7 +48,8 @@
 "合適距離",
 "say no",
 "保護私隱"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-08",
@@ -99,7 +100,8 @@
 "合適距離",
 "say no",
 "保護私隱"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-09",
@@ -150,7 +152,8 @@
 "合適距離",
 "say no",
 "保護私隱"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-10",
@@ -202,7 +205,8 @@
 "合適距離",
 "say no",
 "保護私隱"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-11",
@@ -253,7 +257,8 @@
 "合適距離",
 "say no",
 "保護私隱"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-12",
@@ -305,7 +310,8 @@
 "合適距離",
 "say no",
 "保護私隱"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-130",
@@ -383,7 +389,8 @@
 "say no",
 "say stop"
 ],
-"imagePrompt": "Hong Kong primary classroom, child taking back phone from friend who was looking at private messages, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong primary classroom, child taking back phone from friend who was looking at private messages, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-131",
@@ -461,7 +468,8 @@
 "say stop",
 "保護朋友"
 ],
-"imagePrompt": "Hong Kong child on school bus, friend whispering gossip, child looking uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong child on school bus, friend whispering gossip, child looking uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-132",
@@ -539,7 +547,8 @@
 "身體界線",
 "保護私隱"
 ],
-"imagePrompt": "Hong Kong primary classroom, friend showing phone with WhatsApp group, child politely declining, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong primary classroom, friend showing phone with WhatsApp group, child politely declining, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-133",
@@ -617,7 +626,8 @@
 "say stop",
 "表達意願"
 ],
-"imagePrompt": "Hong Kong primary classroom, child holding snack box, friends reaching for it, child looking thoughtful, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong primary classroom, child holding snack box, friends reaching for it, child looking thoughtful, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-134",
@@ -695,7 +705,8 @@
 "say stop",
 "表達感受"
 ],
-"imagePrompt": "Hong Kong school playground, child looking hurt as friend laughs, child on verge of tears, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong school playground, child looking hurt as friend laughs, child on verge of tears, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-135",
@@ -773,7 +784,8 @@
 "say no",
 "say stop"
 ],
-"imagePrompt": "Hong Kong child putting diary in locked drawer, friend sitting nearby, bedroom afternoon light, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong child putting diary in locked drawer, friend sitting nearby, bedroom afternoon light, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-136",
@@ -851,7 +863,8 @@
 "say stop",
 "保護朋友"
 ],
-"imagePrompt": "Hong Kong primary classroom, group of children planning prank on another child, one child looking uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong primary classroom, group of children planning prank on another child, one child looking uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-137",
@@ -929,7 +942,8 @@
 "say no",
 "say stop"
 ],
-"imagePrompt": "Hong Kong children at park, friend asking personal questions, child looking thoughtful and saying no, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong children at park, friend asking personal questions, child looking thoughtful and saying no, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-138",
@@ -1007,6 +1021,7 @@
 "say stop",
 "身體界線"
 ],
-"imagePrompt": "Hong Kong child on school bus looking uncomfortable as friend reaches out, child pulling away, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong child on school bus looking uncomfortable as friend reaches out, child pulling away, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 }
 ]

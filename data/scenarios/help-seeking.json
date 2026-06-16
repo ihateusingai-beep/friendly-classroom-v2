@@ -49,7 +49,8 @@
 "搵老師",
 "搵家長",
 "報警 999"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-20",
@@ -101,7 +102,8 @@
 "搵老師",
 "搵家長",
 "報警 999"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-21",
@@ -153,7 +155,8 @@
 "搵老師",
 "搵家長",
 "報警 999"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-22",
@@ -204,7 +207,8 @@
 "搵老師",
 "搵家長",
 "報警 999"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-23",
@@ -255,7 +259,8 @@
 "搵老師",
 "搵家長",
 "報警 999"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-24",
@@ -307,7 +312,8 @@
 "搵老師",
 "搵家長",
 "報警 999"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-103",
@@ -380,7 +386,8 @@
 "搵信任大人",
 "保護自己"
 ],
-"imagePrompt": "Hong Kong shopping mall, lost child looking worried near service counter, busy shoppers in background, anime cartoon style, soft pastel, brave, no text, 16:9"
+"imagePrompt": "Hong Kong shopping mall, lost child looking worried near service counter, busy shoppers in background, anime cartoon style, soft pastel, brave, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-104",
@@ -458,7 +465,8 @@
 "保護自己",
 "say no"
 ],
-"imagePrompt": "Hong Kong school playground, older student threatening younger child, child looking scared, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong school playground, older student threatening younger child, child looking scared, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-105",
@@ -531,7 +539,8 @@
 "搵家長",
 "保護自己"
 ],
-"imagePrompt": "Hong Kong child in home living room, looking worried at malfunctioning TV with smoke, evening light, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong child in home living room, looking worried at malfunctioning TV with smoke, evening light, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-106",
@@ -604,7 +613,8 @@
 "搵信任大人",
 "冷靜應對"
 ],
-"imagePrompt": "Hong Kong street, child frozen in fear as large dog approaches, retreating toward shop, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong street, child frozen in fear as large dog approaches, retreating toward shop, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-107",
@@ -682,7 +692,8 @@
 "搵信任大人",
 "緊急應對"
 ],
-"imagePrompt": "Hong Kong home living room, grandmother collapsed on sofa, child holding phone with emergency call, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong home living room, grandmother collapsed on sofa, child holding phone with emergency call, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-108",
@@ -760,7 +771,8 @@
 "保護朋友",
 "冷靜應對"
 ],
-"imagePrompt": "Hong Kong child sitting with crying friend with bleeding knee at park, looking around for help, anime cartoon style, soft pastel, brave, no text, 16:9"
+"imagePrompt": "Hong Kong child sitting with crying friend with bleeding knee at park, looking around for help, anime cartoon style, soft pastel, brave, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-109",
@@ -838,7 +850,8 @@
 "搵信任大人",
 "冷靜應對"
 ],
-"imagePrompt": "Hong Kong shopping mall evacuation, fire alarm lights, mother and child walking calmly down stairs, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong shopping mall evacuation, fire alarm lights, mother and child walking calmly down stairs, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-110",
@@ -916,7 +929,8 @@
 "搵家長",
 "學習"
 ],
-"imagePrompt": "Hong Kong child at desk with math textbook, scratching head, looking at mother sitting nearby, evening light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child at desk with math textbook, scratching head, looking at mother sitting nearby, evening light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-111",
@@ -989,6 +1003,7 @@
 "搵家長",
 "保護自己"
 ],
-"imagePrompt": "Hong Kong child at computer screen showing chat messages with bullying, looking sad, evening room light, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong child at computer screen showing chat messages with bullying, looking sad, evening room light, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 }
 ]

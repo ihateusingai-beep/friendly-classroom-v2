@@ -68,7 +68,8 @@
 "承認錯誤",
 "承擔後果"
 ],
-"imagePrompt": "Hong Kong school corridor, broken flower pot on floor, child looking guilty, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong school corridor, broken flower pot on floor, child looking guilty, green school uniform, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-cm-02",
@@ -139,7 +140,8 @@
 "守諾言",
 "承擔後果"
 ],
-"imagePrompt": "Hong Kong school classroom, child studying with friend, open textbook, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong school classroom, child studying with friend, open textbook, green school uniform, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-cm-03",
@@ -212,7 +214,8 @@
 "保護弱小",
 "主動解決"
 ],
-"imagePrompt": "Hong Kong school classroom, group project, one child missing from desk, leader looking at empty chair, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong school classroom, group project, one child missing from desk, leader looking at empty chair, green school uniform, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-cm-04",
@@ -290,7 +293,8 @@
 "承擔後果",
 "道歉"
 ],
-"imagePrompt": "Hong Kong school classroom, child holding broken ruler looking guilty at classmate, desk setting, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong school classroom, child holding broken ruler looking guilty at classmate, desk setting, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-cm-05",
@@ -364,7 +368,8 @@
 "照顧家人",
 "耐心"
 ],
-"imagePrompt": "Hong Kong home living room, older sibling feeding and comforting crying younger sister, dining table, warm evening light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong home living room, older sibling feeding and comforting crying younger sister, dining table, warm evening light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-cm-06",
@@ -443,7 +448,8 @@
 "承擔後果",
 "誠實"
 ],
-"imagePrompt": "Hong Kong home kitchen, child looking guilty at half-eaten birthday cake on table, looking down in shame, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong home kitchen, child looking guilty at half-eaten birthday cake on table, looking down in shame, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-85",
@@ -521,7 +527,8 @@
 "承擔後果",
 "勇於承擔"
 ],
-"imagePrompt": "Hong Kong primary classroom, broken water bottle on desk, child looking guilty, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom, broken water bottle on desk, child looking guilty, green school uniform, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-86",
@@ -599,7 +606,8 @@
 "照顧家人",
 "承認錯誤"
 ],
-"imagePrompt": "Hong Kong home living room, child reaching for crying toddler on floor, scattered toys, afternoon light, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong home living room, child reaching for crying toddler on floor, scattered toys, afternoon light, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-87",
@@ -677,7 +685,8 @@
 "環保意識",
 "完成 routine"
 ],
-"imagePrompt": "Hong Kong family picnic in park, child sorting trash bags into separate piles, father helping, green grass, sunshine, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong family picnic in park, child sorting trash bags into separate piles, father helping, green grass, sunshine, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-88",
@@ -755,7 +764,8 @@
 "承擔後果",
 "誠實"
 ],
-"imagePrompt": "Hong Kong child at classroom door looking worried, teacher at desk, school corridor, morning light, FF XV Nomura anime style, character design, warm tones, 16:9"
+"imagePrompt": "Hong Kong child at classroom door looking worried, teacher at desk, school corridor, morning light, FF XV Nomura anime style, character design, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-89",
@@ -833,7 +843,8 @@
 "管理友誼",
 "完成 routine"
 ],
-"imagePrompt": "Hong Kong primary classroom after lunch, child wiping desk with cloth, friend waiting at door impatiently, sunlight, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom after lunch, child wiping desk with cloth, friend waiting at door impatiently, sunlight, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-90",
@@ -911,7 +922,8 @@
 "承擔後果",
 "勇於承擔"
 ],
-"imagePrompt": "Hong Kong home evening, child holding broken eyeglass frames looking worried, father sitting on sofa, warm lamplight, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong home evening, child holding broken eyeglass frames looking worried, father sitting on sofa, warm lamplight, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-91",
@@ -989,7 +1001,8 @@
 "帶領",
 "鼓勵隊友"
 ],
-"imagePrompt": "Hong Kong primary classroom group activity, group leader talking to reluctant teammate, poster on table, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom group activity, group leader talking to reluctant teammate, poster on table, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-92",
@@ -1067,7 +1080,8 @@
 "承擔後果",
 "拒絕大話"
 ],
-"imagePrompt": "Hong Kong primary classroom, child looking guilty at empty desk, teacher collecting books, classmate whispering, morning light, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom, child looking guilty at empty desk, teacher collecting books, classmate whispering, morning light, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-93",
@@ -1145,6 +1159,7 @@
 "照顧寵物",
 "建立 routine"
 ],
-"imagePrompt": "Hong Kong child caring for goldfish in home fish tank, child adding water, fish food, warm living room, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child caring for goldfish in home fish tank, child adding water, fish food, warm living room, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 }
 ]

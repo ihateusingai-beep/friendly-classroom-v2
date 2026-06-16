@@ -81,7 +81,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s8",
@@ -164,7 +165,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-h1",
@@ -229,7 +231,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-h2",
@@ -294,7 +297,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-h5",
@@ -372,7 +376,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-door2",
@@ -449,7 +454,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-door3",
@@ -520,7 +526,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-door6",
@@ -620,7 +627,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-new12",
@@ -703,7 +711,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-new17",
@@ -781,7 +790,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-new20",
@@ -864,7 +874,8 @@
 "表達感受",
 "聆聽對方",
 "搵共識"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-170",
@@ -943,7 +954,8 @@
 "聆聽對方",
 "搵共識"
 ],
-"imagePrompt": "Hong Kong school corridor, child fallen on floor, another child running away, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong school corridor, child fallen on floor, another child running away, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-171",
@@ -1022,7 +1034,8 @@
 "聆聽對方",
 "搵共識"
 ],
-"imagePrompt": "Hong Kong primary classroom, child looking hurt as friend walks away, afternoon light, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom, child looking hurt as friend walks away, afternoon light, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-172",
@@ -1101,7 +1114,8 @@
 "聆聽對方",
 "輪流"
 ],
-"imagePrompt": "Hong Kong park, two children about to fight over toy, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong park, two children about to fight over toy, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-173",
@@ -1180,6 +1194,7 @@
 "聆聽對方",
 "搵共識"
 ],
-"imagePrompt": "Hong Kong primary classroom, child explaining calmly while another child argues, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom, child explaining calmly while another child argues, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+"subjectId": "caring"
 }
 ]

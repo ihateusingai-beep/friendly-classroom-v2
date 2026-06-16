@@ -59,7 +59,8 @@
 "主動關心",
 "幫助弱勢",
 "分享資源"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-33",
@@ -121,7 +122,8 @@
 "主動關心",
 "幫助弱勢",
 "分享資源"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-34",
@@ -183,7 +185,8 @@
 "主動關心",
 "幫助弱勢",
 "分享資源"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-bn-01",
@@ -254,7 +257,8 @@
 "主動關心",
 "分享資源"
 ],
-"imagePrompt": "Hong Kong school gate, raining, child holding umbrella offering to share with classmate, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong school gate, raining, child holding umbrella offering to share with classmate, green school uniform, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-bn-02",
@@ -327,7 +331,8 @@
 "包容差異",
 "幫助弱勢"
 ],
-"imagePrompt": "Hong Kong primary school playground, child sitting alone on bench looking sad, another child approaching with smile, green school uniform, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9"
+"imagePrompt": "Hong Kong primary school playground, child sitting alone on bench looking sad, another child approaching with smile, green school uniform, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-bn-03",
@@ -399,7 +404,8 @@
 "主動關心",
 "幫助弱勢"
 ],
-"imagePrompt": "Hong Kong street crosswalk, elderly woman with shopping bags slowly crossing, child approaching to help, traffic light, warm afternoon light, Studio Ghibli style, soft pastel watercolor, no text, 16:9"
+"imagePrompt": "Hong Kong street crosswalk, elderly woman with shopping bags slowly crossing, child approaching to help, traffic light, warm afternoon light, Studio Ghibli style, soft pastel watercolor, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-bn-04",
@@ -471,7 +477,8 @@
 "主動關心",
 "幫助弱勢"
 ],
-"imagePrompt": "Hong Kong public park, thin stray cat looking up sadly, child approaching with food bowl, green grass, warm sunlight, Studio Ghibli style, soft pastel watercolor, no text, 16:9"
+"imagePrompt": "Hong Kong public park, thin stray cat looking up sadly, child approaching with food bowl, green grass, warm sunlight, Studio Ghibli style, soft pastel watercolor, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-bn-05",
@@ -544,7 +551,8 @@
 "主動關心",
 "易地而處"
 ],
-"imagePrompt": "Hong Kong school playground, child fallen on ground with bleeding knee, another child rushing over to help, sports day setting, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9"
+"imagePrompt": "Hong Kong school playground, child fallen on ground with bleeding knee, another child rushing over to help, sports day setting, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-bn-06",
@@ -617,7 +625,8 @@
 "分享資源",
 "易地而處"
 ],
-"imagePrompt": "Hong Kong school classroom, lunch time, child with empty lunch box looking sad, another child offering half of their lunch, green school uniform, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9"
+"imagePrompt": "Hong Kong school classroom, lunch time, child with empty lunch box looking sad, another child offering half of their lunch, green school uniform, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-bn-07",
@@ -691,7 +700,8 @@
 "耐心",
 "照顧家人"
 ],
-"imagePrompt": "Hong Kong home setting, evening, older child helping younger sibling with math homework at table, warm lamp light, Studio Ghibli style, soft pastel watercolor, cozy atmosphere, no text, 16:9"
+"imagePrompt": "Hong Kong home setting, evening, older child helping younger sibling with math homework at table, warm lamp light, Studio Ghibli style, soft pastel watercolor, cozy atmosphere, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-165",
@@ -769,7 +779,8 @@
 "易地而處",
 "照顧"
 ],
-"imagePrompt": "Hong Kong school playground, child helping fallen classmate stand up, morning light, anime cartoon style, expressive faces, warm tones, no text, 16:9"
+"imagePrompt": "Hong Kong school playground, child helping fallen classmate stand up, morning light, anime cartoon style, expressive faces, warm tones, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-166",
@@ -842,7 +853,8 @@
 "分享資源",
 "易地而處"
 ],
-"imagePrompt": "Hong Kong primary school assembly, child donating money to charity collection box, morning light, anime cartoon style, expressive, warm tones, no text, 16:9"
+"imagePrompt": "Hong Kong primary school assembly, child donating money to charity collection box, morning light, anime cartoon style, expressive, warm tones, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-167",
@@ -920,7 +932,8 @@
 "聆聽",
 "陪伴"
 ],
-"imagePrompt": "Hong Kong primary classroom, child sitting with sad friend during lunch, sharing food, anime cartoon style, expressive, warm tones, no text, 16:9"
+"imagePrompt": "Hong Kong primary classroom, child sitting with sad friend during lunch, sharing food, anime cartoon style, expressive, warm tones, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-168",
@@ -998,7 +1011,8 @@
 "耐心",
 "主動關心"
 ],
-"imagePrompt": "Hong Kong child holding younger sibling, feeding dinner, evening home light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+"imagePrompt": "Hong Kong child holding younger sibling, feeding dinner, evening home light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-169",
@@ -1076,6 +1090,7 @@
 "耐心",
 "分享"
 ],
-"imagePrompt": "Hong Kong primary classroom during break, child teaching classmate math at desk, morning light, anime cartoon style, expressive, warm tones, no text, 16:9"
+"imagePrompt": "Hong Kong primary classroom during break, child teaching classmate math at desk, morning light, anime cartoon style, expressive, warm tones, no text, 16:9",
+"subjectId": "value"
 }
 ]

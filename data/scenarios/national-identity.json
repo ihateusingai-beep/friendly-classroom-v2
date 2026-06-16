@@ -69,7 +69,8 @@
 "尊重文化",
 "公民責任"
 ],
-"imagePrompt": "Hong Kong school assembly hall, flag raising ceremony, students standing, green school polo uniform, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong school assembly hall, flag raising ceremony, students standing, green school polo uniform, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-02",
@@ -140,7 +141,8 @@
 "公民責任",
 "環境保護"
 ],
-"imagePrompt": "Hong Kong countryside hiking trail, child picking up litter, green hills, blue sky, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong countryside hiking trail, child picking up litter, green hills, blue sky, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-03",
@@ -210,7 +212,8 @@
 "skills": [
 "認識社區"
 ],
-"imagePrompt": "Hong Kong classroom, Victoria Harbour view through window, child raising hand, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong classroom, Victoria Harbour view through window, child raising hand, green school uniform, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-04",
@@ -282,7 +285,8 @@
 "認識社區",
 "認識國家成就"
 ],
-"imagePrompt": "Hong Kong primary school classroom, students watching TV showing Chinese Tiangong space station, astronauts in space suit, green school uniform, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong primary school classroom, students watching TV showing Chinese Tiangong space station, astronauts in space suit, green school uniform, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-05",
@@ -354,7 +358,8 @@
 "認識國家成就",
 "主動學習"
 ],
-"imagePrompt": "Hong Kong home living room, father and child looking at new 5G smartphone together, modern apartment setting, Studio Ghibli style, soft pastel watercolor, warm light, 16:9"
+"imagePrompt": "Hong Kong home living room, father and child looking at new 5G smartphone together, modern apartment setting, Studio Ghibli style, soft pastel watercolor, warm light, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-06",
@@ -426,7 +431,8 @@
 "欣賞文化",
 "認識國家成就"
 ],
-"imagePrompt": "Hong Kong West Kowloon Palace Museum interior, child with mother looking at ancient Chinese artifacts, jade and bronze display, Studio Ghibli style, soft pastel watercolor, museum lighting, 16:9"
+"imagePrompt": "Hong Kong West Kowloon Palace Museum interior, child with mother looking at ancient Chinese artifacts, jade and bronze display, Studio Ghibli style, soft pastel watercolor, museum lighting, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-07",
@@ -498,7 +504,8 @@
 "認識國家成就",
 "認識社區"
 ],
-"imagePrompt": "Hong Kong West Kowloon High Speed Rail station platform, child and mother boarding sleek white high speed train, modern station architecture, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong West Kowloon High Speed Rail station platform, child and mother boarding sleek white high speed train, modern station architecture, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-08",
@@ -572,7 +579,8 @@
 "認識傳統",
 "孝親"
 ],
-"imagePrompt": "Hong Kong home Chinese New Year setting, grandmother teaching grandchild calligraphy with brush, red paper, festive atmosphere, lanterns, Studio Ghibli style, soft pastel watercolor, warm light, 16:9"
+"imagePrompt": "Hong Kong home Chinese New Year setting, grandmother teaching grandchild calligraphy with brush, red paper, festive atmosphere, lanterns, Studio Ghibli style, soft pastel watercolor, warm light, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-09",
@@ -646,7 +654,8 @@
 "勤勞",
 "認識傳統"
 ],
-"imagePrompt": "Hong Kong calligraphy class, child practicing Chinese character 仁 with brush on rice paper, ink stone and brushes, traditional setting, Studio Ghibli style, soft pastel watercolor, warm light, 16:9"
+"imagePrompt": "Hong Kong calligraphy class, child practicing Chinese character 仁 with brush on rice paper, ink stone and brushes, traditional setting, Studio Ghibli style, soft pastel watercolor, warm light, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-10",
@@ -719,7 +728,8 @@
 "尊重先烈",
 "國民責任"
 ],
-"imagePrompt": "Hong Kong school morning assembly, students standing in silence with heads bowed, national flag in background, solemn atmosphere, Studio Ghibli style, soft pastel watercolor, soft morning light, 16:9"
+"imagePrompt": "Hong Kong school morning assembly, students standing in silence with heads bowed, national flag in background, solemn atmosphere, Studio Ghibli style, soft pastel watercolor, soft morning light, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-11",
@@ -793,7 +803,8 @@
 "資訊辨識",
 "守護家人"
 ],
-"imagePrompt": "Hong Kong child at home with smartphone showing suspicious message, concerned expression, parent in background, evening indoor setting, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child at home with smartphone showing suspicious message, concerned expression, parent in background, evening indoor setting, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-12",
@@ -867,7 +878,8 @@
 "認識國安",
 "公民責任"
 ],
-"imagePrompt": "Hong Kong primary classroom, teacher at whiteboard explaining law, students in green uniforms raising hands attentively, bright classroom, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong primary classroom, teacher at whiteboard explaining law, students in green uniforms raising hands attentively, bright classroom, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-13",
@@ -941,7 +953,8 @@
 "主動學習",
 "國民責任"
 ],
-"imagePrompt": "Hong Kong primary school library, child borrowing book about Chinese constitution and Basic Law, bookshelves full of books, soft warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong primary school library, child borrowing book about Chinese constitution and Basic Law, bookshelves full of books, soft warm light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-14",
@@ -1020,7 +1033,8 @@
 "尊重歷史",
 "正確態度"
 ],
-"imagePrompt": "Hong Kong primary classroom with students watching historical documentary on tablet, teacher standing, solemn atmosphere, dimmed lights, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong primary classroom with students watching historical documentary on tablet, teacher standing, solemn atmosphere, dimmed lights, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-15",
@@ -1094,7 +1108,8 @@
 "聆聽學習",
 "傳承精神"
 ],
-"imagePrompt": "Hong Kong family dinner table, father and child talking, warm evening light, Chinese dishes on table, sincere conversation atmosphere, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong family dinner table, father and child talking, warm evening light, Chinese dishes on table, sincere conversation atmosphere, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-16",
@@ -1168,7 +1183,8 @@
 "開放態度",
 "主動學習"
 ],
-"imagePrompt": "Hong Kong primary school students visiting modern Shenzhen tech company, glass building interior, engineer in lab coat showing technology to children, futuristic yet warm, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong primary school students visiting modern Shenzhen tech company, glass building interior, engineer in lab coat showing technology to children, futuristic yet warm, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-ni-17",
@@ -1241,6 +1257,7 @@
 "良好習慣",
 "正面影響"
 ],
-"imagePrompt": "Hong Kong school sports field, athletes standing at attention during national anthem after receiving medal, podium in background, sunny day, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong school sports field, athletes standing at attention during national anthem after receiving medal, podium in background, sunny day, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 }
 ]

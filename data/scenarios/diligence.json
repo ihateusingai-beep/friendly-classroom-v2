@@ -60,7 +60,8 @@
 "做家務",
 "練習技能",
 "溫書"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-dl-01",
@@ -131,7 +132,8 @@
 "做家務",
 "自我管理"
 ],
-"imagePrompt": "Hong Kong bedroom, messy room, child tidying up, clothes on bed, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong bedroom, messy room, child tidying up, clothes on bed, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-dl-02",
@@ -203,7 +205,8 @@
 "練習技能",
 "routine"
 ],
-"imagePrompt": "Hong Kong child studying at desk, open textbook and notes, desk lamp, evening light, FF XV Nomura anime style, warm tones, 16:9"
+"imagePrompt": "Hong Kong child studying at desk, open textbook and notes, desk lamp, evening light, FF XV Nomura anime style, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-dl-03",
@@ -275,7 +278,8 @@
 "練習技能",
 "routine"
 ],
-"imagePrompt": "Hong Kong home piano room, child practicing piano with sheet music, focused expression, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong home piano room, child practicing piano with sheet music, focused expression, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-dl-04",
@@ -348,7 +352,8 @@
 "做家務",
 "照顧家人"
 ],
-"imagePrompt": "Hong Kong home kitchen after dinner, child washing dishes at sink, stack of plates, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong home kitchen after dinner, child washing dishes at sink, stack of plates, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-dl-05",
@@ -420,7 +425,8 @@
 "練習技能",
 "routine"
 ],
-"imagePrompt": "Hong Kong home desk at night, child writing Chinese characters in practice book, desk lamp, focused expression, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong home desk at night, child writing Chinese characters in practice book, desk lamp, focused expression, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-94",
@@ -493,7 +499,8 @@
 "重複練習",
 "持續練習"
 ],
-"imagePrompt": "Hong Kong child practicing Chinese calligraphy with brush, ink stone, paper on desk, traditional setting, focused expression, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+"imagePrompt": "Hong Kong child practicing Chinese calligraphy with brush, ink stone, paper on desk, traditional setting, focused expression, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-95",
@@ -571,7 +578,8 @@
 "自我管理",
 "完成 routine"
 ],
-"imagePrompt": "Hong Kong child tidying messy bedroom, sorting clothes, books and toys, sunny window light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+"imagePrompt": "Hong Kong child tidying messy bedroom, sorting clothes, books and toys, sunny window light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-96",
@@ -649,7 +657,8 @@
 "重複練習",
 "routine"
 ],
-"imagePrompt": "Hong Kong child at piano practicing finger exercises, mother watching nearby, evening warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child at piano practicing finger exercises, mother watching nearby, evening warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-97",
@@ -722,7 +731,8 @@
 "重複練習",
 "自我改善"
 ],
-"imagePrompt": "Hong Kong child practicing recitation in bedroom, holding poem book, looking at mirror, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child practicing recitation in bedroom, holding poem book, looking at mirror, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-98",
@@ -795,7 +805,8 @@
 "時間管理",
 "routine"
 ],
-"imagePrompt": "Hong Kong child at desk late at night, books and homework scattered, sleepy expression but determined, warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child at desk late at night, books and homework scattered, sleepy expression but determined, warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-99",
@@ -873,7 +884,8 @@
 "自我管理",
 "完成 routine"
 ],
-"imagePrompt": "Hong Kong child packing school bag at night, checking list, sleepy but determined, bedroom lamplight, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child packing school bag at night, checking list, sleepy but determined, bedroom lamplight, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-100",
@@ -951,7 +963,8 @@
 "持續練習",
 "克服挫折"
 ],
-"imagePrompt": "Hong Kong child in public swimming pool, holding pool edge looking nervous, summer sunlight, instructor nearby, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong child in public swimming pool, holding pool edge looking nervous, summer sunlight, instructor nearby, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-101",
@@ -1024,7 +1037,8 @@
 "完成 routine",
 "自我管理"
 ],
-"imagePrompt": "Hong Kong child at desk with notebook, writing slowly with focused expression, morning light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+"imagePrompt": "Hong Kong child at desk with notebook, writing slowly with focused expression, morning light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-102",
@@ -1102,6 +1116,7 @@
 "routine",
 "獨立"
 ],
-"imagePrompt": "Hong Kong child getting dressed in school uniform, packing school bag, morning sunlight, independent and determined, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child getting dressed in school uniform, packing school bag, morning sunlight, independent and determined, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 }
 ]

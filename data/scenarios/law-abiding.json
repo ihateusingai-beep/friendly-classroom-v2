@@ -59,7 +59,8 @@
 "遵守校規",
 "排隊守紀",
 "舉手發言"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-26",
@@ -122,7 +123,8 @@
 "遵守校規",
 "排隊守紀",
 "舉手發言"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-27",
@@ -184,7 +186,8 @@
 "遵守校規",
 "排隊守紀",
 "舉手發言"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-28",
@@ -247,7 +250,8 @@
 "遵守校規",
 "排隊守紀",
 "舉手發言"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-29",
@@ -309,7 +313,8 @@
 "遵守校規",
 "排隊守紀",
 "舉手發言"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-30",
@@ -372,7 +377,8 @@
 "遵守校規",
 "排隊守紀",
 "舉手發言"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-112",
@@ -445,7 +451,8 @@
 "過馬路",
 "公共場所守規"
 ],
-"imagePrompt": "Hong Kong pedestrian crossing with red traffic light, child waiting on curb, busy street, anime cartoon style, soft pastel, happy, no text, 16:9"
+"imagePrompt": "Hong Kong pedestrian crossing with red traffic light, child waiting on curb, busy street, anime cartoon style, soft pastel, happy, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-113",
@@ -518,7 +525,8 @@
 "遵守校規",
 "耐性"
 ],
-"imagePrompt": "Hong Kong primary school canteen, children queuing for lunch with trays, warm indoor light, anime cartoon style, soft pastel, happy, no text, 16:9"
+"imagePrompt": "Hong Kong primary school canteen, children queuing for lunch with trays, warm indoor light, anime cartoon style, soft pastel, happy, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-114",
@@ -596,7 +604,8 @@
 "遵守校規",
 "輪候"
 ],
-"imagePrompt": "Hong Kong primary classroom, child raising hand to answer, teacher at board, morning light, anime cartoon style, soft pastel, happy, no text, 16:9"
+"imagePrompt": "Hong Kong primary classroom, child raising hand to answer, teacher at board, morning light, anime cartoon style, soft pastel, happy, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-115",
@@ -674,7 +683,8 @@
 "公共場所守規",
 "routine"
 ],
-"imagePrompt": "Hong Kong child watching TV in living room, evening lamplight, considering turning off, anime cartoon style, soft pastel, warm tones, 16:9"
+"imagePrompt": "Hong Kong child watching TV in living room, evening lamplight, considering turning off, anime cartoon style, soft pastel, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-116",
@@ -752,7 +762,8 @@
 "提醒朋友",
 "守規則"
 ],
-"imagePrompt": "Hong Kong public library, child whispering to friend, books and study tables, quiet atmosphere, anime cartoon style, soft pastel, warm tones, 16:9"
+"imagePrompt": "Hong Kong public library, child whispering to friend, books and study tables, quiet atmosphere, anime cartoon style, soft pastel, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-117",
@@ -825,7 +836,8 @@
 "環保意識",
 "守規則"
 ],
-"imagePrompt": "Hong Kong child at park, dropping ice cream wrapper into trash bin, sunny day, anime cartoon style, soft pastel, happy, no text, 16:9"
+"imagePrompt": "Hong Kong child at park, dropping ice cream wrapper into trash bin, sunny day, anime cartoon style, soft pastel, happy, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-118",
@@ -898,7 +910,8 @@
 "誠實",
 "守規則"
 ],
-"imagePrompt": "Hong Kong primary classroom exam scene, child writing answers at desk, eyes forward, morning light, anime cartoon style, soft pastel, warm tones, 16:9"
+"imagePrompt": "Hong Kong primary classroom exam scene, child writing answers at desk, eyes forward, morning light, anime cartoon style, soft pastel, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-119",
@@ -976,7 +989,8 @@
 "讓座",
 "公民責任"
 ],
-"imagePrompt": "Hong Kong double-decker bus interior, child standing to give seat to pregnant woman, anime cartoon style, soft pastel, happy, no text, 16:9"
+"imagePrompt": "Hong Kong double-decker bus interior, child standing to give seat to pregnant woman, anime cartoon style, soft pastel, happy, no text, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-120",
@@ -1049,6 +1063,7 @@
 "守規則",
 "問為什麼"
 ],
-"imagePrompt": "Hong Kong child at school gate, holding snack and bag, considering leaving snack at home, morning sun, anime cartoon style, soft pastel, warm tones, 16:9"
+"imagePrompt": "Hong Kong child at school gate, holding snack and bag, considering leaving snack at home, morning sun, anime cartoon style, soft pastel, warm tones, 16:9",
+"subjectId": "value"
 }
 ]

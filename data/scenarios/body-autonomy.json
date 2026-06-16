@@ -60,7 +60,8 @@
 "認識私處",
 "say no",
 "告知信任大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-02",
@@ -122,7 +123,8 @@
 "認識私處",
 "say no",
 "告知信任大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-03",
@@ -185,7 +187,8 @@
 "認識私處",
 "say no",
 "告知信任大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-04",
@@ -236,7 +239,8 @@
 "認識私處",
 "say no",
 "告知信任大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-05",
@@ -287,7 +291,8 @@
 "認識私處",
 "say no",
 "告知信任大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-06",
@@ -339,7 +344,8 @@
 "認識私處",
 "say no",
 "告知信任大人"
-]
+],
+"subjectId": "caring"
 },
 {
 "id": "s-self-76",
@@ -417,7 +423,8 @@
 "身體界線",
 "搵老師"
 ],
-"imagePrompt": "Hong Kong primary school changing room, child clutching PE uniform to chest, uncomfortable expression, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong primary school changing room, child clutching PE uniform to chest, uncomfortable expression, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-77",
@@ -495,7 +502,8 @@
 "身體界線",
 "表達意願"
 ],
-"imagePrompt": "Hong Kong Chinese New Year family gathering, grandmother reaching to embrace shy child who turns head gently, festive red decorations, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong Chinese New Year family gathering, grandmother reaching to embrace shy child who turns head gently, festive red decorations, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-78",
@@ -573,7 +581,8 @@
 "身體界線",
 "say stop"
 ],
-"imagePrompt": "Hong Kong primary classroom, friend tightly hugging another child who looks uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong primary classroom, friend tightly hugging another child who looks uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-79",
@@ -651,7 +660,8 @@
 "搵信任大人",
 "表達意願"
 ],
-"imagePrompt": "Hong Kong child in clinic room, doctor with stethoscope, mother standing nearby, child uncertain expression, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong child in clinic room, doctor with stethoscope, mother standing nearby, child uncertain expression, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-80",
@@ -729,7 +739,8 @@
 "say stop",
 "搵信任大人"
 ],
-"imagePrompt": "Hong Kong child at cousin's apartment doorway, cousin pulling arm, child pulling away with concerned expression, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong child at cousin's apartment doorway, cousin pulling arm, child pulling away with concerned expression, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-81",
@@ -807,7 +818,8 @@
 "身體界線",
 "say stop"
 ],
-"imagePrompt": "Hong Kong children at park, one child holding out hand, another child stepping back with gentle smile, sunshine, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong children at park, one child holding out hand, another child stepping back with gentle smile, sunshine, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-82",
@@ -885,7 +897,8 @@
 "身體界線",
 "搵信任大人"
 ],
-"imagePrompt": "Hong Kong child on school bus, driver reaching toward child, child leaning away with concerned expression, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong child on school bus, driver reaching toward child, child leaning away with concerned expression, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-83",
@@ -963,7 +976,8 @@
 "say stop",
 "身體界線"
 ],
-"imagePrompt": "Hong Kong primary classroom during break, child tickling another who is laughing but uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9"
+"imagePrompt": "Hong Kong primary classroom during break, child tickling another who is laughing but uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
+"subjectId": "caring"
 },
 {
 "id": "s-self-84",
@@ -1041,6 +1055,7 @@
 "say stop",
 "搵信任大人"
 ],
-"imagePrompt": "Hong Kong residential building lift lobby at night, neighbor reaching out, child stepping back with alarmed expression, anime cartoon style, soft pastel, serious, no text, 16:9"
+"imagePrompt": "Hong Kong residential building lift lobby at night, neighbor reaching out, child stepping back with alarmed expression, anime cartoon style, soft pastel, serious, no text, 16:9",
+"subjectId": "caring"
 }
 ]

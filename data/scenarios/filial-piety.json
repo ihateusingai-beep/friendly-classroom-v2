@@ -60,7 +60,8 @@
 "尊敬父母",
 "問候家人",
 "照顧家人"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-49",
@@ -123,7 +124,8 @@
 "尊敬父母",
 "問候家人",
 "照顧家人"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-50",
@@ -186,7 +188,8 @@
 "尊敬父母",
 "問候家人",
 "照顧家人"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-51",
@@ -249,7 +252,8 @@
 "尊敬父母",
 "問候家人",
 "照顧家人"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-52",
@@ -312,7 +316,8 @@
 "尊敬父母",
 "問候家人",
 "照顧家人"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-53",
@@ -375,7 +380,8 @@
 "尊敬父母",
 "問候家人",
 "照顧家人"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-54",
@@ -438,7 +444,8 @@
 "尊敬父母",
 "問候家人",
 "照顧家人"
-]
+],
+"subjectId": "value"
 },
 {
 "id": "s-self-157",
@@ -516,7 +523,8 @@
 "照顧家人",
 "感恩"
 ],
-"imagePrompt": "Hong Kong mother and child in home kitchen, child washing dishes, mother resting on chair, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong mother and child in home kitchen, child washing dishes, mother resting on chair, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-158",
@@ -594,7 +602,8 @@
 "照顧家人",
 "聆聽"
 ],
-"imagePrompt": "Hong Kong child making handmade birthday card at home desk for mother, evening light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+"imagePrompt": "Hong Kong child making handmade birthday card at home desk for mother, evening light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-159",
@@ -672,7 +681,8 @@
 "聆聽",
 "感恩"
 ],
-"imagePrompt": "Hong Kong father returning home late, child greeting him with warm hug at door, evening hallway light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong father returning home late, child greeting him with warm hug at door, evening hallway light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-160",
@@ -750,7 +760,8 @@
 "照顧家人",
 "聆聽"
 ],
-"imagePrompt": "Hong Kong child walking slowly with grandmother in shopping mall, holding her bag, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child walking slowly with grandmother in shopping mall, holding her bag, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-161",
@@ -828,7 +839,8 @@
 "照顧家人",
 "情緒管理"
 ],
-"imagePrompt": "Hong Kong child in bedroom with door closed, parents arguing in background, evening light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child in bedroom with door closed, parents arguing in background, evening light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-162",
@@ -906,7 +918,8 @@
 "陪伴",
 "耐性"
 ],
-"imagePrompt": "Hong Kong child teaching grandmother how to use smartphone, sitting together on sofa, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child teaching grandmother how to use smartphone, sitting together on sofa, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-163",
@@ -984,7 +997,8 @@
 "陪伴",
 "聆聽"
 ],
-"imagePrompt": "Hong Kong child bringing water to sick father lying in bed, gentle morning light, Studio Ghibli style, soft pastel watercolor, 16:9"
+"imagePrompt": "Hong Kong child bringing water to sick father lying in bed, gentle morning light, Studio Ghibli style, soft pastel watercolor, 16:9",
+"subjectId": "value"
 },
 {
 "id": "s-self-164",
@@ -1062,6 +1076,7 @@
 "照顧家人",
 "感恩"
 ],
-"imagePrompt": "Hong Kong family at dim sum restaurant, child pouring tea for parents, morning sunlight, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+"imagePrompt": "Hong Kong family at dim sum restaurant, child pouring tea for parents, morning sunlight, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+"subjectId": "value"
 }
 ]
