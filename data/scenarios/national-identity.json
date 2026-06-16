@@ -1,0 +1,1246 @@
+[
+{
+"id": "s-ni-01",
+"title": "升旗禮：應該肅立",
+"background": "學校・週會",
+"description": "週會舉行升旗禮，你身邊有同學喺度傾計。你會點做？",
+"hints": [
+"升旗禮係莊嚴場合，肅立係基本尊重",
+"你嘅態度代表你對國家嘅尊重"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-01-a",
+"text": "跟住傾計",
+"effects": [
+{
+"character": "自己",
+"change": -5,
+"moralChange": -10,
+"comment": "升旗禮唔專心，係對國家唔尊重。"
+}
+]
+},
+{
+"id": "s-ni-01-b",
+"text": "自己肅立，唔理其他人",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 10,
+"comment": "你肅立咗，做咗應該做嘅事！"
+}
+]
+},
+{
+"id": "s-ni-01-c",
+"text": "提議朋友都肅立",
+"effects": [
+{
+"character": "自己",
+"change": 15,
+"moralChange": 15,
+"comment": "你帶動咗朋友一齊肅立，好榜樣！"
+}
+]
+}
+],
+"location": "assembly",
+"topicId": "national-identity",
+"creedIds": [
+4
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"認識社區",
+"尊重文化",
+"公民責任"
+],
+"imagePrompt": "Hong Kong school assembly hall, flag raising ceremony, students standing, green school polo uniform, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-ni-02",
+"title": "保護環境：國民責任",
+"background": "郊外・假日",
+"description": "你去郊外行山，見到地上有垃圾。你會點做？",
+"hints": [
+"香港係我哋嘅家，愛護環境係國民責任",
+"你嘅小動作可以影響其他人"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-02-a",
+"text": "當睇唔到，繼續行",
+"effects": [
+{
+"character": "自己",
+"change": -5,
+"moralChange": -10,
+"comment": "環境係大家嘅，唔保護就會越嚟越差。"
+}
+]
+},
+{
+"id": "s-ni-02-b",
+"text": "自己執起放入垃圾袋",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 10,
+"comment": "你主動保護環境，係好榜樣！"
+}
+]
+},
+{
+"id": "s-ni-02-c",
+"text": "叫埋朋友一齊執",
+"effects": [
+{
+"character": "自己",
+"change": 15,
+"moralChange": 15,
+"comment": "你帶動埋朋友，影響力更加大！"
+}
+]
+}
+],
+"location": "countryside",
+"topicId": "national-identity",
+"creedIds": [
+4
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"公民責任",
+"環境保護"
+],
+"imagePrompt": "Hong Kong countryside hiking trail, child picking up litter, green hills, blue sky, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-ni-03",
+"title": "認識香港：維港係我哋嘅",
+"background": "課室・常識堂",
+"description": "老師問：「維多利亞港對香港有咩意義？」你答唔出。",
+"hints": [
+"維港係香港嘅標誌",
+"認識自己住嘅地方係國民身份嘅基礎"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-03-a",
+"text": "扮聽唔到，唔出聲",
+"effects": [
+{
+"character": "自己",
+"change": -5,
+"moralChange": -5,
+"comment": "唔識可以學，但逃避就唔會進步。"
+}
+]
+},
+{
+"id": "s-ni-03-b",
+"text": "坦白話唔識，問老師多啲資料",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 10,
+"comment": "肯學先會識！"
+}
+]
+},
+{
+"id": "s-ni-03-c",
+"text": "答「係香港嘅港口」再舉手問多啲",
+"effects": [
+{
+"character": "自己",
+"change": 15,
+"moralChange": 15,
+"comment": "答到又肯問，你已經係主動學習！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "national-identity",
+"creedIds": [
+4
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"認識社區"
+],
+"imagePrompt": "Hong Kong classroom, Victoria Harbour view through window, child raising hand, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-ni-04",
+"title": "中國成就：天宮太空站",
+"background": "課室・常識堂・電視節目",
+"description": "老師播緊中國太空站「天宮」嘅新聞，話太空人喺太空站做實驗。你會點反應？",
+"hints": [
+"中國太空站係國家科技成就，我哋可以引以為榮",
+"太空人要經過多年訓練同努力，係堅毅同勤勞嘅榜樣",
+"認識國家科技發展，係國民身份嘅一部分"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-04-a",
+"text": "扮冇興趣，繼續畫公仔",
+"effects": [
+{
+"character": "自己",
+"change": -5,
+"moralChange": -8,
+"comment": "認識國家成就係國民嘅基本態度，錯過咗學習機會。"
+}
+]
+},
+{
+"id": "s-ni-04-b",
+"text": "專心睇，主動問老師太空人點沖涼",
+"effects": [
+{
+"character": "自己",
+"change": 15,
+"moralChange": 18,
+"comment": "你主動學習國家科技，太叻啦！"
+}
+]
+},
+{
+"id": "s-ni-04-c",
+"text": "返屋企同父母分享 + 查更多資料",
+"effects": [
+{
+"character": "自己",
+"change": 20,
+"moralChange": 22,
+"comment": "你唔只自己學，仲主動分享，係真正嘅國民素養！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "national-identity",
+"creedIds": [
+4
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"認識社區",
+"認識國家成就"
+],
+"imagePrompt": "Hong Kong primary school classroom, students watching TV showing Chinese Tiangong space station, astronauts in space suit, green school uniform, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-ni-05",
+"title": "中國成就：5G 通訊",
+"background": "手機店・假日",
+"description": "爸爸話換咗部 5G 手機，話 5G 係中國科技成就。下載嘢快好多。",
+"hints": [
+"5G 通訊係中國領先世界嘅科技之一",
+"科技改變生活，我哋要認識國家嘅科技進步",
+"國民身份認同可以係對科技成就嘅認識"
+],
+"characters": [
+{
+"name": "爸爸",
+"emoji": "👨",
+"initial_relationship": 70
+}
+],
+"options": [
+{
+"id": "s-ni-05-a",
+"text": "「關我咩事，我只係想打機」",
+"effects": [
+{
+"character": "爸爸",
+"change": -5,
+"moralChange": -8,
+"comment": "錯過咗認識國家科技嘅機會。"
+}
+]
+},
+{
+"id": "s-ni-05-b",
+"text": "「5G 同 4G 有咩分別？」",
+"effects": [
+{
+"character": "爸爸",
+"change": 15,
+"moralChange": 15,
+"comment": "你主動發問，爸爸好開心！你學到新嘢。"
+}
+]
+},
+{
+"id": "s-ni-05-c",
+"text": "同爸爸傾完，自己再上網查中國其他科技成就",
+"effects": [
+{
+"character": "爸爸",
+"change": 25,
+"moralChange": 22,
+"comment": "你主動學習國家成就，爸爸以你為榮！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "national-identity",
+"creedIds": [
+4
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"認識國家成就",
+"主動學習"
+],
+"imagePrompt": "Hong Kong home living room, father and child looking at new 5G smartphone together, modern apartment setting, Studio Ghibli style, soft pastel watercolor, warm light, 16:9"
+},
+{
+"id": "s-ni-06",
+"title": "中華文化：故宮博物館",
+"background": "西九文化區・週末",
+"description": "爸爸媽媽帶你去香港故宮文化博物館，你睇到好多古代文物，覺得好靚。",
+"hints": [
+"中華文化有 5000 年歷史，文物係重要嘅傳承",
+"香港故宮博物館係認識中華文化嘅好地方",
+"國民身份包括對自己文化嘅欣賞同尊重"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 70
+}
+],
+"options": [
+{
+"id": "s-ni-06-a",
+"text": "「好悶，快啲走啦」",
+"effects": [
+{
+"character": "媽媽",
+"change": -10,
+"moralChange": -10,
+"comment": "錯過咗認識中華文化嘅寶貴機會。"
+}
+]
+},
+{
+"id": "s-ni-06-b",
+"text": "慢慢睇，問媽媽呢啲文物嘅故事",
+"effects": [
+{
+"character": "媽媽",
+"change": 20,
+"moralChange": 18,
+"comment": "你欣賞中華文化，媽媽好欣慰！"
+}
+]
+},
+{
+"id": "s-ni-06-c",
+"text": "聽導賞 + 影相 + 返屋企寫日記記低",
+"effects": [
+{
+"character": "媽媽",
+"change": 30,
+"moralChange": 25,
+"comment": "你主動學習 + 記錄，係真正嘅文化傳承者！"
+}
+]
+}
+],
+"location": "museum",
+"topicId": "national-identity",
+"creedIds": [
+4
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"欣賞文化",
+"認識國家成就"
+],
+"imagePrompt": "Hong Kong West Kowloon Palace Museum interior, child with mother looking at ancient Chinese artifacts, jade and bronze display, Studio Ghibli style, soft pastel watercolor, museum lighting, 16:9"
+},
+{
+"id": "s-ni-07",
+"title": "中國成就：廣深港高鐵",
+"background": "高鐵站・旅遊",
+"description": "你第一次坐廣深港高鐵，由香港去廣州探親戚，只需要 48 分鐘。",
+"hints": [
+"高鐵連接香港同內地城市，係跨境基建成就",
+"高鐵方便咗我哋同內地親友嘅聯繫",
+"國民身份包括對國家基建設施嘅認識同利用"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 70
+}
+],
+"options": [
+{
+"id": "s-ni-07-a",
+"text": "上車就瞓覺，唔理周圍",
+"effects": [
+{
+"character": "媽媽",
+"change": -5,
+"moralChange": -5,
+"comment": "錯過咗體驗國家高鐵嘅機會。"
+}
+]
+},
+{
+"id": "s-ni-07-b",
+"text": "望住窗外，問媽媽點解高鐵咁快",
+"effects": [
+{
+"character": "媽媽",
+"change": 15,
+"moralChange": 15,
+"comment": "你主動了解國家基建，媽媽好開心！"
+}
+]
+},
+{
+"id": "s-ni-07-c",
+"text": "影相記錄 + 寫低感受 + 比較同地鐵嘅分別",
+"effects": [
+{
+"character": "媽媽",
+"change": 25,
+"moralChange": 22,
+"comment": "你用心體驗國家成就，媽媽以你為榮！"
+}
+]
+}
+],
+"location": "train",
+"topicId": "national-identity",
+"creedIds": [
+4
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"認識國家成就",
+"認識社區"
+],
+"imagePrompt": "Hong Kong West Kowloon High Speed Rail station platform, child and mother boarding sleek white high speed train, modern station architecture, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-ni-08",
+"title": "中華文化：春節傳統",
+"background": "屋企・農曆新年",
+"description": "農曆新年，阿嫲教你自己寫揮春，你想寫「身體健康」。",
+"hints": [
+"春節係中華文化最重要嘅傳統節日",
+"寫揮春、貼春聯係傳統習俗",
+"認識傳統節日係文化傳承嘅一部分"
+],
+"characters": [
+{
+"name": "阿嫲",
+"emoji": "👵",
+"initial_relationship": 80
+}
+],
+"options": [
+{
+"id": "s-ni-08-a",
+"text": "「太難啦，我淨係想拎利是」",
+"effects": [
+{
+"character": "阿嫲",
+"change": -10,
+"moralChange": -8,
+"comment": "錯過咗學習傳統文化嘅機會，阿嫲有啲失望。"
+}
+]
+},
+{
+"id": "s-ni-08-b",
+"text": "跟阿嫲學，雖然寫得唔靚但好開心",
+"effects": [
+{
+"character": "阿嫲",
+"change": 25,
+"moralChange": 18,
+"comment": "你肯學傳統文化，阿嫲好欣慰！"
+}
+]
+},
+{
+"id": "s-ni-08-c",
+"text": "寫完貼喺大門 + 問阿嫲揮春嘅由來",
+"effects": [
+{
+"character": "阿嫲",
+"change": 35,
+"moralChange": 25,
+"comment": "你主動傳承文化，阿嫲開心到喊！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "national-identity",
+"creedIds": [
+4,
+12
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"欣賞文化",
+"認識傳統",
+"孝親"
+],
+"imagePrompt": "Hong Kong home Chinese New Year setting, grandmother teaching grandchild calligraphy with brush, red paper, festive atmosphere, lanterns, Studio Ghibli style, soft pastel watercolor, warm light, 16:9"
+},
+{
+"id": "s-ni-09",
+"title": "中華文化：毛筆字",
+"background": "課外活動中心・週末",
+"description": "你參加毛筆書法班，老師教寫「仁」字。你覺得好難寫。",
+"hints": [
+"毛筆書法係中華文化嘅瑰寶",
+"學寫「仁」字，正正係學做有仁愛嘅人",
+"勤勞練習係學好書法嘅唯一方法"
+],
+"characters": [
+{
+"name": "書法老師",
+"emoji": "👨‍🏫",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-09-a",
+"text": "「太難喇，我放棄」",
+"effects": [
+{
+"character": "書法老師",
+"change": -5,
+"moralChange": -10,
+"comment": "中華文化要靠勤勞同堅毅，先會學識。"
+}
+]
+},
+{
+"id": "s-ni-09-b",
+"text": "繼續練，多寫幾次",
+"effects": [
+{
+"character": "書法老師",
+"change": 15,
+"moralChange": 18,
+"comment": "你勤勞練習，老師好滿意！"
+}
+]
+},
+{
+"id": "s-ni-09-c",
+"text": "返屋企再練，問老師借字帖",
+"effects": [
+{
+"character": "書法老師",
+"change": 25,
+"moralChange": 22,
+"comment": "你勤勞 + 認真，係真正嘅中華文化傳承者！"
+}
+]
+}
+],
+"location": "class",
+"topicId": "national-identity",
+"creedIds": [
+4,
+10
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"欣賞文化",
+"勤勞",
+"認識傳統"
+],
+"imagePrompt": "Hong Kong calligraphy class, child practicing Chinese character 仁 with brush on rice paper, ink stone and brushes, traditional setting, Studio Ghibli style, soft pastel watercolor, warm light, 16:9"
+},
+{
+"id": "s-ni-10",
+"title": "抗戰勝利紀念日 9月3日：默哀三分鐘",
+"background": "學校・週會",
+"description": "九月三日係「中國人民抗日戰爭勝利紀念日」，學校喺早會舉行默哀儀式。司儀話：「請全校師生起立，默哀三分鐘。」你身邊嘅同學細聲講：「又要默哀，好無聊……」你會點做？",
+"hints": [
+"抗日戰爭令三千五百萬同胞傷亡，係中華民族嘅深重苦難",
+"默哀係對先烈同死難者嘅尊重，唔係儀式",
+"抗戰勝利提醒我哋和平得來不易"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-10-a",
+"text": "跟住朋友一齊細聲講嘢",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -15,
+"comment": "喺莊嚴場合講笑，係對為國捐軀嘅先烈唔尊重。"
+}
+]
+},
+{
+"id": "s-ni-10-b",
+"text": "自己企直、低頭、用心默哀",
+"effects": [
+{
+"character": "自己",
+"change": 15,
+"moralChange": 18,
+"comment": "你明白和平嘅可貴，係有承擔嘅中國人！"
+}
+]
+},
+{
+"id": "s-ni-10-c",
+"text": "默哀完同朋友講抗戰歷史，提醒大家唔好忘記",
+"effects": [
+{
+"character": "自己",
+"change": 25,
+"moralChange": 25,
+"comment": "你唔止自己謹記，仲帶動身邊嘅人銘記歷史，好榜樣！"
+}
+]
+}
+],
+"location": "assembly",
+"topicId": "national-identity",
+"creedIds": [
+4
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"認識歷史",
+"尊重先烈",
+"國民責任"
+],
+"imagePrompt": "Hong Kong school morning assembly, students standing in silence with heads bowed, national flag in background, solemn atmosphere, Studio Ghibli style, soft pastel watercolor, soft morning light, 16:9"
+},
+{
+"id": "s-ni-11",
+"title": "全民國家安全教育日 4月15日",
+"background": "屋企・夜晚",
+"description": "四月十五日係「全民國家安全教育日」。你收到一個 WhatsApp 訊息，話「填寫呢個連結就可以攞免費遊戲點數」，但個連結你從來未見過。你會點做？",
+"hints": [
+"國家安全包括網絡安全同信息安全",
+"不明連結可能係釣魚陷阱，會盜用個人資料",
+"遇到可疑訊息，應該同爸媽或老師講"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-11-a",
+"text": "即刻撳入去睇，貪得意",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -20,
+"comment": "隨便撳不明連結，可能會被騙個人資料甚至金錢，仲可能危害網絡安全。"
+}
+]
+},
+{
+"id": "s-ni-11-b",
+"text": "唔理會，直接刪除",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你識得保護自己，係網絡安全嘅好公民！"
+}
+]
+},
+{
+"id": "s-ni-11-c",
+"text": "唔撳，仲主動同爸媽同老師報告呢個可疑訊息",
+"effects": [
+{
+"character": "自己",
+"change": 25,
+"moralChange": 25,
+"comment": "你識得保護自己之餘，仲主動守護身邊嘅人，係真正嘅網絡安全守護者！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "national-identity",
+"creedIds": [
+4,
+8
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 1,
+"skills": [
+"網絡安全",
+"資訊辨識",
+"守護家人"
+],
+"imagePrompt": "Hong Kong child at home with smartphone showing suspicious message, concerned expression, parent in background, evening indoor setting, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-ni-12",
+"title": "《香港國安法》立法六周年",
+"background": "課室・班主任課",
+"description": "班主任同大家講《香港國安法》已經實施咗六年。老師問：「你哋覺得呢條法例同我哋日常生活有咩關係？」你會點回答？",
+"hints": [
+"《香港國安法》保障香港繁榮穩定，俾大家安心生活同學習",
+"守法係良好公民嘅本份，包括遵守國家法律",
+"國家安全唔係好抽象，其實同每個人嘅自由、安全都息息相關"
+],
+"characters": [
+{
+"name": "班主任",
+"emoji": "👩‍🏫",
+"initial_relationship": 70
+}
+],
+"options": [
+{
+"id": "s-ni-12-a",
+"text": "「唔關我事，我淨係細路仔」",
+"effects": [
+{
+"character": "班主任",
+"change": -10,
+"moralChange": -10,
+"comment": "國安法同每一位香港居民都相關，守法由細開始。"
+}
+]
+},
+{
+"id": "s-ni-12-b",
+"text": "「保障我哋可以安心返學讀書」",
+"effects": [
+{
+"character": "班主任",
+"change": 20,
+"moralChange": 15,
+"comment": "你明白國安法嘅意義，係良好嘅小公民！"
+}
+]
+},
+{
+"id": "s-ni-12-c",
+"text": "「我哋守法，國家先會安全；國家安全，我哋先有安樂生活」",
+"effects": [
+{
+"character": "班主任",
+"change": 30,
+"moralChange": 25,
+"comment": "你識得將個人生活同國家安全連繫起嚟，識見過人！"
+}
+]
+}
+],
+"location": "class",
+"topicId": "national-identity",
+"creedIds": [
+4,
+8
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"守法意識",
+"認識國安",
+"公民責任"
+],
+"imagePrompt": "Hong Kong primary classroom, teacher at whiteboard explaining law, students in green uniforms raising hands attentively, bright classroom, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-ni-13",
+"title": "國家憲法日 12月4日",
+"background": "學校・早會",
+"description": "十二月四日係「國家憲法日」，訓導主任喺早會講：「《憲法》係國家嘅根本大法，就好似你哋學校嘅校規咁，係最重要嘅規則。」你聽完之後，諗起一件事……",
+"hints": [
+"《憲法》訂立咗國家嘅根本制度，保障人民權利",
+"《基本法》係《憲法》之下適用於香港特區嘅法律",
+"認識《憲法》同《基本法》係國民嘅基本責任"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-13-a",
+"text": "覺得《憲法》好深，同我無關",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -10,
+"comment": "《憲法》同每位國民都息息相關，認識佢係國民責任。"
+}
+]
+},
+{
+"id": "s-ni-13-b",
+"text": "放學後去圖書館借《憲法》同《基本法》嘅圖書",
+"effects": [
+{
+"character": "自己",
+"change": 20,
+"moralChange": 18,
+"comment": "你主動學習國家根本法律，係負責任嘅小公民！"
+}
+]
+},
+{
+"id": "s-ni-13-c",
+"text": "借書 + 返屋企同爸媽分享今日學到嘅嘢",
+"effects": [
+{
+"character": "自己",
+"change": 30,
+"moralChange": 25,
+"comment": "你勤學又樂於分享，係真正嘅「愛國愛港」新一代！"
+}
+]
+}
+],
+"location": "assembly",
+"topicId": "national-identity",
+"creedIds": [
+4,
+3
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"認識國情",
+"主動學習",
+"國民責任"
+],
+"imagePrompt": "Hong Kong primary school library, child borrowing book about Chinese constitution and Basic Law, bookshelves full of books, soft warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-ni-14",
+"title": "南京大屠殺死難者國家公祭日 12月13日",
+"background": "課室・班主任課",
+"description": "十二月十三日係「南京大屠殺死難者國家公祭日」。班主任用平板電腦播放一段紀錄片，講述 1937 年南京發生嘅慘劇。片段結束後，有位同學笑咗一下。你會點做？",
+"hints": [
+"南京大屠殺係中華民族嘅沉痛歷史，超過 30 萬同胞遇難",
+"面對苦難歷史，莊重係基本態度",
+"記住歷史，唔係為咗仇恨，而係為咗守護和平"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+},
+{
+"name": "同學",
+"emoji": "🧑",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-14-a",
+"text": "扮睇唔到，唔出聲",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -10,
+"comment": "沉默有時等同默許，呢類場合應該表達正確態度。"
+}
+]
+},
+{
+"id": "s-ni-14-b",
+"text": "用平靜但認真嘅語氣話：「呢段歷史好沉重，我哋應該尊重。」",
+"effects": [
+{
+"character": "同學",
+"change": 10,
+"moralChange": 15,
+"comment": "你唔當面指責，但用溫和嘅方式帶出正確嘅態度，係高EQ 嘅做法！"
+}
+]
+},
+{
+"id": "s-ni-14-c",
+"text": "認真表達 + 散咗之後同老師反映，希望老師課堂上再帶大家反思",
+"effects": [
+{
+"character": "同學",
+"change": 20,
+"moralChange": 22,
+"comment": "你守護歷史嘅莊嚴，又願意用行動帶動反思，係有承擔嘅中國人！"
+}
+]
+}
+],
+"location": "class",
+"topicId": "national-identity",
+"creedIds": [
+4,
+9
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"同理心",
+"尊重歷史",
+"正確態度"
+],
+"imagePrompt": "Hong Kong primary classroom with students watching historical documentary on tablet, teacher standing, solemn atmosphere, dimmed lights, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-ni-15",
+"title": "烈士紀念日 9月30日",
+"background": "家中・晚飯",
+"description": "九月三十日係「烈士紀念日」。爸爸喺晚飯時同你講起：「今日係國家嘅烈士紀念日，係為咗紀念為國家為人民犧牲嘅英雄。」你會點回應？",
+"hints": [
+"烈士係為國家、為人民奉獻甚至犧牲生命嘅人",
+"認識烈士事蹟，係對佢哋嘅致敬",
+"傳承佢哋嘅精神，先係真正嘅紀念"
+],
+"characters": [
+{
+"name": "爸爸",
+"emoji": "👨",
+"initial_relationship": 80
+}
+],
+"options": [
+{
+"id": "s-ni-15-a",
+"text": "「唔關我事啦」然後繼續食飯睇電話",
+"effects": [
+{
+"character": "爸爸",
+"change": -10,
+"moralChange": -12,
+"comment": "烈士嘅犧牲就係為咗我哋呢一代可以安穩食飯，呢個回應令爸爸心痛。"
+}
+]
+},
+{
+"id": "s-ni-15-b",
+"text": "「爸爸，可唔可以話我聽多啲關於烈士嘅故事？」",
+"effects": [
+{
+"character": "爸爸",
+"change": 25,
+"moralChange": 20,
+"comment": "你願意聆聽，係對烈士同爸爸嘅最大尊重！"
+}
+]
+},
+{
+"id": "s-ni-15-c",
+"text": "聆聽故事 + 之後去圖書館借書，寫低自己嘅感受",
+"effects": [
+{
+"character": "爸爸",
+"change": 35,
+"moralChange": 28,
+"comment": "你用行動傳承精神，係真正愛國嘅新一代！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "national-identity",
+"creedIds": [
+4,
+12
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"尊敬先烈",
+"聆聽學習",
+"傳承精神"
+],
+"imagePrompt": "Hong Kong family dinner table, father and child talking, warm evening light, Chinese dishes on table, sincere conversation atmosphere, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-ni-16",
+"title": "大灣區交流團：親身認識祖國",
+"background": "深圳・創科企業參觀",
+"description": "學校舉辦「粵港澳大灣區」交流團，你哋去到深圳一間科技公司參觀。導賞員介紹：「呢度嘅工程師平均年齡 28 歲，開發緊領先全球嘅 5G 通訊技術。」你嘅感想係……",
+"hints": [
+"大灣區包括香港、澳門同廣東省 9 個城市，係國家重要發展戰略",
+"親身體驗先可以真正認識祖國嘅發展",
+"祖國嘅科技成就令年輕人充滿機會"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-16-a",
+"text": "「香港先係最好，祖國其他地方都唔夠香港」",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -15,
+"comment": "呢個講法唔公允，祖國有好多領域已經世界領先，應該虛心學習。"
+}
+]
+},
+{
+"id": "s-ni-16-b",
+"text": "認真聆聽導賞，記低重點，返到香港寫分享報告",
+"effects": [
+{
+"character": "自己",
+"change": 20,
+"moralChange": 18,
+"comment": "你用開放嘅態度認識祖國，係識見廣闊嘅好國民！"
+}
+]
+},
+{
+"id": "s-ni-16-c",
+"text": "聆聽 + 訪問導賞員，了解佢哋嘅工作同夢想 + 寫分享報告",
+"effects": [
+{
+"character": "自己",
+"change": 30,
+"moralChange": 25,
+"comment": "你唔止參觀，仲主動交流，帶返最有溫度嘅學習成果，係最優秀嘅交流團成員！"
+}
+]
+}
+],
+"location": "outdoor",
+"topicId": "national-identity",
+"creedIds": [
+4,
+10
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"認識國情",
+"開放態度",
+"主動學習"
+],
+"imagePrompt": "Hong Kong primary school students visiting modern Shenzhen tech company, glass building interior, engineer in lab coat showing technology to children, futuristic yet warm, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-ni-17",
+"title": "國歌喺運動場奏起：應該企起身",
+"background": "運動場・比賽前",
+"description": "你參加學界田徑比賽，攞獎後播國歌時，你身邊嘅隊友有啲人坐低傾偈，有人企咗起身但用手機自拍。你會點做？",
+"hints": [
+"國歌係國家嘅象徵，奏國歌時應該肅立、注視國旗",
+"喺任何場地奏國歌，都應該有正確嘅態度",
+"尊重國家象徵唔分場地，係習慣同修養"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-ni-17-a",
+"text": "坐低同人傾偈，覺得喺運動場又唔係升旗禮",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -15,
+"comment": "國歌嘅莊嚴唔分場地，呢個係對國家嘅基本尊重。"
+}
+]
+},
+{
+"id": "s-ni-17-b",
+"text": "自己企直，面向國旗方向，唔出聲",
+"effects": [
+{
+"character": "自己",
+"change": 15,
+"moralChange": 15,
+"comment": "你做出咗榜樣，呢份修養令身邊嘅人自慚形穢！"
+}
+]
+},
+{
+"id": "s-ni-17-c",
+"text": "企直肅立 + 完咗之後輕聲同隊友講：「下次一齊企直啦，更型！」",
+"effects": [
+{
+"character": "自己",
+"change": 25,
+"moralChange": 22,
+"comment": "你用行動做榜樣，又用溫和嘅方式帶動隊友，係真正嘅領袖！"
+}
+]
+}
+],
+"location": "outdoor",
+"topicId": "national-identity",
+"creedIds": [
+4
+],
+"valueCategory": "national-identity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"尊重國歌",
+"良好習慣",
+"正面影響"
+],
+"imagePrompt": "Hong Kong school sports field, athletes standing at attention during national anthem after receiving medal, podium in background, sunny day, Studio Ghibli style, soft pastel watercolor, 16:9"
+}
+]

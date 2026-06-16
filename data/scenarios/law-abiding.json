@@ -1,0 +1,1054 @@
+[
+{
+"id": "s-self-25",
+"title": "上課規則：舉手發言",
+"background": "課室",
+"description": "上堂時你有問題想問老師，但老師正講緊嘢。你好想出聲，你會……",
+"hints": [
+"舉手等老師叫你先出聲係基本禮貌。",
+"直接喊會擾亂課堂。"
+],
+"options": [
+{
+"id": "s-self-25-a",
+"text": "舉手等老師叫你",
+"effects": [
+{
+"moralChange": 15,
+"comment": "你好有禮貌，老師會好快叫你！"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-25-b",
+"text": "等下課先再問老師",
+"effects": [
+{
+"moralChange": 8,
+"comment": "等下課問都係一個方法。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-25-c",
+"text": "大聲叫「老師！」",
+"effects": [
+{
+"moralChange": -10,
+"comment": "直接喊會擾亂課堂同學。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "law-abiding",
+"creedIds": [
+22
+],
+"imagePrompt": "Boy raising hand to speak, teacher calling on him, positive classroom, anime cartoon style, happy, no text, 16:9",
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"遵守校規",
+"排隊守紀",
+"舉手發言"
+]
+},
+{
+"id": "s-self-26",
+"title": "上課規則：坐好聽課",
+"background": "課室",
+"description": "老師喺前面講緊一個重要嘅故事，你坐喺自己位。你會……",
+"hints": [
+"坐正聽老師講可以專心學到嘢。",
+"周圍走會擾亂課堂。"
+],
+"options": [
+{
+"id": "s-self-26-a",
+"text": "坐正專心聽老師講",
+"effects": [
+{
+"moralChange": 15,
+"comment": "你專心又守規矩！"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-26-b",
+"text": "坐喺度周圍望",
+"effects": [
+{
+"moralChange": -3,
+"comment": "雖然冇做壞事，但會錯失學習機會。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-26-c",
+"text": "企起身四圍走",
+"effects": [
+{
+"moralChange": -10,
+"comment": "走嚟走去會擾亂同學。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "law-abiding",
+"creedIds": [
+22,
+16
+],
+"imagePrompt": "Boy sitting properly listening to teacher, focused, classroom, anime cartoon style, calm, no text, 16:9",
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"遵守校規",
+"排隊守紀",
+"舉手發言"
+]
+},
+{
+"id": "s-self-27",
+"title": "上課規則：安靜聲音",
+"background": "課室",
+"description": "上堂期間你想同隔離同學講關於一隻小貓嘅事。你會用咩聲音？",
+"hints": [
+"細聲講嘢唔會影響老師同其他同學。",
+"大聲講嘢會擾亂課堂。"
+],
+"options": [
+{
+"id": "s-self-27-a",
+"text": "用細細聲講嘢",
+"effects": [
+{
+"moralChange": 15,
+"comment": "你識得體諒其他同學！"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-27-b",
+"text": "寫紙仔傳俾同學",
+"effects": [
+{
+"moralChange": 5,
+"comment": "雖然唔出聲，但都可能會影響專心。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-27-c",
+"text": "大聲叫同學聽",
+"effects": [
+{
+"moralChange": -10,
+"comment": "大聲講嘢會擾亂成個課室。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "law-abiding",
+"creedIds": [
+22
+],
+"imagePrompt": "Boy using soft voice with classmates, everyone comfortable, classroom, anime cartoon style, gentle, no text, 16:9",
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"遵守校規",
+"排隊守紀",
+"舉手發言"
+]
+},
+{
+"id": "s-self-28",
+"title": "上課規則：收好玩具",
+"background": "課室",
+"description": "玩完積木或者玩具，老師話要收拾準備下個活動。你會……",
+"hints": [
+"玩完收埋係基本責任。",
+"亂丟玩具會令其他同學搵唔到。"
+],
+"options": [
+{
+"id": "s-self-28-a",
+"text": "自己玩完自己收埋",
+"effects": [
+{
+"moralChange": 15,
+"comment": "你負責任又有條理！"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-28-b",
+"text": "「等人嚟執啦」就走開",
+"effects": [
+{
+"moralChange": -3,
+"comment": "自己玩嘅嘢應該自己收。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-28-c",
+"text": "亂咁丟玩具周圍",
+"effects": [
+{
+"moralChange": -10,
+"comment": "亂丟玩具會整爛其他嘢。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "law-abiding",
+"creedIds": [
+22,
+16
+],
+"imagePrompt": "Boy neatly putting away toys, classroom clean, positive habit, anime cartoon style, satisfied, no text, 16:9",
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"遵守校規",
+"排隊守紀",
+"舉手發言"
+]
+},
+{
+"id": "s-self-29",
+"title": "上課規則：排隊",
+"background": "課室",
+"description": "去音樂堂嘅時候要排隊等入去，個個同學都排緊隊。你會……",
+"hints": [
+"排隊係公平嘅做法，每個人都輪到。",
+"推人搶前會整傷人又失朋友。"
+],
+"options": [
+{
+"id": "s-self-29-a",
+"text": "乖乖排隊等輪到自己",
+"effects": [
+{
+"moralChange": 15,
+"comment": "你守規矩又有耐性！"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-29-b",
+"text": "「可以早啲入去嗎」問老師",
+"effects": [
+{
+"moralChange": 5,
+"comment": "問老師可以，但都要守規矩。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-29-c",
+"text": "推開前面嘅同學搶前",
+"effects": [
+{
+"moralChange": -10,
+"comment": "推人搶前會整傷人又會失朋友。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "law-abiding",
+"creedIds": [
+22
+],
+"imagePrompt": "Boy waiting patiently in line, orderly queue, school, anime cartoon style, calm and fair, no text, 16:9",
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"遵守校規",
+"排隊守紀",
+"舉手發言"
+]
+},
+{
+"id": "s-self-30",
+"title": "上課規則：聽老師指示",
+"background": "課室",
+"description": "老師派發工作紙，話：「請同學完成第 1 至第 5 題。」你會點做？",
+"hints": [
+"聽老師指示做最安全又最有效。",
+"自己亂做會做錯晒。"
+],
+"options": [
+{
+"id": "s-self-30-a",
+"text": "聽老師指示做第 1-5 題",
+"effects": [
+{
+"moralChange": 15,
+"comment": "你完成上課規則學習！badge +10分"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-30-b",
+"text": "問清楚先開始做",
+"effects": [
+{
+"moralChange": 10,
+"comment": "問清楚都好，但聽指示已經夠清晰。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-30-c",
+"text": "自己揀想做的題目",
+"effects": [
+{
+"moralChange": -10,
+"comment": "自己亂做會做錯晒又交唔到功課。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "law-abiding",
+"creedIds": [
+22,
+16
+],
+"imagePrompt": "Boy following teacher's instruction carefully, safe action, classroom, anime cartoon style, focused, no text, 16:9",
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"遵守校規",
+"排隊守紀",
+"舉手發言"
+]
+},
+{
+"id": "s-self-112",
+"title": "守法：過馬路要等綠燈",
+"background": "街道・放學",
+"description": "你趕住返屋企，馬路對面已經冇車，綠燈又未到，你想衝過去。你會……",
+"hints": [
+"紅綠燈係保障你嘅安全",
+"唔可以因為冇車就衝",
+"等30秒可能救你一命"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-112-a",
+"text": "趁冇車跑過去",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你違反交通規則，可能被車撞。"
+}
+]
+},
+{
+"id": "s-self-112-b",
+"text": "乖乖等綠燈",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你守規矩，係守法的榜樣！"
+}
+]
+},
+{
+"id": "s-self-112-c",
+"text": "等綠燈+用斑馬線+望清楚兩邊",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你守規+細心，係完美嘅守法！"
+}
+]
+}
+],
+"location": "outdoor",
+"topicId": "law-abiding",
+"creedIds": [
+8
+],
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"遵守校規",
+"過馬路",
+"公共場所守規"
+],
+"imagePrompt": "Hong Kong pedestrian crossing with red traffic light, child waiting on curb, busy street, anime cartoon style, soft pastel, happy, no text, 16:9"
+},
+{
+"id": "s-self-113",
+"title": "守法：排隊打飯",
+"background": "學校・飯堂・午膳",
+"description": "午膳打飯時你排隊排到好尾，前面仲有10個人。你肚餓到暈，好想打尖。你會……",
+"hints": [
+"排隊係基本規則",
+"打尖會令後面嘅人更唔公平",
+"排隊係對其他人嘅尊重"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-113-a",
+"text": "偷偷行前打尖",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你違反規則，後面嘅人會唔公平。"
+}
+]
+},
+{
+"id": "s-self-113-b",
+"text": "耐心等輪到自己",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你守規矩，係守法的表現！"
+}
+]
+},
+{
+"id": "s-self-113-c",
+"text": "等時同朋友傾計+用時間諗下今日學咩",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你令等待變得有意义，係守法的智慧！"
+}
+]
+}
+],
+"location": "school",
+"topicId": "law-abiding",
+"creedIds": [
+8
+],
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"排隊守紀",
+"遵守校規",
+"耐性"
+],
+"imagePrompt": "Hong Kong primary school canteen, children queuing for lunch with trays, warm indoor light, anime cartoon style, soft pastel, happy, no text, 16:9"
+},
+{
+"id": "s-self-114",
+"title": "守法：上堂要舉手",
+"background": "課室・班主任課",
+"description": "老師問問題你識答，但舉手要等好耐，你好想直接講。你會……",
+"hints": [
+"舉手發言係課室規則",
+"輪候係公平",
+"守規則令課堂有效"
+],
+"characters": [
+{
+"name": "老師",
+"emoji": "👨‍🏫",
+"initial_relationship": 65
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-114-a",
+"text": "直接大聲答",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你違反課室規則，阻礙課堂進行。"
+}
+]
+},
+{
+"id": "s-self-114-b",
+"text": "舉手等老師叫",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你守規矩，係守法的表現！"
+}
+]
+},
+{
+"id": "s-self-114-c",
+"text": "舉手+眼神接觸老師示意",
+"effects": [
+{
+"character": "自己",
+"change": 20,
+"moralChange": 22,
+"comment": "你守規又主動，係高手做法！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "law-abiding",
+"creedIds": [
+8
+],
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"舉手發言",
+"遵守校規",
+"輪候"
+],
+"imagePrompt": "Hong Kong primary classroom, child raising hand to answer, teacher at board, morning light, anime cartoon style, soft pastel, happy, no text, 16:9"
+},
+{
+"id": "s-self-115",
+"title": "守法：睇電視要限時",
+"background": "屋企・客廳・晚上",
+"description": "爸媽話每日最多睇電視1個鐘，但你想追多集卡通。你會……",
+"hints": [
+"家規都係規則",
+"守規係為你健康",
+"明天可以繼續睇"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 75
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-115-a",
+"text": "偷睇多集，扮冇超時",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你違反家規，傷害眼睛同信任。"
+}
+]
+},
+{
+"id": "s-self-115-b",
+"text": "乖乖熄電視做其他嘢",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你守家規，係守法的表現！"
+}
+]
+},
+{
+"id": "s-self-115-c",
+"text": "問媽媽可唔可以睇完呢集先停",
+"effects": [
+{
+"character": "自己",
+"change": 20,
+"moralChange": 22,
+"comment": "你守規又會商量，係成熟嘅守法！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "law-abiding",
+"creedIds": [
+8
+],
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"遵守校規",
+"公共場所守規",
+"routine"
+],
+"imagePrompt": "Hong Kong child watching TV in living room, evening lamplight, considering turning off, anime cartoon style, soft pastel, warm tones, 16:9"
+},
+{
+"id": "s-self-116",
+"title": "守法：公眾地方保持安靜",
+"background": "圖書館・下午",
+"description": "你同朋友去圖書館溫書，但朋友笑住傾偈，圖書管理員望緊你哋。你會……",
+"hints": [
+"圖書館要安靜",
+"提醒朋友係朋友嘅責任",
+"公共場所守規係公民責任"
+],
+"characters": [
+{
+"name": "朋友",
+"emoji": "🧒",
+"initial_relationship": 60
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-116-a",
+"text": "同朋友一齊笑",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你違反圖書館規則，影響其他人。"
+}
+]
+},
+{
+"id": "s-self-116-b",
+"text": "同朋友細聲話「呢度要安靜」",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你守規則+提醒朋友，係守法榜樣！"
+}
+]
+},
+{
+"id": "s-self-116-c",
+"text": "友善提醒朋友+建議去公園傾偈",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你守規則+諗解決方法，係高手！"
+}
+]
+}
+],
+"location": "library",
+"topicId": "law-abiding",
+"creedIds": [
+8
+],
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"公共場所守規",
+"提醒朋友",
+"守規則"
+],
+"imagePrompt": "Hong Kong public library, child whispering to friend, books and study tables, quiet atmosphere, anime cartoon style, soft pastel, warm tones, 16:9"
+},
+{
+"id": "s-self-117",
+"title": "守法：唔可以亂拋垃圾",
+"background": "公園・玩耍",
+"description": "你食完雪糕，個包裝袋你想就咁丟喺地下。但隔離有垃圾桶。你會……",
+"hints": [
+"保持環境清潔係公民責任",
+"垃圾桶好近",
+"影響其他人用公園"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-117-a",
+"text": "「好近呀唔緊要啦」就丟地下",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你污染環境，影響其他人。"
+}
+]
+},
+{
+"id": "s-self-117-b",
+"text": "行去垃圾桶掉",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你做咗基本嘅公民責任！"
+}
+]
+},
+{
+"id": "s-self-117-c",
+"text": "掉入垃圾桶+順手執起地下其他垃圾",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你唔只守規仲主動改善環境，係公民模範！"
+}
+]
+}
+],
+"location": "park",
+"topicId": "law-abiding",
+"creedIds": [
+8
+],
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"公共場所守規",
+"環保意識",
+"守規則"
+],
+"imagePrompt": "Hong Kong child at park, dropping ice cream wrapper into trash bin, sunny day, anime cartoon style, soft pastel, happy, no text, 16:9"
+},
+{
+"id": "s-self-118",
+"title": "守法：考試唔可以偷睇",
+"background": "課室・考試",
+"description": "考試中你有條題唔識，隔離同學嘅答案你睇到。你會……",
+"hints": [
+"作弊係違反校規",
+"誠實考試先至學到嘢",
+"作弊抓到會被記過"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-118-a",
+"text": "偷睇隔離嘅答案",
+"effects": [
+{
+"character": "自己",
+"change": -20,
+"moralChange": -22,
+"comment": "你作弊，違反校規又冇學到嘢。"
+}
+]
+},
+{
+"id": "s-self-118-b",
+"text": "唔睇，自己做晒",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你誠實考試，係守法的榜樣！"
+}
+]
+},
+{
+"id": "s-self-118-c",
+"text": "唔睇+做完自己嘅+接受分數結果",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你誠實又接受結果，係完美嘅守法！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "law-abiding",
+"creedIds": [
+8
+],
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"遵守校規",
+"誠實",
+"守規則"
+],
+"imagePrompt": "Hong Kong primary classroom exam scene, child writing answers at desk, eyes forward, morning light, anime cartoon style, soft pastel, warm tones, 16:9"
+},
+{
+"id": "s-self-119",
+"title": "守法：搭車要讓座",
+"background": "巴士・下午",
+"description": "你搭巴士返屋企，車廂好滿，有個孕婦企喺你隔離。你會……",
+"hints": [
+"讓座係美德",
+"孕婦同老人家優先",
+"你可以企住"
+],
+"characters": [
+{
+"name": "孕婦",
+"emoji": "🤰",
+"initial_relationship": 50
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-119-a",
+"text": "扮睇唔到繼續坐",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你冇讓座，孕婦會企得好辛苦。"
+}
+]
+},
+{
+"id": "s-self-119-b",
+"text": "起身讓座",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你讓座，係守法的榜樣！"
+}
+]
+},
+{
+"id": "s-self-119-c",
+"text": "起身讓座+扶孕婦坐好",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你讓座+體貼，係公民模範！"
+}
+]
+}
+],
+"location": "outdoor",
+"topicId": "law-abiding",
+"creedIds": [
+8
+],
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"公共場所守規",
+"讓座",
+"公民責任"
+],
+"imagePrompt": "Hong Kong double-decker bus interior, child standing to give seat to pregnant woman, anime cartoon style, soft pastel, happy, no text, 16:9"
+},
+{
+"id": "s-self-120",
+"title": "守法：校規唔可以帶零食",
+"background": "學校・校門",
+"description": "你想帶薯片返學校食，但學校規定唔可以帶零食。你會……",
+"hints": [
+"校規有佢嘅原因",
+"零食影響健康同課堂",
+"可以零食放學先食"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-120-a",
+"text": "收埋喺書包偷帶返學",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你違反校規，被發現會被記過。"
+}
+]
+},
+{
+"id": "s-self-120-b",
+"text": "聽話唔帶返學",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你守校規，係守法嘅榜樣！"
+}
+]
+},
+{
+"id": "s-self-120-c",
+"text": "問老師點解唔可以帶+放學食",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你守規又理解背後原因，係成熟嘅守法！"
+}
+]
+}
+],
+"location": "school",
+"topicId": "law-abiding",
+"creedIds": [
+8
+],
+"valueCategory": "law-abiding",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"遵守校規",
+"守規則",
+"問為什麼"
+],
+"imagePrompt": "Hong Kong child at school gate, holding snack and bag, considering leaving snack at home, morning sun, anime cartoon style, soft pastel, warm tones, 16:9"
+}
+]

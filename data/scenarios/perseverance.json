@@ -1,0 +1,1051 @@
+[
+{
+"id": "s-self-55",
+"title": "堅毅：功課難都要試",
+"background": "屋企・書桌",
+"description": "做功課時遇到一條好難嘅數學題，你諗咗好耐都唔識。你想放棄，你會……",
+"hints": [
+"遇到困難唔放棄先會學到嘢。",
+"可以先試自己，唔識先問人。"
+],
+"options": [
+{
+"id": "s-self-55-a",
+"text": "「太難喇，我放棄啦」",
+"effects": [
+{
+"moralChange": -15,
+"comment": "放棄永遠學唔到新嘢。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-55-b",
+"text": "深呼吸再諗多一次",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你嘅毅力會令你成功！"
+}
+],
+"next_scenario": "s-self-56"
+},
+{
+"id": "s-self-55-c",
+"text": "即刻叫媽媽嚟幫",
+"effects": [
+{
+"moralChange": -10,
+"comment": "自己先試下先問人，會學到更多。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "home",
+"topicId": "perseverance",
+"creedIds": [
+17,
+19
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy struggling with difficult homework but trying again at desk, determined expression, warm home lighting, no text, no logos, 16:9",
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"持續練習",
+"接受失敗"
+]
+},
+{
+"id": "s-self-56",
+"title": "堅毅：學單車唔怕跌",
+"background": "公園",
+"description": "爸爸教你踩單車，你已經跌咗五六次，膝頭有少少損。你想放棄，你會……",
+"hints": [
+"每個技能都需要練習，跌低係正常嘅。",
+"放棄就永遠學唔識。"
+],
+"options": [
+{
+"id": "s-self-56-a",
+"text": "「唔學喇，我返屋企」",
+"effects": [
+{
+"moralChange": -15,
+"comment": "放棄咗就永遠學唔識。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-56-b",
+"text": "抹咗眼淚再爬上去",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你堅強又勇敢！"
+}
+],
+"next_scenario": "s-self-57"
+},
+{
+"id": "s-self-56-c",
+"text": "「爸爸扶住我踩」",
+"effects": [
+{
+"moralChange": -5,
+"comment": "自己試下會學得更快。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "playground",
+"topicId": "perseverance",
+"creedIds": [
+17
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy getting up after falling off bicycle in park, resilient, warm afternoon light, no text, no logos, 16:9",
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"持續練習",
+"接受失敗"
+]
+},
+{
+"id": "s-self-57",
+"title": "堅毅：溫書考試",
+"background": "屋企・房間",
+"description": "聽日就考試，你溫咗兩個鐘書覺得好攰，有啲內容仲未睇完。你會……",
+"hints": [
+"最後衝刺雖然辛苦，但係值得嘅。",
+"放棄溫書會令之前嘅努力白費。"
+],
+"options": [
+{
+"id": "s-self-57-a",
+"text": "「太攰喇，我瞓覺先」",
+"effects": [
+{
+"moralChange": -18,
+"comment": "放棄溫書會令聽日考試表現受影響。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-57-b",
+"text": "再溫多一個鐘就收工",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你勤力又識得堅持！"
+}
+],
+"next_scenario": "s-self-58"
+},
+{
+"id": "s-self-57-c",
+"text": "「聽日再算啦」就走開",
+"effects": [
+{
+"moralChange": -10,
+"comment": "今日嘅努力會令你更有自信。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "home",
+"topicId": "perseverance",
+"creedIds": [
+17,
+13
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy studying hard for exam at night, persevering with tired but focused face, warm lamp light, no text, no logos, 16:9",
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"持續練習",
+"接受失敗"
+]
+},
+{
+"id": "s-self-59",
+"title": "堅毅：學新嘢唔怕錯",
+"background": "課室",
+"description": "上堂時老師問：「邊個知道答案？」你其實都唔太肯定但有少少頭緒。你會……",
+"hints": [
+"舉手試答係勇敢嘅表現，答錯都冇所謂。",
+"抄朋友答案係欺騙行為。"
+],
+"options": [
+{
+"id": "s-self-59-a",
+"text": "「我唔識」就唔舉手",
+"effects": [
+{
+"moralChange": -10,
+"comment": "唔試就永遠唔知道自己識唔識。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-59-b",
+"text": "「我試下答」就舉手",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你嘅勇氣令老師都好欣賞！"
+}
+],
+"next_scenario": "s-self-60"
+},
+{
+"id": "s-self-59-c",
+"text": "偷偷睇朋友嘅答案",
+"effects": [
+{
+"moralChange": -15,
+"comment": "抄人哋答案學唔到自己嘅嘢。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "perseverance",
+"creedIds": [
+17,
+13
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy raising hand to answer in class even if unsure, brave and persevering, warm classroom, no text, no logos, 16:9",
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"持續練習",
+"接受失敗"
+]
+},
+{
+"id": "s-self-60",
+"title": "堅毅：完成就係勝利",
+"background": "屋企・床頭",
+"description": "今日你完成咗溫書、做咗家務、仲幫媽媽執屋企，瞓覺前你會點諗？",
+"hints": [
+"為自己嘅努力感到驕傲。",
+"堅持落去每天都會進步。"
+],
+"options": [
+{
+"id": "s-self-60-a",
+"text": "「其實都冇乜用」",
+"effects": [
+{
+"moralChange": 5,
+"comment": "但你今日已經好努力，已經有進步。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-60-b",
+"text": "「我覺得自己好犀利」",
+"effects": [
+{
+"moralChange": 20,
+"comment": "你完成堅毅學習！badge +10分"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-60-c",
+"text": "「下次都係放棄好過」",
+"effects": [
+{
+"moralChange": -15,
+"comment": "放棄會令之前嘅努力全部白費。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "home",
+"topicId": "perseverance",
+"creedIds": [
+17,
+21
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy looking proud and accomplished after hard work at bedtime, warm satisfied expression, cozy room, no text, no logos, 16:9",
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"持續練習",
+"接受失敗"
+]
+},
+{
+"id": "s-pv-01",
+"title": "堅毅：學游水失敗",
+"background": "泳池・暑期班",
+"description": "你學游水第 3 堂，仲係驚水，一掂到水面就嗌。",
+"hints": [
+"學新嘢一定會遇到挫折",
+"堅毅就係怕嘅時候繼續試",
+"每個游得快嘅人都曾經驚過水"
+],
+"characters": [
+{
+"name": "教練",
+"emoji": "🏊",
+"initial_relationship": 60
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-pv-01-a",
+"text": "「我唔學喇，我要上岸」",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -12,
+"comment": "你放棄咗，堅毅永遠學唔到。"
+}
+]
+},
+{
+"id": "s-pv-01-b",
+"text": "深呼吸，跟住教練嘅 step 再試",
+"effects": [
+{
+"character": "自己",
+"change": 18,
+"moralChange": 18,
+"comment": "你堅持咗，可能仲未識游，但你贏咗自己！"
+}
+]
+},
+{
+"id": "s-pv-01-c",
+"text": "繼續練 + 問教練一啲令自己安心嘅方法",
+"effects": [
+{
+"character": "自己",
+"change": 25,
+"moralChange": 22,
+"comment": "你堅毅 + 搵方法，係真正嘅勇者！"
+}
+]
+}
+],
+"location": "pool",
+"topicId": "perseverance",
+"creedIds": [
+1
+],
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"接受失敗",
+"持續練習"
+],
+"imagePrompt": "Hong Kong public swimming pool, child wearing goggles at pool edge looking nervous, swimming instructor nearby, blue water, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-67",
+"title": "堅毅：練琴第20次都係錯",
+"background": "屋企・鋼琴前・晚上",
+"description": "媽媽安排你每晚練琴30分鐘。但你練咗一首新歌20次，每次都喺同一個小節撞錯音，好挫折。你想放棄，你會……",
+"hints": [
+"每個音樂家都經歷過撞板，重複練習就會進步",
+"錯誤係學習嘅一部分，跌低先識起身",
+"放棄只會令你之前嘅努力白費"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-67-a",
+"text": "大力閂琴蓋，話「我唔學喇！」",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "一撞板就放棄，永遠學唔到新嘢。"
+}
+]
+},
+{
+"id": "s-self-67-b",
+"text": "再練5次，錯咗就由嗰度重頭開始",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 15,
+"comment": "你願意重複撞板，呢個就係堅毅！"
+}
+]
+},
+{
+"id": "s-self-67-c",
+"text": "請媽媽示範嗰個小節，再單獨練嗰幾個音",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你主動搵方法突破，係高手嘅學習法！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "perseverance",
+"creedIds": [
+1
+],
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"持續練習",
+"主動求教"
+],
+"imagePrompt": "Young Chinese child sitting at piano in warm home evening light, focused expression, sheet music on stand, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-68",
+"title": "堅毅：跑步跑到攰到想停",
+"background": "學校・田徑場・體育堂",
+"description": "體育堂老師測試1500米，你跑到第3圈已經好攰，個肺好痛，腳好似千斤重。你想停低，你會……",
+"hints": [
+"長跑考驗嘅係意志，唔只係體能",
+"慢慢調整呼吸、保持節奏就會好啲",
+"堅持多一步，就會發現原來自己得"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-68-a",
+"text": "停低行路，等其他同學追過嚟",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -12,
+"comment": "放棄咗就輸俾自己，下一圈你一定會後悔。"
+}
+]
+},
+{
+"id": "s-self-68-b",
+"text": "慢啲跑，調整呼吸，繼續行到終點",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你識得調節自己，呢個就係堅毅！"
+}
+]
+},
+{
+"id": "s-self-68-c",
+"text": "同自己講「再一圈就得」，一啖一啖跑完",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你用目標分散痛苦，係真正嘅鬥士！"
+}
+]
+}
+],
+"location": "school",
+"topicId": "perseverance",
+"creedIds": [
+1
+],
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"持續練習",
+"自我鼓勵"
+],
+"imagePrompt": "Hong Kong primary school running track, child in green school uniform running with determined expression, sunlight, other children in background, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-self-69",
+"title": "堅毅：砌LEGO砌到天黑",
+"background": "屋企・客廳・週末",
+"description": "你砌緊一盒2000粒嘅LEGO城堡，由朝早砌到夜晚，已經砌咗6個鐘。最後嗰座橋好難睇說明書都搞唔掂，你攰到眼瞓。你會……",
+"hints": [
+"大型 LEGO 作品需要時間同耐性",
+"瞓醒先砌通常會有新靈感",
+"放棄嘅話，2000粒心血就白費"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-69-a",
+"text": "拆晒啲零件，話「我唔玩喇」",
+"effects": [
+{
+"character": "自己",
+"change": -18,
+"moralChange": -18,
+"comment": "差少少先完成就放棄，6個鐘嘅努力白費。"
+}
+]
+},
+{
+"id": "s-self-69-b",
+"text": "砌多少少先瞓，聽日精神再砌",
+"effects": [
+{
+"character": "自己",
+"change": 8,
+"moralChange": 10,
+"comment": "你識得分配時間，呢個就係智慧嘅堅毅。"
+}
+]
+},
+{
+"id": "s-self-69-c",
+"text": "再砌多1個鐘，唔成功就瞓醒再嚟",
+"effects": [
+{
+"character": "自己",
+"change": 20,
+"moralChange": 22,
+"comment": "你努力到最後一刻，係真嘅LEGO大師！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "perseverance",
+"creedIds": [
+1
+],
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"持續練習",
+"完成目標"
+],
+"imagePrompt": "Hong Kong child sitting on floor surrounded by colorful LEGO bricks, half-built castle, evening warm light, focused expression, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-70",
+"title": "堅毅：寫字寫到攰",
+"background": "屋企・書枱・晚上",
+"description": "老師話要重寫嗰10個寫得唔好嘅生字，你已經重寫3次，每次都寫到第5個就好攰想停。你會……",
+"hints": [
+"寫字係肌肉記憶，重複先會靚",
+"用間尺、慢啲寫就會穩定",
+"寫好一個生字 = 終身受用"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-70-a",
+"text": "扮寫完，遮住幾個交功課就算",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "欺騙自己 = 欺騙老師，錯過咗練習機會。"
+}
+]
+},
+{
+"id": "s-self-70-b",
+"text": "深呼吸，每個字都慢慢寫完",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你調整心態慢慢做，呢個就係耐性！"
+}
+]
+},
+{
+"id": "s-self-70-c",
+"text": "寫完後同自己講「我真係盡咗力」",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你用肯定自己完成目標，太棒喇！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "perseverance",
+"creedIds": [
+1
+],
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"持續練習",
+"耐性",
+"自我肯定"
+],
+"imagePrompt": "Hong Kong child at desk with Chinese character practice book, brush and pencil, warm desk lamp light at night, focused expression, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-71",
+"title": "堅毅：背英文生字背唔晒",
+"background": "屋企・房間・考試前",
+"description": "聽日英文默書20個生字，你背咗3次只能記住12個。時間已經10點，你眼瞓但又驚聽日默書零分。你會……",
+"hints": [
+"瞓覺時大腦會自動整理記憶",
+"唔好熬夜，瞓醒精神背更有效率",
+"盡咗力就接受結果，唔好俾太大壓力自己"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-71-a",
+"text": "通宵背，唔記得就抄10次",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "熬夜傷身又冇效率，聽日默書更差。"
+}
+]
+},
+{
+"id": "s-self-71-b",
+"text": "瞓覺前再快速睇2次，瞓醒再睇1次",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你識得分配精神，呢個就係聰明嘅努力。"
+}
+]
+},
+{
+"id": "s-self-71-c",
+"text": "用記憶法（圖像／諧音）重組12個生字再記多4個",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你主動搵更好方法，係高手學習法！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "perseverance",
+"creedIds": [
+1
+],
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"持續練習",
+"接受失敗",
+"主動求教"
+],
+"imagePrompt": "Hong Kong child at bedroom desk with English vocabulary book and flashcards, late night, slightly tired expression, warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-72",
+"title": "堅毅：煮新菜式燶咗",
+"background": "屋企・廚房・下午",
+"description": "媽媽教你炒蛋，第一次油溫太高，啲蛋燶咗一陣黑煙。你想放棄叫外賣，你會……",
+"hints": [
+"第一次煮嘢失敗好正常",
+"細火、油少少、再試一次就會成功",
+"照顧自己嘅能力係一世嘅"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-72-a",
+"text": "「算喇，叫外賣啦」",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -10,
+"comment": "一次失敗就放棄，學唔到任何生活技能。"
+}
+]
+},
+{
+"id": "s-self-72-b",
+"text": "用細火同少油再試多次",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你調整方法再嚟，呢個就係學嘢！"
+}
+]
+},
+{
+"id": "s-self-72-c",
+"text": "問媽媽點解燶咗，再示範一次俾你睇",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你主動求教再自己嚟，係生活智慧！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "perseverance",
+"creedIds": [
+1
+],
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"持續練習",
+"主動求教"
+],
+"imagePrompt": "Hong Kong child in home kitchen with frying pan and eggs, slight smoke, gentle mother nearby, afternoon sunlight, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-73",
+"title": "堅毅：跌倒擦傷繼續跑",
+"background": "學校・操場・小息",
+"description": "小息跑跑吓，你仆親擦損咗膝頭，滲緊血，運動褲都染紅咗少少。你本來約咗朋友再跑一場，你會……",
+"hints": [
+"擦損唔係大傷，清潔包紮就好",
+"如果好痛就休息，但唔好因少少傷就放棄",
+"適當休息再戰係運動家精神"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-73-a",
+"text": "坐喺度喊，再唔跑喇",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "少少傷就放棄，朋友會覺得你唔可靠。"
+}
+]
+},
+{
+"id": "s-self-73-b",
+"text": "去健康院處理傷口，休息一場下次再跑",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你識得照顧自己再戰，呢個就係成熟！"
+}
+]
+},
+{
+"id": "s-self-73-c",
+"text": "去洗傷口貼膠布，繼續同朋友跑",
+"effects": [
+{
+"character": "自己",
+"change": 20,
+"moralChange": 22,
+"comment": "你冇被挫折打敗，係真正嘅運動家！"
+}
+]
+}
+],
+"location": "school",
+"topicId": "perseverance",
+"creedIds": [
+1
+],
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"接受失敗",
+"照顧自己"
+],
+"imagePrompt": "Hong Kong primary school playground, child with bandaged knee, determined expression, friends in background, sunshine, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-self-74",
+"title": "堅毅：第一次上台講故事",
+"background": "學校・演講廳・早會",
+"description": "老師揀你喺早會向全校分享一本你睇過嘅書。你背咗3晚，但企上台一刻緊張到腦空白，講咗兩句就唔記得下一句。你會……",
+"hints": [
+"深呼吸、放慢速度、睇住一個友善嘅人",
+"緊張好正常，越講越順",
+"失敗都係經驗，下次會更好"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-74-a",
+"text": "走返落台唔講",
+"effects": [
+{
+"character": "自己",
+"change": -18,
+"moralChange": -18,
+"comment": "一次怯場就放棄，全校都記住你嘅退縮。"
+}
+]
+},
+{
+"id": "s-self-74-b",
+"text": "深呼吸，慢慢講，唔記得就睇書本",
+"effects": [
+{
+"character": "自己",
+"change": 15,
+"moralChange": 16,
+"comment": "你識得調節緊張，呢個就係成長！"
+}
+]
+},
+{
+"id": "s-self-74-c",
+"text": "用自己嘅話講返出嚟，唔跟原稿",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 25,
+"comment": "你突破框架用自己嘅聲音，係真正嘅演講家！"
+}
+]
+}
+],
+"location": "school",
+"topicId": "perseverance",
+"creedIds": [
+1
+],
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"克服挫折",
+"自我鼓勵",
+"突破舒適圈"
+],
+"imagePrompt": "Hong Kong primary school assembly hall, child standing on stage with microphone, schoolmates in audience, spotlight, gentle expression, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-self-75",
+"title": "堅毅：摺衫摺到第10件",
+"background": "屋企・睡房・週末",
+"description": "媽媽叫你自己摺衫放好，你由第1件摺到第10件已經好攰。望住仲有5件未摺，你會……",
+"hints": [
+"自己嘅嘢自己打理係責任",
+"完成最後幾件會有成功感",
+"放棄嘅話下次會更難開始"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-75-a",
+"text": "偷偷推入衣櫥就算「摺咗」",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -12,
+"comment": "呃自己 = 呃媽媽，唔係真正嘅完成。"
+}
+]
+},
+{
+"id": "s-self-75-b",
+"text": "聽住音樂一件一件慢慢摺完",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你搵到令過程愉快嘅方法，呢個就係智慧。"
+}
+]
+},
+{
+"id": "s-self-75-c",
+"text": "分3疊先做，休息再做完最後5件",
+"effects": [
+{
+"character": "自己",
+"change": 18,
+"moralChange": 22,
+"comment": "你識得分階段完成，係成熟嘅表現！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "perseverance",
+"creedIds": [
+1
+],
+"valueCategory": "perseverance",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"持續練習",
+"完成目標",
+"routine"
+],
+"imagePrompt": "Hong Kong child in bedroom folding clothes on bed, neat piles of shirts, gentle afternoon light, focused content expression, Studio Ghibli style, soft pastel watercolor, 16:9"
+}
+]

@@ -1,0 +1,1221 @@
+[
+{
+"id": "s2",
+"title": "關卡2：幫手匿贓",
+"background": "走廊・晏晝",
+"description": "小強拉著你話：「幫我一個忙，我啱先拎咗啱嘢既玩具車，幫我匿埋佢！」",
+"hints": [
+"如果你係失主，發現自己既玩具唔見咗，你會點？你希望其他人點幫你？",
+"匿贓係犯法行為，即使係朋友叫你做。友誼唔應該包括犯罪。",
+"真正既朋友會喺你做錯時勸你改正，唔係叫你幫佢隱瞞。"
+],
+"characters": [
+{
+"name": "小傑",
+"emoji": "👨‍🎓",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s2-a",
+"text": "答應幫佢匿",
+"effects": [
+{
+"character": "小強",
+"change": 10,
+"comment": "你幫手匿咗入抽屜。結果老師發現監視器，以為係你偷！你喊咗但唔敢講真相，怕失去呢個「朋友」...",
+"moralChange": 8
+}
+],
+"next_scenario": "s3"
+},
+{
+"id": "s2-b",
+"text": "唔幫手亦唔話",
+"effects": [
+{
+"character": "小強",
+"change": -5,
+"comment": "小強之後比老師發現，但係同老師話：「係佢叫我匿既！」你有口難言...",
+"moralChange": -8
+},
+{
+"character": "小強",
+"change": -10,
+"comment": "小強之後俾人鬧，但係你覺得如果一開始勸佢還返就好啦...",
+"moralChange": -8
+}
+],
+"next_scenario": "s3"
+},
+{
+"id": "s2-c",
+"text": "「我哋一齊還返啦」",
+"effects": [
+{
+"character": "小強",
+"change": 15,
+"comment": "小強話：「...好啦，對唔住。」你陪佢還咗去，小強多謝你陪佢面對！",
+"moralChange": 8
+}
+],
+"next_scenario": "s3"
+}
+],
+"location": "break",
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "小強拉著你話：「幫我一個忙，我啱先拎咗啱嘢既玩具車，幫我匿埋佢！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s4",
+"title": "關卡4：邊個整跌既花盆？",
+"background": "課室・下晝",
+"description": "你見到小強唔小心整跌咗老師既花盆，但係佢同老師話：「係風吹跌既！」",
+"hints": [
+"小傑話係風吹跌，但花盆係你打籃球整跌既。老師會點諗？",
+"為咗保護自己而呃人，遲早會被發現，而且你會失去誠信。",
+"主動承認話：「老師，對唔住，我整跌咗。」係最有尊嚴既做法。"
+],
+"characters": [
+{
+"name": "小傑",
+"emoji": "👨‍🎓",
+"initial_relationship": 50
+},
+{
+"name": "老師",
+"emoji": "👩‍🏫",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s4-a",
+"text": "扮作唔知道",
+"effects": [
+{
+"character": "小強",
+"change": 5,
+"comment": "老師信咗小強。但係花盆既植物枯死咗，小強之後話：「 Victoria 唔會發現！」你心裡沉沉地...",
+"moralChange": -8
+},
+{
+"character": "老師",
+"change": -10,
+"comment": "老師唔知真相，但係你覺得自己做錯咗...",
+"moralChange": -8
+}
+],
+"next_scenario": "s5"
+},
+{
+"id": "s4-b",
+"text": "大聲話係小強整既",
+"effects": [
+{
+"character": "小強",
+"change": -25,
+"comment": "你大聲話係小強，小強一面紅，下堂之後反面：「叛徒！」你哋之後冇再講野，你心裡空左...",
+"moralChange": -8
+},
+{
+"character": "老師",
+"change": 10,
+"comment": "老師知道你肯話真相，但你失去咗一個朋友...",
+"moralChange": -8
+}
+],
+"next_scenario": "s5"
+},
+{
+"id": "s4-c",
+"text": "私下同小強講：「你仲老師話實話啦，我陪你一齊去」",
+"effects": [
+{
+"character": "小強",
+"change": 20,
+"comment": "小強話：「...好啦，對唔住。」你陪佢同一齊去認錯，老師話：「知錯能改就係好孩子！」",
+"moralChange": 8
+}
+],
+"next_scenario": "s5"
+}
+],
+"location": "classroom",
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "你見到小強唔小心整跌咗老師既花盆，但係佢同老師話：「係風吹跌既！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-c3",
+"title": "關卡：抄橋",
+"location": "classroom",
+"background": "課室・上堂",
+"description": "考試既時候，你見到隔離同學想睇你既答案...",
+"hints": [
+"借功課比人抄，你幫佢除咗一時，但佢係咪學識咗？你又損失啲咩？",
+"抄功課唔會令你真正學識，而借出功課既你就係幫兇。",
+"可以話：「我可以教你，但唔可以直接借你。」"
+],
+"characters": [
+{
+"name": "小傑",
+"emoji": "👨‍🎓",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-c3-a",
+"text": "借比佢",
+"effects": [
+{
+"character": "小傑",
+"change": 5,
+"comment": "但係之後你兩個都fail...老師話如果包庇都會照罰",
+"moralChange": 8
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c3-b",
+"text": "話「我，都想做啱既事」",
+"effects": [
+{
+"character": "小傑",
+"change": 10,
+"comment": "小傑話sorry，我自己想辦法",
+"moralChange": 8
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "考試既時候，你見到隔離同學想睇你既答案... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-c4",
+"title": "關卡：呃老師",
+"location": "classroom",
+"background": "課室・上堂",
+"description": "功課冇做，你諗緊如果要呃老師話「唔記得帶」...",
+"hints": [
+"呃老師話你媽媽有病所以唔記錄，你係佢，你會幾擔心？",
+"呃人既快樂係短暫既，但被拆穿既後果係長期既。",
+"遲到係小事，可以解釋遲到既原因，同埋遲到多久。"
+],
+"characters": [
+{
+"name": "老師",
+"emoji": "👩‍🏫",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-c4-a",
+"text": "話冇做，sorry",
+"effects": [
+{
+"character": "老師",
+"change": 10,
+"comment": "老師話有錯就改，下次做齊佢",
+"moralChange": 8
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c4-b",
+"text": "呃話「唔記得帶」",
+"effects": [
+{
+"character": "老師",
+"change": -10,
+"comment": "老師話下次唔好再，仲留堂...好羞恥",
+"moralChange": -8
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "功課冇做，你諗緊如果要呃老師話「唔記得帶」... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-c6",
+"title": "道德關卡：拾金不昧",
+"background": "小息時間・走廊",
+"description": "你在走廊執到一百元，幾張紅色鈔票。你抬頭望見小明正低頭走過，唔知係咪佢丟既。你應該點做？",
+"characters": [
+{
+"name": "小明",
+"emoji": "👦",
+"initial_relationship": 60
+}
+],
+"hints": [
+"一百元可以買很多零食，但係係唔係屬於你？如果係你丟咗，你希望點？",
+"誠實會令人內心平安，而呃呃騙騙會令人終日提心吊膽。",
+"如果唔記得系邊個丟既，可以話：「我丟低咗，應該有人來認領吧？」"
+],
+"options": [
+{
+"id": "s-c6-a",
+"text": "自己收起來，認為「執到就係我」",
+"effects": [
+{
+"character": "小明",
+"change": -10,
+"moralChange": -20,
+"comment": "小明發現丟了錢，周圍搵，喊咗..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c6-b",
+"text": "交去訓導處，等人認領",
+"effects": [
+{
+"character": "小明",
+"change": 15,
+"moralChange": 25,
+"comment": "小明找回金錢，多謝你！老師贊你誠實！"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c6-c",
+"text": "問小明係咪丟咗錢",
+"effects": [
+{
+"character": "小明",
+"change": 20,
+"moralChange": 15,
+"comment": "小明確認係佢既，多謝你拾金不昧！"
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "你在走廊執到一百元，幾張紅色鈔票。你抬頭望見小明正低頭走過，唔知係咪佢丟既。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-c8",
+"title": "道德關卡：誠實的勇氣",
+"background": "課室・朝早",
+"description": "你不小心撞跌咗同學的文具，整爛咗佢最鐘意的筆。你認為老師不會發現係你，但係你內心知道應該承認。你應該點做？",
+"characters": [
+{
+"name": "小明",
+"emoji": "👦",
+"initial_relationship": 55
+}
+],
+"hints": [
+"承認錯誤令人更受尊重，但係需要勇氣。你覺得小美啲感受？",
+"用呃呃騙騙得到既讚美係虛假既。誠信既人才值得真正既尊重。",
+"勇於承認過失，係建立信任既第一步。"
+],
+"options": [
+{
+"id": "s-c8-a",
+"text": "快速執起整番好，當作冇事發生",
+"effects": [
+{
+"character": "小明",
+"change": 5,
+"moralChange": -15,
+"comment": "小明發現筆有問題但係唔知係你整爛，你僥倖走過..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c8-b",
+"text": "主動承認「我整爛咗，對不起」",
+"effects": [
+{
+"character": "小明",
+"change": 20,
+"moralChange": 20,
+"comment": "小明話：「算啦，你主動承認係好孩子。」"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c8-c",
+"text": "走去店鋪買過一支賠償俾佢",
+"effects": [
+{
+"character": "小明",
+"change": 25,
+"moralChange": 25,
+"comment": "小明話：「你係我見過最有擔當既人！」"
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "你不小心撞跌咗同學的文具，整爛咗佢最鐘意的筆。你認為老師不會發現係你，但係你內心知道應該承認。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-c9",
+"title": "道德關卡：抄橋後的勇氣",
+"background": "課室・朝早",
+"description": "老師表揚咗你今次考試做得好，但你心知肚明，小明先係真正答啱大多數題目既人——你只係抄咗佢。你應該點做？",
+"characters": [
+{
+"name": "小明",
+"emoji": "👦",
+"initial_relationship": 60
+}
+],
+"hints": [
+"事實最終都會被發現，不攻自破。如果係遲早，你寧願主動承認知被動拆穿？",
+"虛假既光環唔會為你帶來尊嚴，只會成為笑柄。",
+"主動承認，然後感謝老師比機會你補救。"
+],
+"options": [
+{
+"id": "s-c9-a",
+"text": "接受讚賞，暗暗開心就好",
+"effects": [
+{
+"character": "小明",
+"change": -15,
+"moralChange": -20,
+"comment": "小明知道咗，覺得你好無恥..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c9-b",
+"text": "私下同老師說明真實情況",
+"effects": [
+{
+"character": "小明",
+"change": 20,
+"moralChange": 25,
+"comment": "老師讚你誠實，小明多謝你為他發聲！"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c9-c",
+"text": "主動同小明道歉話「對唔住，我抄咗你」",
+"effects": [
+{
+"character": "小明",
+"change": 25,
+"moralChange": 30,
+"comment": "小明原諒咗你，你感覺肩膀輕咗！"
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "老師表揚咗你今次考試做得好，但你心知肚明，小明先係真正答啱大多數題目既人——你只係抄咗佢。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-new5",
+"title": "關卡：運動場單雙槓",
+"background": "運動場・體育課",
+"description": "體育課試跳遠，你見到另一組既小傑係度呃老師，話自己跳咗幾遠，但明明就差啲...",
+"hints": [
+"如果你話借話有，結果冇，你點收科？你寧願一時爽定長遠信譽？",
+"誠實係基本，但誠實為別人帶來幾大影響要先諗清楚。",
+"如果你之前答錯咗，可以真誠道歉：對唔住，我之前記錯咗。"
+],
+"characters": [
+{
+"name": "小傑",
+"emoji": "🏃",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-new5-a",
+"text": "當場話：「喂，小傑你未跳到咁遠喎」",
+"effects": [
+{
+"character": "小傑",
+"change": -20,
+"moralChange": 10,
+"comment": "小傑呆咗，老師走過嚟再量一次。「哦，真係差啲，再跳一次啦。」小傑塊面紅曬..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new5-b",
+"text": "走過去私下話：「老師叫你自己再跳過」",
+"effects": [
+{
+"character": "小傑",
+"change": -5,
+"moralChange": 5,
+"comment": "小傑知你提醒咗，怒視你一眼但又乖乖再跳。「算你知啦！」"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new5-c",
+"text": "扮曬事不關己，繼續練習自己既",
+"effects": [
+{
+"character": "小傑",
+"change": 0,
+"moralChange": -20,
+"comment": "你心諗：「關我鬼事...」但又覺得小傑咁樣做係唔啱..."
+}
+],
+"next_scenario": null
+}
+],
+"location": "sports",
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "體育課試跳遠，你見到另一組既小傑係度呃老師，話自己跳咗幾遠，但明明就差啲... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-new9",
+"title": "關卡：勇於承認",
+"background": "洗手間・活動時間",
+"description": "你整爛咗洗手間門口個鏡，心諗：「冇人仔注意到呢...」但你心知道自己衰咗...",
+"hints": [
+"承認錯誤需要好大勇氣，但係成長既必經階段。你叫過幾多次對唔住？",
+"勇氣唔係天生就係，係靠一次一次咁練習出嚟。",
+"今日邁出一步，主動承認，你就會發現其實冇想象中咁難。"
+],
+"characters": [
+{
+"name": "老師",
+"emoji": "👩‍🏫",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-new9-a",
+"text": "主動走去找老師話：「對唔住，係我整爛個鏡」",
+"effects": [
+{
+"character": "老師",
+"change": 20,
+"moralChange": 25,
+"comment": "老師呆咗，然後話：「難得你有勇氣承認，你係好孩子。呢個我會記錄，但唔會罰你。」你心口大石放低！"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new9-b",
+"text": "走為上著，扮曬冇事",
+"effects": [
+{
+"character": "老師",
+"change": -10,
+"moralChange": -10,
+"comment": "你成日好驚，擔心老師會查監視器。同學叫你，你都心不在焉..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new9-c",
+"text": "寫一張匿名紙條解釋事件",
+"effects": [
+{
+"character": "老師",
+"change": 10,
+"moralChange": 15,
+"comment": "老師收到匿名紙條，話：「有人整爛咗但願意承認，幾好。但我希望大家直接嚟搵我。」"
+}
+],
+"next_scenario": null
+}
+],
+"location": "toilet",
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "你整爛咗洗手間門口個鏡，心諗：「冇人仔注意到呢...」但你心知道自己衰咗... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-new11",
+"title": "關卡：誠實面對",
+"background": "圖書館・溫習時",
+"description": "你借咗圖書館本書，到期咗都未睇完，本嚟可以攤30日，但圖書館話比你攤2本，你已經攤曬...",
+"hints": [
+"如果你圖書館借咗書，唔記得仲書，可能影響到其他人借唔借到。",
+"圖書館既規則係為公平，如果人人都咁做就冇人借到。",
+"可以盡快還書，或者打電話去圖書館話會晚少少還。"
+],
+"characters": [
+{
+"name": "圖書館老師",
+"emoji": "👩‍🏫",
+"initial_relationship": 55
+}
+],
+"options": [
+{
+"id": "s-new11-a",
+"text": "主動解釋：「我可以點樣還？我真係好想做功課但未做完」",
+"effects": [
+{
+"character": "圖書館老師",
+"change": 20,
+"moralChange": 20,
+"comment": "老師話：「我明白你有心，呢個我讓你先溫習，下周還就得。」"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new11-b",
+"text": "走去圖書館話：「我想要更多時間，可以嘛？」",
+"effects": [
+{
+"character": "圖書館老師",
+"change": 15,
+"moralChange": 10,
+"comment": "老師話：「好，基於你主動嚟傾，我可以再比你一個禮拜。但下次要早啲還啊。」"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new11-c",
+"text": "走去圖書館話：「我想要更多時間，可以嘛？」",
+"effects": [
+{
+"character": "圖書館老師",
+"change": 15,
+"moralChange": 10,
+"comment": "老師話：「好，基於你主動嚟傾，我可以再比你一個禮拜。但下次要早啲還啊。」"
+}
+],
+"next_scenario": null
+}
+],
+"location": "library",
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "你借咗圖書館本書，到期咗都未睇完，本嚟可以攤30日，但圖書館話比你攤2本，你已經攤曬... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-new13",
+"title": "關卡：誠實既勇氣",
+"background": "課室・小息",
+"description": "你整爛咗窗簾，但冇人睇到。老師問：「係邊個整爛嘅？」...",
+"hints": [
+"冇人睇到唔代表可以做假。如果耶穌知道你做緊咩，你會點做？",
+"誠信係為咗自己，唔係為咗俾人睇到。良心係最後既審判官。",
+"選擇誠實，即使冇人知道，因為你自己知道。"
+],
+"characters": [
+{
+"name": "老師",
+"emoji": "👨‍🏫",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-new13-a",
+"text": "舉手：「老師，對唔住，係我整爛嘅。」",
+"effects": [
+{
+"character": "老師",
+"change": 15,
+"moralChange": 10,
+"comment": "老師微笑話：「你敢認就好，你係個有勇氣既人。」"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new13-b",
+"text": "話係風吹爛嘅，扮作唔關事",
+"effects": [
+{
+"character": "老師",
+"change": -15,
+"moralChange": -10,
+"comment": "老師話：「風係吹唔爛布簾既...」你心裏有啲唔舒服。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new13-c",
+"text": "出信話：「我見到有人整爛，但我唔知係邊個。」",
+"effects": [
+{
+"character": "老師",
+"change": -5,
+"moralChange": 0,
+"comment": "老師話：「你係見到，但選擇唔幫手搵答案。」"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "integrity",
+"creedIds": [
+13,
+17
+],
+"imagePrompt": "你整爛咗窗簾，但冇人睇到。老師問：「係邊個整爛嘅？」... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-self-43",
+"title": "誠信：唔好抄功課",
+"background": "課室・小息",
+"description": "測驗前，朋友走過嚟話：「我份功課喺度，你抄啦。」你會……",
+"hints": [
+"抄功課係欺騙，學唔到嘢又內疚。",
+"朋友有困難可以幫佢，但唔係幫佢作弊。"
+],
+"options": [
+{
+"id": "s-self-43-a",
+"text": "「好呀，畀我抄」",
+"effects": [
+{
+"moralChange": -20,
+"comment": "抄功課係欺騙行為，老師同自己都會失望。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-43-b",
+"text": "「唔好啦，我自己做」",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你信實又有承擔！"
+}
+],
+"next_scenario": "s-self-44"
+},
+{
+"id": "s-self-43-c",
+"text": "「我同你一齊搵老師問」",
+"effects": [
+{
+"moralChange": 12,
+"comment": "用其他方法解決，但都要留意唔好直接篤朋友。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "integrity",
+"creedIds": [
+13,
+16
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy refusing to copy homework, choosing honesty, school classroom, warm tones, no text, no logos, 16:9",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-self-44",
+"title": "誠信：搵到嘢要還",
+"background": "校園・操場",
+"description": "喺操場你跌咗低，起身發現地下有個文具盒，唔知係邊個嘅。你會……",
+"hints": [
+"唔屬於自己嘅嘢應該歸還。",
+"主動搵失主係負責任嘅表現。"
+],
+"options": [
+{
+"id": "s-self-44-a",
+"text": "放入自己袋",
+"effects": [
+{
+"moralChange": -18,
+"comment": "拎咗唔屬於自己嘅嘢，會失去朋友嘅信任。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-44-b",
+"text": "交俾老師幫手搵",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你誠實又負責任！"
+}
+],
+"next_scenario": "s-self-45"
+},
+{
+"id": "s-self-44-c",
+"text": "問附近同學係邊個嘅",
+"effects": [
+{
+"moralChange": 12,
+"comment": "主動搵失主都係好方法！"
+}
+],
+"next_scenario": null
+}
+],
+"location": "playground",
+"topicId": "integrity",
+"creedIds": [
+13,
+15
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy finding a pencil case and deciding to return it, honest expression, school playground, warm tones, no text, no logos, 16:9",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-self-45",
+"title": "誠信：講真話",
+"background": "屋企・客廳",
+"description": "你喺客廳玩波，唔小心打破咗媽媽最鍾意嘅花樽。媽媽返嚟問：「邊個打破我嘅花樽？」你會……",
+"hints": [
+"講真話需要勇氣，但係最正確嘅選擇。",
+"怪人哋只會令自己更內疚。"
+],
+"options": [
+{
+"id": "s-self-45-a",
+"text": "「唔知喎，唔係我」",
+"effects": [
+{
+"moralChange": -18,
+"comment": "講大話會令自己好內疚，媽媽遲早都會知道。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-45-b",
+"text": "「媽媽對唔住，係我打破嘅」",
+"effects": [
+{
+"moralChange": 20,
+"comment": "你嘅勇氣會令媽媽更加欣賞你！"
+}
+],
+"next_scenario": "s-self-46"
+},
+{
+"id": "s-self-45-c",
+"text": "「係細佬整嘅」",
+"effects": [
+{
+"moralChange": -20,
+"comment": "誣賴人係好嚴重嘅錯，會失去屋企人嘅信任。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "home",
+"topicId": "integrity",
+"creedIds": [
+13,
+19
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy honestly admitting he broke the vase at home, brave and truthful, warm living room, no text, no logos, 16:9",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-self-46",
+"title": "誠信：唔好講大話",
+"background": "校園・走廊",
+"description": "朋友問你：「你有冇做功課？我唔想返學被老師鬧。」你今日真係未做。你會點答？",
+"hints": [
+"講真話需要勇氣，朋友會尊重你。",
+"逃避唔可以解決問題。"
+],
+"options": [
+{
+"id": "s-self-46-a",
+"text": "「做咗呀」",
+"effects": [
+{
+"moralChange": -18,
+"comment": "講大話令自己同朋友都會承擔後果。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-46-b",
+"text": "「未做呀，我哋一齊做啦」",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你信實又肯幫朋友！"
+}
+],
+"next_scenario": "s-self-47"
+},
+{
+"id": "s-self-46-c",
+"text": "「唔講喇」就走開",
+"effects": [
+{
+"moralChange": -10,
+"comment": "逃避唔係辦法，面對會更有勇氣。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "integrity",
+"creedIds": [
+13,
+16
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy telling the truth about not finishing homework to friend, honest moment, school corridor, warm tones, no text, no logos, 16:9",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-self-47",
+"title": "誠信：考試唔好偷睇",
+"background": "課室・測驗",
+"description": "考試期間，你望到隔離同學偷偷拎出書抄。你會……",
+"hints": [
+"自己誠實答卷最緊要。",
+"篤人可以係好選擇，但要用恰當嘅方法。"
+],
+"options": [
+{
+"id": "s-self-47-a",
+"text": "「我都可以偷睇」",
+"effects": [
+{
+"moralChange": -20,
+"comment": "考試作弊會失去信用，學唔到真正嘅知識。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-47-b",
+"text": "「我自己專心答卷」",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你正直又專心！"
+}
+],
+"next_scenario": "s-self-48"
+},
+{
+"id": "s-self-47-c",
+"text": "「我舉手話老師知」",
+"effects": [
+{
+"moralChange": 12,
+"comment": "舉報係好方法，但要留意唔好傷害同學嘅尊嚴。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "integrity",
+"creedIds": [
+13,
+22
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy choosing not to cheat during test, focused on his own paper, classroom, warm tones, no text, no logos, 16:9",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+},
+{
+"id": "s-self-48",
+"title": "誠信：信任係最大獎勵",
+"background": "屋企・飯桌",
+"description": "今日你因為講真話得到老師讚賞。返到屋企你會點諗？",
+"hints": [
+"誠實帶來嘅信任係最寶貴嘅獎勵。",
+"繼續保持誠實會令更多人信任你。"
+],
+"options": [
+{
+"id": "s-self-48-a",
+"text": "「好普通啫」",
+"effects": [
+{
+"moralChange": 5,
+"comment": "但信任係好寶貴嘅嘢，要珍惜。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-48-b",
+"text": "「我好開心」",
+"effects": [
+{
+"moralChange": 20,
+"comment": "你完成誠信學習！badge +10分"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-48-c",
+"text": "「下次都係講返大話啦」",
+"effects": [
+{
+"moralChange": -18,
+"comment": "放棄誠信會令之前嘅努力白費。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "home",
+"topicId": "integrity",
+"creedIds": [
+13,
+21
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy and trusted by parents at dinner table, warm family moment, cozy home, no text, no logos, 16:9",
+"valueCategory": "integrity",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"講真話",
+"不作弊",
+"拾金不昧"
+]
+}
+]

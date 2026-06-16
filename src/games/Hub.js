@@ -9,8 +9,9 @@
 //
 // Public API:
 //   wireHub({ setView, navRender, render, _navigate, getState,
-//            loadScenarios, _scenariosLoaded,
-//            getScenarios, initTopicProgress, applyScenarioResult,
+//            loadScenarios, loadScenariosForTopic,
+//            getScenarios, getScenariosByTopic,
+//            initTopicProgress, applyScenarioResult,
 //            getStudent, getBankRun, startBankRun, endBankRun,
 //            advanceToNextQuestion, recordBankTransaction,
 //            logInteraction, announceScenarioLoad })
@@ -31,8 +32,9 @@ let _render = null;
 let _navigate = null;
 let _getState = null;
 let _loadScenarios = null;
-let _scenariosLoaded = false;
+let _loadScenariosForTopic = null;
 let _getScenarios = null;
+let _getScenariosByTopic = null;
 let _initTopicProgress = null;
 let _applyScenarioResult = null;
 let _getStudent = null;
@@ -51,8 +53,9 @@ export function wireHub(deps) {
   _navigate = deps._navigate;
   _getState = deps.getState;
   _loadScenarios = deps.loadScenarios;
-  _scenariosLoaded = deps._scenariosLoaded;
+  _loadScenariosForTopic = deps.loadScenariosForTopic;
   _getScenarios = deps.getScenarios;
+  _getScenariosByTopic = deps.getScenariosByTopic;
   _initTopicProgress = deps.initTopicProgress;
   _applyScenarioResult = deps.applyScenarioResult;
   _getStudent = deps.getStudent;
@@ -66,24 +69,25 @@ export function wireHub(deps) {
 
 // ── Free-mode topic nav ─────────────────────────────────────────────
 
-/** Navigate to a topic list (data-action="goTopic"). */
+/** Navigate to a topic list (data-action="goTopic").
+ *  Sprint 3 / B1: lazy-load only the requested topic's chunk. */
 export function goTopic(topicId) {
-  if (!_scenariosLoaded) {
-    return _loadScenarios().then(() => { goTopic(topicId); });
-  }
-  _initTopicProgress(topicId);
-  _setView('topic', { topicId });
-  _navRender();
+  return _loadScenariosForTopic(topicId).then(() => {
+    _initTopicProgress(topicId);
+    _setView('topic', { topicId });
+    _navRender();
+  });
 }
 
-/** Pick a random scenario and start playing. */
+/** Pick a random scenario and start playing.
+ *  Sprint 3 / B1: random pick needs the full set; load all chunks lazily. */
 export async function goRandom() {
   const state = _getState();
   if (!state.subjectId) {
     _navigate('subject-select');
     return;
   }
-  if (!_scenariosLoaded) await _loadScenarios();
+  await _loadScenarios();
   const all = _getScenarios();
   if (!all.length) { _navigate('home'); return; }
   const s = all[Math.floor(Math.random() * all.length)];
@@ -103,9 +107,12 @@ export async function goTeacher(_loadTeacher) {
 
 // ── 好人好事銀行 (Good Deed Bank) ──────────────────────────────────
 
-/** Start a new bank run. */
+/** Start a new bank run.
+ *  Sprint 3 / B1: bank picks random scenarios across all topics, so we
+ *  need the full set. loadScenarios() is internally cached, so calling
+ *  it on every start is cheap. */
 export async function playGoodDeedBank() {
-  if (!_scenariosLoaded) await _loadScenarios();
+  await _loadScenarios();
   const run = _startBankRun();
   if (!run || !run.questions?.length) {
     alert('銀行題目載入失敗，請重試。');

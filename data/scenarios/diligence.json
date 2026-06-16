@@ -1,0 +1,1107 @@
+[
+{
+"id": "s-self-58",
+"title": "堅毅：做家務唔怕辛苦",
+"background": "屋企・廚房",
+"description": "媽媽煮完飯，你幫手洗碗。枱面仲有十幾個碗碟，你覺得攰，你會……",
+"hints": [
+"堅持做完先休息係負責任。",
+"叫細佬做可以，但都要分擔。"
+],
+"options": [
+{
+"id": "s-self-58-a",
+"text": "「我攰喇」就走開唔做",
+"effects": [
+{
+"moralChange": -15,
+"comment": "做一半就走，會留低工作俾媽媽。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-58-b",
+"text": "慢慢一個一個做完佢",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你嘅毅力會令媽媽好安慰！"
+}
+],
+"next_scenario": "s-self-59"
+},
+{
+"id": "s-self-58-c",
+"text": "「細佬你嚟幫手啦」",
+"effects": [
+{
+"moralChange": -10,
+"comment": "自己答應做嘅嘢應該堅持做完。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+17,
+19
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy washing many dishes in kitchen, persisting with effort, warm home, no text, no logos, 16:9",
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"做家務",
+"練習技能",
+"溫書"
+]
+},
+{
+"id": "s-dl-01",
+"title": "執房：自己嘅嘢自己理",
+"background": "睡房・週末",
+"description": "媽媽叫你自己執房，但你覺得好亂好煩。",
+"hints": [
+"自己嘅房自己理，係基本責任同勤勞",
+"勤勞係由小習慣開始"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 70
+}
+],
+"options": [
+{
+"id": "s-dl-01-a",
+"text": "扮執但其實冇執",
+"effects": [
+{
+"character": "媽媽",
+"change": -10,
+"moralChange": -10,
+"comment": "媽媽發現你冇執，下次唔信你。"
+}
+]
+},
+{
+"id": "s-dl-01-b",
+"text": "分幾次執完晒",
+"effects": [
+{
+"character": "媽媽",
+"change": 10,
+"moralChange": 10,
+"comment": "你完成咗任務，媽媽好滿意！"
+}
+]
+},
+{
+"id": "s-dl-01-c",
+"text": "執嘅時候順便整理書枱",
+"effects": [
+{
+"character": "媽媽",
+"change": 20,
+"moralChange": 20,
+"comment": "你主動做多一步，係真正嘅勤勞！"
+}
+]
+}
+],
+"location": "bedroom",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"做家務",
+"自我管理"
+],
+"imagePrompt": "Hong Kong bedroom, messy room, child tidying up, clothes on bed, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-dl-02",
+"title": "溫書：每日 30 分鐘",
+"background": "書枱・考試前",
+"description": "考試前一個禮拜，你每日溫書 30 分鐘定臨急抱佛腳？",
+"hints": [
+"勤勞係 routine，唔係 last minute",
+"分散溫書記性好過臨急"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-dl-02-a",
+"text": "考試前一晚先溫",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -15,
+"comment": "臨急抱佛腳，成績唔好又傷身體。"
+}
+]
+},
+{
+"id": "s-dl-02-b",
+"text": "每日 30 分鐘溫書",
+"effects": [
+{
+"character": "自己",
+"change": 15,
+"moralChange": 15,
+"comment": "你勤力咗溫書，考試有信心！"
+}
+]
+},
+{
+"id": "s-dl-02-c",
+"text": "每日 30 分鐘 + 整理 notes",
+"effects": [
+{
+"character": "自己",
+"change": 20,
+"moralChange": 20,
+"comment": "你勤勞 + 有方法，係真正嘅聰明學習！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"溫書",
+"練習技能",
+"routine"
+],
+"imagePrompt": "Hong Kong child studying at desk, open textbook and notes, desk lamp, evening light, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-dl-03",
+"title": "勤勞：練習鋼琴",
+"background": "屋企・琴房",
+"description": "媽媽叫你練琴 30 分鐘，但你覺得好悶，想打機。",
+"hints": [
+"學樂器要靠每日勤勞練習",
+"30 分鐘其實好短，練完先打機",
+"勤勞係累積嘅，唔練就唔會進步"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-dl-03-a",
+"text": "偷偷關埋琴蓋去打機",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -12,
+"comment": "你選擇偷懶，進步唔會嚟。"
+}
+]
+},
+{
+"id": "s-dl-03-b",
+"text": "乖乖練 30 分鐘，再打機",
+"effects": [
+{
+"character": "自己",
+"change": 15,
+"moralChange": 18,
+"comment": "你勤勞練習，琴技一定進步！"
+}
+]
+},
+{
+"id": "s-dl-03-c",
+"text": "練 30 分鐘 + 重覆最難嗰段 + 記低錯誤",
+"effects": [
+{
+"character": "自己",
+"change": 25,
+"moralChange": 22,
+"comment": "你勤勞 + 有方法，係真正嘅聰明練習！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"練習技能",
+"routine"
+],
+"imagePrompt": "Hong Kong home piano room, child practicing piano with sheet music, focused expression, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-dl-04",
+"title": "勤勞：幫手洗碗",
+"background": "廚房・晚飯後",
+"description": "晚飯後，媽媽好攰，碗盤堆積如山。你可以幫手。",
+"hints": [
+"家務係每個家庭成員嘅責任",
+"媽媽攰嘅時候你應該幫手",
+"勤勞由做家務開始"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 75
+}
+],
+"options": [
+{
+"id": "s-dl-04-a",
+"text": "「媽你自己搞啦，我睇緊電視」",
+"effects": [
+{
+"character": "媽媽",
+"change": -15,
+"moralChange": -12,
+"comment": "媽媽好攰你都唔幫手，孝親 + 勤勞都 miss 咗。"
+}
+]
+},
+{
+"id": "s-dl-04-b",
+"text": "關電視，主動幫手洗碗",
+"effects": [
+{
+"character": "媽媽",
+"change": 25,
+"moralChange": 22,
+"comment": "你勤勞又孝順，媽媽好感動！"
+}
+]
+},
+{
+"id": "s-dl-04-c",
+"text": "幫手洗碗 + 抹枱 + 倒垃圾",
+"effects": [
+{
+"character": "媽媽",
+"change": 35,
+"moralChange": 28,
+"comment": "你勤勞 + 主動，媽媽開心到攬你！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10,
+12
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"做家務",
+"照顧家人"
+],
+"imagePrompt": "Hong Kong home kitchen after dinner, child washing dishes at sink, stack of plates, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-dl-05",
+"title": "勤勞：練字簿",
+"background": "書枱・夜晚",
+"description": "老師派返練字簿，你寫得唔好，媽媽話要你重寫。",
+"hints": [
+"勤勞練字係基本功",
+"重寫唔係懲罰，而係改善嘅機會",
+"寫好每隻字係勤勞 + 專注"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-dl-05-a",
+"text": "「好煩呀，唔寫喇」",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -12,
+"comment": "你放棄勤勞，寫字唔會進步。"
+}
+]
+},
+{
+"id": "s-dl-05-b",
+"text": "重寫一次，比之前認真",
+"effects": [
+{
+"character": "自己",
+"change": 15,
+"moralChange": 18,
+"comment": "你勤勞改善，下次一定寫得更好！"
+}
+]
+},
+{
+"id": "s-dl-05-c",
+"text": "重寫兩次 + 對比第一次 + 記低寫得最好嘅字",
+"effects": [
+{
+"character": "自己",
+"change": 25,
+"moralChange": 25,
+"comment": "你勤勞 + 反思，係真正嘅學習高手！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"練習技能",
+"routine"
+],
+"imagePrompt": "Hong Kong home desk at night, child writing Chinese characters in practice book, desk lamp, focused expression, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-94",
+"title": "勤勞：練習寫書法",
+"background": "屋企・書枱・週末",
+"description": "媽媽安排你每個週末練習毛筆字一個鐘。今日練習寫「永」字，你寫到第15張仲係歪嘅。你會……",
+"hints": [
+"書法要重複練習先會穩定",
+"錯誤嘅字可以留作比較進步",
+"放棄就永遠寫唔好"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-94-a",
+"text": "收埋啲唔靚嘅字，扮練完",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你呃自己，媽媽下次會更失望。"
+}
+]
+},
+{
+"id": "s-self-94-b",
+"text": "再練5張，比較下邊張最好",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你反覆練習同檢討，係勤勞！"
+}
+]
+},
+{
+"id": "s-self-94-c",
+"text": "上網睇教學短片調整筆觸，再練5張",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你主動搵方法改善，係高手嘅勤勞！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"練習技能",
+"重複練習",
+"持續練習"
+],
+"imagePrompt": "Hong Kong child practicing Chinese calligraphy with brush, ink stone, paper on desk, traditional setting, focused expression, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+},
+{
+"id": "s-self-95",
+"title": "勤勞：打掃自己房間",
+"background": "屋企・睡房",
+"description": "你嘅房間亂到落腳都有衣服同玩具，媽媽話要你自己打掃。但打掃好花時間。你會……",
+"hints": [
+"自己房自己打理",
+"分階段做比較唔攰",
+"整齊嘅房令人精神好"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 75
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-95-a",
+"text": "推返床底就算整理完",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你自欺欺人，下次打掃更難。"
+}
+]
+},
+{
+"id": "s-self-95-b",
+"text": "聽住音樂分3區打掃",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你用方法令打掃更輕鬆，係智慧！"
+}
+]
+},
+{
+"id": "s-self-95-c",
+"text": "認真分類、摺衫、放好書本，完成後影相比媽媽",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你徹底整理，係勤勞嘅模範！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"做家務",
+"自我管理",
+"完成 routine"
+],
+"imagePrompt": "Hong Kong child tidying messy bedroom, sorting clothes, books and toys, sunny window light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+},
+{
+"id": "s-self-96",
+"title": "勤勞：練習鋼琴辛苦",
+"background": "屋企・鋼琴前",
+"description": "鋼琴老師話你指法唔啱，要你由基本指法重新練過。你覺得悶晒，但媽媽監住你練。你會……",
+"hints": [
+"基本功係進步嘅根基",
+"悶嘅練習先係長功夫",
+"練好基本就會彈到更難嘅歌"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 75
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-96-a",
+"text": "扮練緊，其實發緊呆",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你浪費時間，下次上堂會更困難。"
+}
+]
+},
+{
+"id": "s-self-96-b",
+"text": "跟住媽媽指示重複練",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你聽從指導反覆練，係基本嘅勤勞。"
+}
+]
+},
+{
+"id": "s-self-96-c",
+"text": "問媽媽點解要咁練，理解背後原因再練",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你明白為咗咩練，練得更有效率！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"練習技能",
+"重複練習",
+"routine"
+],
+"imagePrompt": "Hong Kong child at piano practicing finger exercises, mother watching nearby, evening warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-97",
+"title": "勤勞：練習朗誦比賽",
+"background": "屋企・房間・比賽前",
+"description": "你參加咗學校朗誦比賽，仲有3日就比賽。你背稿但有幾段成日食螺絲。你會……",
+"hints": [
+"熟能生巧",
+"對住鏡練可以改善表情",
+"重複再重複就會穩定"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-97-a",
+"text": "「算喇，食螺絲就食螺絲啦」",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你放棄準備，比賽時一定會怯。"
+}
+]
+},
+{
+"id": "s-self-97-b",
+"text": "每日對住鏡讀3次",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你建立 routine，係基本嘅勤勞。"
+}
+]
+},
+{
+"id": "s-self-97-c",
+"text": "對鏡讀+錄影自己睇+請媽媽扮評判",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你用多重方法練習，係高手準備法！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"練習技能",
+"重複練習",
+"自我改善"
+],
+"imagePrompt": "Hong Kong child practicing recitation in bedroom, holding poem book, looking at mirror, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-98",
+"title": "勤勞：做完功課先溫書",
+"background": "屋企・書枱・晚上",
+"description": "今晚有兩份功課同溫書，你揀先做功課溫書，溫到11點攰到唔想再做功課。你會……",
+"hints": [
+"完成先係目標",
+"時間管理好重要",
+"唔好半途而廢"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-98-a",
+"text": "瞓覺，聽日返學再算",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你半途放棄，遲交功課嘅後果更大。"
+}
+]
+},
+{
+"id": "s-self-98-b",
+"text": "再頂多30分鐘做晒功課",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你堅持完成，係勤勞嘅表現。"
+}
+]
+},
+{
+"id": "s-self-98-c",
+"text": "再頂30分鐘做功課+反思點解時間管理差",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你完成並反思改進，係成熟嘅勤勞！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"完成目標",
+"時間管理",
+"routine"
+],
+"imagePrompt": "Hong Kong child at desk late at night, books and homework scattered, sleepy expression but determined, warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-99",
+"title": "勤勞：執書包準備明天",
+"background": "屋企・睡房・睡前",
+"description": "媽媽話過瞓覺前要執好書包，但你已經好眼瞓，想直接瞓。你會……",
+"hints": [
+"執書包係基本 routine",
+"準備好聽日會更順利",
+"少少堅持就唔使明早趕"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 75
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-99-a",
+"text": "直接瞓，明朝早再算",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -10,
+"comment": "你明早會好趕，可能漏帶嘢。"
+}
+]
+},
+{
+"id": "s-self-99-b",
+"text": "5分鐘快快執好",
+"effects": [
+{
+"character": "自己",
+"change": 8,
+"moralChange": 10,
+"comment": "你快速完成，係基本嘅勤勞。"
+}
+]
+},
+{
+"id": "s-self-99-c",
+"text": "執好書包+對住時間表check 3次",
+"effects": [
+{
+"character": "自己",
+"change": 18,
+"moralChange": 22,
+"comment": "你認真準備，係負責任嘅勤勞！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"routine",
+"自我管理",
+"完成 routine"
+],
+"imagePrompt": "Hong Kong child packing school bag at night, checking list, sleepy but determined, bedroom lamplight, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-100",
+"title": "勤勞：暑假練習游泳",
+"background": "泳池・暑期班",
+"description": "暑假你報咗游泳班，但第4堂你仲係驚水，每次落水都好驚。你想放棄，你會……",
+"hints": [
+"恐懼可以慢慢克服",
+"多次練習就會適應",
+"放棄就永遠學唔識"
+],
+"characters": [
+{
+"name": "教練",
+"emoji": "👨",
+"initial_relationship": 60
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-100-a",
+"text": "扮病唔去堂",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你逃避恐懼，浪費咗學費同時間。"
+}
+]
+},
+{
+"id": "s-self-100-b",
+"text": "再落水，搵教練陪你淺水區",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你搵方法克服，係勤勞嘅表現。"
+}
+]
+},
+{
+"id": "s-self-100-c",
+"text": "同教練講你嘅恐懼，由淺水深呼吸練習開始",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你主動溝通+系統練習，係高手克服法！"
+}
+]
+}
+],
+"location": "pool",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"練習技能",
+"持續練習",
+"克服挫折"
+],
+"imagePrompt": "Hong Kong child in public swimming pool, holding pool edge looking nervous, summer sunlight, instructor nearby, anime cartoon style, soft pastel, expressive, no text, 16:9"
+},
+{
+"id": "s-self-101",
+"title": "勤勞：練習寫作",
+"background": "屋企・書枱",
+"description": "老師話你寫作唔夠豐富，要你每星期寫一篇周記。你寫咗頭兩篇覺得好難就冇寫。你會……",
+"hints": [
+"寫作係靠累積",
+"寫少少好過冇寫",
+"從生活小事件開始"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-101-a",
+"text": "放棄周記，下星期扮有寫",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你放棄又講大話，雙重失誤。"
+}
+]
+},
+{
+"id": "s-self-101-b",
+"text": "今日寫一篇短短嘅生活記錄",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你重新開始，係勤勞嘅起步。"
+}
+]
+},
+{
+"id": "s-self-101-c",
+"text": "每星期記低3件開心/難過嘅事+請媽媽幫手睇",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你建立系統+搵支援，係勤勞高手！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"持續練習",
+"完成 routine",
+"自我管理"
+],
+"imagePrompt": "Hong Kong child at desk with notebook, writing slowly with focused expression, morning light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+},
+{
+"id": "s-self-102",
+"title": "勤勞：自己準備上學",
+"background": "屋企・早上",
+"description": "媽媽叫你自己準備上學：着校服、執書包、帶水壺、食早餐。但你習慣媽媽幫你做。你會……",
+"hints": [
+"自己嘅事自己做",
+"獨立係一種勤勞",
+"由小步開始"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 75
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-102-a",
+"text": "等媽媽幫手",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你依賴人，永遠學唔識獨立。"
+}
+]
+},
+{
+"id": "s-self-102-b",
+"text": "自己準備但要好耐",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你肯嘗試，係勤勞嘅開始。"
+}
+]
+},
+{
+"id": "s-self-102-c",
+"text": "前一晚準備好晒+早起15分鐘",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你用時間管理建立習慣，係高手獨立法！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "diligence",
+"creedIds": [
+10
+],
+"valueCategory": "diligence",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"自我管理",
+"routine",
+"獨立"
+],
+"imagePrompt": "Hong Kong child getting dressed in school uniform, packing school bag, morning sunlight, independent and determined, Studio Ghibli style, soft pastel watercolor, 16:9"
+}
+]

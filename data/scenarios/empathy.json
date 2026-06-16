@@ -1,0 +1,1153 @@
+[
+{
+"id": "s6",
+"title": "關卡6：鬧交",
+"background": "課室・晏晝",
+"description": "小明好嬲話：「我再都唔同小華玩啦！佢整壞咗我既玩具！」",
+"hints": [
+"小美話係小明整跌筆，但小明話係小美整跌。你知道真相係點嗎？",
+"唔好下判斷，先聽曬曬雙方既版本。你親眼見到之事實可能唔夠全面。",
+"可以話：「我哋一齊睇下係發生咗咩事」，跟住一齊解決。"
+],
+"characters": [
+{
+"name": "小明",
+"emoji": "👦",
+"initial_relationship": 50
+},
+{
+"name": "小華",
+"emoji": "👦",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s6-a",
+"text": "「係呀！小華太衰啦！我都唔同佢玩！」",
+"effects": [
+{
+"character": "小明",
+"change": 10,
+"moralChange": -15,
+"comment": "你同小明一齊排斥小華。但係之後你先知，小華係唔小心整壞既嘢，佢本來想道歉但搵唔倒機會。小華喊咗，你覺得自己做錯咗..."
+},
+{
+"character": "小華",
+"change": -25,
+"moralChange": -10,
+"comment": "小華覺得被誤會，好傷心..."
+}
+],
+"next_scenario": "s7"
+},
+{
+"id": "s6-b",
+"text": "乜都唔話",
+"effects": [
+{
+"character": "小明",
+"change": 0,
+"moralChange": -5,
+"comment": "小明越話越嬲仲搵其他人一齊排斥小華。你雖然冇參與但係都冇阻止。見到小華一個你心裡唔舒服..."
+},
+{
+"character": "小華",
+"change": -10,
+"moralChange": -5,
+"comment": "小華覺得自己一個人..."
+}
+],
+"next_scenario": "s7"
+},
+{
+"id": "s6-c",
+"text": "「或者佢唔係故意？你有問過佢嗎？」",
+"effects": [
+{
+"character": "小明",
+"change": 15,
+"moralChange": 10,
+"comment": "小明諗咗下：「嗯...都係問下先...」之後發現係誤會，佢同小華和好咗！你幫佢哋化解咗爭執！"
+},
+{
+"character": "小華",
+"change": 10,
+"moralChange": 8,
+"comment": "小華多謝你幫佢講說話！"
+}
+],
+"next_scenario": "s7"
+}
+],
+"location": "classroom",
+"topicId": "empathy",
+"creedIds": [
+22,
+16,
+18
+],
+"imagePrompt": "小明好嬲話：「我再都唔同小華玩啦！佢整壞咗我既玩具！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-h3",
+"title": "關卡：電玩霸權",
+"location": "home",
+"background": "家中・夜晚",
+"description": "你同表弟一齊打電玩，表弟話：「你住手！我話曬點玩！」",
+"hints": [
+"排隊係唯一可以去園地玩既方法。如果係你，你會唔會想每次都排？",
+"輪流代表公平，而唔係邊個大聲就邊個玩。",
+"可以提議：「不如我哋抽籤決定邊個下一個？」"
+],
+"characters": [
+{
+"name": "小傑",
+"emoji": "👨‍🎓",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-h3-a",
+"text": "發脾氣唔玩",
+"effects": [
+{
+"character": "表弟",
+"change": -10,
+"comment": "表弟話正好，我可以自己玩",
+"moralChange": -8
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-h3-b",
+"text": "話我哋輪流做主將",
+"effects": [
+{
+"character": "表弟",
+"change": 15,
+"comment": "表弟話好啦，一人一關！你哋玩得好開心",
+"moralChange": 8
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "empathy",
+"creedIds": [
+22,
+16,
+18
+],
+"imagePrompt": "你同表弟一齊打電玩，表弟話：「你住手！我話曬點玩！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-b3",
+"title": "關卡：唔小心整親人",
+"location": "break",
+"background": "走廊・晏晝",
+"description": "你跑既時候唔小心撞跌咗小美，佢膝頭哥擦損埋...",
+"hints": [
+"整跌花盆係意外，但呃人話係風吹跌就變成兩個問題。你係都會想承認錯誤？",
+"承認錯誤需要勇氣，但係會令人更加尊重你。",
+"可以話：「老師，對唔住，我整跌咗，我幫你執整佢。」"
+],
+"characters": [
+{
+"name": "小美",
+"emoji": "👩‍🎓",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-b3-a",
+"text": "即刻走",
+"effects": [
+{
+"character": "小美",
+"change": -30,
+"comment": "小美喊住搵老師話你既衰嘢",
+"moralChange": -8
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-b3-b",
+"text": "話對唔住！你有冇事？",
+"effects": [
+{
+"character": "小美",
+"change": 15,
+"comment": "你扶埋佢去醫療室，變咗英雄",
+"moralChange": 8
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "empathy",
+"creedIds": [
+22,
+16,
+18
+],
+"imagePrompt": "你跑既時候唔小心撞跌咗小美，佢膝頭哥擦損埋... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-door1",
+"title": "特別關卡：教室門口",
+"background": "課室・門口",
+"description": "放學時，大家爭住衝出去。門口有兩個人：一個係要出去既同學，另一個係老師。老師話：「排隊，先出先後。」但前面既小明話：「我趕時間！」然後衝埋去門口。你呢？",
+"characters": [
+{
+"name": "小明",
+"emoji": "👦",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-door1-a",
+"text": "跟小明一齊衝出去",
+"effects": [
+{
+"character": "小明",
+"change": 10,
+"moralChange": -20,
+"comment": "小明話：「你係我朋友！」但老師皺眉...你學壞咗。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-door1-b",
+"text": "排隊，等候老師指示",
+"effects": [
+{
+"character": "小明",
+"change": -10,
+"moralChange": 15,
+"comment": "老師點頭話：「乖。」小明走咗過話：「你唔夠朋友呀！」但你做咗啱嘅嘢。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-door1-c",
+"text": "幫老師叫大家排隊",
+"effects": [
+{
+"character": "小明",
+"change": -5,
+"moralChange": 25,
+"comment": "同學們開始排隊，小明望住你：「你做組長呀？」老師話：「好孩子！」"
+}
+],
+"next_scenario": null
+}
+],
+"hints": [
+"如果每個人都話自己趕時間，係咪就可以隨嘟衝出去？排隊既意義係咩？",
+"守規則代表尊重自己同尊重他人。如果係你排緊隊，有人突然插隊，你會點？",
+"你可以話：「小明，等一等啦，好快就到你了。排隊係大家都開心。」"
+],
+"topicId": "empathy",
+"creedIds": [
+22,
+16,
+18
+],
+"imagePrompt": "放學時，大家爭住衝出去。門口有兩個人：一個係要出去既同學，另一個係老師。老師話：「排隊，先出先後。」但前面既小明話：「我趕時間！」然後衝埋去門口。你呢？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-door4",
+"title": "特別關卡：老師開門遲到",
+"background": "課室・門口",
+"description": "放學時，老師遲遲未開門。大家喺門口等緊，好嘈吵。小明話：「不如我自己開啦！」但老師未允許。你點睇？",
+"characters": [
+{
+"name": "小明",
+"emoji": "👦",
+"initial_relationship": 50
+},
+{
+"name": "老師",
+"emoji": "👩‍🏫",
+"initial_relationship": 60
+}
+],
+"hints": [
+"老師話排隊，但你自己都有事要出去。等一等係好難嗎？",
+"信任係需要時間建立，如果你相信老師有原因，你等一等等幾耐？",
+"可以有禮貌問：老師，我想...但係...老師通常都會理解。"
+],
+"options": [
+{
+"id": "s-door4-a",
+"text": "跟小明一齊自己開門",
+"effects": [
+{
+"character": "小明",
+"change": 15,
+"moralChange": -15,
+"comment": "小明話：「你係我朋友！」但老師見到皺眉，你學壞咗。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-door4-b",
+"text": "勸小明等老師指示，服從安排",
+"effects": [
+{
+"character": "小明",
+"change": -5,
+"moralChange": 15,
+"comment": "小明話：「你唔夠朋友呀！」但老師點頭話：「乖。」你做咗啱嘅嘢。"
+},
+{
+"character": "老師",
+"change": 10,
+"moralChange": 5,
+"comment": "老師話：「好孩子，有紀律。」"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-door4-c",
+"text": "主動話：「小明，等老師啦，我哋排隊」",
+"effects": [
+{
+"character": "小明",
+"change": 5,
+"moralChange": 20,
+"comment": "小明望住你，有人跟住排隊。老師話：「好孩子！」"
+},
+{
+"character": "老師",
+"change": 15,
+"moralChange": 10,
+"comment": "老師及時開門，讚賞你既耐心。"
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "empathy",
+"creedIds": [
+22,
+16,
+18
+],
+"imagePrompt": "放學時，老師遲遲未開門。大家喺門口等緊，好嘈吵。小明話：「不如我自己開啦！」但老師未允許。你點睇？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-new2",
+"title": "關卡：排隊定插隊？",
+"background": "禮堂・集合時間",
+"description": "到你排隊拎飯既時候，有人突然插入你前面。你認出佢係高年級既大舊...",
+"hints": [
+"如果係你排緊隊，有人插隊，你會點？憤怒定係啞忍？",
+"面對權威唔一定要硬碰，但都要有禮貌咁表達你既立場。",
+"可以大膽問：唔好意思，請問你係排我前面嗎？"
+],
+"characters": [
+{
+"name": "大舊",
+"emoji": "🧔",
+"initial_relationship": 30
+}
+],
+"options": [
+{
+"id": "s-new2-a",
+"text": "大聲喝止：「你排後啲去！」",
+"effects": [
+{
+"character": "大舊",
+"change": -15,
+"moralChange": -10,
+"comment": "大舊瞪你一眼，但知道你岩道理，靜靜走回後面排..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new2-b",
+"text": "默默忍受唔出聲",
+"effects": [
+{
+"character": "大舊",
+"change": 0,
+"moralChange": -15,
+"comment": "你覺得委屈，但唔敢出聲。心裡不舒服，但又覺得自己改變不了..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new2-c",
+"text": "請老師幫手維持秩序",
+"effects": [
+{
+"character": "大舊",
+"change": -10,
+"moralChange": 5,
+"comment": "老師過來話：「同學，排隊係基本紀律。」大舊望了你一眼..."
+}
+],
+"next_scenario": null
+}
+],
+"location": "hall",
+"topicId": "empathy",
+"creedIds": [
+22,
+16,
+18
+],
+"imagePrompt": "到你排隊拎飯既時候，有人突然插入你前面。你認出佢係高年級既大舊... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-new8",
+"title": "關卡：唔記得帶功課",
+"background": "課室・朝早",
+"description": "朝早老師話：「邊個未做完功課？」你心知自己就係其中一個，但你真係唔記得帶張紙...",
+"hints": [
+"如果你冇帶功課，呃老師話冇帶到，同承認冇帶邊個嚴重？",
+"承認錯誤係需要勇氣，但老師通常會明白，呃人先係大問題。",
+"可以話：老師，對唔住，我今朝忘記咗，我明日補交可以嗎？"
+],
+"characters": [
+{
+"name": "老師",
+"emoji": "👩‍🏫",
+"initial_relationship": 55
+}
+],
+"options": [
+{
+"id": "s-new8-a",
+"text": "立即舉手話：「我唔記得帶張紙，但係我做咗」",
+"effects": [
+{
+"character": "老師",
+"change": 15,
+"moralChange": 10,
+"comment": "老師話：「好，做咗就得，下次記得帶。下課來我呢度補交。」"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new8-b",
+"text": "扮同學抄",
+"effects": [
+{
+"character": "老師",
+"change": -20,
+"moralChange": -15,
+"comment": "老師發現：「你兩個係同一個錯？抖你鶴係呃人！」你兩個被罰留堂..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new8-c",
+"text": "縮埋一邊，希望老師唔注意到自己",
+"effects": [
+{
+"character": "老師",
+"change": -5,
+"moralChange": -5,
+"comment": "老師真係注意到你：「你呢位同學，唔記得帶同未做都係兩件事喔。」你面紅了..."
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "empathy",
+"creedIds": [
+22,
+16,
+18
+],
+"imagePrompt": "朝早老師話：「邊個未做完功課？」你心知自己就係其中一個，但你真係唔記得帶張紙... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-new15",
+"title": "關卡：團隊合作",
+"background": "教室・分組活動",
+"description": "分組做 project，你發覺組員小明成日發夢，唔做嘢...",
+"hints": [
+"如果你見到同學唔專心，你可以點幫手？大聲提醒定係悄悄話？",
+"可以提醒佢，幫助佢專心。但提醒都要顧及人哋既面子。",
+"可以悄悄話：呢度老師話...或者遞張字條。"
+],
+"characters": [
+{
+"name": "小明",
+"emoji": "👦",
+"initial_relationship": 35
+}
+],
+"options": [
+{
+"id": "s-new15-a",
+"text": "請佢一齊做：「我地一組，你負責揀圖片好唔好？」",
+"effects": [
+{
+"character": "小明",
+"change": 15,
+"moralChange": 10,
+"comment": "小明笑：「好！我最鍾意揀圖！」佢開始認真做。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new15-b",
+"text": "自己幫佢做曬，反正快啲",
+"effects": [
+{
+"character": "小明",
+"change": -5,
+"moralChange": -5,
+"comment": "小明繼續發夢，你做完曬但好攰。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new15-c",
+"text": "鬧佢：「你做嘢啦！」",
+"effects": [
+{
+"character": "小明",
+"change": -20,
+"moralChange": -10,
+"comment": "小明嬲咗：「你憑咩鬧我！」組入面鬧大件事。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "empathy",
+"creedIds": [
+22,
+16,
+18
+],
+"imagePrompt": "分組做 project，你發覺組員小明成日發夢，唔做嘢... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-new18",
+"title": "關卡：承認錯誤",
+"background": "操場・體育課",
+"description": "你排籃球時唔小心整跌咗另一位同學，佢整損咗膝頭...",
+"hints": [
+"整跌人要道歉，係基本禮貌。但點解咁多人做唔到？",
+"道歉唔係代表你認輸，但係代表你願意為自己既行為負責。",
+"可以話：對唔住，我整跌咗你既...我幫你整返好。"
+],
+"characters": [
+{
+"name": "大雄",
+"emoji": "🏃",
+"initial_relationship": 40
+}
+],
+"options": [
+{
+"id": "s-new18-a",
+"text": "立刻道歉並扶起佢：「對唔住！我帶你去處理傷口！」",
+"effects": [
+{
+"character": "大雄",
+"change": 20,
+"moralChange": 15,
+"comment": "大雄：「算啦，唔洗咁緊張...但多謝你。」佢接受你去校務處。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new18-b",
+"text": "話：「你自己唔小心，關我咩事！」",
+"effects": [
+{
+"character": "大雄",
+"change": -30,
+"moralChange": -20,
+"comment": "大雄嬲咗：「你整跌我竟然仲咁寸！」老師走埋嚟。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new18-c",
+"text": "跑走咗，扮作冇事發生",
+"effects": [
+{
+"character": "大雄",
+"change": -25,
+"moralChange": -15,
+"comment": "其他同學話：「你整跌人就跑！」你名聲變差。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "sports",
+"topicId": "empathy",
+"creedIds": [
+22,
+16,
+18
+],
+"imagePrompt": "你排籃球時唔小心整跌咗另一位同學，佢整損咗膝頭... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-new22",
+"title": "關卡：責任感",
+"background": "課室・課後",
+"description": "今日係你值日，但你好想走咗去同朋友玩...",
+"hints": [
+"責任係要完成既，就算唔想做。你上一次完成責任係幾時？",
+"責任感唔係天生成，而係靠每一日每一件事累積出嚟。",
+"完成呢個責任，你會為自己感到驕傲，即使冇人知。"
+],
+"characters": [
+{
+"name": "小琪",
+"emoji": "👧",
+"initial_relationship": 40
+}
+],
+"options": [
+{
+"id": "s-new22-a",
+"text": "留低做值日，做完先去玩",
+"effects": [
+{
+"character": "小琪",
+"change": 15,
+"moralChange": 15,
+"comment": "小琪話：「你做嘢咁叻！我陪你一齊整！」你做好值日先去玩。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new22-b",
+"text": "話：「你幫我做啦，我請你食嘢！」",
+"effects": [
+{
+"character": "小琪",
+"change": -10,
+"moralChange": -10,
+"comment": "小琪皯眉：「但係老師話係你值日喔...」"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new22-c",
+"text": "跑走咗，扮作冇事",
+"effects": [
+{
+"character": "小琪",
+"change": -15,
+"moralChange": -15,
+"comment": "老師第二日話：「你走咗去，係唔負責任既表現。」"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "empathy",
+"creedIds": [
+22,
+16,
+18
+],
+"imagePrompt": "今日係你值日，但你好想走咗去同朋友玩... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-self-35",
+"title": "理解朋友：朋友買唔到",
+"background": "校園",
+"description": "朋友好失望咁話：「我本新書太貴，我媽媽唔肯買俾我。」你會……",
+"hints": [
+"朋友都有難處，唔可以怪佢。",
+"理解同陪伴比禮物更重要。"
+],
+"options": [
+{
+"id": "s-self-35-a",
+"text": "「咁你再努力啲啦」",
+"effects": [
+{
+"moralChange": -15,
+"comment": "朋友已經好努力，怪佢會令佢更難過。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-35-b",
+"text": "「明白呀，我以前都試過」",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你嘅同理心令朋友好安慰！"
+}
+],
+"next_scenario": "s-self-36"
+},
+{
+"id": "s-self-35-c",
+"text": "「不如我哋一齊去圖書館借」",
+"effects": [
+{
+"moralChange": 15,
+"comment": "用其他方法解決問題，好叻！"
+}
+],
+"next_scenario": null
+}
+],
+"location": "playground",
+"topicId": "empathy",
+"creedIds": [
+16
+],
+"imagePrompt": "Young Chinese boy understanding friend cannot buy gift, empathetic expression, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-self-36",
+"title": "知足不貪：見到貴玩具",
+"background": "玩具店",
+"description": "你同媽媽經過玩具店，你見到個好靚嘅模型但好貴。你屋企已經有個類似嘅，你會……",
+"hints": [
+"已經有類似嘅嘢要學識知足。",
+"儲錢自己買係負責任嘅做法。"
+],
+"options": [
+{
+"id": "s-self-36-a",
+"text": "「媽媽即刻買俾我啦」",
+"effects": [
+{
+"moralChange": -15,
+"comment": "亂花錢又唔知足，會令屋企負擔好重。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-36-b",
+"text": "「我儲利是錢自己買」",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你有責任感又識得計劃！"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-36-c",
+"text": "「屋企已經有類似嘅喇」",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你完成 gift-gratitude 學習！badge +10分"
+}
+],
+"next_scenario": null
+}
+],
+"location": "shop",
+"topicId": "empathy",
+"creedIds": [
+14,
+19
+],
+"imagePrompt": "Young Chinese boy seeing expensive toy but feeling grateful for what he has, content expression, toy shop, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+]
+},
+{
+"id": "s-self-174",
+"title": "同理心：朋友爸爸病咗",
+"background": "課室・朝早",
+"description": "朋友返到學校好唔開心，話爸爸病咗住院。你會……",
+"hints": [
+"朋友需要陪伴",
+"唔使講好多",
+"可以寫卡鼓勵"
+],
+"characters": [
+{
+"name": "朋友",
+"emoji": "🧒",
+"initial_relationship": 70
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-174-a",
+"text": "「唔好咁嬲啦」就轉話題",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -10,
+"comment": "你忽略朋友嘅感受，佢會更孤獨。"
+}
+]
+},
+{
+"id": "s-self-174-b",
+"text": "「對唔住，你爸爸會好㗎」+攬吓佢",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你安慰朋友，係同理心！"
+}
+]
+},
+{
+"id": "s-self-174-c",
+"text": "陪伴+聆聽+寫卡鼓勵+約下課一齊行",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你深度支持朋友，係同理心高手！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "empathy",
+"creedIds": [
+9
+],
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"安慰"
+],
+"imagePrompt": "Hong Kong primary classroom, child comforting sad friend who learned father is in hospital, morning light, anime cartoon style, expressive, warm tones, no text, 16:9"
+},
+{
+"id": "s-self-175",
+"title": "同理心：新移民同學",
+"background": "課室・小息",
+"description": "班上新嚟咗一個內地新移民同學，佢廣東話唔好，被其他同學笑。你會……",
+"hints": [
+"新嚟嘅人需要支持",
+"每個人都有適應期",
+"幫助融入係同理心"
+],
+"characters": [
+{
+"name": "新同學",
+"emoji": "🧒",
+"initial_relationship": 30
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-175-a",
+"text": "同其他人一齊笑",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你參與欺凌，新同學會好孤獨。"
+}
+]
+},
+{
+"id": "s-self-175-b",
+"text": "走去同新同學講「我哋一齊玩」",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你主動幫助，係同理心！"
+}
+]
+},
+{
+"id": "s-self-175-c",
+"text": "幫新同學融入+教佢廣東話+叫其他人一齊玩",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你全面幫助，係同理心高手！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "empathy",
+"creedIds": [
+9
+],
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"理解情緒"
+],
+"imagePrompt": "Hong Kong primary classroom, child welcoming new student who speaks different dialect, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+},
+{
+"id": "s-self-176",
+"title": "同理心：朋友考試失手",
+"background": "課室・放學",
+"description": "朋友考試失手好唔開心，擔心畀屋企人鬧。你會……",
+"hints": [
+"唔係佢想嘅",
+"聆聽佢嘅擔心",
+"幫佢諗解決方法"
+],
+"characters": [
+{
+"name": "朋友",
+"emoji": "🧒",
+"initial_relationship": 70
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-176-a",
+"text": "「考試咋嘛，下次再嚟過」就走",
+"effects": [
+{
+"character": "自己",
+"change": -8,
+"moralChange": -8,
+"comment": "你忽略朋友嘅擔心，佢會更焦慮。"
+}
+]
+},
+{
+"id": "s-self-176-b",
+"text": "「你都努力咗，唔好太嬲自己」",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你安慰+肯定，係同理心！"
+}
+]
+},
+{
+"id": "s-self-176-c",
+"text": "陪伴+聆聽+肯定努力+陪佢一齊溫下次+提議同屋企人講",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你深度支持，係同理心高手！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "empathy",
+"creedIds": [
+9
+],
+"valueCategory": "empathy",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"易地而處",
+"聆聽",
+"say sorry"
+],
+"imagePrompt": "Hong Kong child sitting with sad friend after bad exam, after school, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+}
+]

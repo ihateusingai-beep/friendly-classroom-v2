@@ -1,0 +1,1150 @@
+[
+{
+"id": "s-cm-01",
+"title": "整跌花盆：主動承認",
+"background": "走廊・放學",
+"description": "你唔小心整跌咗老師嘅花盆，碎晒。",
+"hints": [
+"自己整親就應該自己承擔",
+"誠實同承擔係兩件唔同嘅事，但都要做"
+],
+"characters": [
+{
+"name": "老師",
+"emoji": "👩‍🏫",
+"initial_relationship": 60
+}
+],
+"options": [
+{
+"id": "s-cm-01-a",
+"text": "扮冇事走咗去",
+"effects": [
+{
+"character": "老師",
+"change": -20,
+"moralChange": -15,
+"comment": "老師最後知道咗，你失去咗信任。"
+}
+]
+},
+{
+"id": "s-cm-01-b",
+"text": "主動返去話老師知",
+"effects": [
+{
+"character": "老師",
+"change": 10,
+"moralChange": 15,
+"comment": "老師讚你誠實又勇於承擔！"
+}
+]
+},
+{
+"id": "s-cm-01-c",
+"text": "主動清理碎片同道歉",
+"effects": [
+{
+"character": "老師",
+"change": 20,
+"moralChange": 20,
+"comment": "你又認錯又承擔後果，老師以你為榮！"
+}
+]
+}
+],
+"location": "corridor",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承認錯誤",
+"承擔後果"
+],
+"imagePrompt": "Hong Kong school corridor, broken flower pot on floor, child looking guilty, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-cm-02",
+"title": "答應幫手：守諾言",
+"background": "課室・小息",
+"description": "你答應咗幫小明溫書，但小息想同朋友去玩。",
+"hints": [
+"承諾咗就要做",
+"朋友重要，但承諾更重要"
+],
+"characters": [
+{
+"name": "小明",
+"emoji": "👦",
+"initial_relationship": 60
+}
+],
+"options": [
+{
+"id": "s-cm-02-a",
+"text": "去玩，唔理小明",
+"effects": [
+{
+"character": "小明",
+"change": -15,
+"moralChange": -15,
+"comment": "小明好失望，你破壞咗承諾。"
+}
+]
+},
+{
+"id": "s-cm-02-b",
+"text": "溫書完再去玩",
+"effects": [
+{
+"character": "小明",
+"change": 15,
+"moralChange": 15,
+"comment": "你守承諾，小明好感激你！"
+}
+]
+},
+{
+"id": "s-cm-02-c",
+"text": "同朋友講遲啲先，玩完返嚟溫",
+"effects": [
+{
+"character": "小明",
+"change": 5,
+"moralChange": 10,
+"comment": "你 pre-warn 咗小明，但承諾差啲冇做到。"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"守諾言",
+"承擔後果"
+],
+"imagePrompt": "Hong Kong school classroom, child studying with friend, open textbook, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-cm-03",
+"title": "組長責任：組員缺席",
+"background": "課室・分組活動",
+"description": "你係組長，組員阿強甩底，你嘅組做唔到功課。",
+"hints": [
+"組長有責任帶領組員",
+"唔係你嘅錯，但要承擔結果"
+],
+"characters": [
+{
+"name": "組員",
+"emoji": "👦",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-cm-03-a",
+"text": "賴阿強，唔關我事",
+"effects": [
+{
+"character": "組員",
+"change": -10,
+"moralChange": -10,
+"comment": "組長係要承擔多啲嘅，唔係推卸。"
+}
+]
+},
+{
+"id": "s-cm-03-b",
+"text": "自己做好自己嗰份，等阿強返嚟先算",
+"effects": [
+{
+"character": "組員",
+"change": 10,
+"moralChange": 10,
+"comment": "你承擔咗組長嘅責任！"
+}
+]
+},
+{
+"id": "s-cm-03-c",
+"text": "主動聯絡阿強同老師搵解決方法",
+"effects": [
+{
+"character": "組員",
+"change": 20,
+"moralChange": 20,
+"comment": "你主動解決問題，係真正嘅承擔！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "commitment",
+"creedIds": [
+5,
+11
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承擔後果",
+"保護弱小",
+"主動解決"
+],
+"imagePrompt": "Hong Kong school classroom, group project, one child missing from desk, leader looking at empty chair, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-cm-04",
+"title": "承擔精神：整爛同學文具主動賠",
+"background": "課室・自修",
+"description": "你唔小心整爛咗隔離同學嘅間尺，你諗緊點算。",
+"hints": [
+"整親人哋嘅嘢要承擔後果",
+"主動賠償係負責任嘅表現",
+"承擔精神：自己嘅選擇自己承擔"
+],
+"characters": [
+{
+"name": "同學",
+"emoji": "👦",
+"initial_relationship": 50
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-cm-04-a",
+"text": "「唔關我事，係佢自己唔擺好」",
+"effects": [
+{
+"character": "同學",
+"change": -15,
+"moralChange": -15,
+"comment": "你推卸責任，承擔精神係反詞。"
+}
+]
+},
+{
+"id": "s-cm-04-b",
+"text": "「對唔住，我整親，我賠返俾你」",
+"effects": [
+{
+"character": "同學",
+"change": 20,
+"moralChange": 18,
+"comment": "你勇於承擔，同學原諒你！"
+}
+]
+},
+{
+"id": "s-cm-04-c",
+"text": "道歉 + 即刻去文具舖買返同款賠 + 寫道歉卡",
+"effects": [
+{
+"character": "同學",
+"change": 30,
+"moralChange": 25,
+"comment": "你完整承擔後果，同學變咗你嘅好朋友！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承認錯誤",
+"承擔後果",
+"道歉"
+],
+"imagePrompt": "Hong Kong school classroom, child holding broken ruler looking guilty at classmate, desk setting, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-cm-05",
+"title": "承擔精神：照顧細路妹",
+"background": "屋企・父母外出",
+"description": "爸爸媽媽外出，叫你照顧4歲嘅細妹。細妹扭抱唔肯食飯。",
+"hints": [
+"答應照顧就係承擔",
+"細妹扭脾氣要耐心",
+"承擔精神包括處理突發情況"
+],
+"characters": [
+{
+"name": "細妹",
+"emoji": "👧",
+"initial_relationship": 70
+}
+],
+"options": [
+{
+"id": "s-cm-05-a",
+"text": "「你自己搞啦，我打緊機」",
+"effects": [
+{
+"character": "細妹",
+"change": -15,
+"moralChange": -15,
+"comment": "你推卸咗承擔，爸媽返嚟會好失望。"
+}
+]
+},
+{
+"id": "s-cm-05-b",
+"text": "停打機，哄佢食飯",
+"effects": [
+{
+"character": "細妹",
+"change": 20,
+"moralChange": 18,
+"comment": "你承擔起照顧者嘅責任，細妹開心食飯！"
+}
+]
+},
+{
+"id": "s-cm-05-c",
+"text": "陪佢玩 + 一齊食 + 等爸媽返嚟",
+"effects": [
+{
+"character": "細妹",
+"change": 30,
+"moralChange": 25,
+"comment": "你完全承擔咗責任，爸媽返嚟一定讚你！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "commitment",
+"creedIds": [
+5,
+12
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承擔後果",
+"照顧家人",
+"耐心"
+],
+"imagePrompt": "Hong Kong home living room, older sibling feeding and comforting crying younger sister, dining table, warm evening light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-cm-06",
+"title": "承擔精神：舉報自己偷食",
+"background": "廚房・夜晚",
+"description": "你忍唔住偷食咗媽媽準備嘅生日蛋糕，媽媽未發現，但你內心好內疚。",
+"hints": [
+"做錯咗就應該自己講",
+"承擔精神：自己嘅選擇自己承擔",
+"誠實同承擔都係好重要嘅品格"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 80
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-cm-06-a",
+"text": "扮冇事，等媽媽自己發現",
+"effects": [
+{
+"character": "媽媽",
+"change": -20,
+"moralChange": -15,
+"comment": "媽媽最後發現咗，你失去咗信任，仲要孭多個「講大話」嘅罪名。"
+}
+]
+},
+{
+"id": "s-cm-06-b",
+"text": "主動同媽媽講「對唔住，我偷食咗」",
+"effects": [
+{
+"character": "媽媽",
+"change": 15,
+"moralChange": 20,
+"comment": "你主動承認，媽媽欣賞你嘅誠實！"
+}
+]
+},
+{
+"id": "s-cm-06-c",
+"text": "道歉 + 承諾幫手整返個新蛋糕 + 唔再偷食",
+"effects": [
+{
+"character": "媽媽",
+"change": 30,
+"moralChange": 28,
+"comment": "你完整承擔，媽媽以你嘅品格為榮！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "commitment",
+"creedIds": [
+5,
+6
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承認錯誤",
+"承擔後果",
+"誠實"
+],
+"imagePrompt": "Hong Kong home kitchen, child looking guilty at half-eaten birthday cake on table, looking down in shame, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-85",
+"title": "承擔精神：打破同學水壺主動賠",
+"background": "課室・自修",
+"description": "你唔小心撞跌咗隔離同學個新水壺，跌爛咗個蓋。同學未發覺，你會……",
+"hints": [
+"自己整爛就要自己承擔",
+"主動講會得到對方諒解",
+"逃避只會令你內疚"
+],
+"characters": [
+{
+"name": "同學",
+"emoji": "🧒",
+"initial_relationship": 50
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-85-a",
+"text": "扮冇事，靜靜推返正",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -15,
+"comment": "你逃避責任，內心會一直內疚。"
+}
+]
+},
+{
+"id": "s-self-85-b",
+"text": "同同學講句「對唔住」但唔提賠",
+"effects": [
+{
+"character": "自己",
+"change": 8,
+"moralChange": 8,
+"comment": "你肯認錯，但未完全承擔後果。"
+}
+]
+},
+{
+"id": "s-self-85-c",
+"text": "同同學講「對唔住，係我整爛，我賠返俾你」",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你勇於承擔，係真漢子！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承認錯誤",
+"承擔後果",
+"勇於承擔"
+],
+"imagePrompt": "Hong Kong primary classroom, broken water bottle on desk, child looking guilty, green school uniform, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-self-86",
+"title": "承擔精神：答應照顧弟弟冇做到",
+"background": "屋企・客廳・下午",
+"description": "媽媽出街前叫你照顧3歲細佬半個鐘，但你掛住打機，細佬跌落地喊。你會……",
+"hints": [
+"承諾咗就要負責",
+"細佬受傷係你嘅責任",
+"即刻補救同時承認錯誤"
+],
+"characters": [
+{
+"name": "細佬",
+"emoji": "👶",
+"initial_relationship": 80
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-86-a",
+"text": "扮唔知，等媽媽返嚟自己發現",
+"effects": [
+{
+"character": "自己",
+"change": -18,
+"moralChange": -18,
+"comment": "你逃避責任，細佬會覺得你唔可靠。"
+}
+]
+},
+{
+"id": "s-self-86-b",
+"text": "即刻抱起細佬，之後同媽媽講",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你即時補救，呢個就係承擔！"
+}
+]
+},
+{
+"id": "s-self-86-c",
+"text": "即刻抱起細佬＋打電話同媽媽講＋以後收起遊戲機先照顧佢",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你即刻補救、主動匯報、改變方法，係完美嘅承擔！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承擔後果",
+"照顧家人",
+"承認錯誤"
+],
+"imagePrompt": "Hong Kong home living room, child reaching for crying toddler on floor, scattered toys, afternoon light, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+},
+{
+"id": "s-self-87",
+"title": "承擔精神：野餐垃圾自己執",
+"background": "公園・野餐",
+"description": "一家人去公園野餐，食完嘢有一堆膠袋、食物盒、飲品罐。爸媽叫你自己執。你會……",
+"hints": [
+"自己製造嘅垃圾自己處理",
+"公園清潔需要每個人參與",
+"承擔令下次野餐更舒服"
+],
+"characters": [
+{
+"name": "爸爸",
+"emoji": "👨",
+"initial_relationship": 70
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-87-a",
+"text": "扮聽唔到，去玩其他嘢",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -12,
+"comment": "你逃避責任，爸爸媽媽要幫你執手尾。"
+}
+]
+},
+{
+"id": "s-self-87-b",
+"text": "隨便執幾件就算",
+"effects": [
+{
+"character": "自己",
+"change": 5,
+"moralChange": 5,
+"comment": "你做咗，但未盡全力，承擔半桶水。"
+}
+]
+},
+{
+"id": "s-self-87-c",
+"text": "同爸爸一齊分類膠袋、紙、罐，帶去回收筒",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你主動做得徹底，係環保承擔者！"
+}
+]
+}
+],
+"location": "park",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承擔責任",
+"環保意識",
+"完成 routine"
+],
+"imagePrompt": "Hong Kong family picnic in park, child sorting trash bags into separate piles, father helping, green grass, sunshine, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+},
+{
+"id": "s-self-88",
+"title": "承擔精神：交功課遲到",
+"background": "課室・朝早",
+"description": "你今日返學差少少遲到，但你記起功課未交，喺走廊猶豫：趕返屋企攞 vs 返課室再算。你會……",
+"hints": [
+"功課遲交有相應後果，但要誠實",
+"唔可以話「有交」但其實冇帶",
+"承擔後果比起講大話好"
+],
+"characters": [
+{
+"name": "老師",
+"emoji": "👨‍🏫",
+"initial_relationship": 60
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-88-a",
+"text": "返課室扮交咗功課",
+"effects": [
+{
+"character": "自己",
+"change": -18,
+"moralChange": -20,
+"comment": "講大話 = 雙重失誤，誠信都冇埋。"
+}
+]
+},
+{
+"id": "s-self-88-b",
+"text": "返課室同老師講「對唔住功課漏咗帶」",
+"effects": [
+{
+"character": "自己",
+"change": 8,
+"moralChange": 12,
+"comment": "你誠實認錯，係承擔嘅第一步！"
+}
+]
+},
+{
+"id": "s-self-88-c",
+"text": "同老師講「對唔住，我即日補交」",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你誠實+即時補救，係完美嘅承擔！"
+}
+]
+}
+],
+"location": "school",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承認錯誤",
+"承擔後果",
+"誠實"
+],
+"imagePrompt": "Hong Kong child at classroom door looking worried, teacher at desk, school corridor, morning light, FF XV Nomura anime style, character design, warm tones, 16:9"
+},
+{
+"id": "s-self-89",
+"title": "承擔精神：值日生記住抹枱",
+"background": "課室・午膳後",
+"description": "今日輪到你做值日生，午膳後要抹枱掃地。但你約咗朋友去操場打波，朋友嚟催你。你會……",
+"hints": [
+"值日生係你嘅責任",
+"朋友可以等，但責任唔可以走",
+"做完先玩，玩得更安心"
+],
+"characters": [
+{
+"name": "朋友",
+"emoji": "🧒",
+"initial_relationship": 60
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-89-a",
+"text": "跑出去打波，聽日先算",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你走甩責任，組員要幫你做晒。"
+}
+]
+},
+{
+"id": "s-self-89-b",
+"text": "叫朋友等5分鐘，你抹完先走",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你守住責任同時管理友誼，係智慧！"
+}
+]
+},
+{
+"id": "s-self-89-c",
+"text": "同朋友講「我做晒先嚟，你打先一場」",
+"effects": [
+{
+"character": "自己",
+"change": 20,
+"moralChange": 22,
+"comment": "你責任行先，友誼亦冇失，係完美！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承擔責任",
+"管理友誼",
+"完成 routine"
+],
+"imagePrompt": "Hong Kong primary classroom after lunch, child wiping desk with cloth, friend waiting at door impatiently, sunlight, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+},
+{
+"id": "s-self-90",
+"title": "承擔精神：跌爛爸爸眼鏡",
+"background": "屋企・客廳・晚上",
+"description": "你玩波時唔小心跌爛咗爸爸副新眼鏡，但你驚爸爸鬧你。你會……",
+"hints": [
+"主動講比被發現好",
+"誠實嘅小朋友會被原諒",
+"承擔代表願意承後果"
+],
+"characters": [
+{
+"name": "爸爸",
+"emoji": "👨",
+"initial_relationship": 70
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-90-a",
+"text": "收藏起爛眼鏡，扮冇事",
+"effects": [
+{
+"character": "自己",
+"change": -20,
+"moralChange": -22,
+"comment": "你逃避，遲早會被發現，後果更大。"
+}
+]
+},
+{
+"id": "s-self-90-b",
+"text": "等爸爸自己發現再算",
+"effects": [
+{
+"character": "自己",
+"change": -8,
+"moralChange": -10,
+"comment": "你被動等待，錯過承擔嘅機會。"
+}
+]
+},
+{
+"id": "s-self-90-c",
+"text": "即刻同爸爸講「對唔住爸爸我跌爛咗」",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你勇敢承擔，爸爸會更尊重你！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承認錯誤",
+"承擔後果",
+"勇於承擔"
+],
+"imagePrompt": "Hong Kong home evening, child holding broken eyeglass frames looking worried, father sitting on sofa, warm lamplight, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+},
+{
+"id": "s-self-91",
+"title": "承擔精神：組長帶領小組",
+"background": "課室・分組活動",
+"description": "你係小組長，老師要你哋做一份poster。但有組員hea做，你好心急。你會……",
+"hints": [
+"組長嘅責任係帶領同協調",
+"唔係自己晒做",
+"鼓勵同分工係承擔"
+],
+"characters": [
+{
+"name": "組員",
+"emoji": "🧒",
+"initial_relationship": 50
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-91-a",
+"text": "全部自己晒做",
+"effects": [
+{
+"character": "自己",
+"change": -8,
+"moralChange": -8,
+"comment": "你唔識分配，組員冇學到嘢。"
+}
+]
+},
+{
+"id": "s-self-91-b",
+"text": "鬧組員「點解你咁hea」",
+"effects": [
+{
+"character": "自己",
+"change": -5,
+"moralChange": -5,
+"comment": "你情緒化處理，組員會更抗拒。"
+}
+]
+},
+{
+"id": "s-self-91-c",
+"text": "了解組員難處，再重新分工互相支持",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 24,
+"comment": "你做咗真正嘅組長，係承擔嘅榜樣！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承擔責任",
+"帶領",
+"鼓勵隊友"
+],
+"imagePrompt": "Hong Kong primary classroom group activity, group leader talking to reluctant teammate, poster on table, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+},
+{
+"id": "s-self-92",
+"title": "承擔精神：返學帶漏功課",
+"background": "課室・班主任課",
+"description": "老師收功課時你先發現漏咗帶，旁邊同學話「我幫你講話你有交」。你會……",
+"hints": [
+"幫你講大話唔係真朋友",
+"誠實面對先有機會補救",
+"承擔錯誤係成長"
+],
+"characters": [
+{
+"name": "同學",
+"emoji": "🧒",
+"initial_relationship": 60
+},
+{
+"name": "老師",
+"emoji": "👨‍🏫",
+"initial_relationship": 60
+}
+],
+"options": [
+{
+"id": "s-self-92-a",
+"text": "「好呀」俾同學幫你講大話",
+"effects": [
+{
+"character": "自己",
+"change": -20,
+"moralChange": -22,
+"comment": "你默許大話，連累埋同學，雙重失誤。"
+}
+]
+},
+{
+"id": "s-self-92-b",
+"text": "叫同學唔好幫你講，自己同老師認錯",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你拒絕大話，係承擔嘅第一步！"
+}
+]
+},
+{
+"id": "s-self-92-c",
+"text": "同老師講「對唔住漏帶，我即日補交」",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你誠實+承擔+補救，係完美示範！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承認錯誤",
+"承擔後果",
+"拒絕大話"
+],
+"imagePrompt": "Hong Kong primary classroom, child looking guilty at empty desk, teacher collecting books, classmate whispering, morning light, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+},
+{
+"id": "s-self-93",
+"title": "承擔精神：照顧家中寵物",
+"background": "屋企・客廳",
+"description": "你答應媽媽餵金魚、換水，但你有時忘記。金魚缸開始有污糟味。你會……",
+"hints": [
+"照顧寵物係承諾",
+"唔記得就要主動補救",
+"可以設鬧鐘提自己"
+],
+"characters": [
+{
+"name": "金魚",
+"emoji": "🐟",
+"initial_relationship": 50
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-93-a",
+"text": "等媽媽發現就算",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你忽略承諾，金魚可能會病。"
+}
+]
+},
+{
+"id": "s-self-93-b",
+"text": "即刻換水+餵食",
+"effects": [
+{
+"character": "自己",
+"change": 8,
+"moralChange": 10,
+"comment": "你即時補救，係承擔嘅行動。"
+}
+]
+},
+{
+"id": "s-self-93-c",
+"text": "即日換水+寫低餵食時間表+設鬧鐘",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 24,
+"comment": "你主動建立系統，係負責任嘅主人！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "commitment",
+"creedIds": [
+5
+],
+"valueCategory": "commitment",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"承擔責任",
+"照顧寵物",
+"建立 routine"
+],
+"imagePrompt": "Hong Kong child caring for goldfish in home fish tank, child adding water, fish food, warm living room, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9"
+}
+]

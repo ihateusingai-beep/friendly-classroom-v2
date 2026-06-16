@@ -6,7 +6,7 @@
 //
 // Public API:
 //   wirePlay({ setView, render, _navigate, getState,
-//             loadScenarios, _scenariosLoaded,
+//             loadScenarios, loadScenariosForTopic, getScenarioById,
 //             playScenario, getScenariosByTopic,
 //             chooseOption, markScenarioShown, logInteraction,
 //             playSFX, _isReducedMotion,
@@ -26,7 +26,8 @@ let _render = null;
 let _navigate = null;
 let _getState = null;
 let _loadScenarios = null;
-let _scenariosLoaded = false;
+let _loadScenariosForTopic = null;
+let _getScenarioById = null;
 let _playScenario = null;
 let _getScenariosByTopic = null;
 let _chooseOption = null;
@@ -38,47 +39,54 @@ let _isReducedMotion = null;
 /** Inject main.js dependencies. */
 export function wirePlay({
   setView, render, _navigate, getState,
-  loadScenarios, _scenariosLoaded,
+  loadScenarios, loadScenariosForTopic, getScenarioById,
   playScenario, getScenariosByTopic,
   chooseOption, markScenarioShown, logInteraction,
-  playSFX, _isReducedMotion,
+  playSFX, isReducedMotion,
 }) {
   _setView = setView;
   _render = render;
   _navigate = _navigate;
   _getState = getState;
   _loadScenarios = loadScenarios;
-  _scenariosLoaded = _scenariosLoaded;
+  _loadScenariosForTopic = loadScenariosForTopic;
+  _getScenarioById = getScenarioById;
   _playScenario = playScenario;
   _getScenariosByTopic = getScenariosByTopic;
   _chooseOption = chooseOption;
   _markScenarioShown = markScenarioShown;
   _logInteraction = logInteraction;
   _playSFX = playSFX;
-  _isReducedMotion = _isReducedMotion;
+  _isReducedMotion = isReducedMotion;
 }
 
-/** Start a scenario (data-action="play"). Awaits scenarios.json load
- *  on first call. */
+/** Start a scenario (data-action="play").
+ *  Sprint 3 / B1: load the owning chunk via getScenarioById() (which
+ *  resolves the topic from the id→topic reverse index) — no need to
+ *  preload the full set. */
 export function play(scenarioId) {
-  if (!_scenariosLoaded) {
-    return _loadScenarios().then(() => play(scenarioId));
-  }
-  localStorage.setItem('fc_last_scenario', scenarioId);
-  _markScenarioShown();
-  _setView('play', { scenarioId });
-  _render();
-  // SR announce for the new question
-  const sc = _playScenario(scenarioId);
-  if (sc) {
-    const topicScenarios = _getScenariosByTopic(sc.topicId);
-    const idx = topicScenarios.findIndex(s => s.id === scenarioId) + 1;
-    announceScenarioLoad(sc, {
-      index: idx,
-      total: topicScenarios.length,
-      gameName: '自由探索',
-    });
-  }
+  return _getScenarioById(scenarioId).then(sc => {
+    // If the scenario truly doesn't exist in any chunk, bail back to home.
+    if (!sc) {
+      _navigate('home');
+      return;
+    }
+    localStorage.setItem('fc_last_scenario', scenarioId);
+    _markScenarioShown();
+    _setView('play', { scenarioId });
+    _render();
+    // SR announce for the new question
+    const loaded = _playScenario(scenarioId);
+    if (loaded) {
+      const topicScenarios = _getScenariosByTopic(loaded.topicId);
+      const idx = topicScenarios.findIndex(s => s.id === scenarioId) + 1;
+      announceScenarioLoad(loaded, {
+        index: idx,
+        total: topicScenarios.length,
+        gameName: '自由探索',
+      });
+    }
+  });
 }
 
 /** Pick an option (data-action="choose"). Logs analytics, transitions

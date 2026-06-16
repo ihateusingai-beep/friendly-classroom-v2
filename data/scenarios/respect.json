@@ -1,0 +1,1180 @@
+[
+{
+"id": "s1",
+"title": "關卡1：嘲笑同學",
+"background": "課室・小息時間",
+"description": "小傑指著正在玩既小宇話：「我哋一齊笑佢好唔好？佢著既衫咁樣好搞笑呀！」",
+"hints": [
+"小宇著咩衫係佢既自由，唔係你既娛樂。你覺得佢當時會係咩心情？",
+"如果被笑既係你，你會希望旁觀者做啲咩？",
+"善良既選擇係拒絕參與，幫助被欺負既人 —— 但你係需要有勇氣嗰個。"
+],
+"characters": [
+{
+"name": "小傑",
+"emoji": "👨‍🎓",
+"initial_relationship": 50
+},
+{
+"name": "小宇",
+"emoji": "👦",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s1-a",
+"text": "跟住一齊笑",
+"effects": [
+{
+"character": "小傑",
+"change": 10,
+"moralChange": -15,
+"comment": "你同小傑笑得好開心！但係小宇低頭就走咗。第二日你見到小宇覺得好心虛..."
+}
+],
+"next_scenario": "s2"
+},
+{
+"id": "s1-b",
+"text": "靜靜地走開",
+"effects": [
+{
+"character": "小傑",
+"change": 0,
+"moralChange": -5,
+"comment": "你走開咗，但係成晚在想：「我應該講啲咩？」第二日你聽見小宇因為太傷心請假沒返學..."
+},
+{
+"character": "小宇",
+"change": 5,
+"moralChange": 0,
+"comment": "小宇唔知你既事，但係如果你出聲可能會唔同..."
+}
+],
+"next_scenario": "s2"
+},
+{
+"id": "s1-c",
+"text": "「我唔覺得好笑，每個人都可以著自己鍾意既衫」",
+"effects": [
+{
+"character": "小傑",
+"change": -5,
+"moralChange": 10,
+"comment": "小傑話：「你唔夠朋友呀！」但係小宇望向你眼神裡有啲感謝..."
+},
+{
+"character": "小宇",
+"change": 20,
+"moralChange": 5,
+"comment": "小宇話：「多謝你呀...」點點頭就跑開咗。"
+}
+],
+"next_scenario": "s2"
+}
+],
+"location": "break",
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "小傑指著正在玩既小宇話：「我哋一齊笑佢好唔好？佢著既衫咁樣好搞笑呀！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s5",
+"title": "關卡5：整蠱仔",
+"background": "操場・晏晝",
+"description": "小芳偷偷同你講：「我哋將安安既水壺匿埋，等佢搵唔到好好笑！」",
+"hints": [
+"小信睇到封信大叫，全班都喺笑，佢係咪真係覺得好笑？",
+"整蠱令人難過就唔係好笑。如果有一方唔開心，就已經失去意義。",
+"如果你係小信，你寧願有人走嚟幫你、定係繼續被笑？"
+],
+"characters": [
+{
+"name": "小芳",
+"emoji": "👩‍🎓",
+"initial_relationship": 50
+},
+{
+"name": "安安",
+"emoji": "👦",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s5-a",
+"text": "參與呢個整蠱",
+"effects": [
+{
+"character": "小芳",
+"change": 10,
+"comment": "安安置咗好耐搵唔到水壺，最後惟有飲自來水。放學時佢媽媽知咗都好嬲，你聽到：「啲細路點解咁曳？」你訓左差啲...",
+"moralChange": -8
+},
+{
+"character": "安安",
+"change": -20,
+"comment": "安安急到喊，你心裡好內疚...",
+"moralChange": -8
+}
+],
+"next_scenario": "s6"
+},
+{
+"id": "s5-b",
+"text": "「我...我唔敢」",
+"effects": [
+{
+"character": "小芳",
+"change": -10,
+"comment": "嗰班同學笑你細膽之後就唔再搵你玩。你覺得你似個懦夫，正義都不敢...",
+"moralChange": -8
+},
+{
+"character": "安安",
+"change": 0,
+"comment": "至少你冇參與...",
+"moralChange": -8
+}
+],
+"next_scenario": "s6"
+},
+{
+"id": "s5-c",
+"text": "「咁樣會令安安難過我不想參加」",
+"effects": [
+{
+"character": "小芳",
+"change": 5,
+"comment": "小芳話：「 Victoria 咁呀...算啦。」佢嫌你無癮，但係你守得住自己既善良！",
+"moralChange": 8
+},
+{
+"character": "安安",
+"change": 10,
+"comment": "安安唔知呢件事，但係你好似做啱咗...",
+"moralChange": 8
+}
+],
+"next_scenario": "s6"
+}
+],
+"location": "break",
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "小芳偷偷同你講：「我哋將安安既水壺匿埋，等佢搵唔到好好笑！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s7",
+"title": "關卡7：安慰朋友",
+"background": "操場・體育堂後",
+"description": "小珍喊住搵你：「佢哋笑我跑得慢...我唔想上體育課啦...」",
+"hints": [
+"小美話唔關心事，但你見到佢喊緊。你信邊個？",
+"有時朋友話「冇事」係因為唔想麻煩人，但佢哋其實需要關心。",
+"陪伴靜靜咁坐低，問一句「你想唔想講？」已經係好大既安慰。"
+],
+"characters": [
+{
+"name": "小珍",
+"emoji": "👧",
+"initial_relationship": 60
+}
+],
+"options": [
+{
+"id": "s7-a",
+"text": "「唔好喊啦，你既確跑得慢呀」",
+"effects": [
+{
+"character": "小珍",
+"change": -20,
+"comment": "小珍喊得更大聲，覺得你唔明白佢。之後佢唔再好同你分享心事，你哋既友誼出現裂痕...",
+"moralChange": -8
+}
+],
+"next_scenario": "s8"
+},
+{
+"id": "s7-b",
+"text": "「冇所謂啦，唔好在意」",
+"effects": [
+{
+"character": "小珍",
+"change": -5,
+"comment": "小珍點點頭，但係你睇得出佢仲係好難過。下次體育課佢扮肚痛唔想參加。你覺得你既安慰好似冇幫到佢...",
+"moralChange": 5
+},
+{
+"character": "小珍",
+"change": 5,
+"comment": "至少有你在...",
+"moralChange": 5
+}
+],
+"next_scenario": "s8"
+},
+{
+"id": "s7-c",
+"text": "「被笑一定好難過。跑步速度唔重要，重要的是你有參與！」",
+"effects": [
+{
+"character": "小珍",
+"change": 20,
+"comment": "小珍即刻笑咗：「多謝你呀！你最明白我！」之後體育堂佢好積極咁參與！",
+"moralChange": 8
+}
+],
+"next_scenario": "s8"
+}
+],
+"location": "break",
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "小珍喊住搵你：「佢哋笑我跑得慢...我唔想上體育課啦...」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-c2",
+"title": "關卡：杯葛",
+"location": "classroom",
+"background": "課室・小息",
+"description": "有同學話如果你同某人一齊玩，就唔同你玩",
+"hints": [
+"如果要你放棄其他朋友先可以繼續係朋友，呢個係真友誼嗎？",
+"真正既朋友會支持你擴闊社交圈，唔係限制你。",
+"可以拒絕話「我想要你哋兩邊都係朋友」，如果佢唔接受，佢就唔係你想要既朋友。"
+],
+"characters": [
+{
+"name": "小傑",
+"emoji": "👨‍🎓",
+"initial_relationship": 50
+},
+{
+"name": "小美",
+"emoji": "👩‍🎓",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-c2-a",
+"text": "好啦，我唔同佢玩啦",
+"effects": [
+{
+"character": "小傑",
+"change": -20,
+"comment": "小傑望住你，唔出聲就走開咗",
+"moralChange": -8
+},
+{
+"character": "小玲",
+"change": 5,
+"comment": "但你心裡有啲唔舒服",
+"moralChange": -8
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c2-b",
+"text": "我既朋友我自己選擇",
+"effects": [
+{
+"character": "小傑",
+"change": 20,
+"comment": "小傑話多謝你，你哋既友情更加堅固",
+"moralChange": 8
+},
+{
+"character": "小玲",
+"change": -10,
+"comment": "你好似釋然咗",
+"moralChange": 8
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "有同學話如果你同某人一齊玩，就唔同你玩 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-b1",
+"title": "關卡：語言暴力",
+"location": "break",
+"background": "操場・晏晝",
+"description": "有同學話你：「你好曳！你同豬一樣！」",
+"hints": [
+"小慧係一個學生，犯錯係成長一部分。如果佢知道你會笑佢，佢會點？",
+"言語暴力可以造成深刻既傷痕，有啲說話我哋以為係開玩笑，但聽落去既人一生都會記得。",
+"如果冇嘢好聽，就唔好嘩眾取寵。可以話「呢個話題我哋改天聊啦」。"
+],
+"characters": [
+{
+"name": "小傑",
+"emoji": "👨‍🎓",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-b1-a",
+"text": "話你都好曳啦",
+"effects": [
+{
+"character": "小強",
+"change": -20,
+"comment": "你同大打起來，要罰企",
+"moralChange": -8
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-b1-b",
+"text": "話你咁樣講我，我好唔開心",
+"effects": [
+{
+"character": "小強",
+"change": 10,
+"comment": "小強話我只是玩之嘛，之後冇再咁樣講",
+"moralChange": 8
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "有同學話你：「你好曳！你同豬一樣！」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-b4",
+"title": "關卡：排擠",
+"location": "break",
+"background": "操場・晏晝",
+"description": "你想join既同學玩，但佢話：「你呢個人曳曳，我們唔想你join」",
+"hints": [
+"被排除係group chat以外，係咩感覺？如果係你，你會點？",
+"排擠係一種隱形既傷害，因為其他人可能根本唔知道。",
+"如果唔關佢事先，可以主動走埋去：「我想要你一齊玩。」"
+],
+"characters": [
+{
+"name": "小傑",
+"emoji": "👨‍🎓",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-b4-a",
+"text": "自己一個玩",
+"effects": [
+{
+"character": "小傑",
+"change": 0,
+"comment": "你自己一個，但發現原來一個都可以好好玩",
+"moralChange": 5
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-b4-b",
+"text": "搵第二班朋友",
+"effects": [
+{
+"character": "小傑",
+"change": 5,
+"comment": "搵到新朋友，仲開心",
+"moralChange": 8
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "你想join既同學玩，但佢話：「你呢個人曳曳，我們唔想你join」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-c5",
+"title": "道德關卡：考試作弊",
+"background": "考試期間",
+"description": "你發現你最好的朋友小明正在抄隔壁同學的答案。他成績一向不太好，如果被發現一定會被記過。你應該點做？",
+"characters": [
+{
+"name": "小明",
+"emoji": "👦",
+"initial_relationship": 70
+}
+],
+"hints": [
+"如果你係小強，你希望朋友點幫你？幫你作弊定係阻止你？",
+"一時既高分唔值得學壞規矩。你希望有真材實學定係得個高分？",
+"友誼係包括喺朋友做錯時指出問題，呢個先係真正既朋友。"
+],
+"options": [
+{
+"id": "s-c5-a",
+"text": "假裝睇唔到，等佢自己決定",
+"effects": [
+{
+"character": "小明",
+"change": 5,
+"moralChange": -10,
+"comment": "小明之後高分但被懷疑，你幫佢散除嫌疑..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c5-b",
+"text": "輕聲提佢「有人望過來」提醒佢",
+"effects": [
+{
+"character": "小明",
+"change": 15,
+"moralChange": 10,
+"comment": "小明即刻停咗，之後多謝你提醒..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c5-c",
+"text": "立即告知老師",
+"effects": [
+{
+"character": "小明",
+"change": -30,
+"moralChange": 10,
+"comment": "小明被記過，覺得你出賣咗佢..."
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "你發現你最好的朋友小明正在抄隔壁同學的答案。他成績一向不太好，如果被發現一定會被記過。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-c7",
+"title": "道德關卡：網絡欺凌",
+"background": "回家後・手機",
+"description": "你在同學群組看到有人post咗小宇的醜相片，大家都在笑。你知呢張相片係被惡意PS過的，但係小宇唔知件事。你應該點做？",
+"characters": [
+{
+"name": "小宇",
+"emoji": "👦",
+"initial_relationship": 50
+}
+],
+"hints": [
+"旁觀者沉默，係另一種既加害。如果係你被欺負，你希望點？",
+"沉默唔係安全，係軟弱既表現。如果你唔出聲，就係幫緊欺負你的人。",
+"勇敢話：「我覺得呢個並唔好笑，小宇一定好唔開心。」"
+],
+"options": [
+{
+"id": "s-c7-a",
+"text": "和朋友一齊笑",
+"effects": [
+{
+"character": "小宇",
+"change": -20,
+"moralChange": -25,
+"comment": "你參與咗網絡欺凌，小宇發現後打俾媽媽喊..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c7-b",
+"text": "退出群組，當作睇唔到",
+"effects": [
+{
+"character": "小宇",
+"change": 0,
+"moralChange": -5,
+"comment": "你逃避咗，但係問題仍然存在..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-c7-c",
+"text": "私信小宇告知情況，並公開指責",
+"effects": [
+{
+"character": "小宇",
+"change": 25,
+"moralChange": -10,
+"comment": "你保護咗小宇，雖然俾人話你串，但係你做咗啱既嘢！"
+}
+],
+"next_scenario": null
+}
+],
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "你在同學群組看到有人post咗小宇的醜相片，大家都在笑。你知呢張相片係被惡意PS過的，但係小宇唔知件事。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-new1",
+"title": "關卡：新嚮室借嘢",
+"background": "洗手間・小息時間",
+"description": "小明發現自己廁紙唔夠，向你借。你今日得少量，但足夠自己用...",
+"hints": [
+"如果你話借，最後發現自己都冇，係咪變成一個大話？",
+"分享係美德，但要先確保自己係咪真係有。如果冇就如實話。",
+"可以話：我真係好想幫你，但我今日冇帶，你可以問其他人嗎？"
+],
+"characters": [
+{
+"name": "小明",
+"emoji": "👦",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-new1-a",
+"text": "全部借曬俾佢",
+"effects": [
+{
+"character": "小明",
+"change": 20,
+"moralChange": 10,
+"comment": "小明多謝你！但你自己就冇得用...第二節課忍得辛苦。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new1-b",
+"text": "拒絕話：「我都要用啊」",
+"effects": [
+{
+"character": "小明",
+"change": -10,
+"moralChange": -5,
+"comment": "小明有啲失望但表示理解。你覺得有點過意唔去..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new1-c",
+"text": "分一半俾佢",
+"effects": [
+{
+"character": "小明",
+"change": 15,
+"moralChange": 15,
+"comment": "小明話：「多謝你分俾我！」你兩個都夠用，好人好己。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "toilet",
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "小明發現自己廁紙唔夠，向你借。你今日得少量，但足夠自己用... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-new4",
+"title": "關卡：雨天冇曬傘",
+"background": "校門口・放學時間",
+"description": "放學時突然落大雨，你帶咗遮，但同學小美冇帶，佢望住天有啲發愁...",
+"hints": [
+"幫人係好意，但如果你淋濕咗感冒，到底係幫咗邊個？",
+"關心別人之前，要先確保自己有能力幫忙，否則反而變成負擔。",
+"可以提議：不如我哋一齊搵其他同學借？"
+],
+"characters": [
+{
+"name": "小美",
+"emoji": "👩‍🎓",
+"initial_relationship": 55
+}
+],
+"options": [
+{
+"id": "s-new4-a",
+"text": "話：「我送你到車牌度，一齊遮啦」",
+"effects": [
+{
+"character": "小美",
+"change": 20,
+"moralChange": 15,
+"comment": "小美好開心：「多謝你！」你兩個夾住一齊撐，順利到達。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new4-b",
+"text": "把遮借俾佢，自己跑走去車牌",
+"effects": [
+{
+"character": "小美",
+"change": 15,
+"moralChange": 15,
+"comment": "小美話：「但你點算？」你濕曬跑回車牌，小美拎住遮好感激..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new4-c",
+"text": "話：「不如等等，可能一陣就停」",
+"effects": [
+{
+"character": "小美",
+"change": 5,
+"moralChange": 0,
+"comment": "你兩個喺有蓋走廊等，雨真係慢慢細咗。小美話：「算啦，等停先！」"
+}
+],
+"next_scenario": null
+}
+],
+"location": "rainy",
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "放學時突然落大雨，你帶咗遮，但同學小美冇帶，佢望住天有啲發愁... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-new6",
+"title": "關卡：飯堂唔記得帶錢",
+"background": "飯堂・午膳時間",
+"description": "你排緊隊，前面既小福突然話：「衰咗，我唔記得帶銀包！」佢望住你...",
+"hints": [
+"你借錢俾人，但人哋最後唔還。你下一次仲借唔借？",
+"借錢涉及還錢問題，都要確保對方係可以還到。先考慮清楚。",
+"如果唔記得帶錢，可以嘗試提議：我下次請你食。"
+],
+"characters": [
+{
+"name": "小福",
+"emoji": "🍱",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-new6-a",
+"text": "話：「你要幾多？我借你啦」",
+"effects": [
+{
+"character": "小福",
+"change": 20,
+"moralChange": 10,
+"comment": "小福話：「多謝！下次還你！」你借咗30蚊俾佢..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new6-b",
+"text": "話：「唔好意思，我今餐都唔夠」",
+"effects": [
+{
+"character": "小福",
+"change": -5,
+"moralChange": 0,
+"comment": "小福有啲失望，但知道真係冇辦法。佢問後面同學..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new6-c",
+"text": "話：「我請你啦，唔使還」",
+"effects": [
+{
+"character": "小福",
+"change": 20,
+"moralChange": 15,
+"comment": "小福好感激：「真係唔使還？太謝謝你！」"
+}
+],
+"next_scenario": null
+}
+],
+"location": "canteen",
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "你排緊隊，前面既小福突然話：「衰咗，我唔記得帶銀包！」佢望住你... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-new10",
+"title": "關卡：關懷新同學",
+"background": "禮堂・新生簡介會",
+"description": "今日有新同學小玲轉過來，佢坐係一角冇人理。你聽到其他同學話：「呢個係新來ga咋嘛...」",
+"hints": [
+"新同學第一次嚟到，完全唔識人。你有冇諗過主動走過去打招呼？",
+"新環境開始冇朋友係好孤獨既事，一句說話可以改變一切。",
+"你可以行過去話：你好，我係...，你想唔想一齊食午餐？"
+],
+"characters": [
+{
+"name": "小玲",
+"emoji": "👧",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-new10-a",
+"text": "走過去自我介紹：「你係新同學？我叫小明，請問你叫咩名？」",
+"effects": [
+{
+"character": "小玲",
+"change": 25,
+"moralChange": 15,
+"comment": "小玲呆咗，然後笑：「我叫小玲！多謝你嚟......」你帶佢認識其他同學！"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new10-b",
+"text": "對其他人話：「你哋唔好咁樣衰幾，新同學會難堪ga」",
+"effects": [
+{
+"character": "小玲",
+"change": 10,
+"moralChange": 10,
+"comment": "其他人縮一縮，但小玲望到你為佢出聲，心裡有啲感動..."
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new10-c",
+"text": "自己玩自己，冇特別理踩",
+"effects": [
+{
+"character": "小玲",
+"change": -10,
+"moralChange": 0,
+"comment": "小玲成日都係一個坐，見到你地傾偈好羨慕，但又唔敢行過去..."
+}
+],
+"next_scenario": null
+}
+],
+"location": "hall",
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "今日有新同學小玲轉過來，佢坐係一角冇人理。你聽到其他同學話：「呢個係新來ga咋嘛...」 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-new16",
+"title": "關卡：尊重別人",
+"background": "電腦室・課堂活動",
+"description": "同學小琳分享佢既畫，你覺得好樣衰，想笑...",
+"hints": [
+"如果你批評人哋的作品，人哋會點諗？每個人既作品都值得尊重。",
+"即使你唔同意，都可以禮貌咁表達。你會希望點俾人批評？",
+"可以話：我有些地方唔太明白，可唔可以解釋一下？"
+],
+"characters": [
+{
+"name": "小琳",
+"emoji": "👧",
+"initial_relationship": 40
+}
+],
+"options": [
+{
+"id": "s-new16-a",
+"text": "笑話：「哈哈哈哈！你畫啲乜嘢嚟嘅！」",
+"effects": [
+{
+"character": "小琳",
+"change": -25,
+"moralChange": -15,
+"comment": "小琳喊咗：「你做咩笑我...」其他同學望向你。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new16-b",
+"text": "忍住笑，禮貌話：「我覺得可以再畫好啲。」",
+"effects": [
+{
+"character": "小琳",
+"change": 5,
+"moralChange": 5,
+"comment": "小琳話：「我再畫過啦...」佢冇太難過。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new16-c",
+"text": "真心地讚：「呢度好有創意，我鍾意你用嘅顏色！」",
+"effects": [
+{
+"character": "小琳",
+"change": 20,
+"moralChange": 15,
+"comment": "小琳笑：「多謝你！我再畫多啲！」"
+}
+],
+"next_scenario": null
+}
+],
+"location": "computer",
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "同學小琳分享佢既畫，你覺得好樣衰，想笑... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-new19",
+"title": "關卡：拒絕欺凌",
+"background": "洗手間・小息時間",
+"description": "你見到幾個同學埋堆笑一位同學，仲話低價錢要整佢...",
+"hints": [
+"欺凌係錯既，但旁觀者沉默就等於幫兇。你可以點幫手？",
+"唔做旁觀者，你可以做幫手。一個簡單既行動可以改變局面。",
+"可以走埋去話：你冇嘢嘛？或者通知老師。"
+],
+"characters": [
+{
+"name": "小志",
+"emoji": "😢",
+"initial_relationship": 30
+}
+],
+"options": [
+{
+"id": "s-new19-a",
+"text": "走出去話：「你地做咩蝦人！我要去告訴老師！」",
+"effects": [
+{
+"character": "小志",
+"change": 25,
+"moralChange": 20,
+"comment": "小志眼中有啲希望，其他人散去。老師讚你勇敢。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new19-b",
+"text": "跟住笑：「哈哈哈！係囉，佢幾醜樣！」",
+"effects": [
+{
+"character": "小志",
+"change": -30,
+"moralChange": -20,
+"comment": "小志望向你，眼淚汪汪。你心入面有啲難受。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-new19-c",
+"text": "行開咗，扮作睇唔到",
+"effects": [
+{
+"character": "小志",
+"change": -10,
+"moralChange": -20,
+"comment": "你心入面有個聲音話：「其實我可以做多啲...」"
+}
+],
+"next_scenario": null
+}
+],
+"location": "toilet",
+"topicId": "respect",
+"creedIds": [
+15,
+16
+],
+"imagePrompt": "你見到幾個同學埋堆笑一位同學，仲話低價錢要整佢... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+]
+},
+{
+"id": "s-self-177",
+"title": "尊重：同學間嘢用唔同",
+"background": "課室・小息",
+"description": "同學用嘅文具同你哋唔同，有人笑「你用咁樣嘅筆」。你會……",
+"hints": [
+"每個人都可以用自己鍾意嘅嘢",
+"唔應該取笑人哋嘅選擇",
+"尊重差異"
+],
+"characters": [
+{
+"name": "同學",
+"emoji": "🧒",
+"initial_relationship": 50
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-177-a",
+"text": "笑埋一份",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -10,
+"comment": "你參與嘲笑，唔係尊重。"
+}
+]
+},
+{
+"id": "s-self-177-b",
+"text": "「每個人都可以用自己鍾意嘅嘢」",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你為同學發聲，係尊重！"
+}
+]
+},
+{
+"id": "s-self-177-c",
+"text": "「每個人都可以用自己鍾意嘅」+讚同學嘅筆+建議分享",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你支持+讚，係尊重高手！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "respect",
+"creedIds": [
+2
+],
+"valueCategory": "respect",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"語言尊重",
+"包容差異",
+"旁觀者介入"
+],
+"imagePrompt": "Hong Kong primary classroom, child defending classmate with different stationery, anime cartoon style, FF XV Nomura style, warm tones, 16:9"
+}
+]

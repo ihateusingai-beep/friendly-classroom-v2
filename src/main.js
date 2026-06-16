@@ -55,18 +55,13 @@ import {
 import {
   wireIO, updateAnalyticsSummary, setSyncStatusLoading,
 } from './domain/IO.js';
-// Phase 3 (S13): scenarios.json (259 items, 259KB) is now lazy-loaded via
-// `loadScenarios()`. Saves 56% of bundle (~110KB gz → ~50KB gz) by deferring
-// the JSON.parse of the full scenario tree until the first time the user
-// picks a path that needs it (subject-select → topic → play).
-let _scenariosLoaded = null;
-export async function loadScenarios() {
-  if (_scenariosLoaded) return _scenariosLoaded;
-  const mod = await import('../data/scenarios.json');
-  _scenariosLoaded = mod.default || mod;
-  setScenarios(_scenariosLoaded);
-  return _scenariosLoaded;
-}
+// Sprint 3 / Track B1: per-topic chunk loading lives in ScenarioEngine.
+// Re-exports here keep the main.js API surface unchanged for downstream
+// modules that wireHub() / wirePlay() / wireIO() with the engine entry
+// points. The engine owns the chunk path map (`import.meta.glob`) so it
+// stays self-contained; main.js just re-exports.
+import { loadScenarios, loadScenariosForTopic, getScenarioById } from './domain/ScenarioEngine.js';
+export { loadScenarios, loadScenariosForTopic };
 
 // ── Vite HMR 破壞 DOM 寫入，強制停用 ──
 if (import.meta.hot) { import.meta.hot.decline(); }
@@ -497,16 +492,16 @@ wireAuth({
 wirePlay({
   setView, render, _navigate,
   getState: () => state,
-  loadScenarios, _scenariosLoaded,
+  loadScenarios, loadScenariosForTopic, getScenarioById,
   playScenario, getScenariosByTopic,
   chooseOption, markScenarioShown, logInteraction,
-  playSFX, _isReducedMotion,
+  playSFX, isReducedMotion: _isReducedMotion,
 });
 wireHub({
   setView, navRender, render, _navigate,
   getState: () => state,
-  loadScenarios, _scenariosLoaded,
-  getScenarios, initTopicProgress, applyScenarioResult,
+  loadScenarios, loadScenariosForTopic,
+  getScenarios, getScenariosByTopic, initTopicProgress, applyScenarioResult,
   getStudent, getBankRun, startBankRun, endBankRun,
   advanceToNextQuestion, recordBankTransaction, logInteraction,
 });

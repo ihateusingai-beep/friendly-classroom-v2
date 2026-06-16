@@ -1,0 +1,1066 @@
+[
+{
+"id": "s-self-37",
+"title": "責任感：自己嘅書包自己執",
+"background": "課室・放學",
+"description": "放學時間到，你發現自己嘅書包散曬嘢喺地下，筆、簿、午餐盒跌晒一地。你會點做？",
+"hints": [
+"自己嘅嘢自己執好係負責任嘅表現。",
+"叫朋友幫手可以係好選擇，但自己先試下。"
+],
+"options": [
+{
+"id": "s-self-37-a",
+"text": "叫朋友幫手執",
+"effects": [
+{
+"moralChange": -10,
+"comment": "朋友可以幫手，但自己嘅嘢自己負責會更好。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-37-b",
+"text": "自己慢慢執返好",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你好有責任感！"
+}
+],
+"next_scenario": "s-self-38"
+},
+{
+"id": "s-self-37-c",
+"text": "由得佢散喺度",
+"effects": [
+{
+"moralChange": -15,
+"comment": "自己嘅嘢唔理，會令其他人行路時踢到。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "responsibility",
+"creedIds": [
+19,
+16
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy tidying his own school bag in classroom after school, responsible expression, warm tones, no text, no logos, 16:9",
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"自我管理",
+"完成 routine",
+"帶齊物品"
+]
+},
+{
+"id": "s-self-38",
+"title": "責任感：功課自己做",
+"background": "屋企・晚飯後",
+"description": "晚飯後你做功課，遇到一條好難嘅數學題。你想放棄，你會……",
+"hints": [
+"自己先試下，唔識先問媽媽。",
+"抄朋友功課係唔誠實嘅行為。"
+],
+"options": [
+{
+"id": "s-self-38-a",
+"text": "即刻叫媽媽嚟教",
+"effects": [
+{
+"moralChange": -10,
+"comment": "自己先試下先問人，會學到更多。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-38-b",
+"text": "自己慢慢試下計",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你好勤力肯嘗試！"
+}
+],
+"next_scenario": "s-self-39"
+},
+{
+"id": "s-self-38-c",
+"text": "等朋友嘅功課嚟抄",
+"effects": [
+{
+"moralChange": -18,
+"comment": "抄功課係唔誠實，學唔到嘢又會內疚。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "home",
+"topicId": "responsibility",
+"creedIds": [
+19,
+17
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy doing homework at home by himself, focused and responsible, warm home lighting, no text, no logos, 16:9",
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"自我管理",
+"完成 routine",
+"帶齊物品"
+]
+},
+{
+"id": "s-self-39",
+"title": "責任感：水樽自己帶",
+"background": "校園・小息",
+"description": "小息時間，你發現自己唔記得帶水樽，口好渴。你會……",
+"hints": [
+"自己嘅嘢自己記得帶係負責任。",
+"健康都好重要，記得飲水。"
+],
+"options": [
+{
+"id": "s-self-39-a",
+"text": "問同學借少少水",
+"effects": [
+{
+"moralChange": -8,
+"comment": "應急可以，但下次要記得自己帶。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-39-b",
+"text": "下次一定記得帶",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你識得從錯誤中學習！"
+}
+],
+"next_scenario": "s-self-40"
+},
+{
+"id": "s-self-39-c",
+"text": "忍住唔飲",
+"effects": [
+{
+"moralChange": -5,
+"comment": "健康都係責任，記得下次帶水。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "playground",
+"topicId": "responsibility",
+"creedIds": [
+19
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy realizing he forgot water bottle at school, learning responsibility, warm tones, no text, no logos, 16:9",
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"自我管理",
+"完成 routine",
+"帶齊物品"
+]
+},
+{
+"id": "s-self-40",
+"title": "責任感：幫手執垃圾",
+"background": "飯堂",
+"description": "喺飯堂食完飯，你見到地下有個紙巾同膠水樽。大家都準備離開，你會……",
+"hints": [
+"愛護學校環境係每個學生嘅責任。",
+"自己動手執係好榜樣，其他人會跟住做。"
+],
+"options": [
+{
+"id": "s-self-40-a",
+"text": "假裝睇唔到就走",
+"effects": [
+{
+"moralChange": -15,
+"comment": "當冇事會令學校越嚟越污糟。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-40-b",
+"text": "自己動手執返",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你愛護學校，係好榜樣！"
+}
+],
+"next_scenario": "s-self-41"
+},
+{
+"id": "s-self-40-c",
+"text": "叫清潔阿姨嚟執",
+"effects": [
+{
+"moralChange": 5,
+"comment": "自己動手會更好。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "canteen",
+"topicId": "responsibility",
+"creedIds": [
+19,
+20
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy picking up litter in school canteen, responsible action, warm tones, no text, no logos, 16:9",
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"自我管理",
+"完成 routine",
+"帶齊物品"
+]
+},
+{
+"id": "s-self-41",
+"title": "責任感：遲到要話老師知",
+"background": "課室・朝早",
+"description": "朝早你遲到咗，課室門口望到老師。你會……",
+"hints": [
+"誠實面對遲到係負責任嘅表現。",
+"找藉口只會令問題更複雜。"
+],
+"options": [
+{
+"id": "s-self-41-a",
+"text": "偷偷閂門入去",
+"effects": [
+{
+"moralChange": -15,
+"comment": "偷偷入去會擾亂課堂又唔誠實。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-41-b",
+"text": "大聲報告老師",
+"effects": [
+{
+"moralChange": 18,
+"comment": "你好有承擔！老師會明白。"
+}
+],
+"next_scenario": "s-self-42"
+},
+{
+"id": "s-self-41-c",
+"text": "怪巴士塞車",
+"effects": [
+{
+"moralChange": -10,
+"comment": "找藉口推卸責任，唔可以改變遲到嘅事實。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "classroom",
+"topicId": "responsibility",
+"creedIds": [
+19,
+13
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy explaining to teacher why he is late, honest and responsible, warm classroom, no text, no logos, 16:9",
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"自我管理",
+"完成 routine",
+"帶齊物品"
+]
+},
+{
+"id": "s-self-42",
+"title": "責任感：完成任務有成就",
+"background": "屋企・床頭",
+"description": "今日你返學前自己著校服、執書包、放學自己執齊所有嘢。瞓覺前你會點諗？",
+"hints": [
+"為自己嘅努力感到驕傲係好事。",
+"堅持每日做就會變成好習慣。"
+],
+"options": [
+{
+"id": "s-self-42-a",
+"text": "覺得自己好攰",
+"effects": [
+{
+"moralChange": 5,
+"comment": "休息同努力都同樣重要。"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-42-b",
+"text": "覺得好有成就感",
+"effects": [
+{
+"moralChange": 20,
+"comment": "你完成責任感學習！badge +10分"
+}
+],
+"next_scenario": null
+},
+{
+"id": "s-self-42-c",
+"text": "下次都唔做啦",
+"effects": [
+{
+"moralChange": -15,
+"comment": "放棄會令之前嘅努力白費。"
+}
+],
+"next_scenario": null
+}
+],
+"location": "home",
+"topicId": "responsibility",
+"creedIds": [
+19,
+21
+],
+"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling proud after completing tasks at home, warm satisfied expression, cozy bedroom, no text, no logos, 16:9",
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"自我管理",
+"完成 routine",
+"帶齊物品"
+]
+},
+{
+"id": "s-self-121",
+"title": "責任感：自己早起準備",
+"background": "屋企・早上",
+"description": "媽媽叫你設鬧鐘自己起身準備返學。但鬧鐘響咗你按停再瞓，返到學校遲到。你會……",
+"hints": [
+"自己嘅責任自己負",
+"鬧鐘響就起，唔好按停",
+"遲到會影響全班"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-121-a",
+"text": "「反正遲咗，唔返喇」",
+"effects": [
+{
+"character": "自己",
+"change": -20,
+"moralChange": -20,
+"comment": "你放棄一整日學業，責任感都冇埋。"
+}
+]
+},
+{
+"id": "s-self-121-b",
+"text": "快快出門返學",
+"effects": [
+{
+"character": "自己",
+"change": 8,
+"moralChange": 10,
+"comment": "你承擔後果，係基本嘅責任感。"
+}
+]
+},
+{
+"id": "s-self-121-c",
+"text": "返學+同老師講「對唔住遲到」+今晚早啲瞓",
+"effects": [
+{
+"character": "自己",
+"change": 22,
+"moralChange": 22,
+"comment": "你承擔+反省+改善，係責任感高手！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "responsibility",
+"creedIds": [
+3
+],
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"自我管理",
+"routine",
+"完成 routine"
+],
+"imagePrompt": "Hong Kong child waking up to alarm clock in morning, school uniform ready on chair, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9"
+},
+{
+"id": "s-self-122",
+"title": "責任感：做家課唔抄",
+"background": "屋企・書枱・晚上",
+"description": "功課好難你唔想做，朋友提議你抄佢嘅功課。你會……",
+"hints": [
+"抄功課係作弊",
+"唔識可以問但唔可以抄",
+"自己做先學到嘢"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+},
+{
+"name": "朋友",
+"emoji": "🧒",
+"initial_relationship": 60
+}
+],
+"options": [
+{
+"id": "s-self-122-a",
+"text": "「好呀」就抄朋友嘅",
+"effects": [
+{
+"character": "自己",
+"change": -18,
+"moralChange": -20,
+"comment": "你抄功課，欺騙自己又欺騙老師。"
+}
+]
+},
+{
+"id": "s-self-122-b",
+"text": "自己做，唔識就留空+問老師",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你誠實做功課，係責任感嘅表現！"
+}
+]
+},
+{
+"id": "s-self-122-c",
+"text": "自己做+問老師/媽媽+寫低學到嘅嘢",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你主動學嘢，係責任感高手！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "responsibility",
+"creedIds": [
+3
+],
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"做家課",
+"自我管理",
+"誠實"
+],
+"imagePrompt": "Hong Kong child at desk with homework book, writing carefully, evening warm lamp light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-123",
+"title": "責任感：幫手洗碗",
+"background": "屋企・廚房・晚飯後",
+"description": "媽媽煮完飯好攰，叫你幫手洗碗。但你想睇電視。你會……",
+"hints": [
+"分擔家務係責任",
+"媽媽都需要休息",
+"小幫手可以換大休息"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 75
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-123-a",
+"text": "扮睇緊電視聽唔到",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你逃避家務，媽媽會好攰。"
+}
+]
+},
+{
+"id": "s-self-123-b",
+"text": "幫手洗碗",
+"effects": [
+{
+"character": "自己",
+"change": 12,
+"moralChange": 14,
+"comment": "你分擔家務，係責任感嘅表現！"
+}
+]
+},
+{
+"id": "s-self-123-c",
+"text": "洗碗+抹枱+收好廚房",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你主動做晒全套，係責任感模範！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "responsibility",
+"creedIds": [
+3
+],
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"做家務",
+"照顧家人",
+"完成 routine"
+],
+"imagePrompt": "Hong Kong child washing dishes in kitchen, mother resting nearby, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-124",
+"title": "責任感：帶齊返學物品",
+"background": "屋企・門口・早上",
+"description": "出門口時你發現唔記得帶音樂堂嘅樂器，返屋企攞會遲到。你會……",
+"hints": [
+"前一晚執書包係好習慣",
+"遲到要承擔後果",
+"樂器可以下堂先帶"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-124-a",
+"text": "扮冇嘢就返學",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你逃避問題，音樂堂會被記曠課。"
+}
+]
+},
+{
+"id": "s-self-124-b",
+"text": "返屋企攞+接受遲到後果",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你承擔後果補救，係責任感！"
+}
+]
+},
+{
+"id": "s-self-124-c",
+"text": "返屋企攞+同老師講「對唔住遲到」+晚上設執書包 routine",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你補救+改善系統，係責任感高手！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "responsibility",
+"creedIds": [
+3
+],
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"帶齊物品",
+"自我管理",
+"建立 routine"
+],
+"imagePrompt": "Hong Kong child at front door realizing forgot music instrument, morning light, considering going back, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-125",
+"title": "責任感：照顧家中植物",
+"background": "屋企・窗台",
+"description": "媽媽買咗盆新植物，叫你每日淋水。但你忘咗幾日，植物開始黃葉。你會……",
+"hints": [
+"承諾照顧就要做到",
+"可以設鬧鐘提醒",
+"植物都係生命"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+},
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 75
+}
+],
+"options": [
+{
+"id": "s-self-125-a",
+"text": "等媽媽自己發現",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -10,
+"comment": "你忽略責任，植物可能會死。"
+}
+]
+},
+{
+"id": "s-self-125-b",
+"text": "即刻淋水+同媽媽講",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你即時補救+誠實，係責任感！"
+}
+]
+},
+{
+"id": "s-self-125-c",
+"text": "淋水+設每日鬧鐘+研究點樣救返棵植物",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你主動改善+求知，係責任感高手！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "responsibility",
+"creedIds": [
+3
+],
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"routine",
+"自我管理",
+"照顧生命"
+],
+"imagePrompt": "Hong Kong child tending to wilting plant on windowsill, morning sunlight, holding water can, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-126",
+"title": "責任感：做組長分配工作",
+"background": "課室・分組活動",
+"description": "你係組長，老師叫小組做poster。組員話「你做晒啦我哋玩」。你會……",
+"hints": [
+"組長要帶領分配",
+"唔係幫組員做晒",
+"可以一齊傾分工"
+],
+"characters": [
+{
+"name": "組員",
+"emoji": "🧒",
+"initial_relationship": 50
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-126-a",
+"text": "「好啦我做晒」",
+"effects": [
+{
+"character": "自己",
+"change": -12,
+"moralChange": -12,
+"comment": "你縱容組員逃避，唔係真正嘅組長。"
+}
+]
+},
+{
+"id": "s-self-126-b",
+"text": "同組員一齊傾分工",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你帶領分配，係組長責任感！"
+}
+]
+},
+{
+"id": "s-self-126-c",
+"text": "傾分工+設定時限+互相鼓勵",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你用系統帶領，係高手組長！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "responsibility",
+"creedIds": [
+3
+],
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"自我管理",
+"帶領",
+"完成 routine"
+],
+"imagePrompt": "Hong Kong primary classroom, group leader talking to teammates, poster on table, morning light, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-self-127",
+"title": "責任感：執拾玩具",
+"background": "屋企・客廳・晚上",
+"description": "你玩完lego、玩具車、啤牌，散滿一地。媽媽叫你自己執。你會……",
+"hints": [
+"自己玩完自己執",
+"分門別類放好",
+"下次搵玩具更容易"
+],
+"characters": [
+{
+"name": "媽媽",
+"emoji": "👩",
+"initial_relationship": 75
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-127-a",
+"text": "推入櫃桶就算",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -10,
+"comment": "你敷衍，下次玩會搵唔到嘢。"
+}
+]
+},
+{
+"id": "s-self-127-b",
+"text": "自己執好返",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你做完自己嘅責任，係好榜樣！"
+}
+]
+},
+{
+"id": "s-self-127-c",
+"text": "分門別類執+用盒仔標明+下次玩完即執",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你建立系統，係責任感高手！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "responsibility",
+"creedIds": [
+3
+],
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"完成 routine",
+"自我管理",
+"建立系統"
+],
+"imagePrompt": "Hong Kong child sorting scattered toys and Lego into labeled boxes, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9"
+},
+{
+"id": "s-self-128",
+"title": "責任感：交齊功課",
+"background": "課室・朝早",
+"description": "老師收功課時你發現少交咗一份功課，可能塞咗喺書包底。你會……",
+"hints": [
+"即時補救唔好等",
+"誠實同老師講",
+"以後要 check 清楚"
+],
+"characters": [
+{
+"name": "老師",
+"emoji": "👨‍🏫",
+"initial_relationship": 65
+},
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-128-a",
+"text": "扮冇事，唔出聲",
+"effects": [
+{
+"character": "自己",
+"change": -15,
+"moralChange": -15,
+"comment": "你逃避責任，功課會愈積愈多。"
+}
+]
+},
+{
+"id": "s-self-128-b",
+"text": "即刻搵出嚟交俾老師",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你即時補救，係責任感嘅表現！"
+}
+]
+},
+{
+"id": "s-self-128-c",
+"text": "搵出嚟交+同老師講「對唔住漏咗」+設定交功課 checklist",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你補救+改善系統，係責任感高手！"
+}
+]
+}
+],
+"location": "classroom",
+"topicId": "responsibility",
+"creedIds": [
+3
+],
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"做家課",
+"自我管理",
+"建立 routine"
+],
+"imagePrompt": "Hong Kong child at classroom desk looking through school bag for missing homework, morning light, FF XV Nomura anime style, warm tones, 16:9"
+},
+{
+"id": "s-self-129",
+"title": "責任感：自己著校服",
+"background": "屋企・睡房・早上",
+"description": "媽媽叫你著校服準備返學，你發覺校服未摺，要自己摺。你會……",
+"hints": [
+"自己嘅衫自己摺",
+"摺衫係基本自我管理",
+"可以前一晚摺好"
+],
+"characters": [
+{
+"name": "自己",
+"emoji": "🧒",
+"initial_relationship": 50
+}
+],
+"options": [
+{
+"id": "s-self-129-a",
+"text": "拎件皺嘅直接著",
+"effects": [
+{
+"character": "自己",
+"change": -10,
+"moralChange": -10,
+"comment": "你忽略自我管理，外表唔整齊。"
+}
+]
+},
+{
+"id": "s-self-129-b",
+"text": "自己快速摺好",
+"effects": [
+{
+"character": "自己",
+"change": 10,
+"moralChange": 12,
+"comment": "你完成 routine，係責任感！"
+}
+]
+},
+{
+"id": "s-self-129-c",
+"text": "摺好+研究點摺先靚+以後前一晚摺好",
+"effects": [
+{
+"character": "自己",
+"change": 24,
+"moralChange": 24,
+"comment": "你改善方法+建立 routine，係責任感高手！"
+}
+]
+}
+],
+"location": "home",
+"topicId": "responsibility",
+"creedIds": [
+3
+],
+"valueCategory": "responsibility",
+"domain": "value",
+"audience": [
+"value"
+],
+"riskLevel": 0,
+"skills": [
+"routine",
+"自我管理",
+"完成 routine"
+],
+"imagePrompt": "Hong Kong child folding school uniform in bedroom, morning sunlight, careful and focused, Studio Ghibli style, soft pastel watercolor, 16:9"
+}
+]
