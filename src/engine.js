@@ -780,7 +780,7 @@ export function renderPlay(scenarioId, subjectId) {
       </div>
 
       <div class="scenario-desc">
-        <button type="button" class="inline-voice-btn" data-action="speak" title="朗讀題目" aria-label="朗讀題目">🔊</button>
+        <button type="button" class="inline-voice-btn" data-action="speak" data-arg="${escapeAttr(s.id)}" title="朗讀題目" aria-label="朗讀題目">🔊</button>
         ${s.description}
       </div>
 
@@ -817,7 +817,7 @@ export function renderPlay(scenarioId, subjectId) {
         ${s.options.map((opt, i) => renderOptionCard({ scenarioId: s.id, opt, index: i, isBank: false, showMoral: true })).join('')}
       </div>
 
-      <button type="button" class="voice-fab" data-action="speak" title="朗讀題目" aria-label="朗讀題目">🔊</button>
+      <button type="button" class="voice-fab" data-action="speak" data-arg="${escapeAttr(s.id)}" title="朗讀題目" aria-label="朗讀題目">🔊</button>
       ${renderFooter()}
     </div>
   `;
