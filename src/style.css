@@ -517,6 +517,7 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
   box-shadow: 0 2px 8px rgba(74,144,217,0.4);
 }
 .scenario-desc .inline-voice-btn:hover { transform: scale(1.1); }
+.inline-voice-btn.speaking { animation: pulse 1s infinite; color: #fff; background: var(--primary, #4A90D9); }
 
 /* ── 💡 Hints panel ── */
 .hints-panel {
@@ -1978,6 +1979,7 @@ html[data-rm="true"] .result-card.good,
 html[data-rm="true"] .result-card.bad,
 html[data-rm="true"] .result-emoji,
 html[data-rm="true"] .voice-fab.speaking,
+html[data-rm="true"] .inline-voice-btn.speaking,
 html[data-rm="true"] .streak-stat.flame--hot .flame,
 html[data-rm="true"] .fade-in,
 html[data-rm="true"] .action-cta-fab,

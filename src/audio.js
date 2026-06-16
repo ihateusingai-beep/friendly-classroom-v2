@@ -134,6 +134,18 @@ if (!_savedLang) {
 // Cache 已揀嘅 voice object — 避免每次 speak() 都重新 scan 全 list
 let cachedVoice = null;
 
+// Visual feedback: when TTS is speaking, add the `.speaking` class to
+// every visible voice button (inline + voice-fab) so the user gets a
+// pulse animation. Idempotent so onstart/onend don't double-toggle.
+function _setVoiceButtonsSpeaking(on) {
+  try {
+    const btns = document.querySelectorAll(
+      '[data-action="speak"], [data-action="speakOpt"], [data-action="speakCreeds"]'
+    );
+    for (const btn of btns) btn.classList.toggle('speaking', !!on);
+  } catch {}
+}
+
 // 確保 voices loaded（Web Speech API voices 係 async load，唔可以 assume 同步 ready）
 let voicesLoadedPromise = null;
 function ensureVoicesLoaded() {
@@ -230,23 +242,25 @@ function playLocal(src, onFallback) {
   const url = audioBase + src;
   console.log('[FC Audio] Playing:', url);
   currentAudio = new Audio(url);
-  currentAudio.onended = () => { speaking = false; currentAudio = null; console.log('[FC Audio] Done'); };
+  currentAudio.onended = () => { speaking = false; currentAudio = null; _setVoiceButtonsSpeaking(false); console.log('[FC Audio] Done'); };
   currentAudio.onerror = (e) => {
     console.error('[FC Audio] Error loading', url, '-', e?.message || e?.type || 'unknown');
     speaking = false;
     currentAudio = null;
+    _setVoiceButtonsSpeaking(false);
     if (typeof onFallback === 'function') {
       console.log('[FC Audio] Falling back to TTS for', src);
       onFallback();
     }
   };
-  currentAudio.play().catch(e => {
+  currentAudio.play().then(() => { _setVoiceButtonsSpeaking(true); }).catch(e => {
     console.error('[FC Audio] Play failed:', e.message);
     speaking = false;
     currentAudio = null;
     if (typeof onFallback === 'function') onFallback();
   });
   speaking = true;
+  _setVoiceButtonsSpeaking(true);
 }
 
 // 播放場景音頻// 播放場景音頻
@@ -293,10 +307,10 @@ export async function speak(text) {
   } else {
     console.warn('[FC TTS] No matching voice found for', currentLang);
   }
-  utterance.onstart = () => { speaking = true; console.log('[FC TTS] Speaking:', text.slice(0, 30)); };
-  utterance.onend = () => { speaking = false; console.log('[FC TTS] Done'); };
+  utterance.onstart = () => { speaking = true; _setVoiceButtonsSpeaking(true); console.log('[FC TTS] Speaking:', text.slice(0, 30)); };
+  utterance.onend = () => { speaking = false; _setVoiceButtonsSpeaking(false); console.log('[FC TTS] Done'); };
   utterance.onerror = (e) => {
-    speaking = false;
+    speaking = false; _setVoiceButtonsSpeaking(false);
     console.error('[FC TTS] Error:', e.error);
     if (e.error === 'not-allowed') {
       console.log('[FC TTS] Autoplay blocked — user must interact first. Suggest enabling TTS in settings.');
