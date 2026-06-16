@@ -55,7 +55,12 @@ import {
 import {
   wireIO, updateAnalyticsSummary, setSyncStatusLoading,
 } from './domain/IO.js';
-// Sprint 3 / Track B1: per-topic chunk loading lives in ScenarioEngine.
+// Phase 3 (S13): scenarios were lazy-loaded via dynamic import of
+// data/scenarios.json. Sprint 3 / B1 replaced the single 514KB blob
+// with 17 per-topic chunks (data/scenarios/<topic-id>.json). Sprint 4
+// removed the legacy file outright — load all chunks is now driven by
+// import.meta.glob inside ScenarioEngine.
+//
 // Re-exports here keep the main.js API surface unchanged for downstream
 // modules that wireHub() / wirePlay() / wireIO() with the engine entry
 // points. The engine owns the chunk path map (`import.meta.glob`) so it
