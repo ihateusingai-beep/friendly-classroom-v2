@@ -120,6 +120,10 @@ export function renderBankOptionCard({ scenarioId, opt, index }) {
       <img src="${imgSrc}" alt="" class="opt-thumb" loading="lazy" decoding="async" aria-hidden="true" />
       <span class="opt-badge" aria-hidden="true">${label}</span>
       <span class="opt-text">${opt.text}</span>
+      <button type="button" class="opt-read"
+        data-action="speakOpt" data-arg="${escapeAttr(opt.id)}"
+        title="朗讀呢個選項"
+        aria-label="朗讀選項 ${label}">🔊</button>
     </button>
   `;
 }
