@@ -1036,6 +1036,11 @@ ${renderPageHeader({ emoji: '⚙️', title: '個人化設定', back: 'role-sele
                 role="radio" aria-checked="${currentLang === l.id}">${l.label}</button>
             `).join('')}
           </div>
+          <div id="tts-voice-warning" style="display:none;margin-top:8px;padding:8px 10px;background:#FFF8E1;border-left:3px solid #F59E0B;border-radius:4px;font-size:0.84em;color:#92400E" role="status" aria-live="polite">
+            ⚠️ 你個 browser / OS 冇裝粵語 voice, TTS 會用 國語 (zh-TW / zh-CN) fallback 朗讀。
+            想聽真粵語：<strong>macOS</strong> → 系統偏好設定 → 輔助使用 → 朗讀內容 → 系統聲音 → 揀「Sin-ji (粵語香港)」；
+            <strong>Windows</strong> → 設定 → 時間與語言 → 語言 → 語音 → 加粵語香港 voice pack。
+          </div>
         </div>
         <div style="margin-bottom:10px">
           <div style="display:flex;justify-content:space-between;margin-bottom:6px">

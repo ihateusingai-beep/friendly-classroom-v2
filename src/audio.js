@@ -134,6 +134,26 @@ if (!_savedLang) {
 // Cache 已揀嘅 voice object — 避免每次 speak() 都重新 scan 全 list
 let cachedVoice = null;
 
+// One-shot check after voices load: if user is on a system without a
+// zh-HK voice, surface a hint in the settings page so they can install
+// one (macOS Sin-ji / Windows zh-HK speech pack). Idempotent.
+let _zhHkWarningInstalled = false;
+function _maybeShowZhHkWarning() {
+  if (_zhHkWarningInstalled) return;
+  if (typeof window === 'undefined' || typeof document === 'undefined') return;
+  ensureVoicesLoaded().then(voices => {
+    if (!voices || !voices.length) return;
+    const hasZhHk = voices.some(v => v.lang === 'zh-HK');
+    if (hasZhHk) return;
+    // Defer so the settings DOM (if present) is in place
+    setTimeout(() => {
+      const el = document.getElementById('tts-voice-warning');
+      if (el) el.style.display = 'block';
+    }, 0);
+    _zhHkWarningInstalled = true;
+  }).catch(() => {});
+}
+
 // Visual feedback: when TTS is speaking, add the `.speaking` class to
 // every visible voice button (inline + voice-fab) so the user gets a
 // pulse animation. Idempotent so onstart/onend don't double-toggle.
@@ -174,15 +194,15 @@ function ensureVoicesLoaded() {
 async function pickBestVoice() {
   const voices = await ensureVoicesLoaded();
   if (!voices.length) return null;
+  // Side-effect: surface a hint if no zh-HK voice is installed
+  _maybeShowZhHkWarning();
 
   // user explicit 揀咗 lang
   if (currentLang !== 'auto') {
     const exact = voices.find(v => v.lang === currentLang);
     if (exact) return exact;
-    // 例如 user 揀 zh-HK 但 OS 冇 → 揀最接近嘅（zh-TW > zh-CN > 第一個 zh）
-    const langPrefix = currentLang.split('-')[0];
-    const partial = voices.find(v => v.lang.startsWith(langPrefix));
-    return partial || null;
+    // 例如 user 揀 zh-HK 但 OS 冇 → 揀最接近嘅
+    return _pickBestVoiceForLang(currentLang);
   }
 
   // auto mode: 跟原本 fallback chain（zh-HK > zh-TW > zh-CN > zh > voices[0]）
@@ -276,36 +296,46 @@ export function speakScenario(scenario) {
 }
 
 // 播放信條音頻
-// Falls back to TTS if the pre-generated MP3 is missing — this lets the
-// feature ship even when the audio assets aren't all in place.
+// Sprint 5/6 fix: 學生信條永遠用 TTS 粵語 (zh-HK) 直讀, 唔用 MP3 fallback。
+// 原因：原本嘅 10 條 creed-*.mp3 係 6 月 2 日用 Hermes mmx + Cantonese_GentleLady
+// voice 生成嘅, 但 mmx API key 已經 expired, 重新 generate 唔到粵語 MP3。
+// 而家嘅 MP3 係國語, 對香港 SEN 學生係 a11y regression。TTS Web Speech API 直接用
+// 系統 zh-HK voice 朗讀, 唔需要預先生成 MP3, 唔 overwrite user 嘅 lang setting。
 export function speakCreeds(creeds) {
   if (!enabled || speaking) return;
   if (!creeds || creeds.length === 0) return;
   // 只播放第一條信條
   const creed = creeds[0];
-  const id = creed.id || creed;
-  // Try the pre-generated MP3 first; if it 404s, the onerror handler
-  // will trigger the TTS fallback using the creed's text.
-  playLocal(`creeds/creed-${id}.mp3`, () => {
-    const text = creed.text || '';
-    if (text) speak(text);
-  });
+  const text = creed.text || '';
+  if (!text) return;
+  // langOverride='zh-HK' 強制用粵語 voice, 不影響 user 嘅 settings 偏好
+  // (currentLang / cachedVoice 唔被改)。`_pickBestVoiceForLang` 即時
+  // resolve 一個 zh-HK voice 唔 cache 落 module state。
+  speak(text, 'zh-HK');
 }
 
 // 通用朗讀（使用 Web Speech API — Instant TTS，零延遲）
-export async function speak(text) {
+// Optional `langOverride` 強制用特定 lang（e.g. speakCreeds() 強制 zh-HK），
+// 唔影響 user 嘅 settings 偏好。
+export async function speak(text, langOverride = null) {
   if (!text) return;
   if (speaking) window.speechSynthesis?.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = currentLang === 'auto' ? 'zh-HK' : currentLang;
+  const effectiveLang = langOverride
+    || (currentLang === 'auto' ? 'zh-HK' : currentLang);
+  utterance.lang = effectiveLang;
   utterance.rate = getParams().speed || 0.85;
   utterance.pitch = 1.0;
-  const voice = await pickBestVoice();
+  // 揾 voice：override 嘅 lang 唔影響 user cache (cachedVoice), 用
+  // 獨立 lang code 即時 re-resolve。
+  const voice = langOverride
+    ? await _pickBestVoiceForLang(langOverride)
+    : await pickBestVoice();
   if (voice) {
     utterance.voice = voice;
     console.log('[FC TTS] Voice:', voice.name, '(' + voice.lang + ')');
   } else {
-    console.warn('[FC TTS] No matching voice found for', currentLang);
+    console.warn('[FC TTS] No matching voice found for', effectiveLang);
   }
   utterance.onstart = () => { speaking = true; _setVoiceButtonsSpeaking(true); console.log('[FC TTS] Speaking:', text.slice(0, 30)); };
   utterance.onend = () => { speaking = false; _setVoiceButtonsSpeaking(false); console.log('[FC TTS] Done'); };
@@ -317,6 +347,31 @@ export async function speak(text) {
     }
   };
   window.speechSynthesis?.speak(utterance);
+}
+
+// One-shot voice resolver for a specific lang code. Doesn't touch the
+// module-level cachedVoice (user preference).
+//
+// Cantonese-first fallback order: zh-HK → zh-TW (台灣國語) → zh-CN (普通話)
+// → 任何 zh-prefixed voice. macOS 預設冇 zh-HK voice 但通常有 zh-TW
+// (Mei-Jia) + zh-CN (Tingting), 所以台灣國語 排前面比 普通話 接近粵語嘅
+// 發音位置 (捲舌/不捲舌), 對 SEN 學生嚟講 比較少 cultural disconnect。
+async function _pickBestVoiceForLang(lang) {
+  const voices = await ensureVoicesLoaded();
+  if (!voices.length) return null;
+  // Try exact match first
+  const exact = voices.find(v => v.lang === lang);
+  if (exact) return exact;
+  // For zh-HK, walk a culturally-similar fallback chain before generic zh
+  if (lang === 'zh-HK') {
+    return voices.find(v => v.lang === 'zh-TW')
+        || voices.find(v => v.lang === 'zh-CN')
+        || voices.find(v => v.lang.startsWith('zh'))
+        || null;
+  }
+  // Other langs: prefix match
+  const langPrefix = lang.split('-')[0];
+  return voices.find(v => v.lang.startsWith(langPrefix)) || null;
 }
 
 export function setTTSLang(langId) {

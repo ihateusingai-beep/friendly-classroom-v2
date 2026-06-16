@@ -2,7 +2,7 @@
 
 > 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
 >
-> *規格日期：2026-06-13 | 最後更新：2026-06-17（Sprint 5 sound buttons live + 語音橋接）*
+> *規格日期：2026-06-13 | 最後更新：2026-06-17（Sprint 6 Mandarin MP3 → Cantonese TTS + fallback chain）*
 
 ---
 
@@ -477,7 +477,7 @@ Home 頁分兩大 section：
 
 ---
 
-*規格日期：2026-06-13 | 最後更新 2026-06-17 | v3.1（Sprint 5 sound buttons live + 語音橋接）| 取代 v2.2（2026-06-04）*
+*規格日期：2026-06-13 | 最後更新 2026-06-17 | v3.1（Sprint 6 Mandarin MP3 → Cantonese TTS + fallback chain）| 取代 v2.2（2026-06-04）*
 
 ---
 
@@ -571,6 +571,34 @@ Home 頁分兩大 section：
 > ```
 > Missing = silent no-op bug。E2E 要 cover 每個 distinct `data-action` 至少 click 1 次（唔只 happy path）。
 
+### 11.5 Sprint 6 (2026-06-17) — Mandarin MP3 → Cantonese TTS fallback
+
+**User 報 issue**: 學生信條 playback 用咗**國語 MP3**, 對香港 SEN 學生係 a11y regression。
+
+**Root cause analysis**:
+- `gen_audio.sh` 用 Hermes `mmx speech synthesize --voice Cantonese_GentleLady` 生成 10 條 MP3 (creed-1 到 creed-10)
+- 但 `mmx` 個 API key 已經 expired, 重 run 個 gen script 失敗
+- 個 batch gen 喺 6 月 2 日跑, 個 Cantonese_GentleLady voice 個實際 output 係**國語** (普通話), 唔係粵語
+- 我哋 Sprint 5 寫咗 MP3 404 → TTS fallback, 但 `speakCreeds(creeds[0].id)` 個 id 對應 value creed 1-12 (即 `perseverance` 嘅 creed), 個 MP3 file 唔存在 → fall 落 TTS → TTS 用戶 system voice → Chrome macOS default = Eddy zh-CN (普通話)
+
+**Fix** (commit):
+1. **刪咗 10 個 MP3** (`public/audio/creeds/*.mp3`) — Mandarin content, 對香港學生係 a11y regression. 重新 gen 需要 API key, 短時間內無法
+2. **改 `speakCreeds()` 直接用 TTS** (always TTS, 唔用 MP3 path), 強制 lang='zh-HK'
+3. **改 TTS voice fallback chain** (`_pickBestVoiceForLang`):
+   - 1st: `zh-HK` exact match
+   - 2nd: `zh-TW` (台灣國語, 比較接近粵語捲舌/不捲舌 accent)
+   - 3rd: `zh-CN` (普通話)
+   - 4th: 任何 zh-prefixed
+   - Fix 前個 fallback 永遠返第一個 zh-prefixed (Eddy zh-CN), 改咗排台灣先
+4. **Settings page 警告**: 自動 detect 有冇 zh-HK voice installed. 冇嘅話顯示 hint box, 教 user 點樣 install:
+   - **macOS**: 系統偏好設定 → 輔助使用 → 朗讀內容 → 系統聲音 → 揀「Sin-ji (粵語香港)」
+   - **Windows**: 設定 → 時間與語言 → 語言 → 語音 → 加粵語香港 voice pack
+
+**Known limitations**:
+- 冇 zh-HK voice 嘅 system 上, 學生信條 會用台灣國語 fallback. 對 SEN 學生嚟講 仍然有少少 cultural disconnect
+- 真粵語要靠 user 自己 install voice pack (browser 限制, 唔可以 app 強制)
+- 將來有 MiniMax TTS API key 之後, 可以用 MiniMax 粵語 voice 預 gen 12 條 EDB VALUE_CREED MP3 (sprint 7 backlog)
+
 ---
 
 ## 12. Deployment
@@ -599,7 +627,7 @@ GitHub Pages: https://ihateusingai-beep.github.io/friendly-classroom-v2/
 - `dist/assets/index-*.css`: 42KB (9KB gzip)
 - `dist/assets/images/scenarios/*.png`: 66MB (259 files, ~250KB each)
 - `dist/assets/images/outcomes/*.png`: 90MB (745 files)
-- `dist/assets/audio/creeds/`: MP3 fallbacks (speakCreeds TTS fallback to Web Speech API if missing)
+- `dist/assets/audio/creeds/`: ❌ **已刪除 (Sprint 6 2026-06-17)** — 原本嘅 10 條 creed MP3 係 6 月 2 日用 Hermes `mmx` + Cantonese_GentleLady voice 生成嘅, 但實際 output 係**國語普通話** (`mmx` API key 已經 expired, 重新 generate 唔到粵語 MP3)。刪除之後 `speakCreeds()` 直接用 Web Speech API TTS zh-HK → 國語 fallback chain (zh-TW 優先, 對 SEN 學生 cultural disconnect 較少)。User-facing warning 喺 settings page 提示安裝 macOS `Sin-ji` 或 Windows `zh-HK` voice pack
 - **PWA precache**: 1,032 entries / 158.5MB total
 
 ### 12.3 Edge cache
