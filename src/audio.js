@@ -225,14 +225,27 @@ export function stopSpeaking() {
 export function setSpeaking(v) { speaking = v; }
 
 // 播放本地 MP3（預生成）
-function playLocal(src) {
+function playLocal(src, onFallback) {
   stopSpeaking();
   const url = audioBase + src;
   console.log('[FC Audio] Playing:', url);
   currentAudio = new Audio(url);
   currentAudio.onended = () => { speaking = false; currentAudio = null; console.log('[FC Audio] Done'); };
-  currentAudio.onerror = (e) => { console.error('[FC Audio] Error:', e); speaking = false; currentAudio = null; };
-  currentAudio.play().catch(e => { console.error('[FC Audio] Play failed:', e.message); speaking = false; currentAudio = null; });
+  currentAudio.onerror = (e) => {
+    console.error('[FC Audio] Error loading', url, '-', e?.message || e?.type || 'unknown');
+    speaking = false;
+    currentAudio = null;
+    if (typeof onFallback === 'function') {
+      console.log('[FC Audio] Falling back to TTS for', src);
+      onFallback();
+    }
+  };
+  currentAudio.play().catch(e => {
+    console.error('[FC Audio] Play failed:', e.message);
+    speaking = false;
+    currentAudio = null;
+    if (typeof onFallback === 'function') onFallback();
+  });
   speaking = true;
 }
 
@@ -249,12 +262,20 @@ export function speakScenario(scenario) {
 }
 
 // 播放信條音頻
+// Falls back to TTS if the pre-generated MP3 is missing — this lets the
+// feature ship even when the audio assets aren't all in place.
 export function speakCreeds(creeds) {
   if (!enabled || speaking) return;
   if (!creeds || creeds.length === 0) return;
   // 只播放第一條信條
-  const id = creeds[0].id || creeds[0];
-  playLocal(`creeds/creed-${id}.mp3`);
+  const creed = creeds[0];
+  const id = creed.id || creed;
+  // Try the pre-generated MP3 first; if it 404s, the onerror handler
+  // will trigger the TTS fallback using the creed's text.
+  playLocal(`creeds/creed-${id}.mp3`, () => {
+    const text = creed.text || '';
+    if (text) speak(text);
+  });
 }
 
 // 通用朗讀（使用 Web Speech API — Instant TTS，零延遲）

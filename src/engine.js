@@ -26,7 +26,7 @@ import {
 } from './domain/ScenarioEngine.js';
 
 export { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic,
-         playScenario, chooseOption, getScenarioStatus, initTopicProgress,
+         playScenario, getCurrentScenario, chooseOption, getScenarioStatus, initTopicProgress,
          initSubjectProgress, getDisplayProgress, suggestNext };
 
 // ── Role Select (Entry Screen) ──────────────────────────────────────────────

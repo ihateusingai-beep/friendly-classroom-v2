@@ -11,13 +11,13 @@ import './sw-register.js';  // PWA install + update prompt
 import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic,
          getDisplayProgress, initTopicProgress, initSubjectProgress, renderHome, renderTopicList,
          renderPlay, renderResult, renderProgress, renderSettings,
-         playScenario, chooseOption, suggestNext,
+         playScenario, getCurrentScenario, chooseOption, suggestNext,
          renderRoleSelect, renderModeSelect, renderTeacherAssign, renderGameHub,
          renderBankPlay, renderBankResult, renderBankSummary,
          GAME_MODES } from './engine.js';
 import { applyScenarioResult } from './domain/Moral.js';
 import { startBankRun, getBankRun, endBankRun, recordBankTransaction, advanceToNextQuestion, BANK_CONFIG } from './games/GoodDeedBank.js';
-import { speakScenario, speakCreeds, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
+import { speakScenario, speakCreeds, isSpeaking, stopSpeaking, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
 import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
 import { getTopic as getTopicMeta } from './topics.js';
@@ -537,6 +537,47 @@ window.FC.chooseRole = chooseRole;
 window.FC.updateResultCtaFab = updateResultCtaFab;
 window.FC.updateAnalyticsSummary = updateAnalyticsSummary;
 window.FC.setSyncStatusLoading = setSyncStatusLoading;
+window.FC.isSpeaking = isSpeaking;
+window.FC.stopSpeaking = stopSpeaking;
+
+// Sprint 5 / T1: bridge the speak* data-action dispatchers. Earlier
+// refactors that switched inline `onclick="FC.foo()"` to `data-action="foo"`
+// skipped these — markup declares the action but no `window.FC.X` was
+// registered, so clicks silently fell through the dispatcher. Without
+// these bridges, the 6 voice buttons (speak / speakOpt / speakCreeds,
+// inline + voice-fab variants) had no effect on user click.
+//
+// Each handler resolves the current scenario / option / creed from
+// state and delegates to the engine (audio.js) — keeping this file
+// as the single source of FC.* exports for the data-action dispatcher.
+window.FC.speak = function(scenarioId) {
+  // data-action="speak" data-arg="${s.id}" → read scenario from cache.
+  if (!scenarioId) {
+    // Fallback: resolve from the currently playing scenario.
+    const cur = getCurrentScenario();
+    if (cur) return speakScenario(cur);
+    return;
+  }
+  getScenarioById(scenarioId).then(sc => {
+    if (sc) speakScenario(sc);
+  });
+};
+window.FC.speakOpt = function(optId) {
+  // data-action="speakOpt" data-arg="${opt.id}" → read the current
+  // scenario's option text and feed it to the general TTS pipeline.
+  if (!optId) return;
+  const sc = getCurrentScenario();
+  if (!sc || !sc.options) return;
+  const opt = sc.options.find(o => o.id === optId);
+  if (opt?.text) speak(opt.text);
+};
+window.FC.speakCreeds = function() {
+  // data-action="speakCreeds" — no data-arg. The creeds list is on
+  // state.resultData (set by chooseOption's return). The voice-fab
+  // and inline button on the result view both route here.
+  const creeds = state.resultData?.creeds;
+  if (creeds?.length) speakCreeds(creeds);
+};
 
 // path that needs it (subject-select → play). For the very first render, scenarios=[] is fine — renderRoleSelect
 // and renderStudentSelect don't need them.
