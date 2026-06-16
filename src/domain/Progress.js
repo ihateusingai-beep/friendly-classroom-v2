@@ -82,15 +82,23 @@ export function updateSubjectTotal(studentName, subjectId, total) {
   const p = getProgress(studentName);
   if (!p.subjectProgress[subjectId]) {
     p.subjectProgress[subjectId] = { completed: 0, total };
-  } else if (p.subjectProgress[subjectId].total === total) {
-    // No-op: same value already persisted. Avoids the `lastPlayed`
-    // bump + storage write that saveProgress() would otherwise incur
-    // on every re-call (the engine may call this on every render
-    // until the first chunk lands and a real total is computable).
+    saveProgress(p);
     return;
-  } else {
-    p.subjectProgress[subjectId].total = total;
   }
+  // Sprint 4 / A1 review fix: only skip the write when the existing
+  // value came from a real write. The `_defaultProgress` placeholder
+  // for an un-engaged subject is `{ completed: 0, total: 0 }`, which
+  // we want to overwrite as soon as the engine has a real total to
+  // report — even if that real total happens to be 0 (e.g. before
+  // any chunk has loaded, the cache-empty path). Mark "real" writes
+  // with `_initialized: true` so subsequent identical-value calls can
+  // skip the saveProgress() bump.
+  const cur = p.subjectProgress[subjectId];
+  if (cur.total === total && cur._initialized) {
+    return;
+  }
+  cur.total = total;
+  cur._initialized = true;
   saveProgress(p);
 }
 

@@ -34,6 +34,14 @@ let scenarios = [];
 // no-ops when the value hasn't changed).
 const initedTopicForStudent = new Set();   // key: `${student}|${topicId}`
 
+// Sprint 4 / A1 review fix: track (student, subjectId) pairs that have
+// called initSubjectProgress() but didn't have a real total to report
+// at the time (cache empty due to per-topic lazy load). _mergeChunk()
+// drains this set as soon as a chunk lands so the home progress bar
+// shows a real total instead of 0/X. Cleared by setStudent() on student
+// switch.
+const _pendingSubjectRefreshes = new Set(); // key: `${student}|${subjectId}`
+
 // Per-topic load state. _loadedTopics tracks which chunks are merged into
 // the in-memory cache; _pendingLoads de-dupes concurrent load requests.
 const _loadedTopics = new Set();
@@ -65,6 +73,32 @@ function _mergeChunk(topicId, arr) {
     _scenarioToTopic.set(s.id, topicId);
   }
   _loadedTopics.add(topicId);
+  // Drain any pending subject-total refreshes (see initSubjectProgress).
+  _refreshPendingTotals();
+}
+
+// Drain the pending-subject-refresh set: for each (student, subjectId)
+// that called initSubjectProgress() while the cache was empty, recompute
+// the per-subject total now that we have data. No-op when there's nothing
+// to refresh or the cache is still empty.
+function _refreshPendingTotals() {
+  if (_pendingSubjectRefreshes.size === 0) return;
+  if (!currentStudent) return;
+  if (scenarios.length === 0) return;
+  // Snapshot to avoid mutating during iteration
+  const keys = Array.from(_pendingSubjectRefreshes);
+  for (const key of keys) {
+    const [student, subjectId] = key.split('|');
+    if (student !== currentStudent) continue;  // student switched mid-flight
+    const total = scenarios.filter(s => s.subjectId === subjectId).length;
+    updateSubjectTotal(student, subjectId, total);
+  }
+  // Only clear if the student hasn't changed mid-drain
+  if (currentStudent) {
+    for (const key of keys) {
+      if (key.startsWith(`${currentStudent}|`)) _pendingSubjectRefreshes.delete(key);
+    }
+  }
 }
 
 // ── Student ──
@@ -72,6 +106,7 @@ export function setStudent(name) {
   currentStudent = name;
   // 換學生後 init cache 都要清返，避免撈到舊學生嘅 record
   initedTopicForStudent.clear();
+  _pendingSubjectRefreshes.clear();
 }
 export function getStudent() { return currentStudent; }
 
@@ -85,6 +120,11 @@ export function setScenarios(arr) {
   for (const s of arr) {
     if (s.topicId) _scenarioToTopic.set(s.id, s.topicId);
   }
+  // Drain any pending subject-total refreshes (Sprint 4 / A1 review
+  // fix): when tests / legacy callers use setScenarios() instead of
+  // loadScenariosForTopic(), we still want a chunk-like data arrival
+  // to fire the deferred writes.
+  _refreshPendingTotals();
 }
 
 export function getScenarios() { return scenarios; }
@@ -204,13 +244,24 @@ export function initSubjectProgress(subjectId) {
   // Sprint 4 / A1: scenarios now carry `subjectId` so we can filter
   // the total to the chosen subject instead of writing all-scenarios
   // (which was misleading — 184 of 259 belong to 'value', 75 to
-  // 'caring'). Per-topic lazy load means the cache may still be empty
-  // on the first call; the next render after a chunk lands will
-  // re-enter here with a real value. updateSubjectTotal() skips the
-  // storage write when the value hasn't changed, so this is safe to
-  // call every render.
+  // 'caring').
+  //
+  // Sprint 4 / A1 review fix: the per-topic lazy-load race means the
+  // cache may be empty on the first call. We can't write a real total
+  // yet, but we MUST leave a breadcrumb so _mergeChunk can re-fire
+  // the write when a chunk eventually lands. The setStudent() clear
+  // makes the breadcrumb per-student.
   if (!currentStudent || !subjectId) return;
+  const key = `${currentStudent}|${subjectId}`;
   const total = getScenarios().filter(s => s.subjectId === subjectId).length;
+  if (total === 0 && getScenarios().length === 0) {
+    // Cache is empty — defer the write to _mergeChunk. updateSubjectTotal
+    // would lock in 0 here (which the default-progress placeholder can't
+    // distinguish from "real 0") and then _mergeChunk would skip the
+    // update because the value matches.
+    _pendingSubjectRefreshes.add(key);
+    return;
+  }
   updateSubjectTotal(currentStudent, subjectId, total);
 }
 
