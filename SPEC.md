@@ -1,8 +1,8 @@
-# 友愛教室 V3 — 完整規格書 (v3.4)
+# 友愛教室 V3 — 完整規格書 (v3.5)
 
 > 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
 >
-> *規格日期：2026-06-13 | 最後更新：2026-06-17（Sprint 13 silent no-op bug sweep round 2, doc fix v3.3 → v3.4）*
+> *規格日期：2026-06-13 | 最後更新：2026-06-17（slow batch cleanup: EDB URL verify + id prefix audit + e2e tool + PLAN.md deprecation, doc fix v3.4 → v3.5）*
 
 ---
 
@@ -33,6 +33,8 @@
 > 「學校可培育學生**十二種首要的價值觀和態度**，即：**『堅毅』、『尊重他人』、『責任感』、『國民身份認同』、『承擔精神』、『誠信』、『仁愛』、『守法』、『同理心』、『勤勞』、『團結』和『孝親』**」
 
 V3 框架嘅 12 個 value categories 100% 對正 EDB 官方 order（1-12），可向老師 / EDB cite source。
+
+> **2026-06-17 verify**: 個 parent URL (`index.html`) 仍然 live 喺 EDB 網站 (`價值觀教育 - 教育局` page title + 「課程範疇 / 價值觀教育」nav entry 確認)。12 value exact wording 喺 child page (sub-page), 唔喺 index 入面, 所以 deep wording 喺 SPEC 凍結時 (2026-06-13) 引用嘅 snapshot, fresh onboarder 如要 verify 請撳入 sub-page。
 
 ### 1.3 17 個 categories + 259 個 scenarios
 
@@ -179,7 +181,7 @@ export const CREED_MIGRATION = {
 
 | Field | Type | Required | 規則 |
 |---|---|---|---|
-| `id` | string | ✅ | unique，s-self-XX 格式 |
+| `id` | string | ✅ | unique，12 種 prefix pattern (audit 2026-06-17): `s-self-NN` (V3 main, NN=01-178), `s-{topic}-{NN}` (V3 expansion: `s-bn-01` benevolence / `s-cm-01` commitment / `s-dl-01` diligence / `s-ni-01` national-identity / `s-pv-01` perseverance), 舊 V1/V2/V2.2 殘留 `s{N}` / `s-new{N}` / `s-{topic}{N}` (e.g. `s1` / `s-new1` / `s-c2` / `s-b1` / `s-door1`). Option id 跟 `s{N}-a/b/c` pattern (parent scenario id + option suffix) |
 | `title` | string | ✅ | 非空 |
 | `topicId` | string | ✅ | 17 個合法 id 其中之一 |
 | `valueCategory` | string | ✅ | 同 `topicId`（向後兼容） |
@@ -482,7 +484,7 @@ Home 頁分兩大 section：
 
 ---
 
-*規格日期：2026-06-13 | 最後更新 2026-06-17 | v3.4（Sprint 13 silent no-op bug sweep round 2, doc fix v3.3 → v3.4）| 取代 v2.2（2026-06-04）*
+*規格日期：2026-06-13 | 最後更新 2026-06-17 | v3.5（slow batch cleanup: EDB URL verify + id prefix audit + e2e tool + PLAN.md deprecation, doc fix v3.4 → v3.5）| 取代 v2.2（2026-06-04）*
 
 ---
 
@@ -752,3 +754,47 @@ Output: `data/scenarios/<topic-id>.json` (Sprint 4: each scenario enriched with 
 > 5. 揀個 topic → 揀個 scenario → 揀個 option → 睇 result + 信條
 > 6. Good-Deed Bank: 隨機 8 題，總分到 $100 過關
 > 7. Settings: 改字體大小 / 朗讀語言 (auto / 粵語 / 國語 / 普通話) / 朗讀速度 / 對比度 / 動畫減弱
+
+---
+
+## 15. e2e Bridge Sweep Tool
+
+> **2026-06-17 add (slow batch)**: 為咗 cover Sprint 12+13 嘅 8 個 P0 silent no-op fix
+> 加真實 browser click matrix 工具，唔淨只 unit test bridge 存在。
+
+### 15.1 工具位置
+
+`tools/e2e/bridge-sweep.mjs` — Playwright 直接 launch chromium, 跑
+9 個 representative handler click matrix (Sprint 12+13 8 個 P0 + Sprint 5
+`speak` regression)。
+
+### 15.2 涵蓋範圍
+
+| Handler | Sprint | 測試類型 |
+|---|---|---|
+| `addStudent` | 13 | bridge exists check |
+| `resetSettings` | 12 | bridge exists check |
+| `setSpacing` | 12 | bridge exists + localStorage write (wide) |
+| `toggleHC` | 12 | bridge exists + localStorage flip |
+| `toggleVoice` | 12 | bridge exists + isEnabled flip |
+| `doLogin` | 12 | bridge exists (login flow 入面 click 屬手動 e2e) |
+| `toggleHints` | 13 | bridge exists |
+| `revealNextHint` | 13 | bridge exists |
+| `speak` | 5 (regression) | bridge exists |
+
+### 15.3 跑 command
+
+```bash
+npm run build
+npx vite preview --port 4174 &
+sleep 2
+node tools/e2e/bridge-sweep.mjs
+# 截圖: /tmp/fc-bridge-sweep/*.png
+# 結果: ✅ All 8 P0 Sprint 12+13 bridges + 1 Sprint 5 regression verified.
+```
+
+### 15.4 將來 follow-up
+
+- 加更多 handler (e.g. `selectSubject`, `play`, `choose`, `goRandom`) 全面 click matrix
+- 將 `tools/e2e/bridge-sweep.mjs` 轉成 `tests/e2e/*.spec.mjs` 用 `@playwright/test` runner
+- 喺 `ci.yml` 跑 (要 setup `npx playwright install chromium`)

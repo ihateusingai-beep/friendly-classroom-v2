@@ -1,4 +1,18 @@
-# 友愛教室 V2 — 技術計劃書
+# ⚠️ 已過時 — 參考 [SPEC.md (v3.4)](./SPEC.md)
+
+> **2026-06-17 deprecation notice**: 呢份 PLAN.md 係 **V1 → V2 嘅技術計劃書 (2026-05-29)**,
+> 已經被 [SPEC.md v3.4](./SPEC.md) 全面 supersede。
+>
+> V3.1 (2026-06-13 framework freeze) + V3.2-3.4 (Sprint 6-13 fix batches) 嘅
+> 範疇、scenario 數、creed 系統、模組架構、Sprint history 全部喺 SPEC.md。
+>
+> 保留 PLAN.md 純粹做 git archaeology 參考, **唔好再 reference 呢度嘅 scope / 數字 / module 設計**。
+>
+> 對 fresh onboarder: 跳過 PLAN.md, 直接睇 [SPEC.md](./SPEC.md) §1-§5 然後 §11 嘅 sprint history。
+
+---
+
+# 友愛教室 V2 — 技術計劃書 (legacy, 2026-05-29)
 
 ## 1. 現況分析
 
