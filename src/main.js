@@ -18,7 +18,7 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
 import { applyScenarioResult } from './domain/Moral.js';
 import { startBankRun, getBankRun, endBankRun, recordBankTransaction, advanceToNextQuestion, BANK_CONFIG } from './games/GoodDeedBank.js';
 import { speakScenario, speakCreeds, speak, isSpeaking, stopSpeaking, isEnabled, applyCSS, resetAllSettings, setSpacing, setHC, setVoiceEnabled, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
-import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
+import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal, addStudent as _addStudent } from './domain/Progress.js';
 import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
 import { getTopic as getTopicMeta } from './topics.js';
 import { bus } from './domain/EventBus.js';
@@ -625,6 +625,69 @@ window.FC.toggleHC = function() {
 window.FC.toggleVoice = function() {
   setVoiceEnabled(!isEnabled());
   render();
+};
+
+// Sprint 13: bridge 3 more P0 silent no-op handlers (addStudent +
+// toggleHints + revealNextHint). Same root cause as Sprint 12 — earlier
+// refactors (Sprint 2 inline-onclick → data-action) declared the action
+// in markup but no `window.FC.X` was registered, so clicks silently fell
+// through the dispatcher. Without these bridges:
+//   - 「➕ 新增學生」 button 完全 dead
+//   - 提示 toggle 同「睇下一個提示 →」 button 從 v1 都係 dead
+// 每個 handler delegate 落 pure helper (Progress.js addStudent) 或者
+// 直接 DOM 操作, 然後 re-render 保持 state 同步。
+
+/** data-action="addStudent" — 讀 #new-student-name input, add + auto-select。*/
+window.FC.addStudent = function() {
+  const input = document.getElementById('new-student-name');
+  const raw = input?.value || '';
+  const name = _addStudent(raw);
+  if (!name) {
+    // Empty / whitespace — 唔 silent, 提示 user
+    if (input) {
+      input.focus();
+      input.style.borderColor = 'var(--danger)';
+      setTimeout(() => { input.style.borderColor = ''; }, 1500);
+    }
+    return;
+  }
+  if (input) input.value = '';
+  selectStudent(name);
+};
+
+/** data-action="toggleHints" — expand/collapse #hints-list + 第一次展開時自動 reveal 第一個 hint。*/
+window.FC.toggleHints = function() {
+  const btn = document.getElementById('hints-toggle');
+  const list = document.getElementById('hints-list');
+  const chev = document.getElementById('hints-chev');
+  if (!btn || !list) return;
+  const expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+  list.hidden = expanded;
+  if (chev) chev.textContent = expanded ? '▾' : '▴';
+  // 第一次展開自動 reveal 第一個 hint
+  if (!expanded) {
+    const first = list.querySelector('.hint-item[data-hint-idx="0"]');
+    if (first) first.hidden = false;
+  }
+};
+
+/** data-action="revealNextHint" — reveal 下一個隱藏 hint。全部 reveal 完自動隱藏自己。*/
+window.FC.revealNextHint = function() {
+  const list = document.getElementById('hints-list');
+  if (!list) return;
+  const items = list.querySelectorAll('.hint-item[data-hint-idx]');
+  let nextIdx = -1;
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].hidden) { nextIdx = i; break; }
+  }
+  if (nextIdx === -1) {
+    // 全部 reveal 咗, 隱藏自己個 button
+    const btn = document.getElementById('hint-next');
+    if (btn) btn.style.display = 'none';
+    return;
+  }
+  items[nextIdx].hidden = false;
 };
 
 // path that needs it (subject-select → play). For the very first render, scenarios=[] is fine — renderRoleSelect

@@ -1,8 +1,8 @@
-# 友愛教室 V3 — 完整規格書 (v3.3)
+# 友愛教室 V3 — 完整規格書 (v3.4)
 
 > 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
 >
-> *規格日期：2026-06-13 | 最後更新：2026-06-17（Sprint 12 silent no-op bug sweep, doc fix v3.2 → v3.3）*
+> *規格日期：2026-06-13 | 最後更新：2026-06-17（Sprint 13 silent no-op bug sweep round 2, doc fix v3.3 → v3.4）*
 
 ---
 
@@ -463,13 +463,13 @@ Home 頁分兩大 section：
 | ✅ **Sprint 5 / T4**: Bank view 加 inline voice buttons | TTS a11y 覆蓋全部 play mode | Done | `4126c75` |
 | ✅ **Sprint 5 / T1-followup**: import `speak` 喺 main.js | ReferenceError 修咗 | Done | `7479e92` |
 | ✅ **Sprint 6**: Mandarin MP3 → Cantonese TTS fallback chain | `speakCreeds()` 直讀 TTS, voice chain zh-HK → zh-TW → zh-CN, settings 警告 + 刪 10 條 Mandarin MP3 (~1MB) | Done | `a84a171` + `34129a4` |
-| 🟡 **S7 backlog**: `revealNextHint` / `toggleHints` 缺 `window.FC` bridge | hints panel button 跟 Sprint 5 T1 同 pattern | TBD | — |
+| 🟡 **S7 backlog**: `revealNextHint` / `toggleHints` 缺 `window.FC` bridge — **已合併入 Sprint 13 done ✅** | (2026-06-17) | Done | Sprint 13 |
 | 🟡 **S8 backlog**: 21 scene 圖片 (300+ KB each) 改 webp | PWA precache 158MB 縮減 | TBD | — |
 | 🟡 **S9 backlog**: Vite preview service worker 自動 cache dist 行為 | e2e setup 要 `?cb=$(date +%s)` cache-bust | TBD | — |
 | 🟢 **S10 backlog**: 老師 mode 確認 17 個 category toggle | regression test | TBD | — |
 | 🟢 **S11 backlog**: 拆 `engine.js` (1,156 lines) → per-view renderers | 更大 refactor | TBD | — |
 | ✅ **Sprint 12**: silent no-op bug sweep (5 個 P0 fix) | `doLogin` (老師 mode 登入) / `resetSettings` / `setSpacing` / `toggleHC` / `toggleVoice` 全部加 `window.FC.X` bridge + `audio.js` 3 個新 helper (`setSpacing` / `setHC` / `setVoiceEnabled`) + 7 個 unit test。`navigate` 確認係 main.js dispatcher special-case, `foo` / `go*` 確認係 comment 引用 — audit false positive。Cross-check 揭 `addStudent` 1 個新 bug → S13 | Done | TBD |
-| 🟢 **S13 backlog**: `addStudent` (Student.js:67「新增學生」button, 缺 `window.FC.addStudent` bridge) | 對齊 Sprint 5/12 pattern: 加 `window.FC.addStudent = function() {...}` + student list refresh + state update | TBD | — |
+| ✅ **Sprint 13**: silent no-op bug sweep 第 2 round (3 個 P0 fix) | `addStudent` (Student.js:67) / `revealNextHint` (engine.js:802) / `toggleHints` (engine.js:789) 全部加 `window.FC.X` bridge + `Progress.js` 1 個新 helper (`addStudent`) + 6 個 unit test。`toggleHints` 第一次展開自動 reveal 第一個 hint, `revealNextHint` 全部 reveal 完自動隱藏自己。E2E audit 確認 **0 Category A 真 bug 剩低** — 只剩 `navigate` / `foo` / `go*` / `go` 4 個 audit false positive | Done | TBD |
 
 ---
 
@@ -482,7 +482,7 @@ Home 頁分兩大 section：
 
 ---
 
-*規格日期：2026-06-13 | 最後更新 2026-06-17 | v3.3（Sprint 12 silent no-op bug sweep, doc fix v3.2 → v3.3）| 取代 v2.2（2026-06-04）*
+*規格日期：2026-06-13 | 最後更新 2026-06-17 | v3.4（Sprint 13 silent no-op bug sweep round 2, doc fix v3.3 → v3.4）| 取代 v2.2（2026-06-04）*
 
 ---
 
@@ -589,6 +589,8 @@ Home 頁分兩大 section：
 > - `navigate` (20 處出現, `src/main.js:385-389` dispatcher special-case `if (action === 'navigate') _navigate(el.dataset.arg, el.dataset.arg2)`) — 屬 universal navigation 唔通過 `window.FC.X` bridge, 唔算真 bug
 > - `foo` / `go*` — source 入面冇真實 `data-action="foo"` / `data-action="go*"`, 只係 `src/main.js:251, 345, 544` 嘅 comment 引用歷史 refactor 描述
 > Cross-check 揭 1 個新 Category A bug `addStudent` (Student.js:67), 排 S13 backlog。
+
+> **2026-06-17 Sprint 13 followup**: 3 個 P0 真 bug (`addStudent` / `revealNextHint` / `toggleHints`) 全部 fixed + 6 個 unit test。**E2E audit 確認 0 Category A 真 bug 剩低** — 只剩 4 個 audit false positive (`navigate` / `foo` / `go*` / `go`)。Data-action ↔ window.FC bridge 全部 wired up, 學生老師用戶體驗再也冇 silent no-op button。Sprint 12+13 累計修咗 8 個 P0 silent no-op bug, 全部原本 silent 影響學生/老師 flow。
 
 ### 11.5 Sprint 6 (2026-06-17) — Mandarin MP3 → Cantonese TTS fallback
 

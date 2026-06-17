@@ -153,6 +153,23 @@ export function invalidateStudentCache() {
   _studentCacheAt = 0;
 }
 
+/**
+ * Sprint 13: add a new student with default progress record. Returns the
+ * trimmed name on success, or `null` on invalid input (empty / whitespace).
+ * Pure helper — no DOM access. The caller (window.FC.addStudent) reads the
+ * input value and handles navigation.
+ */
+export function addStudent(name) {
+  if (typeof name !== 'string') return null;
+  const trimmed = name.trim();
+  if (!trimmed) return null;
+  const p = _defaultProgress(trimmed);
+  const ok = saveProgress(p);
+  if (!ok) return null;
+  invalidateStudentCache();
+  return trimmed;
+}
+
 export function importProgress(jsonData) {
   try {
     const data = JSON.parse(jsonData);
