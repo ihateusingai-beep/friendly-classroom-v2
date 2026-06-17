@@ -1,8 +1,8 @@
-# 友愛教室 V3 — 完整規格書 (v3.1)
+# 友愛教室 V3 — 完整規格書 (v3.2)
 
 > 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
 >
-> *規格日期：2026-06-13 | 最後更新：2026-06-17（Sprint 6 Mandarin MP3 → Cantonese TTS + fallback chain）*
+> *規格日期：2026-06-13 | 最後更新：2026-06-17（Sprint 6 Mandarin MP3 → Cantonese TTS + fallback chain, doc fix v3.1 → v3.2）*
 
 ---
 
@@ -440,7 +440,7 @@ Home 頁分兩大 section：
 
 ## 9. Sprint roadmap (2026-06-17 status)
 
-> **2026-06-17 update**：Sprint 1-5 全部 done。10 commits pushed to `origin/main` (deploy live 喺 GH Pages, bundle `index-D1BE01Kh.js`)。Sprint 6+ 為 follow-up backlog。
+> **2026-06-17 update**：Sprint 1-6 全部 done。18 commits pushed to `origin/main` (deploy live 喺 GH Pages, bundle `index-BAd-fhgr.js`)。Sprint 7+ 為 follow-up backlog。
 
 | Sprint | 工作 | Status | Commit |
 |---|---|---|---|
@@ -460,11 +460,12 @@ Home 頁分兩大 section：
 | ✅ **Sprint 5 / T3**: `.speaking` class pulse animation | visual feedback 同步 TTS playback | Done | `3467440` |
 | ✅ **Sprint 5 / T4**: Bank view 加 inline voice buttons | TTS a11y 覆蓋全部 play mode | Done | `4126c75` |
 | ✅ **Sprint 5 / T1-followup**: import `speak` 喺 main.js | ReferenceError 修咗 | Done | `7479e92` |
-| 🟡 **S6 backlog**: `revealNextHint` / `toggleHints` 缺 `window.FC` bridge | hints panel button 跟 Sprint 5 T1 同 pattern | TBD | — |
-| 🟡 **S7 backlog**: 21 scene 圖片 (300+ KB each) 改 webp | PWA precache 158MB 縮減 | TBD | — |
-| 🟡 **S8 backlog**: Vite preview service worker 自動 cache dist 行為 | e2e setup 要 `?cb=$(date +%s)` cache-bust | TBD | — |
-| 🟢 **S9 backlog**: 老師 mode 確認 17 個 category toggle | regression test | TBD | — |
-| 🟢 **S10 backlog**: 拆 `engine.js` (1,156 lines) → per-view renderers | 更大 refactor | TBD | — |
+| ✅ **Sprint 6**: Mandarin MP3 → Cantonese TTS fallback chain | `speakCreeds()` 直讀 TTS, voice chain zh-HK → zh-TW → zh-CN, settings 警告 + 刪 10 條 Mandarin MP3 (~1MB) | Done | `a84a171` + `34129a4` |
+| 🟡 **S7 backlog**: `revealNextHint` / `toggleHints` 缺 `window.FC` bridge | hints panel button 跟 Sprint 5 T1 同 pattern | TBD | — |
+| 🟡 **S8 backlog**: 21 scene 圖片 (300+ KB each) 改 webp | PWA precache 158MB 縮減 | TBD | — |
+| 🟡 **S9 backlog**: Vite preview service worker 自動 cache dist 行為 | e2e setup 要 `?cb=$(date +%s)` cache-bust | TBD | — |
+| 🟢 **S10 backlog**: 老師 mode 確認 17 個 category toggle | regression test | TBD | — |
+| 🟢 **S11 backlog**: 拆 `engine.js` (1,156 lines) → per-view renderers | 更大 refactor | TBD | — |
 
 ---
 
@@ -477,7 +478,7 @@ Home 頁分兩大 section：
 
 ---
 
-*規格日期：2026-06-13 | 最後更新 2026-06-17 | v3.1（Sprint 6 Mandarin MP3 → Cantonese TTS + fallback chain）| 取代 v2.2（2026-06-04）*
+*規格日期：2026-06-13 | 最後更新 2026-06-17 | v3.2（Sprint 6 Mandarin MP3 → Cantonese TTS + fallback chain, doc fix v3.1 → v3.2）| 取代 v2.2（2026-06-04）*
 
 ---
 
@@ -582,15 +583,15 @@ Home 頁分兩大 section：
 - 我哋 Sprint 5 寫咗 MP3 404 → TTS fallback, 但 `speakCreeds(creeds[0].id)` 個 id 對應 value creed 1-12 (即 `perseverance` 嘅 creed), 個 MP3 file 唔存在 → fall 落 TTS → TTS 用戶 system voice → Chrome macOS default = Eddy zh-CN (普通話)
 
 **Fix** (commit):
-1. **刪咗 10 個 MP3** (`public/audio/creeds/*.mp3`) — Mandarin content, 對香港學生係 a11y regression. 重新 gen 需要 API key, 短時間內無法
-2. **改 `speakCreeds()` 直接用 TTS** (always TTS, 唔用 MP3 path), 強制 lang='zh-HK'
-3. **改 TTS voice fallback chain** (`_pickBestVoiceForLang`):
+1. **刪咗 10 個 MP3** (`public/audio/creeds/*.mp3`) — Mandarin content, 對香港學生係 a11y regression. 重新 gen 需要 API key, 短時間內無法 — commit `34129a4`
+2. **改 `speakCreeds()` 直接用 TTS** (always TTS, 唔用 MP3 path), 強制 lang='zh-HK' — commit `a84a171`
+3. **改 TTS voice fallback chain** (`_pickBestVoiceForLang`) — commit `a84a171`:
    - 1st: `zh-HK` exact match
    - 2nd: `zh-TW` (台灣國語, 比較接近粵語捲舌/不捲舌 accent)
    - 3rd: `zh-CN` (普通話)
    - 4th: 任何 zh-prefixed
    - Fix 前個 fallback 永遠返第一個 zh-prefixed (Eddy zh-CN), 改咗排台灣先
-4. **Settings page 警告**: 自動 detect 有冇 zh-HK voice installed. 冇嘅話顯示 hint box, 教 user 點樣 install:
+4. **Settings page 警告** — commit `a84a171`: 自動 detect 有冇 zh-HK voice installed. 冇嘅話顯示 hint box, 教 user 點樣 install:
    - **macOS**: 系統偏好設定 → 輔助使用 → 朗讀內容 → 系統聲音 → 揀「Sin-ji (粵語香港)」
    - **Windows**: 設定 → 時間與語言 → 語言 → 語音 → 加粵語香港 voice pack
 
