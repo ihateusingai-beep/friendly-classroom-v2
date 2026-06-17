@@ -17,7 +17,7 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
          GAME_MODES } from './engine.js';
 import { applyScenarioResult } from './domain/Moral.js';
 import { startBankRun, getBankRun, endBankRun, recordBankTransaction, advanceToNextQuestion, BANK_CONFIG } from './games/GoodDeedBank.js';
-import { speakScenario, speakCreeds, speak, isSpeaking, stopSpeaking, setEnabled, isEnabled, applyCSS, resetAllSettings, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
+import { speakScenario, speakCreeds, speak, isSpeaking, stopSpeaking, isEnabled, applyCSS, resetAllSettings, setSpacing, setHC, setVoiceEnabled, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
 import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
 import { getTopic as getTopicMeta } from './topics.js';
@@ -577,6 +577,54 @@ window.FC.speakCreeds = function() {
   // and inline button on the result view both route here.
   const creeds = state.resultData?.creeds;
   if (creeds?.length) speakCreeds(creeds);
+};
+
+// Sprint 12: bridge 5 settings data-action dispatchers. Earlier refactors
+// (Sprint 2 inline-onclick → data-action) skipped these — markup declared
+// the action but no `window.FC.X` was registered, so clicks silently fell
+// through the dispatcher. Without these bridges:
+//   - 老師 mode 完全 login 唔到 (P0 critical, doLogin dead)
+//   - Settings 頁 4 個 button (reset / spacing / HC / voice) 完全冇反應
+// Each handler delegates to a pure helper in audio.js (localStorage + applyCSS
+// side effects), then re-renders so button label/state stays in sync.
+
+/** data-action="doLogin" — 老師 mode 密碼驗證。啱 → 進 teacher dashboard, 錯 → 顯示 #login-error。*/
+window.FC.doLogin = function() {
+  const pw = document.getElementById('teacher-pw')?.value?.trim() || '';
+  const expected = (typeof localStorage !== 'undefined' && localStorage.getItem('fc_teacher_pin')) || 'admin';
+  const err = document.getElementById('login-error');
+  if (pw === expected) {
+    if (err) err.style.display = 'none';
+    _navigate('teacher');
+  } else {
+    if (err) err.style.display = 'block';
+  }
+};
+
+/** data-action="resetSettings" — 清晒所有用戶 settings (TTS / 字體 / 間距 / HC / RM) + reset voice 返 default on。*/
+window.FC.resetSettings = function() {
+  resetAllSettings();
+  setVoiceEnabled(true);
+  render();
+};
+
+/** data-action="setSpacing" data-arg="narrow|medium|wide" — UI 間距切換。*/
+window.FC.setSpacing = function(value) {
+  setSpacing(value);
+  render();
+};
+
+/** data-action="toggleHC" — 切換高對比模式。讀 current state → flip → applyCSS。*/
+window.FC.toggleHC = function() {
+  const current = (typeof localStorage !== 'undefined' && localStorage.getItem('fc_hc_mode') === '1');
+  setHC(!current);
+  render();
+};
+
+/** data-action="toggleVoice" — 切換語音朗讀 enabled。persist 落 fc_voice_seen (page reload 保留)。*/
+window.FC.toggleVoice = function() {
+  setVoiceEnabled(!isEnabled());
+  render();
 };
 
 // path that needs it (subject-select → play). For the very first render, scenarios=[] is fine — renderRoleSelect

@@ -1,8 +1,8 @@
-# 友愛教室 V3 — 完整規格書 (v3.2)
+# 友愛教室 V3 — 完整規格書 (v3.3)
 
 > 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
 >
-> *規格日期：2026-06-13 | 最後更新：2026-06-17（Sprint 6 Mandarin MP3 → Cantonese TTS + fallback chain, doc fix v3.1 → v3.2）*
+> *規格日期：2026-06-13 | 最後更新：2026-06-17（Sprint 12 silent no-op bug sweep, doc fix v3.2 → v3.3）*
 
 ---
 
@@ -468,7 +468,8 @@ Home 頁分兩大 section：
 | 🟡 **S9 backlog**: Vite preview service worker 自動 cache dist 行為 | e2e setup 要 `?cb=$(date +%s)` cache-bust | TBD | — |
 | 🟢 **S10 backlog**: 老師 mode 確認 17 個 category toggle | regression test | TBD | — |
 | 🟢 **S11 backlog**: 拆 `engine.js` (1,156 lines) → per-view renderers | 更大 refactor | TBD | — |
-| 🟢 **S12 backlog**: silent no-op bug sweep (data-action ↔ window.FC bridge audit 2026-06-17) | 6 個 orphan data-action 缺 `window.FC.X` bridge: `doLogin`, `navigate`, `resetSettings`, `setSpacing`, `toggleHC`, `toggleVoice` (+ 2 dead ref: `foo`, `go*`) — Category A 唔可以 ship, P0 | TBD | — |
+| ✅ **Sprint 12**: silent no-op bug sweep (5 個 P0 fix) | `doLogin` (老師 mode 登入) / `resetSettings` / `setSpacing` / `toggleHC` / `toggleVoice` 全部加 `window.FC.X` bridge + `audio.js` 3 個新 helper (`setSpacing` / `setHC` / `setVoiceEnabled`) + 7 個 unit test。`navigate` 確認係 main.js dispatcher special-case, `foo` / `go*` 確認係 comment 引用 — audit false positive。Cross-check 揭 `addStudent` 1 個新 bug → S13 | Done | TBD |
+| 🟢 **S13 backlog**: `addStudent` (Student.js:67「新增學生」button, 缺 `window.FC.addStudent` bridge) | 對齊 Sprint 5/12 pattern: 加 `window.FC.addStudent = function() {...}` + student list refresh + state update | TBD | — |
 
 ---
 
@@ -481,7 +482,7 @@ Home 頁分兩大 section：
 
 ---
 
-*規格日期：2026-06-13 | 最後更新 2026-06-17 | v3.2（Sprint 6 Mandarin MP3 → Cantonese TTS + fallback chain, doc fix v3.1 → v3.2）| 取代 v2.2（2026-06-04）*
+*規格日期：2026-06-13 | 最後更新 2026-06-17 | v3.3（Sprint 12 silent no-op bug sweep, doc fix v3.2 → v3.3）| 取代 v2.2（2026-06-04）*
 
 ---
 
@@ -583,6 +584,11 @@ Home 頁分兩大 section：
 > - **Category C** (placeholder/wildcard, P2 cleanup): `data-action="*"` / `data-action="foo"` / `data-action="go*"` 等 catch-all → dead pattern, 必刪
 >
 > E2E click matrix: 每個 Category A action 必 click 至少 1 次 (catch silent failures from CSS 衝突 / arg parsing 錯 / event delegation 漏)。2026-06-17 audit 揭咗 6 個新 Category A bug: `doLogin`, `navigate`, `resetSettings`, `setSpacing`, `toggleHC`, `toggleVoice` (+ 2 Category C: `foo`, `go*`)。
+>
+> **2026-06-17 Sprint 12 followup**: 5 個真 bug (`doLogin` / `resetSettings` / `setSpacing` / `toggleHC` / `toggleVoice`) 全部 fixed + unit test。Audit false positive 確認:
+> - `navigate` (20 處出現, `src/main.js:385-389` dispatcher special-case `if (action === 'navigate') _navigate(el.dataset.arg, el.dataset.arg2)`) — 屬 universal navigation 唔通過 `window.FC.X` bridge, 唔算真 bug
+> - `foo` / `go*` — source 入面冇真實 `data-action="foo"` / `data-action="go*"`, 只係 `src/main.js:251, 345, 544` 嘅 comment 引用歷史 refactor 描述
+> Cross-check 揭 1 個新 Category A bug `addStudent` (Student.js:67), 排 S13 backlog。
 
 ### 11.5 Sprint 6 (2026-06-17) — Mandarin MP3 → Cantonese TTS fallback
 

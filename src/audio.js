@@ -108,7 +108,9 @@ export function initSFX() {
   });
 }
 
-let enabled = true;
+let enabled = (typeof localStorage === 'undefined')
+  ? true
+  : localStorage.getItem('fc_voice_seen') !== '0';
 let speaking = false;
 let currentAudio = null;
 
@@ -388,6 +390,34 @@ export function setTTSLang(langId) {
 
 export function getTTSLang() {
   return currentLang;
+}
+
+// ── Settings persistence helpers (Sprint 12) ──────────────────────────────
+// 對應 settings 頁 data-action 嘅 3 個 settings: setSpacing / toggleHC /
+// toggleVoice. 之前嗰 3 個 button 完全 dead 因為冇 window.FC bridge, 屬
+// Category A silent no-op。Implementation 一致 pattern: 寫 localStorage
+// (single source of truth) + 叫 applyCSS() 立即生效 + return 方便 unit test。
+
+/** 設定 UI 間距 (narrow/medium/wide)。立即 applyCSS 唔需要 render。*/
+export function setSpacing(value) {
+  if (!['narrow', 'medium', 'wide'].includes(value)) {
+    console.warn('[FC] setSpacing: invalid value', value);
+    return;
+  }
+  try { localStorage.setItem('fc_spacing', value); } catch {}
+  applyCSS();
+}
+
+/** 切換高對比模式 (HC)。true = 開, false = 關。立即 applyCSS。*/
+export function setHC(value) {
+  try { localStorage.setItem('fc_hc_mode', value ? '1' : '0'); } catch {}
+  applyCSS();
+}
+
+/** 切換語音朗讀 enabled state + 持久化。立即生效 (下次 speak() 會 read enabled)。*/
+export function setVoiceEnabled(value) {
+  enabled = !!value;
+  try { localStorage.setItem('fc_voice_seen', value ? '1' : '0'); } catch {}
 }
 
 // 重置設定
