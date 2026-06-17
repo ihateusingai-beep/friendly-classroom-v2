@@ -370,9 +370,11 @@ components/blocks.js (sprint 5 T4: bank opt-read button)
         │                       └── Topic List（17 個範疇 grid）
         │                           └── Scenario List
         │                               └── Play → Result
-        ├── 🌷 關係花園 (coming soon)
-        └── 🎲 道德大富翁 (coming soon)
+        ├── 🌷 關係花園 (backlog - 暫無 active design, 保留 UI 入口)
+        └── 🎲 道德大富翁 (deferred - 推遲到 v4, 保留 UI 入口)
 ```
+
+> **2026-06-17 status**：兩 game UI card (`src/engine.js:95-106`) 仍 render 但 `class="game-card locked"` + `cursor:not-allowed` + `opacity:0.6`，對學生呈現「暫未推出」狀態。如日後取消，應一併刪除 card markup 而非只改 tag。
 
 ### 6.1 Home 頁 layout
 
@@ -466,6 +468,7 @@ Home 頁分兩大 section：
 | 🟡 **S9 backlog**: Vite preview service worker 自動 cache dist 行為 | e2e setup 要 `?cb=$(date +%s)` cache-bust | TBD | — |
 | 🟢 **S10 backlog**: 老師 mode 確認 17 個 category toggle | regression test | TBD | — |
 | 🟢 **S11 backlog**: 拆 `engine.js` (1,156 lines) → per-view renderers | 更大 refactor | TBD | — |
+| 🟢 **S12 backlog**: silent no-op bug sweep (data-action ↔ window.FC bridge audit 2026-06-17) | 6 個 orphan data-action 缺 `window.FC.X` bridge: `doLogin`, `navigate`, `resetSettings`, `setSpacing`, `toggleHC`, `toggleVoice` (+ 2 dead ref: `foo`, `go*`) — Category A 唔可以 ship, P0 | TBD | — |
 
 ---
 
@@ -564,13 +567,22 @@ Home 頁分兩大 section：
 - `4126c75` feat(sprint5-t4): add inline voice buttons to Good Deed Bank play view
 - `7479e92` fix(sprint5-t1-followup): import speak in main.js (caught by e2e sweep)
 
-**E2E discovery rule** (added to agent memory):
-> 任何 sprint review / code review 必先跑：
+**E2E discovery rule** (added to agent memory, sharpened 2026-06-17):
+> 任何 sprint review / code review 必先跑 audit 拎 3 個 list：
 > ```bash
-> diff <(rg -ohE 'data-action="([a-zA-Z]+)"' src/ -r | sort -u) \
->      <(rg -ohE 'window\.FC\.([a-zA-Z]+)' src/ | sort -u)
+> # 1. data-action 列表（action only, 唔 capture arg）
+> grep -rohE 'data-action="[a-zA-Z]+' src/ | sort -u
+> # 2. window.FC.X = 個 assignments（definitive exports，唔 grep usage 因為 Vite minifier DCE）
+> grep -rohE 'window\.FC\.[a-zA-Z]+\s*=' src/ | sort -u
+> # 3. data-action 全值連 arg（用嚟 detect wildcard/placeholder，例如 `data-action="go*"`）
+> grep -rohE 'data-action="[a-zA-Z]+[^"]*"' src/ | sort -u
 > ```
-> Missing = silent no-op bug。E2E 要 cover 每個 distinct `data-action` 至少 click 1 次（唔只 happy path）。
+> **3 個 category check**:
+> - **Category A** (action missing bridge, P0): `data-action="X"` 出現但 `window.FC.X =` 冇 → silent no-op, 必 fix 先 ship。Sprint 5/6 都係呢類 (e.g. `speak`, `speakOpt`, `speakCreeds`)
+> - **Category B** (export no action, P3 cleanup): `window.FC.X =` 出現但 `data-action="X"` 冇 → dead code / internal helper, 唔係 bug, 但可以 audit
+> - **Category C** (placeholder/wildcard, P2 cleanup): `data-action="*"` / `data-action="foo"` / `data-action="go*"` 等 catch-all → dead pattern, 必刪
+>
+> E2E click matrix: 每個 Category A action 必 click 至少 1 次 (catch silent failures from CSS 衝突 / arg parsing 錯 / event delegation 漏)。2026-06-17 audit 揭咗 6 個新 Category A bug: `doLogin`, `navigate`, `resetSettings`, `setSpacing`, `toggleHC`, `toggleVoice` (+ 2 Category C: `foo`, `go*`)。
 
 ### 11.5 Sprint 6 (2026-06-17) — Mandarin MP3 → Cantonese TTS fallback
 
@@ -621,15 +633,16 @@ GitHub Actions (ci.yml + deploy.yml) parallel:
 GitHub Pages: https://ihateusingai-beep.github.io/friendly-classroom-v2/
 ```
 
-### 12.2 Bundle sizes (Sprint 5 final)
-- `dist/assets/index-*.js`: 112KB raw (34KB gzip) — main entry
-- `dist/assets/<topic>-*.js`: 17 chunks × 17-27KB — per-topic lazy load
-- `dist/assets/teacher-*.js`: 6KB — lazy-load on teacher mode
-- `dist/assets/index-*.css`: 42KB (9KB gzip)
-- `dist/assets/images/scenarios/*.png`: 66MB (259 files, ~250KB each)
-- `dist/assets/images/outcomes/*.png`: 90MB (745 files)
+### 12.2 Bundle sizes (Sprint 6 final, audited 2026-06-17)
+- `dist/assets/index-*.js`: 114.39 KB raw / 34.86 KB gzip — main entry (+2.4 KB vs Sprint 5, TTS bridge + speakCreeds direct-call path 加咗少少)
+- `dist/assets/<topic>-*.js`: 17 chunks × 17.31–27.03 KB / 3.96–8.26 KB gzip — per-topic lazy load (largest = integrity 27.03 KB, smallest = help-seeking 17.31 KB)
+- `dist/assets/teacher-*.js`: 5.76 KB / 1.96 KB gzip — lazy-load on teacher mode
+- `dist/assets/index-*.css`: 42.15 KB / 8.83 KB gzip
+- `dist/assets/images/scenarios/*.png`: ~66 MB (259 files)
+- `dist/assets/images/outcomes/*.png`: ~90 MB (745 files)
 - `dist/assets/audio/creeds/`: ❌ **已刪除 (Sprint 6 2026-06-17)** — 原本嘅 10 條 creed MP3 係 6 月 2 日用 Hermes `mmx` + Cantonese_GentleLady voice 生成嘅, 但實際 output 係**國語普通話** (`mmx` API key 已經 expired, 重新 generate 唔到粵語 MP3)。刪除之後 `speakCreeds()` 直接用 Web Speech API TTS zh-HK → 國語 fallback chain (zh-TW 優先, 對 SEN 學生 cultural disconnect 較少)。User-facing warning 喺 settings page 提示安裝 macOS `Sin-ji` 或 Windows `zh-HK` voice pack
-- **PWA precache**: 1,032 entries / 158.5MB total
+- **PWA precache**: 1,032 entries / 158,518.83 KiB (≈ 154.8 MB) — 比 Sprint 5 嘅 158.5 MB round number 縮 ~3.7 MB, 主要係 MP3 刪 1 MB + worker chunk 改進
+- **Build time**: 1.07s (HMR-rebuild, Vite 6 + Rollup)
 
 ### 12.3 Edge cache
 - GH Pages edge CDN TTL 600s
@@ -710,12 +723,17 @@ Output: `data/scenarios/<topic-id>.json` (Sprint 4: each scenario enriched with 
 
 ### 14.2 對 reviewer
 
-> 1. `rg -ohE 'data-action="([a-zA-Z]+)"' src/ -r | sort -u` — 列出所有 distinct data-action
-> 2. `rg -ohE 'window\.FC\.([a-zA-Z]+)' src/ | sort -u` — 列出所有 window.FC exports
-> 3. `diff <(前者) <(後者)` — 任何 missing = silent no-op bug
-> 4. 跑 `npm test` 100% pass
-> 5. Build → preview → 對每個 data-action click 至少 1 次 (Playwright e2e)
-> 6. Console 0 errors
+> 1. `grep -rohE 'data-action="[a-zA-Z]+' src/ | sort -u` — 列出所有 distinct data-action (action only, 唔 capture arg)
+> 2. `grep -rohE 'window\.FC\.[a-zA-Z]+\s*=' src/ | sort -u` — 列出所有 window.FC.X = assignments (definitive, 唔 grep usage 因為 Vite DCE)
+> 3. `grep -rohE 'data-action="[a-zA-Z]+[^"]*"' src/ | sort -u` — 列出 data-action 連 arg (catch wildcard/placeholder e.g. `go*`, `foo`)
+> 4. Diff (1) vs (2) — missing = Category A (silent no-op, P0 必 fix)
+> 5. Diff (2) vs (1) reverse — extra = Category B (dead export, P3 cleanup)
+> 6. (3) 入面有 `*` / `foo` / `bar` = Category C (dead pattern, P2 刪)
+> 7. 跑 `npm test` 100% pass
+> 8. Build → preview → 對每個 Category A action click 至少 1 次 (Playwright e2e)
+> 9. Console 0 errors
+
+> 注: ripgrep 嘅 `-ohE ... -r` syntax 行唔到 (`-E` 係 `--encoding`, `-r` 係 `--replace`, ripgrep 已經 default extended regex + recursive)。用 GNU `grep -rohE` 或者 `rg -o --no-filename` 兩者皆可。
 
 ### 14.3 對 user / teacher
 
