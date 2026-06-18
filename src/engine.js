@@ -2,7 +2,7 @@
 // 遊戲邏輯 delegate 到 domain/ScenarioEngine.js
 // 所有 render* 函數保留在此檔案
 
-import { getSubjectColor, getSubjectBgColor, getSubjectName, getSubjectEmoji } from './subjects.js';
+import { getSubjectColor, getSubjectBgColor, getSubjectName, getSubjectEmoji, getAllSubjects } from './subjects.js';
 import { getTopic, TOPICS, VALUES, CARING } from './topics.js';
 import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 import { getMoralBarData } from './domain/Moral.js';
@@ -412,17 +412,11 @@ export function renderTeacherAssign() {
     sub: t.description?.split(/[，。,。]/)[0] || '',
   }));
 
-  let saved = {};
-  try { saved = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}'); } catch { saved = {}; }
-  const config = {
-    hintEnabled: saved.hintEnabled !== false,
-    timerEnabled: saved.timerEnabled ?? false,
-    timerSeconds: saved.timerSeconds || 30,
-    comboEnabled: saved.comboEnabled ?? false,
-    bankMaxRiskLevel: saved.bankMaxRiskLevel ?? 1,  // S11: 銀行題目風險 ceiling
-    buttonSize: saved.buttonSize || 'normal',
-    assignedTopics: saved.assignedTopics || [],
-  };
+  // Sprint 14.4: read teacher config via the canonical cached reader in
+  // storage.js — single source of truth (cache + bus event + defaults).
+  // Previously this was a raw `JSON.parse(localStorage.getItem(...))`
+  // duplicate of the same logic that lived in domain/IO.js.
+  const config = getTeacherConfig();
 
   return `
     <div class="container fade-in">
@@ -896,9 +890,11 @@ export function renderProgress(subjectId) {
   const total = summary.score;
   const completed = summary.completedCount;
   const subColor = getSubjectColor(subjectId);
-        const subjects = [
-          { id: 'value', title: '🎯 價值觀教育', color: '#7C3AED' },
-        ];
+  // Sprint 14.4: derive `subjects` from the single source in subjects.js
+  // (was a hardcoded `[value]` copy). Combines emoji + title so the
+  // existing template can render `'🎯 價值觀教育'` without changing call
+  // sites.
+  const subjects = getAllSubjects().map((s) => ({ ...s, title: `${s.emoji} ${s.title}` }));
 
   return `
     <div class="container fade-in">

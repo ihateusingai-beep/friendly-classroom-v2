@@ -204,70 +204,46 @@ export async function forceSync() {
 }
 
 // ── Teacher config (live in localStorage; small helpers) ───────────
+// Sprint 14.4: read/write go through the canonical `getTeacherConfig()` /
+// `setTeacherConfig()` from storage.js (which has cache + defaults +
+// bus event emission). Previously IO.js had its own private copies of
+// this logic — now removed to eliminate the 4th hardcoded copy of the
+// teacher-config shape.
 
-function getTeacherConfig() {
-  try {
-    return JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
-  } catch {
-    console.warn('[IO] teacher_config corrupt, resetting');
-    return {};
-  }
-}
-// (Sprint 14.2: renamed to `_writeTeacherConfig` because the public
-//  `saveTeacherConfig()` export below is a different function — it
-//  doesn't take a cfg arg, it just confirms + navigates. Without the
-//  rename, the export collided with this internal helper.)
-function _writeTeacherConfig(cfg) {
-  try {
-    localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
-  } catch (e) {
-    console.error('[IO] _writeTeacherConfig failed:', e.message);
-  }
-}
+import { getTeacherConfig as _readConfig, setTeacherConfig as _writeConfig } from '../storage.js';
 
 /** Toggle a feature flag in teacher config (e.g. hintEnabled, timerEnabled). */
 export function toggleTeacherFeature(btn, key) {
   btn.classList.toggle('on');
   const val = btn.classList.contains('on');
-  const cfg = getTeacherConfig();
-  cfg[key] = val;
-  _writeTeacherConfig(cfg);
+  _writeConfig({ [key]: val });
   if (key === 'timerEnabled') _render();
 }
 
 /** Set the per-question timer duration (seconds). */
 export function setTeacherTimer(val) {
-  const cfg = getTeacherConfig();
-  cfg.timerSeconds = parseInt(val);
-  _writeTeacherConfig(cfg);
+  _writeConfig({ timerSeconds: parseInt(val) });
 }
 
 /** Set teacher-side button size (small/normal/large). */
 export function setButtonSize(size) {
-  const cfg = getTeacherConfig();
-  cfg.buttonSize = size;
-  _writeTeacherConfig(cfg);
+  _writeConfig({ buttonSize: size });
   _render();
 }
 
 /** Set the bank-game risk ceiling. 0=value only / 1=default / 2=mid / 3=all. */
 export function setBankMaxRisk(level) {
-  const cfg = getTeacherConfig();
-  cfg.bankMaxRiskLevel = level;
-  _writeTeacherConfig(cfg);
+  _writeConfig({ bankMaxRiskLevel: level });
   _render();
 }
 
 /** Toggle a topic in the teacher's assigned-topics list. */
 export function toggleAssignedTopic(topicId, checked) {
-  const cfg = getTeacherConfig();
-  if (!cfg.assignedTopics) cfg.assignedTopics = [];
-  if (checked) {
-    if (!cfg.assignedTopics.includes(topicId)) cfg.assignedTopics.push(topicId);
-  } else {
-    cfg.assignedTopics = cfg.assignedTopics.filter(t => t !== topicId);
-  }
-  _writeTeacherConfig(cfg);
+  const cfg = _readConfig();
+  const next = checked
+    ? (cfg.assignedTopics.includes(topicId) ? cfg.assignedTopics : [...cfg.assignedTopics, topicId])
+    : cfg.assignedTopics.filter(t => t !== topicId);
+  _writeConfig({ assignedTopics: next });
 }
 
 /** Save the teacher PIN. */

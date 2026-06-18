@@ -3,6 +3,7 @@
 // main.js / engine.js 的 import path 更新即可，API 完全不變
 
 import { bus } from './EventBus.js';
+import { getAllSubjects } from '../subjects.js';
 
 const PREFIX = 'fc_progress_';
 const SCHEMA_VERSION = 1;
@@ -250,9 +251,12 @@ function _defaultProgress(name) {
     // topic 嗰陣 lazy-init 對應 entry。Pre-init V2.2 keys (emotions/honesty/
     // conflict) 只會喺舊 user 嘅 localStorage 殘留，呢度保持空 object 即可。
     topicProgress: {},
-    subjectProgress: {
-      value:   { completed: 0, total: 0 },
-    },
+    // Sprint 14.4: build subjectProgress entries from the single source
+    // in subjects.js. Was hardcoded `{ value: { completed: 0, total: 0 } }`
+    // which would silently miss any new subject added to SUBJECTS[].
+    subjectProgress: Object.fromEntries(
+      getAllSubjects().map((s) => [s.id, { completed: 0, total: 0 }])
+    ),
     totalMoralScore: 0,
     lastPlayed: null,
     streak: { current: 0, longest: 0, lastDay: null },

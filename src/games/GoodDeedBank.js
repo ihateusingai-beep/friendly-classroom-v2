@@ -20,6 +20,9 @@ import { getScenarios } from '../domain/ScenarioEngine.js';
 // Phase 3 (S15): BANK_RISK, normalizeBankMaxRisk, bankRiskLabel
 // now live in src/constants/bank.js — single source of truth.
 import { normalizeBankMaxRisk, BANK_RISK } from '../constants/bank.js';
+// Sprint 14.4: use the canonical teacher-config reader from storage.js
+// (with cache + defaults) instead of a raw localStorage parse.
+import { getTeacherConfig } from '../storage.js';
 
 const TARGET_BALANCE = 100;     // 達到呢個數 = 品格富翁
 const BANKRUPT_THRESHOLD = -50; // 結餘跌穿呢個 = 破產 end state
@@ -48,13 +51,11 @@ function pickQuestionsForRun(n, maxRisk = 1) {
 }
 
 // 讀老師 config 嘅 bankMaxRiskLevel，唔存在 / 壞 = 1
+// Sprint 14.4: use the canonical `getTeacherConfig()` from storage.js
+// (which has cache + defaults) instead of a raw localStorage parse.
 function readBankMaxRiskFromConfig() {
-  try {
-    const cfg = JSON.parse(localStorage.getItem('fc_teacher_config') || '{}');
-    return normalizeBankMaxRisk(cfg.bankMaxRiskLevel);
-  } catch {
-    return 1;
-  }
+  const cfg = getTeacherConfig();
+  return normalizeBankMaxRisk(cfg.bankMaxRiskLevel);
 }
 
 // ── Game state ──
