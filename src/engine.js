@@ -159,7 +159,7 @@ export function renderBankPlay(scenario, run) {
         </div>
       </div>
 
-      <div class="scenario-desc" class="fc-mt-16">
+      <div class="scenario-desc fc-mt-16">
         <strong>${scenario.title}</strong>
         <div style="color:var(--text-light);font-size:0.92em;margin-top:6px">📍 ${scenario.background || ''}</div>
         <div class="fc-mt-8">${scenario.description}</div>
@@ -547,7 +547,7 @@ export function renderTeacherAssign() {
       </div>
 
       <div class="fc-mt-16">
-        <button type="button" class="btn btn-primary" class="fc-w-100"
+        <button type="button" class="btn btn-primary fc-w-100"
           data-action="saveTeacherConfig">✅ 儲存所有設定</button>
       </div>
 
@@ -1068,7 +1068,7 @@ ${renderPageHeader({ emoji: '⚙️', title: '個人化設定', back: 'role-sele
             role="switch" aria-checked="${hcMode}" aria-labelledby="hc-toggle-label"
             aria-label="高對比模式開關"></button>
         </div>
-        <div class="setting-row" class="fc-mt-12">
+        <div class="setting-row fc-mt-12">
           <div>
             <strong id="rm-toggle-label">減少動畫</strong>
             <div class="fc-muted-sm">停掉過場動畫同慶祝效果${osRMPref && !rmMode ? '（系統已偵測到偏好）' : ''}</div>

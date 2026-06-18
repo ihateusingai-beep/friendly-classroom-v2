@@ -64,7 +64,7 @@ export function renderStudentSelect() {
         <label for="new-student-name" class="sr-only">新學生名字</label>
         <input id="new-student-name" type="text" inputmode="none" autocomplete="off" placeholder="輸入新學生名字"
           style="width:100%;padding:14px;border:2px solid var(--border);border-radius:10px;font-size:1em;margin-bottom:10px;box-sizing:border-box" />
-        <button type="button" class="btn btn-success" class="fc-w-100" data-action="addStudent">➕ 新增學生</button>
+        <button type="button" class="btn btn-success fc-w-100" data-action="addStudent">➕ 新增學生</button>
       </div>
       <div style="margin-top:16px;text-align:center">
         <button type="button" class="btn btn-outline" data-action="navigate" data-arg="role-select">← 返回首頁</button>

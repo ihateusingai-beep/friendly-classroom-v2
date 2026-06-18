@@ -16,7 +16,7 @@ export function renderLogin() {
         <h1 style="text-align:center;margin-bottom:20px">🔐 老師登入</h1>
         <label for="teacher-pw" class="sr-only">老師密碼</label>
         <input id="teacher-pw" type="password" autocomplete="current-password" placeholder="輸入密碼" />
-        <button type="button" class="btn btn-primary" class="fc-w-100" data-action="doLogin">登入</button>
+        <button type="button" class="btn btn-primary fc-w-100" data-action="doLogin">登入</button>
         <p id="login-error" role="alert" style="color:var(--danger);text-align:center;margin-top:8px;display:none">密碼錯誤</p>
         <div style="margin-top:12px;text-align:center">
           <button type="button" class="btn btn-outline" data-action="navigate" data-arg="role-select">← 返回</button>
@@ -85,7 +85,7 @@ export function renderTeacher() {
         }).join('')}
       </div>
 
-      <div class="card" class="fc-mt-16">
+      <div class="card fc-mt-16">
         <div style="font-weight:600;margin-bottom:10px">📚 科目總覽</div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px" role="list" aria-label="科目總覽" class="subject-grid">
           ${getAllSubjects().map(sub => {
