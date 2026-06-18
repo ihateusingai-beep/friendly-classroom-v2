@@ -243,6 +243,15 @@ export function applyCSS() {
   else root.removeAttribute('data-rm');
 }
 
+/** Toggle reduced-motion mode (Sprint 14.2 — guards against
+ *  the settings page's `data-action="toggleReducedMotion"` button
+ *  that was previously a silent no-op). Reads current state from
+ *  localStorage, flips, writes back, re-applies CSS. */
+export function setReducedMotion(value) {
+  localStorage.setItem('fc_rm_mode', value ? '1' : '0');
+  applyCSS();
+}
+
 // ── 音頻播放 ──
 export function setEnabled(v) { enabled = v; }
 export function isEnabled() { return enabled; }

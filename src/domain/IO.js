@@ -26,6 +26,10 @@
 // domain modules do the same. Idempotent and safe.
 // Using a top-level side-effect expression in a function wrapper to
 // defeat Vite/Rollup's "window is always defined" DCE pass.
+// (Sprint 14.2: window.FC is now populated by actions/index.js's
+//  wireActions() rather than by individual `window.FC.X = ...` lines
+//  scattered here. Kept for back-compat if anything else still
+//  expects `window.FC` to exist at import time.)
 (() => {
   if (typeof window === 'undefined') return;
   if (!window.FC) window.FC = {};
@@ -60,7 +64,7 @@ export function wireIO(deps) {
 // ── Per-class / per-student import-export ───────────────────────────
 
 /** Handle CSV/JSON file upload and import. */
-window.FC.handleImport = function (e) {
+export function handleImport(e) {
   const file = e.target.files?.[0];
   if (!file) return;
   const reader = new FileReader();
@@ -74,10 +78,10 @@ window.FC.handleImport = function (e) {
     }
   };
   reader.readAsText(file);
-};
+}
 
 /** Export all students + their progress as a single JSON file. */
-window.FC.exportAll = function () {
+export function exportAll() {
   const students = _getAllStudents();
   const blob = new Blob([JSON.stringify(students, null, 2)], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
@@ -85,10 +89,10 @@ window.FC.exportAll = function () {
   a.href = url; a.download = '全班進度.json';
   a.click();
   URL.revokeObjectURL(url);
-};
+}
 
 /** Export just the current student's progress. */
-window.FC.exportMyData = function () {
+export function exportMyData() {
   const name = _getStudent();
   if (!name) return;
   const json = _exportProgress(name);
@@ -98,10 +102,10 @@ window.FC.exportMyData = function () {
   a.href = url; a.download = `${name}-進度.json`;
   a.click();
   URL.revokeObjectURL(url);
-};
+}
 
 /** Import a per-student progress file. */
-window.FC.importMyData = function (e) {
+export function importMyData(e) {
   const file = e.target.files?.[0];
   if (!file) return;
   const reader = new FileReader();
@@ -115,12 +119,12 @@ window.FC.importMyData = function (e) {
     }
   };
   reader.readAsText(file);
-};
+}
 
 // ── Analytics ───────────────────────────────────────────────────────
 
 /** Export interaction analytics (per-category) as CSV. */
-window.FC.exportAnalyticsCSV = function () {
+export function exportAnalyticsCSV() {
   const stats = _getStats();
   if (!stats || !stats.totalRows) {
     alert('暫時未有學習記錄可以匯出。');
@@ -133,15 +137,15 @@ window.FC.exportAnalyticsCSV = function () {
   a.href = url; a.download = '學習記錄.csv';
   a.click();
   URL.revokeObjectURL(url);
-};
+}
 
 /** Clear all interaction analytics. */
-window.FC.clearAnalytics = function () {
+export function clearAnalytics() {
   if (confirm('確定清除所有學習記錄？此操作無法復原。')) {
     _clearInteractions();
     _render();
   }
-};
+}
 
 /** Refresh the on-page analytics summary (called by render()). */
 export function updateAnalyticsSummary() {
@@ -182,7 +186,7 @@ export function setSyncStatusLoading() {
 }
 
 /** Force a fresh sync of the current student's progress. */
-window.FC.forceSync = async function () {
+export async function forceSync() {
   const name = _getStudent();
   if (!name) return;
   const p = _getProgress(name);
@@ -197,7 +201,7 @@ window.FC.forceSync = async function () {
     const badge = document.getElementById('settings-sync-status');
     if (badge) badge.textContent = '❌ 同步失敗';
   }
-};
+}
 
 // ── Teacher config (live in localStorage; small helpers) ───────────
 
@@ -209,49 +213,53 @@ function getTeacherConfig() {
     return {};
   }
 }
-function saveTeacherConfig(cfg) {
+// (Sprint 14.2: renamed to `_writeTeacherConfig` because the public
+//  `saveTeacherConfig()` export below is a different function — it
+//  doesn't take a cfg arg, it just confirms + navigates. Without the
+//  rename, the export collided with this internal helper.)
+function _writeTeacherConfig(cfg) {
   try {
     localStorage.setItem('fc_teacher_config', JSON.stringify(cfg));
   } catch (e) {
-    console.error('[IO] saveTeacherConfig failed:', e.message);
+    console.error('[IO] _writeTeacherConfig failed:', e.message);
   }
 }
 
 /** Toggle a feature flag in teacher config (e.g. hintEnabled, timerEnabled). */
-window.FC.toggleTeacherFeature = function (btn, key) {
+export function toggleTeacherFeature(btn, key) {
   btn.classList.toggle('on');
   const val = btn.classList.contains('on');
   const cfg = getTeacherConfig();
   cfg[key] = val;
-  saveTeacherConfig(cfg);
+  _writeTeacherConfig(cfg);
   if (key === 'timerEnabled') _render();
-};
+}
 
 /** Set the per-question timer duration (seconds). */
-window.FC.setTeacherTimer = function (val) {
+export function setTeacherTimer(val) {
   const cfg = getTeacherConfig();
   cfg.timerSeconds = parseInt(val);
-  saveTeacherConfig(cfg);
-};
+  _writeTeacherConfig(cfg);
+}
 
 /** Set teacher-side button size (small/normal/large). */
-window.FC.setButtonSize = function (size) {
+export function setButtonSize(size) {
   const cfg = getTeacherConfig();
   cfg.buttonSize = size;
-  saveTeacherConfig(cfg);
+  _writeTeacherConfig(cfg);
   _render();
-};
+}
 
 /** Set the bank-game risk ceiling. 0=value only / 1=default / 2=mid / 3=all. */
-window.FC.setBankMaxRisk = function (level) {
+export function setBankMaxRisk(level) {
   const cfg = getTeacherConfig();
   cfg.bankMaxRiskLevel = level;
-  saveTeacherConfig(cfg);
+  _writeTeacherConfig(cfg);
   _render();
-};
+}
 
 /** Toggle a topic in the teacher's assigned-topics list. */
-window.FC.toggleAssignedTopic = function (topicId, checked) {
+export function toggleAssignedTopic(topicId, checked) {
   const cfg = getTeacherConfig();
   if (!cfg.assignedTopics) cfg.assignedTopics = [];
   if (checked) {
@@ -259,18 +267,18 @@ window.FC.toggleAssignedTopic = function (topicId, checked) {
   } else {
     cfg.assignedTopics = cfg.assignedTopics.filter(t => t !== topicId);
   }
-  saveTeacherConfig(cfg);
-};
+  _writeTeacherConfig(cfg);
+}
 
 /** Save the teacher PIN. */
-window.FC.saveTeacherPIN = function () {
+export function saveTeacherPIN() {
   const pin = document.getElementById('teacher-pin-input')?.value?.trim() || 'admin';
   localStorage.setItem('fc_teacher_pin', pin);
   alert('✅ PIN 已更新為：' + pin);
-};
+}
 
 /** Save all teacher settings and navigate to the teacher dashboard. */
-window.FC.saveTeacherConfig = function () {
+export function saveTeacherConfig() {
   alert('✅ 老師設定已儲存！');
   _navigate('teacher');
-};
+}
