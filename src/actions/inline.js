@@ -12,6 +12,9 @@
 import { getCurrentScenario } from '../engine.js';
 import { getScenarioById } from '../domain/ScenarioEngine.js';
 import { speakScenario, speakCreeds, speak as _speak,
+         speakOptionText as _speakOptionText,
+         speakConsequence as _speakConsequence,
+         speakStopAndThink as _speakStopAndThink,
          setTTSLang as _audioSetTTSLang,
          resetAllSettings, setSpacing as _audioSetSpacing, setHC, setVoiceEnabled, isEnabled,
          setReducedMotion } from '../audio.js';
@@ -57,6 +60,25 @@ export function getInlineActions({ render, _navigate, getState }) {
     speakCreeds() {
       const creeds = getState()?.resultData?.creeds;
       if (creeds?.length) speakCreeds(creeds);
+    },
+
+    // ── Sprint 16: Result 頁 TTS 擴展 (SPEC §17.4.3) ──
+    /** data-action="speakOptionText" — read the chosen option's text. */
+    speakOptionText() {
+      const opt = getState()?.resultData?.option;
+      if (opt?.text) _speakOptionText(opt.text);
+    },
+
+    /** data-action="speakConsequence" — read the mainComment. */
+    speakConsequence() {
+      const comment = getState()?.resultData?.mainComment;
+      if (comment) _speakConsequence(comment);
+    },
+
+    /** data-action="speakStopAndThink" — read stop-and-think panel. */
+    speakStopAndThink() {
+      const opt = getState()?.resultData?.option;
+      if (opt?.stopAndThink) _speakStopAndThink(opt.stopAndThink);
     },
 
     // ── Settings (Sprint 12 bridges) ──────────────────────────────

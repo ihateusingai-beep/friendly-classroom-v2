@@ -809,6 +809,50 @@ body:has(.action-cta-fab:not([hidden])) .container { padding-bottom: 80px; }
 .result-card .comment { font-size: 1.3em; margin-bottom: 14px; line-height: 1.5; font-weight: 700; }
 .result-card .moral-score { font-weight: 800; font-size: 1.5em; color: var(--primary); }
 
+/* ── Sprint 16: Stop-and-Think panel (SPEC §17.3.4) ──
+   答錯反思, 橙色 background 同舊 .bad 接近但 border 改用 dashed
+   區分「反思」同「最終結論」, 圖案 🤔 取代 💪 */
+.result-card.stop-and-think {
+  background: linear-gradient(135deg, #FFF8E1, #FFECB3);
+  border: 3px dashed #FF9800;
+  animation: bounceIn 0.6s ease-out;
+}
+.result-card.stop-and-think .stop-and-think-title {
+  font-size: 1.5em;
+  font-weight: 800;
+  color: #E65100;
+  margin-bottom: 14px;
+}
+.result-card.stop-and-think .comment p {
+  margin: 0 0 12px 0;
+  line-height: 1.7;
+  font-weight: 600;
+}
+.result-card.stop-and-think .comment p:last-child {
+  margin-bottom: 0;
+}
+/* High-contrast + Reduced-motion (SPEC §17.8) */
+html[data-hc="true"] .result-card.stop-and-think {
+  border: 4px dashed #FF6F00;
+  background: #FFF3E0;
+}
+html[data-rm="true"] .result-card.stop-and-think {
+  animation: none;
+}
+
+/* ── Voice button row (Sprint 16 Result 頁 TTS 擴展) ── */
+.voice-btn-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.voice-btn-row .inline-voice-btn {
+  font-size: 1em;
+  padding: 8px 14px;
+}
+
 /* ── 信條展示 ── */
 .creed-show {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);

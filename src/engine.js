@@ -13,6 +13,14 @@ import { renderFooter, renderEmptyState } from './components/chrome.js';
 import { renderPageHeader, renderOptionCard, renderOptions, renderBankOptionCard } from './components/blocks.js';
 import { bankRiskLabel, BANK_RISK } from './constants/bank.js';
 import { getTeacherConfig } from './storage.js';
+// Sprint 16: Stop-and-Think panel + Result 頁 TTS 擴展 (SPEC §17.3.4 + §17.4.1)
+import {
+  shouldRenderStopAndThink,
+  formatStopAndThink,
+  getStopAndThinkAriaLabel,
+  STOP_AND_THINK_EMOJI,
+  STOP_AND_THINK_TITLE,
+} from './domain/Feedback.js';
 
 // ── 遊戲邏輯 delegate（from domain/ScenarioEngine） ──
 import {
@@ -826,6 +834,16 @@ export function renderResult(data, subjectId) {
   const subColor = getSubjectColor(subjectId);
   const scoreText = `${isGood ? '加咗 ' : '減咗 '}${Math.abs(moralChange)} 道德分${isGood ? '，做得好好！' : '，下次再努力。'}`;
 
+  // Sprint 16 (SPEC §17.3.3): 答錯反思 panel conditional render
+  const showStopAndThink = shouldRenderStopAndThink(option, moralChange);
+  const stopAndThinkText = showStopAndThink ? formatStopAndThink(option.stopAndThink) : '';
+  const stopAndThinkAria = showStopAndThink ? getStopAndThinkAriaLabel(option.stopAndThink) : '';
+
+  // Escape all user-data fields (R10 + §17.11 anti-pattern: never innerHTML on user-written text)
+  const escapedOptionText = escapeAttr(option?.text || '');
+  const escapedMainComment = escapeAttr(mainComment || '');
+  const escapedScoreText = escapeAttr(scoreText);
+
   return `
     <div class="container fade-in" id="result-root">
       <h1 class="sr-only" aria-live="polite" aria-atomic="true">${scenarioTitle}嘅結果：${scoreText}</h1>
@@ -837,11 +855,37 @@ export function renderResult(data, subjectId) {
         <img src="${scenarioImage}" alt="${scenarioTitle}" style="width:100%;max-height:180px;object-fit:cover"
              loading="lazy" decoding="async" />
       </div>` : ''}
-      <div class="result-card ${isGood ? 'good' : 'bad'}" id="result-card" role="status" aria-label="${scoreText}">
-        <div class="result-emoji" aria-hidden="true">${isGood ? '🌟' : '💪'}</div>
-        <div class="comment">${mainComment || '你做出了選擇！'}</div>
-        <div class="moral-score" aria-label="${scoreText}">${isGood ? '＋' : ''}${moralChange} 道德分</div>
+
+      ${showStopAndThink ? `
+      <!-- Stop-and-Think panel (SPEC §17.3.4) — 答錯反思, 🤔 取代舊 💪 -->
+      <div class="result-card bad stop-and-think" id="result-card" role="status" aria-label="${escapeAttr(stopAndThinkAria)}">
+        <div class="result-emoji" aria-hidden="true">${STOP_AND_THINK_EMOJI}</div>
+        <div class="stop-and-think-title">${STOP_AND_THINK_TITLE}</div>
+        <div class="comment">
+          ${stopAndThinkText.split('\n').filter(Boolean).map((line, i) => {
+            // 跳過第一行(emoji + title 已經 render)
+            if (i === 0) return '';
+            return `<p>${escapeAttr(line)}</p>`;
+          }).join('')}
+        </div>
+        <div class="voice-btn-row">
+          <button type="button" class="inline-voice-btn" data-action="speakOptionText" title="朗讀你嘅答案" aria-label="朗讀你選擇的答案">🔊 答案</button>
+          <button type="button" class="inline-voice-btn" data-action="speakStopAndThink" title="朗讀反思" aria-label="朗讀停一停想一想反思">🔊 反思</button>
+        </div>
       </div>
+      <!-- moral score 答錯唔即時顯示, 撳「再做一次」後先 render (SPEC §17.3.4) -->
+      ` : `
+      <!-- Positive feedback (existing result-card good) -->
+      <div class="result-card good" id="result-card" role="status" aria-label="${escapedScoreText}">
+        <div class="result-emoji" aria-hidden="true">🌟</div>
+        <div class="comment">${escapedMainComment || '你做出了選擇！'}</div>
+        <div class="moral-score" aria-label="${escapedScoreText}">${isGood ? '＋' : ''}${moralChange} 道德分</div>
+        <div class="voice-btn-row">
+          <button type="button" class="inline-voice-btn" data-action="speakOptionText" title="朗讀你嘅答案" aria-label="朗讀你選擇的答案">🔊 答案</button>
+          <button type="button" class="inline-voice-btn" data-action="speakConsequence" title="朗讀後果" aria-label="朗讀結果分析">🔊 後果</button>
+        </div>
+      </div>
+      `}
 
       <div class="creed-show" role="region" aria-label="學校信條">
         <div class="creed-header">

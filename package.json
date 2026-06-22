@@ -1,7 +1,7 @@
 {
   "name": "friendly-classroom-v2",
   "private": true,
-  "version": "2.0.0",
+  "version": "2.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,8 @@
     "deploy": "npm run build && gh-pages -d dist",
     "test": "vitest run",
     "test:watch": "vitest",
-    "audit:a11y": "node tools/a11y/audit-fc.mjs"
+    "audit:a11y": "node tools/a11y/audit-fc.mjs",
+    "audit:style": "node tools/style/audit-scenarios.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.11.3",
