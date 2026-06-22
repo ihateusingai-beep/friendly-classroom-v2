@@ -1,1096 +1,1181 @@
 [
-{
-"id": "s-self-31",
-"title": "尊重界線：唔好逼朋友買禮物",
-"background": "校園",
-"description": "小息時，你見到朋友買咗個新玩具。你好想佢送俾你，拉住佢衫角唔放。朋友面有難色，唔知點算。你會點做？",
-"hints": [
-"朋友有權決定自己嘅嘢點用。",
-"你都可以表達「我都想要」，但唔可以強迫人哋送。"
-],
-"options": [
-{
-"id": "s-self-31-a",
-"text": "「好呀，你送俾我啦」",
-"effects": [
-{
-"moralChange": -15,
-"comment": "勉強朋友送嘢，會破壞友誼。朋友有權拒絕。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-31-b",
-"text": "「我自己儲錢買，唔使你送」",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你好識得尊重朋友嘅界線！"
-}
-],
-"next_scenario": "s-self-32"
-},
-{
-"id": "s-self-31-c",
-"text": "「你即刻送俾我啦」",
-"effects": [
-{
-"moralChange": -15,
-"comment": "主動逼朋友送嘢，會令友誼受損。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "playground",
-"topicId": "benevolence",
-"creedIds": [
-16
-],
-"imagePrompt": "Young Chinese boy pulling friend's shirt asking for gift, worried friend, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"幫助弱勢",
-"分享資源"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-33",
-"title": "尊重界線：朋友買禮物要問媽媽",
-"background": "校園",
-"description": "朋友話：「我媽媽生日，我想買花送佢，但我冇錢買。」你會點幫佢？",
-"hints": [
-"每樣嘢都要先問屋企人先決定。",
-"朋友有困難，你可以陪佢一齊想辦法。"
-],
-"options": [
-{
-"id": "s-self-33-a",
-"text": "「好呀，我哋去公園摘花」",
-"effects": [
-{
-"moralChange": -15,
-"comment": "公園嘅花唔可以隨便摘，要問先。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-33-b",
-"text": "「不如我哋返去問媽媽」",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你好識得尊重家庭界線！"
-}
-],
-"next_scenario": "s-self-34"
-},
-{
-"id": "s-self-33-c",
-"text": "「你搵老師幫手啦」",
-"effects": [
-{
-"moralChange": 8,
-"comment": "搵老師幫手係一個方法，但都應該先問屋企人。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "playground",
-"topicId": "benevolence",
-"creedIds": [
-16
-],
-"imagePrompt": "Young Chinese boy talking to friend about gift, thinking to ask mom first, school, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"幫助弱勢",
-"分享資源"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-34",
-"title": "感恩：收到禮物要多謝",
-"background": "屋企",
-"description": "朋友送咗一份小禮物俾你。你打開睇，會點反應？",
-"hints": [
-"感恩令大家開心，多謝係最基本嘅禮貌。",
-"收到禮物後問「仲有冇」係貪心嘅表現。"
-],
-"options": [
-{
-"id": "s-self-34-a",
-"text": "「多謝你呀！我好鍾意」",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你好有禮貌，朋友聽到好開心！"
-}
-],
-"next_scenario": "s-self-35"
-},
-{
-"id": "s-self-34-b",
-"text": "「仲有冇其他禮物呀」",
-"effects": [
-{
-"moralChange": -15,
-"comment": "貪心嘅反應會令朋友唔開心。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-34-c",
-"text": "「我唔要呢個禮物」",
-"effects": [
-{
-"moralChange": -15,
-"comment": "朋友嘅心意要珍惜，直接拒絕會傷人。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "benevolence",
-"creedIds": [
-14
-],
-"imagePrompt": "Young Chinese boy receiving gift, saying thank you happily, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"幫助弱勢",
-"分享資源"
-],
-"subjectId": "value"
-},
-{
-"id": "s-bn-01",
-"title": "雨天借遮",
-"background": "校門口・放學",
-"description": "你帶咗遮，見到鄰班同學阿珊冇帶遮，企喺度等。",
-"hints": [
-"仁愛係主動幫人",
-"你嘅一個小動作可以幫人解決大問題"
-],
-"characters": [
-{
-"name": "阿珊",
-"emoji": "👧",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-bn-01-a",
-"text": "當睇唔到，自己撐遮走",
-"effects": [
-{
-"character": "阿珊",
-"change": -5,
-"moralChange": -5,
-"comment": "你錯過咗一個幫人嘅機會。"
-}
-]
-},
-{
-"id": "s-bn-01-b",
-"text": "走過去話：「我哋一齊撐啦」",
-"effects": [
-{
-"character": "阿珊",
-"change": 20,
-"moralChange": 15,
-"comment": "阿珊好感激你，你做咗仁愛嘅事！"
-}
-]
-},
-{
-"id": "s-bn-01-c",
-"text": "借遮畀佢，自己去搵第二個方法",
-"effects": [
-{
-"character": "阿珊",
-"change": 25,
-"moralChange": 20,
-"comment": "你犧牲自己方便去幫人，係真正嘅仁愛！"
-}
-]
-}
-],
-"location": "school-gate",
-"topicId": "benevolence",
-"creedIds": [
-7
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"分享資源"
-],
-"imagePrompt": "Hong Kong school gate, raining, child holding umbrella offering to share with classmate, green school uniform, FF XV Nomura anime style, warm tones, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-bn-02",
-"title": "仁愛：幫助 SEN 同學",
-"background": "操場・小息",
-"description": "小息時，你見到有特殊需要嘅同學阿俊自己一個坐喺操場邊，個樣好孤獨。其他同學都走咗去玩。你會點做？",
-"hints": [
-"每個人都值得被關心，SEN 同學都係我哋嘅同學",
-"你可以唔需要做好多，可能一個笑容、一句「一齊玩」就夠",
-"仁愛唔係做大事，而係留意身邊需要幫助嘅人"
-],
-"characters": [
-{
-"name": "阿俊",
-"emoji": "🧒",
-"initial_relationship": 30
-}
-],
-"options": [
-{
-"id": "s-bn-02-a",
-"text": "當睇唔到，同其他同學去玩",
-"effects": [
-{
-"character": "阿俊",
-"change": -5,
-"moralChange": -10,
-"comment": "阿俊繼續自己一個坐，你錯過咗關心佢嘅機會。"
-}
-]
-},
-{
-"id": "s-bn-02-b",
-"text": "行過去坐低，問佢：「你想一齊玩嗎？」",
-"effects": [
-{
-"character": "阿俊",
-"change": 25,
-"moralChange": 18,
-"comment": "阿俊笑咗！佢話：「好呀，我哋一齊玩！」你做咗仁愛嘅事。"
-}
-]
-},
-{
-"id": "s-bn-02-c",
-"text": "叫埋其他朋友一齊邀請阿俊加入",
-"effects": [
-{
-"character": "阿俊",
-"change": 35,
-"moralChange": 22,
-"comment": "阿俊加入咗大家嘅遊戲，佢好開心！仁愛可以感染身邊所有人。"
-}
-]
-}
-],
-"location": "playground",
-"topicId": "benevolence",
-"creedIds": [
-7
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"包容差異",
-"幫助弱勢"
-],
-"imagePrompt": "Hong Kong primary school playground, child sitting alone on bench looking sad, another child approaching with smile, green school uniform, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-bn-03",
-"title": "仁愛：扶婆婆過馬路",
-"background": "街道・放學",
-"description": "你放學經過馬路，見到一位婆婆拿住好多嘢，慢慢行緊過斑馬線，啲車就嚟。你會點做？",
-"hints": [
-"長者行動慢，車唔會等人",
-"你嘅小幫手可以避免意外",
-"仁愛唔分對象，邊個需要就幫"
-],
-"characters": [
-{
-"name": "婆婆",
-"emoji": "👵",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-bn-03-a",
-"text": "急住走，當睇唔到",
-"effects": [
-{
-"character": "婆婆",
-"change": -10,
-"moralChange": -15,
-"comment": "婆婆差啲畀車撞到，你錯過咗幫人嘅機會。"
-}
-]
-},
-{
-"id": "s-bn-03-b",
-"text": "行過去問：「婆婆，我扶你過啦」",
-"effects": [
-{
-"character": "婆婆",
-"change": 30,
-"moralChange": 20,
-"comment": "婆婆好感激你，話：「多謝你呀乖孫！」你做咗仁愛嘅事。"
-}
-]
-},
-{
-"id": "s-bn-03-c",
-"text": "扶婆婆過馬路 + 幫佢拎嘢",
-"effects": [
-{
-"character": "婆婆",
-"change": 40,
-"moralChange": 25,
-"comment": "婆婆好感動，話：「你真係好乖！」仁愛令世界更溫暖。"
-}
-]
-}
-],
-"location": "street",
-"topicId": "benevolence",
-"creedIds": [
-7
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"幫助弱勢"
-],
-"imagePrompt": "Hong Kong street crosswalk, elderly woman with shopping bags slowly crossing, child approaching to help, traffic light, warm afternoon light, Studio Ghibli style, soft pastel watercolor, no text, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-bn-04",
-"title": "仁愛：流浪貓好肚餓",
-"background": "公園・假日",
-"description": "你喺公園見到一隻瘦瘦哋嘅流浪貓，佢望住你「喵」咗一聲，個樣好肚餓。你會點做？",
-"hints": [
-"小動物都會肚餓，你嘅關心可以幫到佢",
-"注意唔好亂摸陌生動物，但可以畀食物",
-"仁愛可以畀人，亦可以畀小動物"
-],
-"characters": [
-{
-"name": "流浪貓",
-"emoji": "🐱",
-"initial_relationship": 0
-}
-],
-"options": [
-{
-"id": "s-bn-04-a",
-"text": "當睇唔到，繼續行",
-"effects": [
-{
-"character": "流浪貓",
-"change": 0,
-"moralChange": -8,
-"comment": "流浪貓繼續捱餓，仁愛可以由小開始。"
-}
-]
-},
-{
-"id": "s-bn-04-b",
-"text": "返屋企拎貓糧 + 水嚟餵佢",
-"effects": [
-{
-"character": "流浪貓",
-"change": 30,
-"moralChange": 18,
-"comment": "流浪貓食得好開心，仲舔你隻手！仁愛令生命更溫暖。"
-}
-]
-},
-{
-"id": "s-bn-04-c",
-"text": "通知動物機構嚟幫手",
-"effects": [
-{
-"character": "流浪貓",
-"change": 25,
-"moralChange": 22,
-"comment": "你唔單止幫到佢，仲搵到長遠嘅幫助！仁愛可以更專業。"
-}
-]
-}
-],
-"location": "park",
-"topicId": "benevolence",
-"creedIds": [
-7
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"幫助弱勢"
-],
-"imagePrompt": "Hong Kong public park, thin stray cat looking up sadly, child approaching with food bowl, green grass, warm sunlight, Studio Ghibli style, soft pastel watercolor, no text, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-bn-05",
-"title": "仁愛：朋友跌倒膝頭流血",
-"background": "操場・體育堂",
-"description": "體育堂時，你見到好朋友小明跑得太快跌倒，膝頭擦損出血，佢痛到標淚。你會點做？",
-"hints": [
-"朋友受傷嗰陣最需要人關心",
-"你嘅陪伴比乜都重要",
-"仁愛係：留意身邊嘅朋友，佢需要你就出現"
-],
-"characters": [
-{
-"name": "小明",
-"emoji": "👦",
-"initial_relationship": 70
-}
-],
-"options": [
-{
-"id": "s-bn-05-a",
-"text": "繼續跑，怕自己都受傷",
-"effects": [
-{
-"character": "小明",
-"change": -15,
-"moralChange": -12,
-"comment": "小明好失望，佢需要你嘅時候你走咗。"
-}
-]
-},
-{
-"id": "s-bn-05-b",
-"text": "即刻行過去，扶佢去健康室",
-"effects": [
-{
-"character": "小明",
-"change": 25,
-"moralChange": 18,
-"comment": "小明好感激你！佢話：「多謝你陪我。」仁愛就係咁簡單。"
-}
-]
-},
-{
-"id": "s-bn-05-c",
-"text": "陪小明去健康室 + 通知老師",
-"effects": [
-{
-"character": "小明",
-"change": 30,
-"moralChange": 22,
-"comment": "小明好感動！佢話你係佢最好嘅朋友。仁愛 + 責任感 = 完美。"
-}
-]
-}
-],
-"location": "playground",
-"topicId": "benevolence",
-"creedIds": [
-7,
-9
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"易地而處"
-],
-"imagePrompt": "Hong Kong school playground, child fallen on ground with bleeding knee, another child rushing over to help, sports day setting, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-bn-06",
-"title": "仁愛：同學冇帶午餐",
-"background": "課室・午膳",
-"description": "午膳時，你發現隔離枱嘅阿強冇帶飯，佢得一個人坐，個樣好慘。你會點做？",
-"hints": [
-"有時人哋唔講，但你睇得出佢需要幫",
-"分享自己嘅嘢係仁愛嘅表現",
-"你可以主動問，而唔係等人嚟搵你"
-],
-"characters": [
-{
-"name": "阿強",
-"emoji": "👦",
-"initial_relationship": 40
-}
-],
-"options": [
-{
-"id": "s-bn-06-a",
-"text": "扮睇唔到，自己食自己嘅",
-"effects": [
-{
-"character": "阿強",
-"change": -5,
-"moralChange": -10,
-"comment": "阿強要捱餓到放學，仁愛可以由分享開始。"
-}
-]
-},
-{
-"id": "s-bn-06-b",
-"text": "分一半自己嘅飯盒俾佢",
-"effects": [
-{
-"character": "阿強",
-"change": 30,
-"moralChange": 20,
-"comment": "阿強好感激你！佢話：「多謝你！」仁愛係分享。"
-}
-]
-},
-{
-"id": "s-bn-06-c",
-"text": "分飯盒 + 陪佢一齊食",
-"effects": [
-{
-"character": "阿強",
-"change": 35,
-"moralChange": 25,
-"comment": "阿強笑返！佢話：「我哋做朋友啦！」仁愛可以建立友誼。"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "benevolence",
-"creedIds": [
-7
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"分享資源",
-"易地而處"
-],
-"imagePrompt": "Hong Kong school classroom, lunch time, child with empty lunch box looking sad, another child offering half of their lunch, green school uniform, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-bn-07",
-"title": "仁愛：教弟妹做功課",
-"background": "屋企・夜晚",
-"description": "夜晚，6 歲嘅細佬搵你，話佢嘅數學功課唔識做，喊緊。你會點做？",
-"hints": [
-"家人之間互相幫助係仁愛",
-"你可以教佢方法，而唔係幫佢做晒",
-"耐心係仁愛嘅一部分"
-],
-"characters": [
-{
-"name": "細佬",
-"emoji": "👶",
-"initial_relationship": 80
-}
-],
-"options": [
-{
-"id": "s-bn-07-a",
-"text": "「你自己做啦，我好忙」",
-"effects": [
-{
-"character": "細佬",
-"change": -15,
-"moralChange": -15,
-"comment": "細佬繼續喊，佢覺得你唔關心佢。"
-}
-]
-},
-{
-"id": "s-bn-07-b",
-"text": "停低自己嘅嘢，耐心教佢",
-"effects": [
-{
-"character": "細佬",
-"change": 25,
-"moralChange": 18,
-"comment": "細佬識做喇！佢好開心，仲攬你！仁愛由家人開始。"
-}
-]
-},
-{
-"id": "s-bn-07-c",
-"text": "教佢方法 + 陪佢做完 + 讚佢",
-"effects": [
-{
-"character": "細佬",
-"change": 35,
-"moralChange": 25,
-"comment": "細佬做完仲話：「哥哥/姐姐 你好叻呀！」仁愛 + 耐心 = 最佳示範。"
-}
-]
-}
-],
-"location": "home",
-"topicId": "benevolence",
-"creedIds": [
-7,
-12
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"耐心",
-"照顧家人"
-],
-"imagePrompt": "Hong Kong home setting, evening, older child helping younger sibling with math homework at table, warm lamp light, Studio Ghibli style, soft pastel watercolor, cozy atmosphere, no text, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-165",
-"title": "仁愛：同學跌傷扶起佢",
-"background": "操場・小息",
-"description": "小息時同學跌倒擦損膝頭，佢坐喺地喊。你會……",
-"hints": [
-"受傷嘅人需要幫助",
-"可以扶佢去健康院",
-"可以叫老師"
-],
-"characters": [
-{
-"name": "同學",
-"emoji": "🧒",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-165-a",
-"text": "走過去睇一眼就走開",
-"effects": [
-{
-"character": "自己",
-"change": -8,
-"moralChange": -8,
-"comment": "你忽略咗受傷嘅同學，唔係仁愛。"
-}
-]
-},
-{
-"id": "s-self-165-b",
-"text": "扶佢起身+陪佢去健康院",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你幫助受傷嘅人，係仁愛！"
-}
-]
-},
-{
-"id": "s-self-165-c",
-"text": "扶佢+搵老師+陪佢等媽媽嚟+之後慰問",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你全面照顧，係仁愛高手！"
-}
-]
-}
-],
-"location": "school",
-"topicId": "benevolence",
-"creedIds": [
-7
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"易地而處",
-"照顧"
-],
-"imagePrompt": "Hong Kong school playground, child helping fallen classmate stand up, morning light, anime cartoon style, expressive faces, warm tones, no text, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-166",
-"title": "仁愛：捐出零用錢",
-"background": "學校・早會",
-"description": "學校搞籌款活動幫助山區小朋友。你零用錢可以買零食，但老師話可以捐出嚟。你會……",
-"hints": [
-"分享係仁愛",
-"山區小朋友需要幫助",
-"可以分階段捐"
-],
-"characters": [
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-166-a",
-"text": "「我冇錢」就算",
-"effects": [
-{
-"character": "自己",
-"change": -8,
-"moralChange": -8,
-"comment": "你唔想分享，錯過助人嘅機會。"
-}
-]
-},
-{
-"id": "s-self-166-b",
-"text": "捐出一部分零用錢",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你願意分享，係仁愛！"
-}
-]
-},
-{
-"id": "s-self-166-c",
-"text": "捐零用錢+寫信鼓勵山區小朋友",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你用行動+文字雙重關心，係仁愛高手！"
-}
-]
-}
-],
-"location": "school",
-"topicId": "benevolence",
-"creedIds": [
-7
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"分享資源",
-"易地而處"
-],
-"imagePrompt": "Hong Kong primary school assembly, child donating money to charity collection box, morning light, anime cartoon style, expressive, warm tones, no text, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-167",
-"title": "仁愛：朋友唔開心",
-"background": "課室・午膳",
-"description": "你發現朋友食 lunch 嘅時候一個人坐，個樣好唔開心。你會……",
-"hints": [
-"朋友唔開心要關心",
-"唔使問好多嘢",
-"陪伴已經好好"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 75
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-167-a",
-"text": "當冇睇到，唔理",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你忽略朋友，佢會更孤獨。"
-}
-]
-},
-{
-"id": "s-self-167-b",
-"text": "坐埋去問「你ok嗎？」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你主動關心，係仁愛！"
-}
-]
-},
-{
-"id": "s-self-167-c",
-"text": "坐埋去+聆聽+分享自己嘅午餐+約下課一齊行",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你全面關心朋友，係仁愛高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "benevolence",
-"creedIds": [
-7
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"聆聽",
-"陪伴"
-],
-"imagePrompt": "Hong Kong primary classroom, child sitting with sad friend during lunch, sharing food, anime cartoon style, expressive, warm tones, no text, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-168",
-"title": "仁愛：幫手照顧弟妹",
-"background": "屋企・客廳",
-"description": "爸媽唔喺屋企，你要照顧細佬細妹。但細妹扭抱唔肯食飯。你會……",
-"hints": [
-"照顧弟妹係家人責任",
-"可以分散佢注意",
-"耐心好重要"
-],
-"characters": [
-{
-"name": "細妹",
-"emoji": "👧",
-"initial_relationship": 80
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-168-a",
-"text": "「唔關我事」就返房",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你忽略細妹，唔係好哥哥/姐姐。"
-}
-]
-},
-{
-"id": "s-self-168-b",
-"text": "抱住佢+慢慢餵佢",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你照顧細妹，係仁愛！"
-}
-]
-},
-{
-"id": "s-self-168-c",
-"text": "抱住+講故事分散注意+餵飯+之後同佢一齊玩",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你全面照顧，係仁愛高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "benevolence",
-"creedIds": [
-7
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"照顧家人",
-"耐心",
-"主動關心"
-],
-"imagePrompt": "Hong Kong child holding younger sibling, feeding dinner, evening home light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-169",
-"title": "仁愛：教同學功課",
-"background": "課室・小息",
-"description": "同學問你數學功課一題點做，你想繼續去玩。你會……",
-"hints": [
-"幫助同學係仁愛",
-"可以5分鐘就教完",
-"之後可以一齊玩"
-],
-"characters": [
-{
-"name": "同學",
-"emoji": "🧒",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-169-a",
-"text": "「我都唔識」就走",
-"effects": [
-{
-"character": "自己",
-"change": -8,
-"moralChange": -8,
-"comment": "你拒絕幫助，可能係大話。"
-}
-]
-},
-{
-"id": "s-self-169-b",
-"text": "5分鐘教完再去玩",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你肯幫助，係仁愛！"
-}
-]
-},
-{
-"id": "s-self-169-c",
-"text": "5分鐘教+教完一齊玩+之後約補習",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你深入幫助同學，係仁愛高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "benevolence",
-"creedIds": [
-7
-],
-"valueCategory": "benevolence",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"主動關心",
-"耐心",
-"分享"
-],
-"imagePrompt": "Hong Kong primary classroom during break, child teaching classmate math at desk, morning light, anime cartoon style, expressive, warm tones, no text, 16:9",
-"subjectId": "value"
-}
+  {
+    "id": "s-self-31",
+    "title": "尊重界線：唔好逼朋友買禮物",
+    "background": "校園",
+    "description": "小息時，你見到朋友買咗個新玩具。你好想佢送俾你，拉住佢衫角唔放。朋友面有難色，唔知點算。你會點做？",
+    "hints": [
+      "朋友有權決定自己嘅嘢點用。",
+      "你都可以表達「我都想要」，但唔可以強迫人哋送。"
+    ],
+    "options": [
+      {
+        "id": "s-self-31-a",
+        "text": "「好呀，你送給我」",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "勉強朋友送東西，會破壞友誼。朋友有權拒絕。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "好呀，你送給我",
+          "consequence": "勉強朋友送東西，會破壞友誼。朋友有權拒絕",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-31-b",
+        "text": "「我自己儲錢買，不必你送」",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識得尊重朋友的界線！"
+          }
+        ],
+        "next_scenario": "s-self-32"
+      },
+      {
+        "id": "s-self-31-c",
+        "text": "「你即刻送給我」",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "主動逼朋友送東西，會令友誼受損。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "你即刻送給我",
+          "consequence": "主動逼朋友送東西，會令友誼受損",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "playground",
+    "topicId": "benevolence",
+    "creedIds": [
+      16
+    ],
+    "imagePrompt": "Young Chinese boy pulling friend's shirt asking for gift, worried friend, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢",
+      "分享資源"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-33",
+    "title": "尊重界線：朋友買禮物要問媽媽",
+    "background": "校園",
+    "description": "朋友話：「我媽媽生日，我想買花送佢，但我冇錢買。」你會點幫佢？",
+    "hints": [
+      "每樣嘢都要先問屋企人先決定。",
+      "朋友有困難，你可以陪佢一齊想辦法。"
+    ],
+    "options": [
+      {
+        "id": "s-self-33-a",
+        "text": "「好呀，我哋去公園摘花」",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "公園的花不可以隨便摘，要問先。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "好呀，我哋去公園摘花",
+          "consequence": "公園的花不可以隨便摘，要問先",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-33-b",
+        "text": "「不如我哋返去問媽媽」",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識得尊重家庭界線！"
+          }
+        ],
+        "next_scenario": "s-self-34"
+      },
+      {
+        "id": "s-self-33-c",
+        "text": "「你找老師幫手」",
+        "effects": [
+          {
+            "moralChange": 8,
+            "comment": "找老師幫手是一個方法，但都應該先問屋企人。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "benevolence",
+    "creedIds": [
+      16
+    ],
+    "imagePrompt": "Young Chinese boy talking to friend about gift, thinking to ask mom first, school, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢",
+      "分享資源"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-34",
+    "title": "感恩：收到禮物要多謝",
+    "background": "屋企",
+    "description": "朋友送咗一份小禮物俾你。你打開睇，會點反應？",
+    "hints": [
+      "感恩令大家開心，多謝係最基本嘅禮貌。",
+      "收到禮物後問「仲有冇」係貪心嘅表現。"
+    ],
+    "options": [
+      {
+        "id": "s-self-34-a",
+        "text": "「謝謝你呀！我好喜歡」",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有禮貌，朋友聽到好開心！"
+          }
+        ],
+        "next_scenario": "s-self-35"
+      },
+      {
+        "id": "s-self-34-b",
+        "text": "「還有沒其他禮物呀」",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "貪心的反應會令朋友不開心。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "還有沒其他禮物呀",
+          "consequence": "貪心的反應會令朋友不開心",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-34-c",
+        "text": "「我不要這個禮物」",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "朋友的心意要珍惜，直接拒絕會傷人。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "我不要這個禮物",
+          "consequence": "朋友的心意要珍惜，直接拒絕會傷人",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "home",
+    "topicId": "benevolence",
+    "creedIds": [
+      14
+    ],
+    "imagePrompt": "Young Chinese boy receiving gift, saying thank you happily, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢",
+      "分享資源"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-bn-01",
+    "title": "雨天借遮",
+    "background": "校門口・放學",
+    "description": "你帶咗遮，見到鄰班同學阿珊冇帶遮，企喺度等。",
+    "hints": [
+      "仁愛係主動幫人",
+      "你嘅一個小動作可以幫人解決大問題"
+    ],
+    "characters": [
+      {
+        "name": "阿珊",
+        "emoji": "👧",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-01-a",
+        "text": "當看不到，自己撐遮走",
+        "effects": [
+          {
+            "character": "阿珊",
+            "change": -5,
+            "moralChange": -5,
+            "comment": "你錯過了一個幫人的機會。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "當看不到，自己撐遮走",
+          "consequence": "你錯過了一個幫人的機會",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-bn-01-b",
+        "text": "走過去說：「我哋一齊撐」",
+        "effects": [
+          {
+            "character": "阿珊",
+            "change": 20,
+            "moralChange": 15,
+            "comment": "阿珊好感激你，你做了仁愛的事！"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-01-c",
+        "text": "借遮給他，自己去找第二個方法",
+        "effects": [
+          {
+            "character": "阿珊",
+            "change": 25,
+            "moralChange": 20,
+            "comment": "你犧牲自己方便去幫人，係真正的仁愛！"
+          }
+        ]
+      }
+    ],
+    "location": "school-gate",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "分享資源"
+    ],
+    "imagePrompt": "Hong Kong school gate, raining, child holding umbrella offering to share with classmate, green school uniform, FF XV Nomura anime style, warm tones, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-bn-02",
+    "title": "仁愛：幫助 SEN 同學",
+    "background": "操場・小息",
+    "description": "小息時，你見到有特殊需要嘅同學阿俊自己一個坐喺操場邊，個樣好孤獨。其他同學都走咗去玩。你會點做？",
+    "hints": [
+      "每個人都值得被關心，SEN 同學都係我哋嘅同學",
+      "你可以唔需要做好多，可能一個笑容、一句「一齊玩」就夠",
+      "仁愛唔係做大事，而係留意身邊需要幫助嘅人"
+    ],
+    "characters": [
+      {
+        "name": "阿俊",
+        "emoji": "🧒",
+        "initial_relationship": 30
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-02-a",
+        "text": "當看不到，同其他同學去玩",
+        "effects": [
+          {
+            "character": "阿俊",
+            "change": -5,
+            "moralChange": -10,
+            "comment": "阿俊繼續自己一個坐，你錯過了關心他的機會。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "當看不到，同其他同學去玩",
+          "consequence": "阿俊繼續自己一個坐，你錯過了關心他的機會",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-bn-02-b",
+        "text": "行過去坐低，問他：「你想一齊玩嗎？」",
+        "effects": [
+          {
+            "character": "阿俊",
+            "change": 25,
+            "moralChange": 18,
+            "comment": "阿俊笑了！他說：「好呀，我哋一齊玩！」你做了仁愛的事。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-02-c",
+        "text": "叫埋其他朋友一齊邀請阿俊加入",
+        "effects": [
+          {
+            "character": "阿俊",
+            "change": 35,
+            "moralChange": 22,
+            "comment": "阿俊加入了大家的遊戲，他好開心！仁愛可以感染身邊所有人。"
+          }
+        ]
+      }
+    ],
+    "location": "playground",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "包容差異",
+      "幫助弱勢"
+    ],
+    "imagePrompt": "Hong Kong primary school playground, child sitting alone on bench looking sad, another child approaching with smile, green school uniform, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-bn-03",
+    "title": "仁愛：扶婆婆過馬路",
+    "background": "街道・放學",
+    "description": "你放學經過馬路，見到一位婆婆拿住好多嘢，慢慢行緊過斑馬線，啲車就嚟。你會點做？",
+    "hints": [
+      "長者行動慢，車唔會等人",
+      "你嘅小幫手可以避免意外",
+      "仁愛唔分對象，邊個需要就幫"
+    ],
+    "characters": [
+      {
+        "name": "婆婆",
+        "emoji": "👵",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-03-a",
+        "text": "急住走，當看不到",
+        "effects": [
+          {
+            "character": "婆婆",
+            "change": -10,
+            "moralChange": -15,
+            "comment": "婆婆差這些給車撞到，你錯過了幫人的機會。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "急住走，當看不到",
+          "consequence": "婆婆差這些給車撞到，你錯過了幫人的機會",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-bn-03-b",
+        "text": "行過去問：「婆婆，我扶你過」",
+        "effects": [
+          {
+            "character": "婆婆",
+            "change": 30,
+            "moralChange": 20,
+            "comment": "婆婆好感激你，說：「謝謝你呀乖孫！」你做了仁愛的事。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-03-c",
+        "text": "扶婆婆過馬路 + 幫他拎東西",
+        "effects": [
+          {
+            "character": "婆婆",
+            "change": 40,
+            "moralChange": 25,
+            "comment": "婆婆好感動，說：「你真是好乖！」仁愛令世界更溫暖。"
+          }
+        ]
+      }
+    ],
+    "location": "street",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢"
+    ],
+    "imagePrompt": "Hong Kong street crosswalk, elderly woman with shopping bags slowly crossing, child approaching to help, traffic light, warm afternoon light, Studio Ghibli style, soft pastel watercolor, no text, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-bn-04",
+    "title": "仁愛：流浪貓好肚餓",
+    "background": "公園・假日",
+    "description": "你喺公園見到一隻瘦瘦哋嘅流浪貓，佢望住你「喵」咗一聲，個樣好肚餓。你會點做？",
+    "hints": [
+      "小動物都會肚餓，你嘅關心可以幫到佢",
+      "注意唔好亂摸陌生動物，但可以畀食物",
+      "仁愛可以畀人，亦可以畀小動物"
+    ],
+    "characters": [
+      {
+        "name": "流浪貓",
+        "emoji": "🐱",
+        "initial_relationship": 0
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-04-a",
+        "text": "當看不到，繼續行",
+        "effects": [
+          {
+            "character": "流浪貓",
+            "change": 0,
+            "moralChange": -8,
+            "comment": "流浪貓繼續捱餓，仁愛可以由小開始。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "當看不到，繼續行",
+          "consequence": "流浪貓繼續捱餓，仁愛可以由小開始",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-bn-04-b",
+        "text": "返屋企拎貓糧 + 水來餵他",
+        "effects": [
+          {
+            "character": "流浪貓",
+            "change": 30,
+            "moralChange": 18,
+            "comment": "流浪貓吃得好開心，還舔你隻手！仁愛令生命更溫暖。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-04-c",
+        "text": "通知動物機構來幫手",
+        "effects": [
+          {
+            "character": "流浪貓",
+            "change": 25,
+            "moralChange": 22,
+            "comment": "你不單止幫到他，還找到長遠的幫助！仁愛可以更專業。"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢"
+    ],
+    "imagePrompt": "Hong Kong public park, thin stray cat looking up sadly, child approaching with food bowl, green grass, warm sunlight, Studio Ghibli style, soft pastel watercolor, no text, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-bn-05",
+    "title": "仁愛：朋友跌倒膝頭流血",
+    "background": "操場・體育堂",
+    "description": "體育堂時，你見到好朋友小明跑得太快跌倒，膝頭擦損出血，佢痛到標淚。你會點做？",
+    "hints": [
+      "朋友受傷嗰陣最需要人關心",
+      "你嘅陪伴比乜都重要",
+      "仁愛係：留意身邊嘅朋友，佢需要你就出現"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-05-a",
+        "text": "繼續跑，怕自己都受傷",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -15,
+            "moralChange": -12,
+            "comment": "小明好失望，他需要你的時候你走了。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "繼續跑，怕自己都受傷",
+          "consequence": "小明好失望，他需要你的時候你走了",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-bn-05-b",
+        "text": "即刻行過去，扶他去健康室",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 25,
+            "moralChange": 18,
+            "comment": "小明好感激你！他說：「謝謝你陪我。」仁愛就是這麼簡單。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-05-c",
+        "text": "陪小明去健康室 + 通知老師",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 30,
+            "moralChange": 22,
+            "comment": "小明好感動！他說你是他最好的朋友。仁愛 + 責任感 = 完美。"
+          }
+        ]
+      }
+    ],
+    "location": "playground",
+    "topicId": "benevolence",
+    "creedIds": [
+      7,
+      9
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "易地而處"
+    ],
+    "imagePrompt": "Hong Kong school playground, child fallen on ground with bleeding knee, another child rushing over to help, sports day setting, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-bn-06",
+    "title": "仁愛：同學冇帶午餐",
+    "background": "課室・午膳",
+    "description": "午膳時，你發現隔離枱嘅阿強冇帶飯，佢得一個人坐，個樣好慘。你會點做？",
+    "hints": [
+      "有時人哋唔講，但你睇得出佢需要幫",
+      "分享自己嘅嘢係仁愛嘅表現",
+      "你可以主動問，而唔係等人嚟搵你"
+    ],
+    "characters": [
+      {
+        "name": "阿強",
+        "emoji": "👦",
+        "initial_relationship": 40
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-06-a",
+        "text": "扮看不到，自己吃自己的",
+        "effects": [
+          {
+            "character": "阿強",
+            "change": -5,
+            "moralChange": -10,
+            "comment": "阿強要捱餓到放學，仁愛可以由分享開始。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "扮看不到，自己吃自己的",
+          "consequence": "阿強要捱餓到放學，仁愛可以由分享開始",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-bn-06-b",
+        "text": "分一半自己的飯盒給他",
+        "effects": [
+          {
+            "character": "阿強",
+            "change": 30,
+            "moralChange": 20,
+            "comment": "阿強好感激你！他說：「謝謝你！」仁愛是分享。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-06-c",
+        "text": "分飯盒 + 陪他一齊吃",
+        "effects": [
+          {
+            "character": "阿強",
+            "change": 35,
+            "moralChange": 25,
+            "comment": "阿強笑返！他說：「我哋做朋友！」仁愛可以建立友誼。"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "分享資源",
+      "易地而處"
+    ],
+    "imagePrompt": "Hong Kong school classroom, lunch time, child with empty lunch box looking sad, another child offering half of their lunch, green school uniform, Studio Ghibli style, soft pastel watercolor, warm sunlight, no text, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-bn-07",
+    "title": "仁愛：教弟妹做功課",
+    "background": "屋企・夜晚",
+    "description": "夜晚，6 歲嘅細佬搵你，話佢嘅數學功課唔識做，喊緊。你會點做？",
+    "hints": [
+      "家人之間互相幫助係仁愛",
+      "你可以教佢方法，而唔係幫佢做晒",
+      "耐心係仁愛嘅一部分"
+    ],
+    "characters": [
+      {
+        "name": "細佬",
+        "emoji": "👶",
+        "initial_relationship": 80
+      }
+    ],
+    "options": [
+      {
+        "id": "s-bn-07-a",
+        "text": "「你自己做，我好忙」",
+        "effects": [
+          {
+            "character": "細佬",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "細佬繼續喊，他覺得你不關心他。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "你自己做，我好忙",
+          "consequence": "細佬繼續喊，他覺得你不關心他",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-bn-07-b",
+        "text": "停低自己的事情，耐心教他",
+        "effects": [
+          {
+            "character": "細佬",
+            "change": 25,
+            "moralChange": 18,
+            "comment": "細佬識做喇！他好開心，還攬你！仁愛由家人開始。"
+          }
+        ]
+      },
+      {
+        "id": "s-bn-07-c",
+        "text": "教他方法 + 陪他做完 + 讚他",
+        "effects": [
+          {
+            "character": "細佬",
+            "change": 35,
+            "moralChange": 25,
+            "comment": "細佬做完還說：「哥哥/姐姐 你好叻呀！」仁愛 + 耐心 = 最佳示範。"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "benevolence",
+    "creedIds": [
+      7,
+      12
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "耐心",
+      "照顧家人"
+    ],
+    "imagePrompt": "Hong Kong home setting, evening, older child helping younger sibling with math homework at table, warm lamp light, Studio Ghibli style, soft pastel watercolor, cozy atmosphere, no text, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-165",
+    "title": "仁愛：同學跌傷扶起佢",
+    "background": "操場・小息",
+    "description": "小息時同學跌倒擦損膝頭，佢坐喺地喊。你會……",
+    "hints": [
+      "受傷嘅人需要幫助",
+      "可以扶佢去健康院",
+      "可以叫老師"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-165-a",
+        "text": "走過去看一眼就離開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你忽略了受傷的同學，不是仁愛。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "走過去看一眼就離開",
+          "consequence": "你忽略了受傷的同學，不是仁愛",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-165-b",
+        "text": "扶他起身+陪他去健康院",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你幫助受傷的人，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-165-c",
+        "text": "扶他+找老師+陪他等媽媽來+之後慰問",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面照顧，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "易地而處",
+      "照顧"
+    ],
+    "imagePrompt": "Hong Kong school playground, child helping fallen classmate stand up, morning light, anime cartoon style, expressive faces, warm tones, no text, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-166",
+    "title": "仁愛：捐出零用錢",
+    "background": "學校・早會",
+    "description": "學校搞籌款活動幫助山區小朋友。你零用錢可以買零食，但老師話可以捐出嚟。你會……",
+    "hints": [
+      "分享係仁愛",
+      "山區小朋友需要幫助",
+      "可以分階段捐"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-166-a",
+        "text": "「我沒錢」就算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你不想分享，錯過助人的機會。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "我沒錢就算",
+          "consequence": "你不想分享，錯過助人的機會",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-166-b",
+        "text": "捐出一部分零用錢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你願意分享，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-166-c",
+        "text": "捐零用錢+寫信鼓勵山區小朋友",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用行動+文字雙重關心，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "分享資源",
+      "易地而處"
+    ],
+    "imagePrompt": "Hong Kong primary school assembly, child donating money to charity collection box, morning light, anime cartoon style, expressive, warm tones, no text, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-167",
+    "title": "仁愛：朋友唔開心",
+    "background": "課室・午膳",
+    "description": "你發現朋友食 lunch 嘅時候一個人坐，個樣好唔開心。你會……",
+    "hints": [
+      "朋友唔開心要關心",
+      "唔使問好多嘢",
+      "陪伴已經好好"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-167-a",
+        "text": "當沒看到，不理",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略朋友，他會更孤獨。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "當沒看到，不理",
+          "consequence": "你忽略朋友，他會更孤獨",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-167-b",
+        "text": "坐埋去問「你ok嗎？」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你主動關心，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-167-c",
+        "text": "坐埋去+聆聽+分享自己的午餐+約下課一齊行",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面關心朋友，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "聆聽",
+      "陪伴"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child sitting with sad friend during lunch, sharing food, anime cartoon style, expressive, warm tones, no text, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-168",
+    "title": "仁愛：幫手照顧弟妹",
+    "background": "屋企・客廳",
+    "description": "爸媽唔喺屋企，你要照顧細佬細妹。但細妹扭抱唔肯食飯。你會……",
+    "hints": [
+      "照顧弟妹係家人責任",
+      "可以分散佢注意",
+      "耐心好重要"
+    ],
+    "characters": [
+      {
+        "name": "細妹",
+        "emoji": "👧",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-168-a",
+        "text": "「不關我事」就返房",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你忽略細妹，不是好哥哥/姐姐。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "不關我事就返房",
+          "consequence": "你忽略細妹，不是好哥哥/姐姐",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-168-b",
+        "text": "抱住他+慢慢餵他",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你照顧細妹，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-168-c",
+        "text": "抱住+講故事分散注意+餵飯+之後同他一齊玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面照顧，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "照顧家人",
+      "耐心",
+      "主動關心"
+    ],
+    "imagePrompt": "Hong Kong child holding younger sibling, feeding dinner, evening home light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-169",
+    "title": "仁愛：教同學功課",
+    "background": "課室・小息",
+    "description": "同學問你數學功課一題點做，你想繼續去玩。你會……",
+    "hints": [
+      "幫助同學係仁愛",
+      "可以5分鐘就教完",
+      "之後可以一齊玩"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-169-a",
+        "text": "「我都不識」就走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你拒絕幫助，可能是大話。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "我都不識就走",
+          "consequence": "你拒絕幫助，可能是大說",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-169-b",
+        "text": "5分鐘教完再去玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你肯幫助，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-169-c",
+        "text": "5分鐘教+教完一齊玩+之後約補習",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你深入幫助同學，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "benevolence",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "benevolence",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "耐心",
+      "分享"
+    ],
+    "imagePrompt": "Hong Kong primary classroom during break, child teaching classmate math at desk, morning light, anime cartoon style, expressive, warm tones, no text, 16:9",
+    "subjectId": "value"
+  }
 ]

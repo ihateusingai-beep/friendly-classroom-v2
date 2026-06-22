@@ -1,1027 +1,1097 @@
 [
-{
-"id": "s-self-07",
-"title": "社交距離：朋友講祕密",
-"background": "課室・小息",
-"description": "朋友想同你講祕密，坐喺手臂距離。",
-"hints": [
-"手臂距離係朋友之間嘅合宜距離。",
-"太近會令對方唔舒服。"
-],
-"options": [
-{
-"id": "s-self-07-a",
-"text": "保持手臂距離傾偈",
-"effects": [
-{
-"moralChange": 10,
-"comment": "你好識得尊重他人！"
-}
-],
-"next_scenario": "s-self-08"
-},
-{
-"id": "s-self-07-b",
-"text": "貼住佢講",
-"effects": [
-{
-"moralChange": -5,
-"comment": "記住保持距離。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "classroom",
-"topicId": "social-boundary",
-"creedIds": [
-22
-],
-"imagePrompt": "Boy and friend at arm's length whispering, classroom, anime cartoon style, no text, 16:9",
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"合適距離",
-"say no",
-"保護私隱"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-08",
-"title": "社交距離：陌生人買嘢",
-"background": "便利店",
-"description": "陌生人喺兩步距離買嘢，冇貼住你。",
-"hints": [
-"陌生人應該保持兩步距離。",
-"呢個係安全嘅社交距離。"
-],
-"options": [
-{
-"id": "s-self-08-a",
-"text": "安心繼續買嘢",
-"effects": [
-{
-"moralChange": 10,
-"comment": "正確！呢個距離好安全。"
-}
-],
-"next_scenario": "s-self-09"
-},
-{
-"id": "s-self-08-b",
-"text": "覺得害怕，走開",
-"effects": [
-{
-"moralChange": 5,
-"comment": "保護自己感覺都係對嘅。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "shop",
-"topicId": "social-boundary",
-"creedIds": [
-16
-],
-"imagePrompt": "Boy standing two steps from stranger at shop, safe distance, anime cartoon style, no text, 16:9",
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"合適距離",
-"say no",
-"保護私隱"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-09",
-"title": "社交距離：家人擁抱",
-"background": "家中",
-"description": "媽媽打開雙手想同你擁抱，你見到媽媽好開心。",
-"hints": [
-"家人之間零距離係好正常嘅。",
-"只有信任嘅人先可以零距離。"
-],
-"options": [
-{
-"id": "s-self-09-a",
-"text": "開心接受擁抱",
-"effects": [
-{
-"moralChange": 15,
-"comment": "家人嘅愛好寶貴！"
-}
-],
-"next_scenario": "s-self-10"
-},
-{
-"id": "s-self-09-b",
-"text": "推開媽媽",
-"effects": [
-{
-"moralChange": -5,
-"comment": "媽媽會傷心..."
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "social-boundary",
-"creedIds": [
-22
-],
-"imagePrompt": "Boy happily hugging mother, zero distance, warm family, anime cartoon style, no text, 16:9",
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"合適距離",
-"say no",
-"保護私隱"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-10",
-"title": "社交距離：公車太近",
-"background": "公車",
-"description": "陌生人喺公車上貼住你，你覺得好唔舒服。",
-"hints": [
-"呢個係太近！即刻企開啲。",
-"陌生人太近係唔安全。"
-],
-"options": [
-{
-"id": "s-self-10-a",
-"text": "即刻企開兩步",
-"effects": [
-{
-"moralChange": 15,
-"comment": "你好識保護自己！"
-}
-],
-"next_scenario": "s-self-11"
-},
-{
-"id": "s-self-10-b",
-"text": "忍住唔鬱",
-"effects": [
-{
-"moralChange": -10,
-"comment": "太近要即刻離開！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "bus",
-"topicId": "social-boundary",
-"creedIds": [
-16,
-18
-],
-"imagePrompt": "Boy uncomfortable on bus with stranger too close, personal space invasion, anime cartoon style, worried, no text, 16:9",
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"合適距離",
-"say no",
-"保護私隱"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-11",
-"title": "社交距離：打球推人",
-"background": "操場",
-"description": "同學打波時好大力推你，貼到你身上。你覺得唔舒服。",
-"hints": [
-"打波都唔可以太近推人。",
-"即刻話畀老師聽。"
-],
-"options": [
-{
-"id": "s-self-11-a",
-"text": "話畀老師聽",
-"effects": [
-{
-"moralChange": 10,
-"comment": "正確！保護自己同他人。"
-}
-],
-"next_scenario": "s-self-12"
-},
-{
-"id": "s-self-11-b",
-"text": "大力推返佢",
-"effects": [
-{
-"moralChange": -10,
-"comment": "暴力唔係解決方法。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "playground",
-"topicId": "social-boundary",
-"creedIds": [
-16
-],
-"imagePrompt": "Boy being pushed during ball game, too close, playground, anime cartoon style, surprised, no text, 16:9",
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"合適距離",
-"say no",
-"保護私隱"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-12",
-"title": "社交距離：老師講故事",
-"background": "課室",
-"description": "老師講故事，你坐喺手臂距離聽。",
-"hints": [
-"老師同學生之間手臂距離係合宜。",
-"你已經好識分辨社交距離！"
-],
-"options": [
-{
-"id": "s-self-12-a",
-"text": "專心聽故事",
-"effects": [
-{
-"moralChange": 15,
-"comment": "你完成社交距離學習！badge +10分"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-12-b",
-"text": "坐得太近",
-"effects": [
-{
-"moralChange": -5,
-"comment": "記住保持手臂距離。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "classroom",
-"topicId": "social-boundary",
-"creedIds": [
-22,
-16
-],
-"imagePrompt": "Boy sitting at arm's length listening to teacher, appropriate distance, classroom, anime cartoon style, no text, 16:9",
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"合適距離",
-"say no",
-"保護私隱"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-130",
-"title": "社交界線：同學想睇你電話",
-"background": "課室・小息",
-"description": "同學小強借你部電話玩下，跟住開始睇你 WhatsApp 同相簿。你會……",
-"hints": [
-"私隱係身體界線嘅延伸",
-"say no 唔使內疚",
-"朋友都唔可以侵犯私隱"
-],
-"characters": [
-{
-"name": "小強",
-"emoji": "👦",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-130-a",
-"text": "扮冇嘢，俾佢繼續睇",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你放棄私隱，朋友會以為你接受。"
-}
-]
-},
-{
-"id": "s-self-130-b",
-"text": "拎返電話話「呢個係我私隱」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你保護私隱，係社交界線嘅榜樣！"
-}
-]
-},
-{
-"id": "s-self-130-c",
-"text": "拎返電話+清楚話界線+解釋點解咁重要",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你保護+教育，係社交界線高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "social-boundary",
-"creedIds": [
-9
-],
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"保護私隱",
-"say no",
-"say stop"
-],
-"imagePrompt": "Hong Kong primary classroom, child taking back phone from friend who was looking at private messages, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-131",
-"title": "社交界線：朋友講朋友壞話",
-"background": "校巴・放學",
-"description": "朋友喺校巴度同你講另一個朋友嘅壞話，叫你唔好同佢做朋友。你會……",
-"hints": [
-"唔應該參與講人是非",
-"可以做個好朋友但唔做壞話嘅傳聲筒",
-"直接話唔想聽"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-131-a",
-"text": "一齊講+附和",
-"effects": [
-{
-"character": "自己",
-"change": -15,
-"moralChange": -15,
-"comment": "你參與是非，破壞咗另一個朋友嘅名譽。"
-}
-]
-},
-{
-"id": "s-self-131-b",
-"text": "「我唔想講人是非」就停",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你守住界線，係正義嘅表現！"
-}
-]
-},
-{
-"id": "s-self-131-c",
-"text": "「我哋唔應該咁講」+建議傾其他嘢",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你主動保護朋友名譽，係高手！"
-}
-]
-}
-],
-"location": "school_bus",
-"topicId": "social-boundary",
-"creedIds": [
-9
-],
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say no",
-"say stop",
-"保護朋友"
-],
-"imagePrompt": "Hong Kong child on school bus, friend whispering gossip, child looking uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-132",
-"title": "社交界線：同學迫你入 WhatsApp group",
-"background": "課室・小息",
-"description": "同學想你加入一個 WhatsApp group，但你唔想。你會……",
-"hints": [
-"say no 唔需要解釋",
-"可以話「我而家唔想加入」",
-"可以 block 或靜音"
-],
-"characters": [
-{
-"name": "同學",
-"emoji": "🧒",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-132-a",
-"text": "勉強加入",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你勉強自己，會被困擾。"
-}
-]
-},
-{
-"id": "s-self-132-b",
-"text": "「我而家唔想加入」",
-"effects": [
-{
-"character": "自己",
-"change": 10,
-"moralChange": 12,
-"comment": "你清楚表達，係社交界線嘅表現！"
-}
-]
-},
-{
-"id": "s-self-132-c",
-"text": "清楚表達+解釋點解+建議其他聯絡方式",
-"effects": [
-{
-"character": "自己",
-"change": 22,
-"moralChange": 22,
-"comment": "你表達清晰又體諒，係高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "social-boundary",
-"creedIds": [
-9
-],
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say no",
-"身體界線",
-"保護私隱"
-],
-"imagePrompt": "Hong Kong primary classroom, friend showing phone with WhatsApp group, child politely declining, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-133",
-"title": "社交界線：朋友迫你分享零食",
-"background": "課室・小息",
-"description": "你帶咗自己嘅零食，朋友話「你嗰啲要分我哋食㗎嘛」。你會……",
-"hints": [
-"自己嘅嘢可以選擇分享",
-"say no 唔代表細氣",
-"朋友要尊重你嘅選擇"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-133-a",
-"text": "「好啦」就俾佢哋",
-"effects": [
-{
-"character": "自己",
-"change": -8,
-"moralChange": -8,
-"comment": "你被朋友情緒勒索，自己冇咗零食。"
-}
-]
-},
-{
-"id": "s-self-133-b",
-"text": "「我想留返自己食」",
-"effects": [
-{
-"character": "自己",
-"change": 10,
-"moralChange": 12,
-"comment": "你清楚表達，係社交界線嘅表現！"
-}
-]
-},
-{
-"id": "s-self-133-c",
-"text": "清楚表達+提議下次可以一齊買",
-"effects": [
-{
-"character": "自己",
-"change": 22,
-"moralChange": 22,
-"comment": "你守界又提議方案，係高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "social-boundary",
-"creedIds": [
-9
-],
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say no",
-"say stop",
-"表達意願"
-],
-"imagePrompt": "Hong Kong primary classroom, child holding snack box, friends reaching for it, child looking thoughtful, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-134",
-"title": "社交界線：朋友講笑過咗火",
-"background": "操場・小息",
-"description": "朋友用你個花名笑你，你覺得過咗火想喊。你會……",
-"hints": [
-"花名可以係開玩笑但都可以係欺凌",
-"say no 唔代表你玩唔起",
-"情緒係真實嘅"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-134-a",
-"text": "笑住扮冇嘢",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你壓抑感受，朋友以為你 OK 會繼續。"
-}
-]
-},
-{
-"id": "s-self-134-b",
-"text": "「你再咁講我真係嬲」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你表達感受，係社交界線嘅表現！"
-}
-]
-},
-{
-"id": "s-self-134-c",
-"text": "「我哋傾下你點解鍾意咁叫我」+表達感受",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你冷靜溝通又守界，係高手！"
-}
-]
-}
-],
-"location": "playground",
-"topicId": "social-boundary",
-"creedIds": [
-9
-],
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say no",
-"say stop",
-"表達感受"
-],
-"imagePrompt": "Hong Kong school playground, child looking hurt as friend laughs, child on verge of tears, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-135",
-"title": "社交界線：朋友偷睇你日記",
-"background": "屋企・睡房",
-"description": "朋友嚟你屋企玩時偷睇你本日記。你下次會點做？",
-"hints": [
-"日記係絕對私隱",
-"可以收埋或鎖起",
-"say no 唔代表唔鍾意朋友"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-135-a",
-"text": "扮唔知",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你唔出聲，朋友會以為可以再睇。"
-}
-]
-},
-{
-"id": "s-self-135-b",
-"text": "下次收起日記+同朋友講呢樣係私隱",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你保護私隱+溝通，係社交界線嘅表現！"
-}
-]
-},
-{
-"id": "s-self-135-c",
-"text": "收起日記+清楚表達界線+話「呢樣你唔可以睇」",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你清晰+直接，係高手私隱保護！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "social-boundary",
-"creedIds": [
-9
-],
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"保護私隱",
-"say no",
-"say stop"
-],
-"imagePrompt": "Hong Kong child putting diary in locked drawer, friend sitting nearby, bedroom afternoon light, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-136",
-"title": "社交界線：同學迫你一齊整蠱人",
-"background": "課室・小息",
-"description": "同學話「一齊整蠱小英啦」，佢哋準備整蠱小英。你會……",
-"hints": [
-"整蠱可以變成欺凌",
-"say no 唔代表唔合群",
-"保護無辜嘅人係好事"
-],
-"characters": [
-{
-"name": "同學",
-"emoji": "🧒",
-"initial_relationship": 50
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-136-a",
-"text": "一齊整蠱",
-"effects": [
-{
-"character": "自己",
-"change": -15,
-"moralChange": -18,
-"comment": "你參與欺凌，會傷害小英。"
-}
-]
-},
-{
-"id": "s-self-136-b",
-"text": "「我唔想整蠱人」就走開",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你守住界線，係正義嘅表現！"
-}
-]
-},
-{
-"id": "s-self-136-c",
-"text": "「呢樣唔好笑」+建議叫小英嚟一齊玩+保護佢",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你保護無辜嘅人，係高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "social-boundary",
-"creedIds": [
-9
-],
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say no",
-"say stop",
-"保護朋友"
-],
-"imagePrompt": "Hong Kong primary classroom, group of children planning prank on another child, one child looking uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-137",
-"title": "社交界線：朋友想你分享家庭狀況",
-"background": "公園・玩耍",
-"description": "朋友問「你哋屋企有冇錢」、「你爸爸做咩工」，你想講又想保護家人私隱。你會……",
-"hints": [
-"家庭狀況係私隱",
-"可以話「呢樣我唔想講」",
-"唔使比較屋企有幾好"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-137-a",
-"text": "「有錢㗎」吹大咗講",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你講大話保護自己，但會愈講愈多。"
-}
-]
-},
-{
-"id": "s-self-137-b",
-"text": "「呢樣我唔想講」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你保護私隱，係社交界線嘅表現！"
-}
-]
-},
-{
-"id": "s-self-137-c",
-"text": "「呢樣我唔想講」+轉話題講開心嘅嘢",
-"effects": [
-{
-"character": "自己",
-"change": 22,
-"moralChange": 22,
-"comment": "你保護私隱+識轉移，係高手！"
-}
-]
-}
-],
-"location": "park",
-"topicId": "social-boundary",
-"creedIds": [
-9
-],
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"保護私隱",
-"say no",
-"say stop"
-],
-"imagePrompt": "Hong Kong children at park, friend asking personal questions, child looking thoughtful and saying no, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-138",
-"title": "社交界線：朋友想攬你叫救命",
-"background": "校巴・放學",
-"description": "朋友喺校巴度熱到想除衫，問你「你除唔除」/「你個袋入面有咩」/「俾我攬吓」。你會……",
-"hints": [
-"say no 唔需要解釋",
-"朋友都要尊重界線",
-"可以話「我覺得唔舒服」"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-138-a",
-"text": "勉強俾佢攬",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你忽略自己嘅感受，朋友會繼續。"
-}
-]
-},
-{
-"id": "s-self-138-b",
-"text": "「我唔想咁樣」就推開",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你守住界線，係身體自主嘅表現！"
-}
-]
-},
-{
-"id": "s-self-138-c",
-"text": "「我唔想俾人攬」+解釋+要求對方尊重",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你清晰+教育，係社交界線高手！"
-}
-]
-}
-],
-"location": "school_bus",
-"topicId": "social-boundary",
-"creedIds": [
-9
-],
-"valueCategory": "social-boundary",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say no",
-"say stop",
-"身體界線"
-],
-"imagePrompt": "Hong Kong child on school bus looking uncomfortable as friend reaches out, child pulling away, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-}
+  {
+    "id": "s-self-07",
+    "title": "社交距離：朋友講祕密",
+    "background": "課室・小息",
+    "description": "朋友想同你講祕密，坐喺手臂距離。",
+    "hints": [
+      "手臂距離係朋友之間嘅合宜距離。",
+      "太近會令對方唔舒服。"
+    ],
+    "options": [
+      {
+        "id": "s-self-07-a",
+        "text": "保持手臂距離聊天",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "你好識得尊重他人！"
+          }
+        ],
+        "next_scenario": "s-self-08"
+      },
+      {
+        "id": "s-self-07-b",
+        "text": "貼住他講",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "記住保持距離。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "貼住他講",
+          "consequence": "記住保持距離",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      22
+    ],
+    "imagePrompt": "Boy and friend at arm's length whispering, classroom, anime cartoon style, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-08",
+    "title": "社交距離：陌生人買嘢",
+    "background": "便利店",
+    "description": "陌生人喺兩步距離買嘢，冇貼住你。",
+    "hints": [
+      "陌生人應該保持兩步距離。",
+      "呢個係安全嘅社交距離。"
+    ],
+    "options": [
+      {
+        "id": "s-self-08-a",
+        "text": "安心繼續買東西",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "正確！這個距離好安全。"
+          }
+        ],
+        "next_scenario": "s-self-09"
+      },
+      {
+        "id": "s-self-08-b",
+        "text": "覺得害怕，離開",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "保護自己感覺都是對的。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "shop",
+    "topicId": "social-boundary",
+    "creedIds": [
+      16
+    ],
+    "imagePrompt": "Boy standing two steps from stranger at shop, safe distance, anime cartoon style, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-09",
+    "title": "社交距離：家人擁抱",
+    "background": "家中",
+    "description": "媽媽打開雙手想同你擁抱，你見到媽媽好開心。",
+    "hints": [
+      "家人之間零距離係好正常嘅。",
+      "只有信任嘅人先可以零距離。"
+    ],
+    "options": [
+      {
+        "id": "s-self-09-a",
+        "text": "開心接受擁抱",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "家人的愛好寶貴！"
+          }
+        ],
+        "next_scenario": "s-self-10"
+      },
+      {
+        "id": "s-self-09-b",
+        "text": "推開媽媽",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "媽媽會傷心..."
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "推開媽媽",
+          "consequence": "媽媽會傷心...",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "home",
+    "topicId": "social-boundary",
+    "creedIds": [
+      22
+    ],
+    "imagePrompt": "Boy happily hugging mother, zero distance, warm family, anime cartoon style, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-10",
+    "title": "社交距離：公車太近",
+    "background": "公車",
+    "description": "陌生人喺公車上貼住你，你覺得好唔舒服。",
+    "hints": [
+      "呢個係太近！即刻企開啲。",
+      "陌生人太近係唔安全。"
+    ],
+    "options": [
+      {
+        "id": "s-self-10-a",
+        "text": "即刻企開兩步",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你好識保護自己！"
+          }
+        ],
+        "next_scenario": "s-self-11"
+      },
+      {
+        "id": "s-self-10-b",
+        "text": "忍住不鬱",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "太近要即刻離開！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "忍住不鬱",
+          "consequence": "太近要即刻離開",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "bus",
+    "topicId": "social-boundary",
+    "creedIds": [
+      16,
+      18
+    ],
+    "imagePrompt": "Boy uncomfortable on bus with stranger too close, personal space invasion, anime cartoon style, worried, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-11",
+    "title": "社交距離：打球推人",
+    "background": "操場",
+    "description": "同學打波時好大力推你，貼到你身上。你覺得唔舒服。",
+    "hints": [
+      "打波都唔可以太近推人。",
+      "即刻話畀老師聽。"
+    ],
+    "options": [
+      {
+        "id": "s-self-11-a",
+        "text": "說給老師聽",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "正確！保護自己同他人。"
+          }
+        ],
+        "next_scenario": "s-self-12"
+      },
+      {
+        "id": "s-self-11-b",
+        "text": "大力推返他",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "暴力不是解決方法。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "大力推返他",
+          "consequence": "暴力不是解決方法",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "playground",
+    "topicId": "social-boundary",
+    "creedIds": [
+      16
+    ],
+    "imagePrompt": "Boy being pushed during ball game, too close, playground, anime cartoon style, surprised, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-12",
+    "title": "社交距離：老師講故事",
+    "background": "課室",
+    "description": "老師講故事，你坐喺手臂距離聽。",
+    "hints": [
+      "老師同學生之間手臂距離係合宜。",
+      "你已經好識分辨社交距離！"
+    ],
+    "options": [
+      {
+        "id": "s-self-12-a",
+        "text": "專心聽故事",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你完成社交距離學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-12-b",
+        "text": "坐得太近",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "記住保持手臂距離。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "坐得太近",
+          "consequence": "記住保持手臂距離",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      22,
+      16
+    ],
+    "imagePrompt": "Boy sitting at arm's length listening to teacher, appropriate distance, classroom, anime cartoon style, no text, 16:9",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "say no",
+      "保護私隱"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-130",
+    "title": "社交界線：同學想睇你電話",
+    "background": "課室・小息",
+    "description": "同學小強借你部電話玩下，跟住開始睇你 WhatsApp 同相簿。你會……",
+    "hints": [
+      "私隱係身體界線嘅延伸",
+      "say no 唔使內疚",
+      "朋友都唔可以侵犯私隱"
+    ],
+    "characters": [
+      {
+        "name": "小強",
+        "emoji": "👦",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-130-a",
+        "text": "扮沒東西，給他繼續看",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你放棄私隱，朋友會以為你接受。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "扮沒東西，給他繼續看",
+          "consequence": "你放棄私隱，朋友會以為你接受",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-130-b",
+        "text": "拎返電話說「這個是我私隱」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你保護私隱，係社交界線的榜樣！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-130-c",
+        "text": "拎返電話+清楚說界線+解釋為什麼這麼重要",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你保護+教育，係社交界線高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "保護私隱",
+      "say no",
+      "say stop"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child taking back phone from friend who was looking at private messages, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-131",
+    "title": "社交界線：朋友講朋友壞話",
+    "background": "校巴・放學",
+    "description": "朋友喺校巴度同你講另一個朋友嘅壞話，叫你唔好同佢做朋友。你會……",
+    "hints": [
+      "唔應該參與講人是非",
+      "可以做個好朋友但唔做壞話嘅傳聲筒",
+      "直接話唔想聽"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-131-a",
+        "text": "一齊講+附和",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你參與是非，破壞了另一個朋友的名譽。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "一齊講+附和",
+          "consequence": "你參與是非，破壞了另一個朋友的名譽",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-131-b",
+        "text": "「我不想講人是非」就停",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你守住界線，係正義的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-131-c",
+        "text": "「我哋不應該這麼講」+建議傾其他東西",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你主動保護朋友名譽，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school_bus",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "保護朋友"
+    ],
+    "imagePrompt": "Hong Kong child on school bus, friend whispering gossip, child looking uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-132",
+    "title": "社交界線：同學迫你入 WhatsApp group",
+    "background": "課室・小息",
+    "description": "同學想你加入一個 WhatsApp group，但你唔想。你會……",
+    "hints": [
+      "say no 唔需要解釋",
+      "可以話「我而家唔想加入」",
+      "可以 block 或靜音"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-132-a",
+        "text": "勉強加入",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你勉強自己，會被困擾。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "勉強加入",
+          "consequence": "你勉強自己，會被困擾",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-132-b",
+        "text": "「我現在不想加入」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你清楚表達，係社交界線的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-132-c",
+        "text": "清楚表達+解釋為什麼+建議其他聯絡方式",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你表達清晰又體諒，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "身體界線",
+      "保護私隱"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, friend showing phone with WhatsApp group, child politely declining, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-133",
+    "title": "社交界線：朋友迫你分享零食",
+    "background": "課室・小息",
+    "description": "你帶咗自己嘅零食，朋友話「你嗰啲要分我哋食㗎嘛」。你會……",
+    "hints": [
+      "自己嘅嘢可以選擇分享",
+      "say no 唔代表細氣",
+      "朋友要尊重你嘅選擇"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-133-a",
+        "text": "「好了」就給他們",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你被朋友情緒勒索，自己沒了零吃。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "好了就給他們",
+          "consequence": "你被朋友情緒勒索，自己沒了零吃",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-133-b",
+        "text": "「我想留返自己吃」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你清楚表達，係社交界線的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-133-c",
+        "text": "清楚表達+提議下次可以一齊買",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你守界又提議方案，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "表達意願"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child holding snack box, friends reaching for it, child looking thoughtful, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-134",
+    "title": "社交界線：朋友講笑過咗火",
+    "background": "操場・小息",
+    "description": "朋友用你個花名笑你，你覺得過咗火想喊。你會……",
+    "hints": [
+      "花名可以係開玩笑但都可以係欺凌",
+      "say no 唔代表你玩唔起",
+      "情緒係真實嘅"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-134-a",
+        "text": "笑住扮沒東西",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你壓抑感受，朋友以為你 OK 會繼續。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "笑住扮沒東西",
+          "consequence": "你壓抑感受，朋友以為你 OK 會繼續",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-134-b",
+        "text": "「你再這麼講我真是嬲」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你表達感受，係社交界線的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-134-c",
+        "text": "「我哋談下你為什麼喜歡這麼叫我」+表達感受",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你冷靜溝通又守界，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "playground",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "表達感受"
+    ],
+    "imagePrompt": "Hong Kong school playground, child looking hurt as friend laughs, child on verge of tears, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-135",
+    "title": "社交界線：朋友偷睇你日記",
+    "background": "屋企・睡房",
+    "description": "朋友嚟你屋企玩時偷睇你本日記。你下次會點做？",
+    "hints": [
+      "日記係絕對私隱",
+      "可以收埋或鎖起",
+      "say no 唔代表唔鍾意朋友"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-135-a",
+        "text": "扮不知",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你不出聲，朋友會以為可以再看。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "扮不知",
+          "consequence": "你不出聲，朋友會以為可以再看",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-135-b",
+        "text": "下次收起日記+同朋友講呢樣是私隱",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你保護私隱+溝通，係社交界線的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-135-c",
+        "text": "收起日記+清楚表達界線+說「呢樣你不可以看」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你清晰+直接，係高手私隱保護！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "保護私隱",
+      "say no",
+      "say stop"
+    ],
+    "imagePrompt": "Hong Kong child putting diary in locked drawer, friend sitting nearby, bedroom afternoon light, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-136",
+    "title": "社交界線：同學迫你一齊整蠱人",
+    "background": "課室・小息",
+    "description": "同學話「一齊整蠱小英啦」，佢哋準備整蠱小英。你會……",
+    "hints": [
+      "整蠱可以變成欺凌",
+      "say no 唔代表唔合群",
+      "保護無辜嘅人係好事"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-136-a",
+        "text": "一齊整蠱",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -18,
+            "comment": "你參與欺凌，會傷害小英。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "一齊整蠱",
+          "consequence": "你參與欺凌，會傷害小英",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-136-b",
+        "text": "「我不想整蠱人」就離開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你守住界線，係正義的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-136-c",
+        "text": "「呢樣不要笑」+建議叫小英來一齊玩+保護他",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你保護無辜的人，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "保護朋友"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, group of children planning prank on another child, one child looking uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-137",
+    "title": "社交界線：朋友想你分享家庭狀況",
+    "background": "公園・玩耍",
+    "description": "朋友問「你哋屋企有冇錢」、「你爸爸做咩工」，你想講又想保護家人私隱。你會……",
+    "hints": [
+      "家庭狀況係私隱",
+      "可以話「呢樣我唔想講」",
+      "唔使比較屋企有幾好"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-137-a",
+        "text": "「有錢㗎」吹大了講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你講大話保護自己，但會愈講愈多。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "有錢㗎吹大了講",
+          "consequence": "你講大話保護自己，但會愈講愈多",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-137-b",
+        "text": "「呢樣我不想講」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你保護私隱，係社交界線的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-137-c",
+        "text": "「呢樣我不想講」+轉說題講開心的事情",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你保護私隱+識轉移，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "保護私隱",
+      "say no",
+      "say stop"
+    ],
+    "imagePrompt": "Hong Kong children at park, friend asking personal questions, child looking thoughtful and saying no, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-138",
+    "title": "社交界線：朋友想攬你叫救命",
+    "background": "校巴・放學",
+    "description": "朋友喺校巴度熱到想除衫，問你「你除唔除」/「你個袋入面有咩」/「俾我攬吓」。你會……",
+    "hints": [
+      "say no 唔需要解釋",
+      "朋友都要尊重界線",
+      "可以話「我覺得唔舒服」"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-138-a",
+        "text": "勉強給他攬",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略自己的感受，朋友會繼續。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "勉強給他攬",
+          "consequence": "你忽略自己的感受，朋友會繼續",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-138-b",
+        "text": "「我不想這樣」就推開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你守住界線，係身體自主的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-138-c",
+        "text": "「我不想給人攬」+解釋+要求對方尊重",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你清晰+教育，係社交界線高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school_bus",
+    "topicId": "social-boundary",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "身體界線"
+    ],
+    "imagePrompt": "Hong Kong child on school bus looking uncomfortable as friend reaches out, child pulling away, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  }
 ]

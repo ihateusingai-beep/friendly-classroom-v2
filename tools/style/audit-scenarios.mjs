@@ -47,6 +47,8 @@ const COLLOQUIAL_MARKERS = [
 
 const ACCEPTED_COMPOUNDS = [
   '說話', '廣東話', '白話', '官話', '對話', '空話', '實話',
+  // Sprint 17 additions — standard written compound nouns
+  '大話', '講大話', '講話', '感謝的話', '真心話', '心底話', '電話',
 ];
 
 const LENGTH_LIMITS = {

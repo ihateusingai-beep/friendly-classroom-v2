@@ -1,1082 +1,1172 @@
 [
-{
-"id": "s-self-32",
-"title": "感恩父母：爸爸返內地唔好要求",
-"background": "屋企",
-"description": "爸爸返咗一日工好攰，坐喺梳化抖下。你見到玩具店有個新模型好靚，你會……",
-"hints": [
-"爸爸賺錢返工好辛苦，要感恩佢。",
-"儲利是錢自己買係負責任嘅做法。"
-],
-"options": [
-{
-"id": "s-self-32-a",
-"text": "「我儲利是錢自己買」",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你好有責任感！"
-}
-],
-"next_scenario": "s-self-33"
-},
-{
-"id": "s-self-32-b",
-"text": "「爸爸你買俾我啦」",
-"effects": [
-{
-"moralChange": -15,
-"comment": "爸爸辛苦返工，唔可以加佢負擔。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-32-c",
-"text": "「我唔需要喇」",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你好識得體諒爸爸！"
-}
-],
-"next_scenario": "s-self-33"
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-14,
-16
-],
-"imagePrompt": "Young Chinese boy with dad returning from work, boy not demanding gift, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"尊敬父母",
-"問候家人",
-"照顧家人"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-49",
-"title": "孝親：幫媽媽執屋企",
-"background": "屋企・客廳",
-"description": "媽媽放工返嚟好攰，坐喺梳化。你見到地下有玩具同衣物散滿地，你會……",
-"hints": [
-"媽媽返嚟仲要做家務，你可以幫手分擔。",
-"幫手做家務係孝順嘅表現。"
-],
-"options": [
-{
-"id": "s-self-49-a",
-"text": "自己繼續玩玩具",
-"effects": [
-{
-"moralChange": -15,
-"comment": "眼白白睇媽媽辛苦而唔幫手，會令媽媽更攰。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-49-b",
-"text": "幫手執玩具同衫",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你好孝順又體諒媽媽！"
-}
-],
-"next_scenario": "s-self-50"
-},
-{
-"id": "s-self-49-c",
-"text": "叫細佬去執",
-"effects": [
-{
-"moralChange": -10,
-"comment": "自己都應該做，唔可以推俾細佬。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-21,
-19
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy helping mom tidy the living room at home, caring and filial, warm home lighting, no text, no logos, 16:9",
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"尊敬父母",
-"問候家人",
-"照顧家人"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-50",
-"title": "孝親：問候爸爸媽媽",
-"background": "屋企・晚飯",
-"description": "爸爸媽媽返咗一日工開門返屋企，你攞緊電話玩遊戲。你會……",
-"hints": [
-"主動問候家人係有禮貌嘅表現。",
-"一個簡單嘅「返嚟喇」就令家人好溫暖。"
-],
-"options": [
-{
-"id": "s-self-50-a",
-"text": "繼續玩電話唔理佢",
-"effects": [
-{
-"moralChange": -15,
-"comment": "忽略家人會令佢哋覺得唔被重視。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-50-b",
-"text": "主動行去問候",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你好有禮貌，爸爸媽媽會好開心！"
-}
-],
-"next_scenario": "s-self-51"
-},
-{
-"id": "s-self-50-c",
-"text": "等佢哋自己嚟搵你",
-"effects": [
-{
-"moralChange": -5,
-"comment": "主動問候會更好。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-21,
-16
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy warmly greeting parents when they come home, loving family moment, cozy home, no text, no logos, 16:9",
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"尊敬父母",
-"問候家人",
-"照顧家人"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-51",
-"title": "孝親：唔好同父母嘈",
-"background": "屋企・客廳",
-"description": "媽媽話：「你今日玩咗好耐電話，要休息喇。」你覺得未夠，你會……",
-"hints": [
-"媽媽係為你好，冷靜溝通會令佢明白你。",
-"大聲頂嘴會令大家都唔開心。"
-],
-"options": [
-{
-"id": "s-self-51-a",
-"text": "大聲頂嘴鬧返佢",
-"effects": [
-{
-"moralChange": -20,
-"comment": "頂嘴係唔尊重媽媽，會令關係變差。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-51-b",
-"text": "冷靜咁講自己嘅諗法",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你識得尊重媽媽又表達自己！"
-}
-],
-"next_scenario": "s-self-52"
-},
-{
-"id": "s-self-51-c",
-"text": "唔出聲走入房",
-"effects": [
-{
-"moralChange": -10,
-"comment": "走開唔溝通，會令媽媽擔心。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-21,
-16
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy calmly talking to mom instead of arguing, respectful conversation at home, warm tones, no text, no logos, 16:9",
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"尊敬父母",
-"問候家人",
-"照顧家人"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-52",
-"title": "孝親：記住父母生日",
-"background": "屋企・書桌",
-"description": "媽媽生日就快到，你見到日曆寫住個日期。你會點做？",
-"hints": [
-"記住父母生日係孝順嘅表現。",
-"自己準備嘅小禮物比用錢買嘅更珍貴。"
-],
-"options": [
-{
-"id": "s-self-52-a",
-"text": "「我完全唔記得呀」",
-"effects": [
-{
-"moralChange": -15,
-"comment": "唔記得父母生日，會令媽媽好失望。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-52-b",
-"text": "自己畫張卡送佢",
-"effects": [
-{
-"moralChange": 20,
-"comment": "你好孝順，媽媽收到一定好感動！"
-}
-],
-"next_scenario": "s-self-53"
-},
-{
-"id": "s-self-52-c",
-"text": "叫爸爸買禮物送佢",
-"effects": [
-{
-"moralChange": 8,
-"comment": "自己親手準備更有心意。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-21,
-19
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy making a small handmade gift for mom's birthday at desk, loving and thoughtful, warm home, no text, no logos, 16:9",
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"尊敬父母",
-"問候家人",
-"照顧家人"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-53",
-"title": "孝親：照顧生病嘅家人",
-"background": "屋企・房間",
-"description": "媽媽病咗，瞓喺床休息，聲音好虛弱。你聽到佢叫：「俾杯水我……」你會……",
-"hints": [
-"照顧生病嘅家人係孝順嘅表現。",
-"爸爸忙嘅時候你都可以幫手。"
-],
-"options": [
-{
-"id": "s-self-53-a",
-"text": "繼續自己玩唔理佢",
-"effects": [
-{
-"moralChange": -18,
-"comment": "媽媽病咗仲要叫喊你，會好傷心。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-53-b",
-"text": "即刻去倒杯暖水",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你嘅愛心令媽媽好安慰！"
-}
-],
-"next_scenario": "s-self-54"
-},
-{
-"id": "s-self-53-c",
-"text": "「叫爸爸啦」就走開",
-"effects": [
-{
-"moralChange": 5,
-"comment": "自己都應該幫手照顧。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-21,
-15
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy bringing water to sick mom in bed, caring filial action, warm bedroom lighting, no text, no logos, 16:9",
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"尊敬父母",
-"問候家人",
-"照顧家人"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-54",
-"title": "孝親：感恩父母養育",
-"background": "屋企・飯桌",
-"description": "今日一家人一齊坐喺飯枱食飯，媽媽煮咗你至愛嘅餸。你會……",
-"hints": [
-"一家人齊齊整整食飯係好幸福嘅事。",
-"對家人表達感恩會令大家都開心。"
-],
-"options": [
-{
-"id": "s-self-54-a",
-"text": "覺得好普通冇咩特別",
-"effects": [
-{
-"moralChange": 5,
-"comment": "但要珍惜呢份幸福。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-54-b",
-"text": "「多謝爸爸媽媽煮飯」",
-"effects": [
-{
-"moralChange": 20,
-"comment": "你完成孝親學習！badge +10分"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-54-c",
-"text": "快快食完就閃",
-"effects": [
-{
-"moralChange": -5,
-"comment": "一家人食飯係溝通嘅時間，要珍惜。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-21,
-14
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy saying thank you to parents at family dinner table, grateful and loving moment, warm cozy home, no text, no logos, 16:9",
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"尊敬父母",
-"問候家人",
-"照顧家人"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-157",
-"title": "孝親：幫媽媽做家務",
-"background": "屋企・廚房・晚飯後",
-"description": "媽媽煮完飯好攰，叫你幫手洗碗或摺衫。你會……",
-"hints": [
-"孝親唔係物質",
-"幫手做家務就係孝順",
-"媽媽都會老，你都會長大"
-],
-"characters": [
-{
-"name": "媽媽",
-"emoji": "👩",
-"initial_relationship": 85
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-157-a",
-"text": "「我好攰」就坐低睇電視",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你忽略媽媽嘅辛勞，唔係孝順。"
-}
-]
-},
-{
-"id": "s-self-157-b",
-"text": "「好呀」就幫手做一樣",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你幫手，係孝親嘅表現！"
-}
-]
-},
-{
-"id": "s-self-157-c",
-"text": "「媽媽你坐低休息」就洗碗+摺衫+抹枱",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你主動照顧媽媽，係孝親高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-12
-],
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"幫手做家務",
-"照顧家人",
-"感恩"
-],
-"imagePrompt": "Hong Kong mother and child in home kitchen, child washing dishes, mother resting on chair, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-158",
-"title": "孝親：媽媽生日",
-"background": "屋企・客廳",
-"description": "媽媽生日就嚟到，你零用錢唔多，想送份禮物。你會……",
-"hints": [
-"禮物貴唔係最重要",
-"手寫卡或幫手做嘢已經好珍貴",
-"孝心比物質重要"
-],
-"characters": [
-{
-"name": "媽媽",
-"emoji": "👩",
-"initial_relationship": 85
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-158-a",
-"text": "「冇錢咩都唔送」就算",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你忽略媽媽嘅生日，唔係孝順。"
-}
-]
-},
-{
-"id": "s-self-158-b",
-"text": "用零用錢買張心意卡寫低感謝嘅話",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你用心意表達，係孝親嘅表現！"
-}
-]
-},
-{
-"id": "s-self-158-c",
-"text": "手寫卡 + 自己整早餐 + 全日幫手做家務",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你用全日行動表達孝心，係高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-12
-],
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"感恩",
-"照顧家人",
-"聆聽"
-],
-"imagePrompt": "Hong Kong child making handmade birthday card at home desk for mother, evening light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-159",
-"title": "孝親：爸爸返夜",
-"background": "屋企・客廳・晚上",
-"description": "爸爸OT返到好夜先返嚟，你聽到門聲但你已經準備瞓。你會……",
-"hints": [
-"簡單問候係孝心",
-"可以留定宵夜",
-"爸媽工作都係為咗你"
-],
-"characters": [
-{
-"name": "爸爸",
-"emoji": "👨",
-"initial_relationship": 80
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-159-a",
-"text": "扮瞓著，唔理爸爸",
-"effects": [
-{
-"character": "自己",
-"change": -8,
-"moralChange": -8,
-"comment": "你錯過咗關心爸爸嘅機會。"
-}
-]
-},
-{
-"id": "s-self-159-b",
-"text": "走出嚟同爸爸講句「辛苦喇」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你簡單問候，係孝親嘅表現！"
-}
-]
-},
-{
-"id": "s-self-159-c",
-"text": "出嚟問候+留定宵夜+攬吓爸爸",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你全面照顧爸爸，係孝親高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-12
-],
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"照顧家人",
-"聆聽",
-"感恩"
-],
-"imagePrompt": "Hong Kong father returning home late, child greeting him with warm hug at door, evening hallway light, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-160",
-"title": "孝親：嫲嫲行路慢",
-"background": "商場・下午",
-"description": "嫲嫲同你行商場，佢行得好慢，你想行快啲去玩具部。你會……",
-"hints": [
-"老人家行得慢係正常",
-"陪住佢慢慢行",
-"可以幫佢攞嘢"
-],
-"characters": [
-{
-"name": "嫲嫲",
-"emoji": "👵",
-"initial_relationship": 80
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-160-a",
-"text": "「你慢慢行」就自己跑咗去",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你丟低咗嫲嫲，唔係孝親。"
-}
-]
-},
-{
-"id": "s-self-160-b",
-"text": "陪住嫲嫲慢慢行",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你陪伴，係孝親嘅表現！"
-}
-]
-},
-{
-"id": "s-self-160-c",
-"text": "陪住行+幫手攞袋+講笑話令佢開心",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你全面照顧嫲嫲，係孝親高手！"
-}
-]
-}
-],
-"location": "mall",
-"topicId": "filial-piety",
-"creedIds": [
-12
-],
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"陪伴",
-"照顧家人",
-"聆聽"
-],
-"imagePrompt": "Hong Kong child walking slowly with grandmother in shopping mall, holding her bag, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-161",
-"title": "孝親：父母吵架",
-"background": "屋企・客廳・晚上",
-"description": "你聽到爸爸媽媽喺房鬧交好大聲，你會……",
-"hints": [
-"父母嘅事佢哋自己解決",
-"唔需要介入",
-"可以搵個安全地方"
-],
-"characters": [
-{
-"name": "爸爸",
-"emoji": "👨",
-"initial_relationship": 80
-},
-{
-"name": "媽媽",
-"emoji": "👩",
-"initial_relationship": 85
-}
-],
-"options": [
-{
-"id": "s-self-161-a",
-"text": "走去大聲叫佢哋唔好嘈",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你介入大人嘅事，可能會令情況更差。"
-}
-]
-},
-{
-"id": "s-self-161-b",
-"text": "返自己房+搵信任嘅大人傾",
-"effects": [
-{
-"character": "自己",
-"change": 10,
-"moralChange": 12,
-"comment": "你保護自己，係成熟嘅做法。"
-}
-]
-},
-{
-"id": "s-self-161-c",
-"text": "返房+等佢哋冷靜+之後寫封信俾佢哋表達感受",
-"effects": [
-{
-"character": "自己",
-"change": 22,
-"moralChange": 22,
-"comment": "你冷靜+智慧表達，係孝親高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-12
-],
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"聆聽",
-"照顧家人",
-"情緒管理"
-],
-"imagePrompt": "Hong Kong child in bedroom with door closed, parents arguing in background, evening light, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-162",
-"title": "孝親：教嫲嫲用手機",
-"background": "屋企・客廳",
-"description": "嫲嫲唔識用手機睇 WhatsApp，你想自己用。你會……",
-"hints": [
-"教長輩用科技係孝心",
-"耐性好重要",
-"可以一齊學"
-],
-"characters": [
-{
-"name": "嫲嫲",
-"emoji": "👵",
-"initial_relationship": 80
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-162-a",
-"text": "「你自己慢慢搵啦」就自己玩",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你冇耐性，嫲嫲會好孤獨。"
-}
-]
-},
-{
-"id": "s-self-162-b",
-"text": "教嫲嫲基本點按",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你肯教，係孝親嘅表現！"
-}
-]
-},
-{
-"id": "s-self-162-c",
-"text": "一對一慢慢教+寫低步驟+之後跟進",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你用系統教嫲嫲，係孝親高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-12
-],
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"照顧家人",
-"陪伴",
-"耐性"
-],
-"imagePrompt": "Hong Kong child teaching grandmother how to use smartphone, sitting together on sofa, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-163",
-"title": "孝親：爸爸病咗",
-"background": "屋企・客廳",
-"description": "爸爸感冒病咗瞓喺床，媽媽返緊工。你會……",
-"hints": [
-"家人病咗要照顧",
-"可以幫手攞水、叫外賣",
-"唔好打擾佢休息"
-],
-"characters": [
-{
-"name": "爸爸",
-"emoji": "👨",
-"initial_relationship": 80
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-163-a",
-"text": "自己玩遊戲，唔理爸爸",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你忽略病咗嘅爸爸，唔係孝親。"
-}
-]
-},
-{
-"id": "s-self-163-b",
-"text": "幫爸爸攞水+問佢要唔要嘢食",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你照顧爸爸，係孝親嘅表現！"
-}
-]
-},
-{
-"id": "s-self-163-c",
-"text": "攞水+叫外賣+定時問候+寫低照顧事項",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你全面照顧，係孝親高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "filial-piety",
-"creedIds": [
-12
-],
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"照顧家人",
-"陪伴",
-"聆聽"
-],
-"imagePrompt": "Hong Kong child bringing water to sick father lying in bed, gentle morning light, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-164",
-"title": "孝親：同爸媽去飲茶",
-"background": "酒樓・早上",
-"description": "周日同爸媽去飲茶，爸媽問你想食咩，你淨係想要自己鍾意嘅嘢。你會……",
-"hints": [
-"可以表達意願",
-"但要留意爸媽想食咩",
-"孝親係互相"
-],
-"characters": [
-{
-"name": "爸爸",
-"emoji": "👨",
-"initial_relationship": 80
-},
-{
-"name": "媽媽",
-"emoji": "👩",
-"initial_relationship": 85
-}
-],
-"options": [
-{
-"id": "s-self-164-a",
-"text": "「我要蝦餃燒賣」就淨叫自己嘅",
-"effects": [
-{
-"character": "自己",
-"change": -8,
-"moralChange": -8,
-"comment": "你忽略爸媽嘅意願。"
-}
-]
-},
-{
-"id": "s-self-164-b",
-"text": "「我想食 X，你哋想食咩？」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你表達意願又聆聽，係孝親！"
-}
-]
-},
-{
-"id": "s-self-164-c",
-"text": "「你哋想食咩先？我再揀」+幫手倒茶",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你照顧爸媽又主動服務，係孝親高手！"
-}
-]
-}
-],
-"location": "restaurant",
-"topicId": "filial-piety",
-"creedIds": [
-12
-],
-"valueCategory": "filial-piety",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"聆聽",
-"照顧家人",
-"感恩"
-],
-"imagePrompt": "Hong Kong family at dim sum restaurant, child pouring tea for parents, morning sunlight, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
-"subjectId": "value"
-}
+  {
+    "id": "s-self-32",
+    "title": "感恩父母：爸爸返內地唔好要求",
+    "background": "屋企",
+    "description": "爸爸返咗一日工好攰，坐喺梳化抖下。你見到玩具店有個新模型好靚，你會……",
+    "hints": [
+      "爸爸賺錢返工好辛苦，要感恩佢。",
+      "儲利是錢自己買係負責任嘅做法。"
+    ],
+    "options": [
+      {
+        "id": "s-self-32-a",
+        "text": "「我儲利是錢自己買」",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有責任感！"
+          }
+        ],
+        "next_scenario": "s-self-33"
+      },
+      {
+        "id": "s-self-32-b",
+        "text": "「爸爸你買給我」",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "爸爸辛苦返工，不可以加他負擔。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "爸爸你買給我",
+          "consequence": "爸爸辛苦返工，不可以加他負擔",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-32-c",
+        "text": "「我不需要喇」",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識得體諒爸爸！"
+          }
+        ],
+        "next_scenario": "s-self-33"
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      14,
+      16
+    ],
+    "imagePrompt": "Young Chinese boy with dad returning from work, boy not demanding gift, warm home, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-49",
+    "title": "孝親：幫媽媽執屋企",
+    "background": "屋企・客廳",
+    "description": "媽媽放工返嚟好攰，坐喺梳化。你見到地下有玩具同衣物散滿地，你會……",
+    "hints": [
+      "媽媽返嚟仲要做家務，你可以幫手分擔。",
+      "幫手做家務係孝順嘅表現。"
+    ],
+    "options": [
+      {
+        "id": "s-self-49-a",
+        "text": "自己繼續玩玩具",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "眼白白看媽媽辛苦而不幫手，會令媽媽更攰。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "自己繼續玩玩具",
+          "consequence": "眼白白看媽媽辛苦而不幫手，會令媽媽更攰",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-49-b",
+        "text": "幫手執玩具同衫",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好孝順又體諒媽媽！"
+          }
+        ],
+        "next_scenario": "s-self-50"
+      },
+      {
+        "id": "s-self-49-c",
+        "text": "叫細佬去執",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "自己都應該做，不可以推給細佬。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "叫細佬去執",
+          "consequence": "自己都應該做，不可以推給細佬",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      21,
+      19
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy helping mom tidy the living room at home, caring and filial, warm home lighting, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-50",
+    "title": "孝親：問候爸爸媽媽",
+    "background": "屋企・晚飯",
+    "description": "爸爸媽媽返咗一日工開門返屋企，你攞緊電話玩遊戲。你會……",
+    "hints": [
+      "主動問候家人係有禮貌嘅表現。",
+      "一個簡單嘅「返嚟喇」就令家人好溫暖。"
+    ],
+    "options": [
+      {
+        "id": "s-self-50-a",
+        "text": "繼續玩電話不理他",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "忽略家人會令他們覺得不被重視。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "繼續玩電話不理他",
+          "consequence": "忽略家人會令他們覺得不被重視",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-50-b",
+        "text": "主動行去問候",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好有禮貌，爸爸媽媽會好開心！"
+          }
+        ],
+        "next_scenario": "s-self-51"
+      },
+      {
+        "id": "s-self-50-c",
+        "text": "等他們自己來找你",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "主動問候會更好。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "等他們自己來找你",
+          "consequence": "主動問候會更好",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      21,
+      16
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy warmly greeting parents when they come home, loving family moment, cozy home, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-51",
+    "title": "孝親：唔好同父母嘈",
+    "background": "屋企・客廳",
+    "description": "媽媽話：「你今日玩咗好耐電話，要休息喇。」你覺得未夠，你會……",
+    "hints": [
+      "媽媽係為你好，冷靜溝通會令佢明白你。",
+      "大聲頂嘴會令大家都唔開心。"
+    ],
+    "options": [
+      {
+        "id": "s-self-51-a",
+        "text": "大聲頂嘴鬧返他",
+        "effects": [
+          {
+            "moralChange": -20,
+            "comment": "頂嘴是不尊重媽媽，會令關是變差。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "大聲頂嘴鬧返他",
+          "consequence": "頂嘴是不尊重媽媽，會令關是變差",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-51-b",
+        "text": "冷靜這麼講自己的想法",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你識得尊重媽媽又表達自己！"
+          }
+        ],
+        "next_scenario": "s-self-52"
+      },
+      {
+        "id": "s-self-51-c",
+        "text": "不出聲走入房",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "離開不溝通，會令媽媽擔心。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "不出聲走入房",
+          "consequence": "離開不溝通，會令媽媽擔心",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      21,
+      16
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy calmly talking to mom instead of arguing, respectful conversation at home, warm tones, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-52",
+    "title": "孝親：記住父母生日",
+    "background": "屋企・書桌",
+    "description": "媽媽生日就快到，你見到日曆寫住個日期。你會點做？",
+    "hints": [
+      "記住父母生日係孝順嘅表現。",
+      "自己準備嘅小禮物比用錢買嘅更珍貴。"
+    ],
+    "options": [
+      {
+        "id": "s-self-52-a",
+        "text": "「我完全不記得呀」",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "不記得父母生日，會令媽媽好失望。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "我完全不記得呀",
+          "consequence": "不記得父母生日，會令媽媽好失望",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-52-b",
+        "text": "自己畫張卡送他",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你好孝順，媽媽收到一定好感動！"
+          }
+        ],
+        "next_scenario": "s-self-53"
+      },
+      {
+        "id": "s-self-52-c",
+        "text": "叫爸爸買禮物送他",
+        "effects": [
+          {
+            "moralChange": 8,
+            "comment": "自己親手準備更有心意。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      21,
+      19
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy making a small handmade gift for mom's birthday at desk, loving and thoughtful, warm home, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-53",
+    "title": "孝親：照顧生病嘅家人",
+    "background": "屋企・房間",
+    "description": "媽媽病咗，瞓喺床休息，聲音好虛弱。你聽到佢叫：「俾杯水我……」你會……",
+    "hints": [
+      "照顧生病嘅家人係孝順嘅表現。",
+      "爸爸忙嘅時候你都可以幫手。"
+    ],
+    "options": [
+      {
+        "id": "s-self-53-a",
+        "text": "繼續自己玩不理他",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "媽媽病了還要叫喊你，會好傷心。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "繼續自己玩不理他",
+          "consequence": "媽媽病了還要叫喊你，會好傷心",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-53-b",
+        "text": "即刻去倒杯暖水",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你的愛心令媽媽好安慰！"
+          }
+        ],
+        "next_scenario": "s-self-54"
+      },
+      {
+        "id": "s-self-53-c",
+        "text": "「叫爸爸」就離開",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "自己都應該幫手照顧。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      21,
+      15
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy bringing water to sick mom in bed, caring filial action, warm bedroom lighting, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-54",
+    "title": "孝親：感恩父母養育",
+    "background": "屋企・飯桌",
+    "description": "今日一家人一齊坐喺飯枱食飯，媽媽煮咗你至愛嘅餸。你會……",
+    "hints": [
+      "一家人齊齊整整食飯係好幸福嘅事。",
+      "對家人表達感恩會令大家都開心。"
+    ],
+    "options": [
+      {
+        "id": "s-self-54-a",
+        "text": "覺得好普通沒什麼特別",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "但要珍惜呢份幸福。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-54-b",
+        "text": "「謝謝爸爸媽媽煮飯」",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成孝親學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-54-c",
+        "text": "快快吃完就閃",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "一家人吃飯是溝通的時間，要珍惜。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "快快吃完就閃",
+          "consequence": "一家人吃飯是溝通的時間，要珍惜",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      21,
+      14
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy saying thank you to parents at family dinner table, grateful and loving moment, warm cozy home, no text, no logos, 16:9",
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "尊敬父母",
+      "問候家人",
+      "照顧家人"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-157",
+    "title": "孝親：幫媽媽做家務",
+    "background": "屋企・廚房・晚飯後",
+    "description": "媽媽煮完飯好攰，叫你幫手洗碗或摺衫。你會……",
+    "hints": [
+      "孝親唔係物質",
+      "幫手做家務就係孝順",
+      "媽媽都會老，你都會長大"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 85
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-157-a",
+        "text": "「我好攰」就坐低看電視",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略媽媽的辛勞，不是孝順。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "我好攰就坐低看電視",
+          "consequence": "你忽略媽媽的辛勞，不是孝順",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-157-b",
+        "text": "「好呀」就幫手做一樣",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你幫手，係孝親的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-157-c",
+        "text": "「媽媽你坐低休息」就洗碗+摺衫+抹枱",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你主動照顧媽媽，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "幫手做家務",
+      "照顧家人",
+      "感恩"
+    ],
+    "imagePrompt": "Hong Kong mother and child in home kitchen, child washing dishes, mother resting on chair, evening warm light, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-158",
+    "title": "孝親：媽媽生日",
+    "background": "屋企・客廳",
+    "description": "媽媽生日就嚟到，你零用錢唔多，想送份禮物。你會……",
+    "hints": [
+      "禮物貴唔係最重要",
+      "手寫卡或幫手做嘢已經好珍貴",
+      "孝心比物質重要"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 85
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-158-a",
+        "text": "「冇錢什麼都不送」就算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略媽媽的生日，不是孝順。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "冇錢什麼都不送就算",
+          "consequence": "你忽略媽媽的生日，不是孝順",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-158-b",
+        "text": "用零用錢買張心意卡寫低感謝的說",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你用心意表達，係孝親的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-158-c",
+        "text": "手寫卡 + 自己整早餐 + 全日幫手做家務",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用全日行動表達孝心，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "感恩",
+      "照顧家人",
+      "聆聽"
+    ],
+    "imagePrompt": "Hong Kong child making handmade birthday card at home desk for mother, evening light, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-159",
+    "title": "孝親：爸爸返夜",
+    "background": "屋企・客廳・晚上",
+    "description": "爸爸OT返到好夜先返嚟，你聽到門聲但你已經準備瞓。你會……",
+    "hints": [
+      "簡單問候係孝心",
+      "可以留定宵夜",
+      "爸媽工作都係為咗你"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-159-a",
+        "text": "扮睡著，不理爸爸",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你錯過了關心爸爸的機會。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "扮睡著，不理爸爸",
+          "consequence": "你錯過了關心爸爸的機會",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-159-b",
+        "text": "走出來同爸爸講句「辛苦喇」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你簡單問候，係孝親的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-159-c",
+        "text": "出來問候+留定宵夜+攬吓爸爸",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面照顧爸爸，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "照顧家人",
+      "聆聽",
+      "感恩"
+    ],
+    "imagePrompt": "Hong Kong father returning home late, child greeting him with warm hug at door, evening hallway light, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-160",
+    "title": "孝親：嫲嫲行路慢",
+    "background": "商場・下午",
+    "description": "嫲嫲同你行商場，佢行得好慢，你想行快啲去玩具部。你會……",
+    "hints": [
+      "老人家行得慢係正常",
+      "陪住佢慢慢行",
+      "可以幫佢攞嘢"
+    ],
+    "characters": [
+      {
+        "name": "嫲嫲",
+        "emoji": "👵",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-160-a",
+        "text": "「你慢慢行」就自己跑了去",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你丟低了嫲嫲，不是孝親。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "你慢慢行就自己跑了去",
+          "consequence": "你丟低了嫲嫲，不是孝親",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-160-b",
+        "text": "陪住嫲嫲慢慢行",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你陪伴，係孝親的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-160-c",
+        "text": "陪住行+幫手拿袋+講笑說令他開心",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面照顧嫲嫲，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "mall",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "陪伴",
+      "照顧家人",
+      "聆聽"
+    ],
+    "imagePrompt": "Hong Kong child walking slowly with grandmother in shopping mall, holding her bag, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-161",
+    "title": "孝親：父母吵架",
+    "background": "屋企・客廳・晚上",
+    "description": "你聽到爸爸媽媽喺房鬧交好大聲，你會……",
+    "hints": [
+      "父母嘅事佢哋自己解決",
+      "唔需要介入",
+      "可以搵個安全地方"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 80
+      },
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 85
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-161-a",
+        "text": "走去大聲叫他們不要嘈",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你介入大人的事，可能會令情況更差。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "走去大聲叫他們不要嘈",
+          "consequence": "你介入大人的事，可能會令情況更差",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-161-b",
+        "text": "返自己房+找信任的大人傾",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你保護自己，係成熟的做法。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-161-c",
+        "text": "返房+等他們冷靜+之後寫封信給他們表達感受",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你冷靜+智慧表達，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "聆聽",
+      "照顧家人",
+      "情緒管理"
+    ],
+    "imagePrompt": "Hong Kong child in bedroom with door closed, parents arguing in background, evening light, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-162",
+    "title": "孝親：教嫲嫲用手機",
+    "background": "屋企・客廳",
+    "description": "嫲嫲唔識用手機睇 WhatsApp，你想自己用。你會……",
+    "hints": [
+      "教長輩用科技係孝心",
+      "耐性好重要",
+      "可以一齊學"
+    ],
+    "characters": [
+      {
+        "name": "嫲嫲",
+        "emoji": "👵",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-162-a",
+        "text": "「你自己慢慢找」就自己玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你沒耐性，嫲嫲會好孤獨。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "你自己慢慢找就自己玩",
+          "consequence": "你沒耐性，嫲嫲會好孤獨",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-162-b",
+        "text": "教嫲嫲基本點按",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你肯教，係孝親的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-162-c",
+        "text": "一對一慢慢教+寫低步驟+之後跟進",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用系統教嫲嫲，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "照顧家人",
+      "陪伴",
+      "耐性"
+    ],
+    "imagePrompt": "Hong Kong child teaching grandmother how to use smartphone, sitting together on sofa, afternoon light, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-163",
+    "title": "孝親：爸爸病咗",
+    "background": "屋企・客廳",
+    "description": "爸爸感冒病咗瞓喺床，媽媽返緊工。你會……",
+    "hints": [
+      "家人病咗要照顧",
+      "可以幫手攞水、叫外賣",
+      "唔好打擾佢休息"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-163-a",
+        "text": "自己玩遊戲，不理爸爸",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你忽略病了的爸爸，不是孝親。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "自己玩遊戲，不理爸爸",
+          "consequence": "你忽略病了的爸爸，不是孝親",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-163-b",
+        "text": "幫爸爸拿水+問他要不要東西吃",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你照顧爸爸，係孝親的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-163-c",
+        "text": "拿水+叫外賣+定時問候+寫低照顧事項",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面照顧，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "照顧家人",
+      "陪伴",
+      "聆聽"
+    ],
+    "imagePrompt": "Hong Kong child bringing water to sick father lying in bed, gentle morning light, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-164",
+    "title": "孝親：同爸媽去飲茶",
+    "background": "酒樓・早上",
+    "description": "周日同爸媽去飲茶，爸媽問你想食咩，你淨係想要自己鍾意嘅嘢。你會……",
+    "hints": [
+      "可以表達意願",
+      "但要留意爸媽想食咩",
+      "孝親係互相"
+    ],
+    "characters": [
+      {
+        "name": "爸爸",
+        "emoji": "👨",
+        "initial_relationship": 80
+      },
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 85
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-164-a",
+        "text": "「我要蝦餃燒賣」就淨叫自己的",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你忽略爸媽的意願。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "我要蝦餃燒賣就淨叫自己的",
+          "consequence": "你忽略爸媽的意願",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-164-b",
+        "text": "「我想吃 X，你們想吃什麼？」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你表達意願又聆聽，係孝親！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-164-c",
+        "text": "「你們想吃什麼先？我再揀」+幫手倒茶",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你照顧爸媽又主動服務，係孝親高手！"
+          }
+        ]
+      }
+    ],
+    "location": "restaurant",
+    "topicId": "filial-piety",
+    "creedIds": [
+      12
+    ],
+    "valueCategory": "filial-piety",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "聆聽",
+      "照顧家人",
+      "感恩"
+    ],
+    "imagePrompt": "Hong Kong family at dim sum restaurant, child pouring tea for parents, morning sunlight, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+    "subjectId": "value"
+  }
 ]
