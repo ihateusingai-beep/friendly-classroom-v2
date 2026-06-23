@@ -87,13 +87,13 @@ export function renderTeacher() {
 
       <div class="card fc-mt-16">
         <div style="font-weight:600;margin-bottom:10px">📚 科目總覽</div>
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px" role="list" aria-label="科目總覽" class="subject-grid">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap: var(--space-3)" role="list" aria-label="科目總覽" class="subject-grid">
           ${getAllSubjects().map(sub => {
             const totalCompleted = students.reduce((acc, s) => acc + (s.subjectProgress?.[sub.id]?.completed || 0), 0);
             const totalPossible = students.reduce((acc, s) => acc + (s.subjectProgress?.[sub.id]?.total || 0), 0);
             const pct = totalPossible ? Math.round((totalCompleted / totalPossible) * 100) : 0;
             return `
-              <div style="background:${sub.color}18;border:2px solid ${sub.color};border-radius:12px;padding:12px;text-align:center" role="listitem"
+              <div style="background:${sub.color}18;border:2px solid ${sub.color};border-radius:12px;padding: var(--space-3);text-align:center" role="listitem"
                 aria-label="${sub.title}，全班完成 ${totalCompleted}/${totalPossible} 題，${pct}%">
                 <div style="font-size:var(--fs-xl);margin-bottom:4px" aria-hidden="true">${sub.emoji}</div>
                 <div style="font-weight:700;font-size:var(--fs-lg);color:${sub.color}">${totalCompleted}/${totalPossible}</div>

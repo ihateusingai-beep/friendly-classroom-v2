@@ -394,13 +394,13 @@ import { t } from './i18n.js';
 function renderErrorFallback(e) {
   return `
     <div class="container fade-in" role="alert" aria-live="assertive">
-      <div class="card fc-center" style="padding:32px 20px">
+      <div class="card fc-center" style="padding: var(--space-7) var(--space-5)">
         <div style="font-size:3em;margin-bottom:12px" aria-hidden="true">⚠️</div>
         <h2 style="margin-bottom:8px">${t('error.fallbackTitle')}</h2>
         <p class="fc-muted fc-mb-16">
           ${t('error.fallbackHint')}
         </p>
-        <details style="text-align:left;background:var(--bg);border-radius:8px;padding:12px;margin-bottom:16px;font-size:var(--fs-base)">
+        <details style="text-align:left;background:var(--bg);border-radius:8px;padding: var(--space-3);margin-bottom:16px;font-size:var(--fs-base)">
           <summary style="cursor:pointer;font-weight:600">🔍 技術細節</summary>
           <pre style="white-space:pre-wrap;margin-top:8px;color:var(--danger)">${e.message}</pre>
         </details>
