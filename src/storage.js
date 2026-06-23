@@ -45,6 +45,11 @@ export const STORAGE_KEYS = Object.freeze({
   // picked 價值觀教育; 'caring' for 友愛校園; 'all' if no subject yet.
   HOME_FILTER: 'fc_home_filter',
 
+  // Sprint 18 P1: first-visit onboarding completion flag.
+  // 首次進入 app 嗰陣 show 教學 carousel,完成後 set true。
+  // 「重看教學」喺 settings 入面,reset flag 後 re-show。
+  ONBOARDING_DONE: 'fc_onboarding_done',
+
   // Analytics
   INTERACTIONS: 'fc_interactions_v1',
 

@@ -1,8 +1,8 @@
-# 友愛教室 V3 — 完整規格書 (v3.8)
+# 友愛教室 V3 — 完整規格書 (v3.9)
 
 > 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
 >
-> *規格日期：2026-06-13 | 最後更新：2026-06-23（v3.8 addendum: §18 Sprint 17 — 其餘 16 個 topic 文字書面語化 + stopAndThink 全量補齊, scenarios_v2.mjs generalize, formalize 詞組白名單, 配套 9 個新 unit test）*
+> *規格日期：2026-06-13 | 最後更新：2026-06-23（v3.9 addendum: §19 Sprint 18 — TTS button 大細 bump (WCAG 2.5.5 ≥ 44×44) + 首次使用教學 onboarding carousel + audit-touch-targets tool, 配套 20 個新 unit test）*
 
 ---
 
@@ -1892,4 +1892,122 @@ window.FC.speak* (Sprint 12+13 bridge)
 ---
 
 *Addendum 日期:2026-06-22 | 配合 Sprint 16 開工 | 取代/補充:§16 唔變,純新增 §17 | 維護者: Mavis + kencheng*
+
+---
+
+## 19. v3.9 Addendum — Sprint 18 TTS button 大細 bump + 首次使用 onboarding
+
+### 19.1 改動範圍（user-reported accessibility issue）
+
+SEN 學生 feedback: 選項卡片嘅「朗讀答案」button 太細，28×28 px 細到唔易撳。對 6-12 歲 SEN 學童嚟講，touch target 應該 ≥ 44×44 (WCAG 2.5.5 Level AAA, Material Design guideline)。
+
+| Button | Before | After | Reason |
+|---|---|---|---|
+| `.option-card .opt-read` (答案朗讀) | 28×28 | **48×48** | user-reported P0 |
+| `.scenario-desc .inline-voice-btn` (題目朗讀) | 32×32 | **48×48** | consistency |
+| `.voice-btn-row .inline-voice-btn` (答錯反思 / 後果) | 8/14 padding, 1em | **min-height 48px**, 12/20 padding, 1.05em | TTS prominence |
+| `.voice-fab` (浮動 creeds) | 52×52 | **56×56** + explicit min-* | consistency + clarity |
+| `.onboarding-cta` (新 primary button) | n/a | **52px** | WCAG 2.5.5 |
+
+### 19.2 首次使用教學 carousel (P1)
+
+3 步連續 full-screen overlay（唔係 modal — SEN 學生 focus 易飄）：
+
+1. **👆 揀你嘅選擇** — option card mockup,展示 "1" badge + 文字
+2. **🔊 聆聽題目** — 48×48 voice button mockup,提示 "個掣而家有 48×48，唔再細過一撳就中！"
+3. **💭 停一停想一想** — stop-and-think card mockup with 🔊 答案 / 🔊 反思 pills
+
+每步：
+- Big emoji (5em) + 標題 + 描述
+- 視覺 mockup (concrete example,唔係抽象文字)
+- Pagination dots (3 個)
+- 「略過」 button (any-time escape)
+- 「下一頁 →」 / 「開始啦 🚀」 CTA (gradient purple→blue,52px tall)
+
+**State machine**:
+```
+needsOnboarding() returns true on first visit
+  → state.view = 'onboarding' (boot)
+  → click "下一頁" → step++ (renders via render())
+  → click "開始啦" (last) → finishOnboarding() sets flag, setView('role-select')
+  → click "略過" any time → same as finishOnboarding
+
+fc_onboarding_done (localStorage) — boolean
+  → default false → show
+  → set true → never show again (除非「重看教學」)
+```
+
+**「重看教學」入口**: Settings 第一張 card,清晰同 analytics / TTS 設定分開。Click → reset step counter + setView('onboarding') + render。**唔清除 flag** (one-time replay,下次 boot 仍係直接去 role-select)。
+
+### 19.3 audit-touch-targets.mjs (P2)
+
+Static CSS audit tool — 唔需要 dev server,sub-second 跑完。
+
+**Usage**:
+```bash
+npm run audit:touch-targets    # exit 0 = pass, 1 = violations
+node tools/a11y/audit-touch-targets.mjs src/style.css  # custom path
+```
+
+**Targets audited** (7 selectors):
+- `.option-card .opt-read`
+- `.scenario-desc .inline-voice-btn`
+- `.voice-btn-row .inline-voice-btn`
+- `.voice-fab`
+- `.onboarding-cta`
+- `.mock-voice-btn`
+- `.mock-voice-pill`
+
+**Extraction logic**: parse CSS into rules → match selector → extract `width` / `min-width` / `height` / `min-height` → flag any < 44px.
+
+**CI guard**: `tests/sprint18-touch-targets.test.js` 嘅 "audit:touch-targets passes" test exits 1 if any violation — 任何人將來改 CSS 令 TTS button 縮細過 44px,CI 即 catch。
+
+### 19.4 Tests (Sprint 18 done = ✅)
+
+| File | Count | Coverage |
+|---|---|---|
+| `tests/sprint18-touch-targets.test.js` | 6 | opt-read / scenario-desc / voice-btn-row / voice-fab / onboarding-cta 都 ≥ 44×44 + audit tool exit code |
+| `tests/sprint18-onboarding.test.js` | 14 | 3 slides render / CTA label changes / state machine / fc_onboarding_done flag / VIEWS registry / boot logic / replayOnboarding action / settings page link |
+| **Total** | **20 new** | (was 104, now 124) |
+
+### 19.5 Acceptance criteria (Sprint 18 done = ✅)
+
+- [x] User-reported: opt-read 28→48px (P0)
+- [x] Result screen TTS buttons ≥ 48px tall (SEN-friendly prominence)
+- [x] voice-fab explicit min-width/min-height for WCAG 2.5.5
+- [x] Onboarding 3-step carousel: 揀→聽→想
+- [x] fc_onboarding_done flag set on finish/skip
+- [x] First-visit detection via needsOnboarding() in main.js boot
+- [x] Settings → 重看教學 entry
+- [x] audit-touch-targets.mjs ships + npm script registered
+- [x] All 7 audited selectors pass 44px threshold
+- [x] Tests: 104 → 124 (20 new, no regression)
+- [x] SPEC v3.8 → v3.9 (this section)
+- [x] __version__ 2.3.0 → 2.4.0 (MINOR — new feature: onboarding)
+
+### 19.6 Anti-pattern (Sprint 18 必避)
+
+- ❌ 用 modal 取代 full-screen overlay → SEN 學生 focus 易飄, modal 點 X 唔直觀
+- ❌ 將 onboarding 步數加到 > 3 → 太長,SEN 學生 load 唔到
+- ❌ onboarding 唔做 flag → 每個 reload 都 show,煩死人
+- ❌ onboarding flag 用 sessionStorage → reload 後仲 show,UX 差
+- ❌ 「重看教學」順手 clear flag → 下次 boot 又 show 一次,違反 user intent (one-time replay)
+- ❌ TTS button 加到 > 56px → 視覺 overwhelm, 48-56 係 sweet spot
+- ❌ 改 .btn base style 令 onboarding 自動大 → 影響全部 .btn button (含 confirm dialog), 開新 class .onboarding-cta
+- ❌ audit-touch-targets 改去追 inline style / media query → 跑慢 + 維護成本, 守 declared minimum 已經夠
+- ❌ 略過 onboarding 嘅學生睇唔到 0 violations 嘅 migration lesson → onboarding 嘅 slide 2 提咗 "個掣而家有 48×48" 呢個 detail, 唔好走漏
+
+### 19.7 Out-of-scope (v3.9 不做,留 future)
+
+- ❌ Onboarding 接受 per-student personalisation (e.g. 記住學生名字, 然後 "你好 小明！") → 太 invasive, 唔做
+- ❌ Onboarding 加 video / animation → 太多 asset + 加 bundle size, 純 CSS + emoji
+- ❌ Onboarding 步數隨學生能力調整 (adaptive) → 需要先有 student profile, 而家未 ready
+- ❌ TTS button 加 waveform / 現在讀緊 animation → Sprint 19+ 視覺 polish
+- ❌ 「重看教學」 加 reset 全部 settings → 兩件唔同事, 唔混淆
+- ❌ 將 audit-touch-targets extend 去 audit 一般 button (.btn) → 而家只 audit TTS, 範圍精準夠用
+- ❌ 改 E2E audit (audit-fc.mjs) 配合 audit-touch-targets → 兩者 scope 唔同, 唔合併
+
+---
+
+*Addendum 日期:2026-06-23 | 配合 Sprint 18 開工 | 取代/補充:§18 唔變,純新增 §19 | 維護者: Mavis + kencheng*
 
