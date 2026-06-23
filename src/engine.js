@@ -1035,6 +1035,17 @@ export function renderSettings() {
     <div class="container fade-in">
 ${renderPageHeader({ emoji: '⚙️', title: '個人化設定', back: 'role-select', backLabel: '返回主選單' })}
 
+      <div class="card" style="margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>
+          <div style="font-weight:600;margin-bottom:4px">📖 教學</div>
+          <div style="font-size:0.85em;color:var(--text-light)">想再睇一次首次使用教學？</div>
+        </div>
+        <button type="button" class="btn btn-outline" data-action="replayOnboarding"
+          style="font-size:0.9em;padding:10px 16px;min-height:44px">
+          重看教學
+        </button>
+      </div>
+
       <div class="card" style="margin-bottom:14px">
         <div style="font-weight:600;margin-bottom:8px">📊 學習記錄</div>
         <div style="font-size:0.9em;color:var(--text-light);margin-bottom:10px">

@@ -501,15 +501,18 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
 }
 .scenario-desc .inline-voice-btn {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
   background: var(--primary);
   color: #fff;
   border: none;
   border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 0.95em;
+  /* Sprint 18 P0: 32×32 → 48×48 (WCAG 2.5.5) */
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  font-size: 1.2em;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -518,6 +521,30 @@ h3 { font-size: 1.2em; margin-bottom: 8px; }
 }
 .scenario-desc .inline-voice-btn:hover { transform: scale(1.1); }
 .inline-voice-btn.speaking { animation: pulse 1s infinite; color: #fff; background: var(--primary, #4A90D9); }
+
+/* Sprint 18 P0: base size for icon-only .inline-voice-btn (creed-show header 等)
+   冇 .scenario-desc / .voice-btn-row context 嘅 standalone 用途 */
+.inline-voice-btn:not(.voice-btn-row .inline-voice-btn) {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-size: 1.1em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: 0 1px 3px rgba(74,144,217,0.3);
+}
+.creed-show .creed-header .inline-voice-btn {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+.creed-show .creed-header .inline-voice-btn:hover { background: rgba(255,255,255,0.3); }
 
 /* ── 💡 Hints panel ── */
 .hints-panel {
@@ -755,23 +782,31 @@ body:has(.action-cta-fab:not([hidden])) .container { padding-bottom: 80px; }
   padding-left: 32px;  /* reserve room for overlay badge */
 }
 .option-card .opt-read {
-  width: 28px;
-  height: 28px;
+  /* Sprint 18 P0: 28×28 → 48×48 觸控目標 (WCAG 2.5.5 ≥ 44×44) */
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
   background: var(--bg);
-  border: 1px solid var(--border);
+  border: 2px solid var(--border);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8em;
+  font-size: 1.1em;
+  font-weight: 700;
   flex-shrink: 0;
   cursor: pointer;
-  color: var(--text-light);
+  color: var(--text);
   /* 確保 opt-read 疊喺 option-card 上面，touch event 唔會漏出去 */
   position: relative;
   z-index: 2;
   touch-action: manipulation;
+  /* 視覺提示 — 對 SEN 學生嚟講要明顯 */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: transform 0.15s, background 0.2s, border-color 0.2s;
 }
+.option-card .opt-read:hover { background: #7C3AED; color: #fff; border-color: #7C3AED; transform: scale(1.05); }
 .option-card .opt-read:hover { background: #7C3AED; color: #fff; border-color: #7C3AED; }
 
 .scenario-image-wrap {
@@ -849,9 +884,24 @@ html[data-rm="true"] .result-card.stop-and-think {
   flex-wrap: wrap;
 }
 .voice-btn-row .inline-voice-btn {
-  font-size: 1em;
-  padding: 8px 14px;
+  /* Sprint 18 P0: Result 屏 TTS 按鈕高度/可讀性 bump (SEN-friendly) */
+  font-size: 1.05em;
+  font-weight: 700;
+  padding: 12px 20px;
+  min-height: 48px;
+  border-radius: 12px;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  box-shadow: 0 2px 6px rgba(74,144,217,0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.2s;
 }
+.voice-btn-row .inline-voice-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(74,144,217,0.4); }
+.voice-btn-row .inline-voice-btn:active { transform: translateY(0); }
 
 /* ── 信條展示 ── */
 .creed-show {
@@ -1049,7 +1099,7 @@ html[data-rm="true"] .result-card.stop-and-think {
   position: fixed;
   bottom: 80px;
   right: 20px;
-  width: 52px; height: 52px;
+  width: 56px; height: 56px;
   border-radius: 50%;
   background: var(--primary);
   color: #fff;
@@ -1059,6 +1109,199 @@ html[data-rm="true"] .result-card.stop-and-think {
   box-shadow: 0 4px 12px rgba(74,144,217,0.4);
   z-index: 100;
   display: flex; align-items: center; justify-content: center;
+  /* WCAG 2.5.5 — 觸控目標 ≥ 44×44 CSS 像素 */
+  min-width: 56px;
+  min-height: 56px;
+}
+
+/* ---- Sprint 18 P1: First-visit Onboarding (教學 carousel) ---- */
+.onboarding-container {
+  max-width: 540px;
+  margin: 0 auto;
+}
+.onboarding-wrap {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 32px 20px;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.10);
+  border: 1px solid var(--border);
+  text-align: center;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+.onboarding-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  flex: 1;
+}
+.onboarding-emoji {
+  font-size: 5em;
+  line-height: 1;
+  margin-bottom: 4px;
+  filter: drop-shadow(0 4px 8px rgba(124,58,237,0.15));
+}
+.onboarding-title {
+  font-size: 1.6em;
+  font-weight: 800;
+  margin: 0;
+  color: var(--text);
+  letter-spacing: 0.01em;
+}
+.onboarding-desc {
+  font-size: 1.05em;
+  line-height: 1.55;
+  color: var(--text-light);
+  max-width: 380px;
+  margin: 0 auto;
+}
+.onboarding-mock {
+  width: 100%;
+  margin-top: 12px;
+  padding: 16px;
+  background: var(--bg-soft, #f7f7fa);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+/* Mock option cards (slide 1) */
+.onboarding-mock-option {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mock-option-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--card);
+  border: 2px solid var(--border);
+  border-radius: 12px;
+  font-weight: 600;
+  text-align: left;
+}
+.mock-badge {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: #7C3AED;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 0.9em;
+  flex-shrink: 0;
+}
+.mock-text { font-size: 0.95em; color: var(--text); }
+/* Mock voice (slide 2) */
+.onboarding-mock-voice { width: 100%; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.mock-scenario {
+  width: 100%;
+  position: relative;
+  padding: 14px 60px 14px 14px;
+  background: var(--card);
+  border-left: 4px solid var(--primary);
+  border-radius: 8px;
+  font-size: 0.95em;
+  text-align: left;
+  box-shadow: var(--shadow, 0 1px 3px rgba(0,0,0,0.06));
+}
+.mock-voice-btn {
+  position: absolute;
+  top: 8px; right: 8px;
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  font-size: 1.2em;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(74,144,217,0.4);
+}
+.onboarding-hint {
+  font-size: 0.85em;
+  color: #7C3AED;
+  font-weight: 600;
+  background: rgba(124,58,237,0.08);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+/* Mock stop-and-think (slide 3) */
+.onboarding-mock-think { width: 100%; display: flex; flex-direction: column; align-items: center; }
+.mock-think-card {
+  width: 100%;
+  background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
+  border: 2px solid #fb923c;
+  border-radius: 14px;
+  padding: 18px 16px;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.mock-emoji { font-size: 2.5em; }
+.mock-title { font-weight: 800; font-size: 1.1em; color: #9a3412; }
+.mock-think-card .mock-text { color: #7c2d12; }
+.mock-voice-row {
+  display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap; justify-content: center;
+}
+.mock-voice-pill {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 16px;
+  min-height: 44px;
+  font-weight: 700;
+  font-size: 0.95em;
+  display: inline-flex; align-items: center; gap: 4px;
+  box-shadow: 0 2px 6px rgba(74,144,217,0.3);
+}
+/* Dots + actions */
+.onboarding-dots {
+  display: flex; gap: 8px; justify-content: center; align-items: center;
+}
+.onboarding-dots .dot {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--border, #ddd);
+  transition: background 0.2s, transform 0.2s;
+}
+.onboarding-dots .dot.active {
+  background: var(--primary, #4A90D9);
+  transform: scale(1.3);
+}
+.onboarding-actions {
+  display: flex; gap: 10px; justify-content: space-between; align-items: center;
+}
+.onboarding-actions .btn { flex: 1; min-height: 52px; font-size: 1.05em; font-weight: 700; }
+.onboarding-cta {
+  background: linear-gradient(135deg, #7C3AED 0%, #4A90D9 100%);
+  border: none; color: #fff;
+  box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+  /* WCAG 2.5.5 — 觸控目標 ≥ 44px; primary CTA 加大到 52px */
+  min-height: 52px;
+  padding: 12px 20px;
+  font-size: 1.05em;
+  font-weight: 700;
+}
+.onboarding-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(124,58,237,0.4);
+}
+@media (prefers-reduced-motion: reduce) {
+  .onboarding-cta:hover, .onboarding-dots .dot { transform: none; }
+}
+@media (max-width: 480px) {
+  .onboarding-wrap { padding: 24px 16px; min-height: 420px; }
+  .onboarding-emoji { font-size: 4em; }
+  .onboarding-title { font-size: 1.4em; }
+  .onboarding-desc { font-size: 1em; }
 }
 .voice-fab:hover { transform: scale(1.1); }
 .voice-fab.speaking { animation: pulse 1s infinite; }

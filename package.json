@@ -1,7 +1,7 @@
 {
   "name": "friendly-classroom-v2",
   "private": true,
-  "version": "2.3.0",
+  "version": "2.4.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,6 +12,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "audit:a11y": "node tools/a11y/audit-fc.mjs",
+    "audit:touch-targets": "node tools/a11y/audit-touch-targets.mjs",
     "audit:style": "node tools/style/audit-scenarios.mjs"
   },
   "devDependencies": {

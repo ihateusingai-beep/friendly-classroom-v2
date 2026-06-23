@@ -60,6 +60,9 @@ import { wireActions, actions, hasAction } from './actions/index.js';
 import { loadScenarios, loadScenariosForTopic, getScenarioById } from './domain/ScenarioEngine.js';
 export { loadScenarios, loadScenariosForTopic };
 
+// Sprint 18 P1: first-visit onboarding (教學 carousel)
+import { renderOnboarding, needsOnboarding } from './components/Onboarding.js';
+
 // ── Vite HMR 破壞 DOM 寫入，強制停用 ──
 if (import.meta.hot) { import.meta.hot.decline(); }
 
@@ -178,6 +181,8 @@ export const VIEWS = Object.freeze({
   'mode-select':    (p) => ({ subjectId: null, topicId: null, scenarioId: null, resultData: null, gameMode: p?.gameMode }),
   'student-select': () => ({ subjectId: null, topicId: null, scenarioId: null, resultData: null }),
   'subject-select': () => ({ topicId: null, scenarioId: null, resultData: null }),
+  // Sprint 18 P1: first-visit onboarding (carries step state in module-level var).
+  'onboarding':     () => ({}),
   'home':           (p) => ({ topicId: null, scenarioId: null, resultData: null, subjectId: p?.subjectId ?? state.subjectId }),
   'topic':          (p) => ({ topicId: p?.topicId, scenarioId: null, resultData: null, subjectId: p?.subjectId ?? state.subjectId }),
   'play':           (p) => ({ topicId: null, scenarioId: p?.scenarioId, resultData: null }),
@@ -194,7 +199,10 @@ export const VIEWS = Object.freeze({
 });
 
 let state = {
-  view: 'role-select',
+  // Sprint 18 P1: if first visit, start at 'onboarding' instead of 'role-select'.
+  // needsOnboarding() reads fc_onboarding_done from localStorage; falsy means
+  // we should show the 教學 carousel.
+  view: (typeof window !== 'undefined' && needsOnboarding()) ? 'onboarding' : 'role-select',
   student: null,
   subjectId: null,
   topicId: null,
@@ -409,6 +417,7 @@ function render() {
   let html = '';
   try {
     switch (state.view) {
+      case 'onboarding':     html = renderOnboarding(); break;
       case 'role-select':    html = renderRoleSelect(); break;
       case 'hub':            html = renderGameHub(); break;
       case 'mode-select':    html = renderModeSelect(state.gameMode, state.subjectId); break;

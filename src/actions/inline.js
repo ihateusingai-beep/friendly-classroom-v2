@@ -20,13 +20,15 @@ import { speakScenario, speakCreeds, speak as _speak,
          setReducedMotion } from '../audio.js';
 import { addStudent as _addStudent } from '../domain/Progress.js';
 import { selectStudent } from '../domain/Student.js';
+import { onboardingNext as _onboardingNext, onboardingSkip as _onboardingSkip,
+         resetOnboarding as _resetOnboarding } from '../components/Onboarding.js';
 
 const _ALLOWED_HOME_FILTERS = ['value', 'caring', 'all'];
 
-/** Build the inline-actions fragment. `deps` is { render, _navigate, getState }.
+/** Build the inline-actions fragment. `deps` is { render, _navigate, getState, setView }.
  *  Returns an object ready for `Object.assign(actions, ...)` in actions/index.js.
  */
-export function getInlineActions({ render, _navigate, getState }) {
+export function getInlineActions({ render, _navigate, getState, setView }) {
   if (!render) throw new Error('[actions/inline] getInlineActions: render is required');
   if (!_navigate) throw new Error('[actions/inline] getInlineActions: _navigate is required');
 
@@ -211,6 +213,34 @@ export function getInlineActions({ render, _navigate, getState }) {
       if (!e) return;
       if (typeof e.stopPropagation === 'function') e.stopPropagation();
       if (typeof e.preventDefault === 'function') e.preventDefault();
+    },
+
+    // ── Sprint 18 P1: First-visit onboarding ──────────────────────
+    /** data-action="onboardingNext" — advance carousel slide or finish
+     *  on the last step. Returns -1 from the helper if we just finished. */
+    onboardingNext() {
+      const newStep = _onboardingNext();
+      if (newStep < 0) {
+        // Just finished (last slide clicked). Route to role-select.
+        if (setView) setView('role-select');
+      }
+      render();
+    },
+
+    /** data-action="onboardingSkip" — skip remaining slides and route
+     *  to role-select. Marks done. */
+    onboardingSkip() {
+      _onboardingSkip();
+      if (setView) setView('role-select');
+      render();
+    },
+
+    /** data-action="replayOnboarding" — from settings, clear done flag
+     *  + reset step counter + navigate to onboarding view. */
+    replayOnboarding() {
+      _resetOnboarding();
+      if (setView) setView('onboarding');
+      render();
     },
   };
 }
