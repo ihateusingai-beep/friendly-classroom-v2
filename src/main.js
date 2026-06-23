@@ -1,9 +1,10 @@
 // 友愛教室 V2 — main.js
 
 // MUST come before any import that runs `window.FC.X = ...` at module
-// top level. The domain modules (Student/Auth/Play/Hub/IO) register
-// their handlers eagerly when imported, so window.FC must already exist
-// by the time we import them below.
+// top level. (Sprint 14.2: domain modules no longer write to window.FC —
+// they export handler functions and the actions/ registry aggregates.
+// We still keep `window.FC = window.FC || {}` for any code that reads
+// from window.FC at module load time.)
 window.FC = window.FC || {};
 
 import './style.css';
@@ -18,7 +19,7 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
 import { applyScenarioResult } from './domain/Moral.js';
 import { startBankRun, getBankRun, endBankRun, recordBankTransaction, advanceToNextQuestion, BANK_CONFIG } from './games/GoodDeedBank.js';
 import { speakScenario, speakCreeds, speak, isSpeaking, stopSpeaking, isEnabled, applyCSS, resetAllSettings, setSpacing, setHC, setVoiceEnabled, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
-import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal, addStudent as _addStudent } from './domain/Progress.js';
+import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
 import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
 import { getTopic as getTopicMeta } from './topics.js';
 import { bus } from './domain/EventBus.js';
@@ -36,25 +37,16 @@ function _isReducedMotion() {
 
 // Sprint 2 / Track A2: split main.js into domain modules. Each module is
 // wired with main.js locals (setView / render / scenario engine) to keep
-// a single source of truth and avoid circular deps. window.FC.* exports
-// are still registered from main.js so they exist at boot time before
-// any data-action click fires.
-import {
-  wireStudent, switchStudent, selectStudent, renderStudentSelect,
-} from './domain/Student.js';
-import {
-  wireAuth, selectSubject, selectMode, chooseRole, renderSubjectSelect,
-} from './domain/Auth.js';
-import {
-  wirePlay, play, choose, retry, updateResultCtaFab,
-} from './domain/Play.js';
-import {
-  wireHub, goTopic, goRandom, goTeacher,
-  playGoodDeedBank, bankChoose, bankNext, exitBank, confirmExitBank,
-} from './games/Hub.js';
-import {
-  wireIO, updateAnalyticsSummary, setSyncStatusLoading,
-} from './domain/IO.js';
+// a single source of truth and avoid circular deps.
+//
+// Sprint 14.2: the wire*() calls are no longer made from main.js — they
+// are made inside `wireActions()` (see actions/index.js) which is the
+// single registry for the data-action dispatcher. main.js now just
+// imports the render functions it still needs (renderStudentSelect +
+// renderSubjectSelect are used in the render() switch).
+import { renderStudentSelect } from './domain/Student.js';
+import { renderSubjectSelect } from './domain/Auth.js';
+import { wireActions, actions, hasAction } from './actions/index.js';
 // Phase 3 (S13): scenarios were lazy-loaded via dynamic import of
 // data/scenarios.json. Sprint 3 / B1 replaced the single 514KB blob
 // with 17 per-topic chunks (data/scenarios/<topic-id>.json). Sprint 4
@@ -254,58 +246,30 @@ async function _loadTeacher() {
 // goRandom — have real side effects (load scenarios, load teacher chunk,
 // random pick) and are kept.
 
-/** Reload the page (used by error fallback). */
-window.FC.reload = function() { location.reload(); };
-
-// goTopic moved to src/games/Hub.js (Sprint 2)
-
-// play / choose / retry / triggerConfetti / triggerStarFloat /
-// triggerComfort moved to src/domain/Play.js (Sprint 2)
-
-
-/**
- * Phase 6 (home page declutter): set the topic-domain filter
- * (value / caring / all) and re-render home.
- * Triggers from the filter-tab buttons rendered by renderHome().
- */
-export function setHomeFilter(filter) {
-  if (!['value', 'caring', 'all'].includes(filter)) {
-    console.warn('[FC] setHomeFilter: invalid filter', filter);
-    return;
-  }
-  localStorage.setItem('fc_home_filter', filter);
-  render();
-}
-window.FC.setHomeFilter = setHomeFilter;
-
-
-// goTeacher / goRandom / playGoodDeedBank / bankChoose / bankNext /
-// exitBank / confirmExitBank moved to src/games/Hub.js (Sprint 2)
-
-// Event helper: 內嵌喺 inline handler 嗰陣用，避免 mobile browser touch 事件漏出去撞到 parent
-// 用法：onclick="FC._stopEvt(event); doStuff()"
-window.FC._stopEvt = function(e) {
-  if (!e) return;
-  if (typeof e.stopPropagation === 'function') e.stopPropagation();
-  if (typeof e.preventDefault === 'function') e.preventDefault();
-};
-
-// TTS 語言切換
-window.FC.setTTSLang = function(langId) {
-  setTTSLang(langId);
-  // 自動播一句 test 畀 user 即時聽到分別
-  const { speak } = window._fcAudio || {};
-  if (speak) speak('語言切換測試，你聽到嘅係新嘅發音。');
-  // 重新 render settings 頁，更新 active 狀態
-  if (state.view === 'settings') render();
-};
-window.FC.getTTSLang = function() { return getTTSLang(); };
-window.FC.TTS_LANGS = TTS_LANGS;
-
-// All teacher config / settings / sync / analytics / export-import /
-// voice / a11y (HC/RM) handlers — moved to src/domain/IO.js (Sprint 2).
-// window.FC.* registrations for these are also done in main.js's wire-up
-// step so they remain available to data-action clicks.
+// Sprint 14.2: the 22+ `window.FC.X = function...` blocks that used to
+// live here have been moved to actions/inline.js (Sprint 12/13/14
+// bridges) and to the relevant domain modules' named exports. The data-
+// action dispatcher (see _setupDelegates below) now reads `actions[action]`
+// from a single registry populated by `wireActions()`. The 100+ lines of
+// `window.FC.X = ...` scatter are gone.
+//
+// Migrated handlers (Sprint 14.2):
+//   - reload, setHomeFilter, _stopEvt, setTTSLang, getTTSLang, TTS_LANGS
+//     → actions/inline.js
+//   - goTopic, goTeacher, goRandom, playGoodDeedBank, bankChoose, bankNext,
+//     exitBank, confirmExitBank → games/Hub.js (named exports)
+//   - play, choose, retry, updateResultCtaFab → domain/Play.js
+//   - switchStudent, selectStudent → domain/Student.js
+//   - selectSubject, selectMode, chooseRole → domain/Auth.js
+//   - speak, speakOpt, speakCreeds → actions/inline.js
+//   - doLogin, resetSettings, setSpacing, toggleHC, toggleVoice → actions/inline.js
+//   - addStudent, toggleHints, revealNextHint → actions/inline.js
+//   - updateAnalyticsSummary, setSyncStatusLoading → domain/IO.js
+//   - handleImport, exportAll, exportMyData, importMyData, exportAnalyticsCSV,
+//     clearAnalytics, forceSync, toggleTeacherFeature, setTeacherTimer,
+//     setButtonSize, setBankMaxRisk, toggleAssignedTopic, saveTeacherPIN,
+//     saveTeacherConfig → domain/IO.js
+//   - isSpeaking, stopSpeaking → audio.js (re-exported by actions/index.js)
 
 // ── View Transitions wrapper (page-level animation when browser supports it) ──
 // 支援度：Chrome 111+ / Edge 111+。Safari/Firefox 自動 fallback 直接 render。
@@ -353,8 +317,11 @@ function _setViewHTML(html) {
 //   <button data-action="play" data-arg="${escapeAttr(s.id)}">...
 //
 // Multi-arg handlers (e.g. `FC.toggleTeacherFeature(btn, 'hintEnabled')`)
-// pass the second arg via data-arg2. The dispatcher reads window.FC[name]
-// dynamically so it auto-picks up new handlers.
+// pass the second arg via data-arg2. The dispatcher reads `actions[name]`
+// from the single registry populated by `wireActions()`. If you add a new
+// data-action in markup but forget to register a handler in actions/, the
+// `if (typeof fn !== 'function')` branch logs a one-time warning and
+// falls through — the bug becomes visible immediately.
 
 const _DELEGATE_EVENTS = ['click', 'error'];
 
@@ -381,13 +348,17 @@ function _setupDelegates(rootEl) {
         if (action) {
           // Phase 5: data-action="navigate" — universal navigation action.
           // data-arg = view name, data-arg2 = primary arg (e.g. topicId).
-          // Falls through to window.FC[action] if not "navigate".
+          // Falls through to actions[action] if not "navigate".
           if (action === 'navigate') {
             e.preventDefault();
             _navigate(el.dataset.arg, el.dataset.arg2);
             return;
           }
-          const fn = window.FC?.[action];
+          // Sprint 14.2: read from the `actions` registry (single source
+          // of truth, populated by wireActions). window.FC is also kept
+          // in sync for back-compat, but the dispatcher prefers the
+          // registry so missing handlers are caught at definition time.
+          const fn = actions[action];
           if (typeof fn === 'function') {
             e.preventDefault();
             const arg1 = el.dataset.arg;
@@ -483,218 +454,28 @@ function render() {
 // defined above so nav.js never has to know about main.js internals.
 wireNav({ setView, navRender, render });
 
-// Sprint 2 (Track A2): wire domain modules. Each module needs a slice of
-// main.js locals; passing them in keeps the module-isolation contract.
-wireStudent({
-  setView, render,
-  renderFooter: () => renderFooter(),
-});
-wireAuth({
-  setView, render, _loadTeacher,
-  getAllSubjects, initSubjectProgress,
+// Sprint 2 (Track A2) + Sprint 14.2: wire all domain modules + the inline
+// handlers via a single `wireActions(deps)` call. This replaces the 5
+// separate wireX(deps) calls + the 22+ `window.FC.X = ...` blocks that
+// used to live here. See actions/index.js for the full registry.
+wireActions({
+  // main.js locals (render / setView / state)
+  setView, render, navRender, _navigate, _loadTeacher,
   getState: () => state, setState: (s) => { state = s; },
-});
-wirePlay({
-  setView, render, _navigate,
-  getState: () => state,
-  loadScenarios, loadScenariosForTopic, getScenarioById,
-  playScenario, getScenariosByTopic,
-  chooseOption, markScenarioShown, logInteraction,
-  playSFX, isReducedMotion: _isReducedMotion,
-});
-wireHub({
-  setView, navRender, render, _navigate,
-  getState: () => state,
-  loadScenarios, loadScenariosForTopic,
+  // scenario engine
+  loadScenarios, loadScenariosForTopic, getScenarioById, playScenario,
   getScenarios, getScenariosByTopic, initTopicProgress, applyScenarioResult,
-  getStudent, getBankRun, startBankRun, endBankRun,
-  advanceToNextQuestion, recordBankTransaction, logInteraction,
+  chooseOption, markScenarioShown, logInteraction, playSFX,
+  isReducedMotion: _isReducedMotion,
+  // student + bank
+  getStudent, getAllStudents, getBankRun, startBankRun, endBankRun,
+  advanceToNextQuestion, recordBankTransaction,
+  // io / sync
+  importProgress, exportProgress, syncNow, getProgress, getStats,
+  exportInteractionsCSV, clearInteractions,
+  // subjects
+  getAllSubjects, initSubjectProgress,
 });
-wireIO({
-  render, getStudent, getAllStudents,
-  importProgress, exportProgress, syncNow, getProgress,
-  getStats, exportInteractionsCSV, clearInteractions, _navigate,
-});
-
-// Register window.FC exports for the extracted handlers so data-action
-// clicks on templates can still dispatch to them.
-window.FC.goTopic = goTopic;
-window.FC.goTeacher = goTeacher;
-window.FC.goRandom = goRandom;
-window.FC.playGoodDeedBank = playGoodDeedBank;
-window.FC.bankChoose = bankChoose;
-window.FC.bankNext = bankNext;
-window.FC.exitBank = exitBank;
-window.FC.confirmExitBank = confirmExitBank;
-window.FC.play = play;
-window.FC.choose = choose;
-window.FC.retry = retry;
-window.FC.switchStudent = switchStudent;
-window.FC.selectStudent = selectStudent;
-window.FC.selectSubject = selectSubject;
-window.FC.selectMode = selectMode;
-window.FC.chooseRole = chooseRole;
-window.FC.updateResultCtaFab = updateResultCtaFab;
-window.FC.updateAnalyticsSummary = updateAnalyticsSummary;
-window.FC.setSyncStatusLoading = setSyncStatusLoading;
-window.FC.isSpeaking = isSpeaking;
-window.FC.stopSpeaking = stopSpeaking;
-
-// Sprint 5 / T1: bridge the speak* data-action dispatchers. Earlier
-// refactors that switched inline `onclick="FC.foo()"` to `data-action="foo"`
-// skipped these — markup declares the action but no `window.FC.X` was
-// registered, so clicks silently fell through the dispatcher. Without
-// these bridges, the 6 voice buttons (speak / speakOpt / speakCreeds,
-// inline + voice-fab variants) had no effect on user click.
-//
-// Each handler resolves the current scenario / option / creed from
-// state and delegates to the engine (audio.js) — keeping this file
-// as the single source of FC.* exports for the data-action dispatcher.
-window.FC.speak = function(scenarioId) {
-  // data-action="speak" data-arg="${s.id}" → read scenario from cache.
-  if (!scenarioId) {
-    // Fallback: resolve from the currently playing scenario.
-    const cur = getCurrentScenario();
-    if (cur) return speakScenario(cur);
-    return;
-  }
-  getScenarioById(scenarioId).then(sc => {
-    if (sc) speakScenario(sc);
-  });
-};
-window.FC.speakOpt = function(optId) {
-  // data-action="speakOpt" data-arg="${opt.id}" → read the current
-  // scenario's option text and feed it to the general TTS pipeline.
-  if (!optId) return;
-  const sc = getCurrentScenario();
-  if (!sc || !sc.options) return;
-  const opt = sc.options.find(o => o.id === optId);
-  if (opt?.text) speak(opt.text);
-};
-window.FC.speakCreeds = function() {
-  // data-action="speakCreeds" — no data-arg. The creeds list is on
-  // state.resultData (set by chooseOption's return). The voice-fab
-  // and inline button on the result view both route here.
-  const creeds = state.resultData?.creeds;
-  if (creeds?.length) speakCreeds(creeds);
-};
-
-// Sprint 12: bridge 5 settings data-action dispatchers. Earlier refactors
-// (Sprint 2 inline-onclick → data-action) skipped these — markup declared
-// the action but no `window.FC.X` was registered, so clicks silently fell
-// through the dispatcher. Without these bridges:
-//   - 老師 mode 完全 login 唔到 (P0 critical, doLogin dead)
-//   - Settings 頁 4 個 button (reset / spacing / HC / voice) 完全冇反應
-// Each handler delegates to a pure helper in audio.js (localStorage + applyCSS
-// side effects), then re-renders so button label/state stays in sync.
-
-/** data-action="doLogin" — 老師 mode 密碼驗證。啱 → 進 teacher dashboard, 錯 → 顯示 #login-error。*/
-window.FC.doLogin = function() {
-  const pw = document.getElementById('teacher-pw')?.value?.trim() || '';
-  const expected = (typeof localStorage !== 'undefined' && localStorage.getItem('fc_teacher_pin')) || 'admin';
-  const err = document.getElementById('login-error');
-  if (pw === expected) {
-    if (err) err.style.display = 'none';
-    _navigate('teacher');
-  } else {
-    if (err) err.style.display = 'block';
-  }
-};
-
-/** data-action="resetSettings" — 清晒所有用戶 settings (TTS / 字體 / 間距 / HC / RM) + reset voice 返 default on。*/
-window.FC.resetSettings = function() {
-  resetAllSettings();
-  setVoiceEnabled(true);
-  render();
-};
-
-/** data-action="setSpacing" data-arg="narrow|medium|wide" — UI 間距切換。*/
-window.FC.setSpacing = function(value) {
-  setSpacing(value);
-  render();
-};
-
-/** data-action="toggleHC" — 切換高對比模式。讀 current state → flip → applyCSS。*/
-window.FC.toggleHC = function() {
-  const current = (typeof localStorage !== 'undefined' && localStorage.getItem('fc_hc_mode') === '1');
-  setHC(!current);
-  render();
-};
-
-/** data-action="toggleVoice" — 切換語音朗讀 enabled。persist 落 fc_voice_seen (page reload 保留)。*/
-window.FC.toggleVoice = function() {
-  setVoiceEnabled(!isEnabled());
-  render();
-};
-
-// Sprint 13: bridge 3 more P0 silent no-op handlers (addStudent +
-// toggleHints + revealNextHint). Same root cause as Sprint 12 — earlier
-// refactors (Sprint 2 inline-onclick → data-action) declared the action
-// in markup but no `window.FC.X` was registered, so clicks silently fell
-// through the dispatcher. Without these bridges:
-//   - 「➕ 新增學生」 button 完全 dead
-//   - 提示 toggle 同「睇下一個提示 →」 button 從 v1 都係 dead
-// 每個 handler delegate 落 pure helper (Progress.js addStudent) 或者
-// 直接 DOM 操作, 然後 re-render 保持 state 同步。
-
-/** data-action="addStudent" — 讀 #new-student-name input, add + auto-select。*/
-window.FC.addStudent = function() {
-  const input = document.getElementById('new-student-name');
-  const raw = input?.value || '';
-  const name = _addStudent(raw);
-  if (!name) {
-    // Empty / whitespace — 唔 silent, 提示 user
-    if (input) {
-      input.focus();
-      input.style.borderColor = 'var(--danger)';
-      setTimeout(() => { input.style.borderColor = ''; }, 1500);
-    }
-    return;
-  }
-  if (input) input.value = '';
-  selectStudent(name);
-};
-
-/** data-action="toggleHints" — expand/collapse #hints-list + 第一次展開時自動 reveal 第一個 hint。*/
-window.FC.toggleHints = function() {
-  const btn = document.getElementById('hints-toggle');
-  const list = document.getElementById('hints-list');
-  const chev = document.getElementById('hints-chev');
-  if (!btn || !list) return;
-  const expanded = btn.getAttribute('aria-expanded') === 'true';
-  btn.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  list.hidden = expanded;
-  if (chev) chev.textContent = expanded ? '▾' : '▴';
-  // 第一次展開自動 reveal 第一個 hint
-  if (!expanded) {
-    const first = list.querySelector('.hint-item[data-hint-idx="0"]');
-    if (first) first.hidden = false;
-  }
-};
-
-/** data-action="revealNextHint" — reveal 下一個隱藏 hint。全部 reveal 完自動隱藏自己。*/
-window.FC.revealNextHint = function() {
-  const list = document.getElementById('hints-list');
-  if (!list) return;
-  const items = list.querySelectorAll('.hint-item[data-hint-idx]');
-  let nextIdx = -1;
-  for (let i = 0; i < items.length; i++) {
-    if (items[i].hidden) { nextIdx = i; break; }
-  }
-  if (nextIdx === -1) {
-    // 全部 reveal 咗, 隱藏自己個 button
-    const btn = document.getElementById('hint-next');
-    if (btn) btn.style.display = 'none';
-    return;
-  }
-  items[nextIdx].hidden = false;
-};
-
-// path that needs it (subject-select → play). For the very first render, scenarios=[] is fine — renderRoleSelect
-// and renderStudentSelect don't need them.
-// path that needs it (subject-select → play) awaits loadScenarios() before
-// continuing. For the very first render, scenarios=[] is fine — renderRoleSelect
-// and renderStudentSelect don't need them.
 try {
   render();
 } catch(e) {

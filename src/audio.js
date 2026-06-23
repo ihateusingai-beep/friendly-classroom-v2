@@ -1,6 +1,12 @@
 // 語音朗讀 — 預生成 MP3 架構
 // 所有音頻預生成於 /public/audio/，零依賴、零延遲
 
+// Sprint 16: Result 頁 TTS 擴展 (SPEC §17.4.2) — strip emoji / truncate / formatStopAndThink helpers
+import {
+  stripEmojiForTTS,
+  formatStopAndThinkForTTS,
+} from './domain/Feedback.js';
+
 const audioBase = 'audio/';
 
 // ── Web Audio API 遊戲音效（零延遲，唔需要外部檔案）──
@@ -243,6 +249,15 @@ export function applyCSS() {
   else root.removeAttribute('data-rm');
 }
 
+/** Toggle reduced-motion mode (Sprint 14.2 — guards against
+ *  the settings page's `data-action="toggleReducedMotion"` button
+ *  that was previously a silent no-op). Reads current state from
+ *  localStorage, flips, writes back, re-applies CSS. */
+export function setReducedMotion(value) {
+  localStorage.setItem('fc_rm_mode', value ? '1' : '0');
+  applyCSS();
+}
+
 // ── 音頻播放 ──
 export function setEnabled(v) { enabled = v; }
 export function isEnabled() { return enabled; }
@@ -435,9 +450,36 @@ export function resetAllSettings() {
 // 指住不存在嘅路徑。保留 playLocal 因為 creeds/ 仲用緊。
 // export function preloadAudio(ids) { ... } — DEAD
 
+// ── Sprint 16: Result 頁 TTS 擴展 (SPEC §17.4.2) ──
+export function speakOptionText(optionText) {
+  if (!enabled || speaking) return;
+  const cleaned = stripEmojiForTTS(optionText);
+  if (!cleaned) return;
+  speak(cleaned);
+}
+
+// 朗讀 effects[].comment (後果分析 / Result 結果)
+export function speakConsequence(comment) {
+  if (!enabled || speaking) return;
+  const cleaned = stripEmojiForTTS(comment);
+  if (!cleaned) return;
+  speak(cleaned);
+}
+
+// 朗讀 stop-and-think 反思 template
+export function speakStopAndThink(stopAndThink) {
+  if (!enabled || speaking) return;
+  const text = formatStopAndThinkForTTS(stopAndThink);
+  if (!text) return;
+  speak(text);
+}
+
 window._fcAudio = {
   speakScenario,
   speakCreeds,
+  speakOptionText,
+  speakConsequence,
+  speakStopAndThink,
   speak,
   setEnabled,
   isEnabled,
