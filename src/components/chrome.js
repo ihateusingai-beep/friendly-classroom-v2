@@ -34,7 +34,7 @@ export function renderEmptyState({
 } = {}) {
   return `
     <div class="container fade-in">
-      <div class="card" style="text-align:center;padding:32px 20px">
+      <div class="card" style="text-align:center;padding: var(--space-7) var(--space-5)">
         <div style="font-size:3em;margin-bottom:12px" aria-hidden="true">${emoji}</div>
         <h2 style="margin-bottom:8px">${title}</h2>
         ${hint ? `<p style="color:var(--text-light);margin-bottom:16px">${hint}</p>` : ''}

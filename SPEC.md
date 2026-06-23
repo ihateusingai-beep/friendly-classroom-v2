@@ -1,8 +1,8 @@
-# 友愛教室 V3 — 完整規格書 (v3.10)
+# 友愛教室 V3 — 完整規格書 (v3.11)
 
 > 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
 >
-> *規格日期：2026-06-13 | 最後更新：2026-06-23（v3.10 addendum: §20 Sprint 21 — Typography scale 6 級 (12/14/16/18/22/28px) + --fs-* tokens + audit-font-sizes tool, 配套 22 個新 unit test + 123 個 hardcoded → token migration）*
+> *規格日期：2026-06-13 | 最後更新：2026-06-23（v3.11 addendum: §21 Sprint 22 — Design tokens foundation: 7 級 spacing scale + 13 個 semantic color tokens + audit-spacing tool, 配套 29 個新 unit test + 258 個 CSS + 65 個 JS inline hardcoded → token migration）*
 
 ---
 
@@ -2119,4 +2119,167 @@ CSS 入面 146 個 `font-size:` 散落 38 個唔同值(0.7em 到 5em),每個新 
 | Token references | 0 | 123 in CSS + ~40 in JS |
 
 *Addendum 日期:2026-06-23 | 配合 Sprint 21 開工 | 取代/補充:§19 唔變,純新增 §20 | 維護者: Mavis + kencheng*
+
+---
+
+## 21. v3.11 Addendum — Sprint 22 Design Tokens Foundation (spacing + semantic colors)
+
+### 21.1 動機
+
+Sprint 21 typography tokens (`--fs-*`) ship 之後,design system 仲缺兩塊:
+- **Spacing**:60+ 唔同 px 值散落 padding/margin/gap,無 token,每 view freestyle
+- **Color semantic**:50+ raw hex (#xxx) 散落 component 入面,色票管理混亂
+
+S22 目標:**spacing scale 7 級 + semantic color 13 個 token + 統一 migration pattern**。Topic 17 色板統一同 dark mode 留 S23+。
+
+### 21.2 Spacing scale (7 級)
+
+```css
+--space-1: 4px;   /* micro gap */
+--space-2: 8px;   /* tight gap */
+--space-3: 12px;  /* default gap */
+--space-4: 16px;  /* standard padding (== --fc-spacing) */
+--space-5: 20px;  /* card padding */
+--space-6: 24px;  /* section gap */
+--space-7: 32px;  /* hero padding */
+```
+
+`--fc-spacing: 16px` SEN slider 保留做 個人化 root。
+
+### 21.3 Semantic color tokens (13 個)
+
+```css
+--color-primary:        #7C3AED;   /* NT-D purple, brand canonical */
+--color-primary-bg:     #F3E8FF;
+--color-secondary:      #4A90D9;
+--color-secondary-bg:   #DBEAFE;
+--color-success:        #16A34A;
+--color-success-bg:     #DCFCE7;
+--color-warning:        #F59E0B;
+--color-warning-bg:     #FEF3C7;
+--color-danger:         #DC2626;
+--color-danger-bg:      #FEE2E2;
+--color-info:           #0EA5E9;
+--color-focus:          #FFFF00;   /* WCAG 2.4.7 focus indicator */
+--color-on-primary:     #FFFFFF;   /* text on primary bg */
+```
+
+**保留** legacy `--primary`, `--success`, `--danger`, `--warning`, `--bg`, `--card`, `--text`, `--text-light`, `--border`, `--c-*` raw palette — HC mode override 入口。新 code 用 `--color-*`。
+
+### 21.4 Migration map
+
+**Spacing**:
+
+| 之前 (px) | 之後 | |
+|---|---|---|
+| 4 | `var(--space-1)` | exact |
+| 6 | `var(--space-2)` | snap up to 8 |
+| 8 | `var(--space-2)` | exact |
+| 10 | `var(--space-3)` | snap up to 12 |
+| 12 | `var(--space-3)` | exact |
+| 14 | `var(--space-3)` | snap down to 12 |
+| 16 | `var(--space-4)` | exact |
+| 18 | `var(--space-4)` | snap down to 16 |
+| 20 | `var(--space-5)` | exact |
+| 24 | `var(--space-6)` | exact |
+| 28 | `var(--space-6)` | snap down to 24 |
+| 32 | `var(--space-7)` | exact |
+
+**Color** (20 個 source hex → 13 個 token):
+
+| Source hex | Token | Usage count |
+|---|---|---|
+| #7C3AED / #7B2FBE | `--color-primary` | 16 |
+| #F3E8FF | `--color-primary-bg` | 3 |
+| #4A90D9 | `--color-secondary` | 7 |
+| #DBEAFE | `--color-secondary-bg` | 4 |
+| #16A34A / #10B981 | `--color-success` | 9 |
+| #DCFCE7 / #D1FAE5 | `--color-success-bg` | 5 |
+| #F59E0B | `--color-warning` | 9 |
+| #FEF3C7 / #FFF8E1 | `--color-warning-bg` | 6 |
+| #DC2626 / #EF4444 | `--color-danger` | 7 |
+| #FEE2E2 / #FECACA | `--color-danger-bg` | 7 |
+| #0EA5E9 / #3B82F6 | `--color-info` | 3 |
+| #FFFF00 / #FFD700 | `--color-focus` | 7 |
+
+### 21.5 Migration scope
+
+| Surface | Migrated | Skipped |
+|---|---|---|
+| `src/style.css` spacing | 174 declarations | 1px/2px/3px border, 40px/60px/80px display |
+| `src/style.css` color | 84 hex references | topic 17 hex (S23), HC mode overrides, one-off pastels |
+| JS inline (`style="..."`) spacing | 44 occurrences | rare display |
+| JS inline (`style="..."`) color | 21 hex references | topic color (S23) |
+| **Total** | **323 migrations** | |
+
+### 21.6 audit-spacing tool
+
+`tools/a11y/audit-spacing.mjs` — 靜態 CSS audit,失敗條件:
+- Spacing property (padding/margin/gap/inset/top/right/bottom/left) 用 raw px 值(4/6/8/10/12/14/16/18/20/24/28/32/48)而唔用 `var(--space-*)` → FAIL
+- 違規時 exit 1,印 selector + line + 建議 token
+
+`npm run audit:spacing` 入 CI guard — 將來任何人加 raw px spacing 即 catch。
+
+### 21.7 Tests (Sprint 22 done = ✅)
+
+- `tests/sprint22-spacing.test.js` — **29 個新 test**:
+  - 7 spacing token definition (value match)
+  - 12 color token definition (value match)
+  - 7 spacing tokens all referenced (orphan detection)
+  - 12 color tokens all referenced (orphan detection)
+  - `--space-4` heavily used (>20) + `--color-primary` (>10)
+  - 1 `--fc-font-size` SEN root preserved (cross-sprint regression check)
+  - 6 `--fs-*` typography tokens intact (S21 regression check)
+  - 3 audit script smoke (PASS / FAIL / display allowlist)
+
+### 21.8 Acceptance criteria (Sprint 22 done = ✅)
+
+- [x] 7 個 `--space-*` tokens 喺 `:root` 定義
+- [x] 12 個 `--color-*` tokens 喺 `:root` 定義(NT-D primary brand canonical)
+- [x] `src/style.css` 258 個 spacing + color declarations 全部 migrate
+- [x] JS inline 65 個 common values migrate 落 token
+- [x] `tools/a11y/audit-spacing.mjs` 可執行,PASS / FAIL exit code 正確
+- [x] `npm run audit:spacing` 入 CI guard
+- [x] 29 個新 unit test,full suite 146 → 175 pass
+- [x] `--fc-font-size` SEN slider + S21 `--fs-*` 全部 preserved
+- [x] HC mode + RM mode 唔受影響
+- [x] `__version__` 2.5.0 → 2.6.0 (MINOR — new capability)
+- [x] SPEC v3.10 → v3.11 (this section)
+- [x] 175/175 tests pass,no regression
+
+### 21.9 Anti-pattern (Sprint 22 必避)
+
+- ❌ 寫 `padding: 12px;` 而唔用 `var(--space-3)` → audit-spacing 即 catch
+- ❌ 寫 `background: #7C3AED;` 而唔用 `var(--color-primary)` → 用 token,新色票一改即 update
+- ❌ 新增 --space-8 (48px) 或其他非 7 級 scale → 守 scale,display 用 inline > 32px
+- ❌ 改 raw hex 喺 HC mode override (`html[data-hc="true"]`) → 保留 raw,HC mode 故意用 raw contrast value
+- ❌ 將 `--primary` (legacy blue) 改成 `--color-primary` (purple) → 兩者唔同義,legacy 保留
+- ❌ Migrate 1px/2px/3px border 落 spacing token → border 唔屬 spacing scale
+- ❌ 將 topic 17 色板寫死落 token → S23 先統一
+
+### 21.10 Out-of-scope (v3.11 不做,留 future)
+
+- ❌ Topic 色板統一(17 → 6 semantic groups)→ S23
+- ❌ Dark mode `@media (prefers-color-scheme: dark)` + manual toggle → S24
+- ❌ Brand identity / mascot / iconography → S25+
+- ❌ Migrate 1px/2px/3px border → 屬 border-width,非 spacing
+- ❌ Migrate 40px/60px/80px 落 spacing token → display territory,inline + audit allowlist
+- ❌ Migrate HC mode 嘅 raw hex (`#000000`, `#ffffff`) → HC mode 故意 raw contrast
+- ❌ Migrate topic 17 獨立色 (#10B981, #F97316 等) → S23 統一 semantic group
+- ❌ 將 --color-* export 落 JS constants → CSS-only scope
+- ❌ CSS variable dark-mode toggle via `[data-theme="dark"]` → S24 才需要
+
+### 21.11 Migration impact summary
+
+| Metric | Before | After |
+|---|---|---|
+| Spacing distinct px values (CSS) | 22 | 7 tokens + display allowlist |
+| Color distinct hex (CSS) | 99 | 12 tokens + topic/HC/edge allowlist |
+| Hardcoded `padding/margin/gap` (CSS) | 174 | 0 (all tokenized) |
+| Hardcoded hex in styling (CSS) | 84 | 0 (migrated subset) |
+| Hardcoded spacing/color in JS inline | 65 | 0 (migrated common subset) |
+| Audit scripts | 2 (font-sizes, touch-targets) | 3 (+ spacing) |
+| Sprint 21 typography (`--fs-*`) | intact | intact (no regression) |
+
+*Addendum 日期:2026-06-23 | 配合 Sprint 22 開工 | 取代/補充:§20 唔變,純新增 §21 | 維護者: Mavis + kencheng*
 

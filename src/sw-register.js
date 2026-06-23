@@ -45,10 +45,10 @@ function showInstallBanner() {
     <span style="flex:1">將應用加入主畫面，離線都能用！</span>
     <button id="pwa-install-btn" style="
       background: white;
-      color: #7B2FBE;
+      color: var(--color-primary);
       border: none;
       border-radius: 20px;
-      padding: 8px 18px;
+      padding: var(--space-2) var(--space-4);
       font-weight: 600;
       cursor: pointer;
       font-size: var(--fs-sm);
@@ -146,7 +146,7 @@ function showUpdateBanner() {
       color: #e67e00;
       border: none;
       border-radius: 20px;
-      padding: 7px 16px;
+      padding: 7px var(--space-4);
       font-weight: 600;
       cursor: pointer;
       font-size: var(--fs-sm);

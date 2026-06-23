@@ -94,20 +94,20 @@ export function renderGameHub() {
           <div class="gc-tag" aria-label="pilot 試玩版">pilot</div>
         </button>
 
-        <button type="button" class="game-card available" data-action="navigate" data-arg="subject-select" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#7C3AED" aria-label="情境答題：17 個品格課題自由探索">
+        <button type="button" class="game-card available" data-action="navigate" data-arg="subject-select" style="background:linear-gradient(135deg,var(--color-primary-bg),#e9d5ff);border-color:var(--color-primary)" aria-label="情境答題：17 個品格課題自由探索">
           <div class="gc-icon" aria-hidden="true">📖</div>
           <div class="gc-title">情境答題</div>
           <div class="gc-desc">17 個品格課題自由探索：12 個 EDB 價值觀 + 5 個友愛校園範疇</div>
         </button>
 
-        <div class="game-card locked" style="background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:#ef4444;cursor:not-allowed;opacity:0.6" role="img" aria-label="關係花園（暫未推出）">
+        <div class="game-card locked" style="background:linear-gradient(135deg,var(--color-danger-bg),#fecaca);border-color:var(--color-danger);cursor:not-allowed;opacity:0.6" role="img" aria-label="關係花園（暫未推出）">
           <div class="gc-icon" aria-hidden="true">🌷</div>
           <div class="gc-title">關係花園</div>
           <div class="gc-desc">（即將推出）</div>
           <div class="gc-tag" aria-hidden="true">coming soon</div>
         </div>
 
-        <div class="game-card locked" style="background:linear-gradient(135deg,#f3e8ff,#e9d5ff);border-color:#a855f7;cursor:not-allowed;opacity:0.6" role="img" aria-label="道德大富翁（暫未推出）">
+        <div class="game-card locked" style="background:linear-gradient(135deg,var(--color-primary-bg),#e9d5ff);border-color:#a855f7;cursor:not-allowed;opacity:0.6" role="img" aria-label="道德大富翁（暫未推出）">
           <div class="gc-icon" aria-hidden="true">🎲</div>
           <div class="gc-title">道德大富翁</div>
           <div class="gc-desc">（即將推出）</div>
@@ -214,7 +214,7 @@ export function renderBankResult(scenario, result, run) {
       </div>
 
       ${result.outcomeImage ? `
-        <div class="outcome-image-wrap" style="margin:14px auto;max-width:340px;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
+        <div class="outcome-image-wrap" style="margin: var(--space-3) auto;max-width:340px;border-radius:16px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.08)">
           <img src="${result.outcomeImage}" alt="結果插圖" style="width:100%;display:block"
                loading="lazy" decoding="async"
  />
@@ -226,7 +226,7 @@ export function renderBankResult(scenario, result, run) {
         <div class="comment">${result.mainComment || ''}</div>
       </div>
 
-      <div class="bank-balance-big" style="text-align:center;margin:18px 0">
+      <div class="bank-balance-big" style="text-align:center;margin: var(--space-4) 0">
         <div style="font-size:var(--fs-base);color:var(--text-light)">目前結餘</div>
         <div class="${delta > 0 ? 'positive' : delta < 0 ? 'negative' : 'neutral'}" style="font-size:2.4em;font-weight:800" aria-label="目前結餘 ${balance} 元">$${balance}</div>
         <div class="fc-muted-sm">目標 $${target}</div>
@@ -265,7 +265,7 @@ export function renderBankSummary(run) {
   // S11: count caring / risk-2+ 喺 ledger 上面 surface，俾老師 / 學生知道呢局難度分佈
   const caringCount = run.questions.filter(s => s.domain === 'caring' || (s.riskLevel != null && s.riskLevel > 0)).length;
   const valueCount = run.questions.length - caringCount;
-  const filterLine = `<div class="bank-summary-filter" style="font-size:var(--fs-base);color:var(--text-light);text-align:center;margin:8px 0 14px 0">
+  const filterLine = `<div class="bank-summary-filter" style="font-size:var(--fs-base);color:var(--text-light);text-align:center;margin: var(--space-2) 0 var(--space-3) 0">
     🎯 難度設定：${bankRiskLabel(run.maxRisk)} · 本局 ${valueCount} 個 value + ${caringCount} 個 caring
   </div>`;
 
@@ -278,9 +278,9 @@ export function renderBankSummary(run) {
         ${isWon ? '🎉 品格富翁達陣！' : isBankrupt ? '💔 今次破產喇' : '🏁 旅程結束'}
       </div>
 
-      <div class="progress-grid" style="margin:18px 0" role="list" aria-label="銀行結算統計">
+      <div class="progress-grid" style="margin: var(--space-4) 0" role="list" aria-label="銀行結算統計">
         <div class="progress-cell" role="listitem">
-          <div class="num" style="color:${run.balance >= 0 ? '#22c55e' : '#ef4444'}" aria-label="最終結餘 ${run.balance} 元">$${run.balance}</div>
+          <div class="num" style="color:${run.balance >= 0 ? '#22c55e' : 'var(--color-danger)'}" aria-label="最終結餘 ${run.balance} 元">$${run.balance}</div>
           <div class="label">最終結餘</div>
         </div>
         <div class="progress-cell" role="listitem">
@@ -299,7 +299,7 @@ export function renderBankSummary(run) {
 
       <div class="card" style="margin-bottom:14px">
         <div style="font-weight:600;margin-bottom:10px">📒 存摺紀錄</div>
-        ${run.stamps.length === 0 ? '<div style="color:var(--text-light);font-size:var(--fs-base);text-align:center;padding:12px">冇交易紀錄</div>' : `
+        ${run.stamps.length === 0 ? '<div style="color:var(--text-light);font-size:var(--fs-base);text-align:center;padding: var(--space-3)">冇交易紀錄</div>' : `
           <div class="ledger-scroll" role="list" aria-label="存摺交易紀錄">
             ${run.stamps.map((s, i) => `
               <div class="ledger-row" role="listitem">
@@ -454,7 +454,7 @@ export function renderTeacherAssign() {
         </div>
 
         ${config.timerEnabled ? `
-        <div style="padding:10px 0 14px 0">
+        <div style="padding: var(--space-3) 0 var(--space-3) 0">
           <div style="display:flex;justify-content:space-between;margin-bottom:6px">
             <strong>答題時限</strong>
             <span style="color:var(--primary);font-weight:600">${config.timerSeconds} 秒</span>
@@ -483,7 +483,7 @@ export function renderTeacherAssign() {
             <div class="ft-label">🏦 銀行題目難度</div>
             <div class="ft-desc">限制好人好事銀行抽題嘅 risk level 上限</div>
           </div>
-          <div style="display:flex;gap:6px;flex-wrap:wrap" role="radiogroup" aria-label="銀行題目難度">
+          <div style="display:flex;gap: var(--space-2);flex-wrap:wrap" role="radiogroup" aria-label="銀行題目難度">
             ${[
               { v: 0, label: '只 value' },
               { v: 1, label: '≤1（低）' },
@@ -492,7 +492,7 @@ export function renderTeacherAssign() {
             ].map(opt => `
               <button type="button"
                 class="btn ${config.bankMaxRiskLevel===opt.v ? 'btn-primary' : 'btn-outline'}"
-                style="padding:6px 10px;font-size:var(--fs-sm);min-height:36px"
+                style="padding: var(--space-2) var(--space-3);font-size:var(--fs-sm);min-height:36px"
                 data-action="setBankMaxRisk" data-arg="${opt.v}"
                 role="radio" aria-checked="${config.bankMaxRiskLevel===opt.v}">${opt.label}</button>
             `).join('')}
@@ -504,13 +504,13 @@ export function renderTeacherAssign() {
             <div class="ft-label">👆 按鈕大小</div>
             <div class="ft-desc">控制答題按鈕尺寸</div>
           </div>
-          <div style="display:flex;gap:6px" role="radiogroup" aria-label="按鈕大小">
+          <div style="display:flex;gap: var(--space-2)" role="radiogroup" aria-label="按鈕大小">
             <button type="button" class="btn ${config.buttonSize==='large'?'btn-primary':'btn-outline'}"
-              style="padding:6px 12px;font-size:var(--fs-base);min-height:36px"
+              style="padding: var(--space-2) var(--space-3);font-size:var(--fs-base);min-height:36px"
               data-action="setButtonSize" data-arg="large"
               role="radio" aria-checked="${config.buttonSize==='large'}">大</button>
             <button type="button" class="btn ${config.buttonSize==='normal'?'btn-primary':'btn-outline'}"
-              style="padding:6px 12px;font-size:var(--fs-base);min-height:36px"
+              style="padding: var(--space-2) var(--space-3);font-size:var(--fs-base);min-height:36px"
               data-action="setButtonSize" data-arg="normal"
               role="radio" aria-checked="${config.buttonSize==='normal'}">中</button>
           </div>
@@ -523,7 +523,7 @@ export function renderTeacherAssign() {
           勾選要考核的主題，留空 = 全部開放
         </p>
         ${topics.map(t => `
-          <label style="display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer">
+          <label style="display:flex;align-items:center;gap: var(--space-3);padding: var(--space-3) 0;border-bottom:1px solid var(--border);cursor:pointer">
             <input type="checkbox" value="${t.id}"
               ${config.assignedTopics.includes(t.id) || config.assignedTopics.length === 0 ? 'checked' : ''}
               onchange="FC.toggleAssignedTopic('${t.id}', this.checked)"
@@ -543,7 +543,7 @@ export function renderTeacherAssign() {
         <label for="teacher-pin-input" style="position:absolute;left:-9999px">老師模式 PIN</label>
         <input type="password" id="teacher-pin-input" value="admin" maxlength="6" autocomplete="current-password"
           placeholder="輸入新 PIN"
-          style="width:100%;padding:14px;border:2px solid var(--border);border-radius:12px;font-size:var(--fs-md);box-sizing:border-box;margin-bottom:10px" />
+          style="width:100%;padding: var(--space-3);border:2px solid var(--border);border-radius:12px;font-size:var(--fs-md);box-sizing:border-box;margin-bottom:10px" />
         <button type="button" class="btn btn-outline" style="width:100%;font-size:var(--fs-md)"
           data-action="saveTeacherPIN">💾 儲存 PIN</button>
       </div>
@@ -985,7 +985,7 @@ ${renderPageHeader({
         const pct = tp.total ? Math.round((tp.completed / tp.total) * 100) : 0;
         return `
           <div class="card" style="margin-bottom:10px">
-            <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+            <div style="display:flex;align-items:center;gap: var(--space-2);margin-bottom:6px">
               <span style="font-size:1.2em">${tid.emoji}</span>
               <strong>${tid.title}</strong>
               <span style="margin-left:auto;color:var(--text-light)">${tp.completed || 0}/${tp.total || 0}</span>
@@ -1035,13 +1035,13 @@ export function renderSettings() {
     <div class="container fade-in">
 ${renderPageHeader({ emoji: '⚙️', title: '個人化設定', back: 'role-select', backLabel: '返回主選單' })}
 
-      <div class="card" style="margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap">
+      <div class="card" style="margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;gap: var(--space-3);flex-wrap:wrap">
         <div>
           <div style="font-weight:600;margin-bottom:4px">📖 教學</div>
           <div style="font-size:var(--fs-base);color:var(--text-light)">想再睇一次首次使用教學？</div>
         </div>
         <button type="button" class="btn btn-outline" data-action="replayOnboarding"
-          style="font-size:var(--fs-base);padding:10px 16px;min-height:44px">
+          style="font-size:var(--fs-base);padding: var(--space-3) var(--space-4);min-height:44px">
           重看教學
         </button>
       </div>
@@ -1052,7 +1052,7 @@ ${renderPageHeader({ emoji: '⚙️', title: '個人化設定', back: 'role-sele
           揀過嘅每個選項都會記低喺本地，包括 category 同答得啱唔啱。
           匯出 CSV 畀老師，就可以分析邊個 category 答錯率最高。
         </div>
-        <div id="analytics-summary" style="font-size:var(--fs-base);color:var(--text-light);margin-bottom:10px;padding:8px 10px;background:var(--bg-soft, #f7f7fa);border-radius:8px" aria-live="polite" aria-atomic="true">
+        <div id="analytics-summary" style="font-size:var(--fs-base);color:var(--text-light);margin-bottom:10px;padding: var(--space-2) var(--space-3);background:var(--bg-soft, #f7f7fa);border-radius:8px" aria-live="polite" aria-atomic="true">
           載入中…
         </div>
         <div class="action-row">
@@ -1077,17 +1077,17 @@ ${renderPageHeader({ emoji: '⚙️', title: '個人化設定', back: 'role-sele
             <strong>發音語言</strong>
             <div style="font-size:var(--fs-sm);color:var(--text-light);margin-top:2px">揀錯會 load 國語而唔係粵語</div>
           </div>
-          <div style="display:flex;flex-wrap:wrap;gap:6px" role="radiogroup" aria-label="發音語言">
+          <div style="display:flex;flex-wrap:wrap;gap: var(--space-2)" role="radiogroup" aria-label="發音語言">
             ${(window.FC?.TTS_LANGS || []).map(l => `
               <button type="button" class="btn"
                 data-active="${currentLang === l.id}"
-                style="flex:1;min-width:0;font-size:var(--fs-base);padding:8px 6px;${currentLang === l.id ? 'background:var(--primary);color:#fff;border:3px solid var(--primary);' : 'background:transparent;border:3px solid var(--primary);color:var(--primary);'}"
+                style="flex:1;min-width:0;font-size:var(--fs-base);padding: var(--space-2) var(--space-2);${currentLang === l.id ? 'background:var(--primary);color:#fff;border:3px solid var(--primary);' : 'background:transparent;border:3px solid var(--primary);color:var(--primary);'}"
                 data-action="setTTSLang" data-arg="${escapeAttr(l.id)}"
                 title="${l.hint}"
                 role="radio" aria-checked="${currentLang === l.id}">${l.label}</button>
             `).join('')}
           </div>
-          <div id="tts-voice-warning" style="display:none;margin-top:8px;padding:8px 10px;background:#FFF8E1;border-left:3px solid #F59E0B;border-radius:4px;font-size:var(--fs-base);color:#92400E" role="status" aria-live="polite">
+          <div id="tts-voice-warning" style="display:none;margin-top:8px;padding: var(--space-2) var(--space-3);background:#FFF8E1;border-left:3px solid var(--color-warning);border-radius:4px;font-size:var(--fs-base);color:#92400E" role="status" aria-live="polite">
             ⚠️ 你個 browser / OS 冇裝粵語 voice, TTS 會用 國語 (zh-TW / zh-CN) fallback 朗讀。
             想聽真粵語：<strong>macOS</strong> → 系統偏好設定 → 輔助使用 → 朗讀內容 → 系統聲音 → 揀「Sin-ji (粵語香港)」；
             <strong>Windows</strong> → 設定 → 時間與語言 → 語言 → 語音 → 加粵語香港 voice pack。
@@ -1157,10 +1157,10 @@ ${renderPageHeader({ emoji: '⚙️', title: '個人化設定', back: 'role-sele
         </div>
         <div>
           <div style="margin-bottom:6px"><strong>間格</strong></div>
-          <div style="display:flex;gap:8px" role="radiogroup" aria-label="間距">
-            <button type="button" class="btn ${spacing==='narrow'?'btn-primary':'btn-outline'}" data-action="setSpacing" data-arg="narrow" id="sp-narrow" role="radio" aria-checked="${spacing==='narrow'}" style="flex:1;padding:8px;font-size:var(--fs-base)">窄</button>
-            <button type="button" class="btn ${spacing==='medium'?'btn-primary':'btn-outline'}" data-action="setSpacing" data-arg="medium" id="sp-medium" role="radio" aria-checked="${spacing==='medium'}" style="flex:1;padding:8px;font-size:var(--fs-base)">中</button>
-            <button type="button" class="btn ${spacing==='wide'?'btn-primary':'btn-outline'}" data-action="setSpacing" data-arg="wide" id="sp-wide" role="radio" aria-checked="${spacing==='wide'}" style="flex:1;padding:8px;font-size:var(--fs-base)">闊</button>
+          <div style="display:flex;gap: var(--space-2)" role="radiogroup" aria-label="間距">
+            <button type="button" class="btn ${spacing==='narrow'?'btn-primary':'btn-outline'}" data-action="setSpacing" data-arg="narrow" id="sp-narrow" role="radio" aria-checked="${spacing==='narrow'}" style="flex:1;padding: var(--space-2);font-size:var(--fs-base)">窄</button>
+            <button type="button" class="btn ${spacing==='medium'?'btn-primary':'btn-outline'}" data-action="setSpacing" data-arg="medium" id="sp-medium" role="radio" aria-checked="${spacing==='medium'}" style="flex:1;padding: var(--space-2);font-size:var(--fs-base)">中</button>
+            <button type="button" class="btn ${spacing==='wide'?'btn-primary':'btn-outline'}" data-action="setSpacing" data-arg="wide" id="sp-wide" role="radio" aria-checked="${spacing==='wide'}" style="flex:1;padding: var(--space-2);font-size:var(--fs-base)">闊</button>
           </div>
         </div>
         <div style="margin-top:12px;text-align:center">
@@ -1194,10 +1194,10 @@ ${renderPageHeader({ emoji: '⚙️', title: '個人化設定', back: 'role-sele
         <button type="button" class="btn btn-primary" data-action="goTeacher">進入老師模式</button>
       </div>
 
-      <div class="privacy-notice" role="region" aria-label="資料收集說明" style="background:#fffbe6;border:1px solid #faad14;border-radius:12px;padding:16px;margin-top:24px;font-size:var(--fs-sm);color:#8a6d3b">
+      <div class="privacy-notice" role="region" aria-label="資料收集說明" style="background:#fffbe6;border:1px solid #faad14;border-radius:12px;padding: var(--space-4);margin-top:24px;font-size:var(--fs-sm);color:#8a6d3b">
         <h2 style="margin-bottom:8px;font-size:var(--fs-md)">🔒 資料收集說明</h2>
         <p>本應用使用瀏覽器本地儲存（localStorage）保存以下資料：</p>
-        <ul style="margin:8px 0 0 20px">
+        <ul style="margin: var(--space-2) 0 0 var(--space-5)">
           <li>個人化設定（字體大小、行距、朗讀速度）</li>
           <li>學習進度及題目記錄</li>
           <li>每題作答記錄（category、選項、答得啱唔啱、用咗幾耐）</li>
