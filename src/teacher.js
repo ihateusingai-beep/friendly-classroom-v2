@@ -80,7 +80,7 @@ export function renderTeacher() {
               <span class="num" style="color:${total >= 100 ? '#15803d' : 'var(--text)'}">${total}</span>
               <span class="label">道德分</span>
             </span>
-            <span style="font-size:1.2em" aria-hidden="true">${grade}</span>
+            <span style="font-size:var(--fs-lg)" aria-hidden="true">${grade}</span>
           </div>`;
         }).join('')}
       </div>
@@ -95,8 +95,8 @@ export function renderTeacher() {
             return `
               <div style="background:${sub.color}18;border:2px solid ${sub.color};border-radius:12px;padding:12px;text-align:center" role="listitem"
                 aria-label="${sub.title}，全班完成 ${totalCompleted}/${totalPossible} 題，${pct}%">
-                <div style="font-size:1.5em;margin-bottom:4px" aria-hidden="true">${sub.emoji}</div>
-                <div style="font-weight:700;font-size:1.1em;color:${sub.color}">${totalCompleted}/${totalPossible}</div>
+                <div style="font-size:var(--fs-xl);margin-bottom:4px" aria-hidden="true">${sub.emoji}</div>
+                <div style="font-weight:700;font-size:var(--fs-lg);color:${sub.color}">${totalCompleted}/${totalPossible}</div>
                 <div style="height:6px;background:#eee;border-radius:3px;margin-top:6px;overflow:hidden" role="progressbar"
                   aria-valuenow="${pct}" aria-valuemin="0" aria-valuemax="100" aria-label="${sub.title} 全班進度">
                   <div style="height:100%;width:${pct}%;background:${sub.color};border-radius:3px"></div>
@@ -108,7 +108,7 @@ export function renderTeacher() {
 
       <div class="card">
         <div style="font-weight:600;margin-bottom:10px">📥 匯入學生數據</div>
-        <p style="font-size:0.85em;color:var(--text-light);margin-bottom:8px">選擇學生之前匯出的 .json 檔案</p>
+        <p style="font-size:var(--fs-base);color:var(--text-light);margin-bottom:8px">選擇學生之前匯出的 .json 檔案</p>
         <label for="teacher-import-file" class="sr-only">匯入學生資料檔案</label>
         <input id="teacher-import-file" type="file" accept=".json" onchange="FC.handleImport(event)" style="margin-bottom:10px" />
       </div>
@@ -120,7 +120,7 @@ export function renderTeacher() {
 
       <div class="card">
         <div style="font-weight:600;margin-bottom:10px">⚙️ 老師設定</div>
-        <p style="font-size:0.85em;color:var(--text-light);margin-bottom:8px">控制學生的功能開關、課題範圍、PIN</p>
+        <p style="font-size:var(--fs-base);color:var(--text-light);margin-bottom:8px">控制學生的功能開關、課題範圍、PIN</p>
           <button type="button" class="btn btn-primary" data-action="navigate" data-arg="teacher-assign">⚙️ 功能設定</button>
       </div>
 

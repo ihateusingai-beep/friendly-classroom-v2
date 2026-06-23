@@ -141,7 +141,7 @@ bus.on('sync:status', (e) => {
       color: #ffffff;
       text-align: center;
       padding: 10px;
-      font-size: 14px;
+      font-size: var(--fs-sm);
       z-index: 9998;
       font-weight: 600;
     `;
@@ -400,7 +400,7 @@ function renderErrorFallback(e) {
         <p class="fc-muted fc-mb-16">
           ${t('error.fallbackHint')}
         </p>
-        <details style="text-align:left;background:var(--bg);border-radius:8px;padding:12px;margin-bottom:16px;font-size:0.85em">
+        <details style="text-align:left;background:var(--bg);border-radius:8px;padding:12px;margin-bottom:16px;font-size:var(--fs-base)">
           <summary style="cursor:pointer;font-weight:600">🔍 技術細節</summary>
           <pre style="white-space:pre-wrap;margin-top:8px;color:var(--danger)">${e.message}</pre>
         </details>
