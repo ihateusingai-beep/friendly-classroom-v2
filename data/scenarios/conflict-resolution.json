@@ -1,1200 +1,1280 @@
 [
-{
-"id": "s3",
-"title": "關卡3：新朋友",
-"background": "操場・晏晝",
-"description": "小美最近成日同新同學玩，都唔理你啦。你覺得心裡酸酸地...",
-"hints": [
-"小美淨係想識新朋友，唔係想放棄你。你有冇試過主動問佢？",
-"嫉妒係正常既，但質問唔會令你哋關係更好。嘗試表達感受而非指責。",
-"直接話「我有啲難過」然後問清楚，係健康既溝通方式。"
-],
-"characters": [
-{
-"name": "小美",
-"emoji": "👩‍🎓",
-"initial_relationship": 60
-}
-],
-"options": [
-{
-"id": "s3-a",
-"text": "嬲既質問佢",
-"effects": [
-{
-"character": "小美",
-"change": -20,
-"comment": "你衝過去大聲問，小美嚇一跳：「我淨係想識新朋友之嘛...」全班望住你，你覺得更加丟臉...",
-"moralChange": -8
-}
-],
-"next_scenario": "s4"
-},
-{
-"id": "s3-b",
-"text": "覺得自己唔好，不再同佢講話",
-"effects": [
-{
-"character": "小美",
-"change": -10,
-"comment": "你成日坐係度諗：「我果然唔值得被鍾意...」你越來越唔想講野...",
-"moralChange": -8
-},
-{
-"character": "小美",
-"change": 5,
-"comment": "小美唔知你諗緊咩，但係見到你唔開心都有啲擔心...",
-"moralChange": -8
-}
-],
-"next_scenario": "s4"
-},
-{
-"id": "s3-c",
-"text": "平靜咁話：「我有啲難過，我哋仲係好朋友嗎？」",
-"effects": [
-{
-"character": "小美",
-"change": 20,
-"comment": "小美即刻話：「梗係啦！我淨係想多識一個人之嘛，你永遠都好重要！」",
-"moralChange": 8
-}
-],
-"next_scenario": "s4"
-}
-],
-"location": "break",
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "小美最近成日同新同學玩，都唔理你啦。你覺得心裡酸酸地... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s8",
-"title": "關卡8：一個人坐",
-"background": "操場・晏晝",
-"description": "你自己一個人坐係長椅度，望住其他同學度玩，心裡有啲難過...",
-"hints": [
-"如果冇人主動坐埋去，佢係咪永遠都會自己一個人？",
-"唔同人唔敢主動，你係咪可以帶頭踏出第一步？",
-"你坐過去話：「呢度有人嗎？」改變可能就係由你開始。"
-],
-"characters": [
-{
-"name": "小傑",
-"emoji": "👨‍🎓",
-"initial_relationship": 50
-},
-{
-"name": "老師",
-"emoji": "👩‍🏫",
-"initial_relationship": 60
-}
-],
-"options": [
-{
-"id": "s8-a",
-"text": "繼續坐係度，覺得冇人鍾意我",
-"effects": [
-{
-"character": "同學A",
-"change": -5,
-"comment": "你成個下晝都坐係度，心情越來越低落。返到屋企你同媽媽話：「我冇朋友...」媽媽好擔心，但係你唔知點改變...",
-"moralChange": -8
-}
-],
-"next_scenario": null
-},
-{
-"id": "s8-b",
-"text": "搵老師傾下我既心情",
-"effects": [
-{
-"character": "老師",
-"change": 15,
-"comment": "老師好好心機聽你講，話：「不如搵啲同學一齊玩啦？」之後老師幫你介紹咗幾個朋友，你逐步逐步融入咗！",
-"moralChange": 8
-}
-],
-"next_scenario": null
-},
-{
-"id": "s8-c",
-"text": "去問其他同學：「我可以一齊玩嗎？」",
-"effects": [
-{
-"character": "同學A",
-"change": 20,
-"comment": "你真係好勇敢！嗰個同學即刻話：「梗係可以啦！一齊啦！」你交咗新朋友，原來主動一啲都唔難！",
-"moralChange": 8
-}
-],
-"next_scenario": null
-}
-],
-"location": "break",
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "你自己一個人坐係長椅度，望住其他同學度玩，心裡有啲難過... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-h1",
-"title": "關卡：網上欺凌",
-"location": "home",
-"background": "家中・夜晚",
-"description": "你發現有人係班Group度發你既相，加啱衰caption全班笑你",
-"hints": [
-"截圖可以永久保存，即使刪除咗都已經流出。你知道網上言論既後果嗎？",
-"網上霸凌既傷害係持續性既，因為圖片可以被不斷轉發。",
-"如果見到你唔鍾意既言論，可以report block。沉默既旁觀者其實變相幫兇。"
-],
-"characters": [
-{
-"name": "小傑",
-"emoji": "👨‍🎓",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-h1-a",
-"text": "發脾氣鬧全班",
-"effects": [
-{
-"character": "小傑",
-"change": -15,
-"comment": "越好激動但冇人理，狀況仲越鬧越大",
-"moralChange": -8
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-h1-b",
-"text": "搵家長幫手",
-"effects": [
-{
-"character": "小傑",
-"change": 5,
-"comment": "媽媽幫你report上去，發布者被記名",
-"moralChange": 8
-}
-],
-"next_scenario": null
-}
-],
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "你發現有人係班Group度發你既相，加啱衰caption全班笑你 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-h2",
-"title": "關卡：祕密被公開",
-"location": "home",
-"background": "家中・夜晚",
-"description": "你發現小傑爆咗你既祕密出去，全班笑你",
-"hints": [
-"如果係你既祕密俾人公開，你會點？你希望點被對待？",
-"信任係友誼既基礎，如果信任被打破，就好難修復。",
-"如果你知道咗別人既祕密，問一問自己：「如果是我，我想佢點處理？」"
-],
-"characters": [
-{
-"name": "小傑",
-"emoji": "👨‍🎓",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-h2-a",
-"text": "話我以後都唔同你做朋友",
-"effects": [
-{
-"character": "小傑",
-"change": -25,
-"comment": "小傑話洗鬼理你，你兩個反面",
-"moralChange": -8
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-h2-b",
-"text": "原諒佢，但講多次不可以",
-"effects": [
-{
-"character": "小傑",
-"change": 10,
-"comment": "小傑話sorry，你學識咗原諒同設定界線",
-"moralChange": 8
-}
-],
-"next_scenario": null
-}
-],
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "你發現小傑爆咗你既祕密出去，全班笑你 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-h5",
-"title": "關卡： family group排除",
-"location": "home",
-"background": "家中・夜晚",
-"description": "WhatsApp family group入面，大家傾trip既時候冇叫埋你...",
-"hints": [
-"如果你俾屋企人忽略，你會係咩心情？你有冇試過表達？",
-"有時家人專注於其他事情，唔係因為唔愛我，但忽視確實會傷害人。",
-"可以說：「我兩想要你哋今晚陪我傾一傾計。」"
-],
-"characters": [
-{
-"name": "小傑",
-"emoji": "👨",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-h5-a",
-"text": "問「點解唔叫我」",
-"effects": [
-{
-"character": "爸爸",
-"change": 10,
-"comment": "爸爸話以為你唔想去...下次一定叫埋你",
-"moralChange": 8
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-h5-b",
-"text": "自己一個發脾氣，鬧點解冇叫我",
-"effects": [
-{
-"character": "爸爸",
-"change": -15,
-"moralChange": -20,
-"comment": "爸爸話：「你自己冇出聲，點知我唔叫你？」..."
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-h5-c",
-"text": "主動走去問爸爸：「下次family trip可唔可以叫埋我？」",
-"effects": [
-{
-"character": "爸爸",
-"change": 20,
-"moralChange": 20,
-"comment": "爸爸笑話：「好呀，下次一定叫埋你！我以為你今次冇興趣...」"
-}
-],
-"next_scenario": null
-}
-],
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "WhatsApp family group入面，大家傾trip既時候冇叫埋你... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-door2",
-"title": "特別關卡：門與安全",
-"background": "走廊・樓梯口",
-"description": "你見到小鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？",
-"characters": [
-{
-"name": "小鋒",
-"emoji": "🚪",
-"initial_relationship": 50
-}
-],
-"hints": [
-"走廊有你既同學、老師、仲有其他人。環境安全係每個人既責任。",
-"如果你發現有危險，你應該點做？沉默旁觀定係出手幫忙？",
-"關心集體安全，唔净係為咗自己，仲為咗你身邊既每一個人。"
-],
-"options": [
-{
-"id": "s-door2-a",
-"text": "走埋去話：「小鋒，門就嚟開喇，小心呀！」",
-"effects": [
-{
-"character": "小鋒",
-"change": 30,
-"moralChange": 25,
-"comment": "小鋒即刻停低，望住你：「你點知？」你話：「我見到你爬嚟爬去，擔心你整傷。」佢笑咗：「多謝你！」"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-door2-b",
-"text": "行開當睇唔到（因為話俾佢知可能會得罪佢）",
-"effects": [
-{
-"character": "小鋒",
-"change": 0,
-"moralChange": -10,
-"comment": "門突然打開，小鋒整傷咗手指...你心裡有少少內咎，如果你早啲提醒佢就好..."
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-door2-c",
-"text": "立即走去通知老師",
-"effects": [
-{
-"character": "小鋒",
-"change": -15,
-"moralChange": 15,
-"comment": "老師即時趕到制止咗危險情況，但小鋒有少少唔高興：「你通知老師？」..."
-}
-],
-"next_scenario": null
-}
-],
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "你見到小鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-door3",
-"title": "特別關卡：開門與關門",
-"background": "課室・午休",
-"description": "午休時，你見到門係開住，但外面好嘈，有啲同學喺走廊跑嚟跑去。風吹啲紙張周圍飛。老師未返課室。你應該點做？",
-"characters": [],
-"hints": [
-"紙張飛嚟飛去，老師係圖書館管理員話唔可以open door。你知道點解嗎？",
-"有時規矩唔係為咗限制，而係為咗保護大家既權利。",
-"可以問老師：問我可以幫手執紙張嗎？主動提出係尊重規則既表現。"
-],
-"options": [
-{
-"id": "s-door3-a",
-"text": "行去閂門，然後幫手執紙張",
-"effects": [
-{
-"character": "小明",
-"change": 5,
-"moralChange": 20,
-"comment": "你輕輕閂上門，執起啲紙張。其他同學望住你，有人話：「你幾好喎。」"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-door3-b",
-"text": "自己走去閂門，唔理其他同學",
-"effects": [
-{
-"character": "小明",
-"change": 10,
-"moralChange": -5,
-"comment": "你閂埋門，但同學話：「你做嘢呀？我哋仲要出去！」你只係為咗自己舒服..."
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-door3-c",
-"text": "坐返低，等老師返嚟先",
-"effects": [
-{
-"character": "小明",
-"change": 0,
-"moralChange": 0,
-"comment": "你坐返低，老師好快就返嚟。老師自己閂咗門，執起啲紙張。你冇做錯，但都冇幫手。"
-}
-],
-"next_scenario": null
-}
-],
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "午休時，你見到門係開住，但外面好嘈，有啲同學喺走廊跑嚟跑去。風吹啲紙張周圍飛。老師未返課室。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-door6",
-"title": "特別關卡：關門紀律",
-"background": "課室・上午",
-"description": "上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。小鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師...",
-"characters": [
-{
-"name": "小鋒",
-"emoji": "🚪",
-"initial_relationship": 50
-},
-{
-"name": "老師",
-"emoji": "👩‍🏫",
-"initial_relationship": 55
-}
-],
-"hints": [
-"幫手係好意，但如果你幫手反而做成更大問題，係幫忙定係幫倒忙？",
-"有時好心都會變成壞事，關鍵係方法。你會點選擇？",
-"可以問：我幫手關門，但要點樣做先唔會打擾到人？"
-],
-"options": [
-{
-"id": "s-door6-a",
-"text": "笑小鋒：「你整到好大聲呀！」",
-"effects": [
-{
-"character": "小鋒",
-"change": -15,
-"moralChange": -10,
-"comment": "小鋒好尷尬，其他人笑。老師皺眉望你..."
-},
-{
-"character": "老師",
-"change": -10,
-"moralChange": -5,
-"comment": "老師認為你唔尊重同學。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-door6-b",
-"text": "輕聲話小鋒：「下次温柔啲啦」",
-"effects": [
-{
-"character": "小鋒",
-"change": 15,
-"moralChange": 15,
-"comment": "小鋒多謝你體諒，點點頭。老師見到你關心同學，微笑。"
-},
-{
-"character": "老師",
-"change": 10,
-"moralChange": 5,
-"comment": "老師欣賞你嘅成熟處理方式。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-door6-c",
-"text": "主動走埋去，輕手輕腳閂好門",
-"effects": [
-{
-"character": "小鋒",
-"change": 10,
-"moralChange": 20,
-"comment": "你示範咗點樣安靜關門。小鋒學到嘢，老師滿意。"
-},
-{
-"character": "老師",
-"change": 15,
-"moralChange": 10,
-"comment": "老師向你點點頭，繼續上課。"
-}
-],
-"next_scenario": null
-}
-],
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。小鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-new12",
-"title": "關卡：面對衝突",
-"background": "運動場・課外活動",
-"description": "足球比賽，小璋話你打佢，但你只係輕輕掽咗佢一下。佢向老師告你好大打人...",
-"hints": [
-"有時誤會係因為雙方理解唔同。你有冇試過先入為主覺得人哋係錯？",
-"耐心解釋可以化解問題，但首先你要願意聆聽。",
-"可以話：我聽到你咁講，我有啲唔明白，可以解釋多少少嗎？"
-],
-"characters": [
-{
-"name": "小璋",
-"emoji": "⚽",
-"initial_relationship": 35
-},
-{
-"name": "老師",
-"emoji": "👨‍🏫",
-"initial_relationship": 55
-}
-],
-"options": [
-{
-"id": "s-new12-a",
-"text": "冷靜話俾老師知：「我係輕輕掽到，但佢話我大打人」",
-"effects": [
-{
-"character": "小璋",
-"change": -10,
-"moralChange": 5,
-"comment": "老師話：「我明白，足球係要有身體接觸既運動。但小璋你話大打人就太誇張喇。」"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-new12-b",
-"text": "大鬧：「你呃人！我只係掽到你！」",
-"effects": [
-{
-"character": "小璋",
-"change": -20,
-"moralChange": -10,
-"comment": "老師話：「你兩個冷靜啲！吵架唔可以解決問題。」你兩個都被罰坐下。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-new12-c",
-"text": "走向小璋：「我知你一定好嬲，但我真係唔係特登。你有冇邊度整親？」",
-"effects": [
-{
-"character": "小璋",
-"change": 5,
-"moralChange": 15,
-"comment": "小璋呆咗，沒諗到你會行過去關心。佢話：「...我手臂有啲痛，但唔關你事。」"
-}
-],
-"next_scenario": null
-}
-],
-"location": "sports",
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "足球比賽，小璋話你打佢，但你只係輕輕掽咗佢一下。佢向老師告你好大打人... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-new17",
-"title": "關卡：聆聽他人",
-"background": "圖書館・自習時間",
-"description": "同學小華話佢屋企有事，聲音好細咁講，你專心睇書...",
-"hints": [
-"聆聽係一種尊重，等於話你講既嘢我當認真看待。你有冇試過真係用心聽？",
-"聆聽唔係等緊打斷人，而係等緊明白。你可以視為一個學習機會。",
-"試下等佢講完，你先回應。你會發現對話品質好唔同。"
-],
-"characters": [
-{
-"name": "小華",
-"emoji": "👦",
-"initial_relationship": 35
-}
-],
-"options": [
-{
-"id": "s-new17-a",
-"text": "停低睇書，專心聽佢講：「我聽緊，你繼續。」",
-"effects": [
-{
-"character": "小華",
-"change": 25,
-"moralChange": 15,
-"comment": "小華感動：「多謝你...我爸爸住院了。」你陪伴佢直到小息完結。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-new17-b",
-"text": "一邊睇書一邊聽，點頭回應",
-"effects": [
-{
-"character": "小華",
-"change": 5,
-"moralChange": 0,
-"comment": "小華：「嗯...算啦，冇嘢...」佢走開咗。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-new17-c",
-"text": "話：「我忙緊聽，你陣間再講。」",
-"effects": [
-{
-"character": "小華",
-"change": -20,
-"moralChange": -10,
-"comment": "小華冇出聲，但眼中有啲失望。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "library",
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "同學小華話佢屋企有事，聲音好細咁講，你專心睇書... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-new20",
-"title": "關卡：誠實回應",
-"background": "課室・課堂討論",
-"description": "老師問你同學小張既答案你係咪幫咗佢，你答係...",
-"hints": [
-"如果你幫朋友做完功課，係幫佢定係害佢？你想要友誼定係誠信？",
-"幫助朋友係好事，但唔可以幫佢做曬。你幫佢解決一時，但佢冇學到。",
-"可以話：我可以教你，但我唔會幫你做起。"
-],
-"characters": [
-{
-"name": "小張",
-"emoji": "👦",
-"initial_relationship": 45
-},
-{
-"name": "老師",
-"emoji": "👨‍🏫",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-new20-a",
-"text": "點頭：「係，我幫咗佢，因為佢唔識。」",
-"effects": [
-{
-"character": "小張",
-"change": 15,
-"moralChange": 10,
-"comment": "老師話：「你幫助同學係好事，但下次要鼓勵他自己做。」"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-new20-b",
-"text": "話：「冇！我係自己答！」",
-"effects": [
-{
-"character": "小張",
-"change": -5,
-"moralChange": -15,
-"comment": "老師笑：「但你答法同小張一模一樣喔...」你面紅咗。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-new20-c",
-"text": "話：「我地一齊諗，我解釋俾佢聽。」",
-"effects": [
-{
-"character": "小張",
-"change": 20,
-"moralChange": 15,
-"comment": "老師讚賞：「呢個係最好既學習方式！」"
-}
-],
-"next_scenario": null
-}
-],
-"location": "classroom",
-"topicId": "conflict-resolution",
-"creedIds": [
-13,
-16,
-18
-],
-"imagePrompt": "老師問你同學小張既答案你係咪幫咗佢，你答係... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-170",
-"title": "衝突解決：同學撞到你唔道歉",
-"background": "走廊・放學",
-"description": "同學跑跑吓撞到你跌低，佢扮冇事繼續跑。你會……",
-"hints": [
-"你有權要求道歉",
-"冷靜表達比發嬲好",
-"搵老師如果對方唔理"
-],
-"characters": [
-{
-"name": "同學",
-"emoji": "👦",
-"initial_relationship": 50
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-170-a",
-"text": "起身追住鬧佢",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你用衝突回應衝突，會令情況更差。"
-}
-]
-},
-{
-"id": "s-self-170-b",
-"text": "冷靜講「你撞到我，請你道歉」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你表達感受+要求，係衝突解決！"
-}
-]
-},
-{
-"id": "s-self-170-c",
-"text": "冷靜表達+對方唔理就搵老師+事後傾返",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你冷靜+多步驟，係衝突高手！"
-}
-]
-}
-],
-"location": "corridor",
-"topicId": "conflict-resolution",
-"creedIds": [
-11,
-9
-],
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"imagePrompt": "Hong Kong school corridor, child fallen on floor, another child running away, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-171",
-"title": "衝突解決：朋友話你蝦佢",
-"background": "課室・小息",
-"description": "你同朋友傾偈，佢突然話「你蝦我」就走開。你唔知自己做錯咩。你會……",
-"hints": [
-"對方嘅感受都係真實",
-"唔係即刻反駁",
-"聆聽同澄清"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 65
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-171-a",
-"text": "「我冇呀！」就反駁",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你即刻反駁，朋友會更嬲。"
-}
-]
-},
-{
-"id": "s-self-171-b",
-"text": "「對唔住，你覺得我點咗？」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你承認+問清楚，係衝突解決！"
-}
-]
-},
-{
-"id": "s-self-171-c",
-"text": "「對唔住」+聆聽佢感受+澄清誤解+約下次傾返",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你深度解決衝突，係高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "conflict-resolution",
-"creedIds": [
-11,
-9
-],
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say sorry",
-"聆聽對方",
-"搵共識"
-],
-"imagePrompt": "Hong Kong primary classroom, child looking hurt as friend walks away, afternoon light, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-172",
-"title": "衝突解決：兩人搶玩具",
-"background": "公園・玩耍",
-"description": "你同另一個小朋友都想玩同一個玩具，搶緊。你會……",
-"hints": [
-"玩具可以輪住玩",
-"可以搵另一個玩具",
-"搵大人幫手"
-],
-"characters": [
-{
-"name": "小朋友",
-"emoji": "🧒",
-"initial_relationship": 40
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-172-a",
-"text": "搶贏為止",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你用暴力解決，會受傷又傷人。"
-}
-]
-},
-{
-"id": "s-self-172-b",
-"text": "「我哋輪流玩」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你提議共識，係衝突解決！"
-}
-]
-},
-{
-"id": "s-self-172-c",
-"text": "輪流玩+計時+之後一齊玩其他嘢",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你建立制度，係衝突高手！"
-}
-]
-}
-],
-"location": "park",
-"topicId": "conflict-resolution",
-"creedIds": [
-11,
-9
-],
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"搵共識",
-"聆聽對方",
-"輪流"
-],
-"imagePrompt": "Hong Kong park, two children about to fight over toy, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-173",
-"title": "衝突解決：同學話你講大話",
-"background": "課室・小息",
-"description": "你講咗你嘅經歷，同學話「你講大話！你去過嘅地方我都去過！」你會……",
-"hints": [
-"唔需要即時反駁",
-"講事實",
-"唔好貶低對方"
-],
-"characters": [
-{
-"name": "同學",
-"emoji": "🧒",
-"initial_relationship": 50
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-173-a",
-"text": "「你先去過！」就反駁",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你用衝突回應，會越講越嬲。"
-}
-]
-},
-{
-"id": "s-self-173-b",
-"text": "「我講嘅係我嘅經歷，你唔信可以問我媽媽」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你冷靜澄清，係衝突解決！"
-}
-]
-},
-{
-"id": "s-self-173-c",
-"text": "冷靜澄清+接受對方唔信+之後唔好再講呢個話題",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你冷靜+智慧處理，係衝突高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "conflict-resolution",
-"creedIds": [
-11,
-9
-],
-"valueCategory": "conflict-resolution",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"表達感受",
-"聆聽對方",
-"搵共識"
-],
-"imagePrompt": "Hong Kong primary classroom, child explaining calmly while another child argues, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
-"subjectId": "caring"
-}
+  {
+    "id": "s3",
+    "title": "關卡3：新朋友",
+    "background": "操場・晏晝",
+    "description": "小美最近成日同新同學玩，都唔理你啦。你覺得心裡酸酸地...",
+    "hints": [
+      "小美淨係想識新朋友，唔係想放棄你。你有冇試過主動問佢？",
+      "嫉妒係正常既，但質問唔會令你哋關係更好。嘗試表達感受而非指責。",
+      "直接話「我有啲難過」然後問清楚，係健康既溝通方式。"
+    ],
+    "characters": [
+      {
+        "name": "小美",
+        "emoji": "👩‍🎓",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s3-a",
+        "text": "嬲的質問他",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -20,
+            "comment": "你衝過去大聲問，小美嚇一跳：「我淨是想識新朋友之嘛...」全班望住你，你覺得更…",
+            "moralChange": -8
+          }
+        ],
+        "next_scenario": "s4",
+        "stopAndThink": {
+          "badBehavior": "嬲的質問他",
+          "consequence": "你衝過去大聲問，小美嚇一跳：「我淨是想識新朋友之嘛...」全班望住你，你覺得更",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s3-b",
+        "text": "覺得自己不要，不再同他講說",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -10,
+            "comment": "你成日坐是度想：「我果然不值得被喜歡...」你越來越不想講東西...",
+            "moralChange": -8
+          },
+          {
+            "character": "小美",
+            "change": 5,
+            "comment": "小美不知你想緊什麼，但是見到你不開心都有這些擔心...",
+            "moralChange": -8
+          }
+        ],
+        "next_scenario": "s4",
+        "stopAndThink": {
+          "badBehavior": "覺得自己不要，不再同他講說",
+          "consequence": "你成日坐是度想：「我果然不值得被喜歡...」你越來越不想講東西...",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s3-c",
+        "text": "平靜這麼說：「我有這些難過，我哋還是好朋友嗎？」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 20,
+            "comment": "小美即刻說：「梗是！我淨是想多識一個人之嘛，你永遠都好重要！」",
+            "moralChange": 8
+          }
+        ],
+        "next_scenario": "s4"
+      }
+    ],
+    "location": "break",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "小美最近成日同新同學玩，都唔理你啦。你覺得心裡酸酸地... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s8",
+    "title": "關卡8：一個人坐",
+    "background": "操場・晏晝",
+    "description": "你自己一個人坐係長椅度，望住其他同學度玩，心裡有啲難過...",
+    "hints": [
+      "如果冇人主動坐埋去，佢係咪永遠都會自己一個人？",
+      "唔同人唔敢主動，你係咪可以帶頭踏出第一步？",
+      "你坐過去話：「呢度有人嗎？」改變可能就係由你開始。"
+    ],
+    "characters": [
+      {
+        "name": "小傑",
+        "emoji": "👨‍🎓",
+        "initial_relationship": 50
+      },
+      {
+        "name": "老師",
+        "emoji": "👩‍🏫",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s8-a",
+        "text": "繼續坐是度，覺得沒人喜歡我",
+        "effects": [
+          {
+            "character": "同學A",
+            "change": -5,
+            "comment": "你成個下晝都坐是度，心情越來越低落。返到屋企你同媽媽說：「我沒朋友...」媽媽…",
+            "moralChange": -8
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "繼續坐是度，覺得沒人喜歡我",
+          "consequence": "你成個下晝都坐是度，心情越來越低落。返到屋企你同媽媽說：「我沒朋友...」媽媽",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s8-b",
+        "text": "找老師談下我的心情",
+        "effects": [
+          {
+            "character": "老師",
+            "change": 15,
+            "comment": "老師好好心機聽你講，說：「不如找這些同學一齊玩？」之後老師幫你介紹了幾個朋友，…",
+            "moralChange": 8
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s8-c",
+        "text": "去問其他同學：「我可以一齊玩嗎？」",
+        "effects": [
+          {
+            "character": "同學A",
+            "change": 20,
+            "comment": "你真是好勇敢！那個同學即刻說：「梗是可以！一齊！」你交了新朋友，原來主動一這些…",
+            "moralChange": 8
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "break",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "你自己一個人坐係長椅度，望住其他同學度玩，心裡有啲難過... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-h1",
+    "title": "關卡：網上欺凌",
+    "location": "home",
+    "background": "家中・夜晚",
+    "description": "你發現有人係班Group度發你既相，加啱衰caption全班笑你",
+    "hints": [
+      "截圖可以永久保存，即使刪除咗都已經流出。你知道網上言論既後果嗎？",
+      "網上霸凌既傷害係持續性既，因為圖片可以被不斷轉發。",
+      "如果見到你唔鍾意既言論，可以report block。沉默既旁觀者其實變相幫兇。"
+    ],
+    "characters": [
+      {
+        "name": "小傑",
+        "emoji": "👨‍🎓",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-h1-a",
+        "text": "發脾氣鬧全班",
+        "effects": [
+          {
+            "character": "小傑",
+            "change": -15,
+            "comment": "越好激動但沒人理，狀況還越鬧越大",
+            "moralChange": -8
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "發脾氣鬧全班",
+          "consequence": "越好激動但沒人理，狀況還越鬧越大",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-h1-b",
+        "text": "找家長幫手",
+        "effects": [
+          {
+            "character": "小傑",
+            "change": 5,
+            "comment": "媽媽幫你report上去，發布者被記名",
+            "moralChange": 8
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "你發現有人係班Group度發你既相，加啱衰caption全班笑你 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-h2",
+    "title": "關卡：祕密被公開",
+    "location": "home",
+    "background": "家中・夜晚",
+    "description": "你發現小傑爆咗你既祕密出去，全班笑你",
+    "hints": [
+      "如果係你既祕密俾人公開，你會點？你希望點被對待？",
+      "信任係友誼既基礎，如果信任被打破，就好難修復。",
+      "如果你知道咗別人既祕密，問一問自己：「如果是我，我想佢點處理？」"
+    ],
+    "characters": [
+      {
+        "name": "小傑",
+        "emoji": "👨‍🎓",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-h2-a",
+        "text": "說我以後都不同你做朋友",
+        "effects": [
+          {
+            "character": "小傑",
+            "change": -25,
+            "comment": "小傑說洗鬼理你，你兩個反面",
+            "moralChange": -8
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "說我以後都不同你做朋友",
+          "consequence": "小傑說洗鬼理你，你兩個反面",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-h2-b",
+        "text": "原諒他，但講多次不可以",
+        "effects": [
+          {
+            "character": "小傑",
+            "change": 10,
+            "comment": "小傑說sorry，你學識了原諒同設定界線",
+            "moralChange": 8
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "你發現小傑爆咗你既祕密出去，全班笑你 Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-h5",
+    "title": "關卡： family group排除",
+    "location": "home",
+    "background": "家中・夜晚",
+    "description": "WhatsApp family group入面，大家傾trip既時候冇叫埋你...",
+    "hints": [
+      "如果你俾屋企人忽略，你會係咩心情？你有冇試過表達？",
+      "有時家人專注於其他事情，唔係因為唔愛我，但忽視確實會傷害人。",
+      "可以說：「我兩想要你哋今晚陪我傾一傾計。」"
+    ],
+    "characters": [
+      {
+        "name": "小傑",
+        "emoji": "👨",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-h5-a",
+        "text": "問「為什麼不叫我」",
+        "effects": [
+          {
+            "character": "爸爸",
+            "change": 10,
+            "comment": "爸爸說以為你不想去...下次一定叫埋你",
+            "moralChange": 8
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-h5-b",
+        "text": "自己一個發脾氣，鬧為什麼沒叫我",
+        "effects": [
+          {
+            "character": "爸爸",
+            "change": -15,
+            "moralChange": -20,
+            "comment": "爸爸說：「你自己沒出聲，點知我不叫你？」..."
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "自己一個發脾氣，鬧為什麼沒叫我",
+          "consequence": "爸爸說：「你自己沒出聲，點知我不叫你？」...",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-h5-c",
+        "text": "主動走去問爸爸：「下次family trip可不可以叫埋我…",
+        "effects": [
+          {
+            "character": "爸爸",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "爸爸笑說：「好呀，下次一定叫埋你！我以為你今次沒興趣...」"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "WhatsApp family group入面，大家傾trip既時候冇叫埋你... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-door2",
+    "title": "特別關卡：門與安全",
+    "background": "走廊・樓梯口",
+    "description": "你見到小鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？",
+    "characters": [
+      {
+        "name": "小鋒",
+        "emoji": "🚪",
+        "initial_relationship": 50
+      }
+    ],
+    "hints": [
+      "走廊有你既同學、老師、仲有其他人。環境安全係每個人既責任。",
+      "如果你發現有危險，你應該點做？沉默旁觀定係出手幫忙？",
+      "關心集體安全，唔净係為咗自己，仲為咗你身邊既每一個人。"
+    ],
+    "options": [
+      {
+        "id": "s-door2-a",
+        "text": "走埋去說：「小鋒，門就來開喇，小心呀！」",
+        "effects": [
+          {
+            "character": "小鋒",
+            "change": 30,
+            "moralChange": 25,
+            "comment": "小鋒即刻停低，望住你：「你點知？」你說：「我見到你爬來爬去，擔心你整傷。」他笑…"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-door2-b",
+        "text": "行開當看不到（因為說給他知可能會得罪他）",
+        "effects": [
+          {
+            "character": "小鋒",
+            "change": 0,
+            "moralChange": -10,
+            "comment": "門突然打開，小鋒整傷了手指...你心裡有少少內咎，如果你早這些提醒他就好..."
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "行開當看不到（因為說給他知可能會得罪他）",
+          "consequence": "門突然打開，小鋒整傷了手指...你心裡有少少內咎，如果你早這些提醒他就好...",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-door2-c",
+        "text": "立即走去通知老師",
+        "effects": [
+          {
+            "character": "小鋒",
+            "change": -15,
+            "moralChange": 15,
+            "comment": "老師即時趕到制止了危險情況，但小鋒有少少不高興：「你通知老師？」..."
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "你見到小鋒（一位對門好有興趣既同學）喺走廊度爬嚟爬去，仲拉住門邊既欄杆。你知道門好快就會開，呢個係危險行為。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-door3",
+    "title": "特別關卡：開門與關門",
+    "background": "課室・午休",
+    "description": "午休時，你見到門係開住，但外面好嘈，有啲同學喺走廊跑嚟跑去。風吹啲紙張周圍飛。老師未返課室。你應該點做？",
+    "characters": [],
+    "hints": [
+      "紙張飛嚟飛去，老師係圖書館管理員話唔可以open door。你知道點解嗎？",
+      "有時規矩唔係為咗限制，而係為咗保護大家既權利。",
+      "可以問老師：問我可以幫手執紙張嗎？主動提出係尊重規則既表現。"
+    ],
+    "options": [
+      {
+        "id": "s-door3-a",
+        "text": "行去閂門，然後幫手執紙張",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 5,
+            "moralChange": 20,
+            "comment": "你輕輕閂上門，執起這些紙張。其他同學望住你，有人說：「你幾好。」"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-door3-b",
+        "text": "自己走去閂門，不理其他同學",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 10,
+            "moralChange": -5,
+            "comment": "你閂埋門，但同學說：「你做事呀？我哋還要出去！」你只是為了自己舒服..."
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "自己走去閂門，不理其他同學",
+          "consequence": "你閂埋門，但同學說：「你做事呀？我哋還要出去！」你只是為了自己舒服...",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-door3-c",
+        "text": "坐返低，等老師回來先",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 0,
+            "moralChange": 0,
+            "comment": "你坐返低，老師好快就回來。老師自己閂了門，執起這些紙張。你沒做錯，但都沒幫手。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "午休時，你見到門係開住，但外面好嘈，有啲同學喺走廊跑嚟跑去。風吹啲紙張周圍飛。老師未返課室。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-door6",
+    "title": "特別關卡：關門紀律",
+    "background": "課室・上午",
+    "description": "上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。小鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師...",
+    "characters": [
+      {
+        "name": "小鋒",
+        "emoji": "🚪",
+        "initial_relationship": 50
+      },
+      {
+        "name": "老師",
+        "emoji": "👩‍🏫",
+        "initial_relationship": 55
+      }
+    ],
+    "hints": [
+      "幫手係好意，但如果你幫手反而做成更大問題，係幫忙定係幫倒忙？",
+      "有時好心都會變成壞事，關鍵係方法。你會點選擇？",
+      "可以問：我幫手關門，但要點樣做先唔會打擾到人？"
+    ],
+    "options": [
+      {
+        "id": "s-door6-a",
+        "text": "笑小鋒：「你整到好大聲呀！」",
+        "effects": [
+          {
+            "character": "小鋒",
+            "change": -15,
+            "moralChange": -10,
+            "comment": "小鋒好尷尬，其他人笑。老師皺眉望你..."
+          },
+          {
+            "character": "老師",
+            "change": -10,
+            "moralChange": -5,
+            "comment": "老師認為你不尊重同學。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "笑小鋒：你整到好大聲呀！",
+          "consequence": "小鋒好尷尬，其他人笑。老師皺眉望你...",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-door6-b",
+        "text": "輕聲說小鋒：「下次温柔這些」",
+        "effects": [
+          {
+            "character": "小鋒",
+            "change": 15,
+            "moralChange": 15,
+            "comment": "小鋒謝謝你體諒，點點頭。老師見到你關心同學，微笑。"
+          },
+          {
+            "character": "老師",
+            "change": 10,
+            "moralChange": 5,
+            "comment": "老師欣賞你的成熟處理方式。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-door6-c",
+        "text": "主動走埋去，輕手輕腳閂好門",
+        "effects": [
+          {
+            "character": "小鋒",
+            "change": 10,
+            "moralChange": 20,
+            "comment": "你示範了怎樣安靜關門。小鋒學到東西，老師滿意。"
+          },
+          {
+            "character": "老師",
+            "change": 15,
+            "moralChange": 10,
+            "comment": "老師向你點點頭，繼續上課。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "上堂時，有人走咗出去但冇閂門。老師望咗一下皺眉，但冇出聲。小鋒走咗去閂門，但用力太大，門好大聲。全部人望住老師... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-new12",
+    "title": "關卡：面對衝突",
+    "background": "運動場・課外活動",
+    "description": "足球比賽，小璋話你打佢，但你只係輕輕掽咗佢一下。佢向老師告你好大打人...",
+    "hints": [
+      "有時誤會係因為雙方理解唔同。你有冇試過先入為主覺得人哋係錯？",
+      "耐心解釋可以化解問題，但首先你要願意聆聽。",
+      "可以話：我聽到你咁講，我有啲唔明白，可以解釋多少少嗎？"
+    ],
+    "characters": [
+      {
+        "name": "小璋",
+        "emoji": "⚽",
+        "initial_relationship": 35
+      },
+      {
+        "name": "老師",
+        "emoji": "👨‍🏫",
+        "initial_relationship": 55
+      }
+    ],
+    "options": [
+      {
+        "id": "s-new12-a",
+        "text": "冷靜說給老師知：「我是輕輕掽到，但他說我大打人」",
+        "effects": [
+          {
+            "character": "小璋",
+            "change": -10,
+            "moralChange": 5,
+            "comment": "老師說：「我明白，足球是要有身體接觸的運動。但小璋你說大打人就太誇張喇。」"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-new12-b",
+        "text": "大鬧：「你呃人！我只是掽到你！」",
+        "effects": [
+          {
+            "character": "小璋",
+            "change": -20,
+            "moralChange": -10,
+            "comment": "老師說：「你兩個冷靜一些！吵架不可以解決問題。」你兩個都被罰坐下。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "大鬧：你呃人！我只是掽到你！",
+          "consequence": "老師說：「你兩個冷靜一些！吵架不可以解決問題。」你兩個都被罰坐下",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-new12-c",
+        "text": "走向小璋：「我知你一定好嬲，但我真是不是特登。你有沒哪裡整…",
+        "effects": [
+          {
+            "character": "小璋",
+            "change": 5,
+            "moralChange": 15,
+            "comment": "小璋呆了，沒想到你會行過去關心。他說：「...我手臂有這些痛，但不關你事。」"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "sports",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "足球比賽，小璋話你打佢，但你只係輕輕掽咗佢一下。佢向老師告你好大打人... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-new17",
+    "title": "關卡：聆聽他人",
+    "background": "圖書館・自習時間",
+    "description": "同學小華話佢屋企有事，聲音好細咁講，你專心睇書...",
+    "hints": [
+      "聆聽係一種尊重，等於話你講既嘢我當認真看待。你有冇試過真係用心聽？",
+      "聆聽唔係等緊打斷人，而係等緊明白。你可以視為一個學習機會。",
+      "試下等佢講完，你先回應。你會發現對話品質好唔同。"
+    ],
+    "characters": [
+      {
+        "name": "小華",
+        "emoji": "👦",
+        "initial_relationship": 35
+      }
+    ],
+    "options": [
+      {
+        "id": "s-new17-a",
+        "text": "停低看書，專心聽他講：「我聽緊，你繼續。」",
+        "effects": [
+          {
+            "character": "小華",
+            "change": 25,
+            "moralChange": 15,
+            "comment": "小華感動：「謝謝你...我爸爸住院了。」你陪伴他直到小息完結。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-new17-b",
+        "text": "一邊看書一邊聽，點頭回應",
+        "effects": [
+          {
+            "character": "小華",
+            "change": 5,
+            "moralChange": 0,
+            "comment": "小華：「嗯...算，冇東西...」他離開了。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-new17-c",
+        "text": "說：「我忙緊聽，你陣間再講。」",
+        "effects": [
+          {
+            "character": "小華",
+            "change": -20,
+            "moralChange": -10,
+            "comment": "小華沒出聲，但眼中有這些失望。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "說：我忙緊聽，你陣間再講。",
+          "consequence": "小華沒出聲，但眼中有這些失望",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "library",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "同學小華話佢屋企有事，聲音好細咁講，你專心睇書... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-new20",
+    "title": "關卡：誠實回應",
+    "background": "課室・課堂討論",
+    "description": "老師問你同學小張既答案你係咪幫咗佢，你答係...",
+    "hints": [
+      "如果你幫朋友做完功課，係幫佢定係害佢？你想要友誼定係誠信？",
+      "幫助朋友係好事，但唔可以幫佢做曬。你幫佢解決一時，但佢冇學到。",
+      "可以話：我可以教你，但我唔會幫你做起。"
+    ],
+    "characters": [
+      {
+        "name": "小張",
+        "emoji": "👦",
+        "initial_relationship": 45
+      },
+      {
+        "name": "老師",
+        "emoji": "👨‍🏫",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-new20-a",
+        "text": "點頭：「是，我幫了他，因為他不識。」",
+        "effects": [
+          {
+            "character": "小張",
+            "change": 15,
+            "moralChange": 10,
+            "comment": "老師說：「你幫助同學是好事，但下次要鼓勵他自己做。」"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-new20-b",
+        "text": "說：「冇！我是自己答！」",
+        "effects": [
+          {
+            "character": "小張",
+            "change": -5,
+            "moralChange": -15,
+            "comment": "老師笑：「但你答法同小張一模一樣喔...」你面紅了。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "說：冇！我是自己答！",
+          "consequence": "老師笑：「但你答法同小張一模一樣喔...」你面紅了",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-new20-c",
+        "text": "說：「我地一齊想，我解釋給他聽。」",
+        "effects": [
+          {
+            "character": "小張",
+            "change": 20,
+            "moralChange": 15,
+            "comment": "老師讚賞：「這個是最好的學習方式！」"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      13,
+      16,
+      18
+    ],
+    "imagePrompt": "老師問你同學小張既答案你係咪幫咗佢，你答係... Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-170",
+    "title": "衝突解決：同學撞到你唔道歉",
+    "background": "走廊・放學",
+    "description": "同學跑跑吓撞到你跌低，佢扮冇事繼續跑。你會……",
+    "hints": [
+      "你有權要求道歉",
+      "冷靜表達比發嬲好",
+      "搵老師如果對方唔理"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "👦",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-170-a",
+        "text": "起身追住鬧他",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你用衝突回應衝突，會令情況更差。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "起身追住鬧他",
+          "consequence": "你用衝突回應衝突，會令情況更差",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-170-b",
+        "text": "冷靜講「你撞到我，請你道歉」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你表達感受+要求，係衝突解決！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-170-c",
+        "text": "冷靜表達+對方不理就找老師+事後傾返",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你冷靜+多步驟，係衝突高手！"
+          }
+        ]
+      }
+    ],
+    "location": "corridor",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      11,
+      9
+    ],
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "imagePrompt": "Hong Kong school corridor, child fallen on floor, another child running away, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-171",
+    "title": "衝突解決：朋友話你蝦佢",
+    "background": "課室・小息",
+    "description": "你同朋友傾偈，佢突然話「你蝦我」就走開。你唔知自己做錯咩。你會……",
+    "hints": [
+      "對方嘅感受都係真實",
+      "唔係即刻反駁",
+      "聆聽同澄清"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 65
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-171-a",
+        "text": "「我沒呀！」就反駁",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你即刻反駁，朋友會更嬲。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "我沒呀！就反駁",
+          "consequence": "你即刻反駁，朋友會更嬲",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-171-b",
+        "text": "「對不起，你覺得我點了？」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你承認+問清楚，係衝突解決！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-171-c",
+        "text": "「對不起」+聆聽他感受+澄清誤解+約下次傾返",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你深度解決衝突，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      11,
+      9
+    ],
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say sorry",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child looking hurt as friend walks away, afternoon light, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-172",
+    "title": "衝突解決：兩人搶玩具",
+    "background": "公園・玩耍",
+    "description": "你同另一個小朋友都想玩同一個玩具，搶緊。你會……",
+    "hints": [
+      "玩具可以輪住玩",
+      "可以搵另一個玩具",
+      "搵大人幫手"
+    ],
+    "characters": [
+      {
+        "name": "小朋友",
+        "emoji": "🧒",
+        "initial_relationship": 40
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-172-a",
+        "text": "搶贏為止",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你用暴力解決，會受傷又傷人。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "搶贏為止",
+          "consequence": "你用暴力解決，會受傷又傷人",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-172-b",
+        "text": "「我哋輪流玩」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你提議共識，係衝突解決！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-172-c",
+        "text": "輪流玩+計時+之後一齊玩其他東西",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你建立制度，係衝突高手！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      11,
+      9
+    ],
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "搵共識",
+      "聆聽對方",
+      "輪流"
+    ],
+    "imagePrompt": "Hong Kong park, two children about to fight over toy, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-173",
+    "title": "衝突解決：同學話你講大話",
+    "background": "課室・小息",
+    "description": "你講咗你嘅經歷，同學話「你講大話！你去過嘅地方我都去過！」你會……",
+    "hints": [
+      "唔需要即時反駁",
+      "講事實",
+      "唔好貶低對方"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-173-a",
+        "text": "「你先去過！」就反駁",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你用衝突回應，會越講越嬲。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "你先去過！就反駁",
+          "consequence": "你用衝突回應，會越講越嬲",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-173-b",
+        "text": "「我講的是我的經歷，你不信可以問我媽媽」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你冷靜澄清，係衝突解決！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-173-c",
+        "text": "冷靜澄清+接受對方不信+之後不要再講這個說題",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你冷靜+智慧處理，係衝突高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "conflict-resolution",
+    "creedIds": [
+      11,
+      9
+    ],
+    "valueCategory": "conflict-resolution",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "表達感受",
+      "聆聽對方",
+      "搵共識"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, child explaining calmly while another child argues, anime cartoon style, FF XV Nomura style, warm tones, 16:9",
+    "subjectId": "caring"
+  }
 ]

@@ -30,7 +30,7 @@
             "character": "小明",
             "change": 10,
             "moralChange": -15,
-            "comment": "你和小明一起排擠小華。後來才知小華是不小心的，他很傷心。"
+            "comment": "你同小明一齊排斥小華。但是之後你先知，小華是不小心整壞的東西，他本來想道歉但找…"
           },
           {
             "character": "小華",
@@ -42,19 +42,19 @@
         "next_scenario": "s7",
         "stopAndThink": {
           "badBehavior": "係呀！小華太壞！我都不同他玩！",
-          "consequence": "你同小明一齊排斥小華。但是之後你先知，小華是不小心整壞的東西，他本來想道歉但找不到機會。小華喊了，你覺得自己做錯了...",
+          "consequence": "你同小明一齊排斥小華。但是之後你先知，小華是不小心整壞的東西，他本來想道歉但找",
           "isLoselose": true
         }
       },
       {
         "id": "s6-b",
-        "text": "什麼都不說",
+        "text": "乜都不說",
         "effects": [
           {
             "character": "小明",
             "change": 0,
             "moralChange": -5,
-            "comment": "小明越說越氣，找其他人一起排斥小華。小華很孤單。"
+            "comment": "小明越說越嬲還找其他人一齊排斥小華。你雖然沒參與但是都沒阻止。見到小華一個你心…"
           },
           {
             "character": "小華",
@@ -65,8 +65,8 @@
         ],
         "next_scenario": "s7",
         "stopAndThink": {
-          "badBehavior": "什麼都不說",
-          "consequence": "小明越說越嬲還找其他人一齊排斥小華。你雖然沒參與但是都沒阻止。見到小華一個你心裡不舒服...",
+          "badBehavior": "乜都不說",
+          "consequence": "小明越說越嬲還找其他人一齊排斥小華。你雖然沒參與但是都沒阻止。見到小華一個你心",
           "isLoselose": true
         }
       },
@@ -78,13 +78,13 @@
             "character": "小明",
             "change": 15,
             "moralChange": 10,
-            "comment": "小明想了想，發現是誤會，跟小華和好了！你幫了大家。"
+            "comment": "小明想了下：「嗯...都是問下先...」之後發現是誤會，他同小華和好了！你幫他…"
           },
           {
             "character": "小華",
             "change": 10,
             "moralChange": 8,
-            "comment": "小華謝謝你幫他說話！"
+            "comment": "小華謝謝你幫他講說話！"
           }
         ],
         "next_scenario": "s7"
@@ -292,7 +292,7 @@
             "character": "小明",
             "change": -10,
             "moralChange": 15,
-            "comment": "老師點頭說：「乖。」小明走了過說：「你不夠朋友呀！」但你做了正確的事。"
+            "comment": "老師點頭說：「乖。」小明走了過說：「你不夠朋友呀！」但你做了啱的事情。"
           }
         ],
         "next_scenario": null
@@ -385,7 +385,7 @@
             "character": "小明",
             "change": -5,
             "moralChange": 15,
-            "comment": "小明說：「你不夠朋友呀！」但老師點頭說：「乖。」你做了正確的事。"
+            "comment": "小明說：「你不夠朋友呀！」但老師點頭說：「乖。」你做了啱的事情。"
           },
           {
             "character": "老師",
@@ -640,7 +640,7 @@
             "character": "小明",
             "change": 15,
             "moralChange": 10,
-            "comment": "小明笑：「好！我最鍾意揀圖！」他開始認真做。"
+            "comment": "小明笑：「好！我最喜歡揀圖！」他開始認真做。"
           }
         ],
         "next_scenario": null
@@ -665,7 +665,7 @@
       },
       {
         "id": "s-new15-c",
-        "text": "責備他：「你做事！」",
+        "text": "鬧他：「你做事！」",
         "effects": [
           {
             "character": "小明",
@@ -676,7 +676,7 @@
         ],
         "next_scenario": null,
         "stopAndThink": {
-          "badBehavior": "責備他：你做事！",
+          "badBehavior": "鬧他：你做事！",
           "consequence": "小明嬲了：「你憑什麼鬧我！」組入面鬧大件事",
           "isLoselose": true
         }
@@ -729,7 +729,7 @@
             "character": "大雄",
             "change": 20,
             "moralChange": 15,
-            "comment": "大雄：「算，不洗咁緊張...但謝謝你。」他接受你去校務處。"
+            "comment": "大雄：「算，不用這麼緊張...但謝謝你。」他接受你去校務處。"
           }
         ],
         "next_scenario": null
@@ -742,13 +742,13 @@
             "character": "大雄",
             "change": -30,
             "moralChange": -20,
-            "comment": "大雄嬲了：「你整跌我竟然還咁寸！」老師走埋來。"
+            "comment": "大雄嬲了：「你整跌我竟然還這麼過分！」老師走了過來。"
           }
         ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "說：你自己不小心，關我什麼事！",
-          "consequence": "大雄嬲了：「你整跌我竟然還咁寸！」老師走埋來",
+          "consequence": "大雄嬲了：「你整跌我竟然還這麼過分！」老師走了過來",
           "isLoselose": true
         }
       },
@@ -818,7 +818,7 @@
             "character": "小琪",
             "change": 15,
             "moralChange": 15,
-            "comment": "小琪說：「你做事咁叻！我陪你一齊整！」你做好值日先去玩。"
+            "comment": "小琪說：「你做事這麼棒！我陪你一齊整！」你做好值日先去玩。"
           }
         ],
         "next_scenario": null
@@ -893,7 +893,7 @@
     "options": [
       {
         "id": "s-self-35-a",
-        "text": "「咁你再努力這些」",
+        "text": "「這麼你再努力這些」",
         "effects": [
           {
             "moralChange": -15,
@@ -902,7 +902,7 @@
         ],
         "next_scenario": null,
         "stopAndThink": {
-          "badBehavior": "咁你再努力這些",
+          "badBehavior": "這麼你再努力這些",
           "consequence": "朋友已經好努力，怪他會令他更難過",
           "isLoselose": false
         }
@@ -961,7 +961,7 @@
     "options": [
       {
         "id": "s-self-36-a",
-        "text": "「媽媽即刻買俾我」",
+        "text": "「媽媽即刻買給我」",
         "effects": [
           {
             "moralChange": -15,
@@ -970,7 +970,7 @@
         ],
         "next_scenario": null,
         "stopAndThink": {
-          "badBehavior": "媽媽即刻買俾我",
+          "badBehavior": "媽媽即刻買給我",
           "consequence": "亂花錢又不知足，會令屋企負擔好重",
           "isLoselose": false
         }

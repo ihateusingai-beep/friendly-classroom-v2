@@ -1,1097 +1,1197 @@
 [
-{
-"id": "s-self-61",
-"title": "合作：小組活動要參與",
-"background": "課室・小息",
-"description": "小息時老師話：「下節要做小組 poster，四個人一組。」組員即刻開始分工，你會……",
-"hints": [
-"主動參與小組活動會學到更多。",
-"等其他人做晒自己先加入會嚇親組員。"
-],
-"options": [
-{
-"id": "s-self-61-a",
-"text": "自己玩自己嘅嘢",
-"effects": [
-{
-"moralChange": -15,
-"comment": "小組活動唔參與會拖累其他組員。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-61-b",
-"text": "主動問：「我幫手做咩？」",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你嘅主動令組員都好開心！"
-}
-],
-"next_scenario": "s-self-62"
-},
-{
-"id": "s-self-61-c",
-"text": "等其他人嚟叫我先做",
-"effects": [
-{
-"moralChange": -10,
-"comment": "主動參與會更好。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "classroom",
-"topicId": "solidarity",
-"creedIds": [
-18,
-15
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy actively helping group make poster in classroom, cooperative and engaged, warm tones, no text, no logos, 16:9",
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"輪流分享",
-"鼓勵隊友"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-62",
-"title": "合作：輪流玩玩具",
-"background": "公園",
-"description": "公園得一個鞦韆，三個小朋友都爭住想玩。你排第二，前面仲有兩個人。你會……",
-"hints": [
-"分享同輪流係合作嘅基礎。",
-"霸住唔畀人玩會失去朋友。"
-],
-"options": [
-{
-"id": "s-self-62-a",
-"text": "霸住鞦韆唔走",
-"effects": [
-{
-"moralChange": -18,
-"comment": "霸住唔分享會令其他小朋友唔鍾意你。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-62-b",
-"text": "排隊等輪到自己",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你識得合作同分享！"
-}
-],
-"next_scenario": "s-self-63"
-},
-{
-"id": "s-self-62-c",
-"text": "走去做其他嘢唔玩",
-"effects": [
-{
-"moralChange": -10,
-"comment": "直接放棄唔係最佳選擇。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "playground",
-"topicId": "solidarity",
-"creedIds": [
-18,
-16
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy waiting his turn on the swing, cooperative and patient, park, warm tones, no text, no logos, 16:9",
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"輪流分享",
-"鼓勵隊友"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-63",
-"title": "合作：幫手完成任務",
-"background": "飯堂",
-"description": "飯堂食完飯，老師話：「大家一齊執枱同掃地。」同學們開始行動，你會……",
-"hints": [
-"一齊做嘢可以更快完成，又可以建立友誼。",
-"自己走開會加重其他人嘅負擔。"
-],
-"options": [
-{
-"id": "s-self-63-a",
-"text": "自己閂門走人",
-"effects": [
-{
-"moralChange": -15,
-"comment": "走開會加重其他人嘅負擔。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-63-b",
-"text": "「我嚟幫手掃地」",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你嘅團隊精神令大家都好欣賞！"
-}
-],
-"next_scenario": "s-self-64"
-},
-{
-"id": "s-self-63-c",
-"text": "等清潔工嚟執",
-"effects": [
-{
-"moralChange": -5,
-"comment": "自己都應該出一分力。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "canteen",
-"topicId": "solidarity",
-"creedIds": [
-18,
-20
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy helping classmates clean tables in canteen, teamwork, warm tones, no text, no logos, 16:9",
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"輪流分享",
-"鼓勵隊友"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-64",
-"title": "合作：聽從組長安排",
-"background": "課室",
-"description": "小組做 group project，組長話：「你負責畫圖。」但你想做報告。你會……",
-"hints": [
-"聽從組長安排係合作嘅基本。",
-"有唔同意見可以用冷靜嘅方式提出。"
-],
-"options": [
-{
-"id": "s-self-64-a",
-"text": "自己做自己鍾意嘅部分",
-"effects": [
-{
-"moralChange": -12,
-"comment": "唔跟安排會令小組工作混亂。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-64-b",
-"text": "先答應，之後有需要再商量",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你識得跟從安排又識變通！"
-}
-],
-"next_scenario": "s-self-65"
-},
-{
-"id": "s-self-64-c",
-"text": "當面反對組長嘅安排",
-"effects": [
-{
-"moralChange": -15,
-"comment": "當面反對會令組長好難做。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "classroom",
-"topicId": "solidarity",
-"creedIds": [
-18,
-16
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy following group leader instructions in classroom project, cooperative, warm tones, no text, no logos, 16:9",
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"輪流分享",
-"鼓勵隊友"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-65",
-"title": "合作：鼓勵隊友",
-"background": "操場",
-"description": "運動會跑接力賽，你嘅隊友跑得好慢，喘晒氣，好想放棄。你會……",
-"hints": [
-"隊友需要你嘅支持同鼓勵。",
-"叫佢放棄會令佢失去信心。"
-],
-"options": [
-{
-"id": "s-self-65-a",
-"text": "「我跑先啦」就自己走",
-"effects": [
-{
-"moralChange": -10,
-"comment": "隊友需要你嘅支持，唔可以放低佢。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-65-b",
-"text": "「加油呀！你得嘅！」",
-"effects": [
-{
-"moralChange": 18,
-"comment": "你嘅鼓勵會令隊友充滿力量！"
-}
-],
-"next_scenario": "s-self-66"
-},
-{
-"id": "s-self-65-c",
-"text": "「算啦，放棄啦」",
-"effects": [
-{
-"moralChange": -18,
-"comment": "叫佢放棄會令佢以後更易放棄。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "playground",
-"topicId": "solidarity",
-"creedIds": [
-18,
-15
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy encouraging tired teammate during sports, supportive and cooperative, playground, warm tones, no text, no logos, 16:9",
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"輪流分享",
-"鼓勵隊友"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-66",
-"title": "合作：團隊勝利最開心",
-"background": "屋企・床頭",
-"description": "今日你哋小組一齊完成咗一個好難嘅任務，全組都攞到獎勵。你會……",
-"hints": [
-"團隊成功係每個成員嘅功勞。",
-"保持合作會令下個任務更順利。"
-],
-"options": [
-{
-"id": "s-self-66-a",
-"text": "「我做得最多功」",
-"effects": [
-{
-"moralChange": 5,
-"comment": "團隊成果係每個人嘅功勞。"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-66-b",
-"text": "「多謝大家一齊努力」",
-"effects": [
-{
-"moralChange": 20,
-"comment": "你完成合作學習！badge +10分"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-66-c",
-"text": "「下次我自己做啦」",
-"effects": [
-{
-"moralChange": -10,
-"comment": "放棄合作會錯失好多樂趣。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "solidarity",
-"creedIds": [
-18,
-21
-],
-"imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy after successful group project at home, proud of teamwork, warm bedroom, no text, no logos, 16:9",
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"輪流分享",
-"鼓勵隊友"
-],
-"subjectId": "value"
-},
-{
-"id": "s-self-139",
-"title": "團結：小組活動要參與",
-"background": "課室・分組活動",
-"description": "你哋小組要做poster，但你想自己畫晒唔想其他人幫手。你會……",
-"hints": [
-"小組合作需要每個人參與",
-"分工先有效率",
-"聽吓其他組員嘅意見"
-],
-"characters": [
-{
-"name": "組員",
-"emoji": "🧒",
-"initial_relationship": 50
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-139-a",
-"text": "「我畫晒啦你哋唔使做」",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你剝削咗組員參與嘅機會，唔係合作。"
-}
-]
-},
-{
-"id": "s-self-139-b",
-"text": "同組員一齊傾分工",
-"effects": [
-{
-"character": "自己",
-"change": 10,
-"moralChange": 12,
-"comment": "你帶領合作，係團結嘅表現！"
-}
-]
-},
-{
-"id": "s-self-139-c",
-"text": "傾分工+聆聽每個人意見+互相鼓勵",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你帶領+聆聽，係團結高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "solidarity",
-"creedIds": [
-11
-],
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"輪流分享",
-"鼓勵隊友"
-],
-"imagePrompt": "Hong Kong primary classroom, group of children working together on poster, sharing materials, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-140",
-"title": "團結：陸運會打氣",
-"background": "學校・田徑場・陸運會",
-"description": "陸運會，你同班同學一齊為 4×100 接力隊打氣。隊友跌棒輸咗，你會……",
-"hints": [
-"唔可以取笑跌棒嘅隊友",
-"團結係無論贏輸都支持",
-"鼓勵比批評更有用"
-],
-"characters": [
-{
-"name": "隊友",
-"emoji": "🧒",
-"initial_relationship": 70
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-140-a",
-"text": "笑話跌棒嘅隊友",
-"effects": [
-{
-"character": "自己",
-"change": -15,
-"moralChange": -15,
-"comment": "你傷害隊友，破壞咗班嘅團結。"
-}
-]
-},
-{
-"id": "s-self-140-b",
-"text": "拍一拍隊友話「下次加油」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你鼓勵隊友，係團結嘅表現！"
-}
-]
-},
-{
-"id": "s-self-140-c",
-"text": "拍一拍+讚其他隊友表現+一齊檢討下次點改善",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你帶領士氣+分析改善，係團結高手！"
-}
-]
-}
-],
-"location": "school",
-"topicId": "solidarity",
-"creedIds": [
-11
-],
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"鼓勵隊友",
-"小組合作",
-"支持"
-],
-"imagePrompt": "Hong Kong school sports day, relay team on track, teammates encouraging fallen runner, sunshine, FF XV Nomura anime style, warm tones, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-141",
-"title": "團結：班際比賽",
-"background": "學校・體育堂",
-"description": "你班同另一班比賽，但班中有人唔積極，怨「點解要我做」。你會……",
-"hints": [
-"班際比賽要每個人都參與",
-"唔做嘅人都係班一份子",
-"鼓勵比批評好"
-],
-"characters": [
-{
-"name": "同學",
-"emoji": "🧒",
-"initial_relationship": 50
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-141-a",
-"text": "「唔做就算啦佢」",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你放棄咗同學，唔係真正嘅班。"
-}
-]
-},
-{
-"id": "s-self-141-b",
-"text": "同同學講「你一齊嚟啦，一齊做會開心啲」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你鼓勵同學，係團結嘅表現！"
-}
-]
-},
-{
-"id": "s-self-141-c",
-"text": "鼓勵+搵到同學擅長嘅嘢+分工合作",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你帶領+配對，係團結高手！"
-}
-]
-}
-],
-"location": "school",
-"topicId": "solidarity",
-"creedIds": [
-11
-],
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"鼓勵隊友",
-"小組合作",
-"帶領"
-],
-"imagePrompt": "Hong Kong primary school sports class, two classes competing, teammates encouraging each other, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-142",
-"title": "團結：話劇排練",
-"background": "課室・課後活動",
-"description": "你哋小組要排一個話劇，但你嘅角色比較細，你覺得唔公平想放棄。你會……",
-"hints": [
-"每個角色都重要",
-"細角色都可以演得好好",
-"為咗團隊努力"
-],
-"characters": [
-{
-"name": "組員",
-"emoji": "🧒",
-"initial_relationship": 50
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-142-a",
-"text": "「我唔玩喇」就走",
-"effects": [
-{
-"character": "自己",
-"change": -15,
-"moralChange": -15,
-"comment": "你放棄咗整個團隊嘅努力。"
-}
-]
-},
-{
-"id": "s-self-142-b",
-"text": "留低同組員一齊練好自己嘅角色",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你為團隊付出，係團結嘅表現！"
-}
-]
-},
-{
-"id": "s-self-142-c",
-"text": "努力練好自己角色+幫手做道具+提議增加戲份",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你主動付出+諗解決方法，係團結高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "solidarity",
-"creedIds": [
-11
-],
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"輪流分享",
-"付出"
-],
-"imagePrompt": "Hong Kong primary classroom after school, group of children rehearsing drama, one child practicing small role, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-143",
-"title": "團結：幫新同學融入",
-"background": "課室・小息",
-"description": "班上新嚟咗一個新同學，佢自己一個坐冇人理。你會……",
-"hints": [
-"新同學需要支持",
-"主動打招呼好重要",
-"小幫助可以令人融入"
-],
-"characters": [
-{
-"name": "新同學",
-"emoji": "🧒",
-"initial_relationship": 30
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-143-a",
-"text": "扮睇唔到",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你忽略新同學，佢會好孤獨。"
-}
-]
-},
-{
-"id": "s-self-143-b",
-"text": "行過去打招呼+邀請一齊玩",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你主動幫助，係團結嘅表現！"
-}
-]
-},
-{
-"id": "s-self-143-c",
-"text": "打招呼+介紹其他同學+邀請一齊食 lunch",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你全面幫助新同學融入，係團結高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "solidarity",
-"creedIds": [
-11
-],
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"鼓勵隊友",
-"主動"
-],
-"imagePrompt": "Hong Kong primary classroom during break, new student sitting alone, another child approaching with smile, anime cartoon style, soft pastel watercolor, warm tones, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-144",
-"title": "團結：合作社一起賣物",
-"background": "學校・合作社",
-"description": "你哋合作社要一齊賣物籌款，但分配工作時有人冇攞到想要嘅崗位，你會……",
-"hints": [
-"每個崗位都重要",
-"可以輪換",
-"支持團隊先至重要"
-],
-"characters": [
-{
-"name": "同學",
-"emoji": "🧒",
-"initial_relationship": 50
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-144-a",
-"text": "「我要嗰個崗位」就同人爭",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你為咗自己破壞咗團隊。"
-}
-]
-},
-{
-"id": "s-self-144-b",
-"text": "接受分配+支持同學做好",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你支持團隊，係團結嘅表現！"
-}
-]
-},
-{
-"id": "s-self-144-c",
-"text": "接受+提議輪換制度+互相補位",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你建立制度，係團結高手！"
-}
-]
-}
-],
-"location": "school",
-"topicId": "solidarity",
-"creedIds": [
-11
-],
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"輪流分享",
-"支持"
-],
-"imagePrompt": "Hong Kong primary school cooperative shop, children working together at stall, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-145",
-"title": "團結：打掃班房",
-"background": "課室・放學後",
-"description": "班主任話班房太亂要每組打掃，但你哋組有人想早走，你會……",
-"hints": [
-"班房整潔係全班責任",
-"可以快速分工",
-"守望相助"
-],
-"characters": [
-{
-"name": "組員",
-"emoji": "🧒",
-"initial_relationship": 50
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-145-a",
-"text": "「佢哋走咗我做晒啦」",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你縱容逃避，縱容壞風氣。"
-}
-]
-},
-{
-"id": "s-self-145-b",
-"text": "叫組員一齊分3個區打掃",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你帶領合作，係團結嘅表現！"
-}
-]
-},
-{
-"id": "s-self-145-c",
-"text": "分區打掃+15分鐘限時+互相檢查",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你用系統帶領，係團結高手！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "solidarity",
-"creedIds": [
-11
-],
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"小組合作",
-"輪流分享",
-"帶領"
-],
-"imagePrompt": "Hong Kong primary classroom after school, group of children cleaning together with brooms and cloths, sunset light, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-146",
-"title": "團結：校隊訓練",
-"background": "學校・操場・放學",
-"description": "你係校隊一員，教練叫大家跑 10 圈，跑得快嘅可以休息，跑得慢嘅要加操。你會……",
-"hints": [
-"唔好放棄隊友",
-"互相鼓勵完成",
-"團隊精神大於個人"
-],
-"characters": [
-{
-"name": "隊友",
-"emoji": "🧒",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-146-a",
-"text": "跑快啲休息，等其他隊友加操",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你為咗自己放棄隊友，唔係團隊。"
-}
-]
-},
-{
-"id": "s-self-146-b",
-"text": "陪跑得慢嘅隊友一齊跑",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你支持隊友，係團結嘅表現！"
-}
-]
-},
-{
-"id": "s-self-146-c",
-"text": "陪隊友跑+鼓勵話「我哋一齊」+互相帶節奏",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你帶領士氣，係團結高手！"
-}
-]
-}
-],
-"location": "school",
-"topicId": "solidarity",
-"creedIds": [
-11
-],
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"鼓勵隊友",
-"小組合作",
-"支持"
-],
-"imagePrompt": "Hong Kong school track after school, teammates running together, supporting slower runner, sunset light, FF XV Nomura anime style, warm tones, 16:9",
-"subjectId": "value"
-},
-{
-"id": "s-self-147",
-"title": "團結：朋友失落時陪伴",
-"background": "公園・下午",
-"description": "朋友考試失手好唔開心，你會……",
-"hints": [
-"朋友唔開心時要陪佢",
-"聆聽好重要",
-"唔使講咩大道理"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 75
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-147-a",
-"text": "「考試咋嘛，下次再嚟過啦」就叫人去玩",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你忽略朋友嘅感受，佢會更孤獨。"
-}
-]
-},
-{
-"id": "s-self-147-b",
-"text": "陪住佢，聽佢講",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你陪伴聆聽，係團結嘅表現！"
-}
-]
-},
-{
-"id": "s-self-147-c",
-"text": "陪+聆聽+分享自己嘅失敗經歷+鼓勵",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你深度支持朋友，係團結高手！"
-}
-]
-}
-],
-"location": "park",
-"topicId": "solidarity",
-"creedIds": [
-11
-],
-"valueCategory": "solidarity",
-"domain": "value",
-"audience": [
-"value"
-],
-"riskLevel": 0,
-"skills": [
-"聆聽",
-"支持",
-"陪伴"
-],
-"imagePrompt": "Hong Kong child sitting on park bench with sad friend, putting hand on shoulder, afternoon sun, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "value"
-}
+  {
+    "id": "s-self-61",
+    "title": "合作：小組活動要參與",
+    "background": "課室・小息",
+    "description": "小息時老師話：「下節要做小組 poster，四個人一組。」組員即刻開始分工，你會……",
+    "hints": [
+      "主動參與小組活動會學到更多。",
+      "等其他人做晒自己先加入會嚇親組員。"
+    ],
+    "options": [
+      {
+        "id": "s-self-61-a",
+        "text": "自己玩自己的事情",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "小組活動不參與會拖累其他組員。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "自己玩自己的事情",
+          "consequence": "小組活動不參與會拖累其他組員",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-61-b",
+        "text": "主動問：「我幫手做什麼？」",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你的主動令組員都好開心！"
+          }
+        ],
+        "next_scenario": "s-self-62"
+      },
+      {
+        "id": "s-self-61-c",
+        "text": "等其他人來叫我先做",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "主動參與會更好。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "等其他人來叫我先做",
+          "consequence": "主動參與會更好",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "classroom",
+    "topicId": "solidarity",
+    "creedIds": [
+      18,
+      15
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy actively helping group make poster in classroom, cooperative and engaged, warm tones, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-62",
+    "title": "合作：輪流玩玩具",
+    "background": "公園",
+    "description": "公園得一個鞦韆，三個小朋友都爭住想玩。你排第二，前面仲有兩個人。你會……",
+    "hints": [
+      "分享同輪流係合作嘅基礎。",
+      "霸住唔畀人玩會失去朋友。"
+    ],
+    "options": [
+      {
+        "id": "s-self-62-a",
+        "text": "霸住鞦韆不走",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "霸住不分享會令其他小朋友不喜歡你。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "霸住鞦韆不走",
+          "consequence": "霸住不分享會令其他小朋友不喜歡你",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-62-b",
+        "text": "排隊等輪到自己",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你識得合作同分享！"
+          }
+        ],
+        "next_scenario": "s-self-63"
+      },
+      {
+        "id": "s-self-62-c",
+        "text": "走去做其他東西不玩",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "直接放棄不是最佳選擇。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "走去做其他東西不玩",
+          "consequence": "直接放棄不是最佳選擇",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "playground",
+    "topicId": "solidarity",
+    "creedIds": [
+      18,
+      16
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy waiting his turn on the swing, cooperative and patient, park, warm tones, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-63",
+    "title": "合作：幫手完成任務",
+    "background": "飯堂",
+    "description": "飯堂食完飯，老師話：「大家一齊執枱同掃地。」同學們開始行動，你會……",
+    "hints": [
+      "一齊做嘢可以更快完成，又可以建立友誼。",
+      "自己走開會加重其他人嘅負擔。"
+    ],
+    "options": [
+      {
+        "id": "s-self-63-a",
+        "text": "自己閂門走人",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "離開會加重其他人的負擔。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "自己閂門走人",
+          "consequence": "離開會加重其他人的負擔",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-63-b",
+        "text": "「我來幫手掃地」",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你的團隊精神令大家都好欣賞！"
+          }
+        ],
+        "next_scenario": "s-self-64"
+      },
+      {
+        "id": "s-self-63-c",
+        "text": "等清潔工來執",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "自己都應該出一分力。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "等清潔工來執",
+          "consequence": "自己都應該出一分力",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "canteen",
+    "topicId": "solidarity",
+    "creedIds": [
+      18,
+      20
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy helping classmates clean tables in canteen, teamwork, warm tones, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-64",
+    "title": "合作：聽從組長安排",
+    "background": "課室",
+    "description": "小組做 group project，組長話：「你負責畫圖。」但你想做報告。你會……",
+    "hints": [
+      "聽從組長安排係合作嘅基本。",
+      "有唔同意見可以用冷靜嘅方式提出。"
+    ],
+    "options": [
+      {
+        "id": "s-self-64-a",
+        "text": "自己做自己喜歡的部分",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "不跟安排會令小組工作混亂。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "自己做自己喜歡的部分",
+          "consequence": "不跟安排會令小組工作混亂",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-64-b",
+        "text": "先答應，之後有需要再商量",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你識得跟從安排又識變通！"
+          }
+        ],
+        "next_scenario": "s-self-65"
+      },
+      {
+        "id": "s-self-64-c",
+        "text": "當面反對組長的安排",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "當面反對會令組長好難做。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "當面反對組長的安排",
+          "consequence": "當面反對會令組長好難做",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "classroom",
+    "topicId": "solidarity",
+    "creedIds": [
+      18,
+      16
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy following group leader instructions in classroom project, cooperative, warm tones, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-65",
+    "title": "合作：鼓勵隊友",
+    "background": "操場",
+    "description": "運動會跑接力賽，你嘅隊友跑得好慢，喘晒氣，好想放棄。你會……",
+    "hints": [
+      "隊友需要你嘅支持同鼓勵。",
+      "叫佢放棄會令佢失去信心。"
+    ],
+    "options": [
+      {
+        "id": "s-self-65-a",
+        "text": "「我跑先」就自己走",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "隊友需要你的支持，不可以放低他。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "我跑先就自己走",
+          "consequence": "隊友需要你的支持，不可以放低他",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-65-b",
+        "text": "「加油呀！你得的！」",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你的鼓勵會令隊友充滿力量！"
+          }
+        ],
+        "next_scenario": "s-self-66"
+      },
+      {
+        "id": "s-self-65-c",
+        "text": "「算，放棄」",
+        "effects": [
+          {
+            "moralChange": -18,
+            "comment": "叫他放棄會令他以後更易放棄。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "算，放棄",
+          "consequence": "叫他放棄會令他以後更易放棄",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "playground",
+    "topicId": "solidarity",
+    "creedIds": [
+      18,
+      15
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy encouraging tired teammate during sports, supportive and cooperative, playground, warm tones, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-66",
+    "title": "合作：團隊勝利最開心",
+    "background": "屋企・床頭",
+    "description": "今日你哋小組一齊完成咗一個好難嘅任務，全組都攞到獎勵。你會……",
+    "hints": [
+      "團隊成功係每個成員嘅功勞。",
+      "保持合作會令下個任務更順利。"
+    ],
+    "options": [
+      {
+        "id": "s-self-66-a",
+        "text": "「我做得最多功」",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "團隊成果是每個人的功勞。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-66-b",
+        "text": "「謝謝大家一齊努力」",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成合作學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-66-c",
+        "text": "「下次我自己做」",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "放棄合作會錯失好多樂趣。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "下次我自己做",
+          "consequence": "放棄合作會錯失好多樂趣",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "home",
+    "topicId": "solidarity",
+    "creedIds": [
+      18,
+      21
+    ],
+    "imagePrompt": "Studio Ghibli style, soft pastel watercolor, young Chinese boy feeling happy after successful group project at home, proud of teamwork, warm bedroom, no text, no logos, 16:9",
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-139",
+    "title": "團結：小組活動要參與",
+    "background": "課室・分組活動",
+    "description": "你哋小組要做poster，但你想自己畫晒唔想其他人幫手。你會……",
+    "hints": [
+      "小組合作需要每個人參與",
+      "分工先有效率",
+      "聽吓其他組員嘅意見"
+    ],
+    "characters": [
+      {
+        "name": "組員",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-139-a",
+        "text": "「我畫晒你們不必做」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你剝削了組員參與的機會，不是合作。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "我畫晒你們不必做",
+          "consequence": "你剝削了組員參與的機會，不是合作",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-139-b",
+        "text": "同組員一齊傾分工",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你帶領合作，係團結的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-139-c",
+        "text": "傾分工+聆聽每個人意見+互相鼓勵",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你帶領+聆聽，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "鼓勵隊友"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, group of children working together on poster, sharing materials, Studio Ghibli style, soft pastel watercolor, warm tones, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-140",
+    "title": "團結：陸運會打氣",
+    "background": "學校・田徑場・陸運會",
+    "description": "陸運會，你同班同學一齊為 4×100 接力隊打氣。隊友跌棒輸咗，你會……",
+    "hints": [
+      "唔可以取笑跌棒嘅隊友",
+      "團結係無論贏輸都支持",
+      "鼓勵比批評更有用"
+    ],
+    "characters": [
+      {
+        "name": "隊友",
+        "emoji": "🧒",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-140-a",
+        "text": "笑說跌棒的隊友",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你傷害隊友，破壞了班的團結。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "笑說跌棒的隊友",
+          "consequence": "你傷害隊友，破壞了班的團結",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-140-b",
+        "text": "拍一拍隊友說「下次加油」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你鼓勵隊友，係團結的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-140-c",
+        "text": "拍一拍+讚其他隊友表現+一齊檢討下次點改善",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你帶領士氣+分析改善，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "鼓勵隊友",
+      "小組合作",
+      "支持"
+    ],
+    "imagePrompt": "Hong Kong school sports day, relay team on track, teammates encouraging fallen runner, sunshine, FF XV Nomura anime style, warm tones, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-141",
+    "title": "團結：班際比賽",
+    "background": "學校・體育堂",
+    "description": "你班同另一班比賽，但班中有人唔積極，怨「點解要我做」。你會……",
+    "hints": [
+      "班際比賽要每個人都參與",
+      "唔做嘅人都係班一份子",
+      "鼓勵比批評好"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-141-a",
+        "text": "「不做就算他」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你放棄了同學，不是真正的班。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "不做就算他",
+          "consequence": "你放棄了同學，不是真正的班",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-141-b",
+        "text": "同同學講「你一齊來，一齊做會開心一些」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你鼓勵同學，係團結的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-141-c",
+        "text": "鼓勵+找到同學擅長的事情+分工合作",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你帶領+配對，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "鼓勵隊友",
+      "小組合作",
+      "帶領"
+    ],
+    "imagePrompt": "Hong Kong primary school sports class, two classes competing, teammates encouraging each other, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-142",
+    "title": "團結：話劇排練",
+    "background": "課室・課後活動",
+    "description": "你哋小組要排一個話劇，但你嘅角色比較細，你覺得唔公平想放棄。你會……",
+    "hints": [
+      "每個角色都重要",
+      "細角色都可以演得好好",
+      "為咗團隊努力"
+    ],
+    "characters": [
+      {
+        "name": "組員",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-142-a",
+        "text": "「我不玩喇」就走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你放棄了整個團隊的努力。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "我不玩喇就走",
+          "consequence": "你放棄了整個團隊的努力",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-142-b",
+        "text": "留低同組員一齊練好自己的角色",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你為團隊付出，係團結的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-142-c",
+        "text": "努力練好自己角色+幫手做道具+提議增加戲份",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你主動付出+想解決方法，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "付出"
+    ],
+    "imagePrompt": "Hong Kong primary classroom after school, group of children rehearsing drama, one child practicing small role, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-143",
+    "title": "團結：幫新同學融入",
+    "background": "課室・小息",
+    "description": "班上新嚟咗一個新同學，佢自己一個坐冇人理。你會……",
+    "hints": [
+      "新同學需要支持",
+      "主動打招呼好重要",
+      "小幫助可以令人融入"
+    ],
+    "characters": [
+      {
+        "name": "新同學",
+        "emoji": "🧒",
+        "initial_relationship": 30
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-143-a",
+        "text": "扮看不到",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略新同學，他會好孤獨。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "扮看不到",
+          "consequence": "你忽略新同學，他會好孤獨",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-143-b",
+        "text": "行過去打招呼+邀請一齊玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你主動幫助，係團結的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-143-c",
+        "text": "打招呼+介紹其他同學+邀請一齊吃 lunch",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你全面幫助新同學融入，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "鼓勵隊友",
+      "主動"
+    ],
+    "imagePrompt": "Hong Kong primary classroom during break, new student sitting alone, another child approaching with smile, anime cartoon style, soft pastel watercolor, warm tones, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-144",
+    "title": "團結：合作社一起賣物",
+    "background": "學校・合作社",
+    "description": "你哋合作社要一齊賣物籌款，但分配工作時有人冇攞到想要嘅崗位，你會……",
+    "hints": [
+      "每個崗位都重要",
+      "可以輪換",
+      "支持團隊先至重要"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-144-a",
+        "text": "「我要那個崗位」就同人爭",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你為了自己破壞了團隊。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "我要那個崗位就同人爭",
+          "consequence": "你為了自己破壞了團隊",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-144-b",
+        "text": "接受分配+支持同學做好",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你支持團隊，係團結的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-144-c",
+        "text": "接受+提議輪換制度+互相補位",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你建立制度，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "支持"
+    ],
+    "imagePrompt": "Hong Kong primary school cooperative shop, children working together at stall, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-145",
+    "title": "團結：打掃班房",
+    "background": "課室・放學後",
+    "description": "班主任話班房太亂要每組打掃，但你哋組有人想早走，你會……",
+    "hints": [
+      "班房整潔係全班責任",
+      "可以快速分工",
+      "守望相助"
+    ],
+    "characters": [
+      {
+        "name": "組員",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-145-a",
+        "text": "「他們走了我做晒」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你縱容逃避，縱容壞風氣。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "他們走了我做晒",
+          "consequence": "你縱容逃避，縱容壞風氣",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-145-b",
+        "text": "叫組員一齊分3個區打掃",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你帶領合作，係團結的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-145-c",
+        "text": "分區打掃+15分鐘限時+互相檢查",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用系統帶領，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "小組合作",
+      "輪流分享",
+      "帶領"
+    ],
+    "imagePrompt": "Hong Kong primary classroom after school, group of children cleaning together with brooms and cloths, sunset light, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-146",
+    "title": "團結：校隊訓練",
+    "background": "學校・操場・放學",
+    "description": "你係校隊一員，教練叫大家跑 10 圈，跑得快嘅可以休息，跑得慢嘅要加操。你會……",
+    "hints": [
+      "唔好放棄隊友",
+      "互相鼓勵完成",
+      "團隊精神大於個人"
+    ],
+    "characters": [
+      {
+        "name": "隊友",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-146-a",
+        "text": "跑快這些休息，等其他隊友加操",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你為了自己放棄隊友，不是團隊。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "跑快這些休息，等其他隊友加操",
+          "consequence": "你為了自己放棄隊友，不是團隊",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-146-b",
+        "text": "陪跑得慢的隊友一齊跑",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你支持隊友，係團結的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-146-c",
+        "text": "陪隊友跑+鼓勵說「我哋一齊」+互相帶節奏",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你帶領士氣，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "鼓勵隊友",
+      "小組合作",
+      "支持"
+    ],
+    "imagePrompt": "Hong Kong school track after school, teammates running together, supporting slower runner, sunset light, FF XV Nomura anime style, warm tones, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-147",
+    "title": "團結：朋友失落時陪伴",
+    "background": "公園・下午",
+    "description": "朋友考試失手好唔開心，你會……",
+    "hints": [
+      "朋友唔開心時要陪佢",
+      "聆聽好重要",
+      "唔使講咩大道理"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 75
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-147-a",
+        "text": "「考試咋嘛，下次再來過」就叫人去玩",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你忽略朋友的感受，他會更孤獨。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "考試咋嘛，下次再來過就叫人去玩",
+          "consequence": "你忽略朋友的感受，他會更孤獨",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-147-b",
+        "text": "陪住他，聽他講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你陪伴聆聽，係團結的表現！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-147-c",
+        "text": "陪+聆聽+分享自己的失敗經歷+鼓勵",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你深度支持朋友，係團結高手！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "solidarity",
+    "creedIds": [
+      11
+    ],
+    "valueCategory": "solidarity",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "聆聽",
+      "支持",
+      "陪伴"
+    ],
+    "imagePrompt": "Hong Kong child sitting on park bench with sad friend, putting hand on shoulder, afternoon sun, anime cartoon style, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "value"
+  }
 ]

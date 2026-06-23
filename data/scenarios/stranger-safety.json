@@ -1,1019 +1,1094 @@
 [
-{
-"id": "s-self-13",
-"title": "陌生人：跟我走",
-"background": "學校門口",
-"description": "陌生人話：「我識你媽媽，跟我走。」",
-"hints": [
-"陌生人話識你家人都要小心！",
-"即刻搵大人，唔好跟。"
-],
-"options": [
-{
-"id": "s-self-13-a",
-"text": "即刻搵老師",
-"effects": [
-{
-"moralChange": 20,
-"comment": "你好勇敢！安全第一！"
-}
-],
-"next_scenario": "s-self-14"
-},
-{
-"id": "s-self-13-b",
-"text": "跟住陌生人",
-"effects": [
-{
-"moralChange": -20,
-"comment": "永遠唔好跟陌生人！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "school_gate",
-"topicId": "stranger-safety",
-"creedIds": [
-16,
-18
-],
-"imagePrompt": "Stranger saying follow me, boy refusing, school gate, anime cartoon style, serious, no text, 16:9",
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不跟陌生人",
-"不收禮物",
-"搵大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-14",
-"title": "陌生人：畀糖果",
-"background": "公園",
-"description": "喺公園玩嘅時候，陌生人行埋嚟畀糖果你食。",
-"hints": [
-"唔好收陌生人嘅嘢！",
-"即刻跑開。"
-],
-"options": [
-{
-"id": "s-self-14-a",
-"text": "唔收，跑向人群",
-"effects": [
-{
-"moralChange": 15,
-"comment": "正確！保護自己！"
-}
-],
-"next_scenario": "s-self-15"
-},
-{
-"id": "s-self-14-b",
-"text": "接受糖果",
-"effects": [
-{
-"moralChange": -15,
-"comment": "陌生人嘅嘢唔可以食！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "park",
-"topicId": "stranger-safety",
-"creedIds": [
-16
-],
-"imagePrompt": "Stranger offering candy, boy refusing and running, park, anime cartoon style, alert, no text, 16:9",
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不跟陌生人",
-"不收禮物",
-"搵大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-15",
-"title": "陌生人：問屋企",
-"background": "學校",
-"description": "喺學校附近，陌生人行埋嚟問你屋企喺邊。",
-"hints": [
-"唔好話畀陌生人聽屋企位置！",
-"即刻搵老師。"
-],
-"options": [
-{
-"id": "s-self-15-a",
-"text": "唔答，搵老師",
-"effects": [
-{
-"moralChange": 15,
-"comment": "你好識保護自己！"
-}
-],
-"next_scenario": "s-self-16"
-},
-{
-"id": "s-self-15-b",
-"text": "話畀佢聽",
-"effects": [
-{
-"moralChange": -10,
-"comment": "屋企位置唔可以話畀陌生人！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "school",
-"topicId": "stranger-safety",
-"creedIds": [
-16,
-18
-],
-"imagePrompt": "Stranger asking where you live, boy not answering, school, anime cartoon style, cautious, no text, 16:9",
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不跟陌生人",
-"不收禮物",
-"搵大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-16",
-"title": "陌生人：摸頭",
-"background": "公園",
-"description": "喺公園玩嘅時候，陌生人伸手摸你頭話「好乖」。",
-"hints": [
-"陌生人摸頭都要大聲講「唔好」！",
-"即刻離開。"
-],
-"options": [
-{
-"id": "s-self-16-a",
-"text": "大聲講「唔好」",
-"effects": [
-{
-"moralChange": 15,
-"comment": "你識得大聲講「唔好」，保護自己！"
-}
-],
-"next_scenario": "s-self-17"
-},
-{
-"id": "s-self-16-b",
-"text": "笑住留低",
-"effects": [
-{
-"moralChange": -10,
-"comment": "陌生人摸你就要即刻離開！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "park",
-"topicId": "stranger-safety",
-"creedIds": [
-16
-],
-"imagePrompt": "Stranger touching head, boy saying no loudly, anime cartoon style, worried, no text, 16:9",
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不跟陌生人",
-"不收禮物",
-"搵大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-17",
-"title": "陌生人：買玩具",
-"background": "學校門口",
-"description": "放學時，陌生人話要帶你去買玩具。",
-"hints": [
-"陌生人話買嘢都唔可以跟！",
-"跑向人群。"
-],
-"options": [
-{
-"id": "s-self-17-a",
-"text": "跑向人群",
-"effects": [
-{
-"moralChange": 20,
-"comment": "你識得跑向人群搵安全嘅地方！"
-}
-],
-"next_scenario": "s-self-18"
-},
-{
-"id": "s-self-17-b",
-"text": "跟住陌生人走",
-"effects": [
-{
-"moralChange": -20,
-"comment": "永遠唔好跟陌生人！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "school_gate",
-"topicId": "stranger-safety",
-"creedIds": [
-16,
-18
-],
-"imagePrompt": "Stranger offering to buy toys, boy running to crowd, anime cartoon style, running, no text, 16:9",
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不跟陌生人",
-"不收禮物",
-"搵大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-18",
-"title": "陌生人：上車",
-"background": "街頭",
-"description": "喺街頭，陌生人打開車門叫你上佢架車。",
-"hints": [
-"陌生人叫你上車＝危險！",
-"大聲喊「救命」同跑。"
-],
-"options": [
-{
-"id": "s-self-18-a",
-"text": "大聲喊「救命」跑開",
-"effects": [
-{
-"moralChange": 20,
-"comment": "你完成陌生人應對學習！badge +10分"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-18-b",
-"text": "聽話上佢架車",
-"effects": [
-{
-"moralChange": -25,
-"comment": "呢個好危險！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "street",
-"topicId": "stranger-safety",
-"creedIds": [
-16,
-18
-],
-"imagePrompt": "Stranger asking boy to get in car, boy shouting help and running, danger scene, anime cartoon style, urgent, no text, 16:9",
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不跟陌生人",
-"不收禮物",
-"搵大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-148",
-"title": "陌生人：跟我走有糖食",
-"background": "學校門口・放學",
-"description": "放學時有個陌生叔叔話「跟我走有糖食」。你會……",
-"hints": [
-"絕對唔可以跟陌生人走",
-"say no + 即刻走返學校",
-"搵老師或校工幫手"
-],
-"characters": [
-{
-"name": "陌生人",
-"emoji": "👨",
-"initial_relationship": 0
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-148-a",
-"text": "「好呀」就跟他走",
-"effects": [
-{
-"character": "自己",
-"change": -25,
-"moralChange": -25,
-"comment": "跟陌生人走非常危險，你會失蹤。"
-}
-]
-},
-{
-"id": "s-self-148-b",
-"text": "「唔喇」就走返學校搵老師",
-"effects": [
-{
-"character": "自己",
-"change": 18,
-"moralChange": 20,
-"comment": "你 say no + 搵老師，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-148-c",
-"text": "say no + 即刻跑返學校 + 叫老師留意呢個人",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你主動保護自己同其他人，係高手！"
-}
-]
-}
-],
-"location": "school",
-"topicId": "stranger-safety",
-"creedIds": [
-8
-],
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不跟陌生人",
-"say no",
-"搵老師"
-],
-"imagePrompt": "Hong Kong school gate after school, stranger reaching out to child, child stepping back alarmed, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-149",
-"title": "陌生人：上車話送你返屋企",
-"background": "街道・下午",
-"description": "你喺街上等媽媽，有個陌生阿姨話「我送你返屋企啦，車喺前面」。你會……",
-"hints": [
-"陌生人永遠唔可以上車",
-"企喺人多的地方等",
-"打電話俾媽媽"
-],
-"characters": [
-{
-"name": "陌生人",
-"emoji": "👩",
-"initial_relationship": 0
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-149-a",
-"text": "「好呀」就跟佢上車",
-"effects": [
-{
-"character": "自己",
-"change": -25,
-"moralChange": -25,
-"comment": "上陌生人的車非常危險，絕對唔可以。"
-}
-]
-},
-{
-"id": "s-self-149-b",
-"text": "「唔喇，我媽媽嚟緊」就企人多的地方",
-"effects": [
-{
-"character": "自己",
-"change": 18,
-"moralChange": 20,
-"comment": "你 say no + 搵安全位置，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-149-c",
-"text": "say no + 走返便利店 + 請店員幫你打俾媽媽",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你主動搵專業保護，係高手！"
-}
-]
-}
-],
-"location": "outdoor",
-"topicId": "stranger-safety",
-"creedIds": [
-8
-],
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不跟陌生人",
-"say no",
-"搵信任大人"
-],
-"imagePrompt": "Hong Kong street, stranger offering ride to child, child stepping back alarmed, busy road in background, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-150",
-"title": "陌生人：開門話係爸爸朋友",
-"background": "屋企・門口・晚上",
-"description": "你一個喺屋企，有人敲門話「我係爸爸嘅朋友，開門」。你會……",
-"hints": [
-"唔可以隨便開門",
-"門要有貓眼或防盜鏈",
-"打電話俾爸媽確認"
-],
-"characters": [
-{
-"name": "陌生人",
-"emoji": "👨",
-"initial_relationship": 0
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-150-a",
-"text": "「等一等」就開門",
-"effects": [
-{
-"character": "自己",
-"change": -25,
-"moralChange": -25,
-"comment": "唔可以隨便開門，你會有危險。"
-}
-]
-},
-{
-"id": "s-self-150-b",
-"text": "「爸爸唔喺屋企」+ 唔開門 + 打俾媽媽",
-"effects": [
-{
-"character": "自己",
-"change": 18,
-"moralChange": 20,
-"comment": "你保護自己+搵爸媽，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-150-c",
-"text": "唔開門+透過貓眼問+打俾爸爸確認+報警如果唔對路",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你用多重方法保護自己，係高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "stranger-safety",
-"creedIds": [
-8
-],
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不開門",
-"say no",
-"搵信任大人"
-],
-"imagePrompt": "Hong Kong apartment door, child looking through peephole, person standing outside, evening light, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-151",
-"title": "陌生人：問路跟住你",
-"background": "街道・下午",
-"description": "有個陌生叔叔問你路，跟住越行越近跟住你。你會……",
-"hints": [
-"問路嘅人唔應該跟住你",
-"即刻行去人多嘅地方",
-"可以入舖頭求助"
-],
-"characters": [
-{
-"name": "陌生人",
-"emoji": "👨",
-"initial_relationship": 0
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-151-a",
-"text": "繼續行，希望佢自己走",
-"effects": [
-{
-"character": "自己",
-"change": -15,
-"moralChange": -15,
-"comment": "你忽略危險訊號，陌生人可能係壞人。"
-}
-]
-},
-{
-"id": "s-self-151-b",
-"text": "即刻行去便利店/警察崗",
-"effects": [
-{
-"character": "自己",
-"change": 18,
-"moralChange": 20,
-"comment": "你搵安全地方，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-151-c",
-"text": "行去便利店 + 大聲講「我要搵媽媽」+ 叫店員留意",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你用聲音同地點雙重保護，係高手！"
-}
-]
-}
-],
-"location": "outdoor",
-"topicId": "stranger-safety",
-"creedIds": [
-8
-],
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不跟陌生人",
-"say no",
-"搵信任大人"
-],
-"imagePrompt": "Hong Kong street, child walking fast toward convenience store, stranger following behind, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-152",
-"title": "陌生人：上網識朋友約見面",
-"background": "屋企・房間",
-"description": "你喺網上識咗一個「同齡朋友」，對方話想約你喺公園見面。你會……",
-"hints": [
-"網上識嘅人唔可以單獨見",
-"一定要有家長陪同",
-"可以嘅話唔好見"
-],
-"characters": [
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-152-a",
-"text": "自己一個去見",
-"effects": [
-{
-"character": "自己",
-"change": -25,
-"moralChange": -25,
-"comment": "網友可能係任何人，唔可以單獨見。"
-}
-]
-},
-{
-"id": "s-self-152-b",
-"text": "同爸媽講，等佢哋陪你一齊去",
-"effects": [
-{
-"character": "自己",
-"change": 18,
-"moralChange": 20,
-"comment": "你搵爸媽陪，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-152-c",
-"text": "同爸媽講+商量+最後決定唔好見網友",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你同爸媽商量+安全優先，係高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "stranger-safety",
-"creedIds": [
-8
-],
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"搵信任大人",
-"不跟陌生人",
-"保護自己"
-],
-"imagePrompt": "Hong Kong child at computer in bedroom, chatting with someone online, looking thoughtful, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-153",
-"title": "陌生人：停低影相",
-"background": "公園・下午",
-"description": "你喺公園玩，有個陌生人用電話對住你影相，你覺得唔對路。你會……",
-"hints": [
-"唔應該被陌生人影相",
-"即時走開",
-"通知家長或公園管理員"
-],
-"characters": [
-{
-"name": "陌生人",
-"emoji": "👨",
-"initial_relationship": 0
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-153-a",
-"text": "企喺度唔敢郁",
-"effects": [
-{
-"character": "自己",
-"change": -15,
-"moralChange": -15,
-"comment": "你忽略危險，陌生人可能會靠近。"
-}
-]
-},
-{
-"id": "s-self-153-b",
-"text": "即刻走開+搵公園管理員",
-"effects": [
-{
-"character": "自己",
-"change": 18,
-"moralChange": 20,
-"comment": "你走開+搵專業保護，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-153-c",
-"text": "走開+叫管理員+記低佢外貌+叫爸媽報警",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你用多重方法保護自己，係高手！"
-}
-]
-}
-],
-"location": "park",
-"topicId": "stranger-safety",
-"creedIds": [
-8
-],
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"say no",
-"保護自己",
-"搵信任大人"
-],
-"imagePrompt": "Hong Kong park, stranger taking photos with phone, child looking alarmed and stepping back, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-154",
-"title": "陌生人：問你屋企住邊",
-"background": "電梯大堂",
-"description": "有個陌生叔叔喺電梯大堂問你「你哋屋企住邊層」。你會……",
-"hints": [
-"屋企地址係私隱",
-"絕對唔可以講",
-"say no + 走開"
-],
-"characters": [
-{
-"name": "陌生人",
-"emoji": "👨",
-"initial_relationship": 0
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-154-a",
-"text": "「X 樓 X 室」就答咗",
-"effects": [
-{
-"character": "自己",
-"change": -20,
-"moralChange": -22,
-"comment": "你透露咗屋企地址，陌生人可能會搵上門。"
-}
-]
-},
-{
-"id": "s-self-154-b",
-"text": "「我唔會講」就走開",
-"effects": [
-{
-"character": "自己",
-"change": 18,
-"moralChange": 20,
-"comment": "你保護私隱，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-154-c",
-"text": "say no + 唔回應 + 即刻入電梯 + 返到屋企同爸媽講",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你全面保護+匯報，係高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "stranger-safety",
-"creedIds": [
-8
-],
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"say no",
-"保護私隱",
-"搵信任大人"
-],
-"imagePrompt": "Hong Kong residential lift lobby, stranger asking child question, child backing away with hand up, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-155",
-"title": "陌生人：上網問電話",
-"background": "屋企・房間",
-"description": "有個唔識嘅人喺網上問你電話號碼話要做朋友。你會……",
-"hints": [
-"唔可以俾電話號碼陌生人",
-"網上私隱好重要",
-"同爸媽講"
-],
-"characters": [
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-155-a",
-"text": "「好呀」就俾電話",
-"effects": [
-{
-"character": "自己",
-"change": -20,
-"moralChange": -22,
-"comment": "你俾咗電話陌生人，會被滋擾。"
-}
-]
-},
-{
-"id": "s-self-155-b",
-"text": "「唔會俾」+ block 佢",
-"effects": [
-{
-"character": "自己",
-"change": 18,
-"moralChange": 20,
-"comment": "你保護私隱，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-155-c",
-"text": "block + 報告平台 + 同爸媽講 + 寫低對話",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你全面保護自己，係高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "stranger-safety",
-"creedIds": [
-8
-],
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"保護私隱",
-"不收禮物",
-"搵信任大人"
-],
-"imagePrompt": "Hong Kong child at computer in bedroom, stranger asking for phone number, child looking concerned, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-156",
-"title": "陌生人：送禮物話做朋友",
-"background": "校門口・放學",
-"description": "放學時有個陌生叔叔送個新玩具俾你話做朋友。你會……",
-"hints": [
-"唔可以收陌生人禮物",
-"say no + 即刻走",
-"禮物背後可能有企圖"
-],
-"characters": [
-{
-"name": "陌生人",
-"emoji": "👨",
-"initial_relationship": 0
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-156-a",
-"text": "「好呀」就收咗",
-"effects": [
-{
-"character": "自己",
-"change": -25,
-"moralChange": -25,
-"comment": "陌生人嘅禮物可能係誘餌，非常危險。"
-}
-]
-},
-{
-"id": "s-self-156-b",
-"text": "「我唔識你」就走開",
-"effects": [
-{
-"character": "自己",
-"change": 18,
-"moralChange": 20,
-"comment": "你 say no + 走開，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-156-c",
-"text": "say no + 即刻返學校搵老師 + 叫老師留意呢個人",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你保護自己+保護其他同學，係高手！"
-}
-]
-}
-],
-"location": "school",
-"topicId": "stranger-safety",
-"creedIds": [
-8
-],
-"valueCategory": "stranger-safety",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"不收禮物",
-"say no",
-"搵老師"
-],
-"imagePrompt": "Hong Kong school gate after school, stranger offering toy to child, child stepping back alarmed, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-}
+  {
+    "id": "s-self-13",
+    "title": "陌生人：跟我走",
+    "background": "學校門口",
+    "description": "陌生人話：「我識你媽媽，跟我走。」",
+    "hints": [
+      "陌生人話識你家人都要小心！",
+      "即刻搵大人，唔好跟。"
+    ],
+    "options": [
+      {
+        "id": "s-self-13-a",
+        "text": "即刻找老師",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你好勇敢！安全第一！"
+          }
+        ],
+        "next_scenario": "s-self-14"
+      },
+      {
+        "id": "s-self-13-b",
+        "text": "然後陌生人",
+        "effects": [
+          {
+            "moralChange": -20,
+            "comment": "永遠不要跟陌生人！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "然後陌生人",
+          "consequence": "永遠不要跟陌生人",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "school_gate",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      16,
+      18
+    ],
+    "imagePrompt": "Stranger saying follow me, boy refusing, school gate, anime cartoon style, serious, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-14",
+    "title": "陌生人：畀糖果",
+    "background": "公園",
+    "description": "喺公園玩嘅時候，陌生人行埋嚟畀糖果你食。",
+    "hints": [
+      "唔好收陌生人嘅嘢！",
+      "即刻跑開。"
+    ],
+    "options": [
+      {
+        "id": "s-self-14-a",
+        "text": "不收，跑向人群",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "正確！保護自己！"
+          }
+        ],
+        "next_scenario": "s-self-15"
+      },
+      {
+        "id": "s-self-14-b",
+        "text": "接受糖果",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "陌生人的事情不可以吃！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "接受糖果",
+          "consequence": "陌生人的事情不可以吃",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "park",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      16
+    ],
+    "imagePrompt": "Stranger offering candy, boy refusing and running, park, anime cartoon style, alert, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-15",
+    "title": "陌生人：問屋企",
+    "background": "學校",
+    "description": "喺學校附近，陌生人行埋嚟問你屋企喺邊。",
+    "hints": [
+      "唔好話畀陌生人聽屋企位置！",
+      "即刻搵老師。"
+    ],
+    "options": [
+      {
+        "id": "s-self-15-a",
+        "text": "不答，找老師",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你好識保護自己！"
+          }
+        ],
+        "next_scenario": "s-self-16"
+      },
+      {
+        "id": "s-self-15-b",
+        "text": "說給他聽",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "屋企位置不可以說給陌生人！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "說給他聽",
+          "consequence": "屋企位置不可以說給陌生人",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      16,
+      18
+    ],
+    "imagePrompt": "Stranger asking where you live, boy not answering, school, anime cartoon style, cautious, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-16",
+    "title": "陌生人：摸頭",
+    "background": "公園",
+    "description": "喺公園玩嘅時候，陌生人伸手摸你頭話「好乖」。",
+    "hints": [
+      "陌生人摸頭都要大聲講「唔好」！",
+      "即刻離開。"
+    ],
+    "options": [
+      {
+        "id": "s-self-16-a",
+        "text": "大聲講「不要」",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你識得大聲講「不要」，保護自己！"
+          }
+        ],
+        "next_scenario": "s-self-17"
+      },
+      {
+        "id": "s-self-16-b",
+        "text": "笑住留低",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "陌生人摸你就要即刻離開！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "笑住留低",
+          "consequence": "陌生人摸你就要即刻離開",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "park",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      16
+    ],
+    "imagePrompt": "Stranger touching head, boy saying no loudly, anime cartoon style, worried, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-17",
+    "title": "陌生人：買玩具",
+    "background": "學校門口",
+    "description": "放學時，陌生人話要帶你去買玩具。",
+    "hints": [
+      "陌生人話買嘢都唔可以跟！",
+      "跑向人群。"
+    ],
+    "options": [
+      {
+        "id": "s-self-17-a",
+        "text": "跑向人群",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你識得跑向人群找安全的地方！"
+          }
+        ],
+        "next_scenario": "s-self-18"
+      },
+      {
+        "id": "s-self-17-b",
+        "text": "然後陌生人走",
+        "effects": [
+          {
+            "moralChange": -20,
+            "comment": "永遠不要跟陌生人！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "然後陌生人走",
+          "consequence": "永遠不要跟陌生人",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "school_gate",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      16,
+      18
+    ],
+    "imagePrompt": "Stranger offering to buy toys, boy running to crowd, anime cartoon style, running, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-18",
+    "title": "陌生人：上車",
+    "background": "街頭",
+    "description": "喺街頭，陌生人打開車門叫你上佢架車。",
+    "hints": [
+      "陌生人叫你上車＝危險！",
+      "大聲喊「救命」同跑。"
+    ],
+    "options": [
+      {
+        "id": "s-self-18-a",
+        "text": "大聲喊「救命」跑開",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成陌生人應對學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-18-b",
+        "text": "聽說上他架車",
+        "effects": [
+          {
+            "moralChange": -25,
+            "comment": "這個好危險！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "聽說上他架車",
+          "consequence": "這個好危險",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "street",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      16,
+      18
+    ],
+    "imagePrompt": "Stranger asking boy to get in car, boy shouting help and running, danger scene, anime cartoon style, urgent, no text, 16:9",
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "不收禮物",
+      "搵大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-148",
+    "title": "陌生人：跟我走有糖食",
+    "background": "學校門口・放學",
+    "description": "放學時有個陌生叔叔話「跟我走有糖食」。你會……",
+    "hints": [
+      "絕對唔可以跟陌生人走",
+      "say no + 即刻走返學校",
+      "搵老師或校工幫手"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-148-a",
+        "text": "「好呀」就跟他走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "跟陌生人走非常危險，你會失蹤。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "好呀就跟他走",
+          "consequence": "跟陌生人走非常危險，你會失蹤",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-148-b",
+        "text": "「不喇」就走返學校找老師",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你 say no + 找老師，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-148-c",
+        "text": "say no + 即刻跑返學校 + 叫老師留意這個人",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你主動保護自己同其他人，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "say no",
+      "搵老師"
+    ],
+    "imagePrompt": "Hong Kong school gate after school, stranger reaching out to child, child stepping back alarmed, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-149",
+    "title": "陌生人：上車話送你返屋企",
+    "background": "街道・下午",
+    "description": "你喺街上等媽媽，有個陌生阿姨話「我送你返屋企啦，車喺前面」。你會……",
+    "hints": [
+      "陌生人永遠唔可以上車",
+      "企喺人多的地方等",
+      "打電話俾媽媽"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👩",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-149-a",
+        "text": "「好呀」就跟他上車",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "上陌生人的車非常危險，絕對不可以。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "好呀就跟他上車",
+          "consequence": "上陌生人的車非常危險，絕對不可以",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-149-b",
+        "text": "「不喇，我媽媽來緊」就企人多的地方",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你 say no + 找安全位置，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-149-c",
+        "text": "say no + 走返便利店 + 請店員幫你打給媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你主動找專業保護，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "outdoor",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "say no",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong street, stranger offering ride to child, child stepping back alarmed, busy road in background, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-150",
+    "title": "陌生人：開門話係爸爸朋友",
+    "background": "屋企・門口・晚上",
+    "description": "你一個喺屋企，有人敲門話「我係爸爸嘅朋友，開門」。你會……",
+    "hints": [
+      "唔可以隨便開門",
+      "門要有貓眼或防盜鏈",
+      "打電話俾爸媽確認"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-150-a",
+        "text": "「等一等」就開門",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "不可以隨便開門，你會有危險。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "等一等就開門",
+          "consequence": "不可以隨便開門，你會有危險",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-150-b",
+        "text": "「爸爸不在屋企」+ 不開門 + 打給媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你保護自己+找爸媽，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-150-c",
+        "text": "不開門+透過貓眼問+打給爸爸確認+報警如果不對路",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你用多重方法保護自己，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不開門",
+      "say no",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong apartment door, child looking through peephole, person standing outside, evening light, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-151",
+    "title": "陌生人：問路跟住你",
+    "background": "街道・下午",
+    "description": "有個陌生叔叔問你路，跟住越行越近跟住你。你會……",
+    "hints": [
+      "問路嘅人唔應該跟住你",
+      "即刻行去人多嘅地方",
+      "可以入舖頭求助"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-151-a",
+        "text": "繼續行，希望他自己走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你忽略危險訊號，陌生人可能是壞人。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "繼續行，希望他自己走",
+          "consequence": "你忽略危險訊號，陌生人可能是壞人",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-151-b",
+        "text": "即刻行去便利店/警察崗",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你找安全地方，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-151-c",
+        "text": "行去便利店 + 大聲講「我要找媽媽」+ 叫店員留意",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你用聲音同地點雙重保護，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "outdoor",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不跟陌生人",
+      "say no",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong street, child walking fast toward convenience store, stranger following behind, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-152",
+    "title": "陌生人：上網識朋友約見面",
+    "background": "屋企・房間",
+    "description": "你喺網上識咗一個「同齡朋友」，對方話想約你喺公園見面。你會……",
+    "hints": [
+      "網上識嘅人唔可以單獨見",
+      "一定要有家長陪同",
+      "可以嘅話唔好見"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-152-a",
+        "text": "自己一個去見",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "網友可能是任何人，不可以單獨見。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "自己一個去見",
+          "consequence": "網友可能是任何人，不可以單獨見",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-152-b",
+        "text": "同爸媽講，等他們陪你一齊去",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你找爸媽陪，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-152-c",
+        "text": "同爸媽講+商量+最後決定不要見網友",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你同爸媽商量+安全優先，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "搵信任大人",
+      "不跟陌生人",
+      "保護自己"
+    ],
+    "imagePrompt": "Hong Kong child at computer in bedroom, chatting with someone online, looking thoughtful, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-153",
+    "title": "陌生人：停低影相",
+    "background": "公園・下午",
+    "description": "你喺公園玩，有個陌生人用電話對住你影相，你覺得唔對路。你會……",
+    "hints": [
+      "唔應該被陌生人影相",
+      "即時走開",
+      "通知家長或公園管理員"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-153-a",
+        "text": "企在度不敢郁",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你忽略危險，陌生人可能會靠近。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "企在度不敢郁",
+          "consequence": "你忽略危險，陌生人可能會靠近",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-153-b",
+        "text": "即刻離開+找公園管理員",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你離開+找專業保護，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-153-c",
+        "text": "離開+叫管理員+記低他外貌+叫爸媽報警",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你用多重方法保護自己，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "say no",
+      "保護自己",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong park, stranger taking photos with phone, child looking alarmed and stepping back, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-154",
+    "title": "陌生人：問你屋企住邊",
+    "background": "電梯大堂",
+    "description": "有個陌生叔叔喺電梯大堂問你「你哋屋企住邊層」。你會……",
+    "hints": [
+      "屋企地址係私隱",
+      "絕對唔可以講",
+      "say no + 走開"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-154-a",
+        "text": "「X 樓 X 室」就答了",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -20,
+            "moralChange": -22,
+            "comment": "你透露了屋企地址，陌生人可能會找上門。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "X 樓 X 室就答了",
+          "consequence": "你透露了屋企地址，陌生人可能會找上門",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-154-b",
+        "text": "「我不會講」就離開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你保護私隱，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-154-c",
+        "text": "say no + 不回應 + 即刻入電梯 + 返到屋企同爸…",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你全面保護+匯報，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "say no",
+      "保護私隱",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong residential lift lobby, stranger asking child question, child backing away with hand up, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-155",
+    "title": "陌生人：上網問電話",
+    "background": "屋企・房間",
+    "description": "有個唔識嘅人喺網上問你電話號碼話要做朋友。你會……",
+    "hints": [
+      "唔可以俾電話號碼陌生人",
+      "網上私隱好重要",
+      "同爸媽講"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-155-a",
+        "text": "「好呀」就給電說",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -20,
+            "moralChange": -22,
+            "comment": "你給了電話陌生人，會被滋擾。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "好呀就給電說",
+          "consequence": "你給了電話陌生人，會被滋擾",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-155-b",
+        "text": "「不會俾」+ block 他",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你保護私隱，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-155-c",
+        "text": "block + 報告平台 + 同爸媽講 + 寫低對說",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你全面保護自己，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "保護私隱",
+      "不收禮物",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong child at computer in bedroom, stranger asking for phone number, child looking concerned, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-156",
+    "title": "陌生人：送禮物話做朋友",
+    "background": "校門口・放學",
+    "description": "放學時有個陌生叔叔送個新玩具俾你話做朋友。你會……",
+    "hints": [
+      "唔可以收陌生人禮物",
+      "say no + 即刻走",
+      "禮物背後可能有企圖"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👨",
+        "initial_relationship": 0
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-156-a",
+        "text": "「好呀」就收了",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "陌生人的禮物可能是誘餌，非常危險。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "好呀就收了",
+          "consequence": "陌生人的禮物可能是誘餌，非常危險",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-156-b",
+        "text": "「我不識你」就離開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你 say no + 離開，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-156-c",
+        "text": "say no + 即刻返學校找老師 + 叫老師留意這個人",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你保護自己+保護其他同學，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "stranger-safety",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "stranger-safety",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "不收禮物",
+      "say no",
+      "搵老師"
+    ],
+    "imagePrompt": "Hong Kong school gate after school, stranger offering toy to child, child stepping back alarmed, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  }
 ]

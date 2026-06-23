@@ -1,1061 +1,1131 @@
 [
-{
-"id": "s-self-01",
-"title": "自我保護：媽媽安慰",
-"background": "家中・晚上",
-"description": "你哭咗，媽媽輕輕幫你抹眼淚，問你發生咩事。",
-"hints": [
-"呢個係好接觸，因為係家人關心你。",
-"好接觸會令你感覺安全同舒服。"
-],
-"characters": [
-{
-"name": "媽媽",
-"emoji": "👩",
-"initial_relationship": 80
-}
-],
-"options": [
-{
-"id": "s-self-01-a",
-"text": "接受安慰，話畀媽媽聽",
-"effects": [
-{
-"character": "媽媽",
-"change": 10,
-"moralChange": 15,
-"comment": "你好勇敢！媽媽好開心你信任佢。"
-}
-],
-"next_scenario": "s-self-02"
-},
-{
-"id": "s-self-01-b",
-"text": "推開媽媽",
-"effects": [
-{
-"character": "媽媽",
-"change": -5,
-"moralChange": -10,
-"comment": "媽媽會擔心你..."
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "body-autonomy",
-"creedIds": [
-22,
-16
-],
-"imagePrompt": "A young Chinese boy with teary eyes, gentle mother wiping tears, warm home setting, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"認識私處",
-"say no",
-"告知信任大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-02",
-"title": "自我保護：同學讚賞",
-"background": "課室・小息",
-"description": "同學輕輕拍你肩膀，讚你做得好。",
-"hints": [
-"呢個係好接觸，朋友之間嘅鼓勵。",
-"好接觸要雙方都開心。"
-],
-"characters": [
-{
-"name": "同學",
-"emoji": "👦",
-"initial_relationship": 60
-}
-],
-"options": [
-{
-"id": "s-self-02-a",
-"text": "笑住接受",
-"effects": [
-{
-"character": "同學",
-"change": 10,
-"moralChange": 10,
-"comment": "你令朋友都開心！"
-}
-],
-"next_scenario": "s-self-03"
-},
-{
-"id": "s-self-02-b",
-"text": "覺得奇怪，走開",
-"effects": [
-{
-"character": "同學",
-"change": -5,
-"moralChange": -5,
-"comment": "朋友可能會誤會..."
-}
-],
-"next_scenario": null
-}
-],
-"location": "classroom",
-"topicId": "body-autonomy",
-"creedIds": [
-22
-],
-"imagePrompt": "Happy boy patted on shoulder by smiling classmate, school playground, anime cartoon style, warm tones, no text, 16:9",
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"認識私處",
-"say no",
-"告知信任大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-03",
-"title": "自我保護：陌生人摸大腿",
-"background": "公園・玩耍",
-"description": "一個陌生人突然摸你大腿，你覺得好唔舒服。",
-"hints": [
-"呢個係壞接觸！即刻離開。",
-"壞接觸要大聲講「唔好」同搵大人。"
-],
-"characters": [
-{
-"name": "陌生人",
-"emoji": "👤",
-"initial_relationship": 20
-}
-],
-"options": [
-{
-"id": "s-self-03-a",
-"text": "大聲講「唔好」然後跑向媽媽",
-"effects": [
-{
-"character": "陌生人",
-"change": -20,
-"moralChange": 20,
-"comment": "你好勇敢！安全第一！"
-}
-],
-"next_scenario": "s-self-04"
-},
-{
-"id": "s-self-03-b",
-"text": "忍住唔聲張",
-"effects": [
-{
-"character": "陌生人",
-"change": 5,
-"moralChange": -15,
-"comment": "記住：壞接觸一定要講出嚟！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "park",
-"topicId": "body-autonomy",
-"creedIds": [
-16,
-18
-],
-"imagePrompt": "Young boy looking uncomfortable as stranger touches thigh, warning scene, anime cartoon style, expressive worried face, no text, 16:9",
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"認識私處",
-"say no",
-"告知信任大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-04",
-"title": "自我保護：叔叔摸頭",
-"background": "學校門口",
-"description": "一個叔叔摸你頭髮說「乖乖」，你覺得怪怪地。",
-"hints": [
-"陌生人摸頭都可能係壞接觸。",
-"即刻搵老師或媽媽。"
-],
-"options": [
-{
-"id": "s-self-04-a",
-"text": "即刻跑去搵老師",
-"effects": [
-{
-"moralChange": 15,
-"comment": "正確！陌生人嘅好意都要小心。"
-}
-],
-"next_scenario": "s-self-05"
-},
-{
-"id": "s-self-04-b",
-"text": "笑住留低",
-"effects": [
-{
-"moralChange": -10,
-"comment": "記住安全最重要。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "school_gate",
-"topicId": "body-autonomy",
-"creedIds": [
-16
-],
-"imagePrompt": "Young girl uneasy as uncle touches hair, park setting, anime cartoon style, worried expression, no text, 16:9",
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"認識私處",
-"say no",
-"告知信任大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-05",
-"title": "自我保護：醫生檢查",
-"background": "診所",
-"description": "醫生要檢查你耳朵，媽媽喺度陪住。",
-"hints": [
-"有大人陪嘅醫療檢查係好接觸。",
-"但陌生人單獨接觸就要小心。"
-],
-"options": [
-{
-"id": "s-self-05-a",
-"text": "安心接受檢查",
-"effects": [
-{
-"moralChange": 10,
-"comment": "好接觸令你健康！"
-}
-],
-"next_scenario": "s-self-06"
-},
-{
-"id": "s-self-05-b",
-"text": "推開醫生",
-"effects": [
-{
-"moralChange": -5,
-"comment": "有媽媽陪就係安全嘅。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "clinic",
-"topicId": "body-autonomy",
-"creedIds": [
-22
-],
-"imagePrompt": "Boy calmly having ear checked by doctor with mother beside, safe medical scene, anime cartoon style, reassuring, no text, 16:9",
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"認識私處",
-"say no",
-"告知信任大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-06",
-"title": "自我保護：朋友握手",
-"background": "課室・放學",
-"description": "朋友行埋嚟笑住伸出手，想同你握手打招呼。",
-"hints": [
-"朋友之間嘅握手係好接觸。",
-"記住分辨好壞接觸，你已經好厲害！"
-],
-"options": [
-{
-"id": "s-self-06-a",
-"text": "開心握手",
-"effects": [
-{
-"moralChange": 15,
-"comment": "你完成自我保護學習！每日安全badge +10分"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-06-b",
-"text": "唔想握手",
-"effects": [
-{
-"moralChange": 5,
-"comment": "尊重自己感覺都係正確。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "classroom",
-"topicId": "body-autonomy",
-"creedIds": [
-22,
-16
-],
-"imagePrompt": "Two happy children shaking hands, classroom, anime cartoon style, bright positive, no text, 16:9",
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"認識私處",
-"say no",
-"告知信任大人"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-76",
-"title": "身體自主：同學睇你換衫",
-"background": "學校・體育堂・更衣室",
-"description": "體育堂換衫時，同學小強望住你換衫仲笑。你覺得唔舒服，你會……",
-"hints": [
-"身體係私隱，邊度都唔應該被強迫展示",
-"say no 唔使理由",
-"更衣室可以即刻搵老師幫手"
-],
-"characters": [
-{
-"name": "小強",
-"emoji": "👦",
-"initial_relationship": 40
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-76-a",
-"text": "扮冇事，快快換完走人",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -12,
-"comment": "你冇保護自己嘅身體界線，小強會以為你接受。"
-}
-]
-},
-{
-"id": "s-self-76-b",
-"text": "大聲話「唔好望！我換緊衫」",
-"effects": [
-{
-"character": "自己",
-"change": 10,
-"moralChange": 12,
-"comment": "你清晰設立界線，呢個就係身體自主！"
-}
-]
-},
-{
-"id": "s-self-76-c",
-"text": "即時搵體育老師反映呢件事",
-"effects": [
-{
-"character": "自己",
-"change": 22,
-"moralChange": 22,
-"comment": "你主動搵信任大人處理，係最安全嘅方法！"
-}
-]
-}
-],
-"location": "school",
-"topicId": "body-autonomy",
-"creedIds": [
-8
-],
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"say no",
-"身體界線",
-"搵老師"
-],
-"imagePrompt": "Hong Kong primary school changing room, child clutching PE uniform to chest, uncomfortable expression, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-77",
-"title": "身體自主：姨姨錫嘴",
-"background": "親戚屋企・新年",
-"description": "新年去親戚屋企拜年，姨姨成日想錫你嘴，你唔想俾人錫嘴但又怕失禮。你會……",
-"hints": [
-"親人都要尊重你嘅身體界線",
-"可以錫面珠唔一定要錫嘴",
-"say no 唔使內疚"
-],
-"characters": [
-{
-"name": "姨姨",
-"emoji": "👩",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-77-a",
-"text": "硬食咗錫嘴，扮笑",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你犧牲自己嘅界線，姨姨唔知你唔舒服。"
-}
-]
-},
-{
-"id": "s-self-77-b",
-"text": "側頭避開，畀佢錫面珠",
-"effects": [
-{
-"character": "自己",
-"change": 8,
-"moralChange": 10,
-"comment": "你用巧妙方法保護自己，呢個就係智慧！"
-}
-]
-},
-{
-"id": "s-self-77-c",
-"text": "直接話「姨姨我想錫面珠多啲」",
-"effects": [
-{
-"character": "自己",
-"change": 22,
-"moralChange": 22,
-"comment": "你清晰表達意願，係好榜樣！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "body-autonomy",
-"creedIds": [
-8
-],
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say no",
-"身體界線",
-"表達意願"
-],
-"imagePrompt": "Hong Kong Chinese New Year family gathering, grandmother reaching to embrace shy child who turns head gently, festive red decorations, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-78",
-"title": "身體自主：朋友強行攬你",
-"background": "課室・小息",
-"description": "小息時你攬吓朋友傾偈，但朋友突然大力攬到你好實，你想推開但又怕傷感情。你會……",
-"hints": [
-"唔舒服就要表達",
-"朋友應該尊重你嘅意願",
-"say no 唔代表唔鍾意個朋友"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 70
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-78-a",
-"text": "硬食住唔出聲",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你壓抑自己嘅感受，朋友唔知你唔舒服。"
-}
-]
-},
-{
-"id": "s-self-78-b",
-"text": "輕聲話「唔好咁大力，我唔太舒服」",
-"effects": [
-{
-"character": "自己",
-"change": 10,
-"moralChange": 12,
-"comment": "你溫柔地設立界線，呢個就係溝通！"
-}
-]
-},
-{
-"id": "s-self-78-c",
-"text": "大力推開，話「我講過唔鍾意咁」",
-"effects": [
-{
-"character": "自己",
-"change": 20,
-"moralChange": 22,
-"comment": "你清晰咁設立界線，係身體自主嘅榜樣！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "body-autonomy",
-"creedIds": [
-8
-],
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say no",
-"身體界線",
-"say stop"
-],
-"imagePrompt": "Hong Kong primary classroom, friend tightly hugging another child who looks uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-79",
-"title": "身體自主：醫生檢查要媽媽陪",
-"background": "診所・下午",
-"description": "你傷風睇醫生，醫生話要聽你個胸同睇喉嚨，但你想媽媽陪住。你會……",
-"hints": [
-"醫生檢查係正常嘅，但你絕對有權要家人陪",
-"你有權 say stop 要求家人陪",
-"信任大人陪住會令你更安心"
-],
-"characters": [
-{
-"name": "醫生",
-"emoji": "👨‍⚕️",
-"initial_relationship": 60
-},
-{
-"name": "媽媽",
-"emoji": "👩",
-"initial_relationship": 80
-}
-],
-"options": [
-{
-"id": "s-self-79-a",
-"text": "唔出聲，硬住頭皮俾醫生檢查",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你壓抑自己嘅需要，下次會更驚。"
-}
-]
-},
-{
-"id": "s-self-79-b",
-"text": "望住媽媽，等佢明白你嘅意思",
-"effects": [
-{
-"character": "自己",
-"change": 8,
-"moralChange": 10,
-"comment": "你用眼神求助，呢個都係方法之一。"
-}
-]
-},
-{
-"id": "s-self-79-c",
-"text": "直接話「醫生我想媽媽陪住我」",
-"effects": [
-{
-"character": "自己",
-"change": 20,
-"moralChange": 22,
-"comment": "你直接表達需要，係身體自主嘅重要一步！"
-}
-]
-}
-],
-"location": "clinic",
-"topicId": "body-autonomy",
-"creedIds": [
-8
-],
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"身體界線",
-"搵信任大人",
-"表達意願"
-],
-"imagePrompt": "Hong Kong child in clinic room, doctor with stethoscope, mother standing nearby, child uncertain expression, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-80",
-"title": "身體自主：表哥拖你入房",
-"background": "親戚屋企・暑假",
-"description": "暑假喺表哥屋企過夜，表哥拉你入佢房話「教你玩新嘢」，你覺得唔對路。你會……",
-"hints": [
-"直覺話唔對路就 trust 個感覺",
-"絕對有權 say no 唔入去",
-"即刻搵屋企大人講"
-],
-"characters": [
-{
-"name": "表哥",
-"emoji": "👦",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-80-a",
-"text": "怕得失表哥，跟住入去",
-"effects": [
-{
-"character": "自己",
-"change": -18,
-"moralChange": -20,
-"comment": "信任直覺先保護自己，呢個係錯誤選擇。"
-}
-]
-},
-{
-"id": "s-self-80-b",
-"text": "大聲話「我唔想入去！」就走開",
-"effects": [
-{
-"character": "自己",
-"change": 15,
-"moralChange": 16,
-"comment": "你 trust 自己嘅直覺，呢個就係身體自主！"
-}
-]
-},
-{
-"id": "s-self-80-c",
-"text": "即刻去搵姨姨／姑姐講呢件事",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你主動搵信任大人，係最正確嘅處理！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "body-autonomy",
-"creedIds": [
-8
-],
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"say no",
-"say stop",
-"搵信任大人"
-],
-"imagePrompt": "Hong Kong child at cousin's apartment doorway, cousin pulling arm, child pulling away with concerned expression, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-81",
-"title": "身體自主：朋友迫你拖手",
-"background": "公園・玩耍",
-"description": "同朋友喺公園玩，佢想拖住你手行，你想自己行。你會……",
-"hints": [
-"朋友都唔可以強迫你",
-"say no 唔使解釋",
-"可以話「我想自己行」"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 70
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-81-a",
-"text": "勉強拖住，唔想佢唔開心",
-"effects": [
-{
-"character": "自己",
-"change": -8,
-"moralChange": -8,
-"comment": "你勉強自己，朋友以為你鍾意。"
-}
-]
-},
-{
-"id": "s-self-81-b",
-"text": "笑住話「我哋跑吓好過啦」",
-"effects": [
-{
-"character": "自己",
-"change": 10,
-"moralChange": 12,
-"comment": "你巧妙地化解，係溝通高手！"
-}
-]
-},
-{
-"id": "s-self-81-c",
-"text": "直接話「我想自己行，唔好拖我」",
-"effects": [
-{
-"character": "自己",
-"change": 18,
-"moralChange": 20,
-"comment": "你清晰設立界線，係成熟嘅表現！"
-}
-]
-}
-],
-"location": "park",
-"topicId": "body-autonomy",
-"creedIds": [
-8
-],
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say no",
-"身體界線",
-"say stop"
-],
-"imagePrompt": "Hong Kong children at park, one child holding out hand, another child stepping back with gentle smile, sunshine, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-82",
-"title": "身體自主：校巴司機摸你頭",
-"background": "校巴・放學",
-"description": "搭校巴放學，司機叔叔好鍾意摸你頭，你唔想俾人摸頭但驚佢唔載你。你會……",
-"hints": [
-"身體界線包括頭部",
-"say no 唔使驚佢唔載",
-"可以返到屋企同爸媽講"
-],
-"characters": [
-{
-"name": "司機",
-"emoji": "👨",
-"initial_relationship": 50
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-82-a",
-"text": "默默忍受，唔敢出聲",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你壓抑感受，司機以為你鍾意。"
-}
-]
-},
-{
-"id": "s-self-82-b",
-"text": "縮開少少，扮睇窗外",
-"effects": [
-{
-"character": "自己",
-"change": 5,
-"moralChange": 8,
-"comment": "你用身體語言表達，係方法之一。"
-}
-]
-},
-{
-"id": "s-self-82-c",
-"text": "出聲話「叔叔我唔想俾人摸頭」",
-"effects": [
-{
-"character": "自己",
-"change": 22,
-"moralChange": 22,
-"comment": "你勇敢表達，係身體自主嘅榜樣！"
-}
-]
-}
-],
-"location": "school_bus",
-"topicId": "body-autonomy",
-"creedIds": [
-8
-],
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"say no",
-"身體界線",
-"搵信任大人"
-],
-"imagePrompt": "Hong Kong child on school bus, driver reaching toward child, child leaning away with concerned expression, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-83",
-"title": "身體自主：同學迫你玩搔癢",
-"background": "課室・小息",
-"description": "小息時同學小強捉住你搔你腋下搔癢，你笑住但其實唔想。你會……",
-"hints": [
-"身體界線包括搔癢",
-"玩都唔可以強迫",
-"say no 唔使覺得掃興"
-],
-"characters": [
-{
-"name": "小強",
-"emoji": "👦",
-"initial_relationship": 60
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-83-a",
-"text": "笑住但唔出聲，繼續俾佢搔",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "你冇表達，小強以為你 enjoy 緊。"
-}
-]
-},
-{
-"id": "s-self-83-b",
-"text": "笑住推開佢，話「夠喇夠喇」",
-"effects": [
-{
-"character": "自己",
-"change": 8,
-"moralChange": 10,
-"comment": "你溫和設立界線，係平衡嘅做法。"
-}
-]
-},
-{
-"id": "s-self-83-c",
-"text": "停低笑，正經話「我唔鍾意俾人搔癢」",
-"effects": [
-{
-"character": "自己",
-"change": 22,
-"moralChange": 22,
-"comment": "你清晰表達身體界線，係身體自主！"
-}
-]
-}
-],
-"location": "classroom",
-"topicId": "body-autonomy",
-"creedIds": [
-8
-],
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 1,
-"skills": [
-"say no",
-"say stop",
-"身體界線"
-],
-"imagePrompt": "Hong Kong primary classroom during break, child tickling another who is laughing but uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-84",
-"title": "身體自主：鄰居叔叔拖你入屋",
-"background": "電梯大堂・晚上",
-"description": "你搭電梯返屋企，鄰居叔叔話「上嚟叔叔屋企食糖」，你唔識佢。你會……",
-"hints": [
-"唔識嘅人絕對唔可以跟",
-"say no 唔使理由",
-"返到屋企即時講俾爸媽聽"
-],
-"characters": [
-{
-"name": "鄰居",
-"emoji": "👨",
-"initial_relationship": 30
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-84-a",
-"text": "「好呀」就跟住上佢屋企",
-"effects": [
-{
-"character": "自己",
-"change": -25,
-"moralChange": -25,
-"comment": "絕對唔可以跟陌生人入屋，呢個好危險。"
-}
-]
-},
-{
-"id": "s-self-84-b",
-"text": "「唔喇，我媽媽喺屋企等我」",
-"effects": [
-{
-"character": "自己",
-"change": 15,
-"moralChange": 18,
-"comment": "你禮貌地 say no，係安全嘅做法！"
-}
-]
-},
-{
-"id": "s-self-84-c",
-"text": "即時跑返屋企同爸媽講呢件事",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你主動搵爸媽報告，係最安全嘅做法！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "body-autonomy",
-"creedIds": [
-8
-],
-"valueCategory": "body-autonomy",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"say no",
-"say stop",
-"搵信任大人"
-],
-"imagePrompt": "Hong Kong residential building lift lobby at night, neighbor reaching out, child stepping back with alarmed expression, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-}
+  {
+    "id": "s-self-01",
+    "title": "自我保護：媽媽安慰",
+    "background": "家中・晚上",
+    "description": "你哭咗，媽媽輕輕幫你抹眼淚，問你發生咩事。",
+    "hints": [
+      "呢個係好接觸，因為係家人關心你。",
+      "好接觸會令你感覺安全同舒服。"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 80
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-01-a",
+        "text": "接受安慰，說給媽媽聽",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 10,
+            "moralChange": 15,
+            "comment": "你好勇敢！媽媽好開心你信任他。"
+          }
+        ],
+        "next_scenario": "s-self-02"
+      },
+      {
+        "id": "s-self-01-b",
+        "text": "推開媽媽",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": -5,
+            "moralChange": -10,
+            "comment": "媽媽會擔心你..."
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "推開媽媽",
+          "consequence": "媽媽會擔心你...",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      22,
+      16
+    ],
+    "imagePrompt": "A young Chinese boy with teary eyes, gentle mother wiping tears, warm home setting, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-02",
+    "title": "自我保護：同學讚賞",
+    "background": "課室・小息",
+    "description": "同學輕輕拍你肩膀，讚你做得好。",
+    "hints": [
+      "呢個係好接觸，朋友之間嘅鼓勵。",
+      "好接觸要雙方都開心。"
+    ],
+    "characters": [
+      {
+        "name": "同學",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-02-a",
+        "text": "笑住接受",
+        "effects": [
+          {
+            "character": "同學",
+            "change": 10,
+            "moralChange": 10,
+            "comment": "你令朋友都開心！"
+          }
+        ],
+        "next_scenario": "s-self-03"
+      },
+      {
+        "id": "s-self-02-b",
+        "text": "覺得奇怪，離開",
+        "effects": [
+          {
+            "character": "同學",
+            "change": -5,
+            "moralChange": -5,
+            "comment": "朋友可能會誤會..."
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "覺得奇怪，離開",
+          "consequence": "朋友可能會誤會...",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      22
+    ],
+    "imagePrompt": "Happy boy patted on shoulder by smiling classmate, school playground, anime cartoon style, warm tones, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-03",
+    "title": "自我保護：陌生人摸大腿",
+    "background": "公園・玩耍",
+    "description": "一個陌生人突然摸你大腿，你覺得好唔舒服。",
+    "hints": [
+      "呢個係壞接觸！即刻離開。",
+      "壞接觸要大聲講「唔好」同搵大人。"
+    ],
+    "characters": [
+      {
+        "name": "陌生人",
+        "emoji": "👤",
+        "initial_relationship": 20
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-03-a",
+        "text": "大聲講「不要」然後跑向媽媽",
+        "effects": [
+          {
+            "character": "陌生人",
+            "change": -20,
+            "moralChange": 20,
+            "comment": "你好勇敢！安全第一！"
+          }
+        ],
+        "next_scenario": "s-self-04"
+      },
+      {
+        "id": "s-self-03-b",
+        "text": "忍住不聲張",
+        "effects": [
+          {
+            "character": "陌生人",
+            "change": 5,
+            "moralChange": -15,
+            "comment": "記住：壞接觸一定要講出來！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "忍住不聲張",
+          "consequence": "記住：壞接觸一定要講出來",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "park",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      16,
+      18
+    ],
+    "imagePrompt": "Young boy looking uncomfortable as stranger touches thigh, warning scene, anime cartoon style, expressive worried face, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-04",
+    "title": "自我保護：叔叔摸頭",
+    "background": "學校門口",
+    "description": "一個叔叔摸你頭髮說「乖乖」，你覺得怪怪地。",
+    "hints": [
+      "陌生人摸頭都可能係壞接觸。",
+      "即刻搵老師或媽媽。"
+    ],
+    "options": [
+      {
+        "id": "s-self-04-a",
+        "text": "即刻跑去找老師",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "正確！陌生人的好意都要小心。"
+          }
+        ],
+        "next_scenario": "s-self-05"
+      },
+      {
+        "id": "s-self-04-b",
+        "text": "笑住留低",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "記住安全最重要。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "笑住留低",
+          "consequence": "記住安全最重要",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "school_gate",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      16
+    ],
+    "imagePrompt": "Young girl uneasy as uncle touches hair, park setting, anime cartoon style, worried expression, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-05",
+    "title": "自我保護：醫生檢查",
+    "background": "診所",
+    "description": "醫生要檢查你耳朵，媽媽喺度陪住。",
+    "hints": [
+      "有大人陪嘅醫療檢查係好接觸。",
+      "但陌生人單獨接觸就要小心。"
+    ],
+    "options": [
+      {
+        "id": "s-self-05-a",
+        "text": "安心接受檢查",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "好接觸令你健康！"
+          }
+        ],
+        "next_scenario": "s-self-06"
+      },
+      {
+        "id": "s-self-05-b",
+        "text": "推開醫生",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "有媽媽陪就是安全的。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "推開醫生",
+          "consequence": "有媽媽陪就是安全的",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "clinic",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      22
+    ],
+    "imagePrompt": "Boy calmly having ear checked by doctor with mother beside, safe medical scene, anime cartoon style, reassuring, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-06",
+    "title": "自我保護：朋友握手",
+    "background": "課室・放學",
+    "description": "朋友行埋嚟笑住伸出手，想同你握手打招呼。",
+    "hints": [
+      "朋友之間嘅握手係好接觸。",
+      "記住分辨好壞接觸，你已經好厲害！"
+    ],
+    "options": [
+      {
+        "id": "s-self-06-a",
+        "text": "開心握手",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你完成自我保護學習！每日安全badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-06-b",
+        "text": "不想握手",
+        "effects": [
+          {
+            "moralChange": 5,
+            "comment": "尊重自己感覺都是正確。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      22,
+      16
+    ],
+    "imagePrompt": "Two happy children shaking hands, classroom, anime cartoon style, bright positive, no text, 16:9",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "認識私處",
+      "say no",
+      "告知信任大人"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-76",
+    "title": "身體自主：同學睇你換衫",
+    "background": "學校・體育堂・更衣室",
+    "description": "體育堂換衫時，同學小強望住你換衫仲笑。你覺得唔舒服，你會……",
+    "hints": [
+      "身體係私隱，邊度都唔應該被強迫展示",
+      "say no 唔使理由",
+      "更衣室可以即刻搵老師幫手"
+    ],
+    "characters": [
+      {
+        "name": "小強",
+        "emoji": "👦",
+        "initial_relationship": 40
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-76-a",
+        "text": "扮沒事，快快換完走人",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -12,
+            "comment": "你沒保護自己的身體界線，小強會以為你接受。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "扮沒事，快快換完走人",
+          "consequence": "你沒保護自己的身體界線，小強會以為你接受",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-76-b",
+        "text": "大聲說「不要望！我換緊衫」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你清晰設立界線，這個就是身體自主！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-76-c",
+        "text": "即時找體育老師反映呢件事",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你主動找信任大人處理，係最安全的方法！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "say no",
+      "身體界線",
+      "搵老師"
+    ],
+    "imagePrompt": "Hong Kong primary school changing room, child clutching PE uniform to chest, uncomfortable expression, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-77",
+    "title": "身體自主：姨姨錫嘴",
+    "background": "親戚屋企・新年",
+    "description": "新年去親戚屋企拜年，姨姨成日想錫你嘴，你唔想俾人錫嘴但又怕失禮。你會……",
+    "hints": [
+      "親人都要尊重你嘅身體界線",
+      "可以錫面珠唔一定要錫嘴",
+      "say no 唔使內疚"
+    ],
+    "characters": [
+      {
+        "name": "姨姨",
+        "emoji": "👩",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-77-a",
+        "text": "硬吃了錫嘴，扮笑",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你犧牲自己的界線，姨姨不知你不舒服。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "硬吃了錫嘴，扮笑",
+          "consequence": "你犧牲自己的界線，姨姨不知你不舒服",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-77-b",
+        "text": "側頭避開，給他錫面珠",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 10,
+            "comment": "你用巧妙方法保護自己，這個就是智慧！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-77-c",
+        "text": "直接說「姨姨我想錫面珠多一點」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你清晰表達意願，係好榜樣！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "身體界線",
+      "表達意願"
+    ],
+    "imagePrompt": "Hong Kong Chinese New Year family gathering, grandmother reaching to embrace shy child who turns head gently, festive red decorations, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-78",
+    "title": "身體自主：朋友強行攬你",
+    "background": "課室・小息",
+    "description": "小息時你攬吓朋友傾偈，但朋友突然大力攬到你好實，你想推開但又怕傷感情。你會……",
+    "hints": [
+      "唔舒服就要表達",
+      "朋友應該尊重你嘅意願",
+      "say no 唔代表唔鍾意個朋友"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-78-a",
+        "text": "硬吃住不出聲",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你壓抑自己的感受，朋友不知你不舒服。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "硬吃住不出聲",
+          "consequence": "你壓抑自己的感受，朋友不知你不舒服",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-78-b",
+        "text": "輕聲說「不要那樣大力，我不太舒服」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你溫柔地設立界線，這個就是溝通！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-78-c",
+        "text": "大力推開，說「我講過不喜歡咁」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你清晰這麼設立界線，係身體自主的榜樣！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "身體界線",
+      "say stop"
+    ],
+    "imagePrompt": "Hong Kong primary classroom, friend tightly hugging another child who looks uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-79",
+    "title": "身體自主：醫生檢查要媽媽陪",
+    "background": "診所・下午",
+    "description": "你傷風睇醫生，醫生話要聽你個胸同睇喉嚨，但你想媽媽陪住。你會……",
+    "hints": [
+      "醫生檢查係正常嘅，但你絕對有權要家人陪",
+      "你有權 say stop 要求家人陪",
+      "信任大人陪住會令你更安心"
+    ],
+    "characters": [
+      {
+        "name": "醫生",
+        "emoji": "👨‍⚕️",
+        "initial_relationship": 60
+      },
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 80
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-79-a",
+        "text": "不出聲，硬住頭皮給醫生檢查",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你壓抑自己的需要，下次會更驚。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "不出聲，硬住頭皮給醫生檢查",
+          "consequence": "你壓抑自己的需要，下次會更驚",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-79-b",
+        "text": "望住媽媽，等他明白你的意思",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 10,
+            "comment": "你用眼神求助，這個都是方法之一。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-79-c",
+        "text": "直接說「醫生我想媽媽陪住我」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你直接表達需要，係身體自主的重要一步！"
+          }
+        ]
+      }
+    ],
+    "location": "clinic",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "身體界線",
+      "搵信任大人",
+      "表達意願"
+    ],
+    "imagePrompt": "Hong Kong child in clinic room, doctor with stethoscope, mother standing nearby, child uncertain expression, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-80",
+    "title": "身體自主：表哥拖你入房",
+    "background": "親戚屋企・暑假",
+    "description": "暑假喺表哥屋企過夜，表哥拉你入佢房話「教你玩新嘢」，你覺得唔對路。你會……",
+    "hints": [
+      "直覺話唔對路就 trust 個感覺",
+      "絕對有權 say no 唔入去",
+      "即刻搵屋企大人講"
+    ],
+    "characters": [
+      {
+        "name": "表哥",
+        "emoji": "👦",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-80-a",
+        "text": "怕得失表哥，然後入去",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -18,
+            "moralChange": -20,
+            "comment": "信任直覺先保護自己，這個是錯誤選擇。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "怕得失表哥，然後入去",
+          "consequence": "信任直覺先保護自己，這個是錯誤選擇",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-80-b",
+        "text": "大聲說「我不想入去！」就離開",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 16,
+            "comment": "你 trust 自己的直覺，這個就是身體自主！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-80-c",
+        "text": "即刻去找姨姨／姑姐講呢件事",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你主動找信任大人，係最正確的處理！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "say no",
+      "say stop",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong child at cousin's apartment doorway, cousin pulling arm, child pulling away with concerned expression, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-81",
+    "title": "身體自主：朋友迫你拖手",
+    "background": "公園・玩耍",
+    "description": "同朋友喺公園玩，佢想拖住你手行，你想自己行。你會……",
+    "hints": [
+      "朋友都唔可以強迫你",
+      "say no 唔使解釋",
+      "可以話「我想自己行」"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-81-a",
+        "text": "勉強拖住，不想他不開心",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你勉強自己，朋友以為你喜歡。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "勉強拖住，不想他不開心",
+          "consequence": "你勉強自己，朋友以為你喜歡",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-81-b",
+        "text": "笑住說「我哋跑吓好過」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你巧妙地化解，係溝通高手！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-81-c",
+        "text": "直接說「我想自己行，不要拖我」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你清晰設立界線，係成熟的表現！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "身體界線",
+      "say stop"
+    ],
+    "imagePrompt": "Hong Kong children at park, one child holding out hand, another child stepping back with gentle smile, sunshine, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-82",
+    "title": "身體自主：校巴司機摸你頭",
+    "background": "校巴・放學",
+    "description": "搭校巴放學，司機叔叔好鍾意摸你頭，你唔想俾人摸頭但驚佢唔載你。你會……",
+    "hints": [
+      "身體界線包括頭部",
+      "say no 唔使驚佢唔載",
+      "可以返到屋企同爸媽講"
+    ],
+    "characters": [
+      {
+        "name": "司機",
+        "emoji": "👨",
+        "initial_relationship": 50
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-82-a",
+        "text": "默默忍受，不敢出聲",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你壓抑感受，司機以為你喜歡。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "默默忍受，不敢出聲",
+          "consequence": "你壓抑感受，司機以為你喜歡",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-82-b",
+        "text": "縮開少少，扮看窗外",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 5,
+            "moralChange": 8,
+            "comment": "你用身體語言表達，係方法之一。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-82-c",
+        "text": "出聲說「叔叔我不想給人摸頭」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你勇敢表達，係身體自主的榜樣！"
+          }
+        ]
+      }
+    ],
+    "location": "school_bus",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "say no",
+      "身體界線",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong child on school bus, driver reaching toward child, child leaning away with concerned expression, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-83",
+    "title": "身體自主：同學迫你玩搔癢",
+    "background": "課室・小息",
+    "description": "小息時同學小強捉住你搔你腋下搔癢，你笑住但其實唔想。你會……",
+    "hints": [
+      "身體界線包括搔癢",
+      "玩都唔可以強迫",
+      "say no 唔使覺得掃興"
+    ],
+    "characters": [
+      {
+        "name": "小強",
+        "emoji": "👦",
+        "initial_relationship": 60
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-83-a",
+        "text": "笑住但不出聲，繼續給他搔",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你沒表達，小強以為你 enjoy 緊。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "笑住但不出聲，繼續給他搔",
+          "consequence": "你沒表達，小強以為你 enjoy 緊",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-83-b",
+        "text": "笑住推開他，說「夠喇夠喇」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 10,
+            "comment": "你溫和設立界線，係平衡的做法。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-83-c",
+        "text": "停低笑，正經說「我不喜歡給人搔癢」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你清晰表達身體界線，係身體自主！"
+          }
+        ]
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "say no",
+      "say stop",
+      "身體界線"
+    ],
+    "imagePrompt": "Hong Kong primary classroom during break, child tickling another who is laughing but uncomfortable, anime cartoon style, soft pastel, expressive, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-84",
+    "title": "身體自主：鄰居叔叔拖你入屋",
+    "background": "電梯大堂・晚上",
+    "description": "你搭電梯返屋企，鄰居叔叔話「上嚟叔叔屋企食糖」，你唔識佢。你會……",
+    "hints": [
+      "唔識嘅人絕對唔可以跟",
+      "say no 唔使理由",
+      "返到屋企即時講俾爸媽聽"
+    ],
+    "characters": [
+      {
+        "name": "鄰居",
+        "emoji": "👨",
+        "initial_relationship": 30
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-84-a",
+        "text": "「好呀」就然後上他屋企",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "絕對不可以跟陌生人入屋，這個好危險。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "好呀就然後上他屋企",
+          "consequence": "絕對不可以跟陌生人入屋，這個好危險",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-84-b",
+        "text": "「不喇，我媽媽在屋企等我」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你禮貌地 say no，係安全的做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-84-c",
+        "text": "即時跑返屋企同爸媽講呢件事",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你主動找爸媽報告，係最安全的做法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8
+    ],
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "say no",
+      "say stop",
+      "搵信任大人"
+    ],
+    "imagePrompt": "Hong Kong residential building lift lobby at night, neighbor reaching out, child stepping back with alarmed expression, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  }
 ]

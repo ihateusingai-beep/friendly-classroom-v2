@@ -1,1009 +1,1084 @@
 [
-{
-"id": "s-self-19",
-"title": "求助：公園迷路",
-"background": "公園",
-"description": "你喺公園搵唔到媽媽，見到一個著制服嘅保安。",
-"hints": [
-"迷路要即刻搵大人！",
-"大聲講「救命」。"
-],
-"options": [
-{
-"id": "s-self-19-a",
-"text": "跑向保安求助",
-"effects": [
-{
-"moralChange": 15,
-"comment": "你識得主動搵大人幫手！"
-}
-],
-"next_scenario": "s-self-20"
-},
-{
-"id": "s-self-19-b",
-"text": "自己亂走",
-"effects": [
-{
-"moralChange": -10,
-"comment": "迷路要即刻求助！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "park",
-"topicId": "help-seeking",
-"creedIds": [
-16,
-18
-],
-"imagePrompt": "Boy lost in park running to security guard, safe choice, anime cartoon style, brave, no text, 16:9",
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵老師",
-"搵家長",
-"報警 999"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-20",
-"title": "求助：壞接觸後",
-"background": "家中",
-"description": "你遇到壞接觸，你即時搵媽媽幫手。",
-"hints": [
-"壞接觸後要即刻話畀大人聽！",
-"媽媽會保護你。"
-],
-"options": [
-{
-"id": "s-self-20-a",
-"text": "即刻話畀媽媽聽",
-"effects": [
-{
-"moralChange": 20,
-"comment": "你好聰明！安全最重要。"
-}
-],
-"next_scenario": "s-self-21"
-},
-{
-"id": "s-self-20-b",
-"text": "忍住唔講",
-"effects": [
-{
-"moralChange": -15,
-"comment": "壞接觸一定要講出嚟！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "help-seeking",
-"creedIds": [
-22,
-16
-],
-"imagePrompt": "Boy after bad touch running to tell mother, home, anime cartoon style, relieved, no text, 16:9",
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵老師",
-"搵家長",
-"報警 999"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-21",
-"title": "求助：陌生人跟蹤",
-"background": "街頭",
-"description": "陌生人跟蹤你，你跑入學校搵老師。",
-"hints": [
-"有人跟蹤要即刻入安全地方！",
-"話畀老師聽。"
-],
-"options": [
-{
-"id": "s-self-21-a",
-"text": "跑入學校搵老師",
-"effects": [
-{
-"moralChange": 20,
-"comment": "你好識保護自己！"
-}
-],
-"next_scenario": "s-self-22"
-},
-{
-"id": "s-self-21-b",
-"text": "繼續自己行",
-"effects": [
-{
-"moralChange": -15,
-"comment": "跟蹤要即刻求助！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "street",
-"topicId": "help-seeking",
-"creedIds": [
-16,
-18
-],
-"imagePrompt": "Boy followed by stranger running into school to tell teacher, safe escape, anime cartoon style, decisive, no text, 16:9",
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵老師",
-"搵家長",
-"報警 999"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-22",
-"title": "求助：上廁所",
-"background": "學校走廊",
-"description": "你想上廁所但唔識路，見到老師。",
-"hints": [
-"唔識路要問老師！",
-"老師會幫你。"
-],
-"options": [
-{
-"id": "s-self-22-a",
-"text": "問老師幫手",
-"effects": [
-{
-"moralChange": 10,
-"comment": "問大人係正確！"
-}
-],
-"next_scenario": "s-self-23"
-},
-{
-"id": "s-self-22-b",
-"text": "自己搵廁所",
-"effects": [
-{
-"moralChange": -5,
-"comment": "唔識路要即刻問人。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "school_corridor",
-"topicId": "help-seeking",
-"creedIds": [
-22
-],
-"imagePrompt": "Boy needing toilet asking teacher for help, school corridor, anime cartoon style, shy but brave, no text, 16:9",
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵老師",
-"搵家長",
-"報警 999"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-23",
-"title": "求助：感覺唔舒服",
-"background": "家中",
-"description": "你感覺身體唔舒服，想搵屋企人幫手。",
-"hints": [
-"身體唔舒服要話畀家人聽！",
-"家人會照顧你。"
-],
-"options": [
-{
-"id": "s-self-23-a",
-"text": "話畀爸爸聽",
-"effects": [
-{
-"moralChange": 10,
-"comment": "信任家人好重要！"
-}
-],
-"next_scenario": "s-self-24"
-},
-{
-"id": "s-self-23-b",
-"text": "忍住唔講",
-"effects": [
-{
-"moralChange": -5,
-"comment": "感覺唔舒服要講出嚟。"
-}
-],
-"next_scenario": null
-}
-],
-"location": "home",
-"topicId": "help-seeking",
-"creedIds": [
-22
-],
-"imagePrompt": "Boy feeling unwell telling father, family support, anime cartoon style, tired but trusting, no text, 16:9",
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵老師",
-"搵家長",
-"報警 999"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-24",
-"title": "求助：見到欺負",
-"background": "操場",
-"description": "你見到同學被欺負，即刻搵老師。",
-"hints": [
-"見到欺負要即刻搵老師！",
-"你係勇敢嘅小勇士。"
-],
-"options": [
-{
-"id": "s-self-24-a",
-"text": "即刻搵老師",
-"effects": [
-{
-"moralChange": 20,
-"comment": "你完成求助方法學習！badge +10分"
-}
-],
-"next_scenario": null
-},
-{
-"id": "s-self-24-b",
-"text": "當冇睇到",
-"effects": [
-{
-"moralChange": -15,
-"comment": "見到欺負要即刻求助！"
-}
-],
-"next_scenario": null
-}
-],
-"location": "playground",
-"topicId": "help-seeking",
-"creedIds": [
-16,
-18
-],
-"imagePrompt": "Boy seeing classmate bullied running to tell teacher, playground, anime cartoon style, serious, no text, 16:9",
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵老師",
-"搵家長",
-"報警 999"
-],
-"subjectId": "caring"
-},
-{
-"id": "s-self-103",
-"title": "求助：商場同媽媽失散",
-"background": "商場・下午",
-"description": "你同媽媽喺商場行到一半，跟住人群望咗一望，再回頭媽媽唔見咗。你會……",
-"hints": [
-"唔好亂跑，要留喺原地",
-"搵商場服務台或保安",
-"唔可以跟陌生人走"
-],
-"characters": [
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-103-a",
-"text": "自己周圍跑搵媽媽",
-"effects": [
-{
-"character": "自己",
-"change": -15,
-"moralChange": -15,
-"comment": "你亂跑會更危險，媽媽會搵唔到你。"
-}
-]
-},
-{
-"id": "s-self-103-b",
-"text": "搵商場服務台請廣播搵媽媽",
-"effects": [
-{
-"character": "自己",
-"change": 15,
-"moralChange": 18,
-"comment": "你識得搵專業幫手，係求助高手！"
-}
-]
-},
-{
-"id": "s-self-103-c",
-"text": "搵服務台廣播+喺度等+攞媽媽電話",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 25,
-"comment": "你用多重方法確保安全，係完美示範！"
-}
-]
-}
-],
-"location": "mall",
-"topicId": "help-seeking",
-"creedIds": [
-9
-],
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵保安",
-"搵信任大人",
-"保護自己"
-],
-"imagePrompt": "Hong Kong shopping mall, lost child looking worried near service counter, busy shoppers in background, anime cartoon style, soft pastel, brave, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-104",
-"title": "求助：被高年級同學欺負",
-"background": "學校・操場・放學",
-"description": "放學時幾個高年級同學搶你銀包，話「借嚟用吓」。你會……",
-"hints": [
-"唔可以啞忍",
-"搵老師或校工幫手",
-"保護自己先重要"
-],
-"characters": [
-{
-"name": "高年級同學",
-"emoji": "👦",
-"initial_relationship": 20
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-104-a",
-"text": "「好啦」就俾佢",
-"effects": [
-{
-"character": "自己",
-"change": -20,
-"moralChange": -22,
-"comment": "你啞忍，佢哋會搶得更頻密。"
-}
-]
-},
-{
-"id": "s-self-104-b",
-"text": "大聲話「唔係你嘅！搵老師！」",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你敢出聲，係求助嘅第一步！"
-}
-]
-},
-{
-"id": "s-self-104-c",
-"text": "即時跑向最近老師或校工求助",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你主動搵專業保護，係最安全嘅做法！"
-}
-]
-}
-],
-"location": "school",
-"topicId": "help-seeking",
-"creedIds": [
-9
-],
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵老師",
-"保護自己",
-"say no"
-],
-"imagePrompt": "Hong Kong school playground, older student threatening younger child, child looking scared, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-105",
-"title": "求助：家中電器壞咗",
-"background": "屋企・客廳・晚上",
-"description": "你自己喺屋企，電視突然啪啪響有煙味，你會……",
-"hints": [
-"即時離開電器",
-"搵信任大人",
-"唔好自己整"
-],
-"characters": [
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-105-a",
-"text": "自己走去熄電制",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "雖然熄電制合理，但你可以搵大人幫手。"
-}
-]
-},
-{
-"id": "s-self-105-b",
-"text": "離開客廳+打電話俾媽媽",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 15,
-"comment": "你保護自己再求助，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-105-c",
-"text": "離開客廳+打俾媽媽+打999求助（如果嚴重）",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你用多重方法應對緊急情況，係高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "help-seeking",
-"creedIds": [
-9
-],
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵信任大人",
-"搵家長",
-"保護自己"
-],
-"imagePrompt": "Hong Kong child in home living room, looking worried at malfunctioning TV with smoke, evening light, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-106",
-"title": "求助：被狗追",
-"background": "街道・放學",
-"description": "你放學行緊屋企，突然有隻大狗向你跑過嚟。你會……",
-"hints": [
-"唔好跑，越跑狗越追",
-"企定唔郁，雙手握拳",
-"搵附近大人或店舖求助"
-],
-"characters": [
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-106-a",
-"text": "尖叫跑走",
-"effects": [
-{
-"character": "自己",
-"change": -15,
-"moralChange": -15,
-"comment": "你跑會觸發狗嘅追擊本能，更危險。"
-}
-]
-},
-{
-"id": "s-self-106-b",
-"text": "企定+大聲叫人幫手",
-"effects": [
-{
-"character": "自己",
-"change": 10,
-"moralChange": 12,
-"comment": "你冷靜應對，係求助嘅正確方法！"
-}
-]
-},
-{
-"id": "s-self-106-c",
-"text": "企定+大叫「走開！」+退向最近店舖",
-"effects": [
-{
-"character": "自己",
-"change": 22,
-"moralChange": 22,
-"comment": "你冷靜+主動搵安全地方，係高手應對！"
-}
-]
-}
-],
-"location": "outdoor",
-"topicId": "help-seeking",
-"creedIds": [
-9
-],
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"保護自己",
-"搵信任大人",
-"冷靜應對"
-],
-"imagePrompt": "Hong Kong street, child frozen in fear as large dog approaches, retreating toward shop, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-107",
-"title": "求助：屋企有人暈低",
-"background": "屋企・客廳・下午",
-"description": "你返到屋企，嫲嫲喺梳化暈低咗，冇反應。你會……",
-"hints": [
-"即時打 999",
-"講清楚地址同情況",
-"唔好自己搬動傷病者"
-],
-"characters": [
-{
-"name": "嫲嫲",
-"emoji": "👵",
-"initial_relationship": 80
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-107-a",
-"text": "自己走去搖醒佢",
-"effects": [
-{
-"character": "自己",
-"change": -15,
-"moralChange": -18,
-"comment": "你唔應該搬動暈倒嘅人，要快啲搵專業幫手。"
-}
-]
-},
-{
-"id": "s-self-107-b",
-"text": "打俾媽媽問點做",
-"effects": [
-{
-"character": "自己",
-"change": 8,
-"moralChange": 8,
-"comment": "你搵家人求助，但浪費咗寶貴時間。"
-}
-]
-},
-{
-"id": "s-self-107-c",
-"text": "即時打 999+講地址+聽從指示",
-"effects": [
-{
-"character": "自己",
-"change": 25,
-"moralChange": 25,
-"comment": "你冷靜打 999，係生命攸關嘅正確做法！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "help-seeking",
-"creedIds": [
-9
-],
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"報警 999",
-"搵信任大人",
-"緊急應對"
-],
-"imagePrompt": "Hong Kong home living room, grandmother collapsed on sofa, child holding phone with emergency call, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-108",
-"title": "求助：朋友跌倒受傷",
-"background": "公園・玩耍",
-"description": "朋友喺公園跑跑吓仆親，膝頭流緊血喊緊。你會……",
-"hints": [
-"搵附近大人幫手",
-"唔好亂咁郁受傷嘅腳",
-"可以搵公園管理員"
-],
-"characters": [
-{
-"name": "朋友",
-"emoji": "🧒",
-"initial_relationship": 70
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-108-a",
-"text": "自己搵樹葉幫朋友止血",
-"effects": [
-{
-"character": "自己",
-"change": -10,
-"moralChange": -10,
-"comment": "樹葉唔乾淨，可能會令傷口發炎。"
-}
-]
-},
-{
-"id": "s-self-108-b",
-"text": "叫朋友坐低+自己跑搵大人幫手",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你冷靜分配任務，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-108-c",
-"text": "陪住朋友+打俾朋友媽媽+搵公園管理員",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你多管齊下保護朋友，係高手應對！"
-}
-]
-}
-],
-"location": "park",
-"topicId": "help-seeking",
-"creedIds": [
-9
-],
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵信任大人",
-"保護朋友",
-"冷靜應對"
-],
-"imagePrompt": "Hong Kong child sitting with crying friend with bleeding knee at park, looking around for help, anime cartoon style, soft pastel, brave, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-109",
-"title": "求助：火警鐘響",
-"background": "商場・下午",
-"description": "你同媽媽喺商場，火警鐘突然響起，大家都開始疏散。你會……",
-"hints": [
-"跟住大人疏散",
-"唔好乘搭電梯",
-"保持冷靜"
-],
-"characters": [
-{
-"name": "媽媽",
-"emoji": "👩",
-"initial_relationship": 85
-},
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-109-a",
-"text": "驚到坐低喊",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你慌張會阻礙疏散，要冷靜。"
-}
-]
-},
-{
-"id": "s-self-109-b",
-"text": "跟住媽媽行樓梯疏散",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你跟住大人走，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-109-c",
-"text": "跟住媽媽+幫手叫其他小朋友一齊走",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你唔只保護自己仲幫人，係高手！"
-}
-]
-}
-],
-"location": "mall",
-"topicId": "help-seeking",
-"creedIds": [
-9
-],
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 3,
-"skills": [
-"保護自己",
-"搵信任大人",
-"冷靜應對"
-],
-"imagePrompt": "Hong Kong shopping mall evacuation, fire alarm lights, mother and child walking calmly down stairs, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-110",
-"title": "求助：唔識做功課",
-"background": "屋企・書枱・晚上",
-"description": "數學功課有條題你睇咗半個鐘都唔識，你唔想問怕顯得蠢。你會……",
-"hints": [
-"問問題唔代表蠢",
-"老師同學都係好幫手",
-"唔識扮識先係真正嘅蠢"
-],
-"characters": [
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-},
-{
-"name": "媽媽",
-"emoji": "👩",
-"initial_relationship": 75
-}
-],
-"options": [
-{
-"id": "s-self-110-a",
-"text": "亂寫個答案交功課",
-"effects": [
-{
-"character": "自己",
-"change": -12,
-"moralChange": -12,
-"comment": "你錯過學嘢機會，下次都唔識。"
-}
-]
-},
-{
-"id": "s-self-110-b",
-"text": "問媽媽點做",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你主動求助，係學習嘅智慧！"
-}
-]
-},
-{
-"id": "s-self-110-c",
-"text": "問媽媽+自己再試做+寫低做法",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你由求助到內化，係高手學習法！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "help-seeking",
-"creedIds": [
-9
-],
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 0,
-"skills": [
-"主動求助",
-"搵家長",
-"學習"
-],
-"imagePrompt": "Hong Kong child at desk with math textbook, scratching head, looking at mother sitting nearby, evening light, Studio Ghibli style, soft pastel watercolor, 16:9",
-"subjectId": "caring"
-},
-{
-"id": "s-self-111",
-"title": "求助：網上有人欺凌你",
-"background": "屋企・房間・晚上",
-"description": "你玩網上遊戲，有人不停話你係 loser 同廢物，你覺得好嬲好唔開心。你會……",
-"hints": [
-"網上欺凌都係欺凌，要同大人講",
-"唔好回罵",
-"可以 block + 報告"
-],
-"characters": [
-{
-"name": "自己",
-"emoji": "🧒",
-"initial_relationship": 50
-}
-],
-"options": [
-{
-"id": "s-self-111-a",
-"text": "同佢對罵",
-"effects": [
-{
-"character": "自己",
-"change": -15,
-"moralChange": -15,
-"comment": "對罵只會令情況更差，你會更嬲。"
-}
-]
-},
-{
-"id": "s-self-111-b",
-"text": "block 佢+同媽媽講",
-"effects": [
-{
-"character": "自己",
-"change": 12,
-"moralChange": 14,
-"comment": "你保護自己+搵幫手，係正確做法！"
-}
-]
-},
-{
-"id": "s-self-111-c",
-"text": "block 佢+報告平台+同爸媽講+寫低感受",
-"effects": [
-{
-"character": "自己",
-"change": 24,
-"moralChange": 24,
-"comment": "你用完整方法應對網絡欺凌，係高手！"
-}
-]
-}
-],
-"location": "home",
-"topicId": "help-seeking",
-"creedIds": [
-9
-],
-"valueCategory": "help-seeking",
-"domain": "caring",
-"audience": [
-"caring"
-],
-"riskLevel": 2,
-"skills": [
-"搵信任大人",
-"搵家長",
-"保護自己"
-],
-"imagePrompt": "Hong Kong child at computer screen showing chat messages with bullying, looking sad, evening room light, anime cartoon style, soft pastel, serious, no text, 16:9",
-"subjectId": "caring"
-}
+  {
+    "id": "s-self-19",
+    "title": "求助：公園迷路",
+    "background": "公園",
+    "description": "你喺公園搵唔到媽媽，見到一個著制服嘅保安。",
+    "hints": [
+      "迷路要即刻搵大人！",
+      "大聲講「救命」。"
+    ],
+    "options": [
+      {
+        "id": "s-self-19-a",
+        "text": "跑向保安求助",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "你識得主動找大人幫手！"
+          }
+        ],
+        "next_scenario": "s-self-20"
+      },
+      {
+        "id": "s-self-19-b",
+        "text": "自己亂走",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "迷路要即刻求助！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "自己亂走",
+          "consequence": "迷路要即刻求助",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "park",
+    "topicId": "help-seeking",
+    "creedIds": [
+      16,
+      18
+    ],
+    "imagePrompt": "Boy lost in park running to security guard, safe choice, anime cartoon style, brave, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-20",
+    "title": "求助：壞接觸後",
+    "background": "家中",
+    "description": "你遇到壞接觸，你即時搵媽媽幫手。",
+    "hints": [
+      "壞接觸後要即刻話畀大人聽！",
+      "媽媽會保護你。"
+    ],
+    "options": [
+      {
+        "id": "s-self-20-a",
+        "text": "即刻說給媽媽聽",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你好聰明！安全最重要。"
+          }
+        ],
+        "next_scenario": "s-self-21"
+      },
+      {
+        "id": "s-self-20-b",
+        "text": "忍住不講",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "壞接觸一定要講出來！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "忍住不講",
+          "consequence": "壞接觸一定要講出來",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [
+      22,
+      16
+    ],
+    "imagePrompt": "Boy after bad touch running to tell mother, home, anime cartoon style, relieved, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-21",
+    "title": "求助：陌生人跟蹤",
+    "background": "街頭",
+    "description": "陌生人跟蹤你，你跑入學校搵老師。",
+    "hints": [
+      "有人跟蹤要即刻入安全地方！",
+      "話畀老師聽。"
+    ],
+    "options": [
+      {
+        "id": "s-self-21-a",
+        "text": "跑入學校找老師",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你好識保護自己！"
+          }
+        ],
+        "next_scenario": "s-self-22"
+      },
+      {
+        "id": "s-self-21-b",
+        "text": "繼續自己行",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "跟蹤要即刻求助！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "繼續自己行",
+          "consequence": "跟蹤要即刻求助",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "street",
+    "topicId": "help-seeking",
+    "creedIds": [
+      16,
+      18
+    ],
+    "imagePrompt": "Boy followed by stranger running into school to tell teacher, safe escape, anime cartoon style, decisive, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-22",
+    "title": "求助：上廁所",
+    "background": "學校走廊",
+    "description": "你想上廁所但唔識路，見到老師。",
+    "hints": [
+      "唔識路要問老師！",
+      "老師會幫你。"
+    ],
+    "options": [
+      {
+        "id": "s-self-22-a",
+        "text": "問老師幫手",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "問大人是正確！"
+          }
+        ],
+        "next_scenario": "s-self-23"
+      },
+      {
+        "id": "s-self-22-b",
+        "text": "自己找廁所",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "不識路要即刻問人。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "自己找廁所",
+          "consequence": "不識路要即刻問人",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "school_corridor",
+    "topicId": "help-seeking",
+    "creedIds": [
+      22
+    ],
+    "imagePrompt": "Boy needing toilet asking teacher for help, school corridor, anime cartoon style, shy but brave, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-23",
+    "title": "求助：感覺唔舒服",
+    "background": "家中",
+    "description": "你感覺身體唔舒服，想搵屋企人幫手。",
+    "hints": [
+      "身體唔舒服要話畀家人聽！",
+      "家人會照顧你。"
+    ],
+    "options": [
+      {
+        "id": "s-self-23-a",
+        "text": "說給爸爸聽",
+        "effects": [
+          {
+            "moralChange": 10,
+            "comment": "信任家人好重要！"
+          }
+        ],
+        "next_scenario": "s-self-24"
+      },
+      {
+        "id": "s-self-23-b",
+        "text": "忍住不講",
+        "effects": [
+          {
+            "moralChange": -5,
+            "comment": "感覺不舒服要講出來。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "忍住不講",
+          "consequence": "感覺不舒服要講出來",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [
+      22
+    ],
+    "imagePrompt": "Boy feeling unwell telling father, family support, anime cartoon style, tired but trusting, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-24",
+    "title": "求助：見到欺負",
+    "background": "操場",
+    "description": "你見到同學被欺負，即刻搵老師。",
+    "hints": [
+      "見到欺負要即刻搵老師！",
+      "你係勇敢嘅小勇士。"
+    ],
+    "options": [
+      {
+        "id": "s-self-24-a",
+        "text": "即刻找老師",
+        "effects": [
+          {
+            "moralChange": 20,
+            "comment": "你完成求助方法學習！badge +10分"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-24-b",
+        "text": "當沒看到",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "見到欺負要即刻求助！"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "當沒看到",
+          "consequence": "見到欺負要即刻求助",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "playground",
+    "topicId": "help-seeking",
+    "creedIds": [
+      16,
+      18
+    ],
+    "imagePrompt": "Boy seeing classmate bullied running to tell teacher, playground, anime cartoon style, serious, no text, 16:9",
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "搵家長",
+      "報警 999"
+    ],
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-103",
+    "title": "求助：商場同媽媽失散",
+    "background": "商場・下午",
+    "description": "你同媽媽喺商場行到一半，跟住人群望咗一望，再回頭媽媽唔見咗。你會……",
+    "hints": [
+      "唔好亂跑，要留喺原地",
+      "搵商場服務台或保安",
+      "唔可以跟陌生人走"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-103-a",
+        "text": "自己周圍跑找媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你亂跑會更危險，媽媽會找不到你。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "自己周圍跑找媽媽",
+          "consequence": "你亂跑會更危險，媽媽會找不到你",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-103-b",
+        "text": "找商場服務台請廣播找媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你識得找專業幫手，係求助高手！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-103-c",
+        "text": "找服務台廣播+在度等+拿媽媽電說",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 25,
+            "comment": "你用多重方法確保安全，係完美示範！"
+          }
+        ]
+      }
+    ],
+    "location": "mall",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵保安",
+      "搵信任大人",
+      "保護自己"
+    ],
+    "imagePrompt": "Hong Kong shopping mall, lost child looking worried near service counter, busy shoppers in background, anime cartoon style, soft pastel, brave, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-104",
+    "title": "求助：被高年級同學欺負",
+    "background": "學校・操場・放學",
+    "description": "放學時幾個高年級同學搶你銀包，話「借嚟用吓」。你會……",
+    "hints": [
+      "唔可以啞忍",
+      "搵老師或校工幫手",
+      "保護自己先重要"
+    ],
+    "characters": [
+      {
+        "name": "高年級同學",
+        "emoji": "👦",
+        "initial_relationship": 20
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-104-a",
+        "text": "「好了」就給他",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -20,
+            "moralChange": -22,
+            "comment": "你啞忍，他們會搶得更頻密。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "好了就給他",
+          "consequence": "你啞忍，他們會搶得更頻密",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-104-b",
+        "text": "大聲說「不是你的！找老師！」",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你敢出聲，係求助的第一步！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-104-c",
+        "text": "即時跑向最近老師或校工求助",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你主動找專業保護，係最安全的做法！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵老師",
+      "保護自己",
+      "say no"
+    ],
+    "imagePrompt": "Hong Kong school playground, older student threatening younger child, child looking scared, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-105",
+    "title": "求助：家中電器壞咗",
+    "background": "屋企・客廳・晚上",
+    "description": "你自己喺屋企，電視突然啪啪響有煙味，你會……",
+    "hints": [
+      "即時離開電器",
+      "搵信任大人",
+      "唔好自己整"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-105-a",
+        "text": "自己走去熄電制",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "雖然熄電制合理，但你可以找大人幫手。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "自己走去熄電制",
+          "consequence": "雖然熄電制合理，但你可以找大人幫手",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-105-b",
+        "text": "離開客廳+打電話給媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 15,
+            "comment": "你保護自己再求助，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-105-c",
+        "text": "離開客廳+打給媽媽+打999求助（如果嚴重）",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用多重方法應對緊急情況，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵信任大人",
+      "搵家長",
+      "保護自己"
+    ],
+    "imagePrompt": "Hong Kong child in home living room, looking worried at malfunctioning TV with smoke, evening light, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-106",
+    "title": "求助：被狗追",
+    "background": "街道・放學",
+    "description": "你放學行緊屋企，突然有隻大狗向你跑過嚟。你會……",
+    "hints": [
+      "唔好跑，越跑狗越追",
+      "企定唔郁，雙手握拳",
+      "搵附近大人或店舖求助"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-106-a",
+        "text": "尖叫跑走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你跑會觸發狗的追擊本能，更危險。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "尖叫跑走",
+          "consequence": "你跑會觸發狗的追擊本能，更危險",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-106-b",
+        "text": "企定+大聲叫人幫手",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 10,
+            "moralChange": 12,
+            "comment": "你冷靜應對，係求助的正確方法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-106-c",
+        "text": "企定+大叫「離開！」+退向最近店舖",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你冷靜+主動找安全地方，係高手應對！"
+          }
+        ]
+      }
+    ],
+    "location": "outdoor",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "保護自己",
+      "搵信任大人",
+      "冷靜應對"
+    ],
+    "imagePrompt": "Hong Kong street, child frozen in fear as large dog approaches, retreating toward shop, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-107",
+    "title": "求助：屋企有人暈低",
+    "background": "屋企・客廳・下午",
+    "description": "你返到屋企，嫲嫲喺梳化暈低咗，冇反應。你會……",
+    "hints": [
+      "即時打 999",
+      "講清楚地址同情況",
+      "唔好自己搬動傷病者"
+    ],
+    "characters": [
+      {
+        "name": "嫲嫲",
+        "emoji": "👵",
+        "initial_relationship": 80
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-107-a",
+        "text": "自己走去搖醒他",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -18,
+            "comment": "你不應該搬動暈倒的人，要快這些找專業幫手。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "自己走去搖醒他",
+          "consequence": "你不應該搬動暈倒的人，要快這些找專業幫手",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-107-b",
+        "text": "打給媽媽問點做",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 8,
+            "moralChange": 8,
+            "comment": "你找家人求助，但浪費了寶貴時間。"
+          }
+        ]
+      },
+      {
+        "id": "s-self-107-c",
+        "text": "即時打 999+講地址+聽從指示",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你冷靜打 999，係生命攸關的正確做法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "報警 999",
+      "搵信任大人",
+      "緊急應對"
+    ],
+    "imagePrompt": "Hong Kong home living room, grandmother collapsed on sofa, child holding phone with emergency call, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-108",
+    "title": "求助：朋友跌倒受傷",
+    "background": "公園・玩耍",
+    "description": "朋友喺公園跑跑吓仆親，膝頭流緊血喊緊。你會……",
+    "hints": [
+      "搵附近大人幫手",
+      "唔好亂咁郁受傷嘅腳",
+      "可以搵公園管理員"
+    ],
+    "characters": [
+      {
+        "name": "朋友",
+        "emoji": "🧒",
+        "initial_relationship": 70
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-108-a",
+        "text": "自己找樹葉幫朋友止血",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "樹葉不乾淨，可能會令傷口發炎。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "自己找樹葉幫朋友止血",
+          "consequence": "樹葉不乾淨，可能會令傷口發炎",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-108-b",
+        "text": "叫朋友坐低+自己跑找大人幫手",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你冷靜分配任務，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-108-c",
+        "text": "陪住朋友+打給朋友媽媽+找公園管理員",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你多管齊下保護朋友，係高手應對！"
+          }
+        ]
+      }
+    ],
+    "location": "park",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵信任大人",
+      "保護朋友",
+      "冷靜應對"
+    ],
+    "imagePrompt": "Hong Kong child sitting with crying friend with bleeding knee at park, looking around for help, anime cartoon style, soft pastel, brave, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-109",
+    "title": "求助：火警鐘響",
+    "background": "商場・下午",
+    "description": "你同媽媽喺商場，火警鐘突然響起，大家都開始疏散。你會……",
+    "hints": [
+      "跟住大人疏散",
+      "唔好乘搭電梯",
+      "保持冷靜"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 85
+      },
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-109-a",
+        "text": "驚到坐低喊",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你慌張會阻礙疏散，要冷靜。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "驚到坐低喊",
+          "consequence": "你慌張會阻礙疏散，要冷靜",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-109-b",
+        "text": "然後媽媽行樓梯疏散",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你然後大人走，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-109-c",
+        "text": "然後媽媽+幫手叫其他小朋友一齊走",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你不只保護自己還幫人，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "mall",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 3,
+    "skills": [
+      "保護自己",
+      "搵信任大人",
+      "冷靜應對"
+    ],
+    "imagePrompt": "Hong Kong shopping mall evacuation, fire alarm lights, mother and child walking calmly down stairs, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-110",
+    "title": "求助：唔識做功課",
+    "background": "屋企・書枱・晚上",
+    "description": "數學功課有條題你睇咗半個鐘都唔識，你唔想問怕顯得蠢。你會……",
+    "hints": [
+      "問問題唔代表蠢",
+      "老師同學都係好幫手",
+      "唔識扮識先係真正嘅蠢"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      },
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 75
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-110-a",
+        "text": "亂寫個答案交功課",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -12,
+            "moralChange": -12,
+            "comment": "你錯過學東西機會，下次都不識。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "亂寫個答案交功課",
+          "consequence": "你錯過學東西機會，下次都不識",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-110-b",
+        "text": "問媽媽點做",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你主動求助，係學習的智慧！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-110-c",
+        "text": "問媽媽+自己再試做+寫低做法",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你由求助到內化，係高手學習法！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動求助",
+      "搵家長",
+      "學習"
+    ],
+    "imagePrompt": "Hong Kong child at desk with math textbook, scratching head, looking at mother sitting nearby, evening light, Studio Ghibli style, soft pastel watercolor, 16:9",
+    "subjectId": "caring"
+  },
+  {
+    "id": "s-self-111",
+    "title": "求助：網上有人欺凌你",
+    "background": "屋企・房間・晚上",
+    "description": "你玩網上遊戲，有人不停話你係 loser 同廢物，你覺得好嬲好唔開心。你會……",
+    "hints": [
+      "網上欺凌都係欺凌，要同大人講",
+      "唔好回罵",
+      "可以 block + 報告"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-111-a",
+        "text": "同他對罵",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "對罵只會令情況更差，你會更嬲。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "同他對罵",
+          "consequence": "對罵只會令情況更差，你會更嬲",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-111-b",
+        "text": "block 他+同媽媽講",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你保護自己+找幫手，係正確做法！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-111-c",
+        "text": "block 他+報告平台+同爸媽講+寫低感受",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用完整方法應對網絡欺凌，係高手！"
+          }
+        ]
+      }
+    ],
+    "location": "home",
+    "topicId": "help-seeking",
+    "creedIds": [
+      9
+    ],
+    "valueCategory": "help-seeking",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "搵信任大人",
+      "搵家長",
+      "保護自己"
+    ],
+    "imagePrompt": "Hong Kong child at computer screen showing chat messages with bullying, looking sad, evening room light, anime cartoon style, soft pastel, serious, no text, 16:9",
+    "subjectId": "caring"
+  }
 ]

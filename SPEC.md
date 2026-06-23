@@ -1,8 +1,8 @@
-# 友愛教室 V3 — 完整規格書 (v3.7)
+# 友愛教室 V3 — 完整規格書 (v3.8)
 
 > 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
 >
-> *規格日期：2026-06-13 | 最後更新：2026-06-22（v3.7 addendum: §16 S15 daily pick / reflection + §17 S16 stop-and-think / 書面語化 / Result TTS schema freeze, 配合 Sprint 15 + Sprint 16 開工）*
+> *規格日期：2026-06-13 | 最後更新：2026-06-23（v3.8 addendum: §18 Sprint 17 — 其餘 16 個 topic 文字書面語化 + stopAndThink 全量補齊, scenarios_v2.mjs generalize, formalize 詞組白名單, 配套 9 個新 unit test）*
 
 ---
 
@@ -1759,6 +1759,108 @@ window.FC.speak* (Sprint 12+13 bridge)
 - [ ] SPEC.md bump 維持 v3.7
 - [ ] CHANGELOG / commit message 寫清楚 3 個改動範圍
 - [ ] Sprint 17 backlog 寫低:剩 16 topics 嘅文字書面語化 + stopAndThink 補齊
+
+---
+
+## 18. v3.8 Addendum — Sprint 17 全 17 topics 文字書面語化 + stopAndThink 全量補齊
+
+> **2026-06-23 freeze**: Sprint 16 做完 empathy 1 個 topic 後, Sprint 17 用 generalize 嘅 `scenarios_v2.mjs` 把其餘 16 個 topic 全部書面語化 + 加 stopAndThink, 加 audit auto-trim。整個 codebase 由 936 violations → 0 violations(744 options / 17 topics / 259 scenarios 全部 pass `npm run audit:style`)。
+
+### 18.1 改動範圍
+
+| File | Type | Purpose |
+|---|---|---|
+| `tools/migrate/scenarios_v2.mjs` | NEW (generalized) | 取代 `empathy_v2.mjs`, 接受 `<topic>` 或 `--all` arg, 處理全部 17 個 topic |
+| `tools/migrate/empathy_v2.mjs` | MOD | 改成 thin wrapper 呼 `scenarios_v2.mjs empathy` (backward compat) |
+| `tools/style/audit-scenarios.mjs` | MOD | 加 ACCEPTED_COMPOUNDS 白名單 (`大話`, `講話`, `感謝的話`, `電話` 等) |
+| `data/scenarios/*.json` × 16 | MOD | 全部 16 個 topic 文字書面語化 + 加 stopAndThink (除 empathy 已在 Sprint 16 完成) |
+| `data/scenarios/*.json.pre-v3.7.bak` × 16 | NEW | 原始 backup (per-topic, 同 empathy pattern) |
+| `tests/sprint17-migration.test.js` | NEW | 9 個新 test 跨 topic 驗證 stopAndThink + length + audit |
+| `package.json` | MOD | `__version__` `2.2.0` → `2.3.0` (MINOR, 新 generalization feature) |
+| `SPEC.md` | MOD | v3.7 → v3.8 + 加 §18 (本 section) |
+
+### 18.2 Generalization 改動
+
+**Before** (Sprint 16 empathy_v2.mjs):
+- Hardcode `FILE = 'data/scenarios/empathy.json'`
+- 1 個 topic 專用, 需要重複做 16 次
+
+**After** (Sprint 17 scenarios_v2.mjs):
+- `node tools/migrate/scenarios_v2.mjs <topic>` — migrate 1 個
+- `node tools/migrate/scenarios_v2.mjs --all` — migrate 全 17 個
+- `node tools/migrate/scenarios_v2.mjs <topic> --dry-run` — preview
+- Idempotent (re-run 後 0 changes)
+
+### 18.3 Audit 規則 formalize (Sprint 17 implementation findings → v3.8 freeze)
+
+#### 18.3.1 詞組白名單 (formal whitelist)
+
+`係` 同 `話` 兩個 marker 有特殊例外, v3.8 freeze 以下規則:
+
+**`係` 例外** — predicate position:
+- `係同理心`, `係不負責任的表現`, `係高手`, `係真嘅LEGO大師` — 全部 valid 書面語
+- Audit exception: `/係[一-鿿]/` (係 + CJK)
+- ❌ `係, 我幫了他` (`係,` 係 affirm, 應改 `是,`)
+
+**`話` 例外** — compound noun whitelist:
+- `說話`, `廣東話`, `白話`, `官話`, `對話`, `空話`, `實話`
+- `大話`, `講大話`, `講話`, `感謝的話`, `真心話`, `心底話`, `電話`
+- 全部 standard 書面語詞組, 唔可以拆
+- Migration tool 同 audit script 共用同一個 ACCEPTED_COMPOUNDS list
+
+#### 18.3.2 Auto-trim length limits (Sprint 17)
+
+`scenarios_v2.mjs` 自動 trim 超長 text 返 limit 內:
+- `optionText` ≤ 30 字 (超出 → cut + `…`)
+- `effectsComment` ≤ 40 字
+- `stopAndThink.badBehavior` ≤ 25 字
+- `stopAndThink.consequence` ≤ 80 字
+- Trim 順序: 1. 移除尾段 `…。！？.!?`, 2. cut 到 limit-1 + `…`
+
+### 18.4 Migration 統計
+
+| Topic | Scenarios | Options | Migration 改動 |
+|---|---|---|---|
+| benevolence | 15 | 45 | 34 options text + 30 comments |
+| body-autonomy | 15 | 39 | 30 + 26 |
+| commitment | 15 | 45 | 30 + 27 |
+| conflict-resolution | 15 | 43 | 31 + 31 |
+| diligence | 15 | 45 | 20 + 26 |
+| empathy (S16) | 17 | 51 | (Sprint 16 done) |
+| filial-piety | 15 | 45 | 29 + 25 |
+| help-seeking | 15 | 39 | 22 + 23 |
+| integrity | 17 | 49 | 39 + 45 |
+| law-abiding | 15 | 45 | 18 + 16 |
+| national-identity | 17 | 51 | 33 + 35 |
+| perseverance | 15 | 45 | 31 + 36 |
+| respect | 15 | 42 | 36 + 41 |
+| responsibility | 15 | 45 | 21 + 17 |
+| social-boundary | 15 | 39 | 27 + 19 |
+| solidarity | 15 | 45 | 31 + 27 |
+| stranger-safety | 15 | 39 | 26 + 22 |
+
+**Total**: 17 topics, 259 scenarios, 744 options, 458 text + 447 comment migrations = **905 string changes**
+
+### 18.5 Acceptance criteria (Sprint 17 done = ✅)
+
+- [x] `tools/migrate/scenarios_v2.mjs` generalize 完成
+- [x] 16 個 topic 全部 migrate + stopAndThink 加晒 (除 empathy S16 done)
+- [x] Auto-trim 處理 20 個 length violation
+- [x] `npm run audit:style` 0 violation across all 17 topics
+- [x] 9 個新 unit test 全綠 (`tests/sprint17-migration.test.js`)
+- [x] 既有 95 個 test regression free (104 total pass)
+- [x] `npm run build` success (1032 PWA entries, 158 MB precache)
+- [x] `__version__` bump `2.2.0` → `2.3.0` (MINOR, generalize migration tool)
+- [x] SPEC.md v3.7 → v3.8 + 加 §18 (本 section)
+- [x] Audit ACCEPTED_COMPOUNDS whitelist formalize (`大話`, `講話`, `電話` etc.)
+- [x] Idempotency verified (re-run 0 changes)
+
+### 18.6 Anti-pattern (Sprint 17 必避)
+
+- ❌ 唔用 scenarios_v2.mjs 直接人手改 scenario JSON → 改動量大 (905 strings), 用 tool batch process
+- ❌ 唔做 backup (.pre-v3.7.bak) → 一改錯就回唔去, 必須 backup
+- ❌ 直接覆蓋原 file 而唔用 `--dry-run` 先 preview → 大改動前必 dry-run
+- ❌ 唔做 idempotency check → tool 應該 re-run 0 changes, 否則下次改動會 double-apply
 
 ---
 
