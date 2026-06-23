@@ -1,8 +1,8 @@
-# 友愛教室 V3 — 完整規格書 (v3.9)
+# 友愛教室 V3 — 完整規格書 (v3.10)
 
 > 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
 >
-> *規格日期：2026-06-13 | 最後更新：2026-06-23（v3.9 addendum: §19 Sprint 18 — TTS button 大細 bump (WCAG 2.5.5 ≥ 44×44) + 首次使用教學 onboarding carousel + audit-touch-targets tool, 配套 20 個新 unit test）*
+> *規格日期：2026-06-13 | 最後更新：2026-06-23（v3.10 addendum: §20 Sprint 21 — Typography scale 6 級 (12/14/16/18/22/28px) + --fs-* tokens + audit-font-sizes tool, 配套 22 個新 unit test + 123 個 hardcoded → token migration）*
 
 ---
 
@@ -2010,4 +2010,113 @@ node tools/a11y/audit-touch-targets.mjs src/style.css  # custom path
 ---
 
 *Addendum 日期:2026-06-23 | 配合 Sprint 18 開工 | 取代/補充:§18 唔變,純新增 §19 | 維護者: Mavis + kencheng*
+
+---
+
+## 20. v3.10 Addendum — Sprint 21 Typography System (12/14/16/18/22/28 scale)
+
+### 20.1 動機
+
+CSS 入面 146 個 `font-size:` 散落 38 個唔同值(0.7em 到 5em),每個新 view 都自創字體 ratio,設計 drift + readability 唔一致。
+
+目標:**6 級 text scale + design system contract** — 以後寫 UI 唔再 freestyle 揀字體。
+
+### 20.2 Scale definition
+
+6 級 typography tokens,em-based,跟 `--fc-font-size` root 自動按比例縮放(SEN 個人化保留):
+
+| Token | Ratio | Resolved @ 18px root | Use case |
+|---|---|---|---|
+| `--fs-xs`   | 0.6667em | 12px | meta labels, micro badges |
+| `--fs-sm`   | 0.7778em | 14px | small body, captions |
+| `--fs-base` | 0.8889em | 16px | secondary body |
+| `--fs-md`   | 1em      | 18px | body default |
+| `--fs-lg`   | 1.2222em | 22px | subhead, h3 |
+| `--fs-xl`   | 1.5556em | 28px | h2, prominent heading |
+
+**保留 `--fc-font-size: 18px`**(JS 動態設定 SEN slider)— body 行用 `font-size: var(--fc-font-size)`,em-based tokens 自動跟住。
+
+### 20.3 Migration map
+
+| 之前(em / px) | 之後 |
+|---|---|
+| 0.7em, 0.72em | `var(--fs-xs)` |
+| 0.75em, 0.78em, 0.8em, 0.82em | `var(--fs-sm)` |
+| 0.85em, 0.88em, 0.9em, 0.92em, 16px | `var(--fs-base)` |
+| 0.95em, 1em, 1.05em | `var(--fs-md)` |
+| 1.1em, 1.15em, 1.2em, 1.25em, 1.3em | `var(--fs-lg)` |
+| 1.4em, 1.5em, 1.6em | `var(--fs-xl)` |
+| 1.7em, 1.8em, 2em+, 80px | 維持 inline (display: emoji / icon / h1 hero) |
+
+### 20.4 Display sizes 維持 inline
+
+以下 sizes 唔屬於 text scale,刻意保留 inline(em / px literal):
+- Emoji / icon container:`2em`, `2.4em`, `2.5em`, `2.8em`, `3em`, `4em`, `5em`
+- `.role-screen h1` + `h1`:1.8em(hero, prominent)
+- `.creed-show::before` 裝飾 star:80px
+- `.student-avatar` 字母:1.8em(in 50px circle)
+
+`tools/a11y/audit-font-sizes.mjs` 自動 allowlist(em ≥ 1.7 + 非 14/15/16 px)。
+
+### 20.5 audit-font-sizes tool
+
+`tools/a11y/audit-font-sizes.mjs` — 靜態 CSS audit,失敗條件:
+- text-scale em 值(0.7em ~ 1.6em)冇用 `var(--fs-*)` → FAIL
+- text-scale px 值(14/15/16px)冇用 `var(--fs-*)` → FAIL
+- 違規時 exit 1,印 selector + line + 建議 token
+
+`npm run audit:font-sizes` 入 CI guard — 將來任何人加新 `font-size:` 冇用 token 即 catch。
+
+### 20.6 Tests (Sprint 21 done = ✅)
+
+- `tests/sprint21-font-sizes.test.js` — **22 個新 test**:
+  - 6 個 token definition correctness(em ratio vs resolved px)
+  - 6 個 token math(@ 18px root → 12/14/16/18/22/28)
+  - 1 個 all-tokens-used(orphan detection)
+  - 1 個 --fs-md 是 most-used 確認
+  - 3 個 audit script smoke(正常 pass / 硬碼 catch / display allowlist)
+  - 3 個 integration smoke(h2 → --fs-xl, h3 → --fs-lg, body → --fc-font-size)
+
+### 20.7 Acceptance criteria (Sprint 21 done = ✅)
+
+- [x] 6 個 `--fs-*` tokens 喺 `:root` 定義,em ratio 對應 12/14/16/18/22/28
+- [x] `src/style.css` 123 個 text-scale font-size 全部 migrate 落 token
+- [x] JS inline `style="font-size:..."` ~68 個中,~40 個 common 值 migrate 落 token;display emoji/icon 留 inline
+- [x] `tools/a11y/audit-font-sizes.mjs` 可執行,PASS / FAIL exit code 正確
+- [x] `npm run audit:font-sizes` 入 CI guard
+- [x] 22 個新 unit test,full suite 146/146 pass
+- [x] `--fc-font-size: 18px` SEN root 保留,em tokens 跟住縮放
+- [x] `__version__` 2.4.0 → 2.5.0 (MINOR — 新 capability)
+- [x] SPEC v3.9 → v3.10 (this section)
+- [x] 146/146 tests pass,no regression
+
+### 20.8 Anti-pattern (Sprint 21 必避)
+
+- ❌ 新 view 直接寫 `font-size: 0.88em;` → audit-font-sizes 即 catch;改用 `var(--fs-base)`
+- ❌ 為咗視覺微調破 scale(寫 0.83em、0.87em) → 6 級就係要放棄 fine-grained control,換 design consistency
+- ❌ 將 h1 由 1.8em 改成 var(--fs-xl) (28px) → h1 屬 display,留 1.8em 維持 hero prominence
+- ❌ 用 px (14px / 15px / 16px) 取代 em token → px 唔跟 SEN scaling;堅持用 var(--fs-*)
+- ❌ audit script 擴去追 JS inline `style="..."` → brittle + 慢,scope 守住 CSS file
+- ❌ Display sizes (emoji 2em+) token-ize 做 --fs-display-* → 失控,display 留 inline + audit allowlist 守住
+
+### 20.9 Out-of-scope (v3.10 不做,留 future)
+
+- ❌ Design tokens 整體化(顏色、spacing、radii) → S22+ 範圍
+- ❌ Dark mode / theme switching → S22+ 範圍
+- ❌ Topic 色板統一(17 → 6 semantic) → S22+ 範圍
+- ❌ Brand identity / mascot / iconography 統一 → S22+ 範圍
+- ❌ Migrate 所有 JS inline `style="font-size:..."` (e.g. 一次性 emoji) → 8 個 rare display 留 inline,唔值得
+- ❌ 將 --fs-* export 落 JS constants → CSS-only scope
+- ❌ Per-token responsive variants (--fs-md-mobile 等) → 未有需要,em ratio + SEN slider 夠用
+
+### 20.10 Migration impact summary
+
+| Metric | Before | After |
+|---|---|---|
+| `src/style.css` text-scale values | 38 distinct | 6 tokens |
+| Hardcoded `font-size:` (CSS) | 146 | 21 display + 1 root |
+| Hardcoded `font-size:` (JS inline) | ~68 | ~28 display + 1 root |
+| Token references | 0 | 123 in CSS + ~40 in JS |
+
+*Addendum 日期:2026-06-23 | 配合 Sprint 21 開工 | 取代/補充:§19 唔變,純新增 §20 | 維護者: Mavis + kencheng*
 

@@ -36,7 +36,7 @@ function showInstallBanner() {
     align-items: center;
     gap: 12px;
     z-index: 9999;
-    font-size: 15px;
+    font-size: var(--fs-base);
     box-shadow: 0 -4px 20px rgba(0,0,0,0.2);
     animation: slideUp 0.3s ease-out;
   `;
@@ -51,7 +51,7 @@ function showInstallBanner() {
       padding: 8px 18px;
       font-weight: 600;
       cursor: pointer;
-      font-size: 14px;
+      font-size: var(--fs-sm);
     ">安裝</button>
     <button id="pwa-install-close" style="
       background: rgba(255,255,255,0.2);
@@ -61,7 +61,7 @@ function showInstallBanner() {
       width: 28px;
       height: 28px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: var(--fs-base);
       line-height: 1;
     ">✕</button>
   `;
@@ -134,7 +134,7 @@ function showUpdateBanner() {
     align-items: center;
     gap: 12px;
     z-index: 9999;
-    font-size: 15px;
+    font-size: var(--fs-base);
     box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     animation: slideDown 0.3s ease-out;
   `;
@@ -149,7 +149,7 @@ function showUpdateBanner() {
       padding: 7px 16px;
       font-weight: 600;
       cursor: pointer;
-      font-size: 14px;
+      font-size: var(--fs-sm);
     ">重新載入</button>
     <button id="pwa-update-close" style="
       background: rgba(255,255,255,0.2);
@@ -159,7 +159,7 @@ function showUpdateBanner() {
       width: 28px;
       height: 28px;
       cursor: pointer;
-      font-size: 16px;
+      font-size: var(--fs-base);
       line-height: 1;
     ">✕</button>
   `;
@@ -191,7 +191,7 @@ function showOfflineReadyToast() {
     color: #ffffff;
     padding: 10px 20px;
     border-radius: 24px;
-    font-size: 14px;
+    font-size: var(--fs-sm);
     font-weight: 600;
     z-index: 9999;
     animation: fadeInUp 0.3s ease-out;
