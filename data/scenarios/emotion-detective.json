@@ -33,5 +33,320 @@
     "riskLevel": 1,
     "skills": ["情緒辨識", "表情識別"],
     "creedIds": [9]
+  },
+  {
+    "id": "ed-2",
+    "title": "跌親",
+    "question": "小明喺公園跑跑吓跌親，膝頭擦損咗。請問小明嘅表情係邊一個？",
+    "scenarioImage": "assets/images/emotion-detective/ed-2-scenario.png",
+    "scenarioImageAlt": "小明跌親擦損膝頭",
+    "faceOptions": [
+      {
+        "id": "crying",
+        "label": "喊",
+        "image": "assets/images/emotion-detective/ed-2-face-crying.png",
+        "correct": true
+      },
+      {
+        "id": "happy",
+        "label": "開心",
+        "image": "assets/images/emotion-detective/ed-2-face-happy.png",
+        "correct": false
+      },
+      {
+        "id": "angry",
+        "label": "嬲",
+        "image": "assets/images/emotion-detective/ed-2-face-angry.png",
+        "correct": false
+      }
+    ],
+    "topicId": "emotion-detective",
+    "valueCategory": "emotion-detective",
+    "domain": "caring",
+    "subjectId": "caring",
+    "audience": ["caring"],
+    "riskLevel": 1,
+    "skills": ["情緒辨識", "表情識別"],
+    "creedIds": [9]
+  },
+  {
+    "id": "ed-3",
+    "title": "比人搶咗玩具",
+    "question": "小明喺公園玩緊玩具，突然有個陌生人行埋嚟搶咗小明嘅玩具走咗。請問小明嘅表情係邊一個？",
+    "scenarioImage": "assets/images/emotion-detective/ed-3-scenario.png",
+    "scenarioImageAlt": "小明玩具比人搶咗",
+    "faceOptions": [
+      {
+        "id": "angry",
+        "label": "嬲",
+        "image": "assets/images/emotion-detective/ed-3-face-angry.png",
+        "correct": true
+      },
+      {
+        "id": "crying",
+        "label": "喊",
+        "image": "assets/images/emotion-detective/ed-3-face-crying.png",
+        "correct": false
+      },
+      {
+        "id": "scared",
+        "label": "驚",
+        "image": "assets/images/emotion-detective/ed-3-face-scared.png",
+        "correct": false
+      }
+    ],
+    "topicId": "emotion-detective",
+    "valueCategory": "emotion-detective",
+    "domain": "caring",
+    "subjectId": "caring",
+    "audience": ["caring"],
+    "riskLevel": 2,
+    "skills": ["情緒辨識", "表情識別"],
+    "creedIds": [9]
+  },
+  {
+    "id": "ed-4",
+    "title": "見到蜘蛛",
+    "question": "小明打開書櫃，發現入面有一隻大蜘蛛。請問小明嘅表情係邊一個？",
+    "scenarioImage": "assets/images/emotion-detective/ed-4-scenario.png",
+    "scenarioImageAlt": "小明見到蜘蛛",
+    "faceOptions": [
+      {
+        "id": "scared",
+        "label": "驚",
+        "image": "assets/images/emotion-detective/ed-4-face-scared.png",
+        "correct": true
+      },
+      {
+        "id": "disgust",
+        "label": "厭惡",
+        "image": "assets/images/emotion-detective/ed-4-face-disgust.png",
+        "correct": false
+      },
+      {
+        "id": "angry",
+        "label": "嬲",
+        "image": "assets/images/emotion-detective/ed-4-face-angry.png",
+        "correct": false
+      }
+    ],
+    "topicId": "emotion-detective",
+    "valueCategory": "emotion-detective",
+    "domain": "caring",
+    "subjectId": "caring",
+    "audience": ["caring"],
+    "riskLevel": 1,
+    "skills": ["情緒辨識", "表情識別"],
+    "creedIds": [9]
+  },
+  {
+    "id": "ed-5",
+    "title": "朋友突然大叫",
+    "question": "小明坐喺度溫書，朋友突然喺背後大叫一聲「嘩！」。請問小明嘅表情係邊一個？",
+    "scenarioImage": "assets/images/emotion-detective/ed-5-scenario.png",
+    "scenarioImageAlt": "朋友喺背後大叫",
+    "faceOptions": [
+      {
+        "id": "surprised",
+        "label": "驚訝",
+        "image": "assets/images/emotion-detective/ed-5-face-surprised.png",
+        "correct": true
+      },
+      {
+        "id": "scared",
+        "label": "驚",
+        "image": "assets/images/emotion-detective/ed-5-face-scared.png",
+        "correct": false
+      },
+      {
+        "id": "happy",
+        "label": "開心",
+        "image": "assets/images/emotion-detective/ed-5-face-happy.png",
+        "correct": false
+      }
+    ],
+    "topicId": "emotion-detective",
+    "valueCategory": "emotion-detective",
+    "domain": "caring",
+    "subjectId": "caring",
+    "audience": ["caring"],
+    "riskLevel": 1,
+    "skills": ["情緒辨識", "表情識別"],
+    "creedIds": [9]
+  },
+  {
+    "id": "ed-6",
+    "title": "食到味道怪嘅嘢",
+    "question": "小明食咗媽媽整嘅菜，但味道好怪。請問小明嘅表情係邊一個？",
+    "scenarioImage": "assets/images/emotion-detective/ed-6-scenario.png",
+    "scenarioImageAlt": "小明食到味道怪嘅嘢",
+    "faceOptions": [
+      {
+        "id": "disgust",
+        "label": "厭惡",
+        "image": "assets/images/emotion-detective/ed-6-face-disgust.png",
+        "correct": true
+      },
+      {
+        "id": "angry",
+        "label": "嬲",
+        "image": "assets/images/emotion-detective/ed-6-face-angry.png",
+        "correct": false
+      },
+      {
+        "id": "crying",
+        "label": "喊",
+        "image": "assets/images/emotion-detective/ed-6-face-crying.png",
+        "correct": false
+      }
+    ],
+    "topicId": "emotion-detective",
+    "valueCategory": "emotion-detective",
+    "domain": "caring",
+    "subjectId": "caring",
+    "audience": ["caring"],
+    "riskLevel": 1,
+    "skills": ["情緒辨識", "表情識別"],
+    "creedIds": [9]
+  },
+  {
+    "id": "ed-7",
+    "title": "全班望住",
+    "question": "老師叫小明上台唱歌，全班同學都望住小明。請問小明嘅表情係邊一個？",
+    "scenarioImage": "assets/images/emotion-detective/ed-7-scenario.png",
+    "scenarioImageAlt": "小明上台唱歌全班望住",
+    "faceOptions": [
+      {
+        "id": "embarrassed",
+        "label": "尷尬",
+        "image": "assets/images/emotion-detective/ed-7-face-embarrassed.png",
+        "correct": true
+      },
+      {
+        "id": "scared",
+        "label": "驚",
+        "image": "assets/images/emotion-detective/ed-7-face-scared.png",
+        "correct": false
+      },
+      {
+        "id": "angry",
+        "label": "嬲",
+        "image": "assets/images/emotion-detective/ed-7-face-angry.png",
+        "correct": false
+      }
+    ],
+    "topicId": "emotion-detective",
+    "valueCategory": "emotion-detective",
+    "domain": "caring",
+    "subjectId": "caring",
+    "audience": ["caring"],
+    "riskLevel": 1,
+    "skills": ["情緒辨識", "表情識別"],
+    "creedIds": [9]
+  },
+  {
+    "id": "ed-8",
+    "title": "通宵冇瞓",
+    "question": "小明通宵打機冇瞓覺，第二朝返學。請問小明嘅表情係邊一個？",
+    "scenarioImage": "assets/images/emotion-detective/ed-8-scenario.png",
+    "scenarioImageAlt": "小明通宵冇瞓返學",
+    "faceOptions": [
+      {
+        "id": "tired",
+        "label": "攰",
+        "image": "assets/images/emotion-detective/ed-8-face-tired.png",
+        "correct": true
+      },
+      {
+        "id": "crying",
+        "label": "喊",
+        "image": "assets/images/emotion-detective/ed-8-face-crying.png",
+        "correct": false
+      },
+      {
+        "id": "angry",
+        "label": "嬲",
+        "image": "assets/images/emotion-detective/ed-8-face-angry.png",
+        "correct": false
+      }
+    ],
+    "topicId": "emotion-detective",
+    "valueCategory": "emotion-detective",
+    "domain": "caring",
+    "subjectId": "caring",
+    "audience": ["caring"],
+    "riskLevel": 1,
+    "skills": ["情緒辨識", "表情識別"],
+    "creedIds": [9]
+  },
+  {
+    "id": "ed-9",
+    "title": "唔識答老師問題",
+    "question": "老師問小明一條數學題，但小明完全唔識答。請問小明嘅表情係邊一個？",
+    "scenarioImage": "assets/images/emotion-detective/ed-9-scenario.png",
+    "scenarioImageAlt": "小明唔識答老師問題",
+    "faceOptions": [
+      {
+        "id": "confused",
+        "label": "困惑",
+        "image": "assets/images/emotion-detective/ed-9-face-confused.png",
+        "correct": true
+      },
+      {
+        "id": "scared",
+        "label": "驚",
+        "image": "assets/images/emotion-detective/ed-9-face-scared.png",
+        "correct": false
+      },
+      {
+        "id": "embarrassed",
+        "label": "尷尬",
+        "image": "assets/images/emotion-detective/ed-9-face-embarrassed.png",
+        "correct": false
+      }
+    ],
+    "topicId": "emotion-detective",
+    "valueCategory": "emotion-detective",
+    "domain": "caring",
+    "subjectId": "caring",
+    "audience": ["caring"],
+    "riskLevel": 1,
+    "skills": ["情緒辨識", "表情識別"],
+    "creedIds": [9]
+  },
+  {
+    "id": "ed-10",
+    "title": "考試攞第一",
+    "question": "小明今次考試攞咗全班第一名，老師仲喺全班面前讚佢。請問小明嘅表情係邊一個？",
+    "scenarioImage": "assets/images/emotion-detective/ed-10-scenario.png",
+    "scenarioImageAlt": "小明考試攞第一名",
+    "faceOptions": [
+      {
+        "id": "proud",
+        "label": "驕傲",
+        "image": "assets/images/emotion-detective/ed-10-face-proud.png",
+        "correct": true
+      },
+      {
+        "id": "happy",
+        "label": "開心",
+        "image": "assets/images/emotion-detective/ed-10-face-happy.png",
+        "correct": false
+      },
+      {
+        "id": "embarrassed",
+        "label": "尷尬",
+        "image": "assets/images/emotion-detective/ed-10-face-embarrassed.png",
+        "correct": false
+      }
+    ],
+    "topicId": "emotion-detective",
+    "valueCategory": "emotion-detective",
+    "domain": "caring",
+    "subjectId": "caring",
+    "audience": ["caring"],
+    "riskLevel": 1,
+    "skills": ["情緒辨識", "表情識別"],
+    "creedIds": [9]
   }
 ]

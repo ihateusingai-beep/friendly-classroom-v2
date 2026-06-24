@@ -1,16 +1,16 @@
 // tests/sprint23-emotion-detective.test.js
 // Sprint 23 — 情緒小偵探 (SPEC §23)
 //
-// Unit tests for the new emotion-matching mode:
-//   - Schema: faceOptions + scenarioImage + question fields
+// Unit tests for the emotion-matching mode:
+//   - Schema: faceOptions + scenarioImage + question fields (10 scenarios)
 //   - chooseOption: emotion-detective fork (no moral scoring)
 //   - chooseFaceOption: correct → isCorrect=true, wrong → isCorrect=false
 //   - topics.js: emotion-detective is exposed as 18th topic
+//   - Phase 2 bulk: all 10 scenarios cover 10 emotion set
 //
-// Out of scope (Phase 2 follow-up):
+// Out of scope (Phase 3 follow-up):
 //   - TTS speakScenario fallback to question (audio.js — covered manually)
 //   - renderFaceOptionCard CSS audit (visual regression not unit-testable)
-//   - Pilot → bulk scenario generation (separate workflow)
 
 import { describe, it, expect, beforeEach } from 'vitest';
 import { setScenarios, setStudent, chooseOption, getScenariosByTopic } from '../src/domain/ScenarioEngine.js';
@@ -62,56 +62,86 @@ describe('Sprint 23 — topics.js entry', () => {
   });
 });
 
-// ── emotion-detective.json schema ──────────────────────────────────────────
+// ── emotion-detective.json schema (Phase 2 bulk: 10 scenarios) ─────────────
 
-describe('Sprint 23 — emotion-detective.json schema (pilot)', () => {
-  it('has 1 pilot scenario', () => {
-    expect(edScenarios).toHaveLength(1);
-    expect(edScenarios[0].id).toBe('ed-1');
+describe('Sprint 23 — emotion-detective.json schema (10 bulk scenarios)', () => {
+  it('has 10 scenarios covering ed-1 through ed-10', () => {
+    expect(edScenarios).toHaveLength(10);
+    const ids = edScenarios.map(s => s.id);
+    expect(ids).toEqual(['ed-1', 'ed-2', 'ed-3', 'ed-4', 'ed-5', 'ed-6', 'ed-7', 'ed-8', 'ed-9', 'ed-10']);
   });
 
-  it('uses faceOptions (not options)', () => {
-    const sc = edScenarios[0];
-    expect(Array.isArray(sc.faceOptions)).toBe(true);
-    expect(sc.options).toBeUndefined();
+  it('covers 10 distinct emotions across the 10 scenarios (exactly 1 correct per scenario)', () => {
+    const correctEmotions = edScenarios.map(sc => {
+      const correct = sc.faceOptions.find(f => f.correct);
+      return correct?.id;
+    });
+    expect(correctEmotions).toHaveLength(10);
+    expect(new Set(correctEmotions).size).toBeGreaterThanOrEqual(8);
   });
 
-  it('faceOptions has 3 entries with id + label + image + correct', () => {
-    const faces = edScenarios[0].faceOptions;
-    expect(faces).toHaveLength(3);
-    for (const f of faces) {
-      expect(f.id).toBeTruthy();
-      expect(f.label).toBeTruthy();
-      expect(f.image).toMatch(/^assets\/images\/emotion-detective\//);
-      expect(typeof f.correct).toBe('boolean');
+  it('every scenario uses faceOptions (not options)', () => {
+    for (const sc of edScenarios) {
+      expect(Array.isArray(sc.faceOptions), `${sc.id} faceOptions`).toBe(true);
+      expect(sc.options, `${sc.id} should not have options`).toBeUndefined();
     }
-    const correctFaces = faces.filter(f => f.correct);
-    expect(correctFaces).toHaveLength(1);
   });
 
-  it('scenario has question + scenarioImage fields', () => {
-    const sc = edScenarios[0];
-    expect(sc.question).toBeTruthy();
-    expect(sc.scenarioImage).toMatch(/^assets\/images\/emotion-detective\//);
+  it('every scenario has 3 faceOptions with id + label + image + correct', () => {
+    for (const sc of edScenarios) {
+      expect(sc.faceOptions).toHaveLength(3);
+      for (const f of sc.faceOptions) {
+        expect(f.id, `${sc.id} face id`).toBeTruthy();
+        expect(f.label, `${sc.id} face label`).toBeTruthy();
+        expect(f.image, `${sc.id} face image path`).toMatch(/^assets\/images\/emotion-detective\//);
+        expect(typeof f.correct, `${sc.id} face correct type`).toBe('boolean');
+      }
+      const correctCount = sc.faceOptions.filter(f => f.correct).length;
+      expect(correctCount, `${sc.id} should have exactly 1 correct`).toBe(1);
+    }
   });
 
-  it('required SPEC fields are present', () => {
-    const sc = edScenarios[0];
-    expect(sc.topicId).toBe('emotion-detective');
-    expect(sc.valueCategory).toBe('emotion-detective');
-    expect(sc.domain).toBe('caring');
-    expect(sc.subjectId).toBe('caring');
-    expect(sc.audience).toEqual(['caring']);
-    expect(typeof sc.riskLevel).toBe('number');
-    expect(Array.isArray(sc.skills)).toBe(true);
-    expect(sc.skills.length).toBeGreaterThan(0);
-    expect(Array.isArray(sc.creedIds)).toBe(true);
+  it('every scenario has question + scenarioImage fields', () => {
+    for (const sc of edScenarios) {
+      expect(sc.question, `${sc.id} question`).toBeTruthy();
+      expect(sc.scenarioImage, `${sc.id} scenarioImage`).toMatch(/^assets\/images\/emotion-detective\//);
+    }
+  });
+
+  it('every scenario has all required SPEC §3.2 fields', () => {
+    for (const sc of edScenarios) {
+      expect(sc.topicId, `${sc.id} topicId`).toBe('emotion-detective');
+      expect(sc.valueCategory, `${sc.id} valueCategory`).toBe('emotion-detective');
+      expect(sc.domain, `${sc.id} domain`).toBe('caring');
+      expect(sc.subjectId, `${sc.id} subjectId`).toBe('caring');
+      expect(sc.audience, `${sc.id} audience`).toEqual(['caring']);
+      expect(typeof sc.riskLevel, `${sc.id} riskLevel type`).toBe('number');
+      expect(Array.isArray(sc.skills), `${sc.id} skills`).toBe(true);
+      expect(sc.skills.length, `${sc.id} skills non-empty`).toBeGreaterThan(0);
+      expect(Array.isArray(sc.creedIds), `${sc.id} creedIds`).toBe(true);
+    }
+  });
+
+  it('every face image referenced by JSON exists on disk', async () => {
+    const fs = await import('node:fs');
+    const path = await import('node:path');
+    const repoRoot = path.resolve(import.meta.dirname, '..');
+    for (const sc of edScenarios) {
+      // scenarioImage
+      const scenarioPath = path.join(repoRoot, sc.scenarioImage);
+      expect(fs.existsSync(scenarioPath), `${sc.id} scenario image missing: ${sc.scenarioImage}`).toBe(true);
+      // face images
+      for (const f of sc.faceOptions) {
+        const facePath = path.join(repoRoot, f.image);
+        expect(fs.existsSync(facePath), `${sc.id}/${f.id} face image missing: ${f.image}`).toBe(true);
+      }
+    }
   });
 });
 
 // ── chooseOption fork: emotion-detective ───────────────────────────────────
 
-describe('Sprint 23 — chooseOption emotion-detective fork', () => {
+describe('Sprint 23 — chooseOption emotion-detective fork (ed-1 specific)', () => {
   it('returns isCorrect=true when the chosen face is the correct one', () => {
     const result = chooseOption('ed-1', 'happy', 'caring');
     expect(result).not.toBeNull();
@@ -163,12 +193,38 @@ describe('Sprint 23 — chooseOption emotion-detective fork', () => {
   });
 });
 
+// ── Phase 2 bulk: chooseOption works for every scenario ───────────────────
+
+describe('Sprint 23 Phase 2 — chooseOption works for all 10 scenarios', () => {
+  for (const sc of edScenarios) {
+    const correctFace = sc.faceOptions.find(f => f.correct);
+    const wrongFace = sc.faceOptions.find(f => !f.correct);
+
+    it(`${sc.id} (${sc.title}): correct face → isCorrect=true`, () => {
+      const result = chooseOption(sc.id, correctFace.id, 'caring');
+      expect(result).not.toBeNull();
+      expect(result.isCorrect).toBe(true);
+      expect(result.option.id).toBe(correctFace.id);
+      expect(result.moralChange).toBe(0);
+      expect(result.outcomeImage).toBeNull();
+    });
+
+    it(`${sc.id} (${sc.title}): wrong face → isCorrect=false + correct label shown`, () => {
+      const result = chooseOption(sc.id, wrongFace.id, 'caring');
+      expect(result).not.toBeNull();
+      expect(result.isCorrect).toBe(false);
+      expect(result.option.id).toBe(wrongFace.id);
+      // Correction comment should mention the right answer's label
+      expect(result.mainComment).toContain(correctFace.label);
+    });
+  }
+});
+
 // ── getScenariosByTopic filter ─────────────────────────────────────────────
 
 describe('Sprint 23 — getScenariosByTopic("emotion-detective")', () => {
-  it('returns the emotion-detective scenarios', () => {
+  it('returns all 10 emotion-detective scenarios', () => {
     const out = getScenariosByTopic('emotion-detective');
-    expect(out).toHaveLength(1);
-    expect(out[0].id).toBe('ed-1');
+    expect(out).toHaveLength(10);
   });
 });

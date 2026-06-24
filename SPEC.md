@@ -2464,15 +2464,15 @@ if (Array.isArray(scenario.faceOptions) && scenario.faceOptions.length > 0) {
 
 ### 22.13 Out-of-scope (v3.12 不做,留 Phase 2 / Phase 3 follow-up)
 
-- ❌ **Bulk 場景(10+ scenarios 覆蓋 8 個 emotion set)** — Phase 2 follow-up, art direction 已 pilot 通過
+- ✅ ~~**Bulk 場景(10+ scenarios 覆蓋 8 個 emotion set)**~~ — Phase 2 已 ship,見 §22.15
 - ❌ **TTS scenario question + face label 全粵語 polish** — TTS 讀 "答錯咗。正確嘅表情係..." 已有,但 face label TTS 用 `_speak(face.label)` 簡單 fallback,將來可能 tune 語氣
-- ❌ **Random / shuffled face option order** — 目前 fixed order (A/B/C = 開心/嬲/喊),ASD pedagogy 重複 exposure 需要 fixed order 起步,將來可加 shuffle option
+- ❌ **Random / shuffled face option order** — 目前 fixed order (A/B/C),ASD pedagogy 重複 exposure 需要 fixed order 起步,將來可加 shuffle option
 - ❌ **Repeat exposure mode** — ASD 學生需要重複睇同一個 scenario,目前 1 個 scenario 做完即 mark complete,將來可能加 "再做一次" auto re-pick 同一個
 - ❌ **Difficulty level**(簡單 3 options / 進階 4-6 options)— Phase 3
 - ❌ **Teacher mode 啟用 emotion-detective toggle** — 目前 18 個 topic 一律 enable,將來可能加老師 toggle
 - ❌ **Per-emotion progress metric** — 「小明認得幾多個 emotion」嘅 separate counter,目前只 track 場景 completion
 - ❌ **Animation 配合 face image**(眼睛眨 / 表情 tween)— Phase 3,目前 static image
-- ❌ **情緒 vocabulary expand**(frustrated / proud / confused 等 6+ emotions)— Phase 3 bulk content
+- ❌ **情緒 vocabulary expand**(frustrated / tired / embarrassed 等更細粒度)— Phase 3 bulk content
 - ❌ **Migrate emotion-detective color topic CSS** — topic 17 色板統一 scope withdrawn(2026-06-23),唔再 invest
 
 ### 22.14 Migration impact summary
@@ -2488,6 +2488,64 @@ if (Array.isArray(scenario.faceOptions) && scenario.faceOptions.length > 0) {
 | Test count | 175 | **190** (+15 sprint23 tests) |
 | PWA precache entries | 1032 | 1037 (+5:1 chunk + 4 images) |
 | __version__ | 2.6.0 | **2.7.0** |
+
+---
+
+### 22.15 Phase 2 bulk (2026-06-24) — 10 scenarios covering 10 emotion set
+
+Pilot (ed-1 「收到禮物」) ship 後即開 Phase 2:bulk 至 **10 個 scenarios**,覆蓋 **10 個 emotion set**,支援 ASD 學生嘅 generalization(唔止認一個情境嘅情緒)。
+
+**10 個 scenarios + 10 個 emotions**:
+
+| # | id | Title | Correct emotion | Distractor 1 | Distractor 2 | Scenario brief |
+|---|---|---|---|---|---|---|
+| 1 | ed-1 | 收到禮物 | 開心 (happy) | 嬲 | 喊 | 生日會朋友送禮物 |
+| 2 | ed-2 | 跌親 | 喊 (crying) | 開心 | 嬲 | 跑跑吓跌親膝頭擦損 |
+| 3 | ed-3 | 比人搶咗玩具 | 嬲 (angry) | 喊 | 驚 | 玩具比人搶走 |
+| 4 | ed-4 | 見到蜘蛛 | 驚 (scared) | 厭惡 | 嬲 | 開櫃發現大蜘蛛 |
+| 5 | ed-5 | 朋友突然大叫 | 驚訝 (surprised) | 驚 | 開心 | 朋友喺背後大叫 |
+| 6 | ed-6 | 食到味道怪嘅嘢 | 厭惡 (disgust) | 嬲 | 喊 | 媽媽整嘅菜味道怪 |
+| 7 | ed-7 | 全班望住 | 尷尬 (embarrassed) | 驚 | 嬲 | 上台唱歌全班望住 |
+| 8 | ed-8 | 通宵冇瞓 | 攰 (tired) | 喊 | 嬲 | 通宵打機返學 |
+| 9 | ed-9 | 唔識答老師問題 | 困惑 (confused) | 驚 | 尷尬 | 老師問數學唔識答 |
+| 10 | ed-10 | 考試攞第一 | 驕傲 (proud) | 開心 | 尷尬 | 老師喺全班面前讚 |
+
+**Image assets** (40 張 = 10 scenarios × 4):
+- 10 張 scenario illustration (`ed-N-scenario.png`)
+- 30 張 face close-ups (`ed-N-face-{emotionId}.png`)
+- 全部 Line / Disney Junior cartoon style, character anchor = ed-1 scenario illustration
+- MiniMax `matrix_generate_image` API, 1K resolution
+- 平均檔案大小 ~500KB, 總 ~20MB PWA precache
+- emotion-detective total PWA entries:5 (pilot) + 36 (phase 2) = 41 images
+
+**Tests added (Phase 2)**:
+- `tests/sprint23-emotion-detective.test.js` 由 15 → **37 個 test** (+22):
+  - 5 個 bulk schema test(覆蓋全部 10 scenarios:scenario count, 10 distinct emotions, faceOptions schema, question/scenarioImage, SPEC §3.2 fields, image-on-disk check)
+  - 1 個 fs.existsSync check(每個 scenario + face image 真實存在)
+  - 20 個 chooseOption iteration test(10 scenarios × {correct, wrong}= 20)
+  - 1 個 getScenariosByTopic test(updated 1 → 10)
+
+**Phase 2 acceptance criteria** (✅):
+- [x] `data/scenarios/emotion-detective.json` 10 scenarios (pilot + 9 new)
+- [x] `assets/images/emotion-detective/` 40 張 image(scenario + 3 face × 10)
+- [x] 10 distinct correct emotions(開心 / 喊 / 嬲 / 驚 / 驚訝 / 厭惡 / 尷尬 / 攰 / 困惑 / 驕傲)
+- [x] 37 個 unit test, full suite 190 → **212** pass, 0 regression
+- [x] `npm run audit:spacing` PASS (263 decl)
+- [x] `npm run audit:touch-targets` PASS (8 targets)
+- [x] `npm run audit:font-sizes` PASS (128 refs)
+- [x] `npm run audit:style` PASS (18 files, **269 scenarios**, 744 options, 0 violations)
+- [x] `npm run build` PASS (PWA precache 1037 → **1073** entries)
+
+**Phase 2 risk**:
+- 🟢 Low — 純 content expansion, 唔觸 engine / render / schema / CSS / audit scripts
+- 🟡 ed-7 嘅 3-image batch 出現 hang(matrix MCP rate limit 或 batch retry);mitigation:simplify embarrassed prompt("one hand scratching back of head nervously" 太 detail),regen scenario 唔包 silhouettes,fallback 1-by-1 唔 batch 3
+
+**Image gen gotcha** (Phase 2 學到):
+- ed-7-scenario.png 1.57MB 嘅「全班望住」original 版本 trigger matrix filter,後來 simplify 為「小明企喺課室前面」+ regen OK
+- Single-image gen 唔 batch 比 3-image batch 穩陣,complex prompt + batch 有 hang 風險
+- 同 scenario 用 image-to-image anchor 會 carry character consistency,但 prompt 唔好太 detail(>80 字 prompt hang 風險高)
+
+---
 
 *Addendum 日期:2026-06-24 | 配合 Sprint 23 開工 | 取代/補充:§21 唔變,純新增 §22 | 維護者: Mavis + kencheng*
 
