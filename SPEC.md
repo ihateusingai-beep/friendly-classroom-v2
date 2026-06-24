@@ -1,8 +1,8 @@
-# 友愛教室 V3 — 完整規格書 (v3.11)
+# 友愛教室 V3 — 完整規格書 (v3.12)
 
 > 基於 v2.2 framework 重整：對齊 EDB 12 種首要價值觀 + 5 個 SEL / 安全範疇
 >
-> *規格日期：2026-06-13 | 最後更新：2026-06-23（v3.11 addendum: §21 Sprint 22 — Design tokens foundation: 7 級 spacing scale + 13 個 semantic color tokens + audit-spacing tool, 配套 29 個新 unit test + 258 個 CSS + 65 個 JS inline hardcoded → token migration）*
+> *規格日期：2026-06-13 | 最後更新：2026-06-24（v3.12 addendum: §22 Sprint 23 — 情緒小偵探 (emotion-detective): 第 18 個 topic,Line/Disney cartoon 風 face-matching mode, 適合 SEN / ASD 學生 emotion decoding 練習, 配套 15 個新 unit test + 1 個 pilot scenario + 1 個 schema fork + 4 張 AI gen face/scenario image）*
 
 ---
 
@@ -472,6 +472,8 @@ Home 頁分兩大 section：
 | 🟢 **S11 backlog**: 拆 `engine.js` (1,156 lines) → per-view renderers | 更大 refactor | TBD | — |
 | ✅ **Sprint 12**: silent no-op bug sweep (5 個 P0 fix) | `doLogin` (老師 mode 登入) / `resetSettings` / `setSpacing` / `toggleHC` / `toggleVoice` 全部加 `window.FC.X` bridge + `audio.js` 3 個新 helper (`setSpacing` / `setHC` / `setVoiceEnabled`) + 7 個 unit test。`navigate` 確認係 main.js dispatcher special-case, `foo` / `go*` 確認係 comment 引用 — audit false positive。Cross-check 揭 `addStudent` 1 個新 bug → S13 | Done | TBD |
 | ✅ **Sprint 13**: silent no-op bug sweep 第 2 round (3 個 P0 fix) | `addStudent` (Student.js:67) / `revealNextHint` (engine.js:802) / `toggleHints` (engine.js:789) 全部加 `window.FC.X` bridge + `Progress.js` 1 個新 helper (`addStudent`) + 6 個 unit test。`toggleHints` 第一次展開自動 reveal 第一個 hint, `revealNextHint` 全部 reveal 完自動隱藏自己。E2E audit 確認 **0 Category A 真 bug 剩低** — 只剩 `navigate` / `foo` / `go*` / `go` 4 個 audit false positive | Done | TBD |
+| 🟢 **S23 backlog**: 17 topic 統一色板 → 17 → 6 semantic groups | (2026-06-23 user 確認 overstimulation 唔係問題,scope withdrawn) | Withdrawn | — |
+| ✅ **Sprint 23 — 情緒小偵探 (emotion-detective)**: 第 18 個 topic,SEN / ASD 學生 emotion decoding 練習 | Line/Disney cartoon 風 face-matching mode, 同人唔同表情, 1 個 scenario 插圖 + 3 個 face options, schema fork (faceOptions 取代 options), emotion-detective 唔做 moral scoring, markComplete with moralChange=0, renderEmotionResult fork with face comparison panel | Done | TBD |
 
 ---
 
@@ -2282,4 +2284,210 @@ S22 目標:**spacing scale 7 級 + semantic color 13 個 token + 統一 migratio
 | Sprint 21 typography (`--fs-*`) | intact | intact (no regression) |
 
 *Addendum 日期:2026-06-23 | 配合 Sprint 22 開工 | 取代/補充:§20 唔變,純新增 §21 | 維護者: Mavis + kencheng*
+
+---
+
+## 22. v3.12 Addendum — Sprint 23 情緒小偵探 (emotion-detective)
+
+### 22.1 動機
+
+舊有 17 個 topics(12 EDB 價值觀 + 5 SEL / 安全範疇)全部係 **moral-choice mode**(情境 → 揀正確嘅行為 → 道德分)。呢個 axis 對高組學生 OK,但對 SEN / ASD 學生嚟講,**emotion decoding**(認情緒)係 prerequisite skill,做唔到 moral choice 都未到嗰步。
+
+S23 目標:**新增第 18 個 topic — 情緒小偵探**,以 emotion-matching mode 服務 ASD / 弱組學生嘅 emotion recognition 訓練。**唔抽走**舊有 17 個 topics(高組繼續用 moral-choice),純加。
+
+### 22.2 Topic 結構
+
+`src/topics.js` 加 `emotion-detective` 入 `CARING` array:
+
+| Field | Value | Note |
+|---|---|---|
+| `id` | `emotion-detective` | 第 18 個 topic |
+| `title` | 情緒小偵探 | |
+| `emoji` | 🕵️ | |
+| `domain` | `caring` | 同 CARING(同 SEN)歸類,非 EDB 12 個 |
+| `description` | 睇情境，揾出正確嘅表情 | |
+| `creedIds` | `[9]` | 同理心(9)做 anchor |
+| `color` | `#FB923C` | 暖橙,同 empathy(`#F97316`)區分但同系 |
+
+### 22.3 Schema fork — `faceOptions` 取代 `options`
+
+| 舊 mode (moral-choice) | 新 mode (emotion-detective) |
+|---|---|
+| `options: [{id, text, effects[]}]` | `faceOptions: [{id, label, image, correct}]` |
+| `description` (情境描述) | `question` (場景題目) |
+| `assets/images/scenarios/${id}.png` (默認) | `scenarioImage` (自訂路徑) |
+| `moralChange` (-15 ~ +15) | `moralChange: 0`(只計 completion,唔計 moral) |
+| Outcome images per option | 冇 outcome image |
+
+**Schema rules**:
+- `faceOptions` 必須係 2-4 個 face(推薦 3 個,ASD pedagogy 標準)
+- 每個 face 必須有 `id` + `label` + `image` + `correct` (boolean)
+- `correct: true` 只可以有 1 個,其餘 `false`(shuffled 後仍係 1 個正確)
+- `topicId` 必須係 `emotion-detective`
+- `domain: "caring"` + `subjectId: "caring"` + `audience: ["caring"]`
+
+### 22.4 Render path fork
+
+**`renderPlay(scenarioId)`** (`src/engine.js`)：
+
+| 條件 | Render |
+|---|---|
+| `s.faceOptions` 存在 | 渲染 face-option cards(3-column grid)+ scenario 插圖 |
+| 否則(原有 mode) | 渲染 text-option cards(vertical stack)+ scenario 插圖 |
+
+**`renderResult(data, subjectId)`**(`src/engine.js`):
+- `data.isCorrect !== undefined` → fork 去 `renderEmotionResult()`
+- 否則 → 原有 moral-choice result(stop-and-think panel + creeds + outcome image)
+
+**`renderEmotionResult()`** 新 UI:
+- 🌟(正確)/ 🤔(錯誤)result card + `mainComment`
+- `face-comparison` panel:你揀嘅 vs 正確嘅,side-by-side 對比(ASD 自糾關鍵)
+- Action row:再做一次 / 下一題 / 返回主題
+
+### 22.5 Engine fork — `chooseFaceOption()`
+
+`src/domain/ScenarioEngine.js` 嘅 `chooseOption(scenarioId, optionId, subjectId)` 喺 detect 到 `scenario.faceOptions` 時 fork:
+
+```js
+if (Array.isArray(scenario.faceOptions) && scenario.faceOptions.length > 0) {
+  return chooseFaceOption(scenario, optionId, subjectId);
+}
+// 否則原有 moral-choice logic
+```
+
+`chooseFaceOption()` 返回 renderResult-compatible shape:
+- `option: {text: face.label, id: face.id}`
+- `moralChange: 0`(completion-only,唔污染 moral bar)
+- `mainComment: "答啱喇！..."` / `"答錯咗。正確嘅表情係..."`
+- `isCorrect: boolean`(trigger renderEmotionResult fork)
+- `creeds: []`(冇 creed)
+- `outcomeImage: null`(冇 per-option outcome)
+
+### 22.6 Audio fork
+
+| Component | 改動 |
+|---|---|
+| `audio.js: speakScenario()` | fallback `scenario.description` → `scenario.question`(emotion-detective scenarios 用 `question` 唔用 `description`) |
+| `actions/inline.js: speakOpt()` | fallback `sc.options[].text` → `sc.faceOptions[].label` |
+| `actions/inline.js: speakEmotionResult()` | 新 action,讀 emotion-detective 嘅 `mainComment` |
+
+### 22.7 Components 改動
+
+`src/components/blocks.js` 加 `renderFaceOptionCard({ scenarioId, face, index })`:
+- 同 `renderOptionCard` 一樣用 `data-action="choose"`(復用 Play.js `choose()` handler)
+- 視覺:`.face-option` card(3-column grid,大 face image + emotion label)
+- `opt-read` 48×48 (沿用 S18 觸控標準)
+
+### 22.8 Style 改動 — `.face-option` / `.face-comparison`
+
+`src/style.css` 新增:
+- `.face-options` — grid 3 column, gap `var(--space-3)`, mobile 縮 gap
+- `.face-option` — card with 180px min-height, 14px radius border, 3px border (hover/active feedback)
+- `.face-thumb` — 1:1 aspect-ratio, max 140px (mobile 96px)
+- `.face-badge` — A/B/C label top-left, 同 `.opt-badge` 設計語言一致
+- `.face-label` — emotion label(empathy 色系)
+- `.face-compare-img` — chosen vs correct 對比, green border for correct, red for wrong
+- 全部 spacing 用 `--space-*` token,顏色 semantic tokens,**通過 audit:spacing + audit:touch-targets**
+
+`tools/a11y/audit-touch-targets.mjs` TARGETS list 加 `.face-option` context。
+
+### 22.9 Image 生成 + storage
+
+| Asset | Path | Size |
+|---|---|---|
+| 情境插圖 | `assets/images/emotion-detective/ed-1-scenario.png` | ~500 KB |
+| Face option — 開心 (correct) | `assets/images/emotion-detective/ed-1-face-happy.png` | ~415 KB |
+| Face option — 嬲 | `assets/images/emotion-detective/ed-1-face-angry.png` | ~415 KB |
+| Face option — 喊 | `assets/images/emotion-detective/ed-1-face-crying.png` | ~400 KB |
+
+**Style brief**:Line / Disney Junior cartoon — flat color, thick black outlines, large expressive eyes, white / pastel background, head-and-shoulders close-up, exaggerated expression。Scenario illustration anchored character used for image-to-image consistency on face close-ups。MiniMax `matrix_generate_image` API, `aspect_ratio=1:1` (faces) / `16:9` (scenario), `resolution=1K`。
+
+### 22.10 Tests (Sprint 23 done = ✅)
+
+`tests/sprint23-emotion-detective.test.js` — **15 個新 test**:
+
+- 3 個 topics.js entry test
+  - `emotion-detective` topic exists with right domain/title
+  - 12 個 EDB value topics intact (regression check)
+  - `TOPICS.length === 18`
+- 5 個 emotion-detective.json schema test
+  - 1 個 pilot scenario
+  - `faceOptions` (not `options`)
+  - 3 個 faceOptions 都有 id/label/image/correct,exactly 1 correct
+  - `question` + `scenarioImage` fields
+  - 所有 SPEC §3.2 required fields 齊
+- 6 個 chooseOption emotion-detective fork test
+  - correct face → `isCorrect=true`
+  - wrong face → `isCorrect=false` + correction shows right answer
+  - `moralChange === 0` (無論對錯)
+  - unknown face id → return null
+  - `markComplete` writes top-level `completedScenarios` + `topicProgress[topicId].completed++`
+  - result shape renderResult-compatible (`scenarioImage`, `scenarioTitle`, `outcomeImage=null`)
+- 1 個 getScenariosByTopic filter test
+
+### 22.11 Acceptance criteria (Sprint 23 done = ✅)
+
+- [x] `topics.js` 第 18 個 topic `emotion-detective` 加入 CARING array
+- [x] `data/scenarios/emotion-detective.json` 1 個 pilot scenario with faceOptions schema
+- [x] `assets/images/emotion-detective/` 4 張 AI gen image(1 情境 + 3 face)
+- [x] `ScenarioEngine.chooseOption()` emotion-detective fork(no moral scoring)
+- [x] `engine.js renderPlay()` face-options grid render
+- [x] `engine.js renderResult()` `renderEmotionResult()` fork
+- [x] `blocks.js renderFaceOptionCard()` helper
+- [x] `style.css .face-option` + `.face-comparison` CSS(tokenized + WCAG 2.5.5 ≥44×44)
+- [x] `audio.js speakScenario` fallback to `scenario.question`
+- [x] `actions/inline.js speakOpt` fallback to `sc.faceOptions[].label`
+- [x] `actions/inline.js speakEmotionResult` new action
+- [x] `tools/a11y/audit-touch-targets.mjs` 加 `.face-option` 入 TARGETS list
+- [x] `tools/style/audit-scenarios.mjs` emotion-detective scenarios gracefully skipped(no `options`)
+- [x] 15 個新 unit test, full suite 175 → **190** pass
+- [x] 0 regression, 175 個舊 test 全綠
+- [x] `npm run audit:spacing` PASS (263 declarations tokenized)
+- [x] `npm run audit:touch-targets` PASS (8 targets ≥ 44×44)
+- [x] `npm run audit:font-sizes` PASS (128 token references)
+- [x] `npm run audit:style` PASS (18 files, 744 options, 0 violations)
+- [x] `npm run build` PASS (PWA precache 1032 → 1037 entries, +5 for emotion-detective)
+- [x] `__version__` 2.6.0 → **2.7.0** (MINOR — new topic/capability)
+- [x] SPEC v3.11 → v3.12 (this section)
+
+### 22.12 Anti-pattern (Sprint 23 必避)
+
+- ❌ 將 faceOptions 同 options mix 喺同一個 scenario — 兩種 mode 數據結構唔同,叉開 render 較清晰
+- ❌ Emotion-detective scenario 用 moral scoring — emotion decoding 唔係 moral judgment,moralChange 鎖死 0
+- ❌ 為 emotion-detective 加 outcome image per option — 答對答錯都係同一個 scenario,冇 per-option 後果
+- ❌ 用真人 AI 臉 — gen 風險高(uncanny valley + content filter),style 一律 cartoon(Line / Disney)
+- ❌ 用唔同人嘅 face options — ASD pedagogy 推薦同人唔同表情,學生學 "情緒" 唔係學 "邊個人"
+- ❌ Face option 嘅 opt-read 縮到 < 44×44 — WCAG 2.5.5 必守,audit:touch-targets 必過
+- ❌ 跳過 face-comparison panel — ASD 學生需要 visual self-correction,答錯一定要見到正確表情對比
+- ❌ Stop-and-think panel 應用落 emotion-detective — 反思 panel 係 moral-choice 嘅 design,emotion match 用唔着
+- ❌ 強加 creed display 喺 emotion-detective result — emotion match 唔 trigger EDB creed,creedText 留空 array
+
+### 22.13 Out-of-scope (v3.12 不做,留 Phase 2 / Phase 3 follow-up)
+
+- ❌ **Bulk 場景(10+ scenarios 覆蓋 8 個 emotion set)** — Phase 2 follow-up, art direction 已 pilot 通過
+- ❌ **TTS scenario question + face label 全粵語 polish** — TTS 讀 "答錯咗。正確嘅表情係..." 已有,但 face label TTS 用 `_speak(face.label)` 簡單 fallback,將來可能 tune 語氣
+- ❌ **Random / shuffled face option order** — 目前 fixed order (A/B/C = 開心/嬲/喊),ASD pedagogy 重複 exposure 需要 fixed order 起步,將來可加 shuffle option
+- ❌ **Repeat exposure mode** — ASD 學生需要重複睇同一個 scenario,目前 1 個 scenario 做完即 mark complete,將來可能加 "再做一次" auto re-pick 同一個
+- ❌ **Difficulty level**(簡單 3 options / 進階 4-6 options)— Phase 3
+- ❌ **Teacher mode 啟用 emotion-detective toggle** — 目前 18 個 topic 一律 enable,將來可能加老師 toggle
+- ❌ **Per-emotion progress metric** — 「小明認得幾多個 emotion」嘅 separate counter,目前只 track 場景 completion
+- ❌ **Animation 配合 face image**(眼睛眨 / 表情 tween)— Phase 3,目前 static image
+- ❌ **情緒 vocabulary expand**(frustrated / proud / confused 等 6+ emotions)— Phase 3 bulk content
+- ❌ **Migrate emotion-detective color topic CSS** — topic 17 色板統一 scope withdrawn(2026-06-23),唔再 invest
+
+### 22.14 Migration impact summary
+
+| Metric | Before | After |
+|---|---|---|
+| Topics 總數 | 17 (12 value + 5 caring) | **18** (+1 emotion-detective) |
+| Topics domain | value + caring | value + caring(unchanged) |
+| Render modes | 1 (moral-choice) | **2** (+ emotion-matching fork) |
+| Scenarios 總數 | 259 | 260 (+1 pilot emotion-detective) |
+| Audit targets (touch-targets) | 7 | 8 (+1 `.face-option .opt-read`) |
+| Audit scenarios files | 17 | 18 (+1 emotion-detective.json, gracefully skipped) |
+| Test count | 175 | **190** (+15 sprint23 tests) |
+| PWA precache entries | 1032 | 1037 (+5:1 chunk + 4 images) |
+| __version__ | 2.6.0 | **2.7.0** |
+
+*Addendum 日期:2026-06-24 | 配合 Sprint 23 開工 | 取代/補充:§21 唔變,純新增 §22 | 維護者: Mavis + kencheng*
 

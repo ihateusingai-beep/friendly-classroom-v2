@@ -172,6 +172,19 @@ export const CARING = [
     creedIds: [11, 9],   // 團結 + 同理心
     color: '#059669',
   },
+  {
+    // Sprint 23 — 情緒小偵探 (SPEC §23)
+    // 適合 SEN / ASD 學生嘅 emotion decoding 練習
+    // 與 value-choice 唔同 axis:認情緒 vs 做判斷
+    // Data schema:faceOptions 取代 options(同人唔同表情,3 個 choices)
+    id: 'emotion-detective',
+    title: '情緒小偵探',
+    emoji: '🕵️',
+    domain: 'caring',
+    description: '睇情境，揾出正確嘅表情',
+    creedIds: [9],   // 同理心基礎
+    color: '#FB923C',
+  },
 ];
 
 // 兩個 domain 合併（17 個，EDB 官方 order 在前，Caring 在後）

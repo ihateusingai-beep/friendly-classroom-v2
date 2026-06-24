@@ -10,7 +10,7 @@ import { getProgress, isCompleted, getStudentSummary } from './domain/Progress.j
 import { getDailyCreed } from './creeds.js';
 import { escapeAttr, escapeJsString } from './util/escape.js';
 import { renderFooter, renderEmptyState } from './components/chrome.js';
-import { renderPageHeader, renderOptionCard, renderOptions, renderBankOptionCard } from './components/blocks.js';
+import { renderPageHeader, renderOptionCard, renderOptions, renderBankOptionCard, renderFaceOptionCard } from './components/blocks.js';
 import { bankRiskLabel, BANK_RISK } from './constants/bank.js';
 import { getTeacherConfig } from './storage.js';
 // Sprint 16: Stop-and-Think panel + Result 頁 TTS 擴展 (SPEC §17.3.4 + §17.4.1)
@@ -781,10 +781,17 @@ export function renderPlay(scenarioId, subjectId) {
         <div class="scenario-bg">📍 ${s.background || ''}</div>
       </div>
 
+      ${s.faceOptions ? `
+      <div class="scenario-desc">
+        <button type="button" class="inline-voice-btn" data-action="speak" data-arg="${escapeAttr(s.id)}" title="朗讀題目" aria-label="朗讀題目">🔊</button>
+        ${escapeAttr(s.question || '')}
+      </div>
+      ` : `
       <div class="scenario-desc">
         <button type="button" class="inline-voice-btn" data-action="speak" data-arg="${escapeAttr(s.id)}" title="朗讀題目" aria-label="朗讀題目">🔊</button>
         ${s.description}
       </div>
+      `}
 
       ${(s.hints && s.hints.length) ? `
       <div class="hints-panel" id="hints-panel">
@@ -808,16 +815,23 @@ export function renderPlay(scenarioId, subjectId) {
       </div>` : ''}
 
       <div class="scenario-image-wrap">
-        <img src="assets/images/scenarios/${s.id}.png" alt="${s.title}" class="scenario-image"
+        <img src="${escapeAttr(s.scenarioImage || `assets/images/scenarios/${s.id}.png`)}" alt="${escapeAttr(s.scenarioImageAlt || s.title)}" class="scenario-image"
              loading="eager" fetchpriority="high"
  />
       </div>
 
+      ${s.faceOptions ? `
+      <!-- Sprint 23 (SPEC §23): 情緒小偵探 — face-option 模式 -->
+      <div class="options-divider" aria-hidden="true">— 揾出佢嘅表情 —</div>
+      <div class="face-options" role="radiogroup" aria-label="${escapeAttr(s.title)} 嘅表情選擇">
+        ${s.faceOptions.map((face, i) => renderFaceOptionCard({ scenarioId: s.id, face, index: i })).join('')}
+      </div>
+      ` : `
       <div class="options-divider" aria-hidden="true">— 揀你嘅選擇 —</div>
-
       <div class="options" role="radiogroup" aria-label="${s.title} 嘅選擇題">
         ${s.options.map((opt, i) => renderOptionCard({ scenarioId: s.id, opt, index: i, isBank: false, showMoral: true })).join('')}
       </div>
+      `}
 
       <button type="button" class="voice-fab" data-action="speak" data-arg="${escapeAttr(s.id)}" title="朗讀題目" aria-label="朗讀題目">🔊</button>
       ${renderFooter()}
@@ -828,6 +842,12 @@ export function renderPlay(scenarioId, subjectId) {
 export function renderResult(data, subjectId) {
   if (!data) {
     return renderEmptyState({ emoji: '⚠️', title: '結果載入失敗，請重試。', actionLabel: '← 返首頁', onAction: 'FC.goHome()' });
+  }
+
+  // Sprint 23 (SPEC §23): emotion-detective fork — different feedback shape
+  // (correct/incorrect face match, no moral score, no creed display).
+  if (data.isCorrect !== undefined) {
+    return renderEmotionResult(data, subjectId);
   }
   const { option, moralChange, mainComment, creeds, creedText, scenarioImage, scenarioTitle } = data;
   const isGood = moralChange >= 0;
@@ -923,6 +943,92 @@ export function renderResult(data, subjectId) {
       </div>
 
       <button type="button" class="voice-fab" data-action="speakCreeds" title="朗讀信條" aria-label="朗讀信條">🔊</button>
+      ${renderFooter()}
+    </div>
+  `;
+}
+
+// ── Emotion Detective Result (Sprint 23 / SPEC §23) ──────────────────────────
+
+/** Result page for emotion-detective scenarios. Fork from renderResult
+ *  because the mechanic is different: correct/incorrect face match instead
+ *  of moral scoring, no creed display, no per-option outcome image.
+ *
+ *  Shows the chosen face image + the correct face image side-by-side so
+ *  students can self-correct visually (key for ASD learners).
+ */
+export function renderEmotionResult(data, subjectId) {
+  const { isCorrect, mainComment, scenarioImage, scenarioTitle, option } = data;
+  const sc = getCurrentScenario();
+  const faceOptions = Array.isArray(sc?.faceOptions) ? sc.faceOptions : [];
+  const chosenFace = faceOptions.find(f => f.id === option?.id) || null;
+  const correctFace = faceOptions.find(f => f.correct === true) || null;
+  const subColor = getSubjectColor(subjectId);
+  const escapedTitle = escapeAttr(scenarioTitle || '情緒小偵探');
+  const escapedComment = escapeAttr(mainComment || '');
+  const ariaResult = isCorrect
+    ? '答啱喇！'
+    : '答錯咗，正確嘅表情會顯示喺下面。';
+
+  return `
+    <div class="container fade-in" id="result-root">
+      <h1 class="sr-only" aria-live="polite" aria-atomic="true">${ariaResult}</h1>
+      ${renderPageHeader({
+        emoji: '🕵️', title: '情緒小偵探',
+        back: 'topic', backArg: sc?.topicId || '',
+        backLabel: sc?.topicId ? '返回主題' : '返回主頁',
+      })}
+      ${subjectId ? `<div style="text-align:center;margin-bottom:8px">
+        <span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>
+      </div>` : ''}
+
+      ${scenarioImage ? `
+      <div class="scenario-image-wrap" style="max-height:160px;margin-bottom:12px;border-radius:16px;overflow:hidden">
+        <img src="${escapeAttr(scenarioImage)}" alt="${escapedTitle}" style="width:100%;max-height:160px;object-fit:cover"
+             loading="lazy" decoding="async" />
+      </div>` : ''}
+
+      <div class="result-card ${isCorrect ? 'good' : 'bad'}" id="result-card" role="status" aria-label="${escapeAttr(ariaResult)}">
+        <div class="result-emoji" aria-hidden="true">${isCorrect ? '🌟' : '🤔'}</div>
+        <div class="comment">${escapedComment}</div>
+        <div class="voice-btn-row">
+          <button type="button" class="inline-voice-btn" data-action="speakEmotionResult" data-arg="${escapeAttr(option?.id || '')}" title="朗讀結果" aria-label="朗讀結果分析">🔊 結果</button>
+        </div>
+      </div>
+
+      ${chosenFace || correctFace ? `
+      <div class="face-comparison" aria-label="你揀嘅同正確嘅對比">
+        <div class="face-compare-cell">
+          <div class="face-compare-label">你揀咗</div>
+          ${chosenFace ? `
+            <img src="${escapeAttr(chosenFace.image)}" alt="${escapeAttr(chosenFace.label)}"
+                 class="face-compare-img ${isCorrect ? 'is-correct' : 'is-wrong'}"
+                 loading="lazy" decoding="async" />
+            <div class="face-compare-name">${escapeAttr(chosenFace.label)}${isCorrect ? ' ✓' : ' ✗'}</div>
+          ` : '<div class="face-compare-name">—</div>'}
+        </div>
+        ${!isCorrect && correctFace ? `
+        <div class="face-compare-cell">
+          <div class="face-compare-label">正確係</div>
+          <img src="${escapeAttr(correctFace.image)}" alt="${escapeAttr(correctFace.label)}"
+               class="face-compare-img is-correct"
+               loading="lazy" decoding="async" />
+          <div class="face-compare-name">${escapeAttr(correctFace.label)} ✓</div>
+        </div>
+        ` : ''}
+      </div>
+      ` : ''}
+
+      <div class="action-row" id="result-actions">
+        <button type="button" class="btn btn-primary" data-action="retry">🔄 再做一次</button>
+        ${(function() {
+          const next = suggestNext(sc?.topicId);
+          return next ? `<button type="button" class="btn btn-primary" data-action="play" data-arg="${escapeAttr(next.id)}">下一題 →</button>` : '';
+        })()}
+        <button type="button" class="btn btn-outline" data-action="goTopic" data-arg="${escapeAttr(sc?.topicId || '')}">← 返回主題</button>
+      </div>
+
+      <button type="button" class="voice-fab" data-action="speakEmotionResult" data-arg="${escapeAttr(option?.id || '')}" title="朗讀結果" aria-label="朗讀結果分析">🔊</button>
       ${renderFooter()}
     </div>
   `;

@@ -48,13 +48,22 @@ export function getInlineActions({ render, _navigate, getState, setView }) {
     },
 
     /** data-action="speakOpt" data-arg="${opt.id}" — read the current
-     *  scenario's option text and feed to TTS. */
+     *  scenario's option text and feed to TTS. Falls back to faceOptions
+     *  (Sprint 23 / SPEC §23 emotion-detective scenarios). */
     speakOpt(optId) {
       if (!optId) return;
       const sc = getCurrentScenario();
-      if (!sc || !sc.options) return;
-      const opt = sc.options.find((o) => o.id === optId);
-      if (opt?.text) _speak(opt.text);
+      if (!sc) return;
+      // Try text options first
+      if (Array.isArray(sc.options)) {
+        const opt = sc.options.find((o) => o.id === optId);
+        if (opt?.text) return _speak(opt.text);
+      }
+      // Fall back to face options (emotion-detective)
+      if (Array.isArray(sc.faceOptions)) {
+        const face = sc.faceOptions.find((f) => f.id === optId);
+        if (face?.label) return _speak(face.label);
+      }
     },
 
     /** data-action="speakCreeds" — read creeds from state.resultData and
@@ -81,6 +90,14 @@ export function getInlineActions({ render, _navigate, getState, setView }) {
     speakStopAndThink() {
       const opt = getState()?.resultData?.option;
       if (opt?.stopAndThink) _speakStopAndThink(opt.stopAndThink);
+    },
+
+    // ── Sprint 23 (SPEC §23): Emotion-detective result TTS ──
+    /** data-action="speakEmotionResult" — read the emotion-detective
+     *  mainComment (already shaped as "答啱喇！..." or "答錯咗。正確..."). */
+    speakEmotionResult() {
+      const rd = getState()?.resultData;
+      if (rd?.mainComment) _speak(rd.mainComment);
     },
 
     // ── Settings (Sprint 12 bridges) ──────────────────────────────

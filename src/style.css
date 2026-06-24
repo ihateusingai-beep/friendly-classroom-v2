@@ -882,6 +882,149 @@ body:has(.action-cta-fab:not([hidden])) .container { padding-bottom: 80px; }
 /* ── 選項按鈕（舊版，已移除） ── */
 .options { display: flex; flex-direction: column; gap: 8px; }
 
+/* ---- Sprint 23 (SPEC §23): 情緒小偵探 — face-option 模式 ----
+   同 .option-card 共享 layout pattern,但 face 圖佔主體,
+   標籤獨立顯示(emotion label 例「開心 / 嬲 / 喊」) */
+.face-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+@media (max-width: 480px) {
+  .face-options { grid-template-columns: repeat(3, 1fr); gap: var(--space-2); }
+}
+.face-option {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border: 3px solid var(--border);
+  border-radius: 18px;
+  background: var(--card);
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+  min-height: 180px;        /* 大觸控目標 + 圖清楚 */
+  touch-action: manipulation;
+}
+.face-option:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(124,58,237,0.18);
+}
+.face-option:active { transform: scale(0.98); }
+.face-option:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.face-option .face-thumb {
+  width: 100%;
+  max-width: 140px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  flex: 1;
+  background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+}
+@media (max-width: 480px) {
+  .face-option .face-thumb { max-width: 96px; }
+  .face-option { min-height: 140px; padding: var(--space-2); }
+}
+.face-option .face-badge {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--color-primary);
+  color: #fff;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: var(--fs-base);
+  box-shadow: 0 2px 6px rgba(124,58,237,0.3);
+}
+.face-option .face-label {
+  font-weight: 800;
+  font-size: var(--fs-lg);
+  color: var(--text);
+  text-align: center;
+}
+.face-option .opt-read {
+  /* 沿用 option-card 嘅 48×48 觸控標準 */
+  position: absolute;
+  bottom: var(--space-2);
+  right: var(--space-2);
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-base);
+  font-weight: 700;
+  flex-shrink: 0;
+  cursor: pointer;
+  color: var(--text);
+  z-index: 2;
+  touch-action: manipulation;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  transition: transform 0.15s, background 0.2s, border-color 0.2s;
+}
+.face-option .opt-read:hover { background: var(--color-primary); color: #fff; border-color: var(--color-primary); transform: scale(1.05); }
+
+/* Sprint 23: face-comparison panel (result 頁對比) */
+.face-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+}
+@media (max-width: 480px) {
+  .face-comparison { grid-template-columns: 1fr; }
+}
+.face-compare-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3);
+  border-radius: 16px;
+  background: var(--card);
+  border: 2px solid var(--border);
+}
+.face-compare-label {
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--text-light);
+  letter-spacing: 0.05em;
+}
+.face-compare-img {
+  width: 100%;
+  max-width: 160px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 3px solid transparent;
+}
+.face-compare-img.is-correct { border-color: #4CAF50; }
+.face-compare-img.is-wrong { border-color: #EF4444; }
+.face-compare-name {
+  font-weight: 800;
+  font-size: var(--fs-lg);
+  color: var(--text);
+}
+
 /* ---- 結果展示 ---- */
 .result-card {
   border-radius: 20px;

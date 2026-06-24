@@ -1,0 +1,37 @@
+[
+  {
+    "id": "ed-1",
+    "title": "收到禮物",
+    "question": "小明生日會，朋友送咗一份禮物畀小明。請問小明收到禮物嘅表情係邊一個？",
+    "scenarioImage": "assets/images/emotion-detective/ed-1-scenario.png",
+    "scenarioImageAlt": "小明收到朋友送嘅禮物",
+    "faceOptions": [
+      {
+        "id": "happy",
+        "label": "開心",
+        "image": "assets/images/emotion-detective/ed-1-face-happy.png",
+        "correct": true
+      },
+      {
+        "id": "angry",
+        "label": "嬲",
+        "image": "assets/images/emotion-detective/ed-1-face-angry.png",
+        "correct": false
+      },
+      {
+        "id": "crying",
+        "label": "喊",
+        "image": "assets/images/emotion-detective/ed-1-face-crying.png",
+        "correct": false
+      }
+    ],
+    "topicId": "emotion-detective",
+    "valueCategory": "emotion-detective",
+    "domain": "caring",
+    "subjectId": "caring",
+    "audience": ["caring"],
+    "riskLevel": 1,
+    "skills": ["情緒辨識", "表情識別"],
+    "creedIds": [9]
+  }
+]

@@ -306,7 +306,9 @@ export function speakScenario(scenario) {
   if (!enabled) { console.log('[FC Audio] Blocked: voice not enabled'); return; }
   if (speaking) { console.log('[FC Audio] Blocked: already speaking'); return; }
   const id = scenario?.id || scenario;
-  const text = scenario?.description || '';
+  // Sprint 23 (SPEC §23): emotion-detective scenarios use `question` instead of `description`.
+  // Fall back to `question` so the same data-action="speak" handler works for both.
+  const text = scenario?.description || scenario?.question || '';
   console.log('[FC Audio] Playing scenario:', id);
   // 直接 Web Speech API TTS（跳過 MP3）
   speak(text);

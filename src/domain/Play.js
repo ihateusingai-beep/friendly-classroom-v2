@@ -106,7 +106,13 @@ export function choose(optionId) {
   try {
     const sc = _playScenario(state.scenarioId);
     if (sc) {
-      const optIdx = sc.options.findIndex(o => o.id === optionId);
+      // Sprint 23 (SPEC §23): emotion-detective scenarios use faceOptions
+      // instead of options; check both for analytics continuity.
+      const optIdx = Array.isArray(sc.options)
+        ? sc.options.findIndex(o => o.id === optionId)
+        : (Array.isArray(sc.faceOptions)
+            ? sc.faceOptions.findIndex(f => f.id === optionId)
+            : -1);
       _logInteraction({
         scenarioId: sc.id,
         topicId: sc.topicId,
