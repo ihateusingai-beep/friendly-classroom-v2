@@ -26,7 +26,7 @@ import { selectStudent } from '../domain/Student.js';
 import { onboardingNext as _onboardingNext, onboardingSkip as _onboardingSkip,
          resetOnboarding as _resetOnboarding } from '../components/Onboarding.js';
 
-const _ALLOWED_HOME_FILTERS = ['value', 'caring', 'all'];
+const _ALLOWED_HOME_FILTERS = ['value', 'caring', 'emotion-detective', 'all'];
 
 /** Build the inline-actions fragment. `deps` is { render, _navigate, getState, setView }.
  *  Returns an object ready for `Object.assign(actions, ...)` in actions/index.js.

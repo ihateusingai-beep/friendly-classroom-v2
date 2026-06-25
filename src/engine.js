@@ -94,10 +94,10 @@ export function renderGameHub() {
           <div class="gc-tag" aria-label="pilot 試玩版">pilot</div>
         </button>
 
-        <button type="button" class="game-card available" data-action="navigate" data-arg="subject-select" style="background:linear-gradient(135deg,var(--color-primary-bg),#e9d5ff);border-color:var(--color-primary)" aria-label="情境答題：17 個品格課題自由探索">
+        <button type="button" class="game-card available" data-action="navigate" data-arg="subject-select" style="background:linear-gradient(135deg,var(--color-primary-bg),#e9d5ff);border-color:var(--color-primary)" aria-label="情境答題：18 個品格課題自由探索">
           <div class="gc-icon" aria-hidden="true">📖</div>
           <div class="gc-title">情境答題</div>
-          <div class="gc-desc">17 個品格課題自由探索：12 個 EDB 價值觀 + 5 個友愛校園範疇</div>
+          <div class="gc-desc">18 個品格課題自由探索：12 個 EDB 價值觀 + 5 個友愛校園 + 1 個情緒小偵探</div>
         </button>
 
         <div class="game-card locked" style="background:linear-gradient(135deg,var(--color-danger-bg),#fecaca);border-color:var(--color-danger);cursor:not-allowed;opacity:0.6" role="img" aria-label="關係花園（暫未推出）">
@@ -661,20 +661,20 @@ export function renderHome(subjectId) {
   const flameEmoji = streak >= 7 ? '🔥' : streak >= 3 ? '✨' : streak >= 1 ? '🌱' : '💤';
   const flameClass = streak >= 7 ? 'flame--hot' : streak >= 1 ? 'flame--warm' : 'flame--cold';
 
-  // Phase 6: subject-domain filter — split the 17 topics into
-  // 🪷 價值觀 (12) / 🌈 友愛校園 (5) / 全部 (17) tabs to declutter the home
-  // grid. Default tracks the student's subject choice (selectsubject already
-  // narrows by domain); 全部 is an explicit escape hatch.
-  const allowedFilters = ['value', 'caring', 'all'];
+  // Phase 6 + Sprint 24: subject-domain filter — split 18 topics into
+  // 🪷 價值觀 (12) / 🌈 友愛校園 (5) / 🕵️ 情緒小偵探 (1) / 全部 (18) tabs。
+  // Sprint 24 把 emotion-detective 從 CARING 抽出嚟獨立做一個 tab,
+  // 因為 axis 同 value-choice 唔同(認情緒 vs 做判斷),唔應該黐喺友愛校園。
+  // Default tracks the student's subject choice; 全部 is the escape hatch.
+  const allowedFilters = ['value', 'caring', 'emotion-detective', 'all'];
   const stored = (typeof localStorage !== 'undefined'
     && localStorage.getItem('fc_home_filter')) || '';
   let filter = allowedFilters.includes(stored) ? stored : '';
   if (!filter) {
     // No saved preference — derive from current subjectId.
-    // subjectId semantics in this app: 'value' (EDB 12 values) / 'caring'
-    // (友愛校園 5) / anything else (uncategorized) → 'all'.
     if (subjectId === 'value') filter = 'value';
     else if (subjectId === 'caring') filter = 'caring';
+    else if (subjectId === 'emotion-detective') filter = 'emotion-detective';
     else filter = 'all';
   }
   const visibleTopics = filter === 'all'
@@ -687,8 +687,7 @@ export function renderHome(subjectId) {
         aria-pressed="${isActive}" aria-label="顯示${label}，共 ${count} 個">${label} <span class="home-filter-count">${count}</span></button>`;
   };
   // Sprint 23 / SPEC §22.16.4 — emotion-detective topic 喺 teacher 關閉時
-  // 隱藏。但係 counts 仍然要 reflect 「冇 emotion-detective」嘅新 total,
-  // 唔好硬編碼 17/12/5。
+  // 隱藏。Counts 仍然要 reflect 「冇 emotion-detective」嘅新 total。
   const _edEnabled = isEmotionDetectiveEnabled();
   const visibleTopicsNoEd = _edEnabled
     ? visibleTopics
@@ -696,12 +695,15 @@ export function renderHome(subjectId) {
   const allNoEd = _edEnabled ? TOPICS : TOPICS.filter(t => t.id !== 'emotion-detective');
   const valuesCount = allNoEd.filter(t => t.domain === 'value').length;
   const caringCount = allNoEd.filter(t => t.domain === 'caring').length;
+  const edCount = allNoEd.filter(t => t.domain === 'emotion-detective').length;
   const allCount = allNoEd.length;
   const sectionTitle = filter === 'all'
-    ? `🪷🌈 全部 ${allCount} 個品格課題`
+    ? `🪷🌈🕵️ 全部 ${allCount} 個品格課題`
     : (filter === 'value'
         ? `🪷 ${valuesCount} 個 EDB 官方價值觀`
-        : `🌈 ${caringCount} 個友愛校園範疇（SEL / 安全）`);
+        : filter === 'emotion-detective'
+          ? `🕵️ ${edCount} 個情緒小偵探課題`
+          : `🌈 ${caringCount} 個友愛校園範疇（SEL / 安全）`);
 
   return `
     <div class="container fade-in">
@@ -740,6 +742,7 @@ export function renderHome(subjectId) {
       <div class="home-filter-row" role="tablist" aria-label="課題分類過濾">
         ${filterTab('value', '🪷 價值觀', valuesCount)}
         ${filterTab('caring', '🌈 友愛校園', caringCount)}
+        ${filterTab('emotion-detective', '🕵️ 情緒小偵探', edCount)}
         ${filterTab('all', '📚 全部', allCount)}
       </div>
 

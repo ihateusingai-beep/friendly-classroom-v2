@@ -331,7 +331,7 @@ function _setViewHTML(html) {
 // `if (typeof fn !== 'function')` branch logs a one-time warning and
 // falls through — the bug becomes visible immediately.
 
-const _DELEGATE_EVENTS = ['click', 'error'];
+const _DELEGATE_EVENTS = ['click', 'error', 'keydown'];
 
 function _setupDelegates(rootEl) {
   if (!rootEl || rootEl.__fcDelegated) return;
@@ -347,7 +347,18 @@ function _setupDelegates(rootEl) {
       t.alt = '（插圖暫不可用）';
     }
   }, true);
-  for (const ev of _DELEGATE_EVENTS.filter(x => x !== 'error')) {
+  // Sprint 24 (SPEC §23 follow-up): delegated `keydown` for [role="button"]
+  // 嘅 a11y 鍵盤激活。Span / div 配 role="button" tabindex="0" 唔會被瀏覽器
+  // 自動 activate(只有 <button> / <a> 預設支援 Enter/Space),所以要喺 root
+  // delegate 一次。唔會干擾原生 <button> 嘅 keydown(原生自己處理緊)。
+  rootEl.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    if (!e.target || e.target.getAttribute('role') !== 'button') return;
+    if (!e.target.dataset || !e.target.dataset.action) return;
+    e.preventDefault();
+    e.target.click();   // 觸發 click delegation,避免兩條 path 重複執行
+  });
+  for (const ev of _DELEGATE_EVENTS.filter(x => x !== 'error' && x !== 'keydown')) {
     rootEl.addEventListener(ev, (e) => {
       // walk up to the closest [data-action]
       let el = e.target;

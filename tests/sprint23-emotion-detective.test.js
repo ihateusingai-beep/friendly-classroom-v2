@@ -42,7 +42,10 @@ describe('Sprint 23 — topics.js entry', () => {
     const t = getTopic('emotion-detective');
     expect(t).toBeDefined();
     expect(t.title).toBe('情緒小偵探');
-    expect(t.domain).toBe('caring');
+    // Sprint 24: emotion-detective 從 CARING 抽出嚟獨立 domain,
+    // 因為 axis 同 value-choice 唔同(認情緒 vs 做判斷),
+    // 唔應該黐喺 🌈 友愛校園 入面。
+    expect(t.domain).toBe('emotion-detective');
   });
 
   it('keeps the canonical 12 EDB value topics untouched', () => {

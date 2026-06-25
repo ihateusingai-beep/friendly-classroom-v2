@@ -70,6 +70,10 @@ export function renderOptionCard({ scenarioId, opt, index, isBank = false, showM
     moralHtml = `<span class="opt-value opt-value-${valueClass}" aria-hidden="true">${valueLabel}</span>`;
   }
 
+  // NOTE: inner opt-read 用 <span role="button"> 唔用 <button> —
+  // HTML5 spec 唔畀 <button> 入面包 <button>,browser 會 auto-close 外層 button,
+  // 結果 opt-read 變咗 .options 嘅 sibling 跌入 grid 細格(layout 會壞)。
+  // span + role="button" + tabindex="0" 通過 a11y + 點得到 + 唔破壞 grid。
   return `
     <button type="button" class="option-card" data-action="${action}" data-arg="${escapeAttr(opt.id)}"
       aria-label="選項 ${label}：${escapeAttr(opt.text)}">
@@ -77,10 +81,10 @@ export function renderOptionCard({ scenarioId, opt, index, isBank = false, showM
       <span class="opt-badge" aria-hidden="true">${label}</span>
       <span class="opt-text">${opt.text}</span>
       ${moralHtml}
-      <button type="button" class="opt-read"
+      <span class="opt-read" role="button" tabindex="0"
         data-action="speakOpt" data-arg="${escapeAttr(opt.id)}"
         title="朗讀呢個選項"
-        aria-label="朗讀選項 ${label}">🔊</button>
+        aria-label="朗讀選項 ${label}">🔊</span>
     </button>
   `;
 }
@@ -114,16 +118,18 @@ export function renderOptions({ scenarioId, options, isBank = false, showMoral =
 export function renderBankOptionCard({ scenarioId, opt, index }) {
   const label = OPTION_LABELS[index] || String(index + 1);
   const imgSrc = `assets/images/outcomes/${scenarioId}_opt${index + 1}.png`;
+  // NOTE: inner opt-read 用 <span role="button"> 唔用 <button> —
+  // 同 renderOptionCard 一樣原因(HTML5 button nesting 唔合法)。
   return `
     <button type="button" class="option-card" data-action="bankChoose" data-arg="${escapeAttr(opt.id)}"
       aria-label="選項 ${label}：${escapeAttr(opt.text)}">
       <img src="${imgSrc}" alt="" class="opt-thumb" loading="lazy" decoding="async" aria-hidden="true" />
       <span class="opt-badge" aria-hidden="true">${label}</span>
       <span class="opt-text">${opt.text}</span>
-      <button type="button" class="opt-read"
+      <span class="opt-read" role="button" tabindex="0"
         data-action="speakOpt" data-arg="${escapeAttr(opt.id)}"
         title="朗讀呢個選項"
-        aria-label="朗讀選項 ${label}">🔊</button>
+        aria-label="朗讀選項 ${label}">🔊</span>
     </button>
   `;
 }
@@ -144,16 +150,19 @@ export function renderBankOptionCard({ scenarioId, opt, index }) {
  */
 export function renderFaceOptionCard({ scenarioId, face, index }) {
   const label = OPTION_LABELS[index] || String(index + 1);
+  // NOTE: inner opt-read 用 <span role="button"> — 同 option-card 一樣原因:
+  // <button> 入面包 <button> HTML5 唔合法,瀏覽器 auto-close 外層 button 後,
+  // opt-read 變 .face-options 嘅 sibling 跌入 grid 細格,layout 會壞晒。
   return `
     <button type="button" class="face-option" data-action="choose" data-arg="${escapeAttr(face.id)}"
       aria-label="表情 ${label}：${escapeAttr(face.label)}">
       <img src="${escapeAttr(face.image)}" alt="" class="face-thumb" loading="lazy" decoding="async" aria-hidden="true" />
       <span class="face-badge" aria-hidden="true">${label}</span>
       <span class="face-label">${escapeAttr(face.label)}</span>
-      <button type="button" class="opt-read"
+      <span class="opt-read" role="button" tabindex="0"
         data-action="speakOpt" data-arg="${escapeAttr(face.id)}"
         title="朗讀「${escapeAttr(face.label)}」"
-        aria-label="朗讀表情 ${label}：${escapeAttr(face.label)}">🔊</button>
+        aria-label="朗讀表情 ${label}：${escapeAttr(face.label)}">🔊</span>
     </button>
   `;
 }

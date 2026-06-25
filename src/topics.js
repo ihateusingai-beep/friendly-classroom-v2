@@ -172,23 +172,27 @@ export const CARING = [
     creedIds: [11, 9],   // 團結 + 同理心
     color: '#059669',
   },
+];
+
+// 🕵️ Sprint 23 — 情緒小偵探 (SPEC §23)
+// Sprint 24: 從 CARING 抽出嚟做獨立 domain — 適合 SEN / ASD 學生嘅
+// emotion decoding 練習,axis 同 value-choice 唔同(認情緒 vs 做判斷),
+// 喺 home tab 都係獨立 🕵️ 一個,唔再塞喺 🌈 友愛校園 入面。
+// Data schema:faceOptions 取代 options(同人唔同表情,3 個 choices)。
+export const EMOTION_DETECTIVE = [
   {
-    // Sprint 23 — 情緒小偵探 (SPEC §23)
-    // 適合 SEN / ASD 學生嘅 emotion decoding 練習
-    // 與 value-choice 唔同 axis:認情緒 vs 做判斷
-    // Data schema:faceOptions 取代 options(同人唔同表情,3 個 choices)
     id: 'emotion-detective',
     title: '情緒小偵探',
     emoji: '🕵️',
-    domain: 'caring',
+    domain: 'emotion-detective',
     description: '睇情境，揾出正確嘅表情',
     creedIds: [9],   // 同理心基礎
     color: '#FB923C',
   },
 ];
 
-// 兩個 domain 合併（17 個，EDB 官方 order 在前，Caring 在後）
-export const TOPICS = [...VALUES, ...CARING];
+// 三個 domain 合併（18 個，EDB 官方 order 在前，Caring 在後，ED 最後）
+export const TOPICS = [...VALUES, ...CARING, ...EMOTION_DETECTIVE];
 
 // 舊 topicId → 新 topicId migration map
 // 用嚟 scenarios.json re-tag 同 user 舊進度兼容
@@ -244,10 +248,20 @@ export function getCaringTopics() {
   return CARING;
 }
 
+// Sprint 24 — emotion-detective 獨立 domain helper
+export function getEmotionDetectiveTopics() {
+  return EMOTION_DETECTIVE;
+}
+
 export function isValueTopic(id) {
   return VALUES.some(v => v.id === id);
 }
 
 export function isCaringTopic(id) {
   return CARING.some(c => c.id === id);
+}
+
+// Sprint 24 — emotion-detective 獨立 helper,filter tab / render 邏輯用
+export function isEmotionDetectiveTopic(id) {
+  return EMOTION_DETECTIVE.some(e => e.id === id);
 }
