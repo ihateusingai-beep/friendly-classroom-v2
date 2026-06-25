@@ -38,3 +38,6 @@ data/.DS_Store
 # Vite cache
 node_modules/.cache/
 .vite/
+
+# Matrix MCP stray output files (saved at repo root by matrix_generate_image)
+matrix-media-*.png

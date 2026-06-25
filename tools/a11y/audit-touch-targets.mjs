@@ -33,7 +33,7 @@ const MIN_TARGET = 44;  // WCAG 2.5.5 (Level AAA, commonly referenced)
 // also check, because .inline-voice-btn has no base size — its size
 // comes from its parent context.
 const TARGETS = [
-  { class: 'opt-read',             contexts: ['.option-card'] },
+  { class: 'opt-read',             contexts: ['.option-card', '.face-option'] },
   { class: 'inline-voice-btn',     contexts: ['.scenario-desc', '.voice-btn-row'] },
   { class: 'voice-fab',            contexts: [] },
   // Onboarding buttons (P1)

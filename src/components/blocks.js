@@ -127,3 +127,33 @@ export function renderBankOptionCard({ scenarioId, opt, index }) {
     </button>
   `;
 }
+
+// ── Face Option Card (Sprint 23 / SPEC §23 — 情緒小偵探) ──────────────────
+
+/** One face option card for emotion-detective scenarios.
+ *  Reuses data-action="choose" so the existing Play.choose() handler
+ *  + ScenarioEngine.chooseOption() face branch handle it the same way
+ *  as a text option — the only difference is the visual: full-bleed
+ *  face image + emotion label (no moral badge).
+ *
+ *  @param {{
+ *    scenarioId: string,
+ *    face:      { id: string, label: string, image: string, correct: boolean },
+ *    index:     number,
+ *  }} cfg
+ */
+export function renderFaceOptionCard({ scenarioId, face, index }) {
+  const label = OPTION_LABELS[index] || String(index + 1);
+  return `
+    <button type="button" class="face-option" data-action="choose" data-arg="${escapeAttr(face.id)}"
+      aria-label="表情 ${label}：${escapeAttr(face.label)}">
+      <img src="${escapeAttr(face.image)}" alt="" class="face-thumb" loading="lazy" decoding="async" aria-hidden="true" />
+      <span class="face-badge" aria-hidden="true">${label}</span>
+      <span class="face-label">${escapeAttr(face.label)}</span>
+      <button type="button" class="opt-read"
+        data-action="speakOpt" data-arg="${escapeAttr(face.id)}"
+        title="朗讀「${escapeAttr(face.label)}」"
+        aria-label="朗讀表情 ${label}：${escapeAttr(face.label)}">🔊</button>
+    </button>
+  `;
+}

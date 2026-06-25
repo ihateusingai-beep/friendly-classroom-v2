@@ -15,6 +15,9 @@ import { speakScenario, speakCreeds, speak as _speak,
          speakOptionText as _speakOptionText,
          speakConsequence as _speakConsequence,
          speakStopAndThink as _speakStopAndThink,
+         speakEmotion as _speakEmotion,
+         speakChained as _speakChained,
+         getEmotionProsody as _getEmotionProsody,
          setTTSLang as _audioSetTTSLang,
          resetAllSettings, setSpacing as _audioSetSpacing, setHC, setVoiceEnabled, isEnabled,
          setReducedMotion } from '../audio.js';
@@ -48,13 +51,26 @@ export function getInlineActions({ render, _navigate, getState, setView }) {
     },
 
     /** data-action="speakOpt" data-arg="${opt.id}" — read the current
-     *  scenario's option text and feed to TTS. */
+     *  scenario's option text and feed to TTS. Falls back to faceOptions
+     *  (Sprint 23 / SPEC §23 emotion-detective scenarios).
+     *  Sprint 23 Phase 3 (SPEC §22.16.2): for face options, use
+     *  emotion-tuned prosody (讀「開心」用高 pitch upbeat rate, 讀「喊」用
+     *  低 pitch slow rate) so the audio cue reinforces the visual face cue
+     *  — key for ASD cross-modal generalization. */
     speakOpt(optId) {
       if (!optId) return;
       const sc = getCurrentScenario();
-      if (!sc || !sc.options) return;
-      const opt = sc.options.find((o) => o.id === optId);
-      if (opt?.text) _speak(opt.text);
+      if (!sc) return;
+      // Try text options first
+      if (Array.isArray(sc.options)) {
+        const opt = sc.options.find((o) => o.id === optId);
+        if (opt?.text) return _speak(opt.text);
+      }
+      // Fall back to face options (emotion-detective) — with emotion prosody
+      if (Array.isArray(sc.faceOptions)) {
+        const face = sc.faceOptions.find((f) => f.id === optId);
+        if (face?.label) return _speakEmotion(face.label, face.label);
+      }
     },
 
     /** data-action="speakCreeds" — read creeds from state.resultData and
@@ -81,6 +97,57 @@ export function getInlineActions({ render, _navigate, getState, setView }) {
     speakStopAndThink() {
       const opt = getState()?.resultData?.option;
       if (opt?.stopAndThink) _speakStopAndThink(opt.stopAndThink);
+    },
+
+    // ── Sprint 23 (SPEC §23): Emotion-detective result TTS ──
+    /** data-action="speakEmotionResult" — read the emotion-detective
+     *  mainComment (already shaped as "答啱喇！..." or "答錯咗。正確...").
+     *  Sprint 23 Phase 3 (SPEC §22.16.2): apply emotion prosody based on
+     *  the emotion the student actually picked (or the correct emotion on
+     *  wrong answers) so the audio reinforces the affective label. */
+    speakEmotionResult() {
+      const rd = getState()?.resultData;
+      if (!rd?.mainComment) return;
+      // Pick the emotion label to drive prosody: prefer the chosen option
+      // for correct answers, fall back to the correct face for wrong answers
+      // (so wrong→correct re-exposure uses the correct emotion's prosody).
+      const sc = getCurrentScenario();
+      const faces = Array.isArray(sc?.faceOptions) ? sc.faceOptions : [];
+      let emotionLabel = null;
+      if (rd.isCorrect && rd.option?.text) {
+        emotionLabel = rd.option.text;
+      } else {
+        const correctFace = faces.find((f) => f.correct === true);
+        emotionLabel = correctFace?.label || rd.option?.text || null;
+      }
+      return _speakEmotion(rd.mainComment, emotionLabel);
+    },
+
+    // ── Sprint 23 Phase 3 (SPEC §22.16.3): Repeat exposure ──
+    /** data-action="repeatExposure" — on the emotion-detective result page,
+     *  re-read the scenario question + all 3 face labels in the current
+     *  (shuffled) display order. Uses emotion prosody per face so the
+     *  student gets an audio reinforcement of every option, not just the
+     *  correct one. Sequence is concatenated with 「。」 separator so
+     *  Web Speech API pauses ~250ms between segments naturally.
+     *
+     *  Why repeat exposure matters for ASD learners: single-shot TTS may
+     *  be missed if attention drifts; a 2nd pass with same shuffled visual
+     *  order anchors the visual ↔ audio mapping. */
+    repeatExposure() {
+      const sc = getCurrentScenario();
+      if (!sc || !Array.isArray(sc.faceOptions) || sc.faceOptions.length === 0) return;
+      // Use the SAME order as currently rendered (deterministic shuffle
+      // by scenarioId — see engine.js renderPlay + SPEC §22.16.1). Since
+      // speak() cancels and replays, and we want the user to hear question
+      // THEN each face, we run them sequentially with onend chaining.
+      const question = sc.question || sc.description || '';
+      const parts = [];
+      if (question) parts.push({ text: question, emotion: null });
+      sc.faceOptions.forEach((f) => {
+        if (f?.label) parts.push({ text: f.label, emotion: f.label });
+      });
+      _speakChained(parts);
     },
 
     // ── Settings (Sprint 12 bridges) ──────────────────────────────

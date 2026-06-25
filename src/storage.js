@@ -118,6 +118,11 @@ const _DEFAULTS = {
   bankMaxRiskLevel: 1,
   buttonSize: 'normal',
   assignedTopics: [],
+  // Sprint 23 / SPEC §22.16.4 — Teacher toggle for emotion-detective topic.
+  // Default ON (backwards-compatible — Phase 2 ship 咗 10 scenarios, 預設開)
+  // 老師可以喺 ⚙️ 功能設定 關閉, 關閉後 home page / topic list 隱藏, deep-link
+  // 入 emotion-detective scenario 會 redirect 去 home + Toast 提示。
+  emotionDetectiveEnabled: true,
 };
 let _cached = null;
 let _cachedAt = 0;

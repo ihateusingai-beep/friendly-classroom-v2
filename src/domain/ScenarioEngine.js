@@ -198,6 +198,12 @@ export function chooseOption(scenarioId, optionId, subjectId) {
   const scenario = scenarios.find(s => s.id === scenarioId) || currentScenario;
   if (!scenario) return null;
 
+  // Sprint 23 (SPEC §23): 情緒小偵探 fork — face matching has no moral scoring,
+  // only correct/incorrect. Returns a result shape compatible with renderResult.
+  if (Array.isArray(scenario.faceOptions) && scenario.faceOptions.length > 0) {
+    return chooseFaceOption(scenario, optionId, subjectId);
+  }
+
   const result = applyScenarioResult(scenario, optionId, currentStudent);
   if (!result) return null;
 
@@ -226,6 +232,52 @@ export function chooseOption(scenarioId, optionId, subjectId) {
 export function getScenarioStatus(scenarioId) {
   if (!currentStudent) return 'locked';
   return isCompleted(currentStudent, scenarioId) ? 'completed' : 'available';
+}
+
+// ── Emotion Detective (Sprint 23 / SPEC §23) ────────────────────────────────
+
+/** Pick a face option for an emotion-detective scenario.
+ *  No moral scoring: we just track completion with a 0 moral-change
+ *  (markComplete writes a completion record but doesn't shift the
+ *  moral bar, since emotion matching isn't a moral judgment).
+ *
+ *  Returns a renderResult-compatible shape:
+ *  - option.text = emotion label (e.g. "開心")
+ *  - moralChange = 0 (completion-only)
+ *  - mainComment = correct/incorrect feedback with the right answer
+ *  - outcomeImage = null (no per-option outcome image)
+ *  - nextScenario = null (no chained scenarios yet)
+ */
+function chooseFaceOption(scenario, faceId, subjectId) {
+  const face = (scenario.faceOptions || []).find(f => f.id === faceId);
+  if (!face) return null;
+
+  const isCorrect = face.correct === true;
+  const correctFace = (scenario.faceOptions || []).find(f => f.correct === true);
+  const correctLabel = correctFace ? correctFace.label : '';
+
+  const mainComment = isCorrect
+    ? `答啱喇！${face.label}就係正確嘅表情。`
+    : `答錯咗。${correctLabel ? `正確嘅表情係「${correctLabel}」。` : '再試多次啦！'}`;
+
+  if (currentStudent) {
+    // 0 moral-change: completion-only, doesn't shift the moral bar.
+    // Still passes subjectId so per-subject progress totals advance.
+    markComplete(currentStudent, scenario.id, scenario.topicId, 0, subjectId ?? null);
+  }
+
+  return {
+    option: { text: face.label, id: face.id },
+    moralChange: 0,
+    mainComment,
+    isCorrect,
+    creeds: [],
+    creedText: [],
+    scenarioImage: scenario.scenarioImage || null,
+    scenarioTitle: scenario.title || '',
+    outcomeImage: null,
+    nextScenario: null,
+  };
 }
 
 // (initedTopicForStudent is declared at the top of this module so
