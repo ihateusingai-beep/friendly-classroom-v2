@@ -478,6 +478,17 @@ export function renderTeacherAssign() {
             role="switch" aria-checked="${config.comboEnabled}" aria-label="Combo 系統開關"></button>
         </div>
 
+        <!-- Sprint 23 / SPEC §22.16.4 — Teacher toggle for emotion-detective topic -->
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">🕵️ 情緒小偵探</div>
+            <div class="ft-desc">SEN / ASD 學生嘅 emotion decoding 練習。關閉後主頁同主題列表隱藏, deep-link 自動跳走。</div>
+          </div>
+          <button type="button" class="toggle-switch ${config.emotionDetectiveEnabled ? 'on' : ''}"
+            data-action="toggleTeacherFeature" data-arg2="emotionDetectiveEnabled"
+            role="switch" aria-checked="${config.emotionDetectiveEnabled}" aria-label="情緒小偵探開關"></button>
+        </div>
+
         <div class="feature-toggle">
           <div>
             <div class="ft-label">🏦 銀行題目難度</div>
@@ -618,6 +629,26 @@ function _renderTopicCard(t, tp) {
   `;
 }
 
+// ── Sprint 23 / SPEC §22.16.4 — Teacher toggle guard ────────────────────────
+//
+// Single boolean flag `emotionDetectiveEnabled` in the teacher config
+// (defaults to true). When the teacher flips it off in ⚙️ 功能設定:
+//   - emotion-detective topic card hidden on home page
+//   - direct deep-link to a emotion-detective scenario (e.g. via
+//     localStorage `fc_last_scenario`) navigates to home + Toast
+//   - renderTopicList('emotion-detective', ...) returns a friendly empty state
+//
+// Used by renderHome, renderTopicList, and Play.play().
+export function isEmotionDetectiveEnabled() {
+  try {
+    const cfg = getTeacherConfig();
+    // Default true (backwards compatible — Phase 2 ship 咗 10 scenarios)
+    return cfg.emotionDetectiveEnabled !== false;
+  } catch {
+    return true;  // SSR / first-load: default ON
+  }
+}
+
 export function renderHome(subjectId) {
   // Phase 2 (S8): hoist the progress read so we hit localStorage ONCE per
   // render, not 17 times. Saves ~14 reads + 14 JSON.parse per home nav.
@@ -655,13 +686,22 @@ export function renderHome(subjectId) {
         data-action="setHomeFilter" data-arg="${key}"
         aria-pressed="${isActive}" aria-label="顯示${label}，共 ${count} 個">${label} <span class="home-filter-count">${count}</span></button>`;
   };
-  const valuesCount = TOPICS.filter(t => t.domain === 'value').length;
-  const caringCount = TOPICS.filter(t => t.domain === 'caring').length;
+  // Sprint 23 / SPEC §22.16.4 — emotion-detective topic 喺 teacher 關閉時
+  // 隱藏。但係 counts 仍然要 reflect 「冇 emotion-detective」嘅新 total,
+  // 唔好硬編碼 17/12/5。
+  const _edEnabled = isEmotionDetectiveEnabled();
+  const visibleTopicsNoEd = _edEnabled
+    ? visibleTopics
+    : visibleTopics.filter(t => t.id !== 'emotion-detective');
+  const allNoEd = _edEnabled ? TOPICS : TOPICS.filter(t => t.id !== 'emotion-detective');
+  const valuesCount = allNoEd.filter(t => t.domain === 'value').length;
+  const caringCount = allNoEd.filter(t => t.domain === 'caring').length;
+  const allCount = allNoEd.length;
   const sectionTitle = filter === 'all'
-    ? '🪷🌈 全部 17 個品格課題'
+    ? `🪷🌈 全部 ${allCount} 個品格課題`
     : (filter === 'value'
-        ? '🪷 12 個 EDB 官方價值觀'
-        : '🌈 5 個友愛校園範疇（SEL / 安全）');
+        ? `🪷 ${valuesCount} 個 EDB 官方價值觀`
+        : `🌈 ${caringCount} 個友愛校園範疇（SEL / 安全）`);
 
   return `
     <div class="container fade-in">
@@ -700,13 +740,13 @@ export function renderHome(subjectId) {
       <div class="home-filter-row" role="tablist" aria-label="課題分類過濾">
         ${filterTab('value', '🪷 價值觀', valuesCount)}
         ${filterTab('caring', '🌈 友愛校園', caringCount)}
-        ${filterTab('all', '📚 全部', TOPICS.length)}
+        ${filterTab('all', '📚 全部', allCount)}
       </div>
 
       <div class="topic-section">
         <h2 class="section-title">${sectionTitle}</h2>
         <div class="topic-grid" role="list" aria-label="${sectionTitle}">
-          ${visibleTopics.map(t => _renderTopicCard(t, topicProgress[t.id] || {})).join('')}
+          ${visibleTopicsNoEd.map(t => _renderTopicCard(t, topicProgress[t.id] || {})).join('')}
         </div>
       </div>
 
@@ -722,6 +762,17 @@ export function renderHome(subjectId) {
 }
 
 export function renderTopicList(topicId, subjectId) {
+  // Sprint 23 / SPEC §22.16.4 — guard against direct deep-link to a
+  // disabled emotion-detective topic. Return friendly empty state.
+  if (topicId === 'emotion-detective' && !isEmotionDetectiveEnabled()) {
+    return renderEmptyState({
+      emoji: '🕵️',
+      title: '情緒小偵探已關閉',
+      hint: '老師已暫時關閉呢個課題。請揀其他品格課題, 或聯絡老師啟用。',
+      actionLabel: '← 返主頁',
+      onAction: 'FC.goHome()',
+    });
+  }
   const topic = getTopic(topicId);
   const topicScenarios = getScenariosByTopic(topicId);
   const subColor = getSubjectColor(subjectId);
@@ -757,6 +808,53 @@ export function renderTopicList(topicId, subjectId) {
   `;
 }
 
+// ── Sprint 23 / SPEC §22.16.1 — Seeded shuffle (deterministic by id) ────────
+//
+// mulberry32-style PRNG seeded by a 32-bit hash of the input string. Used
+// to shuffle emotion-detective face options so the correct face doesn't
+// always land at the same index — critical for ASD generalization (position
+// memory would otherwise let a student "solve" scenarios without reading the
+// emotion label).
+//
+// Determinism: same seed (scenarioId) → same output order across renders.
+// Different scenarios → different order. Fisher–Yates walk over the array.
+//
+// Exported so tests/sprint23-emotion-detective.test.js can assert
+// determinism + non-identity for varied inputs.
+function _hashStringToSeed(str) {
+  // Simple FNV-1a 32-bit hash. Good enough for shuffle seeding (not crypto).
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = (h + ((h << 1) + (h << 4) + (h << 7) + (h << 8) + (h << 24))) >>> 0;
+  }
+  return h >>> 0;
+}
+
+function _mulberry32(seed) {
+  let t = seed >>> 0;
+  return function () {
+    t = (t + 0x6D2B79F5) >>> 0;
+    let r = t;
+    r = Math.imul(r ^ (r >>> 15), r | 1);
+    r ^= r + Math.imul(r ^ (r >>> 7), r | 61);
+    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+export function _seededShuffle(arr, seedStr) {
+  if (!Array.isArray(arr) || arr.length < 2) return arr.slice();
+  const seed = _hashStringToSeed(String(seedStr || ''));
+  const rng = _mulberry32(seed);
+  const out = arr.slice();
+  // Fisher–Yates with seeded RNG
+  for (let i = out.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [out[i], out[j]] = [out[j], out[i]];
+  }
+  return out;
+}
+
 export function renderPlay(scenarioId, subjectId) {
   const s = playScenario(scenarioId);
   if (!s) return renderEmptyState({ emoji: '🫥', title: '場景不存在', actionLabel: '← 返首頁', onAction: 'FC.goHome()' });
@@ -767,6 +865,16 @@ export function renderPlay(scenarioId, subjectId) {
   const topicScenarios = getScenariosByTopic(s.topicId);
   const idxInTopic = topicScenarios.findIndex(x => x.id === s.id) + 1;
   const totalInTopic = topicScenarios.length;
+
+  // Sprint 23 / SPEC §22.16.1 — deterministic shuffle face options by
+  // scenarioId seed. ASD 學生有 position memory 傾向,固定嘅「正確答案
+  // 永遠喺第二個位」會做成 generalization 失敗。Deterministic = 同一
+  // scenarioId 嘅 shuffle order 永遠一樣, retry 公平, 唔同 scenario 嘅
+  // order 唔同。Repeat exposure 嘅 TTS sequence (§22.16.3) 跟返呢個
+  // shuffled order, 等視覺同 audio cue 一致。
+  const displayFaces = s.faceOptions
+    ? _seededShuffle(s.faceOptions, s.id)
+    : null;
 
   return `
     <div class="container fade-in">
@@ -820,11 +928,12 @@ export function renderPlay(scenarioId, subjectId) {
  />
       </div>
 
-      ${s.faceOptions ? `
+      ${displayFaces ? `
       <!-- Sprint 23 (SPEC §23): 情緒小偵探 — face-option 模式 -->
+      <!-- Phase 3 (SPEC §22.16.1): displayFaces 係 s.faceOptions 經 seeded shuffle, 順序 fixed per scenarioId -->
       <div class="options-divider" aria-hidden="true">— 揾出佢嘅表情 —</div>
       <div class="face-options" role="radiogroup" aria-label="${escapeAttr(s.title)} 嘅表情選擇">
-        ${s.faceOptions.map((face, i) => renderFaceOptionCard({ scenarioId: s.id, face, index: i })).join('')}
+        ${displayFaces.map((face, i) => renderFaceOptionCard({ scenarioId: s.id, face, index: i })).join('')}
       </div>
       ` : `
       <div class="options-divider" aria-hidden="true">— 揀你嘅選擇 —</div>
@@ -995,6 +1104,21 @@ export function renderEmotionResult(data, subjectId) {
           <button type="button" class="inline-voice-btn" data-action="speakEmotionResult" data-arg="${escapeAttr(option?.id || '')}" title="朗讀結果" aria-label="朗讀結果分析">🔊 結果</button>
         </div>
       </div>
+
+      <!-- Sprint 23 Phase 3 (SPEC §22.16.3): Repeat exposure — 再聽一次 button.
+           ASD 學生嘅 single-shot TTS 可能 missed (attention drift), 2nd pass
+           anchors visual ↔ audio mapping。TTS 順序 = question + 3 個 face labels
+           (跟返 renderPlay shuffled order), 每段 emotion-tuned prosody。 -->
+      ${faceOptions.length > 0 ? `
+      <div class="repeat-exposure-row" style="text-align:center;margin: var(--space-3) 0">
+        <button type="button" class="btn btn-primary"
+          data-action="repeatExposure"
+          aria-label="再聽一次情境同三個表情標籤"
+          style="min-height:48px;padding: var(--space-3) var(--space-4);font-size:var(--fs-base)">
+          🔁 再聽一次
+        </button>
+      </div>
+      ` : ''}
 
       ${chosenFace || correctFace ? `
       <div class="face-comparison" aria-label="你揀嘅同正確嘅對比">

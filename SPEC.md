@@ -2545,7 +2545,76 @@ Pilot (ed-1 「收到禮物」) ship 後即開 Phase 2:bulk 至 **10 個 scenari
 - Single-image gen 唔 batch 比 3-image batch 穩陣,complex prompt + batch 有 hang 風險
 - 同 scenario 用 image-to-image anchor 會 carry character consistency,但 prompt 唔好太 detail(>80 字 prompt hang 風險高)
 
+## 22.16 Phase 3 polish (2026-06-25) — Wave 1 + Wave 2 UX refinement
+
+Phase 2 ship 咗 10 scenarios / 36 images 嘅 content bulk,但 UX 有 4 個 polish 點 user-confirmed (Phase 1 評審時提出):**face options 位置記憶風險、TTS 過於 monotone、答錯後缺乏 repeat exposure、老師冇 toggle**。Wave 3 (difficulty level 4-6 options) 因為需要 regen ~20-30 張 face image 同時 SPEC §22.13 已 explicit 列為 Phase 3, **defer 到 sprint 24**,呢度先做 Wave 1 + Wave 2 嘅 4 個 code-only / config 改動。
+
+### 22.16.1 Shuffle face options by scenarioId seed
+
+`engine.js renderPlay()` 喺 map `s.faceOptions` 之前做 **deterministic shuffle by scenarioId seed**(用 mulberry32-style PRNG,seed = hash32(scenarioId))。原因:ASD 學生有 position memory 傾向,固定嘅「正確答案永遠喺第二個位」會做成 generalization 失敗。Deterministic = 同一 scenarioId 嘅 shuffle order 永遠一樣, retry 公平, 但唔同 scenario 嘅 order 唔同。
+
+### 22.16.2 Cantonese emotion prosody in TTS
+
+`audio.js` 加 `_EMOTION_PROSODY` map(10 個 emotion label → `{pitch, rate}`)同 `speakEmotion(text, emotionLabel)` wrapper。`speak(text, langOverride, opts)` 接受 optional `{pitch, rate}` override。原 `speak()` 行為唔變(emotion 唔 match 時 fallback neutral pitch=1.0, rate=getParams().speed)。
+
+| Emotion | Pitch | Rate | 設計理由 |
+|---|---|---|---|
+| 開心 | 1.20 | 0.95 | 高 pitch 配 upbeat rate, 表達 positive affect |
+| 喊 | 0.85 | 0.70 | 低 pitch + 慢 rate, 表達 sadness |
+| 嬲 | 0.90 | 0.95 | 略低 pitch 配 medium-fast, 表達 anger intensity |
+| 驚 | 1.25 | 1.00 | 高 pitch + medium-fast, 表達 fear arousal |
+| 驚訝 | 1.35 | 1.05 | 最高 pitch, 表達 surprise peak |
+| 厭惡 | 0.95 | 0.80 | 中低 pitch 配 slow, 表達 disgust |
+| 尷尬 | 1.05 | 0.85 | 中 pitch 配略快, 表達 nervous energy |
+| 攰 | 0.85 | 0.70 | 低 pitch + 慢 rate, 表達 fatigue |
+| 困惑 | 1.05 | 0.85 | 中高 pitch 配 medium, 表達 uncertainty |
+| 驕傲 | 1.10 | 0.90 | 中高 pitch + confident rate, 表達 pride |
+
+⚠️ Pitch/rate range 保守 — 太多 variation 會 trigger Web Speech API 嘅 weird artifact, 唔好用 full TTS prosody library 嘅 range。10×0.05 step 大致上係 voice 自然能 accept 嘅 modulation ceiling。
+
+Prosody trigger points:
+- `speakEmotionResult` 讀 `mainComment` → 用 student 揀嘅 emotion label 嘅 prosody(正向 emotion 鼓勵,負向 emotion normalize)
+- `speakOpt` 讀 face label → 用 face 嘅 emotion prosody(讀「開心」就用開心 voice,讀「喊」就用喊 voice)
+- Repeat exposure 嘅 question 讀法 → neutral prosody(讀題唔需要 emotion overlay)
+
+### 22.16.3 Repeat exposure button on result page
+
+`engine.js renderEmotionResult()` 加「🔁 再聽一次」button,`data-action="repeatExposure"`。`actions/inline.js repeatExposure()` 順序 TTS 讀:
+1. Scenario 嘅 `question` (neutral prosody)
+2. 三個 face labels (用 emotion prosody, 順序同現時 shuffled 顯示 order)
+
+Pause 用 「。」 separator (TTS 自動 pause 約 250ms)。整段 < 15 秒, 適合 ASD 學生嘅 attention span。
+
+### 22.16.4 Teacher toggle for emotion-detective
+
+`storage.js` teacher config defaults 加 `emotionDetectiveEnabled: true`(backwards compatible — 10 scenarios 已 ship, 預設 ON)。`engine.js renderTeacherAssign()` 加 toggle switch (re-use `toggleTeacherFeature` pattern)。Filter 點:
+- `renderHome()` — emotion-detective topic card 喺 disable 時 skip
+- `renderTopicList('emotion-detective', ...)` — disable 時 return empty state + 提示訊息
+- Direct deep-link (localStorage `fc_last_scenario` = emotion-detective scenario) — `Play.play()` 開頭 check, disabled 時 `_navigate('home')` 同 Toast 提示「老師已關閉呢個課題」
+
+⚠️ **唔用 `assignedTopics` 機制** (雖然已存在) — 唔好 force 將 emotion-detective 同其他 17 個 topic 嘅 filter logic 攬埋一齊,因為 `assignedTopics` 喺 home page 暫時未有 enforcement (見 §22.16.5 follow-up), Phase 3 暫做獨立 boolean flag 避免 regression。
+
+### 22.16.5 Out-of-scope (Phase 3 deferral)
+
+- ❌ **Difficulty level** (簡單 3 options / 進階 4-6 options) — Phase 3 Wave 3, defer 到 **sprint 24** (需要 regen ~20-30 張 face image, matrix MCP rate limit 風險, 同 Phase 2 ed-7 silhouette hang 問題屬同類)
+- ❌ **Animation 配合 face image** (眼睛眨 / 表情 tween) — Phase 3, 唔做 (Lottie / animated WebP 對 SEN 學生 app 嘅 a11y cost 過高, 同 Gundam Live2D 嘅 prior decision 一致)
+- ❌ **`assignedTopics` filter 通用化** — 上面 §22.16.4 已註: 唔喺呢個 commit 攬
+- ❌ **Emotion vocabulary expand** (frustrated / lonely / jealous 等更細粒度) — Phase 3 bulk content, 等 difficulty level 一齊做
+
+### 22.16.6 Acceptance criteria (✅)
+
+- [ ] `audio.js speak()` 接受 opts `{pitch, rate}`, 唔 emotion override 時保持現有 neutral prosody
+- [ ] `_EMOTION_PROSODY` map 覆蓋所有 10 emotion label, 冇 undefined emotion
+- [ ] `engine.js renderPlay()` shuffle deterministically — 同一 scenarioId 兩次 render 出同一 order, 唔同 scenario 嘅 order 唔同
+- [ ] `engine.js renderEmotionResult()` 有「🔁 再聽一次」button, trigger 後 4-5 秒內讀晒 question + 3 face labels
+- [ ] `storage.js` defaults 加 `emotionDetectiveEnabled: true`
+- [ ] `engine.js renderTeacherAssign()` 有 emotion-detective toggle, 切到 OFF 後 home page 同 topic list 隱藏
+- [ ] Direct deep-link 入 disabled emotion-detective scenario 時 navigate 去 home + Toast 提示
+- [ ] Tests: shuffle determinism, emotion prosody map completeness, repeat exposure handler, teacher toggle filter
+- [ ] `npm run build` PASS
+- [ ] `npm test` 全部 PASS (zero regression vs Phase 2 嘅 212 tests)
+
 ---
 
-*Addendum 日期:2026-06-24 | 配合 Sprint 23 開工 | 取代/補充:§21 唔變,純新增 §22 | 維護者: Mavis + kencheng*
+*Addendum 日期:2026-06-25 | Phase 3 polish — Wave 1+2 freeze, Wave 3 defer 到 sprint 24 | 維護者: Mavis + kencheng*
 

@@ -19,7 +19,8 @@
 // The animation helpers (triggerConfetti / triggerStarFloat / triggerComfort)
 // are module-private since they have no external callers.
 
-import { announceScenarioLoad } from '../components/Toast.js';
+import { announceScenarioLoad, announceToSR } from '../components/Toast.js';
+import { isEmotionDetectiveEnabled } from '../engine.js';
 
 let _setView = null;
 let _render = null;
@@ -69,6 +70,16 @@ export function play(scenarioId) {
     // If the scenario truly doesn't exist in any chunk, bail back to home.
     if (!sc) {
       _navigate('home');
+      return;
+    }
+    // Sprint 23 / SPEC §22.16.4 — deep-link guard: if scenario belongs to
+    // the emotion-detective topic AND teacher has disabled it, redirect
+    // home + Toast. Avoids stale `fc_last_scenario` pointing at a hidden
+    // topic (e.g. student reopens app after teacher toggles off).
+    if (sc.topicId === 'emotion-detective' && !isEmotionDetectiveEnabled()) {
+      try { localStorage.removeItem('fc_last_scenario'); } catch {}
+      _navigate('home');
+      announceToSR('老師已關閉情緒小偵探課題, 已返回主頁');
       return;
     }
     localStorage.setItem('fc_last_scenario', scenarioId);

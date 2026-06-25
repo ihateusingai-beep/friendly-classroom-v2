@@ -336,15 +336,25 @@ export function speakCreeds(creeds) {
 // 通用朗讀（使用 Web Speech API — Instant TTS，零延遲）
 // Optional `langOverride` 強制用特定 lang（e.g. speakCreeds() 強制 zh-HK），
 // 唔影響 user 嘅 settings 偏好。
-export async function speak(text, langOverride = null) {
+// Optional `opts` = { pitch?, rate? } overrides per-utterance prosody
+// (Sprint 23 / SPEC §22.16.2 — Cantonese emotion prosody map for emotion-detective).
+// pitch/rate 唔傳 = 用 default (pitch 1.0, rate = user settings.speed)。
+export async function speak(text, langOverride = null, opts = null) {
   if (!text) return;
-  if (speaking) window.speechSynthesis?.cancel();
+  // Don't interrupt an in-flight chained speak (SPEC §22.16.3) — the chain
+  // is a deliberate sequence (e.g. question + 3 face labels for repeat
+  // exposure). Interrupting it would orphan the remaining parts.
+  if (speaking && !_chainActive) window.speechSynthesis?.cancel();
   const utterance = new SpeechSynthesisUtterance(text);
   const effectiveLang = langOverride
     || (currentLang === 'auto' ? 'zh-HK' : currentLang);
   utterance.lang = effectiveLang;
-  utterance.rate = getParams().speed || 0.85;
-  utterance.pitch = 1.0;
+  utterance.rate = (opts && typeof opts.rate === 'number')
+    ? opts.rate
+    : (getParams().speed || 0.85);
+  utterance.pitch = (opts && typeof opts.pitch === 'number')
+    ? opts.pitch
+    : 1.0;
   // 揾 voice：override 嘅 lang 唔影響 user cache (cachedVoice), 用
   // 獨立 lang code 即時 re-resolve。
   const voice = langOverride
@@ -366,6 +376,121 @@ export async function speak(text, langOverride = null) {
     }
   };
   window.speechSynthesis?.speak(utterance);
+}
+
+// ── Sprint 23 / SPEC §22.16.2 — Cantonese emotion prosody map ────────────────
+//
+// For emotion-detective scenarios, we modulate TTS pitch + rate per emotion
+// label so the audio cue reinforces the visual face cue (key for ASD learners
+// who struggle with cross-modal generalization). Range is conservative —
+// Web Speech API artifacts show up above ~1.4 pitch / 1.2 rate, so we stay
+// in [0.7, 1.35] × [0.7, 1.05].
+//
+// Map keys MUST match the `face.label` strings in emotion-detective.json.
+// Tested in tests/sprint23-emotion-detective.test.js (Phase 3 — Emotion
+// prosody coverage).
+export const _EMOTION_PROSODY = {
+  '開心':   { pitch: 1.20, rate: 0.95 },  // happy: higher pitch, upbeat rate
+  '喊':     { pitch: 0.85, rate: 0.70 },  // crying: lower pitch, slow
+  '嬲':     { pitch: 0.90, rate: 0.95 },  // angry: slightly lower, intense
+  '驚':     { pitch: 1.25, rate: 1.00 },  // scared: high pitch, arousal
+  '驚訝':   { pitch: 1.35, rate: 1.05 },  // surprised: peak pitch, fast
+  '厭惡':   { pitch: 0.95, rate: 0.80 },  // disgust: mid-low, slow
+  '尷尬':   { pitch: 1.05, rate: 0.85 },  // embarrassed: mid, nervous
+  '攰':     { pitch: 0.85, rate: 0.70 },  // tired: low, slow
+  '困惑':   { pitch: 1.05, rate: 0.85 },  // confused: mid-high, uncertain
+  '驕傲':   { pitch: 1.10, rate: 0.90 },  // proud: mid-high, confident
+};
+
+/** Look up the prosody override for an emotion label.
+ *  Returns `null` if the label is not in the map — caller should pass
+ *  null to `speak()` to keep the neutral prosody.
+ *  @param {string|null|undefined} label
+ *  @returns {{pitch: number, rate: number}|null}
+ */
+export function getEmotionProsody(label) {
+  if (!label || typeof label !== 'string') return null;
+  return _EMOTION_PROSODY[label] || null;
+}
+
+/** Speak a piece of text with emotion-tuned prosody.
+ *  Convenience wrapper around `speak()` that looks up the emotion label
+ *  in `_EMOTION_PROSODY` and applies `{pitch, rate}` override.
+ *  No-op if `emotionLabel` is missing/null/unknown — falls back to the
+ *  neutral prosody.
+ *
+ *  @param {string} text         — what to say
+ *  @param {string|null} emotionLabel — Cantonese emotion word (e.g. "開心")
+ *  @param {string|null} langOverride — optional lang override (e.g. 'zh-HK')
+ */
+export async function speakEmotion(text, emotionLabel, langOverride = null) {
+  if (!text) return;
+  const prosody = getEmotionProsody(emotionLabel);
+  return speak(text, langOverride, prosody);
+}
+
+// ── Sprint 23 / SPEC §22.16.3 — Chained TTS for repeat exposure ─────────────
+//
+// `speak()` cancels any in-flight utterance on each call, which is wrong
+// for the emotion-detective "再聽一次" repeat exposure flow: we want to
+// queue [question, face1, face2, face3] and have them play sequentially
+// with a short pause between.
+//
+// `speakChained(parts)` walks the parts list and uses each utterance's
+// `onend` to fire the next. The module-level `_chainActive` flag is checked
+// by `speak()` so a stray single-shot speak call doesn't kill the chain.
+//
+// Each part: { text: string, emotion?: string|null }
+//   - `text` is required; empty parts are skipped
+//   - `emotion` is a Cantonese emotion label looked up in `_EMOTION_PROSODY`
+//     to apply per-utterance pitch/rate overrides
+let _chainActive = false;
+
+export function isChainedSpeaking() {
+  return _chainActive;
+}
+
+export async function speakChained(parts) {
+  if (!Array.isArray(parts) || parts.length === 0) return;
+  // Filter empty parts
+  const queue = parts.filter((p) => p && typeof p.text === 'string' && p.text.trim());
+  if (queue.length === 0) return;
+  // If a single-shot speak() is in flight, cancel it first so we own the synth
+  if (speaking) window.speechSynthesis?.cancel();
+  _chainActive = true;
+  _setVoiceButtonsSpeaking(true);
+
+  let idx = 0;
+  const playNext = async () => {
+    if (idx >= queue.length) {
+      _chainActive = false;
+      speaking = false;
+      _setVoiceButtonsSpeaking(false);
+      return;
+    }
+    const part = queue[idx++];
+    const prosody = getEmotionProsody(part.emotion);
+    const utterance = new SpeechSynthesisUtterance(part.text);
+    utterance.lang = (currentLang === 'auto' ? 'zh-HK' : currentLang);
+    utterance.rate = (prosody && typeof prosody.rate === 'number')
+      ? prosody.rate
+      : (getParams().speed || 0.85);
+    utterance.pitch = (prosody && typeof prosody.pitch === 'number')
+      ? prosody.pitch
+      : 1.0;
+    const voice = await pickBestVoice();
+    if (voice) utterance.voice = voice;
+    utterance.onstart = () => { speaking = true; };
+    utterance.onend = () => { speaking = false; playNext(); };
+    utterance.onerror = () => {
+      speaking = false;
+      _chainActive = false;
+      _setVoiceButtonsSpeaking(false);
+      console.error('[FC TTS Chained] Error on part', idx, '— chain aborted');
+    };
+    window.speechSynthesis?.speak(utterance);
+  };
+  await playNext();
 }
 
 // One-shot voice resolver for a specific lang code. Doesn't touch the
