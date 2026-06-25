@@ -12,7 +12,7 @@ import './sw-register.js';  // PWA install + update prompt
 import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic,
          getDisplayProgress, initTopicProgress, initSubjectProgress, renderHome, renderTopicList,
          renderPlay, renderResult, renderProgress, renderSettings,
-         playScenario, getCurrentScenario, chooseOption, suggestNext,
+         playScenario, getCurrentScenario, chooseOption, suggestNext, ensureStudent,
          renderRoleSelect, renderModeSelect, renderTeacherAssign, renderGameHub,
          renderBankPlay, renderBankResult, renderBankSummary,
          GAME_MODES } from './engine.js';

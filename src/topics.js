@@ -191,6 +191,29 @@ export const EMOTION_DETECTIVE = [
   },
 ];
 
+// 🕵️ Sprint 25 — 情緒小偵探 sub-categories (SPEC §25)
+// 學生 mode 入到 topic 之後, 將 10 個 ed-* scenarios 分做 sub-tab:
+// 🟡 basic = Ekman 6 basic emotions (happiness / sadness / anger /
+//            fear / surprise / disgust) — 適合初階 emotion decoding
+// 🟠 social = self-evaluative + social emotions (尷尬/攰/困惑/驕傲)
+//            — 適合高階 / 校園社交情境辨識
+// 📚 all = 全部 10 個, 維持 backward compat
+//
+// UI 喺 topic view (renderTopicList) 入面用呢個 const 嚟 render sub-tabs。
+// 唔影響 home tab 嘅 🕵️ 情緒小偵探 入口, 學生可以喺入到 topic 之後先揀 sub。
+export const EMOTION_CATEGORIES = [
+  { id: 'basic',  emoji: '🟡', label: '基本情緒 (Ekman 6)', short: '基本情緒', description: '6 種基本情緒：開心 / 嬲 / 喊 / 驚 / 驚訝 / 厭惡' },
+  { id: 'social', emoji: '🟠', label: '社交 / 自評情緒',    short: '社交情緒', description: '4 種社交情境情緒：尷尬 / 攰 / 困惑 / 驕傲' },
+  { id: 'all',    emoji: '📚', label: '全部 10 個情境',      short: '全部',     description: '基本 + 社交所有情境' },
+];
+
+// Helper: filter scenarios by emotionCategory. Returns array (empty if
+// category id unknown). 'all' returns the input array unchanged.
+export function filterScenariosByEmotionCategory(scenarios, categoryId) {
+  if (!categoryId || categoryId === 'all') return scenarios.slice();
+  return scenarios.filter(s => s?.emotionCategory === categoryId);
+}
+
 // 三個 domain 合併（18 個，EDB 官方 order 在前，Caring 在後，ED 最後）
 export const TOPICS = [...VALUES, ...CARING, ...EMOTION_DETECTIVE];
 

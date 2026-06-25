@@ -110,6 +110,21 @@ export function setStudent(name) {
 }
 export function getStudent() { return currentStudent; }
 
+// Sprint 25 P1 fix: 學生 mode → hub → 情境答題 嘅流程唔經 student-select,
+// `currentStudent` 會係 null, 導致 markComplete 跳過 save、suggestNext 返
+// `topicScenarios[0]` 做成「下一題 重複同一題」。ensureStudent() 喺冇
+// student 時 lazy-set 一個 fallback ('同學'), 等匿名 / reload 後嘅用戶
+// 都可以正常 save progress 同 suggestNext 跳下一題。
+// - 唔影響 selectStudent() 嘅 multi-user flow (學生 picker 仍然 work)
+// - 單機 / 教學 demo 場景預設匿名保存
+const ANONYMOUS_STUDENT = '同學';
+export function ensureStudent() {
+  if (!currentStudent) {
+    setStudent(ANONYMOUS_STUDENT);
+  }
+  return currentStudent;
+}
+
 // ── Scenarios ──
 // Backward-compat: replaces the in-memory cache. New code should prefer
 // loadScenarios() (eager full-load) or loadScenariosForTopic() (per-chunk
@@ -260,10 +275,14 @@ function chooseFaceOption(scenario, faceId, subjectId) {
     ? `答啱喇！${face.label}就係正確嘅表情。`
     : `答錯咗。${correctLabel ? `正確嘅表情係「${correctLabel}」。` : '再試多次啦！'}`;
 
-  if (currentStudent) {
+  // Sprint 25 P1: lazy-create anonymous student if none picked yet, so
+  // markComplete actually persists progress + suggestNext can advance.
+  // (Bug: 學生 mode → hub 唔經 student-select, currentStudent 之前係 null。)
+  const student = ensureStudent();
+  if (student) {
     // 0 moral-change: completion-only, doesn't shift the moral bar.
     // Still passes subjectId so per-subject progress totals advance.
-    markComplete(currentStudent, scenario.id, scenario.topicId, 0, subjectId ?? null);
+    markComplete(student, scenario.id, scenario.topicId, 0, subjectId ?? null);
   }
 
   return {
@@ -324,7 +343,11 @@ export function getDisplayProgress() {
 
 export function suggestNext(topicId) {
   const topicScenarios = getScenariosByTopic(topicId);
-  if (!currentStudent) return topicScenarios[0] || null;
-  const p = getProgress(currentStudent);
+  // Sprint 25 P1: ensureStudent() 確保即使冇 explicit 揀過學生,
+  // 都會 fallback 去 '同學' 令 completedScenarios 可以 track,
+  // 唔會重複彈同一題。
+  const student = ensureStudent();
+  if (!student) return topicScenarios[0] || null;
+  const p = getProgress(student);
   return topicScenarios.find(s => !p.completedScenarios.includes(s.id)) || null;
 }

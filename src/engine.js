@@ -3,7 +3,7 @@
 // 所有 render* 函數保留在此檔案
 
 import { getSubjectColor, getSubjectBgColor, getSubjectName, getSubjectEmoji, getAllSubjects } from './subjects.js';
-import { getTopic, TOPICS, VALUES, CARING } from './topics.js';
+import { getTopic, TOPICS, VALUES, CARING, EMOTION_CATEGORIES, filterScenariosByEmotionCategory } from './topics.js';
 import { speakScenario, speakCreeds, isEnabled } from './audio.js';
 import { getMoralBarData } from './domain/Moral.js';
 import { getProgress, isCompleted, getStudentSummary } from './domain/Progress.js';
@@ -12,7 +12,7 @@ import { escapeAttr, escapeJsString } from './util/escape.js';
 import { renderFooter, renderEmptyState } from './components/chrome.js';
 import { renderPageHeader, renderOptionCard, renderOptions, renderBankOptionCard, renderFaceOptionCard } from './components/blocks.js';
 import { bankRiskLabel, BANK_RISK } from './constants/bank.js';
-import { getTeacherConfig } from './storage.js';
+import { getTeacherConfig, STORAGE_KEYS } from './storage.js';
 // Sprint 16: Stop-and-Think panel + Result 頁 TTS 擴展 (SPEC §17.3.4 + §17.4.1)
 import {
   shouldRenderStopAndThink,
@@ -30,12 +30,12 @@ import {
   chooseOption,
   getScenarioStatus,
   initTopicProgress, initSubjectProgress,
-  getDisplayProgress, suggestNext,
+  getDisplayProgress, suggestNext, ensureStudent,
 } from './domain/ScenarioEngine.js';
 
 export { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic,
          playScenario, getCurrentScenario, chooseOption, getScenarioStatus, initTopicProgress,
-         initSubjectProgress, getDisplayProgress, suggestNext };
+         initSubjectProgress, getDisplayProgress, suggestNext, ensureStudent };
 
 // ── Role Select (Entry Screen) ──────────────────────────────────────────────
 export function renderRoleSelect() {
@@ -777,9 +777,20 @@ export function renderTopicList(topicId, subjectId) {
     });
   }
   const topic = getTopic(topicId);
-  const topicScenarios = getScenariosByTopic(topicId);
+  const allTopicScenarios = getScenariosByTopic(topicId);
   const subColor = getSubjectColor(subjectId);
   initTopicProgress(topicId);
+
+  // Sprint 25 (SPEC §25): emotion-detective topic 加 sub-tab, 將 10 個
+  // scenarios 按 emotionCategory 分做 🟡 基本情緒 / 🟠 社交情緒 / 📚 全部。
+  // 其他 topic (EDB 12 + caring 5) 唔受影響, 直接顯示全部 scenarios。
+  const isEmotionDetective = topicId === 'emotion-detective';
+  const activeCategoryId = isEmotionDetective
+    ? ((typeof localStorage !== 'undefined' && localStorage.getItem(STORAGE_KEYS.ED_FILTER)) || 'all')
+    : 'all';
+  const topicScenarios = isEmotionDetective
+    ? filterScenariosByEmotionCategory(allTopicScenarios, activeCategoryId)
+    : allTopicScenarios;
 
   return `
     <div class="container fade-in">
@@ -787,6 +798,23 @@ export function renderTopicList(topicId, subjectId) {
         rightButton: subjectId ? `<span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>` : ''
       })}
       <p style="color:var(--text-light);margin-bottom:16px">${topic.description}</p>
+
+      ${isEmotionDetective ? `
+      <div class="home-filter-row" role="tablist" aria-label="情緒小偵探 — 範疇過濾" style="margin-bottom:16px">
+        ${EMOTION_CATEGORIES.map(cat => {
+          const isActive = activeCategoryId === cat.id;
+          const count = cat.id === 'all'
+            ? allTopicScenarios.length
+            : allTopicScenarios.filter(s => s.emotionCategory === cat.id).length;
+          return `<button type="button" class="home-filter-tab ${isActive ? 'active' : ''}"
+              data-action="setEmotionCategory" data-arg="${cat.id}"
+              aria-pressed="${isActive}"
+              aria-label="顯示${cat.label}，共 ${count} 個">
+              ${cat.emoji} ${cat.short} <span class="home-filter-count">${count}</span>
+            </button>`;
+        }).join('')}
+      </div>
+      ` : ''}
 
       <ul class="scenario-list" role="list" aria-label="${topic.title} 嘅 ${topicScenarios.length} 個情境">
         ${topicScenarios.map(s => {
@@ -798,13 +826,18 @@ export function renderTopicList(topicId, subjectId) {
                 <span class="check" aria-hidden="true">${done ? '✓' : ''}</span>
                 <span class="info">
                   <span class="title">${s.title}</span>
-                  <span class="sub">${s.background || ''}</span>
+                  ${s.emotionLabel ? `<span class="sub emotion-tag" aria-label="情緒範疇 ${escapeAttr(s.emotionLabel)}">${escapeAttr(s.emotionLabel)}</span>` : `<span class="sub">${s.background || ''}</span>`}
                 </span>
                 <span aria-hidden="true" style="font-size:1.2em">→</span>
               </button>
             </li>
           `;
         }).join('')}
+        ${topicScenarios.length === 0 ? `
+          <li role="listitem" style="text-align:center;color:var(--text-light);padding: var(--space-4)">
+            呢個範疇暫時未有情境,試下其他範疇啦。
+          </li>
+        ` : ''}
       </ul>
       ${renderFooter()}
     </div>

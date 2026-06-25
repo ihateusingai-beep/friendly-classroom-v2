@@ -29,10 +29,19 @@
     "valueCategory": "emotion-detective",
     "domain": "caring",
     "subjectId": "caring",
-    "audience": ["caring"],
+    "audience": [
+      "caring"
+    ],
     "riskLevel": 1,
-    "skills": ["情緒辨識", "表情識別"],
-    "creedIds": [9]
+    "skills": [
+      "情緒辨識",
+      "表情識別"
+    ],
+    "creedIds": [
+      9
+    ],
+    "emotionCategory": "basic",
+    "emotionLabel": "開心"
   },
   {
     "id": "ed-2",
@@ -64,10 +73,19 @@
     "valueCategory": "emotion-detective",
     "domain": "caring",
     "subjectId": "caring",
-    "audience": ["caring"],
+    "audience": [
+      "caring"
+    ],
     "riskLevel": 1,
-    "skills": ["情緒辨識", "表情識別"],
-    "creedIds": [9]
+    "skills": [
+      "情緒辨識",
+      "表情識別"
+    ],
+    "creedIds": [
+      9
+    ],
+    "emotionCategory": "basic",
+    "emotionLabel": "喊"
   },
   {
     "id": "ed-3",
@@ -99,10 +117,19 @@
     "valueCategory": "emotion-detective",
     "domain": "caring",
     "subjectId": "caring",
-    "audience": ["caring"],
+    "audience": [
+      "caring"
+    ],
     "riskLevel": 2,
-    "skills": ["情緒辨識", "表情識別"],
-    "creedIds": [9]
+    "skills": [
+      "情緒辨識",
+      "表情識別"
+    ],
+    "creedIds": [
+      9
+    ],
+    "emotionCategory": "basic",
+    "emotionLabel": "嬲"
   },
   {
     "id": "ed-4",
@@ -134,10 +161,19 @@
     "valueCategory": "emotion-detective",
     "domain": "caring",
     "subjectId": "caring",
-    "audience": ["caring"],
+    "audience": [
+      "caring"
+    ],
     "riskLevel": 1,
-    "skills": ["情緒辨識", "表情識別"],
-    "creedIds": [9]
+    "skills": [
+      "情緒辨識",
+      "表情識別"
+    ],
+    "creedIds": [
+      9
+    ],
+    "emotionCategory": "basic",
+    "emotionLabel": "驚"
   },
   {
     "id": "ed-5",
@@ -169,10 +205,19 @@
     "valueCategory": "emotion-detective",
     "domain": "caring",
     "subjectId": "caring",
-    "audience": ["caring"],
+    "audience": [
+      "caring"
+    ],
     "riskLevel": 1,
-    "skills": ["情緒辨識", "表情識別"],
-    "creedIds": [9]
+    "skills": [
+      "情緒辨識",
+      "表情識別"
+    ],
+    "creedIds": [
+      9
+    ],
+    "emotionCategory": "basic",
+    "emotionLabel": "驚訝"
   },
   {
     "id": "ed-6",
@@ -204,10 +249,19 @@
     "valueCategory": "emotion-detective",
     "domain": "caring",
     "subjectId": "caring",
-    "audience": ["caring"],
+    "audience": [
+      "caring"
+    ],
     "riskLevel": 1,
-    "skills": ["情緒辨識", "表情識別"],
-    "creedIds": [9]
+    "skills": [
+      "情緒辨識",
+      "表情識別"
+    ],
+    "creedIds": [
+      9
+    ],
+    "emotionCategory": "basic",
+    "emotionLabel": "厭惡"
   },
   {
     "id": "ed-7",
@@ -239,10 +293,19 @@
     "valueCategory": "emotion-detective",
     "domain": "caring",
     "subjectId": "caring",
-    "audience": ["caring"],
+    "audience": [
+      "caring"
+    ],
     "riskLevel": 1,
-    "skills": ["情緒辨識", "表情識別"],
-    "creedIds": [9]
+    "skills": [
+      "情緒辨識",
+      "表情識別"
+    ],
+    "creedIds": [
+      9
+    ],
+    "emotionCategory": "social",
+    "emotionLabel": "尷尬"
   },
   {
     "id": "ed-8",
@@ -274,10 +337,19 @@
     "valueCategory": "emotion-detective",
     "domain": "caring",
     "subjectId": "caring",
-    "audience": ["caring"],
+    "audience": [
+      "caring"
+    ],
     "riskLevel": 1,
-    "skills": ["情緒辨識", "表情識別"],
-    "creedIds": [9]
+    "skills": [
+      "情緒辨識",
+      "表情識別"
+    ],
+    "creedIds": [
+      9
+    ],
+    "emotionCategory": "social",
+    "emotionLabel": "攰"
   },
   {
     "id": "ed-9",
@@ -309,10 +381,19 @@
     "valueCategory": "emotion-detective",
     "domain": "caring",
     "subjectId": "caring",
-    "audience": ["caring"],
+    "audience": [
+      "caring"
+    ],
     "riskLevel": 1,
-    "skills": ["情緒辨識", "表情識別"],
-    "creedIds": [9]
+    "skills": [
+      "情緒辨識",
+      "表情識別"
+    ],
+    "creedIds": [
+      9
+    ],
+    "emotionCategory": "social",
+    "emotionLabel": "困惑"
   },
   {
     "id": "ed-10",
@@ -344,9 +425,18 @@
     "valueCategory": "emotion-detective",
     "domain": "caring",
     "subjectId": "caring",
-    "audience": ["caring"],
+    "audience": [
+      "caring"
+    ],
     "riskLevel": 1,
-    "skills": ["情緒辨識", "表情識別"],
-    "creedIds": [9]
+    "skills": [
+      "情緒辨識",
+      "表情識別"
+    ],
+    "creedIds": [
+      9
+    ],
+    "emotionCategory": "social",
+    "emotionLabel": "驕傲"
   }
 ]

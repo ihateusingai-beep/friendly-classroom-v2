@@ -4,6 +4,7 @@ node_modules/
 # Build output (deployed via gh-pages / GitHub Actions from a separate branch)
 dist/
 dist-temp/
+dev-dist/
 
 # OS / editor cruft
 .DS_Store

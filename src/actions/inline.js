@@ -25,6 +25,7 @@ import { addStudent as _addStudent } from '../domain/Progress.js';
 import { selectStudent } from '../domain/Student.js';
 import { onboardingNext as _onboardingNext, onboardingSkip as _onboardingSkip,
          resetOnboarding as _resetOnboarding } from '../components/Onboarding.js';
+import { STORAGE_KEYS } from '../storage.js';
 
 const _ALLOWED_HOME_FILTERS = ['value', 'caring', 'emotion-detective', 'all'];
 
@@ -258,6 +259,19 @@ export function getInlineActions({ render, _navigate, getState, setView }) {
         return;
       }
       localStorage.setItem('fc_home_filter', filter);
+      render();
+    },
+
+    // ── Sprint 25 (SPEC §25): 情緒小偵探 topic sub-tab filter ───────
+    // 在 topic view (renderTopicList) 入面用, 將 10 個 ed-* scenarios 按
+    // emotionCategory 分做 🟡 基本情緒 / 🟠 社交情緒 / 📚 全部。State 存喺
+    // STORAGE_KEYS.ED_FILTER (獨立 key, 唔影響 home filter)。
+    setEmotionCategory(categoryId) {
+      if (!['basic', 'social', 'all'].includes(categoryId)) {
+        console.warn('[FC] setEmotionCategory: invalid category', categoryId);
+        return;
+      }
+      localStorage.setItem(STORAGE_KEYS.ED_FILTER, categoryId);
       render();
     },
 

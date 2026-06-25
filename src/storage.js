@@ -45,6 +45,11 @@ export const STORAGE_KEYS = Object.freeze({
   // picked 價值觀教育; 'caring' for 友愛校園; 'all' if no subject yet.
   HOME_FILTER: 'fc_home_filter',
 
+  // Sprint 25 (SPEC §25): 情緒小偵探 topic sub-tab filter
+  // ('basic' | 'social' | 'all') — 入到 ED topic 之後嘅 sub-tab state,
+  // 獨立於 home filter。學生返去 topic 嗰陣會 keep 返上一個 sub-tab。
+  ED_FILTER: 'fc_ed_filter',
+
   // Sprint 18 P1: first-visit onboarding completion flag.
   // 首次進入 app 嗰陣 show 教學 carousel,完成後 set true。
   // 「重看教學」喺 settings 入面,reset flag 後 re-show。
