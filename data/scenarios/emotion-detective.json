@@ -90,20 +90,20 @@
   {
     "id": "ed-3",
     "title": "比人搶咗玩具",
-    "question": "小明喺公園玩緊玩具，突然有個陌生人行埋嚟搶咗小明嘅玩具走咗。請問小明嘅表情係邊一個？",
+    "question": "小明喺公園玩緊玩具，突然有個陌生人行埋嚟搶咗小明嘅玩具走咗。小明好傷心，眼淚都流晒出嚟。請問小明嘅表情係邊一個？",
     "scenarioImage": "assets/images/emotion-detective/ed-3-scenario.png",
-    "scenarioImageAlt": "小明玩具比人搶咗",
+    "scenarioImageAlt": "小明玩具比人搶咗，傷心到喊",
     "faceOptions": [
-      {
-        "id": "angry",
-        "label": "嬲",
-        "image": "assets/images/emotion-detective/ed-3-face-angry.png",
-        "correct": true
-      },
       {
         "id": "crying",
         "label": "喊",
         "image": "assets/images/emotion-detective/ed-3-face-crying.png",
+        "correct": true
+      },
+      {
+        "id": "angry",
+        "label": "嬲",
+        "image": "assets/images/emotion-detective/ed-3-face-angry.png",
         "correct": false
       },
       {
@@ -129,7 +129,7 @@
       9
     ],
     "emotionCategory": "basic",
-    "emotionLabel": "嬲"
+    "emotionLabel": "喊"
   },
   {
     "id": "ed-4",
@@ -177,10 +177,10 @@
   },
   {
     "id": "ed-5",
-    "title": "朋友突然大叫",
-    "question": "小明坐喺度溫書，朋友突然喺背後大叫一聲「嘩！」。請問小明嘅表情係邊一個？",
+    "title": "朋友生日祝福",
+    "question": "小明坐喺度溫書，朋友突然喺背後大叫一聲「生日快樂！」，仲送咗一份禮物。請問小明嘅表情係邊一個？",
     "scenarioImage": "assets/images/emotion-detective/ed-5-scenario.png",
-    "scenarioImageAlt": "朋友喺背後大叫",
+    "scenarioImageAlt": "朋友喺背後大叫生日快樂，送禮物畀小明",
     "faceOptions": [
       {
         "id": "surprised",
@@ -271,15 +271,15 @@
     "scenarioImageAlt": "小明上台唱歌全班望住",
     "faceOptions": [
       {
-        "id": "embarrassed",
-        "label": "尷尬",
-        "image": "assets/images/emotion-detective/ed-7-face-embarrassed.png",
-        "correct": true
-      },
-      {
         "id": "scared",
         "label": "驚",
         "image": "assets/images/emotion-detective/ed-7-face-scared.png",
+        "correct": true
+      },
+      {
+        "id": "embarrassed",
+        "label": "尷尬",
+        "image": "assets/images/emotion-detective/ed-7-face-embarrassed.png",
         "correct": false
       },
       {
@@ -305,7 +305,7 @@
       9
     ],
     "emotionCategory": "social",
-    "emotionLabel": "尷尬"
+    "emotionLabel": "驚"
   },
   {
     "id": "ed-8",
@@ -354,20 +354,20 @@
   {
     "id": "ed-9",
     "title": "唔識答老師問題",
-    "question": "老師問小明一條數學題，但小明完全唔識答。請問小明嘅表情係邊一個？",
+    "question": "老師問小明一條數學題，但小明完全唔識答，小明好驚畀老師鬧。請問小明嘅表情係邊一個？",
     "scenarioImage": "assets/images/emotion-detective/ed-9-scenario.png",
-    "scenarioImageAlt": "小明唔識答老師問題",
+    "scenarioImageAlt": "小明唔識答老師問題，好驚畀老師鬧",
     "faceOptions": [
-      {
-        "id": "confused",
-        "label": "困惑",
-        "image": "assets/images/emotion-detective/ed-9-face-confused.png",
-        "correct": true
-      },
       {
         "id": "scared",
         "label": "驚",
         "image": "assets/images/emotion-detective/ed-9-face-scared.png",
+        "correct": true
+      },
+      {
+        "id": "confused",
+        "label": "困惑",
+        "image": "assets/images/emotion-detective/ed-9-face-confused.png",
         "correct": false
       },
       {
@@ -393,25 +393,25 @@
       9
     ],
     "emotionCategory": "social",
-    "emotionLabel": "困惑"
+    "emotionLabel": "驚"
   },
   {
     "id": "ed-10",
     "title": "考試攞第一",
     "question": "小明今次考試攞咗全班第一名，老師仲喺全班面前讚佢。請問小明嘅表情係邊一個？",
     "scenarioImage": "assets/images/emotion-detective/ed-10-scenario.png",
-    "scenarioImageAlt": "小明考試攞第一名",
+    "scenarioImageAlt": "小明考試攞第一名，老師讚佢",
     "faceOptions": [
-      {
-        "id": "proud",
-        "label": "驕傲",
-        "image": "assets/images/emotion-detective/ed-10-face-proud.png",
-        "correct": true
-      },
       {
         "id": "happy",
         "label": "開心",
         "image": "assets/images/emotion-detective/ed-10-face-happy.png",
+        "correct": true
+      },
+      {
+        "id": "proud",
+        "label": "驕傲",
+        "image": "assets/images/emotion-detective/ed-10-face-proud.png",
         "correct": false
       },
       {
@@ -437,6 +437,6 @@
       9
     ],
     "emotionCategory": "social",
-    "emotionLabel": "驕傲"
+    "emotionLabel": "開心"
   }
 ]

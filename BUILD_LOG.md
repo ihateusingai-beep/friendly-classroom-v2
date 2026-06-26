@@ -1,5 +1,40 @@
 # Build Log - friendly-classroom-v2
 
+## v2.10.0-2026-06-26 - Emotion-Detective Pedagogy MID Adaptation
+
+**Date:** 2026-06-26
+**Git:** (pending — sprint 26 commit)
+**GitHub Pages:** https://ihateusingai-beep.github.io/friendly-classroom-v2/
+
+### Changes Applied
+- **5 個 emotion-detective scenarios 重寫 correct answer + wording** for MID (moderate intellectual disability) 學生 pedagogy:
+  - ed-3 比人搶玩具: correct 嬲 → **喊** (first reaction), wording 加「小明好傷心，眼淚都流晒出嚟」
+  - ed-5 朋友大叫: wording 由「嘩！」中性 → **「生日快樂！仲送咗一份禮物」** (positive surprise cue)
+  - ed-7 全班望住: correct 尷尬 → **驚** (怯場 concrete emotion)
+  - ed-9 唔識答老師問題: correct 困惑 → **驚** (wording 加「小明好驚畀老師鬧」)
+  - ed-10 考試攞第一: correct 驕傲 → **開心** (concrete observable emotion)
+- **Test invariant 改動** (`tests/sprint25-emotion-categories.test.js` §4):
+  - Ekman 6 distinct correct → at-least-once pool exposure (容許重複, 配合 spaced repetition pedagogy)
+  - Social category covers 4 distinct self-evaluative → covers 4 scenarios (emotion 可為 basic Ekman)
+- **Face image reuse**: 30 張 face PNG 全部沿用 (同角色風格一致), 唔使 regen
+- **Scenario image regen pending**: `ed-5-scenario.png` 待 AI gen positive surprise context
+
+### 關鍵文件
+- data/scenarios/emotion-detective.json: 5 scenarios edit (faceOptions correct swap + wording + emotionLabel)
+- tests/sprint25-emotion-categories.test.js §4: invariant 由 strict distinct → at-least-once exposure
+- SPEC.md §22.17: Sprint 26 addendum
+- package.json: version 2.9.0 → 2.10.0
+- assets/images/emotion-detective/ed-5-scenario.png: pending regen
+
+### Rollback
+```bash
+cd ~/workspace/friendly-classroom-v2
+git reset --hard <sprint-26-commit-prev>  # 回滾到 v2.9.0 stable
+git push --force origin main
+```
+
+---
+
 ## v2.2.0-2026-06-04 - Outcome Images + Web Speech TTS
 
 **Date:** 2026-06-04
