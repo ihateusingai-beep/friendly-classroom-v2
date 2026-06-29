@@ -13,6 +13,10 @@ import { renderFooter, renderEmptyState } from './components/chrome.js';
 import { renderPageHeader, renderOptionCard, renderOptions, renderBankOptionCard, renderFaceOptionCard } from './components/blocks.js';
 import { bankRiskLabel, BANK_RISK } from './constants/bank.js';
 import { getTeacherConfig, STORAGE_KEYS } from './storage.js';
+// Sprint 27 U1: gated single-column home redesign
+import { isFeatureEnabled } from './constants/feature-flags.js';
+// Sprint 27 U3: resume banner — pure helpers for "should we render + how to format"
+import { getResumeCandidate, formatRelativePlayed } from './domain/Resume.js';
 // Sprint 16: Stop-and-Think panel + Result 頁 TTS 擴展 (SPEC §17.3.4 + §17.4.1)
 import {
   shouldRenderStopAndThink,
@@ -705,14 +709,101 @@ export function renderHome(subjectId) {
           ? `🕵️ ${edCount} 個情緒小偵探課題`
           : `🌈 ${caringCount} 個友愛校園範疇（SEL / 安全）`);
 
+  // Sprint 27 U1: single-column home redesign.
+  //   - When HOME_REDESIGN flag is ON: 3-tier vertical hierarchy, topic grid
+  //     wrapped in <details> default-collapsed, footer reduced to 3 quick actions.
+  //   - When OFF: original 4-tab filter + always-visible grid + 4-button footer.
+  // Both branches share the same data (computed above) so a flag toggle is a
+  // visual switch only — no data-shape divergence.
+  const useRedesign = isFeatureEnabled('HOME_REDESIGN');
+  // Sprint 27 U3: resume banner — top-of-home CTA when student has a recently
+  // played scenario they can continue. Pure helper (domain/Resume.js) returns
+  // null when banner should NOT show (no fc_last_scenario, already completed,
+  // dismissed within 24h, scenario no longer in cache, or > 7d stale).
+  let resumeBannerHtml = '';
+  if (isFeatureEnabled('RESUME_BANNER')) {
+    const resume = getResumeCandidate(getScenarios(), getStudent());
+    if (resume) {
+      const sc = (getScenarios() || []).find((s) => s && s.id === resume.scenarioId);
+      const title = sc ? sc.title : resume.scenarioId;
+      const relative = formatRelativePlayed(resume.playedAt);
+      const ariaLabel = `繼續上次玩嘅場景：${title}${relative ? `，${relative}` : ''}`;
+      resumeBannerHtml = `
+        <div class="home-resume-banner" role="region" aria-label="${escapeAttr(ariaLabel)}">
+          <span class="resume-emoji" aria-hidden="true">📍</span>
+          <span class="resume-text">上次玩到 <strong>${escapeAttr(title)}</strong>${relative ? `（${escapeAttr(relative)}）` : ''}</span>
+          <button type="button" class="btn btn-primary resume-cta"
+            data-action="resumeLast"
+            aria-label="${escapeAttr(ariaLabel)}，撳此繼續">▶️ 繼續</button>
+          <button type="button" class="resume-dismiss"
+            data-action="dismissResume"
+            aria-label="隱藏呢個提示">✕</button>
+        </div>`;
+    }
+  }
+  const filterRowHtml = useRedesign ? `
+      <div class="home-filter-row" role="tablist" aria-label="課題分類過濾">
+        ${filterTab('value', '🪷 價值觀', valuesCount)}
+        ${filterTab('caring', '🌈 友愛校園', caringCount)}
+        ${filterTab('emotion-detective', '🕵️ 情緒小偵探', edCount)}
+        ${filterTab('all', '📚 全部', allCount)}
+      </div>` : `
+      <div class="home-filter-row" role="tablist" aria-label="課題分類過濾">
+        ${filterTab('value', '🪷 價值觀', valuesCount)}
+        ${filterTab('caring', '🌈 友愛校園', caringCount)}
+        ${filterTab('emotion-detective', '🕵️ 情緒小偵探', edCount)}
+        ${filterTab('all', '📚 全部', allCount)}
+      </div>`;
+  // U1 redesign wraps the topic section in <details> so 18 cards don't all
+  // demand vertical attention on first paint. Default collapsed = student sees
+  // hero → creed → footer CTA → "展開課題" affordance. Filter tabs stay
+  // inline so the user can still narrow before expanding.
+  const topicSectionHtml = useRedesign ? `
+      <details class="home-topics-disclosure" ${filter === 'all' ? '' : 'open'}>
+        <summary class="home-topics-summary">
+          <span class="home-topics-summary-emoji" aria-hidden="true">📚</span>
+          <span class="home-topics-summary-text">${sectionTitle}</span>
+          <span class="home-topics-summary-chev" aria-hidden="true">▾</span>
+        </summary>
+        <div class="topic-grid" role="list" aria-label="${sectionTitle}">
+          ${visibleTopicsNoEd.map(t => _renderTopicCard(t, topicProgress[t.id] || {})).join('')}
+        </div>
+        <p class="home-topics-hint" aria-hidden="true">💡 老師可撳「📚 全部」tab 展開全部課題</p>
+      </details>` : `
+      <div class="topic-section">
+        <h2 class="section-title">${sectionTitle}</h2>
+        <div class="topic-grid" role="list" aria-label="${sectionTitle}">
+          ${visibleTopicsNoEd.map(t => _renderTopicCard(t, topicProgress[t.id] || {})).join('')}
+        </div>
+      </div>`;
+  const footerHtml = useRedesign ? `
+      <div class="home-footer-grid">
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="progress">📊 我的進度</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="settings">⚙️ 設定</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="hub">🎮 返回 Game Hub</button>
+      </div>` : `
+      <div class="home-footer-grid">
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="progress">📊 我的進度</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="settings">⚙️ 設定</button>
+        <button type="button" class="btn btn-outline" data-action="switchStudent">🔄 切換學生</button>
+        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="hub">🎮 返回 Game Hub</button>
+      </div>`;
+  // U1: when redesign is on, switchStudent collapses into header right button
+  // (kept on the page header so it's always 1 tap away, not buried in footer).
+  const headerRightButtonHtml = useRedesign
+    ? `<button type="button" class="back-btn" data-action="switchStudent" title="切換學生" aria-label="切換學生">🔄</button>`
+    : `<button type="button" class="back-btn" data-action="switchStudent" title="切換學生" aria-label="切換學生">🔄</button>`;
+
   return `
     <div class="container fade-in">
       ${renderPageHeader({
         emoji: '🌟', title: '友愛教室', back: 'hub', backLabel: '返回 Game Hub',
-        rightButton: `<button type="button" class="back-btn" data-action="switchStudent" title="切換學生" aria-label="切換學生">🔄</button>`
+        rightButton: headerRightButtonHtml
       })}
 
       ${getStudent() ? renderMoralBar(getStudent()) : ''}
+
+      ${resumeBannerHtml}
 
       <div class="home-hero">
         <div class="hero-greeting">
@@ -739,26 +830,11 @@ export function renderHome(subjectId) {
         </div>
       </div>
 
-      <div class="home-filter-row" role="tablist" aria-label="課題分類過濾">
-        ${filterTab('value', '🪷 價值觀', valuesCount)}
-        ${filterTab('caring', '🌈 友愛校園', caringCount)}
-        ${filterTab('emotion-detective', '🕵️ 情緒小偵探', edCount)}
-        ${filterTab('all', '📚 全部', allCount)}
-      </div>
+      ${filterRowHtml}
 
-      <div class="topic-section">
-        <h2 class="section-title">${sectionTitle}</h2>
-        <div class="topic-grid" role="list" aria-label="${sectionTitle}">
-          ${visibleTopicsNoEd.map(t => _renderTopicCard(t, topicProgress[t.id] || {})).join('')}
-        </div>
-      </div>
+      ${topicSectionHtml}
 
-      <div class="home-footer-grid">
-        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="progress">📊 我的進度</button>
-        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="settings">⚙️ 設定</button>
-        <button type="button" class="btn btn-outline" data-action="switchStudent">🔄 切換學生</button>
-        <button type="button" class="btn btn-outline" data-action="navigate" data-arg="hub">🎮 返回 Game Hub</button>
-      </div>
+      ${footerHtml}
       ${renderFooter()}
     </div>
   `;
@@ -1200,6 +1276,13 @@ export function renderProgress(subjectId) {
   const total = summary.score;
   const completed = summary.completedCount;
   const subColor = getSubjectColor(subjectId);
+  // Sprint 26 (B1 fix): the template below reads `p.lastPlayed`,
+  // `p.subjectProgress`, `p.topicProgress` — those need the full progress
+  // record, not just the summary. Previous code omitted this declaration
+  // and the view threw `ReferenceError: p is not defined` on first render,
+  // falling into renderErrorFallback. Pull the canonical record.
+  const studentId = getStudent();
+  const p = studentId ? getProgress(studentId) : null;
   // Sprint 14.4: derive `subjects` from the single source in subjects.js
   // (was a hardcoded `[value]` copy). Combines emoji + title so the
   // existing template can render `'🎯 價值觀教育'` without changing call
@@ -1223,7 +1306,7 @@ ${renderPageHeader({
           <div class="label">📝 已完成場景</div>
         </div>
         <div class="progress-cell" role="listitem">
-          <div class="num" aria-label="最近遊玩 ${p.lastPlayed || '從未'}">${p.lastPlayed ? new Date(p.lastPlayed).toLocaleDateString('zh-HK', { month: 'short', day: 'numeric' }) : '—'}</div>
+          <div class="num" aria-label="最近遊玩 ${p?.lastPlayed || '從未'}">${p?.lastPlayed ? new Date(p.lastPlayed).toLocaleDateString('zh-HK', { month: 'short', day: 'numeric' }) : '—'}</div>
           <div class="label">🗓️ 最近遊玩</div>
         </div>
       </div>
@@ -1231,7 +1314,7 @@ ${renderPageHeader({
       ${subjectId ? `<div class="card" style="margin-bottom:12px">
         <div style="font-weight:600;margin-bottom:10px">📚 科目進度</div>
         ${subjects.map(sub => {
-          const sp = p.subjectProgress?.[sub.id] || {};
+          const sp = p?.subjectProgress?.[sub.id] || {};
           const pct = sp.total ? Math.round((sp.completed / sp.total) * 100) : 0;
           return `
             <div style="margin-bottom:8px">
@@ -1247,7 +1330,7 @@ ${renderPageHeader({
       </div>` : ''}
 
       ${TOPICS.map(tid => {
-        const tp = p.topicProgress[tid.id] || {};
+        const tp = p?.topicProgress?.[tid.id] || {};
         const pct = tp.total ? Math.round((tp.completed / tp.total) * 100) : 0;
         return `
           <div class="card" style="margin-bottom:10px">
