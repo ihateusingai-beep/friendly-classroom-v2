@@ -6,6 +6,8 @@ import {
   stripEmojiForTTS,
   formatStopAndThinkForTTS,
 } from './domain/Feedback.js';
+// Sprint 27 D1: warm-theme flag check (default OFF)
+import { isFeatureEnabled } from './constants/feature-flags.js';
 
 const audioBase = 'audio/';
 
@@ -234,6 +236,19 @@ function getParams() {
   };
 }
 
+// Sprint 27 D1: warm-theme attribute setter. Called from applyCSS() below.
+// Kept separate so a teacher dashboard (future) could toggle without going
+// through audio.js settings.
+function _applyWarmThemeAttr(enabled) {
+  const root = document.documentElement;
+  if (enabled) root.setAttribute('data-warm-theme', 'true');
+  else root.removeAttribute('data-warm-theme');
+}
+
+function _isWarmThemeOn() {
+  try { return isFeatureEnabled('WARM_THEME'); } catch { return false; }
+}
+
 export function applyCSS() {
   const p = getParams();
   const spacingMap = { narrow: '8px', medium: '16px', wide: '28px' };
@@ -247,6 +262,14 @@ export function applyCSS() {
   // Reduced motion mode: toggle data-rm attribute on <html>，CSS 跟住做 override
   if (p.reducedMotion) root.setAttribute('data-rm', 'true');
   else root.removeAttribute('data-rm');
+  // Sprint 27 D1: warm theme (emerald + cream) — default OFF, opt-in via
+  // FLAGS.WARM_THEME. CSS overrides come from :root[data-warm-theme="true"]
+  // block in style.css so the rest of the design tokens cascade naturally.
+  try {
+    _applyWarmThemeAttr(Boolean(_isWarmThemeOn()));
+  } catch {
+    _applyWarmThemeAttr(false);
+  }
 }
 
 /** Toggle reduced-motion mode (Sprint 14.2 — guards against
