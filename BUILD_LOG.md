@@ -1,27 +1,5 @@
 # Build Log - friendly-classroom-v2
 
-## v2.11.1-2026-07-02 - 好人好事銀行 card wording fix
-
-**Date:** 2026-07-02
-**Git:** (pending — to fill after commit)
-**GitHub Pages:** https://ihateusingai-beep.github.io/friendly-classroom-v2/
-
-### Changes Applied
-
-好人好事銀行 Hub card description: replace colloquial 「衰嘢」with standard 「壞事」in the gameplay summary line. 「衰嘢」is Cantonese slang with crude / moral-judgment connotations — inappropriate for SEN/ASD/MID primary students (the project's primary audience). Replacement preserves parallel rhythm with 做好事 / 壞事 and uses EDB-standard CN vocabulary.
-
-Files touched (3 occurrences):
-- `src/engine.js:93` — a11y aria-label
-- `src/engine.js:96` — visible card description (`<div class="gc-desc">`)
-- `src/i18n.js:55` — `hub.bankDesc` string table entry
-
-Spec addendum: `SPEC.md` §17.3.5 「Bank 沿用獨立 game mode」 still applies; no spec change.
-
-### Rollback Command
-gh release view v2.11.1-2026-07-02
-
----
-
 ## v2.11.0-2026-06-27 - Sprint 27: Engagement Overhaul
 
 **Date:** 2026-06-27
