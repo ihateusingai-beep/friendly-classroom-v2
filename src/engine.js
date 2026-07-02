@@ -104,12 +104,12 @@ export function renderGameHub() {
           <div class="gc-desc">18 個品格課題自由探索：12 個 EDB 價值觀 + 5 個友愛校園 + 1 個情緒小偵探</div>
         </button>
 
-        <div class="game-card locked" style="background:linear-gradient(135deg,var(--color-danger-bg),#fecaca);border-color:var(--color-danger);cursor:not-allowed;opacity:0.6" role="img" aria-label="關係花園（暫未推出）">
+        <button type="button" class="game-card available" data-action="playRelationshipGarden" style="background:linear-gradient(135deg,var(--color-danger-bg),#fecaca);border-color:var(--color-danger)" aria-label="關係花園：揀個朋友，5 個情境一齊建立友誼">
           <div class="gc-icon" aria-hidden="true">🌷</div>
           <div class="gc-title">關係花園</div>
-          <div class="gc-desc">（即將推出）</div>
-          <div class="gc-tag" aria-hidden="true">coming soon</div>
-        </div>
+          <div class="gc-desc">揀個朋友，5 個情境一齊建立友誼</div>
+          <div class="gc-tag" aria-label="Sprint 18 解鎖">Sprint 18</div>
+        </button>
 
         <div class="game-card locked" style="background:linear-gradient(135deg,var(--color-primary-bg),#e9d5ff);border-color:#a855f7;cursor:not-allowed;opacity:0.6" role="img" aria-label="道德大富翁（暫未推出）">
           <div class="gc-icon" aria-hidden="true">🎲</div>
@@ -360,6 +360,214 @@ export const GAME_MODES = [
     bg: 'linear-gradient(135deg, #f3e8ff, #e9d5ff)',
   },
 ];
+
+// ── 🌷 關係花園 (Relationship Garden) ──────────────────────────────────────
+// Sprint 18 — 3-character roster × 5-step arc × per-character monologue voice.
+// Mirrors the bank pattern (renderBankPlay / renderBankResult / renderBankSummary).
+
+import {
+  GARDEN_CONFIG, CHARACTERS, GARDEN_ARC, MONOLOGUES,
+} from './constants/garden.js';
+import {
+  getGardenRun, getCurrentArcScenarioId, getArcLabel,
+} from './games/RelationshipGarden.js';
+import { isCharacterUnlocked } from './domain/GardenArc.js';
+import { get as _gardenGet } from './storage.js';
+import { getScenarioById } from './domain/ScenarioEngine.js';
+
+/**
+ * Render the character-select screen — 3 character cards.
+ * data-action="selectGardenCharacter" data-arg="<characterId>"
+ */
+export function renderGardenCharacterSelect() {
+  const student = getStudent();
+  const progress = (student && _gardenGet(STORAGE_KEYS.GARDEN_PROGRESS, {})) || {};
+  const studentProgress = (progress && progress[student]) || {};
+
+  const characterCards = CHARACTERS.map(char => {
+    const progress = studentProgress[char.id] || {};
+    const unlocked = Boolean(progress.unlocked);
+    const bestScore = progress.bestScore ?? 0;
+    const runCount = progress.runCount ?? 0;
+    const unlockedTag = unlocked
+      ? `<div class="garden-char-tag" aria-label="已建立關係">🌸 ${t('garden.character.unlocked')}</div>`
+      : `<div class="garden-char-tag garden-char-tag--new" aria-label="新朋友">✨ ${t('garden.character.newRun')}</div>`;
+    const meta = unlocked
+      ? `<div class="garden-char-meta">${t('garden.result.bestLabel', { best: bestScore })} · ${runCount} 次</div>`
+      : '';
+    return `
+      <button type="button" class="garden-char-card"
+        data-action="selectGardenCharacter" data-arg="${escapeAttr(char.id)}"
+        aria-label="${escapeAttr(`${char.name}, ${char.role}, ${char.ageLabel}`)}">
+        <div class="garden-char-avatar">
+          <img src="${escapeAttr(char.avatar)}" alt="${escapeAttr(char.name)}的肖像" loading="lazy"
+            onerror="this.style.display='none'" />
+          <div class="garden-char-fallback" aria-hidden="true">${escapeAttr(char.name).charAt(0)}</div>
+        </div>
+        <div class="garden-char-body">
+          <div class="garden-char-name">${escapeAttr(char.name)}</div>
+          <div class="garden-char-role">${escapeAttr(char.role)}</div>
+          <div class="garden-char-age">${escapeAttr(char.ageLabel)}</div>
+          ${unlockedTag}
+          ${meta}
+        </div>
+      </button>
+    `;
+  }).join('');
+
+  return `
+    <div class="container fade-in garden-screen">
+      ${renderPageHeader({ emoji: '🌷', title: t('hub.gardenTitle'), back: 'hub', backLabel: t('garden.exit') })}
+      <div class="garden-intro">
+        <h2>${t('garden.characterSelectTitle')}</h2>
+        <p class="fc-muted">${t('garden.characterSubtitle')}</p>
+      </div>
+      <div class="garden-char-grid">
+        ${characterCards}
+      </div>
+      ${renderFooter()}
+    </div>
+  `;
+}
+
+/**
+ * Render the garden-play screen — meter, monologue bubble, scenario.
+ * Reuses renderPlay's inner scenario shape where possible.
+ */
+export function renderGardenPlay(scenarioIdArg) {
+  const run = getGardenRun();
+  if (!run || run.status !== 'playing') {
+    return renderEmptyState({ emoji: '🌷', title: '花園未開始', actionLabel: '← 返揀朋友', onAction: 'FC.exitGarden()' });
+  }
+  const scenarioId = scenarioIdArg || getCurrentArcScenarioId();
+  const scenario = scenarioId ? getScenarioById(scenarioId) : null;
+  if (!scenario) {
+    return renderEmptyState({ emoji: '⚠️', title: '題目載入失敗', actionLabel: '← 返揀朋友', onAction: 'FC.exitGarden()' });
+  }
+
+  const character = CHARACTERS.find(c => c.id === run.characterId);
+  const monologue = getGardenMonologue(run.characterId, run.step);
+  const arcLabel = getArcLabel(run.step);
+  const stepDisplay = run.step + 1;
+  const total = GARDEN_CONFIG.STEPS_PER_RUN;
+  const scorePct = scoreToPercent(run.score);
+  const scoreClass = run.score >= GARDEN_CONFIG.UNLOCK_THRESHOLD ? 'positive'
+                   : run.score < GARDEN_CONFIG.RESTART_THRESHOLD ? 'negative'
+                   : 'neutral';
+  // Note: step before chooseOption is incremented to the upcoming step, so we
+  // display the arc label + monologue for the *about-to-play* step, using `step`.
+  return `
+    <div class="container fade-in garden-play-screen">
+      <div class="page-header">
+        <button class="back-btn" data-action="exitGarden" aria-label="${escapeAttr(t('garden.exit'))}">←</button>
+        ${character ? `<img class="garden-play-avatar" src="${escapeAttr(character.avatar)}" alt="${escapeAttr(character.name)}" loading="lazy"/>` : ''}
+        <h2>${escapeAttr(character ? character.name : '朋友')}</h2>
+        <div class="garden-step-meta">${escapeAttr(t('garden.stepNofM', { n: stepDisplay, total }))}</div>
+      </div>
+
+      <div class="garden-meter-block" aria-live="polite">
+        <div class="garden-meter-row">
+          <span class="garden-meter-label">${escapeAttr(t('garden.meterLabel'))}</span>
+          <span class="garden-meter-value ${scoreClass}">${run.score >= 0 ? '+' : ''}${run.score}</span>
+        </div>
+        <div class="garden-meter-bar" role="progressbar" aria-valuenow="${(run.score + 9) * 100 / 18}" aria-valuemin="0" aria-valuemax="100" aria-label="${escapeAttr(t('garden.meterLabel'))}">
+          <div class="garden-meter-fill ${scoreClass}" style="width:${scorePct}%"></div>
+        </div>
+        <div class="garden-arc-label">${escapeAttr(t('garden.arcLabel', { label: arcLabel }))}</div>
+        <div class="garden-meter-hint">${escapeAttr(t('garden.meterHint'))}</div>
+      </div>
+
+      ${monologue ? `
+        <div class="garden-monologue" role="complementary" aria-label="${escapeAttr(character ? character.name : '')}嘅內心話">
+          <div class="garden-monologue-prefix">${escapeAttr(t('garden.monologuePrefix', { char: character ? character.name : '朋友' }))}</div>
+          <div class="garden-monologue-text">${escapeAttr(monologue)}</div>
+        </div>
+      ` : ''}
+
+      <div class="scenario-desc fc-mt-16">
+        ${scenario.description || scenario.title}
+      </div>
+
+      <div class="options-grid fc-mt-12">
+        ${(scenario.options || []).map((opt, idx) => {
+          const labels = ['A', 'B', 'C', 'D'];
+          // Garden mode: derive relationshipChange from moralChange if option lacks it
+          const delta = (typeof opt.relationshipChange === 'number')
+            ? opt.relationshipChange
+            : Math.sign((opt.moralChange || 0)) * 2; // fallback heuristic
+          return `
+            <button type="button" class="option-card"
+              data-action="gardenChoose"
+              data-arg="${escapeAttr(opt.id)}"
+              data-arg2="${delta}"
+              aria-label="${escapeAttr(`選項 ${labels[idx] || idx+1}：${opt.text}`)}">
+              <span class="opt-letter">${labels[idx] || idx+1}</span>
+              <span class="opt-text">${escapeAttr(opt.text)}</span>
+            </button>
+          `;
+        }).join('')}
+      </div>
+
+      ${renderFooter()}
+    </div>
+  `;
+}
+
+/**
+ * Render the garden-result screen — outcome tier + bloom or encouragement.
+ */
+export function renderGardenResult() {
+  const run = getGardenRun();
+  if (!run || !run.outcome) {
+    return renderEmptyState({ emoji: '🌷', title: '花園未開始', actionLabel: '← 返揀朋友', onAction: 'FC.exitGarden()' });
+  }
+  const character = CHARACTERS.find(c => c.id === run.characterId);
+  const outcomeTier = run.outcome; // BLOOM | STABLE | RESTART
+  const titleKey = `garden.result.${outcomeTier}.title`;
+  const subtitleKey = `garden.result.${outcomeTier}.subtitle`;
+  const bloomGif = outcomeTier === 'bloom'
+    ? `<div class="garden-bloom" aria-hidden="true">
+         <div class="garden-bloom-stage stage-1">🌱</div>
+         <div class="garden-bloom-stage stage-2">🌿</div>
+         <div class="garden-bloom-stage stage-3">🌷</div>
+         <div class="garden-bloom-stage stage-4">💮</div>
+       </div>`
+    : '';
+  return `
+    <div class="container fade-in garden-result-screen">
+      <div class="page-header">
+        <button class="back-btn" data-action="exitGarden" data-arg2="force">←</button>
+        <h2>${escapeAttr(character ? character.name : '')}</h2>
+      </div>
+      ${bloomGif}
+      <div class="garden-result-card ${outcomeTier}" role="status" aria-live="polite">
+        <div class="garden-result-title">${escapeAttr(t(titleKey))}</div>
+        <div class="garden-result-subtitle">${escapeAttr(t(subtitleKey))}</div>
+        <div class="garden-result-stats">
+          <div><span>${escapeAttr(t('garden.result.scoreLabel', { score: run.score }))}</span></div>
+          <div><span>${escapeAttr(t('garden.result.bestLabel', { best: GARDEN_CONFIG.SCORE_MAX }))}</span></div>
+        </div>
+        <div class="action-row" style="justify-content:center;margin-top:var(--space-4)">
+          <button type="button" class="btn btn-primary" data-action="playGardenAgain" data-arg="${escapeAttr(run.characterId)}">${escapeAttr(t('garden.result.playAgain'))}</button>
+          <button type="button" class="btn btn-outline" data-action="exitGarden" data-arg2="force">${escapeAttr(t('garden.result.exit'))}</button>
+        </div>
+      </div>
+      ${renderFooter()}
+    </div>
+  `;
+}
+
+// Garden helpers (private — module-local)
+function getGardenMonologue(characterId, stepIndex) {
+  const m = MONOLOGUES[characterId];
+  if (!m || !m.length) return '';
+  if (stepIndex < 0 || stepIndex >= m.length) return '';
+  return m[stepIndex];
+}
+function scoreToPercent(score) {
+  // Map [-9, +9] → [0%, 100%]
+  return Math.max(0, Math.min(100, ((score + 9) * 100) / 18));
+}
 
 export function renderModeSelect(currentMode, subjectId) {
   const savedMode = currentMode || localStorage.getItem('fc_game_mode') || 'relaxed';

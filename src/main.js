@@ -15,9 +15,11 @@ import { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
          playScenario, getCurrentScenario, chooseOption, suggestNext, ensureStudent,
          renderRoleSelect, renderModeSelect, renderTeacherAssign, renderGameHub,
          renderBankPlay, renderBankResult, renderBankSummary,
+         renderGardenCharacterSelect, renderGardenPlay, renderGardenResult,
          GAME_MODES } from './engine.js';
 import { applyScenarioResult } from './domain/Moral.js';
 import { startBankRun, getBankRun, endBankRun, recordBankTransaction, advanceToNextQuestion, BANK_CONFIG } from './games/GoodDeedBank.js';
+import { getGardenRun as _getGardenRunFromMain, getCurrentArcScenarioId as _getArcIdFromMain } from './games/RelationshipGarden.js';
 import { speakScenario, speakCreeds, speak, isSpeaking, stopSpeaking, isEnabled, applyCSS, resetAllSettings, setSpacing, setHC, setVoiceEnabled, playSFX, initSFX, setTTSLang, getTTSLang, TTS_LANGS } from './audio.js';
 import { exportProgress, importProgress, getAllStudents, getProgress, updateSubjectTotal } from './domain/Progress.js';
 import { getSubjectColor, getSubjectBgColor, getAllSubjects } from './subjects.js';
@@ -196,6 +198,10 @@ export const VIEWS = Object.freeze({
   'bank-play':      () => ({}),
   'bank-result':    (p) => ({ bankScenario: p?.bankScenario, bankResult: p?.bankResult }),
   'bank-summary':   () => ({}),
+  // Sprint 18 — 關係花園
+  'character-select': () => ({}),
+  'garden-play':      () => ({}),
+  'garden-result':    () => ({}),
 });
 
 let state = {
@@ -213,6 +219,8 @@ let state = {
   gameMode: localStorage.getItem('fc_game_mode') || 'relaxed',
   bankScenario: null,
   bankResult: null,
+  // Sprint 18 — garden state (mirrored to module state in games/RelationshipGarden.js)
+  gardenArcId: null,
 };
 
 /**
@@ -452,6 +460,18 @@ function render() {
       }
       case 'bank-result': html = renderBankResult(state.bankScenario, state.bankResult, getBankRun()); break;
       case 'bank-summary': html = renderBankSummary(getBankRun()); break;
+      // Sprint 18 — 關係花園
+      case 'character-select':
+        html = renderGardenCharacterSelect();
+        break;
+      case 'garden-play': {
+        const sid = _getArcIdFromMain();
+        html = renderGardenPlay(sid);
+        break;
+      }
+      case 'garden-result':
+        html = renderGardenResult();
+        break;
       default: html = '<div class="container"><p>頁面不存在</p></div>';
     }
     _setViewHTML(html);
@@ -487,9 +507,10 @@ wireActions({
   getScenarios, getScenariosByTopic, initTopicProgress, applyScenarioResult,
   chooseOption, markScenarioShown, logInteraction, playSFX,
   isReducedMotion: _isReducedMotion,
-  // student + bank
+  // student + bank + garden
   getStudent, getAllStudents, getBankRun, startBankRun, endBankRun,
   advanceToNextQuestion, recordBankTransaction,
+  getGardenRun: _getGardenRunFromMain, getCurrentArcScenarioId: _getArcIdFromMain,
   // io / sync
   importProgress, exportProgress, syncNow, getProgress, getStats,
   exportInteractionsCSV, clearInteractions,

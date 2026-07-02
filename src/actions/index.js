@@ -28,6 +28,8 @@ import { wireIO, updateAnalyticsSummary, setSyncStatusLoading,
          exportAnalyticsCSV, clearAnalytics, forceSync,
          toggleTeacherFeature, setTeacherTimer, setButtonSize,
          setBankMaxRisk, toggleAssignedTopic, saveTeacherPIN, saveTeacherConfig } from '../domain/IO.js';
+import { wireGarden, playRelationshipGarden, selectGardenCharacter,
+         gardenChoose, gardenNext, exitGarden, playGardenAgain } from './garden.js';
 import { isSpeaking, stopSpeaking, getTTSLang, TTS_LANGS } from '../audio.js';
 import { addStudent as _addStudentFromProgress } from '../domain/Progress.js';
 import { getInlineActions } from './inline.js';
@@ -72,6 +74,13 @@ export function wireActions(deps) {
     exportInteractionsCSV: deps.exportInteractionsCSV, clearInteractions: deps.clearInteractions,
     _navigate: deps._navigate,
   });
+  wireGarden({
+    setView: deps.setView, render: deps.render, _navigate: deps._navigate,
+    getState: deps.getState, loadScenarios: deps.loadScenarios,
+    applyScenarioResult: deps.applyScenarioResult, logInteraction: deps.logInteraction,
+    getStudent: deps.getStudent, announceScenarioLoad: deps.announceScenarioLoad,
+    announceToSR: deps.announceToSR,
+  });
 
   // 2. Collect every action into the table. The list below is the SINGLE
   //    place that defines which data-action names are valid. If you add
@@ -86,6 +95,9 @@ export function wireActions(deps) {
     play, choose, retry, updateResultCtaFab,
     // Hub
     goTopic, goRandom, goTeacher, playGoodDeedBank, bankChoose, bankNext, exitBank, confirmExitBank,
+    // Garden (Sprint 18)
+    playRelationshipGarden, selectGardenCharacter, gardenChoose, gardenNext,
+    exitGarden, playGardenAgain,
     // IO
     handleImport, exportAll, exportMyData, importMyData,
     exportAnalyticsCSV, clearAnalytics, forceSync, setSyncStatusLoading, updateAnalyticsSummary,
