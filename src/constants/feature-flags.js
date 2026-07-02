@@ -28,6 +28,9 @@ export const FLAGS = Object.freeze({
 
   /** D1: Warm theme (emerald + cream, ASD sensory-friendly). Default OFF — opt-in. */
   WARM_THEME: false,
+
+  /** Sprint 18: 關係花園 (Relationship Garden) hub card + 3 character roster unlock. */
+  GARDEN_MODE: true,
 });
 
 /** Prefix for per-flag localStorage overrides. */

@@ -55,6 +55,10 @@ export const STORAGE_KEYS = Object.freeze({
   // 「重看教學」喺 settings 入面,reset flag 後 re-show。
   ONBOARDING_DONE: 'fc_onboarding_done',
 
+  // Sprint 18: 關係花園 progress, per-student per-character best score.
+  // Schema: { [studentName]: { [characterId]: { unlocked, bestScore, runCount, lastPlayedAt } } }
+  GARDEN_PROGRESS: 'fc_garden_progress_v1',
+
   // Analytics
   INTERACTIONS: 'fc_interactions_v1',
 

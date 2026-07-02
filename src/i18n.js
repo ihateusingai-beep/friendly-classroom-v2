@@ -55,6 +55,34 @@ const STRINGS = {
   'hub.bankDesc': '做好事存款，壞事扣款，目標存到 $100 變品格富翁！',
   'hub.subjectTitle': '情境答題',
   'hub.subjectDesc': '18 個品格課題自由探索',
+  'hub.gardenTitle': '關係花園',
+  'hub.gardenDesc': '揀個朋友，5 個情境一齊建立友誼 🌷',
+
+  // Garden (Sprint 18) — character select
+  'garden.characterSelectTitle': '揀個朋友開始',
+  'garden.characterSubtitle': '每個朋友都係 5 個情境 — 完成會開一朵 🌷',
+  'garden.character.unlocked': '已建立關係',
+  'garden.character.newRun': '建立友誼',
+  'garden.play': '開始建立關係',
+  'garden.exit': '← 返 Game Hub',
+  'garden.exitConfirm': '確認離開？離開後下次要從頭開始。',
+  'garden.stepNofM': '第 {n} / 5 步',
+  'garden.arcLabel': '呢步主題：{label}',
+  'garden.meterLabel': '好感度',
+  'garden.meterHint': '做選擇會加減友情，唔分對錯',
+  'garden.monologuePrefix': '{char} 諗緊：',
+
+  // Garden result outcomes
+  'garden.result.bloom.title': '🌷 花園新開咗一朵！',
+  'garden.result.bloom.subtitle': '你哋嘅友誼已經綻放',
+  'garden.result.stable.title': '🌱 友誼穩定成長',
+  'garden.result.stable.subtitle': '繼續努力，朋友會更加親近',
+  'garden.result.restart.title': '🌿 友情慢慢建立',
+  'garden.result.restart.subtitle': '下次再嚟，朋友會等你',
+  'garden.result.scoreLabel': '最終好感度：{score}',
+  'garden.result.bestLabel': '最親密：{best} / 9',
+  'garden.result.playAgain': '🔄 再玩一次',
+  'garden.result.exit': '← 揀其他朋友',
 
   // Bank
   'bank.riskTag': '🎯 題目難度：{label}',
