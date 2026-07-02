@@ -52,7 +52,7 @@ const STRINGS = {
 
   // Game hub
   'hub.bankTitle': '好人好事銀行',
-  'hub.bankDesc': '做好事存款，衰嘢扣款，目標存到 $100 變品格富翁！',
+  'hub.bankDesc': '做好事存款，壞事扣款，目標存到 $100 變品格富翁！',
   'hub.subjectTitle': '情境答題',
   'hub.subjectDesc': '18 個品格課題自由探索',
 

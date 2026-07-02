@@ -90,10 +90,10 @@ export function renderGameHub() {
       ${renderPageHeader({ emoji: '🎮', title: '揀個遊戲開始', back: 'role-select', backLabel: '返回主選單' })}
 
       <div class="hub-grid">
-        <button type="button" class="game-card available" data-action="playGoodDeedBank" style="background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#eab308" aria-label="好人好事銀行（pilot）：做好事存款，衰嘢扣款，目標存到 $100 變品格富翁">
+        <button type="button" class="game-card available" data-action="playGoodDeedBank" style="background:linear-gradient(135deg,#fef9c3,#fde68a);border-color:#eab308" aria-label="好人好事銀行（pilot）：做好事存款，壞事扣款，目標存到 $100 變品格富翁">
           <div class="gc-icon" aria-hidden="true">🏦</div>
           <div class="gc-title">好人好事銀行</div>
-          <div class="gc-desc">做好事存款，衰嘢扣款，目標存到 $100 變品格富翁！</div>
+          <div class="gc-desc">做好事存款，壞事扣款，目標存到 $100 變品格富翁！</div>
           ${bankRiskTag}
           <div class="gc-tag" aria-label="pilot 試玩版">pilot</div>
         </button>
