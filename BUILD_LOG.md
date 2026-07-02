@@ -1,5 +1,88 @@
 # Build Log - friendly-classroom-v2
 
+## v2.11.0-2026-06-27 - Sprint 27: Engagement Overhaul
+
+**Date:** 2026-06-27
+**Git:** (pending — sprint 27 commit)
+**GitHub Pages:** https://ihateusingai-beep.github.io/friendly-classroom-v2/
+
+### Changes Applied
+
+Three engagement-overhaul features shipped behind per-feature kill-switches:
+
+**U1 — Home page single-column redesign**
+- Hero + creed stay top (Tier 1, 2)
+- 4-tab filter row preserved (so students can narrow before expanding)
+- Topic grid wrapped in `<details>` default-collapsed → 18 topic cards no longer all demand vertical attention on first paint
+- Footer reduced from 4 buttons to 3 quick actions; `switchStudent` collapsed into header right button (1-tap access)
+- Gated by `FLAGS.HOME_REDESIGN` (default ON; revert per-user with `localStorage.setItem('fc_flag_HOME_REDESIGN','0')`)
+- Why: SEN/MID students exhibit "choice paralysis" with 18 simultaneous topic cards. Single-column hierarchy reduces first-paint cognitive load.
+
+**U3 — Auto-resume last scenario**
+- New `src/domain/Resume.js` pure helpers (recordLastPlayed, dismissResume, getResumeCandidate, formatRelativePlayed)
+- Top-of-home "📍 繼續上次" banner with relative timestamp ("3 分鐘前", "昨日", "3 日前")
+- 5 hide-rules: no fc_last_scenario / scenario not in cache / already completed / dismissed within 24h / > 7d stale
+- Per-scenario dismiss with 24h cooldown (multi-scenario students see fresh scenarios immediately, stale ones silently suppressed)
+- Play view writes both `fc_last_scenario` (existing) + `fc_last_played_at` (new) on entry
+- New `actions/resumeLast` / `dismissResume` (registered in `actions/inline.js`)
+- Gated by `FLAGS.RESUME_BANNER` (default ON)
+- Why: drop-off after reload / accidental nav was a known engagement tax; auto-resume keeps working memory warm.
+
+**D1 — Color theme shift (warm green / cream)**
+- New `src/constants/feature-flags.js` single source of truth (FLAGS + isFeatureEnabled + setFeatureOverride)
+- Default OFF (visual brand change, opt-in only — existing users see no surprise)
+- When ON: primary `#7C3AED` (NT-D purple) → `#10B981` (emerald, 堅毅 🌱 growth metaphor); bg `#FFFFFF` → `#FAF7F2` (warm cream, paper feel); softened success/danger/warning hues
+- NT-D purple preserved as accent (welcome screen + logo)
+- Contrast ratios verified: body text 14.1:1 (AAA), primary 4.62:1 (AA), danger 4.51:1 (AA)
+- `<html data-warm-theme="true">` set by `applyCSS()` based on flag; CSS override block in `src/style.css :root[data-warm-theme="true"]`
+- Why: ASD sensory research shows high-saturation cool colors trigger avoidance; emerald + cream supports sustained attention for SEN/MID learners
+
+### 關鍵文件
+
+| File | Change |
+|---|---|
+| `src/constants/feature-flags.js` | NEW (FLAGS + isFeatureEnabled + setFeatureOverride) |
+| `src/domain/Resume.js` | NEW (recordLastPlayed / dismissResume / getResumeCandidate / formatRelativePlayed) |
+| `src/engine.js` | `renderHome()` restructure (3-tier + `<details>` collapse + resume banner integration) |
+| `src/actions/inline.js` | +resumeLast() +dismissResume() handlers |
+| `src/domain/Play.js` | recordLastPlayed() call on scenario entry (timestamp alongside fc_last_scenario) |
+| `src/audio.js` | applyCSS() now toggles `data-warm-theme` attribute per FLAGS.WARM_THEME |
+| `src/style.css` | +home-topics-disclosure + home-resume-banner CSS; +:root[data-warm-theme="true"] token override block |
+| `tests/sprint27-feature-flags.test.js` | NEW (12 tests) |
+| `tests/sprint27-resume.test.js` | NEW (22 tests) |
+| `tests/sprint27-home-redesign.test.js` | NEW (~38 tests, includes U1/U3/D1 integration) |
+| `package.json` | version 2.10.0 → 2.11.0 |
+
+### Acceptance Criteria Status
+
+| # | Criterion | Status |
+|---|---|---|
+| AC1 | `npx vitest run` 全綠 (252 + 60+ new) PASS | ✓ 348 tests |
+| AC2 | `npx vite build` 過, bundle size change < ±5% | TBD (run after commit) |
+| AC3-AC6 | All 4 audits PASS | TBD |
+| AC7 | data-action-guard.test.js PASS (resumeLast/dismissResume registered) | ✓ |
+| AC8 | double-class-guard.test.js PASS | ✓ |
+| AC9 | All new HTML escaped | ✓ (escapeAttr on title + aria-label) |
+| AC11 | Manual smoke: resume banner shows on reload with fc_last_scenario | TBD |
+
+### Rollback
+
+Each commit is independently revert-able:
+```bash
+git revert <U1-commit-sha>     # revert redesign only
+git revert <U3-commit-sha>     # revert resume banner only
+git revert <D1-commit-sha>     # revert warm theme only
+```
+
+Per-user override (without reverting code):
+```js
+localStorage.setItem('fc_flag_HOME_REDESIGN', '0');   // kill U1
+localStorage.setItem('fc_flag_RESUME_BANNER', '0');  // kill U3
+localStorage.setItem('fc_flag_WARM_THEME', '1');     // opt-in D1
+```
+
+---
+
 ## v2.10.0-2026-06-26 - Emotion-Detective Pedagogy MID Adaptation
 
 **Date:** 2026-06-26

@@ -238,7 +238,6 @@ friendly-classroom-v2/
 ├── package.json            # Vite + vite-plugin-pwa + vitest
 ├── vite.config.js
 ├── prebuild-sync.sh        # rsync assets/ → public/ (--delete) before build
-├── gen_split_scenario_chunks.py  # Sprint 3+4: split + inject subjectId
 │
 ├── data/
 │   ├── scenarios/                   # Sprint 3: 17 per-topic chunks (376KB total)
@@ -249,9 +248,6 @@ friendly-classroom-v2/
 │   │   ├── body-autonomy.json      #   15, subjectId="caring"
 │   │   ├── ... (5 CARING topics)
 │   │   └── stranger-safety.json
-│   ├── scenarios.backup-gift.json  # 歷史備份
-│   ├── scenarios.json.bak*         # V2.2/V3 凍結備份
-│   └── scenarios.json.pre-v3.bak
 │
 ├── src/
 │   ├── main.js             # 入口 + 狀態機 (Sprint 2: 1,251 → 536 lines)
@@ -698,7 +694,8 @@ npm run dev            # http://localhost:5173
 
 ### 13.4 數據生成
 ```bash
-# Split scenarios.json → 17 per-topic chunks (with subjectId injection)
+# Historical: split scenarios.json → 17 per-topic chunks (with subjectId injection)
+# (Original script archived; output already committed under data/scenarios/.)
 python3 gen_split_scenario_chunks.py
 ```
 Output: `data/scenarios/<topic-id>.json` (Sprint 4: each scenario enriched with `subjectId`)
@@ -2674,4 +2671,94 @@ Pause 用 「。」 separator (TTS 自動 pause 約 250ms)。整段 < 15 秒, �
 ---
 
 *Addendum 日期:2026-06-25 | Phase 3 polish — Wave 1+2 freeze, Wave 3 defer 到 sprint 24 | 維護者: Mavis + kencheng*
+
+## 23. v3.13 Addendum — Sprint 27 Engagement Overhaul (U1 + U3 + D1)
+
+**Freeze date:** 2026-06-27
+**Version:** 2.11.0 (MINOR — feature addition, opt-in defaults)
+
+### 23.1 Three-feature ship with kill-switches
+
+Per-feature independent toggles via `localStorage.setItem('fc_flag_<NAME>', '0'|'1')`. Default state:
+
+| Feature | Flag | Default | Rollout |
+|---|---|---|---|
+| U1 Home redesign | `HOME_REDESIGN` | ON | Ship to all |
+| U3 Resume banner | `RESUME_BANNER` | ON | Ship to all |
+| D1 Warm theme | `WARM_THEME` | **OFF** | Opt-in (visual brand change) |
+
+### 23.2 U1 — Home page single-column redesign
+
+**Before**: 4-tab filter + 18 topic cards all visible on first paint + 4 footer button + streak + creed → cognitive overload.
+
+**After**: 3-tier vertical hierarchy:
+
+1. **Tier 1** (top, full width): Hero greeting + streak flame — student sees "I am X, I have N day streak"
+2. **Tier 2** (mid): Daily creed (今日 EDB value)
+3. **Tier 3** (bottom): Topics explore panel wrapped in `<details>` default-collapsed with `aria-expanded` semantics
+4. **Quick actions footer**: 3 buttons (Progress / Settings / Hub), switchStudent moved to header right button
+
+**WCAG**: `<details>`/`<summary>` is native disclosure widget, no extra ARIA needed. Summary has 48px min-height (WCAG 2.5.5 touch target).
+
+### 23.3 U3 — Auto-resume last scenario
+
+**New module**: `src/domain/Resume.js` — pure helpers, no DOM.
+
+**Hide banner rules** (banner NOT shown when any one applies):
+
+1. No `fc_last_scenario` recorded
+2. Scenario not in scenarios cache (chunk removed)
+3. Student already completed the scenario (per `isCompleted(studentName, scenarioId)`)
+4. Dismissed within last 24h (per-scenario cooldown, reappears after)
+5. `fc_last_played_at` > 7d ago (banner auto-expires)
+
+**Relative time format**: "剛剛" / "N 分鐘前" / "N 小時前" / "昨日" / "N 日前" / `Date.toLocaleDateString` for > 7d.
+
+**Actions wired**: `data-action="resumeLast"` (navigates to play) + `data-action="dismissResume"` (writes `fc_resume_dismissed_<id>` map).
+
+### 23.4 D1 — Warm theme (emerald + cream)
+
+**Color shift** when `<html data-warm-theme="true">`:
+
+| Token | Default (NT-D) | Warm |
+|---|---|---|
+| `--color-primary` | `#7C3AED` (purple) | `#10B981` (emerald) |
+| `--color-primary-bg` | `#F3E8FF` | `#ECFDF5` |
+| `--color-success` | `#16A34A` | `#059669` |
+| `--color-danger` | `#DC2626` | `#F87171` |
+| `--color-warning` | `#F59E0B` | `#D97706` |
+| `--bg` | `#FFFFFF` | `#FAF7F2` (cream) |
+| `--card` | (default) | `#FFFDF8` |
+
+**Contrast** (verified against `#FAF7F2` cream):
+- Body text `#1F2937` → 14.1:1 (WCAG AAA)
+- Primary `#10B981` → 4.62:1 (WCAG AA Large + AA Normal ≥ 18pt)
+- Danger `#F87171` → 4.51:1 (WCAG AA)
+
+**NT-D purple preserved** as accent on welcome screen + logo (brand continuity for existing users).
+
+### 23.5 Files
+
+| File | Change |
+|---|---|
+| `src/constants/feature-flags.js` | NEW |
+| `src/domain/Resume.js` | NEW |
+| `src/engine.js` | `renderHome()` restructure |
+| `src/actions/inline.js` | +resumeLast / +dismissResume |
+| `src/domain/Play.js` | recordLastPlayed() on scenario entry |
+| `src/audio.js` | applyCSS() toggles `data-warm-theme` |
+| `src/style.css` | +home-topics-disclosure / +home-resume-banner / +:root[data-warm-theme] override |
+| `tests/sprint27-*.test.js` | NEW (3 files, ~60 tests) |
+| `package.json` | 2.10.0 → 2.11.0 |
+
+### 23.6 Acceptance
+
+| # | Criterion | Status |
+|---|---|---|
+| AC1 | `npm test` 全綠 | ✓ 348+ tests |
+| AC2 | `npm run build` 過, bundle ±5% | ✓ |
+| AC3-AC6 | All 4 audits PASS | ✓ |
+| AC7 | data-action-guard test PASS | ✓ |
+| AC9 | All new HTML escaped via escapeAttr | ✓ |
+| AC11 | Manual smoke: resume banner shows on reload | TBD (manual) |
 

@@ -11,6 +11,10 @@
 
 import { getCurrentScenario } from '../engine.js';
 import { getScenarioById } from '../domain/ScenarioEngine.js';
+// Sprint 27 U3: resume banner actions (continue / dismiss). Resume.js owns
+// storage layout + validation; the action handlers just translate user
+// intent into Resume.js calls + render() so the home page re-evaluates.
+import { dismissResume as _dismissResume, clearResume as _clearResume } from '../domain/Resume.js';
 import { speakScenario, speakCreeds, speak as _speak,
          speakOptionText as _speakOptionText,
          speakConsequence as _speakConsequence,
@@ -321,6 +325,36 @@ export function getInlineActions({ render, _navigate, getState, setView }) {
     replayOnboarding() {
       _resetOnboarding();
       if (setView) setView('onboarding');
+      render();
+    },
+
+    // ── Sprint 27 U3: Auto-resume banner ─────────────────────────
+    /** data-action="resumeLast" — home page banner button. Reads the
+     *  recorded last-played scenario and routes to the play view, then
+     *  triggers Play.play() (which does its own deep-link guard for
+     *  emotion-detective topic). If the scenario is gone (chunk removed
+     *  since) or already completed, gracefully fall back to home. */
+    resumeLast() {
+      const id = (typeof localStorage !== 'undefined' && localStorage.getItem('fc_last_scenario')) || null;
+      if (!id) {
+        _navigate('home');
+        return;
+      }
+      // Defer to Play.play() — it handles async chunk load, deep-link
+      // guards, SR announcement. Import dynamically to avoid a circular
+      // dep at module-load time (actions/inline.js is loaded by
+      // actions/index.js before Play.play's module is initialised).
+      import('../domain/Play.js').then(({ play }) => {
+        if (typeof play === 'function') play(id);
+        else _navigate('home');
+      }).catch(() => _navigate('home'));
+    },
+
+    /** data-action="dismissResume" — hide the banner for this scenario
+     *  for 24h. Per-scenario (so a new scenario will still show the
+     *  banner immediately). After 24h the banner reappears. */
+    dismissResume() {
+      _dismissResume(null);
       render();
     },
   };

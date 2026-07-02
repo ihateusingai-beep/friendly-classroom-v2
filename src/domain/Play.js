@@ -21,6 +21,10 @@
 
 import { announceScenarioLoad, announceToSR } from '../components/Toast.js';
 import { isEmotionDetectiveEnabled } from '../engine.js';
+// Sprint 27 U3: track last-played timestamp so the resume banner on home
+// can show "上次 N 分鐘前玩過". Replaces the bare `fc_last_scenario` write
+// so Resume.js can do its candidate check with both id + timestamp.
+import { recordLastPlayed } from './Resume.js';
 
 let _setView = null;
 let _render = null;
@@ -83,6 +87,7 @@ export function play(scenarioId) {
       return;
     }
     localStorage.setItem('fc_last_scenario', scenarioId);
+    recordLastPlayed(scenarioId);
     _markScenarioShown();
     _setView('play', { scenarioId });
     _render();
