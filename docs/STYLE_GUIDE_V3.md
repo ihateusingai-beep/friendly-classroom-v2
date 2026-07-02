@@ -339,7 +339,7 @@ node tools/style/audit-scenarios.mjs || {
 
 ### 9.3 Bank game mode
 
-`renderBankResult` 唔 render stop-and-think,scope 不涵蓋。Bank 係獨立 game mode,沿用原有 visual feedback。
+Bank 沿用獨立 settlement visual (`renderBankResult`)。Bank 係獨立 game mode，自有 visual feedback (Sprint 5+)，moral-choice / emotion-detective 嘅 stop-and-think panel 唔適用。
 
 ---
 

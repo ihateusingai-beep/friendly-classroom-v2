@@ -1533,7 +1533,7 @@ shouldRenderStopAndThink(option, totalMoralChange) {
 | Bank positive | 💰 | 💰 (unchanged) | 遊戲 specific |
 | Bank negative | 💸 | 💸 (unchanged) | 遊戲 specific |
 
-**Bank 唔改**(獨立 game mode,scope 唔涵蓋)。`renderBankResult` 唔 render stop-and-think,保持銀行結算既有 visual。
+**Bank 沿用獨立 game mode** — 銀行結算用自有 visual flow (`renderBankResult`)，保留 Sprint 5+ 嘅 settlement 設計。
 
 ---
 
@@ -1664,7 +1664,7 @@ window.FC.speak* (Sprint 12+13 bridge)
 | **R-V3.7-4** | 答錯 panel 打擊 SEN 自信 | 🔴 Critical | 即時扣 moral score,「你做錯了」責備 | 先反思 panel,撳「再試一次」先出分;用 🤔 友善 framing |
 | **R-V3.7-5** | stopAndThink wording 漂移 | 🟡 Medium | 教師後加 scenario 唔跟 STYLE_GUIDE | CI audit script + 老師加 scenario 必過 STYLE_GUIDE_RULES.md |
 | **R-V3.7-6** | 改動量大 1 sprint 唔夠 | 🟡 Medium | 259 scenarios × ~3 options × ~3 effects = ~2300 strings | 分 2 sprint:S16 做工具 + 1 topic 試水溫,S17 全量推 |
-| **R-V3.7-7** | Bank result 唔一致 | 🟢 Low | Bank 用 `renderBankResult`,唔 render stop-and-think | 文檔化 scope 唔涵蓋 Bank |
+| **R-V3.7-7** | Bank settlement 獨立 flow | 🟢 Low | Bank 用 `renderBankResult` 走自有 visual；moral-choice / emotion-detective 嘅 stop-and-think panel 唔適用於 bank | Bank scope 自有 (Sprint 5+) |
 | **R-V3.7-8** | Render 時序問題 | 🟡 Medium | 先 panel 後 moral score 嘅 reveal order 影響 screen reader | aria-live="polite" + setTimeout 200ms 顯分 |
 
 ---
@@ -1873,7 +1873,7 @@ window.FC.speak* (Sprint 12+13 bridge)
 - ❌ 改 scenario description / title → 破壞 image prompt 對齊,scope lock 不涵蓋
 - ❌ 改 creeds text → EDB 官方 wording,scope lock 不涵蓋
 - ❌ 用 AI 生 stopAndThink 文案 → R2 風險,純人手撰寫
-- ❌ Bank result render stop-and-think → Bank 獨立 game mode,scope 不涵蓋
+- ❌ 把 stop-and-think panel 整合入 bank settlement → Bank 保留獨立 game mode，自有 visual flow (`renderBankResult`)
 - ❌ 一次過改晒 259 scenarios → 改動量大難 review,分 2 sprint(S16 + S17)
 
 ---
@@ -1885,7 +1885,7 @@ window.FC.speak* (Sprint 12+13 bridge)
 - ❌ Settings / Toast / Banner 文字書面語化(Sprint 17+)
 - ❌ Scenario description / title 文字書面語化(破壞 image prompt)
 - ❌ Creeds text 改動(EDB 官方 wording)
-- ❌ Bank result stop-and-think 整合(Bank 獨立 game mode)
+- ❌ Bank settlement 整合 stop-and-think panel → Bank 保留獨立 game mode，自有 visual flow
 - ❌ Reduce-motion 模式下 🤔 唔 pulse 嘅 css 完整 audit(Sprint 17 polish)
 
 ---
