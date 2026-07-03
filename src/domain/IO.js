@@ -212,10 +212,14 @@ export async function forceSync() {
 
 import { getTeacherConfig as _readConfig, setTeacherConfig as _writeConfig } from '../storage.js';
 
-/** Toggle a feature flag in teacher config (e.g. hintEnabled, timerEnabled). */
-export function toggleTeacherFeature(btn, key) {
-  btn.classList.toggle('on');
-  const val = btn.classList.contains('on');
+/** Toggle a feature flag in teacher config (e.g. hintEnabled, timerEnabled).
+ *  Sprint 18.6 fix: dispatcher passes `this = el` (per main.js:394-395 design)
+ *  but the previous implementation read `btn` (first arg = undefined for
+ *  toggles since they only set data-arg2, no data-arg), causing a TypeError
+ *  on every toggle click. Now uses `this` consistently. */
+export function toggleTeacherFeature(_key, key) {
+  this.classList.toggle('on');
+  const val = this.classList.contains('on');
   _writeConfig({ [key]: val });
   if (key === 'timerEnabled') _render();
 }
