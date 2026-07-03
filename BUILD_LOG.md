@@ -1,5 +1,102 @@
 # Build Log - friendly-classroom-v2
 
+## v2.12.0-2026-07-03 - Sprint 18.2: Relationship Garden polish (monologue bubble + a11y SR)
+
+**Date:** 2026-07-03
+**Git:** (pending — S18.2 polish commit)
+**GitHub Pages:** https://ihateusingai-beep.github.io/friendly-classroom-v2/
+
+### Changes Applied
+
+兩個 polish 改動喺 Sprint 18.1 (§23 / v3.13) garden monologue bubble ship 之後發現嘅兩個 gap:
+
+**Pol-1 — Monologue bubble avatar visual polish**
+
+`.garden-monologue` 由 vertical stack 改成 flex row layout,加 40×40 character avatar mini-thumb 喺 bubble 左邊:
+
+- 新增 `.garden-monologue-avatar` (40px circle, white border + soft shadow)
+- 新增 `.garden-monologue-body` (`flex: 1; min-width: 0`)
+- `.garden-monologue` 加 `display: flex; align-items: flex-start; gap: var(--space-3)`
+- Avatar 來源重用 `character.avatar` (即 `assets/images/garden/{小美|小晨|小輝}.png`),**0 new image asset, 0 PWA precache growth**
+- Avatar `<img alt="" aria-hidden="true">` — 純視覺裝飾, visible prefix 已標明 character name
+
+**Before (S18.1)**: 
+```
+┌──────────────────────────────────────────┐
+│ 小美 諗緊:                              │
+│ 咦, 你真係有留意我...                  │
+└──────────────────────────────────────────┘
+```
+
+**After (S18.2)**:
+```
+┌──────────────────────────────────────────┐
+│ ┌────┐                                  │
+│ │IMG │  小美 諗緊:                      │
+│ │40px│  咦, 你真係有留意我...          │
+│ └────┘                                  │
+└──────────────────────────────────────────┘
+```
+
+**Pol-2 — a11y SR tweak**
+
+ARIA + semantic HTML 重構:
+
+| Before (S18.1) | After (S18.2) |
+|---|---|
+| `role="complementary"` | `role="note"` |
+| `aria-label="小美嘅內心話"` (hidden label, double-read) | *(移除 — semantic HTML 取代)* |
+| `<div>` prefix (generic) | `<h3>` prefix (semantic heading) |
+| `<div>` text (generic) | `<p>` text (semantic paragraph) |
+
+**SR announce 順序**: 之前 `互補內容 / 小美嘅內心話 / 小美 諗緊: / 咦, 你真係有留意我...` (character name 雙讀), 之後 `note / 小美 諗緊：咦，你真係有留意我...` (character name 單讀)。
+
+**唔用 `aria-live="polite"` auto-announce** — 理由同 §22.16.1 一致, monologue 屬 scene context, user-driven navigate 先讀, 避免 SR noise。
+
+### 關鍵文件
+
+| File | Change |
+|---|---|
+| `src/engine.js` | `renderGardenPlay()` monologue block: `role="note"` + avatar `<img>` + `<h3>`/`<p>` semantic restructure |
+| `src/style.css` | `.garden-monologue` 加 `display:flex` + new `.garden-monologue-avatar` (40px) + new `.garden-monologue-body` (flex:1) + reset `<h3>`/`<p>` margin |
+| `tests/sprint18-garden.test.js` | +4 個 semantic-a11y test (role=note / h3+p semantic / img alt empty / aria-label 移除) |
+| `SPEC.md` | v3.13 → v3.14 + 加 §24 (Addendum) |
+| `package.json` | version 2.11.0 → 2.12.0 |
+
+### Acceptance Criteria Status
+
+| # | Criterion | Status |
+|---|---|---|
+| AC1 | `npx vitest run` 全綠 (363 + 4 new) PASS | TBD (run before commit) |
+| AC2 | `npx vite build` 過, PWA precache 唔變 | TBD |
+| AC3 | `npm run audit:style` PASS | TBD |
+| AC4 | `npm run audit:a11y` PASS | TBD |
+| AC5 | `npm run audit:touch-targets` PASS | TBD |
+| AC6 | `npm run audit:font-sizes` PASS | TBD |
+| AC7 | `npm run audit:spacing` PASS | TBD |
+| AC8 | data-action-guard PASS (monologue 冇新 data-action, 既有 test cover) | TBD |
+| AC9 | All new HTML escaped via escapeAttr | ✓ (character.avatar + monologue escaped) |
+
+### Rollback
+
+```bash
+git revert <S18.2-commit-sha>     # revert both Pol-1 + Pol-2 in one revert
+```
+
+Or selective revert if commit 拆 sub-commit:
+```bash
+git revert <Pol-1-commit-sha>     # revert avatar polish only
+git revert <Pol-2-commit-sha>     # revert a11y SR tweak only
+```
+
+### Related
+
+- Sprint 18.1 §23 (v3.13) — original garden monologue ship (`feat(garden): Sprint 18.1 UI ship`)
+- SPEC §24 v3.14 — this addendum
+- SPEC §22.16.1 — reasoning why monologue 唔用 `aria-live` auto-announce
+
+---
+
 ## v2.11.0-2026-06-27 - Sprint 27: Engagement Overhaul
 
 **Date:** 2026-06-27

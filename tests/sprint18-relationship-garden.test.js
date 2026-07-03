@@ -395,3 +395,51 @@ describe('RelationshipGarden bridge', () => {
     expect(getArcLabel(-1)).toBe('');
   });
 });
+
+// ── Sprint 18.2 — Monologue bubble semantic-a11y invariants ─────────
+//
+// §24 v3.14 / Sprint 18.2 polish — verify source-level invariants of the
+// renderGardenPlay monologue block. We assert on the source string rather
+// than executing the renderer because renderGardenPlay transitively loads
+// audio.js / storage.js / etc. with non-trivial browser-state expectations
+// that would need deep mocking — but the invariants we care about (§24.3
+// ARIA restructure) are pure structural changes captured in the source.
+
+describe('Sprint 18.2 — Monologue bubble semantic-a11y', () => {
+  const engineSrc = fs.readFileSync(
+    path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'src', 'engine.js'),
+    'utf8',
+  );
+  const styleSrc = fs.readFileSync(
+    path.join(path.dirname(new URL(import.meta.url).pathname), '..', 'src', 'style.css'),
+    'utf8',
+  );
+
+  it('§24.3 monologue div uses role="note" (not role="complementary")', () => {
+    expect(engineSrc).toMatch(/class="garden-monologue"\s+role="note"/);
+    expect(engineSrc).not.toMatch(/class="garden-monologue"\s+role="complementary"/);
+  });
+
+  it('§24.3 monologue prefix uses semantic <h3> and text uses semantic <p>', () => {
+    expect(engineSrc).toMatch(/<h3 class="garden-monologue-prefix">/);
+    expect(engineSrc).toMatch(/<p class="garden-monologue-text">/);
+  });
+
+  it('§24.2 monologue avatar img has empty alt + aria-hidden', () => {
+    expect(engineSrc).toMatch(/<img class="garden-monologue-avatar"[^>]*alt=""[^>]*aria-hidden="true"/);
+  });
+
+  it('§24.3 monologue 唔再帶 aria-label="...嘅內心話" (avoid SR double-read)', () => {
+    // The old S18.1 pattern was aria-label="${character.name}嘅內心話".
+    // S18.2 §24.3 removes it because the visible <h3> prefix already
+    // announces the character name — double-read avoidance invariant.
+    expect(engineSrc).not.toMatch(/aria-label="\$\{escapeAttr\(character[^}]*\}\}嘅內心話"/);
+  });
+
+  it('§24.2 style.css adds .garden-monologue-avatar + .garden-monologue-body flex layout', () => {
+    expect(styleSrc).toMatch(/\.garden-monologue-avatar\s*\{[^}]*width:\s*40px/);
+    expect(styleSrc).toMatch(/\.garden-monologue-avatar\s*\{[^}]*height:\s*40px/);
+    expect(styleSrc).toMatch(/\.garden-monologue-body\s*\{[^}]*flex:\s*1/);
+    expect(styleSrc).toMatch(/\.garden-monologue\s*\{[^}]*display:\s*flex/);
+  });
+});

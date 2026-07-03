@@ -2865,17 +2865,34 @@ html[data-rm="true"] #fc-announce-toast {
   border-radius: 12px;
   padding: var(--space-3) var(--space-4);
   margin: var(--space-3) 0;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.garden-monologue-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+.garden-monologue-body {
+  flex: 1;
+  min-width: 0;
 }
 .garden-monologue-prefix {
   font-size: var(--fs-sm);
   color: var(--color-danger);
   font-weight: 600;
-  margin-bottom: var(--space-1);
+  margin: 0 0 var(--space-1) 0;
 }
 .garden-monologue-text {
   font-size: var(--fs-base);
   line-height: 1.5;
   color: #1f2937;
+  margin: 0;
 }
 
 /* Reuse .option-card + .options-grid from existing — no override */

@@ -478,9 +478,12 @@ export function renderGardenPlay(scenarioIdArg) {
       </div>
 
       ${monologue ? `
-        <div class="garden-monologue" role="complementary" aria-label="${escapeAttr(character ? character.name : '')}嘅內心話">
-          <div class="garden-monologue-prefix">${escapeAttr(t('garden.monologuePrefix', { char: character ? character.name : '朋友' }))}</div>
-          <div class="garden-monologue-text">${escapeAttr(monologue)}</div>
+        <div class="garden-monologue" role="note">
+          ${character ? `<img class="garden-monologue-avatar" src="${escapeAttr(character.avatar)}" alt="" aria-hidden="true"/>` : ''}
+          <div class="garden-monologue-body">
+            <h3 class="garden-monologue-prefix">${escapeAttr(t('garden.monologuePrefix', { char: character ? character.name : '朋友' }))}</h3>
+            <p class="garden-monologue-text">${escapeAttr(monologue)}</p>
+          </div>
         </div>
       ` : ''}
 

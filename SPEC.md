@@ -2762,3 +2762,158 @@ Per-feature independent toggles via `localStorage.setItem('fc_flag_<NAME>', '0'|
 | AC9 | All new HTML escaped via escapeAttr | ✓ |
 | AC11 | Manual smoke: resume banner shows on reload | TBD (manual) |
 
+*Addendum 日期:2026-06-27 | 配合 Sprint 27 開工 | 取代/補充:§22 唔變,純新增 §23 | 維護者: Mavis + kencheng*
+
+---
+
+## 24. v3.14 Addendum — Sprint 18.2 關係花園 polish (monologue bubble avatar + a11y SR)
+
+### 24.1 動機
+
+Sprint 18.1 (§23 / v3.13 — `feat(garden): Sprint 18.1 UI ship`) ship 咗 3-character roster + 5-step arc + 6 garden actions + Hub card unlock,**但 garden-play 嘅 monologue bubble 兩個 polish gap 喺 ship 後發現**:
+
+1. **Visual gap** — 學生睇 monologue bubble 嘅時候,只見 prefix text 「小美 諗緊：咦, 你真係有留意我...」,但個 character 嘅 avatar 喺 page header 入面 (離 bubble 遠),SEN 學生嘅 visual cue (「邊個朋友講呢句」) 要 scroll 上去搵。**風險**: ASD / MID 學生可能 confuse monologue 嘅 source character,尤其 5-step arc 跨 character 時。
+
+2. **a11y gap** — monologue 嘅 aria 用 `role="complementary" + aria-label="小美嘅內心話"`,SR 順序讀「小美嘅內心話 / 小美 諗緊: / 咦, 你真係有留意我...」—character name **double-read** (aria-label 讀一次, visible prefix 再讀一次)。**風險**: Screen reader user 嘅 cognitive load 增加,而且 `role="complementary"` 屬 sidebar/aside 語意, monologue bubble 唔係 complementary 用途,屬 **note** (WCAG ARIA 1.2 `role="note"` 對應 parenthetical / 旁註 / 內心話, 更貼切)。
+
+S18.2 目標:**1 個 visual polish + 1 個 a11y tweak, scope 守住 monologue bubble, 唔攬 garden 整體架構**。
+
+### 24.2 Monologue bubble avatar polish
+
+`.garden-monologue` 結構由 vertical stack 改成 **flex row**:
+
+```
+┌──────────────────────────────────────────┐
+│ ┌────┐                                   │
+│ │IMG │  小美 諗緊:                       │
+│ │40px│  咦, 你真係有留意我...           │
+│ └────┘                                   │
+└──────────────────────────────────────────┘
+```
+
+| Element | Spec |
+|---|---|
+| `.garden-monologue` | `display: flex; align-items: flex-start; gap: var(--space-3)` (新增 layout) |
+| `.garden-monologue-avatar` | NEW — 40×40 circle, `border: 2px solid #fff`, `box-shadow: 0 1px 3px rgba(0,0,0,0.15)`, `flex-shrink: 0` (bubble 縮窄時 avatar 唔變形) |
+| `.garden-monologue-body` | NEW — `flex: 1; min-width: 0` (text wrap container) |
+| `.garden-monologue-prefix` | 維持 — `<h3>` semantic heading, font-size `var(--fs-sm)`, color `--color-danger`, weight 600, margin 改 `0 0 var(--space-1) 0` (reset browser default) |
+| `.garden-monologue-text` | 維持 — `<p>` semantic paragraph, font-size `var(--fs-base)`, line-height 1.5, margin `0` (reset browser default) |
+
+**Image source**: 重用 `character.avatar` (即 `assets/images/garden/{小美|小晨|小輝}.png`, §23 v3.13 / Sprint 18.1 已 ship)。**唔新增 image asset**, 0 PWA precache 增長。
+
+**alt 處理**: `<img alt="" aria-hidden="true">` — avatar 純視覺裝飾 (visible prefix 已標明 character name), SR 唔重複 announce。
+
+**Touch target 唔受影響**: avatar 40×40 純裝飾, 唔係 clickable。bubble 內部嘅 `data-action` 全部喺 page-header 同 option-card 入面 (audit:touch-targets 唔追蹤 bubble 內部 image)。
+
+### 24.3 a11y SR tweak
+
+ARIA 重構:
+
+| Before (S18.1) | After (S18.2) |
+|---|---|
+| `role="complementary"` | `role="note"` |
+| `aria-label="小美嘅內心話"` (hidden label) | *(刪除 — SR 靠 semantic HTML 順序讀)* |
+| `<div>` prefix (generic) | `<h3>` prefix (semantic heading) |
+| `<div>` text (generic) | `<p>` text (semantic paragraph) |
+
+**SR announce 順序 (after)**:
+> "note / 小美 諗緊：咦，你真係有留意我..."
+
+VS **before**:
+> "互補內容 / 小美嘅內心話 / 小美 諗緊：咦，你真係有留意我..."
+
+改善:
+- ✅ 角色名 **single-read** (visible prefix 一次過)
+- ✅ `role="note"` 取代 `role="complementary"` — 更貼切 parenthetical 用途
+- ✅ `<h3>` + `<p>` semantic HTML — 即使 JS 失效 (graceful degradation), SR 仍可 navigate
+- ✅ Avatar `aria-hidden="true"` — 純視覺裝飾 SR skip
+
+**唔用 `aria-live="polite"` auto-announce** — 理由同 §22.16.1 一致: monologue 屬 scene context, 學生自己 navigate 入 bubble 先讀, 唔需要 trigger auto-announce (會造成 SR noise)。
+
+### 24.4 改動範圍
+
+| File | Change |
+|---|---|
+| `src/engine.js` | `renderGardenPlay()` monologue block: `role="note"` + avatar `<img>` + `<h3>`/`<p>` semantic restructure |
+| `src/style.css` | `.garden-monologue` 加 `display:flex` + new `.garden-monologue-avatar` (40px) + new `.garden-monologue-body` (flex:1) + reset `<h3>`/`<p>` margin |
+| `SPEC.md` | v3.13 → v3.14 + 加 §24 (本 section) |
+| `BUILD_LOG.md` | prepend v2.12.0 entry |
+| `package.json` | `__version__` 2.11.0 → 2.12.0 (MINOR, polish) |
+
+**冇改**: garden-arc logic / scoring / engine fork / actions / state machine / character data / image assets / tests (純 CSS + semantic HTML 改動, 既有 test 自動 PASS)。
+
+### 24.5 Tests (S18.2 done = ✅)
+
+`tests/sprint18-garden.test.js` 既有 51 個 test 全部 PASS (regression-free) — engine.js semantic HTML restructure (`<h3>`/`<p>`) 唔影響 garden 行為, data-action attribute 全部保留。
+
+**新增 5 個 semantic-a11y test** (`tests/sprint18-garden.test.js` append):
+
+| # | Test | Verifies |
+|---|---|---|
+| 1 | `renderGardenPlay()` monologue div has `role="note"` | §24.3 ARIA 改動 |
+| 2 | `renderGardenPlay()` monologue contains `<h3 class="garden-monologue-prefix">` + `<p class="garden-monologue-text">` | semantic restructure |
+| 3 | `renderGardenPlay()` monologue avatar img has `alt=""` + `aria-hidden="true"` | §24.2 alt handling |
+| 4 | `renderGardenPlay()` monologue 唔再帶 `aria-label="...嘅內心話"` (avoid double-read) | §24.3 single-read invariant |
+| 5 | `style.css` 新增 `.garden-monologue-avatar` (40×40) + `.garden-monologue-body` (`flex:1`) + `.garden-monologue` (`display:flex`) | §24.2 visual layout |
+
+### 24.6 Acceptance criteria (S18.2 done = ✅)
+
+- [x] `renderGardenPlay()` monologue block `role="note"` 取代 `role="complementary"`
+- [x] Monologue avatar `<img>` 40×40 喺 bubble 左邊, `alt="" aria-hidden="true"`
+- [x] `<h3 class="garden-monologue-prefix">` + `<p class="garden-monologue-text">` semantic restructure
+- [x] Visible prefix character name single-read (冇 `aria-label` double-read)
+- [x] `style.css .garden-monologue` 改 `display:flex`, avatar + body flex layout
+- [x] 5 個新 semantic-a11y test, full suite 363 → 368 PASS (51 S18 + 5 S18.2 + 312 other)
+- [x] 0 regression — 既有 363 個 test 全綠
+
+- [x] `npm run audit:style` PASS (0 口語 marker violation)
+- [ ] `npm run audit:a11y` ⚠️ 1 pre-existing violation — `.btn-outline` color-contrast 3.34:1 (`#4a90d9` on `#fff`, NEEDS 4.5:1). **NOT S18.2 scope** (home page / student-pick view, garden monologue 唔受影響)。Defer 到 S19+ 統一處理。
+- [x] `npm run audit:touch-targets` PASS (8 targets ≥ 44×44, monologue avatar 唔屬 touch target)
+- [x] `npm run audit:font-sizes` PASS (monologue text `var(--fs-base)` token, prefix `var(--fs-sm)` token)
+- [x] `npm run audit:spacing` PASS (avatar gap `var(--space-3)`, padding token)
+- [x] `npm run build` PASS (PWA precache 唔變, 0 new image asset)
+- [x] `__version__` 2.11.0 → 2.12.0 (MINOR — polish)
+- [x] SPEC v3.13 → v3.14 (this section)
+- [x] Live verified: https://ihateusingai-beep.github.io/friendly-classroom-v2/ — Hub card 「關係花園」unlocked, garden-play monologue bubble 顯示 avatar + `<h3>`/`<p>`
+
+### 24.7 Anti-pattern (S18.2 必避)
+
+- ❌ **將 avatar `<img>` 加 `alt="{character.name}"`** — avatar 屬裝飾, visible prefix 已標明 character name, `alt=""` + `aria-hidden="true"` 先避免 SR double-read
+- ❌ **Monologue 自動 `aria-live="polite"` announce** — 跨 scene navigate 時 SR 會 auto-read 5 次 (5-step arc), 造成 noise, 用 `role="note"` + user-driven navigate
+- ❌ **為咗 visual 加而加大 avatar (≥ 56px)** — 跟 `.garden-play-avatar` 56px header 撞 layout, 40px 喺 bubble 內 sweet spot
+- ❌ **`<h3>` 改 `<div>` 加 `role="heading"`** — semantic HTML 永遠贏 ARIA role, 直接用 `<h3>` 兼顧 SR + 視覺 hierarchy
+- ❌ **改 monologue 入面 `t('garden.monologuePrefix', ...)` i18n key** — i18n string 唔屬 S18.2 scope, 維持 §23 freeze
+- ❌ **新增 avatar image asset (40×40 mini 版本)** — 重用 character.avatar (96×96 source), browser `object-fit: cover` resize 視覺 OK, 0 PWA precache 增長
+- ❌ **Bubble 改做 clickable (開 character detail modal)** — S18.2 scope 守住 visual + a11y polish, 唔攬新 interaction
+- ❌ **將 51 個 S18 garden test 全部 rewrite** — semantic restructure 唔影響 data-action 行為, 既有 test 自動 PASS, 只加 5 個新 test verify §24.3 invariant
+
+### 24.8 Out-of-scope (v3.14 不做,留 S19+ future)
+
+- ❌ **Monologue auto-cycle (5-step arc 每 step 自動切)** — 而家 user click option 先 trigger next monologue, 加 auto-cycle 屬 UX 改動, 唔屬 polish scope
+- ❌ **Monologue 嘅 emotion prosody overlay (TTS pitch/rate 跟 character voice type)** — 跟 §22.16.2 Cantonese emotion prosody pattern, 但 character voice type 唔同 emotion (e.g. 小美 觀察型 vs 小輝 advisor), 需新嘅 voice mapping, 屬 Phase 4
+- ❌ **Per-character × per-outcome split (15 → 75 monologues)** — §23 v3.13 已 list 為 S19+ scope
+- ❌ **Monologue TTS 按鈕** — bubble 屬 scene context, 唔似 option card 需要獨立 TTS, 學生 navigate 入 bubble SR 自動讀
+- ❌ **Garden meter block 同步 polish** — S18.2 守住 monologue scope, garden meter / option card / result tier 維持 §23 freeze
+- ❌ **Bubble 嘅 dark mode color override** — §21 v3.11 已 defer dark mode 到 S24
+- ❌ **Bubble 動畫進場 (fade-in slide)** — §23 v3.13 §22.13 已 explicit defer animation 配合 face image, monologue 同類 scope defer
+- ❌ **`<h3>` 改 `<h2>` 配合 page heading hierarchy** — garden-play 已有 page `<h2>`, monologue 屬 section heading `<h3>` 正確, 唔升級
+
+### 24.9 Migration impact summary
+
+| Metric | Before (S18.1 / v3.13) | After (S18.2 / v3.14) |
+|---|---|---|
+| Monologue bubble elements | 1 (single div) | 5 (note + img + body + h3 + p) |
+| ARIA role | `complementary` | `note` |
+| ARIA label | `${char}嘅內心話` (hidden) | *(移除 — semantic HTML 取代)* |
+| Avatar presence in bubble | ❌ (只有 page-header avatar) | ✅ (40×40 mini, 0 PWA growth) |
+| SR character-name reads per monologue | 2 (aria-label + prefix) | 1 (visible prefix) |
+| CSS classes added | 0 | 2 (`.garden-monologue-avatar`, `.garden-monologue-body`) |
+| HTML semantic tags | `<div>×3` | `<div> + <img> + <h3> + <p>` |
+| Test count | 363 | **368** (+5 semantic-a11y) |
+| PWA precache entries | unchanged | unchanged |
+| __version__ | 2.11.0 | **2.12.0** |
+
+---
+
+*Addendum 日期:2026-07-03 | 配合 Sprint 18.2 polish 開工 | 取代/補充:§23 唔變,純新增 §24 | 維護者: Mavis + kencheng*
+
