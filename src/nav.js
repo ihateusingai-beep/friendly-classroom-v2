@@ -15,6 +15,10 @@ export const NAV_VIEWS = new Set([
   'subject-select', 'role-select', 'mode-select', 'teacher-assign',
   'login', 'teacher',
   'bank-play', 'bank-result', 'bank-summary',
+  // Sprint 18 — 關係花園 (Relationship Garden)
+  'character-select',
+  'garden-play',
+  'garden-result',
 ]);
 
 /** Maps view → the key name used in `extra` for that view's primary arg. */
