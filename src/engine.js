@@ -764,10 +764,10 @@ export function renderTeacherAssign() {
       <div class="card">
         <div style="font-weight:700;font-size:var(--fs-md);margin-bottom:10px">🔐 PIN 安全</div>
         <p style="font-size:var(--fs-base);color:var(--text-light);margin-bottom:12px">
-          老師模式 PIN（預設：admin）
+          老師模式 PIN（預設：unicornntd）
         </p>
         <label for="teacher-pin-input" style="position:absolute;left:-9999px">老師模式 PIN</label>
-        <input type="password" id="teacher-pin-input" value="admin" maxlength="6" autocomplete="current-password"
+        <input type="password" id="teacher-pin-input" value="unicornntd" maxlength="20" autocomplete="current-password"
           placeholder="輸入新 PIN"
           style="width:100%;padding: var(--space-3);border:2px solid var(--border);border-radius:12px;font-size:var(--fs-md);box-sizing:border-box;margin-bottom:10px" />
         <button type="button" class="btn btn-outline" style="width:100%;font-size:var(--fs-md)"

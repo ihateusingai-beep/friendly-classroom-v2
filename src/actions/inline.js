@@ -158,8 +158,13 @@ export function getInlineActions({ render, _navigate, getState, setView }) {
     // ── Settings (Sprint 12 bridges) ──────────────────────────────
     /** data-action="doLogin" — teacher-mode password check. */
     doLogin() {
+      // One-time migration: clear legacy default 'admin' so new default applies
+      // on next load. Custom PINs (anything ≠ 'admin') are untouched.
+      if (typeof localStorage !== 'undefined' && localStorage.getItem('fc_teacher_pin') === 'admin') {
+        localStorage.removeItem('fc_teacher_pin');
+      }
       const pw = document.getElementById('teacher-pw')?.value?.trim() || '';
-      const expected = (typeof localStorage !== 'undefined' && localStorage.getItem('fc_teacher_pin')) || 'admin';
+      const expected = (typeof localStorage !== 'undefined' && localStorage.getItem('fc_teacher_pin')) || 'unicornntd';
       const err = document.getElementById('login-error');
       if (pw === expected) {
         if (err) err.style.display = 'none';

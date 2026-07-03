@@ -248,7 +248,7 @@ export function toggleAssignedTopic(topicId, checked) {
 
 /** Save the teacher PIN. */
 export function saveTeacherPIN() {
-  const pin = document.getElementById('teacher-pin-input')?.value?.trim() || 'admin';
+  const pin = document.getElementById('teacher-pin-input')?.value?.trim() || 'unicornntd';
   localStorage.setItem('fc_teacher_pin', pin);
   alert('✅ PIN 已更新為：' + pin);
 }
