@@ -1,5 +1,78 @@
 # Build Log - friendly-classroom-v2
 
+## v2.12.1-2026-07-03 - Sprint 18.2.1: Teacher mode entry-point bug fix (production)
+
+**Date:** 2026-07-03
+**Git:** (pending — Sprint 18.2.1 commit)
+**GitHub Pages:** https://ihateusingai-beep.github.io/friendly-classroom-v2/
+
+### Bug Fixed
+
+User-reported (2026-07-03):「首頁的老師，家長模式按下去無反應」
+
+### Root Cause
+
+ESBuild production minifier dropped the `_loadTeacher` entry from `wireActions({...})` call in main.js line 503. Two related issues in the same Sprint 18.1 / Sprint 18.2 area:
+
+**Issue 1 — `_loadTeacher` dep injection was tree-shook**
+- `wireAuth({ ..., _loadTeacher: deps._loadTeacher })` (actions/index.js:48)
+- `wireHub` 漏 pass `_loadTeacher` dep — `goTeacher(_loadTeacher)` 收到 `undefined` parameter
+- Inside `wireAuth`, `_loadTeacher = _loadTeacher` 是 self-assign — ESBuild minifier 視為 noop → drop call site `_loadTeacher: deps._loadTeacher` from `wireActions({...})` object literal
+- Result: production bundle `Kr({...wireActions call})` 完全冇 `_loadTeacher` entry → `chooseRole('teacher')` 入面 `await Nr()` (`Nr = _loadTeacher`) throws "Nr is not a function"
+
+**Issue 2 — `updateAnalyticsSummary` missing import**
+- main.js line 507: `if (state.view === 'settings') updateAnalyticsSummary();` (post-render hook)
+- `updateAnalyticsSummary` 喺 `domain/IO.js` export 但 main.js **冇 import**
+- 結果: settings page render throws `ReferenceError: updateAnalyticsSummary is not defined` → falls back to error UI → 「進入老師模式」button 唔 render → user 見「按下去無反應」
+
+### Fix Applied (4 surgical changes)
+
+| File | Change | Why |
+|---|---|---|
+| `src/main.js` (render() case 'login') | Add `import('./teacher.js').then(...)` + re-render fallback when `_teacher === null` | render() 自己動態加載 teacher chunk，唔再靠 `_loadTeacher` injection |
+| `src/main.js` (render() case 'teacher') | Same dynamic-import fallback | Same as above |
+| `src/domain/Auth.js` chooseRole | Remove `await _loadTeacher();` call | render() 自己 handle |
+| `src/games/Hub.js` goTeacher | Remove `_loadTeacher` parameter (signature 變 `goTeacher()`) | render() 自己 handle |
+| `src/main.js` | Add `import { updateAnalyticsSummary } from './domain/IO.js'` | 修第 2 個 bug |
+
+**Decoupling approach**: 之後任何 entry point（chooseRole / goTeacher / future nav）只 setView('login') + render() 就 work，唔再依賴 `_loadTeacher` injection。Production minifier 砍 wireActions entry 唔再影響 teacher-mode flow。
+
+### Teacher chunk caching behaviour
+
+- 第一次 click 老師 mode → render() 見 `_teacher === null` → dynamic import `./teacher.js` → renderLoading → 動態加載 → 設 `_teacher` cache → re-render → 顯示 login modal
+- 第二次 click (cached) → `_teacher` 已有 → 直接 render login modal，唔再 import
+
+### Files Touched
+
+| File | Change |
+|---|---|
+| `src/main.js` | +1 import (updateAnalyticsSummary), render() case 'login'/'teacher' 加 dynamic import fallback (~28 lines net) |
+| `src/domain/Auth.js` | chooseRole 刪 1 line (`await _loadTeacher()`) + 更新註解 |
+| `src/games/Hub.js` | goTeacher 刪 1 line + signature 改 `goTeacher()` |
+| `tests/sprint18-fix-teacher-entry.test.js` | NEW — 7 個 source-level regression guards |
+| `package.json` | 2.12.0 → 2.12.1 (PATCH — bug fix only, 唔加 feature) |
+
+### Acceptance Criteria Status
+
+| # | Criterion | Status |
+|---|---|---|
+| AC1 | `npm test` 全綠 (368 + 7 new) | ✓ 375 tests |
+| AC2 | Production build no error fallback on settings view | ✓ (verified via Playwright path D) |
+| AC3 | Path A (role-select → chooseRole → login → dashboard) | ✓ PASS |
+| AC4 | Path B (home → settings → goTeacher → login → dashboard) | ✓ PASS |
+| AC5 | Path C (re-enter teacher — cached chunk reuse) | ✓ PASS |
+| AC6 | Path D (settings page render — no ReferenceError) | ✓ PASS |
+| AC7 | 0 page errors across all 4 paths | ✓ |
+| AC8 | `npm run audit:*` 仍然 PASS | TBD (run before commit) |
+
+### Rollback
+
+```bash
+git revert <S18.2.1-commit-sha>
+```
+
+---
+
 ## v2.12.0-2026-07-03 - Sprint 18.2: Relationship Garden polish (monologue bubble + a11y SR)
 
 **Date:** 2026-07-03

@@ -28,6 +28,7 @@ import { bus } from './domain/EventBus.js';
 import { getMoralBarData } from './domain/Moral.js';
 import { initSync, syncNow, getSyncStatus } from './sync.js';
 import { logInteraction, markScenarioShown, exportInteractionsCSV, getStats, clearInteractions } from './domain/Analytics.js';
+import { updateAnalyticsSummary } from './domain/IO.js';
 import { navigate as _navigate, wireNav } from './nav.js';
 import { announceToSR, announceScenarioLoad } from './components/Toast.js';
 
@@ -442,8 +443,34 @@ function render() {
       case 'mode-select':    html = renderModeSelect(state.gameMode, state.subjectId); break;
       case 'student-select': html = renderStudentSelect(); break;
       case 'subject-select': html = renderSubjectSelect(); break;
-      case 'login': html = _teacher ? _teacher.renderLogin() : renderLoading('載入中...'); break;
-      case 'teacher': html = _teacher ? _teacher.renderTeacher() : renderLoading('載入中...'); break;
+      case 'login': {
+        if (_teacher) {
+          html = _teacher.renderLogin();
+        } else {
+          // Dynamic import teacher chunk on demand (avoids brittle `_loadTeacher`
+          // dep injection — Sprint 18.2.1 fix; was broken in production build
+          // because ESBuild tree-shook the wireActions `{_loadTeacher}` entry
+          // due to `_loadTeacher = _loadTeacher` self-assign in wireAuth).
+          import('./teacher.js').then((mod) => {
+            _teacher = { renderLogin: mod.renderLogin, renderTeacher: mod.renderTeacher };
+            render();
+          });
+          html = renderLoading('載入中…');
+        }
+        break;
+      }
+      case 'teacher': {
+        if (_teacher) {
+          html = _teacher.renderTeacher();
+        } else {
+          import('./teacher.js').then((mod) => {
+            _teacher = { renderLogin: mod.renderLogin, renderTeacher: mod.renderTeacher };
+            render();
+          });
+          html = renderLoading('載入中…');
+        }
+        break;
+      }
       case 'teacher-assign': html = renderTeacherAssign(); break;
       case 'home': html = renderHome(state.subjectId); break;
       case 'topic': html = renderTopicList(state.topicId, state.subjectId); break;

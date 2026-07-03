@@ -45,14 +45,14 @@ export function selectSubject(subjectId) {
   _render();
 }
 
-/** Choose student or teacher role; for teacher, pre-load the chunk to
- *  avoid a "loading…" flash on the login view.
+/** Choose student or teacher role. Teacher login view renders via render()
+ *  case 'login', which now self-loads the teacher chunk on demand
+ *  (Sprint 18.2.1 fix — was brittle _loadTeacher dep injection).
  */
 export async function chooseRole(role) {
   const current = _state();
   _setState({ ...current, role, teacherMode: role === 'teacher' });
   if (role === 'teacher') {
-    await _loadTeacher();
     _setView('login');
   } else {
     _setView('hub');

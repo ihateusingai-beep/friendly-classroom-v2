@@ -98,9 +98,11 @@ export async function goRandom() {
 
 // ── Teacher entry ───────────────────────────────────────────────────
 
-/** Lazy-load the teacher chunk and navigate to the login view. */
-export async function goTeacher(_loadTeacher) {
-  await _loadTeacher();
+/** Navigate to the teacher login view. The teacher chunk is dynamic-imported
+ *  by render() case 'login' on demand (Sprint 18.2.1 fix — was brittle
+ *  _loadTeacher dep injection that ESBuild tree-shook in production builds).
+ */
+export async function goTeacher() {
   _setView('login');
   _render();
 }
