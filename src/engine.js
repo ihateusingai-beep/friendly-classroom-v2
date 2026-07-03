@@ -104,19 +104,23 @@ export function renderGameHub() {
           <div class="gc-desc">18 個品格課題自由探索：12 個 EDB 價值觀 + 5 個友愛校園 + 1 個情緒小偵探</div>
         </button>
 
+        ${isFeatureEnabled('GARDEN_MODE') ? `
         <button type="button" class="game-card available" data-action="playRelationshipGarden" style="background:linear-gradient(135deg,var(--color-danger-bg),#fecaca);border-color:var(--color-danger)" aria-label="關係花園：揀個朋友，5 個情境一齊建立友誼">
           <div class="gc-icon" aria-hidden="true">🌷</div>
           <div class="gc-title">關係花園</div>
           <div class="gc-desc">揀個朋友，5 個情境一齊建立友誼</div>
           <div class="gc-tag" aria-label="Sprint 18 解鎖">Sprint 18</div>
         </button>
+        ` : ''}
 
+        ${isFeatureEnabled('MONOPOLY_MODE') ? `
         <div class="game-card locked" style="background:linear-gradient(135deg,var(--color-primary-bg),#e9d5ff);border-color:#a855f7;cursor:not-allowed;opacity:0.6" role="img" aria-label="道德大富翁（暫未推出）">
           <div class="gc-icon" aria-hidden="true">🎲</div>
           <div class="gc-title">道德大富翁</div>
           <div class="gc-desc">（即將推出）</div>
           <div class="gc-tag" aria-hidden="true">coming soon</div>
         </div>
+        ` : ''}
       </div>
 
       <div class="fc-center-20">

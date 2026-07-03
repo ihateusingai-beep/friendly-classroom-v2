@@ -30,7 +30,10 @@ export const FLAGS = Object.freeze({
   WARM_THEME: false,
 
   /** Sprint 18: 關係花園 (Relationship Garden) hub card + 3 character roster unlock. */
-  GARDEN_MODE: true,
+  GARDEN_MODE: false,
+
+  /** 道德大富翁 (Moral Monopoly) — backlog, UI 卡暫時收埋。 */
+  MONOPOLY_MODE: false,
 });
 
 /** Prefix for per-flag localStorage overrides. */
