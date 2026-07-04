@@ -469,6 +469,13 @@ h3 { font-size: var(--fs-lg); margin-bottom: 8px; }
   padding: var(--space-1);
   background: var(--bg-soft, #f7f7fa);
   border-radius: 12px;
+  flex-wrap: wrap;   /* Sprint 28 / SPEC §28 — 5 tabs (now includes 🏠 家庭生活)
+                        wrap on narrow viewports (iPad portrait 768px) instead of
+                        overflowing. tabs keep readable width, wrap to second line. */
+}
+.home-filter-row > .home-filter-tab {
+  min-height: 44px;  /* iPad touch-target baseline per SPEC §28.1 — same as
+                        Sprint 18 touch-target audit threshold */
 }
 .home-filter-tab {
   flex: 1;

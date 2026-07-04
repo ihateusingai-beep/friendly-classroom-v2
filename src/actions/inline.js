@@ -31,7 +31,7 @@ import { onboardingNext as _onboardingNext, onboardingSkip as _onboardingSkip,
          resetOnboarding as _resetOnboarding } from '../components/Onboarding.js';
 import { STORAGE_KEYS } from '../storage.js';
 
-const _ALLOWED_HOME_FILTERS = ['value', 'caring', 'emotion-detective', 'all'];
+const _ALLOWED_HOME_FILTERS = ['value', 'caring', 'emotion-detective', 'family', 'all'];
 
 /** Build the inline-actions fragment. `deps` is { render, _navigate, getState, setView }.
  *  Returns an object ready for `Object.assign(actions, ...)` in actions/index.js.
