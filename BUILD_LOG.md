@@ -1,5 +1,67 @@
 # Build Log - friendly-classroom-v2
 
+## v2.13.1-2026-07-05 - Sprint 28.1: Family Domain scenario illustrations (30 PNGs)
+
+**Date:** 2026-07-05
+**Sprint:** 28.1 (patch on top of v2.13.0)
+**Type:** PATCH — adds illustration assets + provenance; no schema/UI changes
+**Branch:** `feat/family-life-domain-pilot`
+
+### Highlights
+
+- Generated **30 16:9 scenario illustrations** for the Family Domain pilot
+  (15 `healthy-eating` + 15 `screen-time`), one PNG per scenario, naming
+  `<id>.png` so the existing renderer fallback (src/engine.js:1300)
+  ships them with **zero code change**.
+- Populated `imagePrompt` field in both `data/scenarios/healthy-eating.json`
+  and `data/scenarios/screen-time.json` to lock visual provenance for
+  future regen — every prompt ends with the canonical 16:9 / no-text / no-logo
+  anchor suffix.
+- Anchor character: **小明** (Hong Kong 7-year-old boy) across all 30,
+  mirroring emotion-detective's single-anchor pattern. RiskLevel-2 scenes
+  (stranger-DM st-11, cyberbullying st-10) lean on **emotional reaction**
+  (worried, confused) NOT menacing faces, keeping them SEN-safe.
+- Style suffix mirrored from `BATCH2_PROMPTS_HQ.md`: warm soft pastel
+  tones, anime cartoon, expressive character art, HK primary-school /
+  home setting.
+
+### Files Changed
+
+| File | Delta |
+|---|---|
+| `data/scenarios/healthy-eating.json` | + `imagePrompt` on 15 entries |
+| `data/scenarios/screen-time.json` | + `imagePrompt` on 15 entries |
+| `assets/images/scenarios/he-*.png` | 15 new PNGs (JPEG-in-PNG, 1280×720, ~150–340KB each) |
+| `assets/images/scenarios/st-*.png` | 15 new PNGs (same dimensions) |
+| `public/assets/images/scenarios/{he,st}-*.png` | 30 mirrored by prebuild-sync.sh |
+| `tools/expansion/gen_family_images.py` | new — clones gen_new_images.py pattern, MiniMax image-01 pipeline |
+| `tests/sprint28-1-family-images.test.js` | new — 5 invariants (PNG presence, size, imagePrompt shape, sync parity) |
+| `package.json` | version 2.13.0 → 2.13.1 (PATCH) |
+
+### Acceptance criteria
+
+| AC | Result |
+|---|---|
+| AC1 `npm test` 全 pass | ✅ 408 passed (24 files, prev 403 / 23), 新 sprint28-1 加 5 invariants |
+| AC2 `npm run build` 成功 | ✅ 1.22s build, dist contains 30 family PNGs, precache 1108 entries |
+| AC3 Visual QA on 6 PNGs (he-1/3/7, st-1/3/7) | ✅ anchor character consistent, warm tone, no text/logos, SEN-friendly |
+| AC4 `git log` shows 28 + 28.1 commits | ⏳ pending — this entry lands before the patch commit |
+| AC5 Version 2.13.0 → 2.13.1 | ✅ |
+| AC6 BUILD_LOG.md v2.13.1 entry | ✅ this section |
+| AC7 ARCHITECTURE.md `Last reviewed:` | ⏳ see commit |
+| AC8 No new console warnings at first-paint | ⏳ see commit |
+
+### Open / future
+
+- **outcome images** (good / bad reaction per option, 60-90 PNGs) — earmarked for v28.2
+- **anchor character tightening** — st-11 anchor looks slightly older than he-*;
+  v28.2 will refine prompt
+- **Single-character representativeness** — consider introducing 小美 /
+  小晴 for ~half scenarios in v28.2 to broaden HK diversity while keeping
+  consistency via a stricter anchor prompt
+
+---
+
 ## v2.13.0-2026-07-04 - Sprint 28: 家庭生活 domain pilot (飲食習慣 + 屏幕時間)
 
 **Date:** 2026-07-04

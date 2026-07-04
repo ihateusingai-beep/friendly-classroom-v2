@@ -6,7 +6,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "晚餐時間",
     "description": "媽媽今天煮了翠玉瓜炒蛋，你其實比較想吃薯條。媽媽已經坐低等你一齊吃。你會點做？",
@@ -19,13 +22,23 @@
       {
         "id": "he-1-a",
         "text": "我坐低同媽媽一齊吃翠玉瓜，可以試吓先",
-        "effects": [{ "moralChange": 15, "comment": "肯試新菜，同媽媽分享晚餐，家庭溫馨！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "肯試新菜，同媽媽分享晚餐，家庭溫馨！"
+          }
+        ],
         "next_scenario": "he-2"
       },
       {
         "id": "he-1-b",
         "text": "我不吃！我要吃薯條！",
-        "effects": [{ "moralChange": -15, "comment": "大聲拒絕會令媽媽不開心，也會浪費他的心意。" }],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "大聲拒絕會令媽媽不開心，也會浪費他的心意。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "我不吃！我要吃薯條！",
@@ -36,13 +49,23 @@
       {
         "id": "he-1-c",
         "text": "同媽媽講：可以一半青菜一半薯條嗎？",
-        "effects": [{ "moralChange": 18, "comment": "識得表達口味，又肯同家人商量，係成熟的做法！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "識得表達口味，又肯同家人商量，係成熟的做法！"
+          }
+        ],
         "next_scenario": "he-2"
       },
       {
         "id": "he-1-d",
         "text": "偷偷倒落垃圾桶",
-        "effects": [{ "moralChange": -15, "comment": "欺騙同浪費吃物，會破壞信任。" }],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "欺騙同浪費吃物，會破壞信任。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "偷偷倒落垃圾桶",
@@ -51,8 +74,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["均衡喝吃", "表達自己", "家庭溝通"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "均衡喝吃",
+      "表達自己",
+      "家庭溝通"
+    ],
+    "imagePrompt": "A Hong Kong 7-year-old boy (小明) sitting at a dinner table with his mother, a plate of stir-fried zucchini and eggs in front of them, mother smiling and waiting patiently, warm dining room light, gentle curious expression on boy's face not angry, two place settings, family dinner scene, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-2",
@@ -61,7 +91,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "阿嫲來探你",
     "description": "阿嫲來探你，不停切蘋果、橙、提子俾你吃。其實你已經吃了兩個蘋果。你會點做？",
@@ -73,13 +106,23 @@
       {
         "id": "he-2-a",
         "text": "多謝阿嫲！可以分一半俾爸爸嗎？",
-        "effects": [{ "moralChange": 15, "comment": "識得分享又表達感激，阿嫲會好開心！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "識得分享又表達感激，阿嫲會好開心！"
+          }
+        ],
         "next_scenario": "he-3"
       },
       {
         "id": "he-2-b",
         "text": "偷偷將蘋果塞落衫入面",
-        "effects": [{ "moralChange": -10, "comment": "欺騙阿嫲不係好的選擇，阿嫲會擔心你不夠吃。" }],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "欺騙阿嫲不係好的選擇，阿嫲會擔心你不夠吃。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "偷偷將蘋果塞落衫入面",
@@ -90,13 +133,23 @@
       {
         "id": "he-2-c",
         "text": "我吃多一件，提子留返明天吃",
-        "effects": [{ "moralChange": 18, "comment": "識得節制又不傷阿嫲心，係成熟的表現！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "識得節制又不傷阿嫲心，係成熟的表現！"
+          }
+        ],
         "next_scenario": "he-3"
       },
       {
         "id": "he-2-d",
         "text": "氣呼呼地說：吃不落吧！",
-        "effects": [{ "moralChange": -12, "comment": "大聲講事會令阿嫲不開心。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "大聲講事會令阿嫲不開心。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "氣呼呼地說吃不落吧",
@@ -105,8 +158,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["節制", "感恩", "家庭溝通"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "節制",
+      "感恩",
+      "家庭溝通"
+    ],
+    "imagePrompt": "An elderly Chinese grandmother (阿嫲) cutting a fresh apple and orange on a kitchen counter for her 7-year-old grandson, fruit plate already with two apples eaten, grandma smiling warmly with love, Hong Kong home kitchen, soft afternoon light, tender caring mood, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-3",
@@ -115,7 +175,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "每日午餐",
     "description": "你每次吃飯都揀晒肉吃晒，蔬菜留在碟邊。爸爸話「要吃多一些菜身體先健康」。你會點做？",
@@ -127,13 +190,23 @@
       {
         "id": "he-3-a",
         "text": "可以試吓吃返幾條菜",
-        "effects": [{ "moralChange": 12, "comment": "願意嘗試已經好叻吧！" }],
+        "effects": [
+          {
+            "moralChange": 12,
+            "comment": "願意嘗試已經好叻吧！"
+          }
+        ],
         "next_scenario": "he-4"
       },
       {
         "id": "he-3-b",
         "text": "講：菜好難吃，我不鍾意",
-        "effects": [{ "moralChange": -8, "comment": "可能你未試過好味的煮法，可以同屋企人研究下。" }],
+        "effects": [
+          {
+            "moralChange": -8,
+            "comment": "可能你未試過好味的煮法，可以同屋企人研究下。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "講：菜好難吃，我不鍾意",
@@ -144,13 +217,23 @@
       {
         "id": "he-3-c",
         "text": "同爸爸研究：邊種菜我最鍾意？",
-        "effects": [{ "moralChange": 18, "comment": "主動找方法，又肯同家人合作，正！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "主動找方法，又肯同家人合作，正！"
+          }
+        ],
         "next_scenario": "he-4"
       },
       {
         "id": "he-3-d",
         "text": "扮吃了，其實偷偷藏起",
-        "effects": [{ "moralChange": -12, "comment": "欺騙不會幫你健康，而且會被發現。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "欺騙不會幫你健康，而且會被發現。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "扮吃了，其實偷偷藏起",
@@ -159,8 +242,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["均衡喝吃", "解決問題", "家庭合作"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "均衡喝吃",
+      "解決問題",
+      "家庭合作"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) at a school lunch tray with meat dishes only, vegetables untouched on the side of plate, his father (40s, warm expression) sitting across at the table pointing gently at the vegetables, Hong Kong primary school canteen setting, warm tones, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-4",
@@ -169,7 +259,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "屋企喝茶時間",
     "description": "細的阿妹（7 歲）每日都扭媽媽買汽水。媽媽問你有什麼好主意。你會點做？",
@@ -181,13 +274,23 @@
       {
         "id": "he-4-a",
         "text": "同阿妹一齊試整水果水（檸檬 + 薄荷）",
-        "effects": [{ "moralChange": 15, "comment": "帶領阿妹找健康喝法，你係好哥哥 / 好姐姐！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "帶領阿妹找健康喝法，你係好哥哥 / 好姐姐！"
+          }
+        ],
         "next_scenario": "he-5"
       },
       {
         "id": "he-4-b",
         "text": "買汽水俾他吧，我不想他喊",
-        "effects": [{ "moralChange": -10, "comment": "縱容不等於愛，長遠會影響阿妹健康。" }],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "縱容不等於愛，長遠會影響阿妹健康。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "買汽水俾他吧",
@@ -198,13 +301,23 @@
       {
         "id": "he-4-c",
         "text": "同媽媽商量：可以一星期一次汽水",
-        "effects": [{ "moralChange": 18, "comment": "識得平衡健康同快樂，大家都接受到！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "識得平衡健康同快樂，大家都接受到！"
+          }
+        ],
         "next_scenario": "he-5"
       },
       {
         "id": "he-4-d",
         "text": "鬧阿妹：不準再扭！",
-        "effects": [{ "moralChange": -8, "comment": "用權威會令阿妹不信你，不係好的方法。" }],
+        "effects": [
+          {
+            "moralChange": -8,
+            "comment": "用權威會令阿妹不信你，不係好的方法。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "鬧阿妹：不準再扭",
@@ -213,8 +326,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["健康習慣", "帶領細的", "家庭協商"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "健康習慣",
+      "帶領細的",
+      "家庭協商"
+    ],
+    "imagePrompt": "A 7-year-old older sister (小明) standing in living room with younger sister (7yo girl) pouting with arms crossed, both near a fridge with soda cans visible on top, mother standing behind them smiling kindly, Hong Kong apartment interior, warm bright home setting, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-5",
@@ -223,7 +343,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "屋企",
     "description": "你下晝返到屋企好肚餓，但媽媽仲有半個鐘先煮好飯。你通常就會吃晒成筒薯片 + 朱古力。你會點做？",
@@ -235,13 +358,23 @@
       {
         "id": "he-5-a",
         "text": "吃一個蘋果加梳打餅，等媽媽煮飯",
-        "effects": [{ "moralChange": 15, "comment": "識得控制自己，健康又留肚吃正餐！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "識得控制自己，健康又留肚吃正餐！"
+          }
+        ],
         "next_scenario": "he-6"
       },
       {
         "id": "he-5-b",
         "text": "繼續吃晒成筒薯片",
-        "effects": [{ "moralChange": -10, "comment": "零吃吃太多會影響正餐胃口。" }],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "零吃吃太多會影響正餐胃口。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "繼續吃晒成筒薯片",
@@ -252,13 +385,23 @@
       {
         "id": "he-5-c",
         "text": "問媽媽：可以幫手預備水果嗎？",
-        "effects": [{ "moralChange": 18, "comment": "主動參與準備吃物，又健康，叻！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "主動參與準備吃物，又健康，叻！"
+          }
+        ],
         "next_scenario": "he-6"
       },
       {
         "id": "he-5-d",
         "text": "吃晒所有零吃 + 晚飯",
-        "effects": [{ "moralChange": -12, "comment": "過量進吃會令腸胃不舒服。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "過量進吃會令腸胃不舒服。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "吃晒所有零吃",
@@ -267,8 +410,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["節制", "自控", "健康選擇"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "節制",
+      "自控",
+      "健康選擇"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) sitting on a sofa in the afternoon holding an empty chip bag and chocolate wrapper, guilty thoughtful expression, Hong Kong apartment living room with kitchen in background, soft warm light, snacking scene, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-6",
@@ -277,7 +427,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "返學的朝早",
     "description": "你成日趕住出門口，所以不吃早餐就去返學。有時上堂會頭暈。你會點做？",
@@ -289,13 +442,23 @@
       {
         "id": "he-6-a",
         "text": "前一晚同媽媽準備定三文治同喝品",
-        "effects": [{ "moralChange": 15, "comment": "預先計劃係成熟的表現！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "預先計劃係成熟的表現！"
+          }
+        ],
         "next_scenario": "he-7"
       },
       {
         "id": "he-6-b",
         "text": "繼續趕時間不吃早餐",
-        "effects": [{ "moralChange": -12, "comment": "長期不吃早餐會影響學習同健康。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "長期不吃早餐會影響學習同健康。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "繼續趕時間不吃早餐",
@@ -306,13 +469,23 @@
       {
         "id": "he-6-c",
         "text": "提早 10 分鐘起身，吃簡單粥或麵包",
-        "effects": [{ "moralChange": 18, "comment": "願意改變習慣就係最大進步！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "願意改變習慣就係最大進步！"
+          }
+        ],
         "next_scenario": "he-7"
       },
       {
         "id": "he-6-d",
         "text": "返學路上買快餐",
-        "effects": [{ "moralChange": -8, "comment": "快餐高油高鹽，不係健康的早餐選擇。" }],
+        "effects": [
+          {
+            "moralChange": -8,
+            "comment": "快餐高油高鹽，不係健康的早餐選擇。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "返學路上買快餐",
@@ -321,8 +494,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["預備", "健康習慣", "時間管理"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "預備",
+      "健康習慣",
+      "時間管理"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) rushing out the door of his Hong Kong apartment in the morning with backpack, school uniform, no breakfast on the table, time-pressured scene, warm bedroom doorway, slightly worried expression, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-7",
@@ -331,7 +511,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "屋企",
     "description": "媽媽每日煲滾水俾你喝，但你嫌「有一些味」，只想喝樽裝水。媽媽覺得浪費錢又不環保。你會點做？",
@@ -343,13 +526,23 @@
       {
         "id": "he-7-a",
         "text": "試吓加檸檬或蜂蜜落媽媽煲的水",
-        "effects": [{ "moralChange": 15, "comment": "識得用方法令水好喝，又環保！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "識得用方法令水好喝，又環保！"
+          }
+        ],
         "next_scenario": "he-8"
       },
       {
         "id": "he-7-b",
         "text": "繼續只喝樽裝水",
-        "effects": [{ "moralChange": -10, "comment": "塑膠瓶會造成污染，媽媽的心意都不尊重。" }],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "塑膠瓶會造成污染，媽媽的心意都不尊重。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "繼續只喝樽裝水",
@@ -360,13 +553,23 @@
       {
         "id": "he-7-c",
         "text": "同媽媽傾：我為什麼鍾意樽裝水",
-        "effects": [{ "moralChange": 18, "comment": "肯聊天了解背後原因，大家都更明白對方！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "肯聊天了解背後原因，大家都更明白對方！"
+          }
+        ],
         "next_scenario": "he-8"
       },
       {
         "id": "he-7-d",
         "text": "偷偷買樽裝水",
-        "effects": [{ "moralChange": -8, "comment": "用自己零用錢買都仲係增加膠樽，不係根本解決。" }],
+        "effects": [
+          {
+            "moralChange": -8,
+            "comment": "用自己零用錢買都仲係增加膠樽，不係根本解決。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "偷偷買樽裝水",
@@ -375,8 +578,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["環保", "家庭溝通", "解決問題"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "環保",
+      "家庭溝通",
+      "解決問題"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) holding a bottled water in one hand and pointing at a kettle of boiled water with the other, mother standing nearby looking gently concerned about waste, Hong Kong home kitchen, warm tones, comparison scene, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-8",
@@ -385,7 +595,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "晚餐時間",
     "description": "你吃飯時成日拎手機出來看 YouTube。爸爸話：「吃飯就吃飯」。你會點做？",
@@ -397,13 +610,23 @@
       {
         "id": "he-8-a",
         "text": "擺低手機，同家人傾今天學校的事",
-        "effects": [{ "moralChange": 18, "comment": "珍惜家庭時間，大家都會記住這個溫馨的晚餐！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "珍惜家庭時間，大家都會記住這個溫馨的晚餐！"
+          }
+        ],
         "next_scenario": "he-9"
       },
       {
         "id": "he-8-b",
         "text": "「假裝聽爸爸」說，其實繼續偷偷看",
-        "effects": [{ "moralChange": -12, "comment": "偷看係欺騙，又不專心吃飯，對腸胃不好。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "偷看係欺騙，又不專心吃飯，對腸胃不好。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "「假裝聽爸爸」說偷偷看",
@@ -414,13 +637,23 @@
       {
         "id": "he-8-c",
         "text": "問爸爸：可以吃完飯先看嗎？",
-        "effects": [{ "moralChange": 15, "comment": "識得商量又肯讓步，係好方法！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "識得商量又肯讓步，係好方法！"
+          }
+        ],
         "next_scenario": "he-9"
       },
       {
         "id": "he-8-d",
         "text": "鬧：看下手機點啊！",
-        "effects": [{ "moralChange": -12, "comment": "不尊重爸爸的規矩，又破壞家庭和諧。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "不尊重爸爸的規矩，又破壞家庭和諧。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "鬧：看下手機點啊",
@@ -429,8 +662,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["餐桌禮儀", "家庭時間", "協商"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "餐桌禮儀",
+      "家庭時間",
+      "協商"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) at dinner table with a smartphone propped up showing YouTube in front of his plate, father (40s, gentle serious expression) sitting across with hand raised in a calm teaching gesture, Hong Kong home dining scene, warm evening light, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-9",
@@ -439,7 +679,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "午餐",
     "description": "媽媽今天煮苦瓜排骨湯，你覺得好苦。你即刻話「我不吃！」就走了去房。你會點做？",
@@ -451,13 +694,23 @@
       {
         "id": "he-9-a",
         "text": "返出來，喝一啖湯同媽媽講聲多謝",
-        "effects": [{ "moralChange": 15, "comment": "識得體諒媽媽的心意，又肯嘗試，叻！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "識得體諒媽媽的心意，又肯嘗試，叻！"
+          }
+        ],
         "next_scenario": "he-10"
       },
       {
         "id": "he-9-b",
         "text": "匿埋在房不出來",
-        "effects": [{ "moralChange": -10, "comment": "離開會令媽媽擔心又不開心。" }],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "離開會令媽媽擔心又不開心。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "匿埋在房不出來",
@@ -468,13 +721,23 @@
       {
         "id": "he-9-c",
         "text": "同媽媽講：可以加少少糖中和苦味嗎？",
-        "effects": [{ "moralChange": 18, "comment": "主動找解決方法，又表達口味，成熟！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "主動找解決方法，又表達口味，成熟！"
+          }
+        ],
         "next_scenario": "he-10"
       },
       {
         "id": "he-9-d",
         "text": "偷偷倒落洗手盆",
-        "effects": [{ "moralChange": -15, "comment": "浪費吃物又不誠實。" }],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "浪費吃物又不誠實。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "偷偷倒落洗手盆",
@@ -483,8 +746,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["嘗試", "家庭溝通", "表達自己"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "嘗試",
+      "家庭溝通",
+      "表達自己"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) walking away from the kitchen table where a bowl of bitter melon soup sits untouched, mother looking disappointed, Hong Kong apartment interior, emotional reaction moment, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-10",
@@ -493,7 +763,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "週末晚餐",
     "description": "媽媽提議今晚吃中菜（火鍋），但你同細的想吃 pizza。爸爸就話俾你們揀。你會點做？",
@@ -505,13 +778,23 @@
       {
         "id": "he-10-a",
         "text": "同意今天吃火鍋，提議下週六吃 pizza",
-        "effects": [{ "moralChange": 18, "comment": "識得輪流同妥協，家庭和諧！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "識得輪流同妥協，家庭和諧！"
+          }
+        ],
         "next_scenario": "he-11"
       },
       {
         "id": "he-10-b",
         "text": "大哭：我一定要吃 pizza！",
-        "effects": [{ "moralChange": -12, "comment": "用情緒操控家人會令大家好辛苦。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "用情緒操控家人會令大家好辛苦。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "大哭：我一定要吃 pizza",
@@ -522,13 +805,23 @@
       {
         "id": "he-10-c",
         "text": "提議：火鍋加 pizza 都吃少量",
-        "effects": [{ "moralChange": 15, "comment": "肯想大家都開心的方案，叻！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "肯想大家都開心的方案，叻！"
+          }
+        ],
         "next_scenario": "he-11"
       },
       {
         "id": "he-10-d",
         "text": "不吃，返房吃薯片就算",
-        "effects": [{ "moralChange": -10, "comment": "自我隔離令全家擔心。" }],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "自我隔離令全家擔心。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "返房吃薯片就算",
@@ -537,8 +830,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["妥協", "家庭協商", "雙贏思維"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "妥協",
+      "家庭協商",
+      "雙贏思維"
+    ],
+    "imagePrompt": "A Hong Kong family of four at a restaurant — parents and two children looking at menus, one child holding up a pizza menu happily while mother holding a hotpot menu, family decision scene, warm restaurant interior, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-11",
@@ -547,7 +847,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 2,
     "background": "屋企",
     "description": "媽媽買了一盒糖俾阿嫲，有時俾你們分吓。你不覺意吃了 8 粒（媽媽話最多 2 粒）。你會點做？",
@@ -559,13 +862,23 @@
       {
         "id": "he-11-a",
         "text": "主動同媽媽講聲對不住",
-        "effects": [{ "moralChange": 15, "comment": "肯承擔又肯認錯，係誠實的表現！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "肯承擔又肯認錯，係誠實的表現！"
+          }
+        ],
         "next_scenario": "he-12"
       },
       {
         "id": "he-11-b",
         "text": "扮沒有事，不出聲",
-        "effects": [{ "moralChange": -10, "comment": "不講會累積內疚，下次可能會講大話掩飾。" }],
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "不講會累積內疚，下次可能會講大話掩飾。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "扮沒有事，不出聲",
@@ -576,13 +889,23 @@
       {
         "id": "he-11-c",
         "text": "自己留番兩粒，記住下次守規矩",
-        "effects": [{ "moralChange": 18, "comment": "自己管理自己係最難得的成長！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "自己管理自己係最難得的成長！"
+          }
+        ],
         "next_scenario": "he-12"
       },
       {
         "id": "he-11-d",
         "text": "再偷多幾粒，覺得媽媽不會發現",
-        "effects": [{ "moralChange": -15, "comment": "講大話越講越大，最終會爆。" }],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "講大話越講越大，最終會爆。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "再偷多幾粒",
@@ -591,8 +914,15 @@
         }
       }
     ],
-    "creedIds": [3],
-    "skills": ["誠實", "自控", "承擔責任"]
+    "creedIds": [
+      3
+    ],
+    "skills": [
+      "誠實",
+      "自控",
+      "承擔責任"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) looking guilty sitting on the floor next to a candy box with only a few candies left, mother's hand visible nearby, Hong Kong home living room, dim slightly worried warm tones, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-12",
@@ -601,7 +931,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "返學路上",
     "description": "媽媽已經擺了杯暖牛奶在你書包旁邊，但你比較想喝街邊的凍檸茶（$12）。你會點做？",
@@ -613,13 +946,23 @@
       {
         "id": "he-12-a",
         "text": "喝媽媽的奶，留凍檸茶放假先喝",
-        "effects": [{ "moralChange": 18, "comment": "識得分辨「恆常喝」同「偶爾喝」係成熟的表現！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "識得分辨「恆常喝」同「偶爾喝」係成熟的表現！"
+          }
+        ],
         "next_scenario": "he-13"
       },
       {
         "id": "he-12-b",
         "text": "日日喝凍檸茶",
-        "effects": [{ "moralChange": -12, "comment": "高糖喝品會令你成日不舒服，又會蛀牙。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "高糖喝品會令你成日不舒服，又會蛀牙。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "日日喝凍檸茶",
@@ -630,13 +973,23 @@
       {
         "id": "he-12-c",
         "text": "喝半杯奶，留半杯俾返屋企再喝凍檸茶",
-        "effects": [{ "moralChange": 12, "comment": "肯妥協，又不完全放棄自己的喜好。" }],
+        "effects": [
+          {
+            "moralChange": 12,
+            "comment": "肯妥協，又不完全放棄自己的喜好。"
+          }
+        ],
         "next_scenario": "he-13"
       },
       {
         "id": "he-12-d",
         "text": "偷偷倒了媽媽的奶",
-        "effects": [{ "moralChange": -15, "comment": "浪費媽媽的心意，又不健康。" }],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "浪費媽媽的心意，又不健康。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "偷偷倒了媽媽的奶",
@@ -645,8 +998,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["健康選擇", "節制", "珍惜家人準備"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "健康選擇",
+      "節制",
+      "珍惜家人準備"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) at home near his schoolbag, a cup of warm milk placed beside it, and outside a Hong Kong street stall selling iced lemon tea visible through window, decision moment morning scene, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-13",
@@ -655,7 +1015,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "晚餐前 30 分鐘",
     "description": "你 5 點吃晒整包餅乾 + 朱古力，等到媽媽 6 點煮好飯你就吃不落。媽媽好不開心。你會點做？",
@@ -667,13 +1030,23 @@
       {
         "id": "he-13-a",
         "text": "道歉，同媽媽講明天不會吃咁多零吃",
-        "effects": [{ "moralChange": 15, "comment": "肯認錯又承諾改，係負責任的做法！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "肯認錯又承諾改，係負責任的做法！"
+          }
+        ],
         "next_scenario": "he-14"
       },
       {
         "id": "he-13-b",
         "text": "扮飽，偷偷將飯餸倒落垃圾桶",
-        "effects": [{ "moralChange": -15, "comment": "欺騙加浪費，雙重錯誤。" }],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "欺騙加浪費，雙重錯誤。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "偷偷將飯餸倒落垃圾桶",
@@ -684,13 +1057,23 @@
       {
         "id": "he-13-c",
         "text": "至少吃少少媽媽的餸，多謝他",
-        "effects": [{ "moralChange": 18, "comment": "肯陪家人吃又表達感謝，溫暖的做法！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "肯陪家人吃又表達感謝，溫暖的做法！"
+          }
+        ],
         "next_scenario": "he-14"
       },
       {
         "id": "he-14-d",
         "text": "全部吃晒，不理自己腸胃",
-        "effects": [{ "moralChange": -12, "comment": "勉強吃會令你腸胃痛。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "勉強吃會令你腸胃痛。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "全部吃晒",
@@ -699,8 +1082,15 @@
         }
       }
     ],
-    "creedIds": [3],
-    "skills": ["節制零吃", "珍惜家人煮的飯", "承擔"]
+    "creedIds": [
+      3
+    ],
+    "skills": [
+      "節制零吃",
+      "珍惜家人煮的飯",
+      "承擔"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) sitting tired and full on a sofa next to empty cookie and chocolate wrappers at 6pm, mother in kitchen with pots visible looking over with concern, Hong Kong apartment at dinnertime, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-14",
@@ -709,7 +1099,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 2,
     "background": "餐廳",
     "description": "你們一家人在餐廳，你提議全家用同一支喝管分同一杯凍檸茶。你覺得環保。你會點做？",
@@ -721,13 +1114,23 @@
       {
         "id": "he-14-a",
         "text": "不用喝管，直接用杯喝",
-        "effects": [{ "moralChange": 15, "comment": "簡單又環保，又不會傳染病！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "簡單又環保，又不會傳染病！"
+          }
+        ],
         "next_scenario": "he-15"
       },
       {
         "id": "he-14-b",
         "text": "堅持全家人共用一支喝管",
-        "effects": [{ "moralChange": -12, "comment": "感冒、腸胃炎會傳染俾全家人。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "感冒、腸胃炎會傳染俾全家人。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "堅持共用一支喝管",
@@ -738,13 +1141,23 @@
       {
         "id": "he-14-c",
         "text": "問餐廳：有沒有紙喝管或不鏽鋼喝管？",
-        "effects": [{ "moralChange": 18, "comment": "主動找環保替代方案，叻！這個係真正的環保思維！" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "主動找環保替代方案，叻！這個係真正的環保思維！"
+          }
+        ],
         "next_scenario": "he-15"
       },
       {
         "id": "he-14-d",
         "text": "照用塑膠喝管",
-        "effects": [{ "moralChange": -8, "comment": "不係大錯，但更好的選擇係環保喝管。" }],
+        "effects": [
+          {
+            "moralChange": -8,
+            "comment": "不係大錯，但更好的選擇係環保喝管。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "照用塑膠喝管",
@@ -753,8 +1166,15 @@
         }
       }
     ],
-    "creedIds": [10],
-    "skills": ["衛生", "環保", "解決問題"]
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "衛生",
+      "環保",
+      "解決問題"
+    ],
+    "imagePrompt": "A Hong Kong family of four at a restaurant table with one large iced lemon tea, child raising hand making a sharing suggestion, family group scene, warm bright restaurant setting, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   },
   {
     "id": "he-15",
@@ -763,7 +1183,10 @@
     "topicId": "healthy-eating",
     "domain": "family",
     "valueCategory": "healthy-eating",
-    "audience": ["family", "value"],
+    "audience": [
+      "family",
+      "value"
+    ],
     "riskLevel": 1,
     "background": "朋友來屋企",
     "description": "你帶了同學陳仔返屋企吃晚飯。你想叫媽媽煮漢堡包（陳仔最鍾意），但媽媽今天已經煮了咖喱雞。你會點做？",
@@ -775,13 +1198,23 @@
       {
         "id": "he-15-a",
         "text": "同陳仔講：媽媽今天煮咖喱雞，好好味㗎！",
-        "effects": [{ "moralChange": 15, "comment": "介紹家中喝吃，又讓朋友欣賞媽媽手勢！" }],
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "介紹家中喝吃，又讓朋友欣賞媽媽手勢！"
+          }
+        ],
         "next_scenario": null
       },
       {
         "id": "he-15-b",
         "text": "叫媽媽重新煮，因為陳仔不鍾意",
-        "effects": [{ "moralChange": -15, "comment": "不尊重媽媽時間，又縱容朋友挑剔。" }],
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "不尊重媽媽時間，又縱容朋友挑剔。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "叫媽媽重新煮",
@@ -792,13 +1225,23 @@
       {
         "id": "he-15-c",
         "text": "吃媽媽煮的，飯後請陳仔吃他鍾意的甜品",
-        "effects": [{ "moralChange": 18, "comment": "兩全其美！尊重媽媽又照顧朋友口味。" }],
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "兩全其美！尊重媽媽又照顧朋友口味。"
+          }
+        ],
         "next_scenario": null
       },
       {
         "id": "he-15-d",
         "text": "不吃飯，直接帶陳仔去麥當勞",
-        "effects": [{ "moralChange": -12, "comment": "浪費媽媽的心意，又顯得不識做客之道。" }],
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "浪費媽媽的心意，又顯得不識做客之道。"
+          }
+        ],
         "next_scenario": null,
         "stopAndThink": {
           "badBehavior": "帶陳仔去麥當勞",
@@ -807,7 +1250,14 @@
         }
       }
     ],
-    "creedIds": [12],
-    "skills": ["待客", "尊重家人", "照顧朋友"]
+    "creedIds": [
+      12
+    ],
+    "skills": [
+      "待客",
+      "尊重家人",
+      "照顧朋友"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) at his home door welcoming his friend (a Hong Kong primary school classmate) holding schoolbags, mother in background kitchen with curry on stove visible, friendly home scene, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
   }
 ]

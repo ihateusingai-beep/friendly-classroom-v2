@@ -1,7 +1,7 @@
 # Architecture — friendly-classroom-v2
 
 > **Status:** Living document, kept in sync with `src/` source of truth.
-> **Last reviewed:** 2026-07-04 (post Sprint 28, v2.13.0)
+> **Last reviewed:** 2026-07-05 (post Sprint 28.1, v2.13.1)
 > **Maintainer:** Mavis + kencheng
 
 ## 1. Project Snapshot
@@ -537,6 +537,7 @@ Sync surface: SPEC.md §22 addenda, BUILD_LOG.md prepend, tests, code. **Heads-u
 | **26** | **v2.10.0** | **2026-06-26** | **ED pedagogy 適配中度智障學生 — 5 scenarios 改 wording + correct, test invariant update to at-least-once exposure** |
 | 27 | v2.11.0 | 2026-06-27 | Engagement Overhaul — single-column home redesign, warm theme opt-in, auto-resume banner |
 | **28** | **v2.13.0** | **2026-07-04** | **家庭生活 domain pilot — 2 topics (飲食習慣 + 屏幕時間) × 15 scenarios = 30 scenarios, 加 5th home filter tab + iPad-friendly flex-wrap + familyEnabled teacher toggle** |
+| **28.1** | **v2.13.1** | **2026-07-05** | **Family Domain 30 張 scenario illustration — MiniMax image-01, 16:9 / 1280×720 JPEG-in-PNG, imagePrompt 鎖 provenance, +5 invariants (`tests/sprint28-1-family-images.test.js`)** |
 
 ## 13. Conventions
 
