@@ -1648,5 +1648,473 @@
       "嚴重侵犯認知",
       "主動求助"
     ]
+  },
+  {
+    "id": "s-self-91",
+    "title": "身體自主:嫲嫲嘅擁抱",
+    "background": "嫲嫲屋企・客廳",
+    "description": "你放學去嫲嫲屋企,嫲嫲一見你就展開雙手擁抱你,好溫暖嘅感覺。嫲嫲仲會輕拍你嘅背。你會點回應?",
+    "hints": [
+      "家人嘅擁抱係 good touch,代表佢哋愛你。",
+      "如果你都鍾意,可以回應個擁抱。",
+      "如果你真係唔鍾意,可以溫柔咁話:「嫲嫲,我想坐你隔離。」"
+    ],
+    "characters": [
+      {
+        "name": "嫲嫲",
+        "emoji": "👵",
+        "initial_relationship": 90
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-91-a",
+        "text": "回應個擁抱,感覺到嫲嫲的愛",
+        "effects": [
+          {
+            "character": "嫲嫲",
+            "change": 20,
+            "moralChange": 18,
+            "comment": "你識得接受家人的愛!嫲嫲會好開心。"
+          }
+        ],
+        "next_scenario": "s-self-92"
+      },
+      {
+        "id": "s-self-91-b",
+        "text": "推開嫲嫲:「我不要攬」",
+        "effects": [
+          {
+            "character": "嫲嫲",
+            "change": -5,
+            "moralChange": -5,
+            "comment": "嫲嫲會有這些失望,但會尊重你的意願。可以溫柔這些表達。"
+          }
+        ],
+        "next_scenario": "s-self-92"
+      },
+      {
+        "id": "s-self-91-c",
+        "text": "「嫲嫲我想坐你隔離」",
+        "effects": [
+          {
+            "character": "嫲嫲",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你識得用溫柔的方法表達自己!嫲嫲會明白你的需要。"
+          }
+        ],
+        "next_scenario": "s-self-92"
+      }
+    ],
+    "location": "grandma-home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      12,
+      16
+    ],
+    "imagePrompt": "嫲嫲喺屋企客廳擁抱孫仔,溫暖親切嘅表情,香港家庭客廳環境,沙發同茶几。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "家庭親情",
+      "接受善意",
+      "溫柔表達意願"
+    ]
+  },
+  {
+    "id": "s-self-92",
+    "title": "身體自主:同學 high-five 慶祝",
+    "background": "小息・操場",
+    "description": "小息時你同小明一齊贏咗跳繩比賽,小明走過來伸出手想同你 high-five。你都會點做?",
+    "hints": [
+      "High-five 係同學之間慶祝嘅 good touch。",
+      "如果你想慶祝,可以用 high-five 或者擊拳。",
+      "如果你唔想接觸,可以講:「我哋握手表達啦。」"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-92-a",
+        "text": "舉手同小明 high-five",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 18,
+            "comment": "你識得同朋友分享快樂!小明會好開心。"
+          }
+        ],
+        "next_scenario": "s-self-93"
+      },
+      {
+        "id": "s-self-92-b",
+        "text": "拍小明膊頭:「我哋贏了!」",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 15,
+            "moralChange": 16,
+            "comment": "你識得主動表達興奮!小明會感受到你的支持。"
+          }
+        ],
+        "next_scenario": "s-self-93"
+      },
+      {
+        "id": "s-self-92-c",
+        "text": "「我哋握手吧」",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 12,
+            "moralChange": 16,
+            "comment": "你用自己舒服的方式慶祝!小明會尊重你。"
+          }
+        ],
+        "next_scenario": "s-self-93"
+      }
+    ],
+    "location": "playground",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      9,
+      16
+    ],
+    "imagePrompt": "兩個小學生喺操場 high-five 慶祝跳繩比賽贏咗,開心笑容。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "慶祝分享",
+      "朋友社交",
+      "接受 touch"
+    ]
+  },
+  {
+    "id": "s-self-93",
+    "title": "身體自主:老師拍你膊頭讚你",
+    "background": "課室・小息",
+    "description": "你功課做得好好,班主任林老師行過嚟,輕輕拍咗你膊頭:「你做得好好,老師好欣賞你。」你感覺到老師嘅善意。你會點做?",
+    "hints": [
+      "老師嘅拍膊頭係 good touch,代表佢欣賞你。",
+      "你接受呢個 touch,可以用笑或者講「多謝老師」回應。",
+      "如果唔鍾意,可以禮貌咁行開少少,老師會明白。"
+    ],
+    "characters": [
+      {
+        "name": "林老師",
+        "emoji": "👩‍🏫",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-93-a",
+        "text": "笑住講:「多謝老師!」",
+        "effects": [
+          {
+            "character": "林老師",
+            "change": 20,
+            "moralChange": 18,
+            "comment": "你識得接受老師的欣賞!老師會繼續鼓勵你。"
+          }
+        ],
+        "next_scenario": "s-self-94"
+      },
+      {
+        "id": "s-self-93-b",
+        "text": "輕輕行開少少,繼續做功課",
+        "effects": [
+          {
+            "character": "林老師",
+            "change": 5,
+            "moralChange": 12,
+            "comment": "老師會明白你可能需要空間,但記得下次用說表達你的感受。"
+          }
+        ],
+        "next_scenario": "s-self-94"
+      },
+      {
+        "id": "s-self-93-c",
+        "text": "「老師,我下次會做得更好」",
+        "effects": [
+          {
+            "character": "林老師",
+            "change": 22,
+            "moralChange": 20,
+            "comment": "你識得接受讚賞,仲有自省的心!老師會好欣慰。"
+          }
+        ],
+        "next_scenario": "s-self-94"
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8,
+      16
+    ],
+    "imagePrompt": "女老師喺課室輕輕拍咗學生膊頭,讚佢功課做得好,學生笑住回應。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "接受讚賞",
+      "師生關係",
+      "禮貌回應"
+    ]
+  },
+  {
+    "id": "s-self-94",
+    "title": "身體自主:朋友跌倒你攬佢",
+    "background": "操場・活動後",
+    "description": "小美跑步時跌倒擦損咗膝頭,坐咗喺地下。你走過去攬佢一下,佢話:「多謝你,我 OK。」感覺到你嘅安慰。你會點做?",
+    "hints": [
+      "朋友受傷攬佢一下係 good touch,代表你關心佢。",
+      "但要留意力度,唔好攬得太緊。",
+      "如果佢話 OK,你可以放開,然後問佢需唔需要搵老師。"
+    ],
+    "characters": [
+      {
+        "name": "小美",
+        "emoji": "👧",
+        "initial_relationship": 75
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-94-a",
+        "text": "輕輕攬一下,然後問:「你 OK 嗎?」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 20,
+            "moralChange": 22,
+            "comment": "你識得用 touch 加問候表達關心!小美會感受到你的愛。"
+          }
+        ],
+        "next_scenario": "s-self-95"
+      },
+      {
+        "id": "s-self-94-b",
+        "text": "攬好耐,不捨得放開",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -5,
+            "moralChange": -8,
+            "comment": "朋友已經說 OK,你仲要繼續攬,可能會令他尷尬或者不舒服。"
+          }
+        ],
+        "next_scenario": "s-self-95"
+      },
+      {
+        "id": "s-self-94-c",
+        "text": "「我陪你去找老師」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 22,
+            "moralChange": 22,
+            "comment": "你識得主動關心朋友的需要!小美會感激你的支持。"
+          }
+        ],
+        "next_scenario": "s-self-95"
+      }
+    ],
+    "location": "playground",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      9,
+      7
+    ],
+    "imagePrompt": "一個小學生輕輕攬住跌倒擦傷膝頭嘅同學,表達安慰,操場環境。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "安慰朋友",
+      "合適力度",
+      "提供協助"
+    ]
+  },
+  {
+    "id": "s-self-95",
+    "title": "身體自主:媽媽瞓前錫你額頭",
+    "background": "屋企・睡房",
+    "description": "媽媽幫你蓋好被,然後俯身輕輕錫咗你額頭一下:「乖,瞓啦,聽日見。」你感覺到媽媽嘅溫暖。你會點做?",
+    "hints": [
+      "媽媽錫額頭係 good touch,係家庭溫暖嘅表達。",
+      "你可以用話或者回應嘅 touch 接受呢份愛。",
+      "如果你想獨處,可以溫柔咁話:「媽媽,我想自己瞓。」"
+    ],
+    "characters": [
+      {
+        "name": "媽媽",
+        "emoji": "👩",
+        "initial_relationship": 95
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-95-a",
+        "text": "「媽媽我愛你,晚安」",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 25,
+            "moralChange": 22,
+            "comment": "你識得用說表達愛!媽媽會帶住微笑離開。"
+          }
+        ],
+        "next_scenario": "s-self-96"
+      },
+      {
+        "id": "s-self-95-b",
+        "text": "攬住媽媽,不捨得他走",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你識得珍惜家庭溫暖!媽媽會感受到你的愛。"
+          }
+        ],
+        "next_scenario": "s-self-96"
+      },
+      {
+        "id": "s-self-95-c",
+        "text": "「媽媽晚安,我想自己睡」",
+        "effects": [
+          {
+            "character": "媽媽",
+            "change": 12,
+            "moralChange": 18,
+            "comment": "你識得溫柔咁表達自己的需要!媽媽會尊重你。"
+          }
+        ],
+        "next_scenario": "s-self-96"
+      }
+    ],
+    "location": "home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      12,
+      16
+    ],
+    "imagePrompt": "媽媽喺睡房幫 BB 蓋被,俯身輕輕錫佢額頭,溫暖親情嘅畫面。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "家庭親情",
+      "接受善意",
+      "表達需要"
+    ]
+  },
+  {
+    "id": "s-self-96",
+    "title": "身體自主:自己檢查身體",
+    "background": "屋企・浴室",
+    "description": "你沖涼時會摸自己嘅身體 — 洗頭髮、洗手臂、檢查有冇整損。媽媽教過你,自己嘅身體自己照顧係 OK 嘅。你點睇呢件事?",
+    "hints": [
+      "自己摸自己嘅身體(沖涼、著衫)係 self-care,係 OK 嘅。",
+      "呢個係 personal hygiene 同健康嘅一部分。",
+      "自己嘅身體自己熟悉,有咩唔對勁可以早啲搵大人。"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-96-a",
+        "text": "覺得係正常的,有助保持清潔同健康",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 20,
+            "comment": "你識得照顧自己!這個係健康的自我認識。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-96-b",
+        "text": "覺得尷尬,想快這些沖完",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 0,
+            "moralChange": -2,
+            "comment": "尷尬係正常的感覺,但 self-care 仍然重要,慢慢就會習慣。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-96-c",
+        "text": "想了解多這些,可以問媽媽",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 22,
+            "comment": "你識得用問的方式了解自己的身體!這個係成熟的表現。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "bathroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8,
+      16
+    ],
+    "imagePrompt": "小學生喺浴室沖涼,認真咁洗身體,浴室環境有鏡同毛巾。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "self-care",
+      "個人衞生",
+      "身體自主"
+    ]
   }
 ]
