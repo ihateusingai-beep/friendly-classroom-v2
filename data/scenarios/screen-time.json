@@ -1,0 +1,1183 @@
+[
+  {
+    "id": "st-1",
+    "title": "你打機打到半夜 12 點",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "平日夜晚",
+    "description": "你平時 9 點就要上床睡，但今晚打 iPad 打到 12 點。第二日返學你會好累。你會怎麼做？",
+    "hints": [
+      "睡眠對健康同學習都很重要。",
+      "可以同家人訂立屏幕時間的約定。"
+    ],
+    "options": [
+      {
+        "id": "st-1-a",
+        "text": "自己收起 iPad，洗澡睡覺",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "自己管理自己是最難得的成長！你會睡得好。"
+          }
+        ],
+        "next_scenario": "st-2"
+      },
+      {
+        "id": "st-1-b",
+        "text": "繼續打到睡著",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "長期會令你精神差、學習受影響。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "繼續打到睡著",
+          "consequence": "第二日返學會好累、黑眼圈",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "st-1-c",
+        "text": "設鬧鐘 8:50，自己停",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "用工具幫自己自律，厲害！"
+          }
+        ],
+        "next_scenario": "st-2"
+      },
+      {
+        "id": "st-1-d",
+        "text": "偷偷帶 iPad 上床",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "欺騙同違反家規，會失去信任。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "偷偷帶 iPad 上床",
+          "consequence": "爸爸媽媽會發現，iPad 可能會被收起",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      3,
+      8
+    ],
+    "skills": [
+      "自律",
+      "時間管理",
+      "健康習慣"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) sitting on his bed at midnight holding an iPad with game graphics glowing on screen, clock showing 12:00 on the wall, dim bedroom with moonlight, boy looking slightly tired, Hong Kong home bedroom, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-2",
+    "title": "家務 vs iPad",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "週末下午",
+    "description": "媽媽叫你幫手摺衫，但你掛住打 iPad 遊戲。媽媽已經叫了三次。你會怎麼做？",
+    "hints": [
+      "家人合作做家務是應分的。",
+      "可以做完家務先打機。"
+    ],
+    "options": [
+      {
+        "id": "st-2-a",
+        "text": "即刻收起 iPad，去幫媽媽",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "肯合作，媽媽會好感激！"
+          }
+        ],
+        "next_scenario": "st-3"
+      },
+      {
+        "id": "st-2-b",
+        "text": "等打完這關先",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "等打完這關通常要好耐，媽媽會好嬲。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "等打完這關先",
+          "consequence": "媽媽會自己摺完衫，你會錯過學做家務",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-2-c",
+        "text": "同媽媽商量：摺完衫可不可以玩多 30 分鐘？",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "識得平衡自己同家人，厲害！"
+          }
+        ],
+        "next_scenario": "st-3"
+      },
+      {
+        "id": "st-2-d",
+        "text": "假裝聽不到，但繼續打機",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "裝聾作啞是對家人不尊重。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "假裝聽不到，但繼續打機",
+          "consequence": "媽媽會捉到，會更加嬲",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      3
+    ],
+    "skills": [
+      "家庭責任",
+      "時間管理",
+      "協商"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) on a sofa playing iPad game, mother in background pointing toward a basket of unfolded clothes with slightly tired patient expression, Hong Kong apartment weekend afternoon, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-3",
+    "title": "你看 YouTube 看到不吃飯",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "午餐時間",
+    "description": "媽媽煮好飯叫你來吃，但你看緊 YouTube 最尾一段視頻，說「等埋這條片先」。過了 30 分鐘，飯都凍了。你會怎麼做？",
+    "hints": [
+      "家庭用餐時間要珍惜。",
+      "片可以稍後繼續看。"
+    ],
+    "options": [
+      {
+        "id": "st-3-a",
+        "text": "即刻停，去吃飯；吃完先繼續看",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "識得安排優先次序，成熟的做法！"
+          }
+        ],
+        "next_scenario": "st-4"
+      },
+      {
+        "id": "st-3-b",
+        "text": "看完整條片先（已經 30 分鐘以上）",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "飯凍了要翻熱，媽媽會不開心。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "看完整條片先",
+          "consequence": "媽媽自己吃完，你的飯要翻熱",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-3-c",
+        "text": "邊吃邊看，快點搞掂",
+        "effects": [
+          {
+            "moralChange": -8,
+            "comment": "專心吃飯對消化好，不是好的做法。"
+          }
+        ],
+        "next_scenario": "st-4"
+      },
+      {
+        "id": "st-3-d",
+        "text": "說：飯等我不要吃吧",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "媽媽煮的飯被拒絕，會好傷心。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "飯等我不要吃吧",
+          "consequence": "你會肚餓，媽媽會辛苦煮了飯被嫌棄",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      3
+    ],
+    "skills": [
+      "時間管理",
+      "家庭時間",
+      "自控"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) eating at a dining table while staring at a tablet propped up showing YouTube, plate of food getting cold, warm dining room scene, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-4",
+    "title": "屋企人聊天，你掛住回 WhatsApp",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "晚飯後",
+    "description": "爸爸坐在廳想同你聊下今天的事，但你一直看手機回緊 WhatsApp。爸爸眼神有些失望。你會怎麼做？",
+    "hints": [
+      "家庭時間好珍貴。",
+      "訊息可以稍後覆。"
+    ],
+    "options": [
+      {
+        "id": "st-4-a",
+        "text": "即刻擺下手機，專心同爸爸聊",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你珍惜同爸爸的時間，爸爸會好開心！"
+          }
+        ],
+        "next_scenario": "st-5"
+      },
+      {
+        "id": "st-4-b",
+        "text": "一邊覆訊息一邊聽",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "分心會聽不到爸爸說的重要事。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "一邊覆訊息一邊聽",
+          "consequence": "爸爸會覺得你不重視他",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-4-c",
+        "text": "同爸爸講：等我回完這個 message",
+        "effects": [
+          {
+            "moralChange": 12,
+            "comment": "有禮貌地表達，不錯！"
+          }
+        ],
+        "next_scenario": "st-5"
+      },
+      {
+        "id": "st-4-d",
+        "text": "假裝聽不到，繼續覆訊息",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "爸爸會以為你不喜歡他。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "假裝聽不到",
+          "consequence": "爸爸會嬲你",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      12
+    ],
+    "skills": [
+      "家庭時間",
+      "溝通",
+      "數碼禮儀"
+    ],
+    "imagePrompt": "A father (40s) sitting on sofa looking gently disappointed at his 7-year-old son (小明) who is fully absorbed in a smartphone, father leaning forward as if trying to start a conversation, Hong Kong home evening living room, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-5",
+    "title": "功課 vs 遊戲新關卡",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "放學回到家",
+    "description": "你回到家，功課未做，但你的遊戲出新關卡，好想即刻試。你會怎麼做？",
+    "hints": [
+      "功課先做完先玩是好習慣。",
+      "新關卡遲些都還在這裡。"
+    ],
+    "options": [
+      {
+        "id": "st-5-a",
+        "text": "先做功課，做完先打機",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "先難後易，識得分辨先後！"
+          }
+        ],
+        "next_scenario": "st-6"
+      },
+      {
+        "id": "st-5-b",
+        "text": "打機先，功課等夜晚先做",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "夜晚先做會更累，質素亦會差。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "打機先",
+          "consequence": "夜晚做功課會做到好夜",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-5-c",
+        "text": "做一半功課先打 15 分鐘，再做埋",
+        "effects": [
+          {
+            "moralChange": 12,
+            "comment": "也是平衡的方法，但要自律！"
+          }
+        ],
+        "next_scenario": "st-6"
+      },
+      {
+        "id": "st-5-d",
+        "text": "假裝做功課，其實一直打機",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "講大話同逃避責任，雙重問題。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "假裝做功課打機",
+          "consequence": "第二日交功課會被老師發現",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      3
+    ],
+    "skills": [
+      "自律",
+      "分辨先後",
+      "責任感"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) at his home desk, school books still closed, looking tempted at a game console in his hand, after-school Hong Kong apartment scene, warm afternoon light, decision moment, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-6",
+    "title": "你不運動，因為打機太精彩",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "週末下午",
+    "description": "爸爸提議去公園踩單車，但你說「下次吧」就繼續打機。一星期後你完全沒做過運動。你會怎麼做？",
+    "hints": [
+      "運動對身體好，不可以被屏幕取代。",
+      "可以先短時間試試。"
+    ],
+    "options": [
+      {
+        "id": "st-6-a",
+        "text": "同爸爸講：今天打機完，明天一起踩單車",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "識得為運動訂時間，不放棄！"
+          }
+        ],
+        "next_scenario": "st-7"
+      },
+      {
+        "id": "st-6-b",
+        "text": "完全不做運動",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "完全缺乏運動會影響體能同情緒。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "完全不做運動",
+          "consequence": "你會越來越不夠體力",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-6-c",
+        "text": "即刻停一關，出去踩 30 分鐘單車",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "識得適時抽身，最健康的做法！"
+          }
+        ],
+        "next_scenario": "st-7"
+      },
+      {
+        "id": "st-6-d",
+        "text": "假裝去踩單車，其實返屋企繼續打機",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "欺騙爸爸會令他好失望。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "假裝去踩單車",
+          "consequence": "爸爸下次都不會再叫你",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "運動習慣",
+      "平衡生活",
+      "家庭活動"
+    ],
+    "imagePrompt": "A father (40s) holding two bicycles by the door looking hopeful, 7-year-old son (小明) on sofa with game controller in hand looking away slightly disinterested, weekend afternoon Hong Kong apartment, warm tones, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-8",
+    "title": "細的扭買東西，你幫他開 YouTube 收買",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "商場",
+    "description": "細的阿妹（5 歲）在商場大扭買公仔，媽媽不肯買。你幫他拿手機開 YouTube 給他看，這樣就靜了。你會怎麼做？",
+    "hints": [
+      "屏幕做「電子保姆」對細的不健康。",
+      "可以引導阿妹用其他方法冷靜。"
+    ],
+    "options": [
+      {
+        "id": "st-8-a",
+        "text": "同阿妹去其他地方玩，分散注意",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "識得引導細的，不靠屏幕！"
+          }
+        ],
+        "next_scenario": "st-9"
+      },
+      {
+        "id": "st-8-b",
+        "text": "繼續用 YouTube 收買他",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "阿妹會學會用扭計換屏幕時間。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "用 YouTube 收買",
+          "consequence": "阿妹以後會用扭計換 YouTube",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-8-c",
+        "text": "同媽媽商量：可以給阿妹揀一件細的禮物",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "全家一起聊出解決方案，厲害！"
+          }
+        ],
+        "next_scenario": "st-9"
+      },
+      {
+        "id": "st-8-d",
+        "text": "自己付錢買給阿妹",
+        "effects": [
+          {
+            "moralChange": -8,
+            "comment": "縱容會令阿妹學會用情緒操控。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "自己付錢買給阿妹",
+          "consequence": "零用錢會用曬，下次無得買",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      12
+    ],
+    "skills": [
+      "帶領細的",
+      "正向教養",
+      "家庭協商"
+    ],
+    "imagePrompt": "A 5-year-old younger sister (7yo girl) sitting in a shopping cart mesmerized by YouTube playing on a smartphone held by 7-year-old older brother (小明), mother nearby carrying shopping bags, Hong Kong shopping mall setting, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-9",
+    "title": "爸爸陪你看波，你一直掛住睇 iPad",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "週末下午",
+    "description": "爸爸好難得放假陪你一起看波。但你成日拎 iPad 出來看 YouTube 波經。爸爸好寂寞地坐在這裡。你會怎麼做？",
+    "hints": [
+      "爸爸的陪伴好珍貴。",
+      "一起看波是父子難得的時間。"
+    ],
+    "options": [
+      {
+        "id": "st-9-a",
+        "text": "收起 iPad，專心同爸爸聊波經",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "珍惜父子時間，爸爸會記住一世人！"
+          }
+        ],
+        "next_scenario": "st-10"
+      },
+      {
+        "id": "st-9-b",
+        "text": "假裝看電視，其實一直低頭看手機",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "爸爸會感覺被冷落。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "一直低頭看手機",
+          "consequence": "爸爸會以為你不喜歡同他一起",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-9-c",
+        "text": "同爸爸講：等我覆個 WhatsApp 先",
+        "effects": [
+          {
+            "moralChange": 12,
+            "comment": "肯交代但要守承諾快些。"
+          }
+        ],
+        "next_scenario": "st-10"
+      },
+      {
+        "id": "st-9-d",
+        "text": "說：看波好悶，我要返房打機",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "傷爸爸的心，會破壞親子關係。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "返房打機",
+          "consequence": "爸爸會好傷心，不再主動約你",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      12
+    ],
+    "skills": [
+      "家庭時間",
+      "珍惜家人",
+      "社交禮儀"
+    ],
+    "imagePrompt": "A father (40s) sitting on sofa smiling trying to share popcorn during a sports broadcast, 7-year-old son (小明) next to him absorbed in an iPad showing YouTube highlights, weekend father-son moment with subtle loneliness, Hong Kong home living room, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-10",
+    "title": "社交媒體上有人蝦你朋友",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 2,
+    "background": "WhatsApp 群組",
+    "description": "你見到 WhatsApp 群組有人蝦你朋友陳仔「肥仔」、「蠢」。你會怎麼做？",
+    "hints": [
+      "網絡欺凌都是欺凌。",
+      "可以幫朋友，又可以舉報。"
+    ],
+    "options": [
+      {
+        "id": "st-10-a",
+        "text": "即刻站出來說：不要嘲笑他人，跟我們一起停",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "站出來為朋友出聲，是真正的友誼！"
+          }
+        ],
+        "next_scenario": "st-11"
+      },
+      {
+        "id": "st-10-b",
+        "text": "靜靜雞刪除這段對話",
+        "effects": [
+          {
+            "moralChange": -8,
+            "comment": "迴避不是解決，欺凌會繼續。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "靜靜雞刪除",
+          "consequence": "群組會繼續欺凌陳仔，你錯過幫朋友",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-10-c",
+        "text": "私訊陳仔問：你 ok 嗎？我可以幫你出聲",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "私下關心朋友，再決定怎麼做，成熟！"
+          }
+        ],
+        "next_scenario": "st-11"
+      },
+      {
+        "id": "st-10-d",
+        "text": "都加入笑埋一份",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "蝦人是欺凌，會令陳仔好傷心。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "加入笑埋一份",
+          "consequence": "你會變成欺凌者，失去真正朋友",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      2,
+      7
+    ],
+    "skills": [
+      "對抗欺凌",
+      "網絡素養",
+      "友誼"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) looking at a smartphone showing a WhatsApp group chat, with concerned empathetic expression, possibly typing a reply, Hong Kong home bedroom, warm tones, allyship moment, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-11",
+    "title": "陌生人 send 奇怪 message 給你",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 2,
+    "background": "Instagram DM",
+    "description": "有個不認識的人 send 奇怪 message 給你，叫你 send 個人資料同相。你會怎麼做？",
+    "hints": [
+      "陌生人的要求要小心。",
+      "要同爸媽講。"
+    ],
+    "options": [
+      {
+        "id": "st-11-a",
+        "text": "即刻 block 同截圖給爸媽",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "保護自己又求助，是最正確的做法！"
+          }
+        ],
+        "next_scenario": "st-12"
+      },
+      {
+        "id": "st-11-b",
+        "text": "假裝回應一下先",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "回應會引來更多麻煩，不可以回應。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "假裝回應",
+          "consequence": "陌生人會變本加厲，你會陷入危險",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "st-11-c",
+        "text": "問朋友：這個人 ok 嗎？",
+        "effects": [
+          {
+            "moralChange": 12,
+            "comment": "肯問人係好，但一定要同大人講。"
+          }
+        ],
+        "next_scenario": "st-12"
+      },
+      {
+        "id": "st-11-d",
+        "text": "send 少少資料給他（地址附近）",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "暴露私隱會令你陷入危險。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "send 少少資料",
+          "consequence": "陌生人會用這些資料找你",
+          "isLoselose": true
+        }
+      }
+    ],
+    "creedIds": [
+      3,
+      9
+    ],
+    "skills": [
+      "網絡安全",
+      "求助",
+      "私隱"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) holding a smartphone showing a chat from an unknown sender with abstract notification dots, boy looking confused and slightly worried but NOT scared, mother visible in background, Hong Kong home living room, gentle protective scene, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-12",
+    "title": "你同朋友視像通話到好夜",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "平日夜晚",
+    "description": "你同朋友用 FaceTime 聊天聊到 11 點（明天還要返學）。媽媽叫停了你兩次。你會怎麼做？",
+    "hints": [
+      "朋友重要，但健康更重要。",
+      "可以約第二日聊。"
+    ],
+    "options": [
+      {
+        "id": "st-12-a",
+        "text": "同朋友講：我要睡了，明天返學聊",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "識得劃界線，朋友會尊重你的決定。"
+          }
+        ],
+        "next_scenario": "st-13"
+      },
+      {
+        "id": "st-12-b",
+        "text": "繼續聊到睡著",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "第二日返學會好累。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "繼續聊到睡著",
+          "consequence": "會睡眠不足",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "st-12-c",
+        "text": "同朋友再聊 5 分鐘就停",
+        "effects": [
+          {
+            "moralChange": 12,
+            "comment": "雙方都舒服的方案，不錯！"
+          }
+        ],
+        "next_scenario": "st-13"
+      },
+      {
+        "id": "st-12-d",
+        "text": "偷偷繼續",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "不守信用，會失信於媽媽。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "偷偷繼續",
+          "consequence": "媽媽會嬲你",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      3,
+      8
+    ],
+    "skills": [
+      "自律",
+      "時間管理",
+      "朋友關係"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) holding a tablet showing FaceTime with a friend visible on screen, clock on wall showing 11:00pm, mother in background with hands gently raised, Hong Kong home bedroom night scene, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-13",
+    "title": "家庭旅行，你要帶 iPad 定行山？",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "家庭旅行",
+    "description": "家庭旅行兩日一夜，爸爸提議行山看風景，你想帶 iPad 打機。你會怎麼做？",
+    "hints": [
+      "家庭旅行的回憶最珍貴。",
+      "可以旅行完返屋企先打機。"
+    ],
+    "options": [
+      {
+        "id": "st-13-a",
+        "text": "不帶 iPad，同家人享受行山",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "全心投入家庭時光，回憶一輩子！"
+          }
+        ],
+        "next_scenario": "st-14"
+      },
+      {
+        "id": "st-13-b",
+        "text": "帶 iPad，但行山時不用",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "平衡的方法，但要自律！"
+          }
+        ],
+        "next_scenario": "st-14"
+      },
+      {
+        "id": "st-13-c",
+        "text": "全程掛住打機，不理風景",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "錯過珍貴風景，家庭時光會好遺憾。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "全程打機",
+          "consequence": "你會錯過靚風景，屋企人會好失望",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-13-d",
+        "text": "扭計：不帶 iPad 就不去",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "用條件要脅家人，會破壞旅行氣氛。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "扭計不去",
+          "consequence": "全家人會去，你一個人在屋企",
+          "isLoselose": true
+        }
+      }
+    ],
+    "creedIds": [
+      10,
+      12
+    ],
+    "skills": [
+      "家庭旅行",
+      "珍惜時光",
+      "自律"
+    ],
+    "imagePrompt": "A family of four (father, mother, 7-year-old boy 小明, younger sister) packing for a trip, father holding hiking boots pointing outdoors, boy holding an iPad protectively, family travel decision scene, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-14",
+    "title": "睡前不停 scrolling 社交媒體",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "睡前",
+    "description": "你每晚睡前都 scroll Instagram / TikTok 一個鐘，第二日會好累又冇精神。你會怎麼做？",
+    "hints": [
+      "藍光會影響睡眠質量。",
+      "可以用其他放鬆方法。"
+    ],
+    "options": [
+      {
+        "id": "st-14-a",
+        "text": "設鬧鐘晚上 8:30，將電話放在廳",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "用工具打救自己的睡眠，正！"
+          }
+        ],
+        "next_scenario": "st-15"
+      },
+      {
+        "id": "st-14-b",
+        "text": "繼續 scroll 到半夜",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "睡前 scrolling 會嚴重影響睡覺質素。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "繼續 scroll 到半夜",
+          "consequence": "睡不好，第二日會冇精神",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "st-14-c",
+        "text": "改為看書或聽音樂放鬆",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "健康的替代活動，厲害！"
+          }
+        ],
+        "next_scenario": "st-15"
+      },
+      {
+        "id": "st-14-d",
+        "text": "床頭櫃充電，但關了通知",
+        "effects": [
+          {
+            "moralChange": -8,
+            "comment": "關了通知都會想看，最好不放房。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "床頭櫃充電",
+          "consequence": "你都還會拿起看，影響睡覺",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      3
+    ],
+    "skills": [
+      "睡眠衞生",
+      "自控",
+      "數碼健康"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) lying in bed in dim bedroom light, phone on chest showing Instagram/TikTok-style vertical video feed scrolling, tired eyes, late night Hong Kong home bedroom, warm dim tones, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "st-15",
+    "title": "家人聊天，你用耳機隔離了",
+    "subjectId": "family",
+    "topicId": "screen-time",
+    "domain": "family",
+    "valueCategory": "screen-time",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "晚飯後",
+    "description": "吃完晚飯你成日戴住耳機看 YouTube / 聽歌，不理家人聊天。屋企人覺得你好像隔離了。你會怎麼做？",
+    "hints": [
+      "耳機是物理屏障，會阻礙家庭溝通。",
+      "一起的時間要珍惜。"
+    ],
+    "options": [
+      {
+        "id": "st-15-a",
+        "text": "除低耳機，參與家人聊天",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "主動參與家庭時光，屋企人會記住你的好！"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "st-15-b",
+        "text": "繼續戴住耳機",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "屋企人會覺得你孤立自己。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "繼續戴住耳機",
+          "consequence": "你會越來越孤獨",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-15-c",
+        "text": "同一邊聽歌一邊聽家人聊天",
+        "effects": [
+          {
+            "moralChange": 8,
+            "comment": "可以，但專心參與會更好。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "st-15-d",
+        "text": "返房自己看 YouTube",
+        "effects": [
+          {
+            "moralChange": -10,
+            "comment": "自我隔離會令家庭關係疏遠。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "返房自己看",
+          "consequence": "你會錯過家庭回憶",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      12
+    ],
+    "skills": [
+      "家庭溝通",
+      "放下屏幕",
+      "參與"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) sitting at dinner table wearing over-ear headphones with YouTube on his phone screen, family members around the table looking quietly sad, disconnected family scene, Hong Kong apartment dining room, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  }
+]

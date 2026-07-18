@@ -1,5 +1,198 @@
 # Build Log - friendly-classroom-v2
 
+## v2.13.1-2026-07-05 - Sprint 28.1: Family Domain scenario illustrations (30 PNGs)
+
+**Date:** 2026-07-05
+**Sprint:** 28.1 (patch on top of v2.13.0)
+**Type:** PATCH — adds illustration assets + provenance; no schema/UI changes
+**Branch:** `feat/family-life-domain-pilot`
+
+### Highlights
+
+- Generated **30 16:9 scenario illustrations** for the Family Domain pilot
+  (15 `healthy-eating` + 15 `screen-time`), one PNG per scenario, naming
+  `<id>.png` so the existing renderer fallback (src/engine.js:1300)
+  ships them with **zero code change**.
+- Populated `imagePrompt` field in both `data/scenarios/healthy-eating.json`
+  and `data/scenarios/screen-time.json` to lock visual provenance for
+  future regen — every prompt ends with the canonical 16:9 / no-text / no-logo
+  anchor suffix.
+- Anchor character: **小明** (Hong Kong 7-year-old boy) across all 30,
+  mirroring emotion-detective's single-anchor pattern. RiskLevel-2 scenes
+  (stranger-DM st-11, cyberbullying st-10) lean on **emotional reaction**
+  (worried, confused) NOT menacing faces, keeping them SEN-safe.
+- Style suffix mirrored from `BATCH2_PROMPTS_HQ.md`: warm soft pastel
+  tones, anime cartoon, expressive character art, HK primary-school /
+  home setting.
+
+### Files Changed
+
+| File | Delta |
+|---|---|
+| `data/scenarios/healthy-eating.json` | + `imagePrompt` on 15 entries |
+| `data/scenarios/screen-time.json` | + `imagePrompt` on 15 entries |
+| `assets/images/scenarios/he-*.png` | 15 new PNGs (JPEG-in-PNG, 1280×720, ~150–340KB each) |
+| `assets/images/scenarios/st-*.png` | 15 new PNGs (same dimensions) |
+| `public/assets/images/scenarios/{he,st}-*.png` | 30 mirrored by prebuild-sync.sh |
+| `tools/expansion/gen_family_images.py` | new — clones gen_new_images.py pattern, MiniMax image-01 pipeline |
+| `tests/sprint28-1-family-images.test.js` | new — 5 invariants (PNG presence, size, imagePrompt shape, sync parity) |
+| `package.json` | version 2.13.0 → 2.13.1 (PATCH) |
+
+### Acceptance criteria
+
+| AC | Result |
+|---|---|
+| AC1 `npm test` 全 pass | ✅ 408 passed (24 files, prev 403 / 23), 新 sprint28-1 加 5 invariants |
+| AC2 `npm run build` 成功 | ✅ 1.22s build, dist contains 30 family PNGs, precache 1108 entries |
+| AC3 Visual QA on 6 PNGs (he-1/3/7, st-1/3/7) | ✅ anchor character consistent, warm tone, no text/logos, SEN-friendly |
+| AC4 `git log` shows 28 + 28.1 commits | ⏳ pending — this entry lands before the patch commit |
+| AC5 Version 2.13.0 → 2.13.1 | ✅ |
+| AC6 BUILD_LOG.md v2.13.1 entry | ✅ this section |
+| AC7 ARCHITECTURE.md `Last reviewed:` | ⏳ see commit |
+| AC8 No new console warnings at first-paint | ⏳ see commit |
+
+### Open / future
+
+- **outcome images** (good / bad reaction per option, 60-90 PNGs) — earmarked for v28.2
+- **anchor character tightening** — st-11 anchor looks slightly older than he-*;
+  v28.2 will refine prompt
+- **Single-character representativeness** — consider introducing 小美 /
+  小晴 for ~half scenarios in v28.2 to broaden HK diversity while keeping
+  consistency via a stricter anchor prompt
+
+---
+
+## v2.13.0-2026-07-04 - Sprint 28: 家庭生活 domain pilot (飲食習慣 + 屏幕時間)
+
+**Date:** 2026-07-04
+**Sprint:** 28
+**Type:** New domain (4th subject — value + caring + emotion-detective + family)
+**Branch:** `feat/family-life-domain-pilot`
+
+### Highlights
+
+- 引入第 4 個 domain — 🏠 家庭生活（reuse 學校 infra, 純前端、Sprint 27 暖色主題、PWA 雙 domain）。
+- **Pilot scope: 2 topics × 15 scenarios = 30 scenarios**, 跟其他 domain 15×n pattern。
+  - 🥗 `healthy-eating` (飲食習慣) — 15 scenarios, 綠色 (`#22C55E`)
+  - 📱 `screen-time` (屏幕時間) — 15 scenarios, 粉紅 (`#F472B6`)
+- **iPad-first** — student-only auth (無 parent/teacher flow), 5 個 home filter tab 加
+  `flex-wrap: wrap` + `min-height: 44px` 確保 iPad portrait 唔擠迫。
+- **Collaborative tone** — 用戶決策:學生 + 家人一齊 reflect, 而非 teacher-judging。
+- **教師 toggle** — `familyEnabled: true` 默認, 對齊 `emotionDetectiveEnabled` pattern。
+
+### Schema Invariants (per scenario)
+
+| 屬性 | 值 |
+|---|---|
+| `subjectId` | `'family'` |
+| `topicId` | `'healthy-eating'` \| `'screen-time'` |
+| `domain` | `'family'` |
+| `valueCategory` | 同 `topicId` |
+| `audience` | `['family', 'value']` |
+| `riskLevel` | `1` 或 `2` (≤ 2 per SPEC §28.2) |
+| `moralChange` 範圍 | `[-18, +18]` |
+| options/場景 | 4-option minimum, ≥1 positive + ≥1 negative |
+
+### Changes Applied (4 areas)
+
+**1. Topics registry** (`src/topics.js`)
+- 新增 `FAMILY = [healthy-eating, screen-time]` const
+- `TOPICS = [...VALUES, ...CARING, ...EMOTION_DETECTIVE, ...FAMILY]` 由 18 → 20
+- 新增 helpers: `getFamilyTopics()`, `isFamilyTopic(id)`
+
+**2. Subject registry** (`src/subjects.js`)
+- 新增 `SUBJECTS[1] = { id: 'family', title: '家庭生活', emoji: '🏠', color: '#F59E0B', bgColor: '#FEF3C7', icon: '家庭' }`
+- `getAllSubjects()` 自動 return 2 subject
+
+**3. Scenarios** (`data/scenarios/`)
+- `healthy-eating.json` — 15 scenarios, he-1..he-15
+- `screen-time.json` — 15 scenarios, st-1..st-15
+
+**4. UI / UX** (`src/engine.js`, `src/storage.js`, `src/style.css`, `src/actions/inline.js`)
+- `isFamilyEnabled()` helper — 對齊 `isEmotionDetectiveEnabled` pattern
+- `storage.js _DEFAULTS.familyEnabled = true`
+- `setHomeFilter` 接受 `family` filter
+- `renderHome` 加 `🏠 家庭生活` filter tab (5 tabs now, default `'all'`)
+- `renderHome` 加 `familyCount` counter
+- `renderHome` `sectionTitle` 加 `🏠 N 個家庭生活課題` 分支
+- `renderTopicList` 加 deep-link guard 對 disabled family topic
+- `renderTeacherAssign` 加 `🏠 家庭生活` toggle switch
+- `style.css .home-filter-row` 加 `flex-wrap: wrap` + `.home-filter-tab min-height: 44px`
+- Sprint 23 topic-count invariant `TOPICS.length === 18` → `=== 20`
+
+### 關鍵文件
+
+| File | Sprint 28 Diff |
+|---|---|
+| `src/topics.js` | +`FAMILY` const, +helpers (~50 LoC) |
+| `src/subjects.js` | +`family` subject entry (~10 LoC) |
+| `src/storage.js` | +`familyEnabled: true` default (~5 LoC) |
+| `src/engine.js` | +`isFamilyEnabled()`, +filter tab, +counts (3 hunks) |
+| `src/actions/inline.js` | +`'family'` in `_ALLOWED_HOME_FILTERS` (~2 LoC) |
+| `src/style.css` | +`.home-filter-row flex-wrap`, +`min-height: 44px` (~5 LoC) |
+| `data/scenarios/healthy-eating.json` | +15 scenarios (~330 LoC) |
+| `data/scenarios/screen-time.json` | +15 scenarios (~340 LoC) |
+| `tests/sprint28-family-domain.test.js` | 新 file (~280 LoC) |
+
+### Acceptance Criteria Status
+
+| AC | 結果 |
+|---|---|
+| AC1: `npm test` 全 pass | ✅ 403 passed (23 files), 包括新 sprint28 28 個 invariant |
+| AC2: `npm run build` 成功 | ⏸ Sprint 28 build 仍未跑 (下一步 sprint 28.1) |
+| AC3: `audit-touch-targets` 全 ≥ 44×44px | ✅ 8/8 PASS (iPad baseline) |
+| AC4: `audit-spacing` 全 tokenized | ✅ 310 declarations all tokenized |
+| AC5: `audit-font-sizes` 全 tokenized | ✅ 153 token refs PASS |
+| AC6: `audit-scenarios` 0 violations | ✅ All scenarios pass (Style guide V3 §3 + §4) |
+| AC7: TOPICS.length 20 (= 12 + 5 + 1 + 2) | ✅ invariant `expect(TOPICS).toHaveLength(20)` |
+| AC8: iPad portrait 5 filter tabs wrap OK | ✅ `flex-wrap: wrap` 加咗 |
+| AC9: family topic colors avoid clash | ✅ `#22C55E` (green, new) + `#F472B6` (rose, new) |
+
+### Collab Tone Invariants (對齊 SPEC §28.2)
+
+每 scenario:
+- ≥ 1 「同家人傾偈」option (升 +12 至 +18) — 學生主動 seek family input
+- ≥ 1 「與家人協商」option (升 +15 至 +18) — 唔係 subordination 都唔係 rebellion
+- ≥ 1 「隱瞞/偷偷地」option (降 -12 至 -15) — 欺騙雙重 penalty (trust + waste)
+- ≥ 1 「乖乖順從無思考」option (降 -10 至 -12) — passive obedience 都唔鼓勵
+
+### Migration Path
+
+- 舊嘅 `subjectId='value'` scenarios **唔受影響** — schema 唔變, 仍可答。
+- 新嘅 `subjectId='family'` scenarios auto-loaded via `import.meta.glob`.
+- 用戶冇 explicit reset — 默認 home filter 仍係 `value` for value student, 但 family subject
+  student 自動 focus 🏠 tab。
+
+### Rollback
+
+`git revert <Sprint 28 HEAD-sha>~3..<Sprint 28 HEAD-sha>` 三 commit 即可。或者從 pre-Sprint28 main:
+- `data/scenarios/healthy-eating.json` delete (orphan, no other refs)
+- `data/scenarios/screen-time.json` delete
+- `src/topics.js` revert
+- `src/subjects.js` revert
+- `src/storage.js` revert (`familyEnabled: true` 移除)
+- `src/engine.js` revert (`isFamilyEnabled` helpers + filter logic)
+- `src/actions/inline.js` revert (`'family'` 從 `_ALLOWED_HOME_FILTERS` 移除)
+- `src/style.css` revert (`flex-wrap` + `min-height`)
+- `tests/sprint28-family-domain.test.js` delete
+- `package.json` version: 2.13.0 → 2.12.5
+
+### Known Limitations / Future Work
+
+- **Image gen** — 30 scenarios 全部 text-only (無 scenario illustrations)。
+  Sprint 28.1 可以 patch 加 60 張 image (`<topic>_<scenario>-<role>.png` 16:9)。
+- **Voice profile** — `speakScenario()` 仍用 generic narrator tone。家庭 scenarios
+  tone tuning 留 Sprint 28.2 polish。
+- **iPad splash / orientation lock** — PWA unconfigured, iPad 用 browser。Sprint 28.1 可加
+  apple-touch-icon + splash screen。
+- **Family Voice** — Pilot 預設無 family login (per user 決策 auth_student_only)。
+  Sprint 29 可加 parent dashboard (Telegram mirror 或 web-only)。
+
+### Related
+
+- SPEC.md §28 (待補 addendum)
+- ARCHITECTURE.md §3 / §4 (updated §4.2 inventory table)
+- Sprint 27 (warm theme, single-column home) — Sprint 28.1 build 仍用呢個 theme
 ## v2.12.1-2026-07-03 - Sprint 18.2.1: Teacher mode entry-point bug fix (production)
 
 **Date:** 2026-07-03

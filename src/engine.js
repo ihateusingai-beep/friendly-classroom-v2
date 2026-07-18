@@ -632,6 +632,20 @@ export function renderModeSelect(currentMode, subjectId) {
   `;
 }
 
+// ── Sprint 28 / SPEC §28 — Family-life domain toggle helper ───────────────
+// 對齊 `isEmotionDetectiveEnabled` pattern(SPEC §22.16.4).
+// Default = ON(cfg.familyEnabled !== false). 老師關閉後 home + topic list
+// 隱藏 family scope,deep-link 入 family scenario 會 redirect + Toast。
+// Pure function: 唔 emit bus event,自己 read 最新 teacher config (5s cache)。
+export function isFamilyEnabled() {
+  try {
+    const cfg = getTeacherConfig();
+    return cfg.familyEnabled !== false;
+  } catch (e) {
+    return true;
+  }
+}
+
 // ── Teacher Assignment Config ──────────────────────────────────────────────
 export function renderTeacherAssign() {
   const topics = TOPICS.map(t => ({
@@ -706,6 +720,17 @@ export function renderTeacherAssign() {
           <button type="button" class="toggle-switch ${config.emotionDetectiveEnabled ? 'on' : ''}"
             data-action="toggleTeacherFeature" data-arg2="emotionDetectiveEnabled"
             role="switch" aria-checked="${config.emotionDetectiveEnabled}" aria-label="情緒小偵探開關"></button>
+        </div>
+
+        <!-- Sprint 28 / SPEC §28 — Teacher toggle for family-life domain -->
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">🏠 家庭生活</div>
+            <div class="ft-desc">飲食習慣 + 屏幕時間。學生自用，係 iPad 友善嘅學習範疇。關閉後主頁同主題列表隱藏，deep-link 自動跳走。</div>
+          </div>
+          <button type="button" class="toggle-switch ${config.familyEnabled ? 'on' : ''}"
+            data-action="toggleTeacherFeature" data-arg2="familyEnabled"
+            role="switch" aria-checked="${config.familyEnabled}" aria-label="家庭生活開關"></button>
         </div>
 
         <div class="feature-toggle">
@@ -885,7 +910,7 @@ export function renderHome(subjectId) {
   // Sprint 24 把 emotion-detective 從 CARING 抽出嚟獨立做一個 tab,
   // 因為 axis 同 value-choice 唔同(認情緒 vs 做判斷),唔應該黐喺友愛校園。
   // Default tracks the student's subject choice; 全部 is the escape hatch.
-  const allowedFilters = ['value', 'caring', 'emotion-detective', 'all'];
+  const allowedFilters = ['value', 'caring', 'emotion-detective', 'family', 'all'];
   const stored = (typeof localStorage !== 'undefined'
     && localStorage.getItem('fc_home_filter')) || '';
   let filter = allowedFilters.includes(stored) ? stored : '';
@@ -894,6 +919,7 @@ export function renderHome(subjectId) {
     if (subjectId === 'value') filter = 'value';
     else if (subjectId === 'caring') filter = 'caring';
     else if (subjectId === 'emotion-detective') filter = 'emotion-detective';
+    else if (subjectId === 'family') filter = 'family';
     else filter = 'all';
   }
   const visibleTopics = filter === 'all'
@@ -907,22 +933,30 @@ export function renderHome(subjectId) {
   };
   // Sprint 23 / SPEC §22.16.4 — emotion-detective topic 喺 teacher 關閉時
   // 隱藏。Counts 仍然要 reflect 「冇 emotion-detective」嘅新 total。
+  // Sprint 28 — 加埋 family 嘅 toggle: 同樣 hidden when disabled, 但
+  // default ON(SPEC §28.2),pilot 唔影響大多數學生。
   const _edEnabled = isEmotionDetectiveEnabled();
-  const visibleTopicsNoEd = _edEnabled
-    ? visibleTopics
-    : visibleTopics.filter(t => t.id !== 'emotion-detective');
-  const allNoEd = _edEnabled ? TOPICS : TOPICS.filter(t => t.id !== 'emotion-detective');
+  const _familyEnabled = isFamilyEnabled();
+  const _filterDisabled = (t) =>
+    (t.id === 'emotion-detective' && !_edEnabled) ||
+    (t.domain === 'family' && !_familyEnabled);
+  const visibleTopicsNoEd = visibleTopics.filter(t => !_filterDisabled(t));
+  const allNoEd = TOPICS.filter(t => !_filterDisabled(t));
   const valuesCount = allNoEd.filter(t => t.domain === 'value').length;
   const caringCount = allNoEd.filter(t => t.domain === 'caring').length;
   const edCount = allNoEd.filter(t => t.domain === 'emotion-detective').length;
+  const familyCount = allNoEd.filter(t => t.domain === 'family').length;
   const allCount = allNoEd.length;
   const sectionTitle = filter === 'all'
-    ? `🪷🌈🕵️ 全部 ${allCount} 個品格課題`
+    ? `🪷🌈🕵️🏠💰 全部 ${allCount} 個品格課題`
     : (filter === 'value'
-        ? `🪷 ${valuesCount} 個 EDB 官方價值觀`
+        // Sprint 18.7: 加 financial-literacy 同屬 value domain, 用 dynamic count
+        ? `🪷 ${valuesCount} 個價值觀（含理財）`
         : filter === 'emotion-detective'
           ? `🕵️ ${edCount} 個情緒小偵探課題`
-          : `🌈 ${caringCount} 個友愛校園範疇（SEL / 安全）`);
+          : filter === 'family'
+            ? `🏠 ${familyCount} 個家庭生活課題`
+            : `🌈 ${caringCount} 個友愛校園範疇（SEL / 安全）`);
 
   // Sprint 27 U1: single-column home redesign.
   //   - When HOME_REDESIGN flag is ON: 3-tier vertical hierarchy, topic grid
@@ -961,12 +995,14 @@ export function renderHome(subjectId) {
         ${filterTab('value', '🪷 價值觀', valuesCount)}
         ${filterTab('caring', '🌈 友愛校園', caringCount)}
         ${filterTab('emotion-detective', '🕵️ 情緒小偵探', edCount)}
+        ${filterTab('family', '🏠 家庭生活', familyCount)}
         ${filterTab('all', '📚 全部', allCount)}
       </div>` : `
       <div class="home-filter-row" role="tablist" aria-label="課題分類過濾">
         ${filterTab('value', '🪷 價值觀', valuesCount)}
         ${filterTab('caring', '🌈 友愛校園', caringCount)}
         ${filterTab('emotion-detective', '🕵️ 情緒小偵探', edCount)}
+        ${filterTab('family', '🏠 家庭生活', familyCount)}
         ${filterTab('all', '📚 全部', allCount)}
       </div>`;
   // U1 redesign wraps the topic section in <details> so 18 cards don't all
@@ -1063,6 +1099,18 @@ export function renderTopicList(topicId, subjectId) {
       emoji: '🕵️',
       title: '情緒小偵探已關閉',
       hint: '老師已暫時關閉呢個課題。請揀其他品格課題, 或聯絡老師啟用。',
+      actionLabel: '← 返主頁',
+      onAction: 'FC.goHome()',
+    });
+  }
+  // Sprint 28 / SPEC §28 — same pattern for family topics when disabled.
+  // 通用 guard: any family topic (healthy-eating / screen-time / future) when
+  // teacher toggled familyEnabled=false.
+  if (!isFamilyEnabled() && getFamilyTopics().some(f => f.id === topicId)) {
+    return renderEmptyState({
+      emoji: '🏠',
+      title: '家庭生活已關閉',
+      hint: '老師已暫時關閉家庭生活範疇。請揀其他品格課題, 或聯絡老師啟用。',
       actionLabel: '← 返主頁',
       onAction: 'FC.goHome()',
     });

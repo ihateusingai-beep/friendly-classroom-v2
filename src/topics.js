@@ -191,6 +191,81 @@ export const EMOTION_DETECTIVE = [
   },
 ];
 
+// 💰 Sprint 18.7 — 理財價值觀 (Financial Literacy)
+// 用戶要求集中所有「金錢 / 物慾 / 借貸 / 誠信交易」related scenarios
+// 做獨立 cluster，方便老師 assign 同學做 focused unit。
+//
+// 來源：
+//   - 5 個 moved from integrity/benevolence/screen-time (s-c6 拾金不昧, s-self-31
+//     唔好逼朋友買禮物, s-self-33 朋友買禮物要問媽媽, s-self-166 捐出零用錢,
+//     st-7 儲錢 vs 用曬零用錢)
+//   - 8 個 new (fl-1 到 fl-8 — 書包裝飾 / 老師的禮物 / 便利店多找錢 /
+//     同學借錢唔還 / 圖書過期 / 遊戲課金 / 夾錢送禮物 / 零用錢比較)
+//
+// Subject: 屬於 'value' subject (金錢屬 value 範疇 — 誠信/勤勞/同理心交集)。
+// Domain: 'value' — 同 EDB 12 個 value topic 共享 subject 入口。
+// CreedIds: [6, 16] 誠信 + 尊重他人 — 理財嘅根基。
+export const FINANCIAL = [
+  {
+    id: 'financial-literacy',
+    title: '理財價值觀',
+    emoji: '💰',
+    domain: 'value',
+    subjectId: 'value',
+    description: '金錢、儲蓄、分享、物慾、借貸嘅價值觀',
+    creedIds: [6, 16],
+    // 金色系 — 對應金錢但避免撞 #F59E0B (responsibility) 同 #84CC16 (diligence)
+    color: '#D4A574',
+  },
+];
+
+// 🏠 Sprint 28 — 家庭生活 (SPEC §28) (pilot: 2 topics)
+// 用戶由學校延伸去屋企日常 — 飲食習慣 + 屏幕時間。Reuse moral-choice
+// schema (4-option + moralChange)，不過 tone = **collaborative** 而非
+// teacher-judging。學生同家人一齊面對家庭日常嘅選擇, 唔係「犯錯就扣分」。
+//
+// Pilot scope (per user 決策):
+//   ✅ healthy-eating  飲食習慣
+//   ✅ screen-time     屏幕時間
+//
+// 設計原則（per user 「collaborative」tone）:
+//   - 一啲場景刻意由「家庭角度」出發（例: 媽媽煮咗菜/阿嫲想小朋友食多啲水果）
+//   - ✅ option = 學生 + 家人一起 reflect（唔係指揮）
+//   - ❌ option = 學生單方面反抗（會累計 moral 加成時被 balance）
+//   - 道德 score 範圍同學校 range 一致 (-15..+18) 但加 positive-skew 提示
+//     「同家人傾偈」值得加分（spec §28.2）
+//
+// Schema 同 EDB value topic 一致：
+//   subjectId: 'family', domain: 'family',
+//   valueCategory: 'healthy-eating' | 'screen-time',
+//   audience: ['family', 'value'],
+//   riskLevel: 1 (家庭日常 = 低風險)
+export const FAMILY = [
+  {
+    id: 'healthy-eating',
+    title: '飲食習慣',
+    emoji: '🥗',
+    domain: 'family',
+    description: '同家人一齊建立均衡飲食嘅好習慣',
+    creedIds: [10],   // 勤勞基礎（家庭參與）
+    color: '#22C55E', // 綠色 = 健康/蔬菜
+    subjectId: 'family',
+  },
+  {
+    id: 'screen-time',
+    title: '屏幕時間',
+    emoji: '📱',
+    domain: 'family',
+    description: '同家人訂立使用手機 / iPad / 電腦嘅約定',
+    creedIds: [3, 8], // 責任感 + 守法
+    // Sprint 28 / SPEC §28 — colors must not clash with existing palette to
+    // keep topic-grid distinct. Used #F472B6 (pink-rose, EDB safe).
+    // 避撞: #F59E0B (responsibility), #FB923C (emotion-detective), #06B6D4 (solidarity).
+    color: '#F472B6',
+    subjectId: 'family',
+  },
+];
+
 // 🕵️ Sprint 25 — 情緒小偵探 sub-categories (SPEC §25)
 // 學生 mode 入到 topic 之後, 將 10 個 ed-* scenarios 分做 sub-tab:
 // 🟡 basic = Ekman 6 basic emotions (happiness / sadness / anger /
@@ -214,8 +289,9 @@ export function filterScenariosByEmotionCategory(scenarios, categoryId) {
   return scenarios.filter(s => s?.emotionCategory === categoryId);
 }
 
-// 三個 domain 合併（18 個，EDB 官方 order 在前，Caring 在後，ED 最後）
-export const TOPICS = [...VALUES, ...CARING, ...EMOTION_DETECTIVE];
+// 四個 domain 合併（21 個：12 價值觀 + 5 友愛 + 1 情緒偵探 + 2 家庭生活 + 1 理財）
+// Sprint 18.7: 加 💰 理財價值觀 — 集中金錢 / 物慾 / 借貸 / 誠信交易場景
+export const TOPICS = [...VALUES, ...CARING, ...EMOTION_DETECTIVE, ...FAMILY, ...FINANCIAL];
 
 // 舊 topicId → 新 topicId migration map
 // 用嚟 scenarios.json re-tag 同 user 舊進度兼容
@@ -287,4 +363,20 @@ export function isCaringTopic(id) {
 // Sprint 24 — emotion-detective 獨立 helper,filter tab / render 邏輯用
 export function isEmotionDetectiveTopic(id) {
   return EMOTION_DETECTIVE.some(e => e.id === id);
+}
+
+// Sprint 28 — 家庭生活 helper(pilot reuse) — 老師 toggle 同 filter tab 用
+export function getFamilyTopics() {
+  return FAMILY;
+}
+export function isFamilyTopic(id) {
+  return FAMILY.some(f => f.id === id);
+}
+
+// Sprint 18.7 — 理財價值觀 helper — 同 FAMILY / EMOTION_DETECTIVE pattern 一致
+export function getFinancialTopics() {
+  return FINANCIAL;
+}
+export function isFinancialTopic(id) {
+  return FINANCIAL.some(f => f.id === id);
 }

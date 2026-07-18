@@ -60,8 +60,11 @@ describe('Sprint 23 — topics.js entry', () => {
     }
   });
 
-  it('total topic count is 18 (12 value + 5 caring + 1 emotion-detective)', () => {
-    expect(TOPICS).toHaveLength(18);
+  it('total topic count is 21 (12 value + 5 caring + 1 emotion-detective + 2 family + 1 financial)', () => {
+    // Sprint 28 — 加 family domain。Pilot 2 topics (healthy-eating / screen-time)。
+    // SPEC §28 — family 範疇用作 iPad / 學生自用嘅家庭日常教育
+    // Sprint 18.7 — 加 financial-literacy topic
+    expect(TOPICS).toHaveLength(21);
   });
 });
 

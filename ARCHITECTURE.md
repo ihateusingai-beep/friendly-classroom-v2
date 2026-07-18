@@ -1,7 +1,7 @@
 # Architecture — friendly-classroom-v2
 
 > **Status:** Living document, kept in sync with `src/` source of truth.
-> **Last reviewed:** 2026-06-26 (post Sprint 26, v2.10.0)
+> **Last reviewed:** 2026-07-05 (post Sprint 28.1, v2.13.1)
 > **Maintainer:** Mavis + kencheng
 
 ## 1. Project Snapshot
@@ -84,7 +84,7 @@ friendly-classroom-v2/
 
 ## 3. Source Module Inventory
 
-**Total: 7,348 lines of JS across 28 files** (excluding `style.css`).
+**Total: 8,764 lines of JS across 28 files** (excluding `style.css`) — post Sprint 28.
 
 ### 3.1 Entry Layer
 
@@ -210,7 +210,7 @@ friendly-classroom-v2/
 }
 ```
 
-### 4.2 Inventory (post Sprint 26)
+### 4.2 Inventory (post Sprint 28)
 
 | Topic | File | Count | Domain |
 |---|---|---:|---|
@@ -232,9 +232,31 @@ friendly-classroom-v2/
 | 陌生人安全 | `stranger-safety.json` | 15 | caring |
 | 孝親 | `filial-piety.json` | 15 | caring |
 | 🕵️ 情緒小偵探 | `emotion-detective.json` | 10 | emotion-detective |
-| **Total** | | **299** | |
+| 🥗 飲食習慣 | `healthy-eating.json` | 15 | family (Sprint 28 pilot) |
+| 📱 屏幕時間 | `screen-time.json` | 15 | family (Sprint 28 pilot) |
+| **Total** | | **329** | |
 
 > Note: per-topic backup files `*.pre-v3.7.bak` are kept for migration history only; production reads only the canonical `<topic>.json`.
+
+### 4.3 Sprint 28 — Family Domain (新)
+
+Pivoted from school-only → family-life as the 4th domain (after `value`, `caring`, `emotion-detective`).
+- **Auth model:** student-only (no parent/teacher flow added); existing `subjectId: 'value'` 仍 OK。
+- **Tone:** collaborative — scenarios consistently offer ≥1 「同家人協商」option path (升 +15至+18)
+  in addition to 「family reflection」正路。Target IDB family-life + SEN-MID suitability.
+- **iPad-first:** 5th home filter tab + `flex-wrap: wrap` ensures 768px portrait OK without overflow.
+- **Schema:** Reuses moral-choice schema; `subjectId='family'`, `domain='family'`,
+  `valueCategory='healthy-eating'|'screen-time'`, `audience=['family','value']`, `riskLevel ≤ 2`.
+- **Toggle:** `teacherConfig.familyEnabled` 對齊 `emotionDetectiveEnabled` pattern; default ON.
+- **Code surface:**
+  - `src/topics.js` — `FAMILY` const + `getFamilyTopics()` / `isFamilyTopic()`
+  - `src/subjects.js` — `'family'` subject entry (amber `#F59E0B`)
+  - `src/engine.js` — `isFamilyEnabled()`, renderHome filter tab, renderTopicList deep-link guard,
+    renderTeacherAssign toggle.
+  - `src/storage.js` — `_DEFAULTS.familyEnabled = true`
+  - `src/actions/inline.js` — `_ALLOWED_HOME_FILTERS` 接受 `'family'`
+  - `src/style.css` — `.home-filter-row flex-wrap: wrap` + `.home-filter-tab min-height: 44px`
+  - `tests/sprint28-family-domain.test.js` — 28 個 invariants (schema, count, toggle, scenario data, race-free)
 
 ### 4.3 Loading
 
@@ -513,6 +535,9 @@ Sync surface: SPEC.md §22 addenda, BUILD_LOG.md prepend, tests, code. **Heads-u
 | 24 | v2.8.0 | 2026-06-26 | emotion-detective layout bug fix + split into own home tab |
 | 25 | v2.9.0 | 2026-06-26 | ED sub-tabs (基本/社交) + 下一題 bug fix + ensureStudent lazy-create |
 | **26** | **v2.10.0** | **2026-06-26** | **ED pedagogy 適配中度智障學生 — 5 scenarios 改 wording + correct, test invariant update to at-least-once exposure** |
+| 27 | v2.11.0 | 2026-06-27 | Engagement Overhaul — single-column home redesign, warm theme opt-in, auto-resume banner |
+| **28** | **v2.13.0** | **2026-07-04** | **家庭生活 domain pilot — 2 topics (飲食習慣 + 屏幕時間) × 15 scenarios = 30 scenarios, 加 5th home filter tab + iPad-friendly flex-wrap + familyEnabled teacher toggle** |
+| **28.1** | **v2.13.1** | **2026-07-05** | **Family Domain 30 張 scenario illustration — MiniMax image-01, 16:9 / 1280×720 JPEG-in-PNG, imagePrompt 鎖 provenance, +5 invariants (`tests/sprint28-1-family-images.test.js`)** |
 
 ## 13. Conventions
 

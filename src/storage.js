@@ -132,6 +132,13 @@ const _DEFAULTS = {
   // 老師可以喺 ⚙️ 功能設定 關閉, 關閉後 home page / topic list 隱藏, deep-link
   // 入 emotion-detective scenario 會 redirect 去 home + Toast 提示。
   emotionDetectiveEnabled: true,
+
+  // Sprint 28 / SPEC §28 — Teacher toggle for family-life domain.
+  // Default ON (pilot: 2 topics — 飲食習慣 + 屏幕時間). 老師可以喺 ⚙️
+  // 功能設定關閉, 關閉後 home page / topic list 隱藏.
+  // 對齊 emotionDetectiveEnabled pattern (見上面) — toggle 唔影響 data,
+  // 純粹 UI 隱藏 + deep-link redirect to home + Toast 提示.
+  familyEnabled: true,
 };
 let _cached = null;
 let _cachedAt = 0;
