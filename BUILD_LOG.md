@@ -134,11 +134,20 @@ identical except for the `topicId` field, so re-completing takes <2 min.)
 
 ### Sprint 28 family-domain sub-highlights (already documented in 2.13.0 / 28.1 entries)
 
-- See [v2.13.0 entry](#v2130-2026-07-04---sprint-28-家庭生活-domain-pilot-飲食習慣--屏幕時間) below
-  for the schema, collaborative-tone invariant, and 4-option minimum design.
-- See [v2.13.1 entry](#v2131-2026-07-05---sprint-281-family-domain-scenario-illustrations-30-pngs) below
+- See the **v2.13.0 entry** further below (Sprint 28 D1/D2/D3 — family domain
+  pilot: topics, subjects, 30 collaborative-tone scenarios, version bump,
+  ARCHITECTURE.md §4.3 section, 28 invariant tests) for the schema,
+  collaborative-tone invariant, and 4-option minimum design.
+- See the **v2.13.1 entry** at the bottom of this file (Sprint 28.1 — 30
+  family-domain PNGs generated via MiniMax image-01, BATCH3_PROMPTS_HQ.md
+  source-of-truth, 5 image invariants in `tests/sprint28-1-family-images.test.js`)
   for the 30 PNG generation details, anchor character choice, and
   BATCH3_PROMPTS_HQ.md source-of-truth.
+
+> **Markdown anchor note:** GitHub's slugger strips the `v2.13.X-2026-07-NN
+> ---` prefix and most punctuation, so direct `#v2130-...` anchors are
+> fragile across GFM renderers. Plain-text references ("the v2.13.0
+> entry further below") are more portable.
 
 ### Open / future (carried over from prior entries)
 
