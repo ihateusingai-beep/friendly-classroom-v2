@@ -1093,5 +1093,395 @@
     ],
     "imagePrompt": "Hong Kong child on school bus looking uncomfortable as friend reaches out, child pulling away, anime cartoon style, soft pastel, expressive, no text, 16:9",
     "subjectId": "caring"
+  },
+  {
+    "id": "s-self-139",
+    "title": "社交距離:排隊時貼太近",
+    "background": "小食部・小息",
+    "description": "小息時你排隊買嘢食,前面嘅同學企得好近,差不多貼住你背。你覺得有少少迫,但又唔識講。你會點做?",
+    "hints": [
+      "排隊嘅合適距離係一隻手臂左右,大約 30cm。",
+      "你可以用話表達:「可唔可以後退少少?」",
+      "如果對方都係貼住,你可以行開少少,或者叫老師幫手。"
+    ],
+    "characters": [
+      {
+        "name": "排隊同學",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-139-a",
+        "text": "「可不可以後退少少?我有少少迫」",
+        "effects": [
+          {
+            "character": "排隊同學",
+            "change": 10,
+            "moralChange": 18,
+            "comment": "你識得禮貌咁表達自己的需要!對方會理解的。"
+          }
+        ],
+        "next_scenario": "s-self-140"
+      },
+      {
+        "id": "s-self-139-b",
+        "text": "忍受住不講",
+        "effects": [
+          {
+            "character": "排隊同學",
+            "change": 0,
+            "moralChange": -8,
+            "comment": "你有權講出來,這個係表達自己的機會。"
+          }
+        ],
+        "next_scenario": "s-self-140"
+      },
+      {
+        "id": "s-self-139-c",
+        "text": "行開少少排去後面",
+        "effects": [
+          {
+            "character": "排隊同學",
+            "change": 0,
+            "moralChange": 14,
+            "comment": "你識得給自己空間,這個係自我照顧。"
+          }
+        ],
+        "next_scenario": "s-self-140"
+      }
+    ],
+    "location": "canteen",
+    "topicId": "social-boundary",
+    "creedIds": [
+      22,
+      9
+    ],
+    "imagePrompt": "小學生喺小食部排隊買嘢食,前後嘅同學企得好近,排隊有少少迫嘅情況。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "表達需要",
+      "say no"
+    ]
+  },
+  {
+    "id": "s-self-140",
+    "title": "社交距離:同朋友傾偈坐太近",
+    "background": "操場・小息",
+    "description": "你同小明坐喺操場嘅長凳傾偈,小明坐得好近,你成日撞到佢個膊頭,覺得有少少唔舒服。你會點做?",
+    "hints": [
+      "朋友之間傾偈,合適距離係一隻手臂。",
+      "你可以用話表達:「我哋坐開少少傾偈啦。」",
+      "呢個係照顧自己嘅需要,唔代表你唔想做朋友。"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-140-a",
+        "text": "「我哋坐開少少,傾偈都聽到」",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 12,
+            "moralChange": 18,
+            "comment": "你識得用說表達自己的需要!小明會理解,這個不會影響友誼。"
+          }
+        ],
+        "next_scenario": "s-self-141"
+      },
+      {
+        "id": "s-self-140-b",
+        "text": "忍受住,傾偈傾完先算",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 0,
+            "moralChange": -8,
+            "comment": "你可以隨時表達自己,不需要勉強。"
+          }
+        ],
+        "next_scenario": "s-self-141"
+      },
+      {
+        "id": "s-self-140-c",
+        "text": "自己行開,說「我去喝水」",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -5,
+            "moralChange": 10,
+            "comment": "可以更直接表達,小明可能會誤會你嬲他。"
+          }
+        ],
+        "next_scenario": "s-self-141"
+      }
+    ],
+    "location": "playground",
+    "topicId": "social-boundary",
+    "creedIds": [
+      22,
+      9
+    ],
+    "imagePrompt": "兩個小學生坐喺操場長凳傾偈,坐得好近膊頭撞到膊頭,少少迫嘅情況。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "合適距離",
+      "表達需要",
+      "朋友關係"
+    ]
+  },
+  {
+    "id": "s-self-141",
+    "title": "社交距離:搭車時逼人讓位",
+    "background": "巴士・放學",
+    "description": "你放學搭巴士,車好迫,你想搵位坐。你見到一位老人家企喺度,佢似乎想搵位但搵唔到。你會點做?",
+    "hints": [
+      "車廂嘅合適距離,企嘅時候大約一隻手臂。",
+      "如果你坐低,老人家企喺度,你可以讓位。",
+      "如果你企,可以禮貌咁問:「婆婆/伯伯,你需要位嗎?」"
+    ],
+    "characters": [
+      {
+        "name": "老人家",
+        "emoji": "👵",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-141-a",
+        "text": "「婆婆,坐呢度吧」起身讓位",
+        "effects": [
+          {
+            "character": "老人家",
+            "change": 25,
+            "moralChange": 22,
+            "comment": "你識得尊重長者!這個係好有愛心的行為。"
+          }
+        ],
+        "next_scenario": "s-self-142"
+      },
+      {
+        "id": "s-self-141-b",
+        "text": "扮看不到,繼續坐",
+        "effects": [
+          {
+            "character": "老人家",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你可以給老人家讓位,這個係品德的表現。"
+          }
+        ],
+        "next_scenario": "s-self-142"
+      },
+      {
+        "id": "s-self-141-c",
+        "text": "「婆婆/伯伯,你需要位嗎?」",
+        "effects": [
+          {
+            "character": "老人家",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你識得主動關心!這個係尊重長者的表現。"
+          }
+        ],
+        "next_scenario": "s-self-142"
+      }
+    ],
+    "location": "bus",
+    "topicId": "social-boundary",
+    "creedIds": [
+      22,
+      9
+    ],
+    "imagePrompt": "小學生坐喺巴士座位,前面企住一位老人家,車廂有少少迫。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "車廂禮儀",
+      "讓位",
+      "尊重長者"
+    ]
+  },
+  {
+    "id": "s-self-142",
+    "title": "社交距離:用手指指人哋塊面",
+    "background": "課室・小息",
+    "description": "你想同小美講嘢,但你唔係用口講,而係伸手指去指佢塊面,差唔多掂到佢。你唔係故意,但呢個係越界行為嗎?",
+    "hints": [
+      "指住人哋塊面係越界行為,即使只係講嘢。",
+      "你可以用口講「喂」或者揮手叫人。",
+      "對方嘅 face 係 private zone,唔可以隨便掂。"
+    ],
+    "characters": [
+      {
+        "name": "小美",
+        "emoji": "👧",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-142-a",
+        "text": "「對不住,我下次用口叫你」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 10,
+            "moralChange": 18,
+            "comment": "你識得道歉 + 學識點叫對方!這個係尊重。"
+          }
+        ],
+        "next_scenario": "s-self-143"
+      },
+      {
+        "id": "s-self-142-b",
+        "text": "「只係指下啫,又不係打你」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "面係對方的 personal space,即使冇打,指住都係越界。"
+          }
+        ],
+        "next_scenario": "s-self-143"
+      },
+      {
+        "id": "s-self-142-c",
+        "text": "下次用揮手或者大聲叫他",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 15,
+            "moralChange": 20,
+            "comment": "你識得用合適的方式叫人!這個係好的社交技巧。"
+          }
+        ],
+        "next_scenario": "s-self-143"
+      }
+    ],
+    "location": "classroom",
+    "topicId": "social-boundary",
+    "creedIds": [
+      22,
+      16
+    ],
+    "imagePrompt": "小學生伸手指指住女同學塊面,差唔多掂到,女同學少少退後嘅表情。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "personal space",
+      "合適叫人方式",
+      "面部界線"
+    ]
+  },
+  {
+    "id": "s-self-143",
+    "title": "社交距離:朋友嬲咗,你想行埋去",
+    "background": "操場・小息",
+    "description": "小明因為你講咗一句唔小心嘅話嬲咗,你見到佢企喺操場另一邊。你想行埋去同佢講對唔住,但又怕佢唔想你太近。你會點做?",
+    "hints": [
+      "朋友嬲咗嘅時候,佢可能需要空間。",
+      "你可以用話喺遠處問:「小明,你 OK 嗎?」",
+      "如果佢話想自己一個,畀佢時間冷靜,之後再講。"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-143-a",
+        "text": "在遠處問:「小明,你 OK 嗎?對不住」",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 15,
+            "moralChange": 20,
+            "comment": "你識得給對方空間 + 道歉!這個係尊重。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-143-b",
+        "text": "直接行埋去同他講對不住",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -5,
+            "moralChange": -5,
+            "comment": "朋友嬲的時候,可能需要空間。太急反而令他更嬲。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "朋友嬲的時候直接逼埋去",
+          "consequence": "他需要空間,給他時間冷靜先講",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-143-c",
+        "text": "「我想講對不住,你準備好的時候我在度」",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 18,
+            "moralChange": 22,
+            "comment": "你識得給對方節奏!這個係成熟的道歉方式。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "social-boundary",
+    "creedIds": [
+      22,
+      9
+    ],
+    "imagePrompt": "兩個小學生喺操場,一個企喺另一邊唔開心,另一個喺遠處想行過去。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "social-boundary",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "情緒空間",
+      "道歉時機",
+      "畀時間冷靜"
+    ]
   }
 ]

@@ -2116,5 +2116,342 @@
       "個人衞生",
       "身體自主"
     ]
+  },
+  {
+    "id": "s-self-97",
+    "title": "身體自主:你摸咗女同學嘅胸部",
+    "background": "課室・活動",
+    "description": "活動時間,你想知小美件衫裡面有咩,伸手摸咗佢胸口一下。小美即刻推開你,大喊:「你做咩呀?!」你發覺自己做錯咗。你會點做?",
+    "hints": [
+      "胸部係 private,任何人嘅都唔可以摸。",
+      "即使你只係好奇,都唔可以做呢個動作。",
+      "道歉並即刻離開,搵老師講。"
+    ],
+    "characters": [
+      {
+        "name": "小美",
+        "emoji": "👧",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-97-a",
+        "text": "「對不住,我做錯了」即時離開,找老師",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 0,
+            "moralChange": 25,
+            "comment": "你識得停止 + 道歉 + 找老師!這個係最勇敢的做法,小美會被保護。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-97-b",
+        "text": "「我只係想知有什麼啫,好笑咁緊張」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -30,
+            "moralChange": -30,
+            "comment": "這個係嚴重的身體侵犯,小美會非常嬲,可能會找老師或者報警。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "摸女同學的胸部",
+          "consequence": "胸部係 private,即使只係好奇都不可以做",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-97-c",
+        "text": "扮冇事離場",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "小美會找老師,你會因為逃避問題而令情況更嚴重。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "扮冇事逃避",
+          "consequence": "逃避會令問題惡化,小美會自己找大人",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8,
+      16
+    ],
+    "imagePrompt": "小學生伸手摸咗女同學嘅胸口,女同學即刻推開對方表情好嬲。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "胸部界線",
+      "嚴重侵犯認知",
+      "主動求助"
+    ]
+  },
+  {
+    "id": "s-self-98",
+    "title": "身體自主:你掀起同學件衫",
+    "background": "課室・小息",
+    "description": "你想知小強件衫背後有咩圖案,掀起佢件衫睇。小強即刻拉低衫,大喊:「唔好掀我件衫!」你發覺自己越界咗。你會點做?",
+    "hints": [
+      "衫下面嘅身體係 private,唔可以掀開。",
+      "如果你想睇,問對方,唔好自己做。",
+      "道歉並即刻停止,呢個係越界行為。"
+    ],
+    "characters": [
+      {
+        "name": "小強",
+        "emoji": "👦",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-98-a",
+        "text": "「對不住,我不應該咁做」",
+        "effects": [
+          {
+            "character": "小強",
+            "change": 5,
+            "moralChange": 20,
+            "comment": "你識得停止 + 道歉!小強會原諒你,你們可以學啱的做法。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-98-b",
+        "text": "「掀下啫,嬲什麼呀」",
+        "effects": [
+          {
+            "character": "小強",
+            "change": -20,
+            "moralChange": -20,
+            "comment": "對方的界線由對方決定,不係你。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "掀開同學件衫",
+          "consequence": "衫下面的身體係 private,對方已經說不要",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-98-c",
+        "text": "問他:「我可以點問你有什麼圖案?」",
+        "effects": [
+          {
+            "character": "小強",
+            "change": 15,
+            "moralChange": 22,
+            "comment": "你識得用問的方式!這個係正確的做法。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8,
+      16
+    ],
+    "imagePrompt": "小學生掀起另一個同學件衫,第二個拉低衫表情好嬲,課室環境。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "衫下面界線",
+      "越界認知",
+      "用問嘅方式"
+    ]
+  },
+  {
+    "id": "s-self-99",
+    "title": "身體自主:你用手肘撞到女同學胸部",
+    "background": "走廊・放學",
+    "description": "你跑緊趕校車,手肘撞到小美嘅胸口,小美話:「你撞到我呀,好痛。」你唔係故意嘅。你會點做?",
+    "hints": [
+      "意外同故意嘅分別,對方感受係最重要嘅。",
+      "如果對方話痛,即刻道歉,然後畀空間佢。",
+      "如果佢話 OK,就繼續各自行程。"
+    ],
+    "characters": [
+      {
+        "name": "小美",
+        "emoji": "👧",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-99-a",
+        "text": "「對不住,我不係故意的,你 OK 嗎?」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 12,
+            "moralChange": 20,
+            "comment": "你識得立刻道歉 + 關心對方!小美會感受到你的誠意。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-99-b",
+        "text": "「我又不係故意,算吧」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "即使不係故意,對方痛就應該道歉,這個係基本禮貌。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "不認錯,當冇事",
+          "consequence": "對方痛就要道歉,這個係尊重",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-99-c",
+        "text": "問他:「你需不需要去 check 吓?」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 18,
+            "moralChange": 22,
+            "comment": "你識得主動關心對方的需要!這個係成熟的表現。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "corridor",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      9,
+      16
+    ],
+    "imagePrompt": "小學生跑緊撞到女同學嘅胸口,女同學摸住胸口話痛嘅表情,走廊環境。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "意外處理",
+      "道歉",
+      "關心對方"
+    ]
+  },
+  {
+    "id": "s-self-100",
+    "title": "身體自主:你摸自己嘅性器官",
+    "background": "屋企・睡房",
+    "description": "你沖涼時或瞓前,有時會摸自己嘅性器官。你聽過大人話呢個係 private。你會點面對呢件事?",
+    "hints": [
+      "自己摸自己嘅性器官係 puberty 常見嘅事,係正常嘅身體探索。",
+      "但呢個係 private 行為,只可以喺自己房間或者浴室,唔可以喺公眾地方做。",
+      "如果你有問題,問爸媽或者學校老師,唔好自己收埋。"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-100-a",
+        "text": "明白係 normal,只會在自己地方做",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 15,
+            "moralChange": 20,
+            "comment": "你識得健康咁面對 puberty!這個係成熟的身體認識。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-100-b",
+        "text": "覺得好羞恥,強迫自己不要做",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -5,
+            "moralChange": -5,
+            "comment": "這個係 normal,不需要強迫自己壓抑。可以同大人傾。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "強迫壓抑 normal 的身體反應",
+          "consequence": "可以同大人傾,不需要羞恥",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-100-c",
+        "text": "問爸媽或者老師有關呢件事",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 18,
+            "moralChange": 25,
+            "comment": "你識得用問的方式了解自己的身體!這個係最成熟的做法。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8,
+      16
+    ],
+    "imagePrompt": "小學生喺自己睡房,有少少疑惑嘅表情諗緊身體嘅事,睡房環境有書枱同床。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "puberty 認識",
+      "private 行為",
+      "健康身體觀"
+    ]
   }
 ]
