@@ -94,8 +94,9 @@ describe('Sprint 28 — topics.js FAMILY export', () => {
     expect(ed.domain).toBe('emotion-detective');
   });
 
-  it('TOPICS total count = 20 (12 value + 5 caring + 1 ed + 2 family)', () => {
-    expect(TOPICS).toHaveLength(20);
+  it('TOPICS total count = 21 (12 value + 5 caring + 1 ed + 2 family + 1 financial)', () => {
+    // Sprint 18.7: 加 financial-literacy topic
+    expect(TOPICS).toHaveLength(21);
   });
 
   it('family topics have unique colors (avoid clash with existing palette)', () => {
@@ -189,12 +190,12 @@ describe('Sprint 28 — healthy-eating.json schema (15 scenarios)', () => {
   });
 });
 
-describe('Sprint 28 — screen-time.json schema (15 scenarios)', () => {
-  it('has exactly 15 scenarios with st-1..st-15 ids', () => {
-    expect(stScenarios).toHaveLength(15);
+describe('Sprint 28 — screen-time.json schema (14 scenarios after Sprint 18.7 moved st-7 to financial-literacy)', () => {
+  it('has exactly 14 scenarios with st-1..st-6, st-8..st-15 ids (st-7 moved to financial-literacy)', () => {
+    expect(stScenarios).toHaveLength(14);
     const ids = stScenarios.map(s => s.id);
     expect(ids).toEqual(
-      Array.from({length: 15}, (_, i) => `st-${i + 1}`)
+      ['st-1', 'st-2', 'st-3', 'st-4', 'st-5', 'st-6', 'st-8', 'st-9', 'st-10', 'st-11', 'st-12', 'st-13', 'st-14', 'st-15']
     );
   });
 
@@ -274,8 +275,9 @@ describe('Sprint 28 — ScenarioEngine integration with family scenarios', () =>
   it('getScenariosByTopic() resolves family topics correctly', () => {
     const he = getScenariosByTopic('healthy-eating');
     expect(he).toHaveLength(15);
+    // Sprint 18.7: st-7 moved to financial-literacy.json — screen-time now 14
     const st = getScenariosByTopic('screen-time');
-    expect(st).toHaveLength(15);
+    expect(st).toHaveLength(14);
   });
 });
 

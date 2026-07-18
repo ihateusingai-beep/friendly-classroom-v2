@@ -1,0 +1,1059 @@
+[
+  {
+    "id": "s-c6",
+    "title": "關卡：拾金不昧",
+    "background": "小息時間・走廊",
+    "description": "你在走廊執到一百元，幾張紅色鈔票。你抬頭望見小明正低頭走過，唔知係咪佢丟既。你應該點做？",
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "hints": [
+      "一百元可以買很多零食，但係係唔係屬於你？如果係你丟咗，你希望點？",
+      "誠實會令人內心平安，而呃呃騙騙會令人終日提心吊膽。",
+      "如果唔記得系邊個丟既，可以話：「我丟低咗，應該有人來認領吧？」"
+    ],
+    "options": [
+      {
+        "id": "s-c6-a",
+        "text": "自己收起來，認為「執到就是我」",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -20,
+            "comment": "小明發現丟了錢，周圍找，喊了..."
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "自己收起來，認為執到就是我",
+          "consequence": "小明發現丟了錢，周圍找，喊了...",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-c6-b",
+        "text": "交去訓導處，等人認領",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 15,
+            "moralChange": 25,
+            "comment": "小明找回金錢，謝謝你！老師贊你誠實！"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-c6-c",
+        "text": "問小明是咪丟了錢",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 15,
+            "comment": "小明確認是他既，謝謝你拾金不昧！"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "topicId": "financial-literacy",
+    "creedIds": [
+      13,
+      17
+    ],
+    "imagePrompt": "你在走廊執到一百元，幾張紅色鈔票。你抬頭望見小明正低頭走過，唔知係咪佢丟既。你應該點做？ Hong Kong school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "講真話",
+      "不作弊",
+      "拾金不昧"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-31",
+    "title": "尊重界線：唔好逼朋友買禮物",
+    "background": "校園",
+    "description": "小息時，你見到朋友買咗個新玩具。你好想佢送俾你，拉住佢衫角唔放。朋友面有難色，唔知點算。你會點做？",
+    "hints": [
+      "朋友有權決定自己嘅嘢點用。",
+      "你都可以表達「我都想要」，但唔可以強迫人哋送。"
+    ],
+    "options": [
+      {
+        "id": "s-self-31-a",
+        "text": "「好呀，你送給我」",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "勉強朋友送東西，會破壞友誼。朋友有權拒絕。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "好呀，你送給我",
+          "consequence": "勉強朋友送東西，會破壞友誼。朋友有權拒絕",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-31-b",
+        "text": "「我自己儲錢買，不必你送」",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識得尊重朋友的界線！"
+          }
+        ],
+        "next_scenario": "s-self-32"
+      },
+      {
+        "id": "s-self-31-c",
+        "text": "「你即刻送給我」",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "主動逼朋友送東西，會令友誼受損。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "你即刻送給我",
+          "consequence": "主動逼朋友送東西，會令友誼受損",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "playground",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      16
+    ],
+    "imagePrompt": "Young Chinese boy pulling friend's shirt asking for gift, worried friend, school playground, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢",
+      "分享資源"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-33",
+    "title": "尊重界線：朋友買禮物要問媽媽",
+    "background": "校園",
+    "description": "朋友話：「我媽媽生日，我想買花送佢，但我冇錢買。」你會點幫佢？",
+    "hints": [
+      "每樣嘢都要先問屋企人先決定。",
+      "朋友有困難，你可以陪佢一齊想辦法。"
+    ],
+    "options": [
+      {
+        "id": "s-self-33-a",
+        "text": "「好呀，我哋去公園摘花」",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "公園的花不可以隨便摘，要問先。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "好呀，我哋去公園摘花",
+          "consequence": "公園的花不可以隨便摘，要問先",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-33-b",
+        "text": "「不如我哋返去問媽媽」",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "你好識得尊重家庭界線！"
+          }
+        ],
+        "next_scenario": "s-self-34"
+      },
+      {
+        "id": "s-self-33-c",
+        "text": "「你找老師幫手」",
+        "effects": [
+          {
+            "moralChange": 8,
+            "comment": "找老師幫手是一個方法，但都應該先問屋企人。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "playground",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      16
+    ],
+    "imagePrompt": "Young Chinese boy talking to friend about gift, thinking to ask mom first, school, anime cartoon style, expressive faces, warm tones, no text, no logos, 16:9",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "幫助弱勢",
+      "分享資源"
+    ],
+    "subjectId": "value"
+  },
+  {
+    "id": "s-self-166",
+    "title": "仁愛：捐出零用錢",
+    "background": "學校・早會",
+    "description": "學校搞籌款活動幫助山區小朋友。你零用錢可以買零食，但老師話可以捐出嚟。你會……",
+    "hints": [
+      "分享係仁愛",
+      "山區小朋友需要幫助",
+      "可以分階段捐"
+    ],
+    "characters": [
+      {
+        "name": "自己",
+        "emoji": "🧒",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-166-a",
+        "text": "「我沒錢」就算",
+        "effects": [
+          {
+            "character": "自己",
+            "change": -8,
+            "moralChange": -8,
+            "comment": "你不想分享，錯過助人的機會。"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "我沒錢就算",
+          "consequence": "你不想分享，錯過助人的機會",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-166-b",
+        "text": "捐出一部分零用錢",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 12,
+            "moralChange": 14,
+            "comment": "你願意分享，係仁愛！"
+          }
+        ]
+      },
+      {
+        "id": "s-self-166-c",
+        "text": "捐零用錢+寫信鼓勵山區小朋友",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 24,
+            "moralChange": 24,
+            "comment": "你用行動+文字雙重關心，係仁愛高手！"
+          }
+        ]
+      }
+    ],
+    "location": "school",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      7
+    ],
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "主動關心",
+      "分享資源",
+      "易地而處"
+    ],
+    "imagePrompt": "Hong Kong primary school assembly, child donating money to charity collection box, morning light, anime cartoon style, expressive, warm tones, no text, 16:9",
+    "subjectId": "value"
+  },
+  {
+    "id": "st-7",
+    "title": "你想買新遊戲，要儲錢 vs 用曬零用錢",
+    "subjectId": "family",
+    "topicId": "financial-literacy",
+    "domain": "family",
+    "valueCategory": "financial-literacy",
+    "audience": [
+      "family",
+      "value"
+    ],
+    "riskLevel": 1,
+    "background": "屋企",
+    "description": "你想買一個新遊戲（$300）。你剛剛用了零用錢吃零食買玩具。你會怎麼做？",
+    "hints": [
+      "儲錢是好習慣。",
+      "不可以亂用爸媽的錢。"
+    ],
+    "options": [
+      {
+        "id": "st-7-a",
+        "text": "自己制定儲錢計劃，3 星期後買",
+        "effects": [
+          {
+            "moralChange": 18,
+            "comment": "理財自律是最實用的成長！"
+          }
+        ],
+        "next_scenario": "st-8"
+      },
+      {
+        "id": "st-7-b",
+        "text": "扭媽媽買給我",
+        "effects": [
+          {
+            "moralChange": -12,
+            "comment": "不是自己努力得到，會不珍惜。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "扭媽媽買給我",
+          "consequence": "媽媽可能會嬲，你學不到理財",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "st-7-c",
+        "text": "幫屋企做家務，賺多些零用錢",
+        "effects": [
+          {
+            "moralChange": 15,
+            "comment": "用勞動換取收穫，成熟！"
+          }
+        ],
+        "next_scenario": "st-8"
+      },
+      {
+        "id": "st-7-d",
+        "text": "偷偷拿爸爸銀包的錢",
+        "effects": [
+          {
+            "moralChange": -15,
+            "comment": "偷錢是嚴重的錯，會破壞信任。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "偷偷拿爸爸銀包的錢",
+          "consequence": "爸爸會發現，會非常失望",
+          "isLoselose": false
+        }
+      }
+    ],
+    "creedIds": [
+      10
+    ],
+    "skills": [
+      "理財",
+      "儲蓄",
+      "家庭責任"
+    ],
+    "imagePrompt": "A 7-year-old boy (小明) looking at a smartphone showing a $300 game page on screen, hand reaching toward an empty piggy bank, thoughtful concerned expression, Hong Kong home bedroom, Hong Kong primary school / home environment, anime cartoon style, warm soft pastel tones, expressive character art, no text, no logos, no watermarks, 16:9 aspect ratio"
+  },
+  {
+    "id": "fl-1",
+    "title": "關卡：書包裝飾",
+    "background": "小息時間・操場",
+    "description": "小美新書包有好靚嘅閃石吊飾,你行過望到,心諗「我都要」。小美去咗洗手間,書包掛喺椅上。你會點做?",
+    "hints": [
+      "別人嘅嘢唔可以因為想要就拎走。",
+      "如果你真係好想要,可以同人分享,問吓佢邊度買,自己儲錢買。",
+      "忍住唔拎,雖然好難,但係會令你成為一個更可靠嘅人。"
+    ],
+    "characters": [
+      {
+        "name": "小美",
+        "emoji": "👧",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "fl-1-a",
+        "text": "趁無人,偷偷拎了吊飾",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -30,
+            "moralChange": -25,
+            "comment": "小美返來發現吊飾不見了,好傷心。如果你鍚意他,就要尊重他的東西。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "趁無人偷偷拎走吊飾",
+          "consequence": "小美會好傷心,亦會失去對你的信任",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "fl-1-b",
+        "text": "「我忍住,人哋的東西不可以拎」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 5,
+            "moralChange": 18,
+            "comment": "你好有自制力!忍到先係真功夫。"
+          }
+        ],
+        "next_scenario": "fl-2"
+      },
+      {
+        "id": "fl-1-c",
+        "text": "等小美返來,問他哪裡買,自己儲錢買",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 15,
+            "moralChange": 20,
+            "comment": "你好識得尊重朋友,又識得為自己的目標努力!"
+          }
+        ],
+        "next_scenario": "fl-2"
+      }
+    ],
+    "location": "playground",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      6,
+      16
+    ],
+    "imagePrompt": "小美新書包有好靚嘅閃石吊飾掛喺椅上,小美去咗洗手間,另一個同學望住書包,心郁郁。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "自制力",
+      "尊重他人財物",
+      "儲蓄目標"
+    ]
+  },
+  {
+    "id": "fl-2",
+    "title": "關卡：老師的禮物",
+    "background": "課室・小息時間",
+    "description": "小強今日生日,收到老師送嘅模型車禮物,興奮到即刻攞去同其他同學分享,離開咗座位。模型車擺咗喺小強書包上面。你好鍾意嗰架車。你會點做?",
+    "hints": [
+      "別人嘅禮物,係人哋嘅珍惜。就算你鍾意,都要先問。",
+      "趁機會拎走會令小強好失望,亦都會令你內心唔安樂。",
+      "如果你真係想要,可以同小強講,或者等自己生日先問爸媽買。"
+    ],
+    "characters": [
+      {
+        "name": "小強",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "fl-2-a",
+        "text": "趁無人就拎了,放自己袋",
+        "effects": [
+          {
+            "character": "小強",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "小強返來發現生日禮物不見了,生日變成最傷心的一日。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "趁無人偷了小強的生日禮物",
+          "consequence": "小強會非常傷心,呢份友誼亦都可能會破壞",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "fl-2-b",
+        "text": "忍住,等小強返來",
+        "effects": [
+          {
+            "character": "小強",
+            "change": 5,
+            "moralChange": 18,
+            "comment": "你忍得到,係真正的朋友所為!"
+          }
+        ],
+        "next_scenario": "fl-3"
+      },
+      {
+        "id": "fl-2-c",
+        "text": "主動找老師報告這個情況",
+        "effects": [
+          {
+            "character": "小強",
+            "change": 10,
+            "moralChange": 22,
+            "comment": "你主動保護朋友的東西,老師會讚你誠實可靠!"
+          }
+        ],
+        "next_scenario": "fl-3"
+      }
+    ],
+    "location": "classroom",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      6,
+      16
+    ],
+    "imagePrompt": "小強離開咗座位,佢嘅生日禮物模型車擺喺書包上面,另一個同學喺旁邊望住,心郁郁。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "尊重他人財物",
+      "自制力",
+      "誠實"
+    ]
+  },
+  {
+    "id": "fl-3",
+    "title": "關卡：便利店多找錢",
+    "background": "放學・便利店",
+    "description": "你買$15嘅嘢,俾咗$50,便利店姐姐多找咗$20俾你。姐姐未有留意,開始招呼下個客人。你會點做?",
+    "hints": [
+      "$20 唔屬於你。攞走咗,等於偷錢。",
+      "如果你係便利店老闆,你會點?",
+      "誠實會令人內心平安,即使要行多兩步。"
+    ],
+    "characters": [
+      {
+        "name": "便利店姐姐",
+        "emoji": "🧑",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "fl-3-a",
+        "text": "袋住$20,當自己好運",
+        "effects": [
+          {
+            "character": "便利店姐姐",
+            "change": -15,
+            "moralChange": -20,
+            "comment": "便利店姐姐當日可能要自己賠呢$20,亦會影響對小朋友的信任。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "袋住多找的$20走了",
+          "consequence": "便利店姐姐要自己蝕錢,這個係偷竊的一種",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "fl-3-b",
+        "text": "即刻行返去同姐姐講多找了",
+        "effects": [
+          {
+            "character": "便利店姐姐",
+            "change": 20,
+            "moralChange": 25,
+            "comment": "姐姐會好感激你,可能仲會俾你一張『誠實卡』!"
+          }
+        ],
+        "next_scenario": "fl-4"
+      },
+      {
+        "id": "fl-3-c",
+        "text": "假裝不知,趕快離開",
+        "effects": [
+          {
+            "character": "便利店姐姐",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "你心裡知道發生了什麼事,內心會不安樂。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "假裝不知,快步離開",
+          "consequence": "內心會不安樂,這個秘密會一直跟着你",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "convenience-store",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      6,
+      17
+    ],
+    "imagePrompt": "小朋友喺便利店收銀台前面,姐姐俾錢佢,佢望住張紙幣,知道多找咗錢,內心掙扎。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "誠信交易",
+      "物主權",
+      "主動面對"
+    ]
+  },
+  {
+    "id": "fl-4",
+    "title": "關卡：同學借錢唔還",
+    "background": "校園・放學",
+    "description": "你嘅好朋友小杰上個月話「借$50,聽日還」。依家一個月過咗,佢都冇提。你見到佢買咗新文具,自己嘅零用錢都因為呢$50而要慳啲使。你會點做?",
+    "hints": [
+      "朋友之間借錢要清晰——幾時借、幾時還、還幾多,事先講清楚。",
+      "如果你一直唔敢提,可能會影響你哋嘅友誼,亦會令你自己委屈。",
+      "可以溫柔咁提:「小杰,我哋上次借嘅$50,你幾時方便還呢?」"
+    ],
+    "characters": [
+      {
+        "name": "小杰",
+        "emoji": "👦",
+        "initial_relationship": 70
+      }
+    ],
+    "options": [
+      {
+        "id": "fl-4-a",
+        "text": "不敢提,當送了他",
+        "effects": [
+          {
+            "character": "小杰",
+            "change": -5,
+            "moralChange": -10,
+            "comment": "你蝕了錢,小杰亦不知道自己做了不啱的事,下次可能會再咁。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "不敢提,當送了",
+          "consequence": "你會繼續委屈,亦令小杰學不到借貸的界線",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "fl-4-b",
+        "text": "溫柔咁同小杰提:「記得還我$50」",
+        "effects": [
+          {
+            "character": "小杰",
+            "change": 10,
+            "moralChange": 18,
+            "comment": "你識得保護自己的金錢,小杰亦會明白守信用的重要!"
+          }
+        ],
+        "next_scenario": "fl-5"
+      },
+      {
+        "id": "fl-4-c",
+        "text": "嬲嬲咁同他嘈:「你幾時還錢呀?」",
+        "effects": [
+          {
+            "character": "小杰",
+            "change": -10,
+            "moralChange": -5,
+            "comment": "大聲嘈會傷感情,小杰可能會不舒服,友誼會受影響。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "嬲嬲咁嘈交",
+          "consequence": "友誼可能會受損,雙方都不開心",
+          "isLoselose": false
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      6,
+      11
+    ],
+    "imagePrompt": "兩個同學喺校園傾偈,一個借咗另一個錢但一個月都未還,借錢嗰個望住朋友嘅新文具,內心掙扎要唔要提。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "借貸界線",
+      "溝通技巧",
+      "自我保護"
+    ]
+  },
+  {
+    "id": "fl-5",
+    "title": "關卡：圖書過期",
+    "background": "學校圖書館・午膳",
+    "description": "你兩個月前借咗一本圖書,一直放喺屋企書枱度,依家圖書館發咗通告要你還。你知道已經過期,圖書館老師會罰你$5一個月。你會點做?",
+    "hints": [
+      "公共圖書屬於所有人,大家都要守規則先可以一齊用。",
+      "坦白承認過期,係負責任嘅表現。",
+      "唔還書會令其他同學冇辦法借到呢本書。"
+    ],
+    "characters": [
+      {
+        "name": "圖書館老師",
+        "emoji": "👩‍🏫",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "fl-5-a",
+        "text": "扮不見,偷偷再借多次",
+        "effects": [
+          {
+            "character": "圖書館老師",
+            "change": -15,
+            "moralChange": -18,
+            "comment": "老師會發現破綻,對你的信任會降低,其他同學亦會被影響。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "扮不見,再偷偷借",
+          "consequence": "這個係講大話,會破壞你的誠信",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "fl-5-b",
+        "text": "即刻還書,主動交$5罰款",
+        "effects": [
+          {
+            "character": "圖書館老師",
+            "change": 15,
+            "moralChange": 22,
+            "comment": "你好有責任感!雖然要罰錢,但係老師會欣賞你的誠實!"
+          }
+        ],
+        "next_scenario": "fl-6"
+      },
+      {
+        "id": "fl-5-c",
+        "text": "同圖書館老師坦白:「對不住,我忘記了」",
+        "effects": [
+          {
+            "character": "圖書館老師",
+            "change": 12,
+            "moralChange": 20,
+            "comment": "你肯認錯,老師通常會酌情處理。誠實比什麼都重要!"
+          }
+        ],
+        "next_scenario": "fl-6"
+      }
+    ],
+    "location": "library",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      6,
+      8
+    ],
+    "imagePrompt": "小朋友喺屋企書枱度,望住一本過期未還嘅圖書,諗緊要點面對圖書館老師。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "責任感",
+      "公共財產",
+      "誠實認錯"
+    ]
+  },
+  {
+    "id": "fl-6",
+    "title": "關卡：遊戲課金",
+    "background": "同學屋企・週末",
+    "description": "你去同學小輝屋企打機,小輝偷偷用爸爸嘅信用卡,幫自己個遊戲帳號買咗$500嘅角色 skin。你睇到,你會點做?",
+    "hints": [
+      "用咗爸爸嘅錢而唔講,係偷錢嘅一種。",
+      "雖然唔關你事,但你係目擊者,都有責任提醒朋友。",
+      "朋友做錯嘢,提醒佢就係真正嘅朋友。"
+    ],
+    "characters": [
+      {
+        "name": "小輝",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "fl-6-a",
+        "text": "一齊玩,當冇看到",
+        "effects": [
+          {
+            "character": "小輝",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "你縱容朋友繼續錯落去,他之後可能會越來越嚴重。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "一齊玩,當冇看到",
+          "consequence": "朋友繼續做錯,問題會越來越大",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "fl-6-b",
+        "text": "提醒小輝:「咁樣不啱,你要同爸爸講」",
+        "effects": [
+          {
+            "character": "小輝",
+            "change": 15,
+            "moralChange": 22,
+            "comment": "你做了真正朋友應該做的東西——提醒對方做正確的事!"
+          }
+        ],
+        "next_scenario": "fl-7"
+      },
+      {
+        "id": "fl-6-c",
+        "text": "直接告訴小輝爸爸",
+        "effects": [
+          {
+            "character": "小輝",
+            "change": -5,
+            "moralChange": 18,
+            "comment": "雖然小輝會嬲你,但這個係幫他最大的方法。"
+          }
+        ],
+        "next_scenario": "fl-7"
+      }
+    ],
+    "location": "friend-home",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      6,
+      8
+    ],
+    "imagePrompt": "兩個小朋友喺屋企對住電腦打機,其中一個嘅遊戲角色著住新 skin,另一個望住個螢幕,知道對方用咗爸爸嘅信用卡。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "數碼金錢",
+      "朋友責任",
+      "提醒他人"
+    ]
+  },
+  {
+    "id": "fl-7",
+    "title": "關卡：夾錢送禮物",
+    "background": "課室・小息",
+    "description": "班長提議:「下星期係班主任林老師生日,大家夾錢買份禮物,每人$50好唔好?」你哋家長之前都冇提過呢件事。你覺得呢個主意麻麻地。你會點做?",
+    "hints": [
+      "如果你真係想表達心意,寫張卡、做張心意卡都好好。",
+      "你嘅零用錢係爸媽俾你嘅,唔可以亂使。",
+      "可以誠實表達你嘅想法,朋友會明白嘅。"
+    ],
+    "characters": [
+      {
+        "name": "班長",
+        "emoji": "📋",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "fl-7-a",
+        "text": "不出聲,然後夾$50",
+        "effects": [
+          {
+            "character": "班長",
+            "change": 0,
+            "moralChange": -8,
+            "comment": "你跟大隊但內心不舒服,亦會失去$50,可能仲要同爸媽解釋。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "不出聲然後夾錢",
+          "consequence": "你會覺得委屈,亦可能會使了不應該使的錢",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "fl-7-b",
+        "text": "「不如我哋一齊寫張卡,心意最緊要」",
+        "effects": [
+          {
+            "character": "班長",
+            "change": 8,
+            "moralChange": 20,
+            "comment": "你提出了一個好提議,大家都鬆一口氣!"
+          }
+        ],
+        "next_scenario": "fl-8"
+      },
+      {
+        "id": "fl-7-c",
+        "text": "直接說:「我零用錢不夠,我做張卡」",
+        "effects": [
+          {
+            "character": "班長",
+            "change": 5,
+            "moralChange": 18,
+            "comment": "你識得表達自己,亦提供了實際方案!"
+          }
+        ],
+        "next_scenario": "fl-8"
+      }
+    ],
+    "location": "classroom",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      6,
+      11
+    ],
+    "imagePrompt": "班長企喺課室前面,提議同學夾錢送老師禮物,一個同學坐喺座位,內心唔同意但唔知點開口。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "同儕壓力",
+      "理財自律",
+      "真誠表達"
+    ]
+  },
+  {
+    "id": "fl-8",
+    "title": "關卡：零用錢比較",
+    "background": "校園・小息",
+    "description": "同學小玲攞住$100零用錢去小食部,問你:「咦,你點解得$20呀?你爸媽唔俾你多啲咩?」你聽到覺得好尷尬,屋企經濟同其他同學唔同。你會點做?",
+    "hints": [
+      "每個家庭經濟狀況唔同,呢個唔代表你哋邊個比較好或差。",
+      "金錢多寡唔等於被愛多寡。",
+      "唔需要同人比較,亦唔需要因為錢少而自卑。"
+    ],
+    "characters": [
+      {
+        "name": "小玲",
+        "emoji": "🧒",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "fl-8-a",
+        "text": "返屋企投訴:「為什麼人哋有$100,我得$20?」",
+        "effects": [
+          {
+            "character": "小玲",
+            "change": 0,
+            "moralChange": -8,
+            "comment": "投訴會令爸媽不開心,亦不會改變事實。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "返屋企投訴爸媽",
+          "consequence": "爸媽會不開心,問題冇解決,大家更尷尬",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "fl-8-b",
+        "text": "「每個家庭不同㗎,我$20夠用」",
+        "effects": [
+          {
+            "character": "小玲",
+            "change": 8,
+            "moralChange": 20,
+            "comment": "你識得接納同感恩,這個係成熟的表現!"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "fl-8-c",
+        "text": "扮闊綽,扮自己都有$100",
+        "effects": [
+          {
+            "character": "小玲",
+            "change": 0,
+            "moralChange": -15,
+            "comment": "你講大話之後要繼續扮,內心會好不安樂。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "扮闊綽,講大話",
+          "consequence": "講大話的後果係要記住更多大話,內心會越來越辛苦",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "playground",
+    "topicId": "financial-literacy",
+    "creedIds": [
+      9,
+      7
+    ],
+    "imagePrompt": "兩個同學喺小息時間傾偈,一個攞住$100紙幣,另一個望住自己$20,內心比較同掙扎。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "financial-literacy",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "感恩",
+      "家庭經濟理解",
+      "自我接納"
+    ]
+  }
+]

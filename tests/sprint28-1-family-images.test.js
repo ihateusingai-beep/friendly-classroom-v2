@@ -48,14 +48,15 @@ describe('Sprint 28.1 — Family Domain scenario illustrations', () => {
     });
 
     it('AC2: every st-* scenario has a PNG at assets/images/scenarios/<id>.png', () => {
-        expect(stIDs.length).toBe(15);
+        // Sprint 18.7: st-7 moved to financial-literacy.json — screen-time now 14
+        expect(stIDs.length).toBe(14);
         for (const sid of stIDs) {
             const p = path.join(SRC_DIR, `${sid}.png`);
             expect(fs.existsSync(p), `missing PNG for ${sid}`).toBe(true);
         }
     });
 
-    it('AC3: all 30 PNGs > 5KB (no broken / empty / truncated files)', () => {
+    it('AC3: all 29 PNGs > 5KB (no broken / empty / truncated files) — 15 he + 14 st after Sprint 18.7', () => {
         const ids = [...heIDs, ...stIDs];
         const small = ids.filter((sid) => {
             const p = path.join(SRC_DIR, `${sid}.png`);
@@ -83,12 +84,12 @@ describe('Sprint 28.1 — Family Domain scenario illustrations', () => {
     });
 
     it('AC5: source assets mirrored to public/assets/images/scenarios/ (prebuild-sync parity)', () => {
-        // parity check: 30 family PNGs in both dirs
+        // Sprint 18.7: 14 st-* scenarios (st-7 moved to financial-literacy) — 15 he + 14 st = 29
         const pubIDs = [...heIDs, ...stIDs].filter((sid) => {
             const p = path.join(PUB_DIR, `${sid}.png`);
             return fs.existsSync(p);
         });
-        expect(pubIDs.length, 'public/ count').toBe(30);
+        expect(pubIDs.length, 'public/ count').toBe(29);
         for (const sid of heIDs) {
             const p = path.join(PUB_DIR, `${sid}.png`);
             expect(fs.existsSync(p), `missing public PNG for ${sid}`).toBe(true);

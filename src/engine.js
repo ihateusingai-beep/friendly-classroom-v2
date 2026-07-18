@@ -948,9 +948,10 @@ export function renderHome(subjectId) {
   const familyCount = allNoEd.filter(t => t.domain === 'family').length;
   const allCount = allNoEd.length;
   const sectionTitle = filter === 'all'
-    ? `🪷🌈🕵️🏠 全部 ${allCount} 個品格課題`
+    ? `🪷🌈🕵️🏠💰 全部 ${allCount} 個品格課題`
     : (filter === 'value'
-        ? `🪷 ${valuesCount} 個 EDB 官方價值觀`
+        // Sprint 18.7: 加 financial-literacy 同屬 value domain, 用 dynamic count
+        ? `🪷 ${valuesCount} 個價值觀（含理財）`
         : filter === 'emotion-detective'
           ? `🕵️ ${edCount} 個情緒小偵探課題`
           : filter === 'family'

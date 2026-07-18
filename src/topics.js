@@ -191,6 +191,34 @@ export const EMOTION_DETECTIVE = [
   },
 ];
 
+// 💰 Sprint 18.7 — 理財價值觀 (Financial Literacy)
+// 用戶要求集中所有「金錢 / 物慾 / 借貸 / 誠信交易」related scenarios
+// 做獨立 cluster，方便老師 assign 同學做 focused unit。
+//
+// 來源：
+//   - 5 個 moved from integrity/benevolence/screen-time (s-c6 拾金不昧, s-self-31
+//     唔好逼朋友買禮物, s-self-33 朋友買禮物要問媽媽, s-self-166 捐出零用錢,
+//     st-7 儲錢 vs 用曬零用錢)
+//   - 8 個 new (fl-1 到 fl-8 — 書包裝飾 / 老師的禮物 / 便利店多找錢 /
+//     同學借錢唔還 / 圖書過期 / 遊戲課金 / 夾錢送禮物 / 零用錢比較)
+//
+// Subject: 屬於 'value' subject (金錢屬 value 範疇 — 誠信/勤勞/同理心交集)。
+// Domain: 'value' — 同 EDB 12 個 value topic 共享 subject 入口。
+// CreedIds: [6, 16] 誠信 + 尊重他人 — 理財嘅根基。
+export const FINANCIAL = [
+  {
+    id: 'financial-literacy',
+    title: '理財價值觀',
+    emoji: '💰',
+    domain: 'value',
+    subjectId: 'value',
+    description: '金錢、儲蓄、分享、物慾、借貸嘅價值觀',
+    creedIds: [6, 16],
+    // 金色系 — 對應金錢但避免撞 #F59E0B (responsibility) 同 #84CC16 (diligence)
+    color: '#D4A574',
+  },
+];
+
 // 🏠 Sprint 28 — 家庭生活 (SPEC §28) (pilot: 2 topics)
 // 用戶由學校延伸去屋企日常 — 飲食習慣 + 屏幕時間。Reuse moral-choice
 // schema (4-option + moralChange)，不過 tone = **collaborative** 而非
@@ -261,9 +289,9 @@ export function filterScenariosByEmotionCategory(scenarios, categoryId) {
   return scenarios.filter(s => s?.emotionCategory === categoryId);
 }
 
-// 四個 domain 合併（20 個：12 價值觀 + 5 友愛 + 1 情緒偵探 + 2 家庭生活）
-// Sprint 28: 加 🏠 家庭生活 (2 topics pilot) — 食物 + 屏幕
-export const TOPICS = [...VALUES, ...CARING, ...EMOTION_DETECTIVE, ...FAMILY];
+// 四個 domain 合併（21 個：12 價值觀 + 5 友愛 + 1 情緒偵探 + 2 家庭生活 + 1 理財）
+// Sprint 18.7: 加 💰 理財價值觀 — 集中金錢 / 物慾 / 借貸 / 誠信交易場景
+export const TOPICS = [...VALUES, ...CARING, ...EMOTION_DETECTIVE, ...FAMILY, ...FINANCIAL];
 
 // 舊 topicId → 新 topicId migration map
 // 用嚟 scenarios.json re-tag 同 user 舊進度兼容
@@ -343,4 +371,12 @@ export function getFamilyTopics() {
 }
 export function isFamilyTopic(id) {
   return FAMILY.some(f => f.id === id);
+}
+
+// Sprint 18.7 — 理財價值觀 helper — 同 FAMILY / EMOTION_DETECTIVE pattern 一致
+export function getFinancialTopics() {
+  return FINANCIAL;
+}
+export function isFinancialTopic(id) {
+  return FINANCIAL.some(f => f.id === id);
 }
