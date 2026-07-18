@@ -1127,5 +1127,526 @@
     ],
     "imagePrompt": "Hong Kong residential building lift lobby at night, neighbor reaching out, child stepping back with alarmed expression, anime cartoon style, soft pastel, serious, no text, 16:9",
     "subjectId": "caring"
+  },
+  {
+    "id": "s-self-85",
+    "title": "身體自主:你以為玩,摸咗同學",
+    "background": "小息・操場",
+    "description": "你同小明跑追逐,跑緊你伸手撳佢背部,佢即刻停低,細聲同你講:「我唔想人哋咁樣撳我。」你發覺佢唔開心。你會點做?",
+    "hints": [
+      "如果對方話唔舒服,即刻停手。",
+      "扮玩唔係藉口。對方嘅反應係最重要嘅界線。",
+      "道歉並不代表你係壞人,只代表你學到一個界線。"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-85-a",
+        "text": "立刻停手,同小明道歉",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 15,
+            "moralChange": 18,
+            "comment": "你識得尊重他的界線!小明會原諒你,仲會繼續做你朋友。"
+          }
+        ],
+        "next_scenario": "s-self-86"
+      },
+      {
+        "id": "s-self-85-b",
+        "text": "「我只係玩下啫」扮冇事",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "小明會覺得你不 care 他的感覺,可能會不同你做朋友。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "扮冇事,講『只係玩下』",
+          "consequence": "對方的身體界線,你必須尊重",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-85-c",
+        "text": "問小明:「咁你 OK 我點做?」",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 18,
+            "moralChange": 20,
+            "comment": "你好有自省能力!你會學識日後點同人相處。"
+          }
+        ],
+        "next_scenario": "s-self-86"
+      },
+      {
+        "id": "s-self-85-d",
+        "text": "下次再撳多次試他反應",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -20,
+            "moralChange": -25,
+            "comment": "這是不尊重別人身體界線,可能會令小明好驚同受傷。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "再撳多次試對方反應",
+          "consequence": "別人已經說不舒服,你仲要咁做,係欺凌",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "playground",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8,
+      16
+    ],
+    "imagePrompt": "兩個小學生喺操場追逐,一個伸手撳另一個背部,第二個停低咗表情唔舒服。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "自我覺察",
+      "尊重身體界線",
+      "道歉"
+    ]
+  },
+  {
+    "id": "s-self-86",
+    "title": "身體自主:你想幫手,扯爛咗人哋件衫",
+    "background": "課室・小息",
+    "description": "你想睇小美件衫有咩圖案,伸手拉佢件衫嘅標籤。小美話:「喂!你扯到我件衫啦!」你望到衫嘅膊頭有少少變形。你會點做?",
+    "hints": [
+      "如果你想睇人哋嘅嘢,用口問,唔好用扯嘅。",
+      "如果整爛咗人哋嘅嘢,要做個誠實嘅人,主動道歉。",
+      "道歉之後,可以問對方點修補,或者賠返。"
+    ],
+    "characters": [
+      {
+        "name": "小美",
+        "emoji": "👧",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-86-a",
+        "text": "同小美道歉:「對不住,我太大力」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 10,
+            "moralChange": 18,
+            "comment": "你識得承擔責任!小美會原諒你,可能仲會主動說你件衫有什麼。"
+          }
+        ],
+        "next_scenario": "s-self-87"
+      },
+      {
+        "id": "s-self-86-b",
+        "text": "扮冇事離場",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "小美會覺得你不負責任,可能會嬲你。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "扮冇事離場",
+          "consequence": "整爛人哋東西離場係不負責任的行為",
+          "isLoselose": false
+        }
+      },
+      {
+        "id": "s-self-86-c",
+        "text": "問小美:「我可以點修補返?」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 18,
+            "moralChange": 22,
+            "comment": "你識得用行動修補錯誤!小美會好感激你的主動。"
+          }
+        ],
+        "next_scenario": "s-self-87"
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      3,
+      16
+    ],
+    "imagePrompt": "兩個小學生喺課室,一個拉咗另一個嘅衫標籤,第二個望住自己件衫嘅膊頭,表情唔開心。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "尊重他人財物",
+      "道歉",
+      "修補錯誤"
+    ]
+  },
+  {
+    "id": "s-self-87",
+    "title": "身體自主:錫咗同學塊面",
+    "background": "放學・校門口",
+    "description": "你喺電視見到家長錫小朋友嘅面,你以為呢個係朋友之間嘅打招呼方式。你走過去錫咗小強塊面一下,小強即刻推開你,表情好尷尬。你會點做?",
+    "hints": [
+      "朋友之間打招呼可以用揮手、講「你好」,唔需要用錫。",
+      "每個人嘅身體界線唔同。有啲人鍾意攬,有啲人唔鍾意。",
+      "如果對方推開你,代表佢唔舒服,即刻停。"
+    ],
+    "characters": [
+      {
+        "name": "小強",
+        "emoji": "👦",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-87-a",
+        "text": "「對不住,我以為係打招呼的方式」",
+        "effects": [
+          {
+            "character": "小強",
+            "change": 8,
+            "moralChange": 18,
+            "comment": "你識得承認錯誤!小強會原諒你,你們可以學啱的打招呼方式。"
+          }
+        ],
+        "next_scenario": "s-self-88"
+      },
+      {
+        "id": "s-self-87-b",
+        "text": "「錫下啫,嬲什麼呀?」",
+        "effects": [
+          {
+            "character": "小強",
+            "change": -15,
+            "moralChange": -15,
+            "comment": "小強會覺得你不 care 他的感覺,可能會疏遠你。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "質疑對方『錫下啫』",
+          "consequence": "對方的界線由對方決定,不係你",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-87-c",
+        "text": "下次用揮手打招呼,問對方鍾意什麼方式",
+        "effects": [
+          {
+            "character": "小強",
+            "change": 15,
+            "moralChange": 22,
+            "comment": "你識得用對方舒服的方式!友誼會更好。"
+          }
+        ],
+        "next_scenario": "s-self-88"
+      }
+    ],
+    "location": "school-gate",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      16,
+      9
+    ],
+    "imagePrompt": "兩個小學生喺校門口,一個錫咗另一個塊面,第二個推開對方表情尷尬唔舒服。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "身體界線",
+      "打招呼方式",
+      "尊重差異"
+    ]
+  },
+  {
+    "id": "s-self-88",
+    "title": "身體自主:攬同學太緊",
+    "background": "課室・活動後",
+    "description": "小美因為比賽輸咗喊咗,你走過去攬佢好緊想安慰佢。小美話:「你攬得我好痛呀!」你即刻放開,佢深呼吸咗一下。你會點做?",
+    "hints": [
+      "安慰朋友係好事,但要留意力度。",
+      "如果對方話痛,即刻放開,然後道歉。",
+      "可以用其他方式安慰:坐喺佢身邊、問佢 OK 嗎、遞紙巾。"
+    ],
+    "characters": [
+      {
+        "name": "小美",
+        "emoji": "👧",
+        "initial_relationship": 65
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-88-a",
+        "text": "「對不住,我即刻放開,你 OK 嗎?」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 12,
+            "moralChange": 20,
+            "comment": "你識得即時停止 + 道歉!小美會感受到你的真心關心。"
+          }
+        ],
+        "next_scenario": "s-self-89"
+      },
+      {
+        "id": "s-self-88-b",
+        "text": "繼續攬,說「我幫你」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -20,
+            "moralChange": -20,
+            "comment": "對方已經說痛,你仲要繼續,係不尊重他的身體。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "對方說痛仲繼續攬",
+          "consequence": "安慰要尊重對方意願,不係用你的方式",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-88-c",
+        "text": "坐在他身邊,問他想不想被攬",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 18,
+            "moralChange": 22,
+            "comment": "你識得用對方舒服的方式!這個係真正的體貼。"
+          }
+        ],
+        "next_scenario": "s-self-89"
+      }
+    ],
+    "location": "classroom",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      9,
+      16
+    ],
+    "imagePrompt": "一個小學生想安慰另一個喊嘅同學,攬得好緊,第二個話痛嘅表情。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 1,
+    "skills": [
+      "安慰技巧",
+      "力度控制",
+      "詢問意願"
+    ]
+  },
+  {
+    "id": "s-self-89",
+    "title": "身體自主:摸咗 BB 仔嘅身體",
+    "background": "鄰居屋企・客廳",
+    "description": "鄰居嘅媽媽幫 BB 仔換片,BB 仔嘅身體露出嚟。你好奇咁伸手指去摸咗 BB 仔嘅下腹。鄰居媽媽即刻拉開你,好嚴肅咁同你講:「BB 仔嘅身體係 private,唔可以摸。」你會點做?",
+    "hints": [
+      "BB 仔嘅身體都係 private,同大人一樣。",
+      "如果你對身體有好奇,問大人,唔好自己摸。",
+      "道歉並唔代表你係壞人,只代表你學到一個重要嘅界線。"
+    ],
+    "characters": [
+      {
+        "name": "鄰居媽媽",
+        "emoji": "👩",
+        "initial_relationship": 50
+      },
+      {
+        "name": "BB 仔",
+        "emoji": "👶",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-89-a",
+        "text": "「對不住,我下次會問媽媽」",
+        "effects": [
+          {
+            "character": "鄰居媽媽",
+            "change": 10,
+            "moralChange": 20,
+            "comment": "你識得承認錯誤!鄰居媽媽會說你係乖孩子,會教你啱的知識。"
+          }
+        ],
+        "next_scenario": "s-self-90"
+      },
+      {
+        "id": "s-self-89-b",
+        "text": "「BB 仔咁細個,摸下啫」",
+        "effects": [
+          {
+            "character": "鄰居媽媽",
+            "change": -20,
+            "moralChange": -20,
+            "comment": "BB 仔的身體界線都必須尊重,年紀細不係理由。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "因為 BB 仔細所以覺得摸得",
+          "consequence": "每個人的身體都係 private,年紀不改變這個界線",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-89-c",
+        "text": "問媽媽關於 BB 仔身體的東西",
+        "effects": [
+          {
+            "character": "鄰居媽媽",
+            "change": 15,
+            "moralChange": 22,
+            "comment": "你識得用問的方式去了解!這個係正確的做法。"
+          }
+        ],
+        "next_scenario": "s-self-90"
+      }
+    ],
+    "location": "neighbor-home",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8,
+      16
+    ],
+    "imagePrompt": "一個小學生伸手摸一個 BB 仔嘅身體,BB 仔嘅媽媽即刻拉開佢,表情嚴肅。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "身體界線",
+      "保護弱小",
+      "尋求大人指導"
+    ]
+  },
+  {
+    "id": "s-self-90",
+    "title": "身體自主:拉開咗同學條褲",
+    "background": "學校・洗手間",
+    "description": "你喺洗手間見到小強,想睇佢著咩底褲(因為電視見過類似嘅情景),你拉開佢條褲一下。小強即刻蓋住自己,好嬲咁話:「你做咩呀?!」你會點做?",
+    "hints": [
+      "底褲係 private,任何人嘅都唔可以拉開或者偷睇。",
+      "如果你對身體有好奇,問大人,唔好自己做。",
+      "呢個係嚴重嘅身體界線侵犯,即使你只係好奇,都唔可以做。"
+    ],
+    "characters": [
+      {
+        "name": "小強",
+        "emoji": "👦",
+        "initial_relationship": 50
+      }
+    ],
+    "options": [
+      {
+        "id": "s-self-90-a",
+        "text": "「對不住,我不應該咁做」並即刻離場",
+        "effects": [
+          {
+            "character": "小強",
+            "change": 5,
+            "moralChange": 20,
+            "comment": "你識得立刻停止同道歉。但小強仍然好嬲,可能會找老師。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-self-90-b",
+        "text": "「我只係想看下啫,不要笑咁緊張」",
+        "effects": [
+          {
+            "character": "小強",
+            "change": -25,
+            "moralChange": -25,
+            "comment": "小強會非常嬲,這個係嚴重的侵犯,可能會找老師或者報警。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "拉開同學條褲",
+          "consequence": "這個係嚴重的身體侵犯,即使你只係好奇,都係不可以",
+          "isLoselose": true
+        }
+      },
+      {
+        "id": "s-self-90-c",
+        "text": "主動找老師講:「我做了錯事」",
+        "effects": [
+          {
+            "character": "小強",
+            "change": 8,
+            "moralChange": 25,
+            "comment": "你識得主動承認!老師會幫你同小強處理,這個係最勇敢的做法。"
+          }
+        ],
+        "next_scenario": null
+      }
+    ],
+    "location": "toilet",
+    "topicId": "body-autonomy",
+    "creedIds": [
+      8,
+      16
+    ],
+    "imagePrompt": "一個小學生喺洗手間拉開另一個同學嘅褲子,第二個即刻蓋住自己,表情好嬲。Hong Kong primary school setting, green school polo shirt uniform with white pants, FF XV Nomura anime style, character design, warm tones, clean background, no text, 16:9 aspect ratio",
+    "valueCategory": "body-autonomy",
+    "domain": "caring",
+    "audience": [
+      "caring",
+      "value"
+    ],
+    "riskLevel": 2,
+    "skills": [
+      "底褲界線",
+      "嚴重侵犯認知",
+      "主動求助"
+    ]
   }
 ]
