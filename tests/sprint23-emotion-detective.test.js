@@ -14,7 +14,7 @@
 
 import { describe, it, expect, beforeEach } from 'vitest';
 import { setScenarios, setStudent, chooseOption, getScenariosByTopic } from '../src/domain/ScenarioEngine.js';
-import { TOPICS, getTopic } from '../src/topics.js';
+import { TOPICS, CARING, getTopic } from '../src/topics.js';
 import edScenarios from '../data/scenarios/emotion-detective.json';
 
 // ── localStorage mock (matches scenario-engine.test.js) ────────────────────
@@ -64,7 +64,13 @@ describe('Sprint 23 — topics.js entry', () => {
     // Sprint 28 — 加 family domain。Pilot 2 topics (healthy-eating / screen-time)。
     // SPEC §28 — family 範疇用作 iPad / 學生自用嘅家庭日常教育
     // Sprint 18.7 — 加 financial-literacy topic
-    expect(TOPICS).toHaveLength(21);
+    expect(TOPICS).toHaveLength(22);
+  });
+
+  it('Sprint 19.1 — kindness-to-classmates topic in CARING', () => {
+    const caringTopic = CARING.find(t => t.id === 'kindness-to-classmates');
+    expect(caringTopic).toBeDefined();
+    expect(caringTopic.title).toBe('友愛同學');
   });
 });
 

@@ -94,9 +94,9 @@ describe('Sprint 28 — topics.js FAMILY export', () => {
     expect(ed.domain).toBe('emotion-detective');
   });
 
-  it('TOPICS total count = 21 (12 value + 5 caring + 1 ed + 2 family + 1 financial)', () => {
-    // Sprint 18.7: 加 financial-literacy topic
-    expect(TOPICS).toHaveLength(21);
+  it('TOPICS total count = 22 (12 value + 6 caring + 1 ed + 2 family + 1 financial)', () => {
+    // Sprint 19.1: 加 kindness-to-classmates topic
+    expect(TOPICS).toHaveLength(22);
   });
 
   it('family topics have unique colors (avoid clash with existing palette)', () => {

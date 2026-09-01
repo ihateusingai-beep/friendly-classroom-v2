@@ -172,6 +172,16 @@ export const CARING = [
     creedIds: [11, 9],   // 團結 + 同理心
     color: '#059669',
   },
+  // Sprint 19.1: 友愛同學 — 控制情緒 / 唔好自己動手 / 深呼吸飲水情緒角落
+  {
+    id: 'kindness-to-classmates',
+    title: '友愛同學',
+    emoji: '🤝',
+    domain: 'caring',
+    description: '控制情緒，唔好自己動手',
+    creedIds: [1, 2, 5, 9],  // 堅毅 + 尊重 + 守法 + 同理心
+    color: '#7C3AED',
+  },
 ];
 
 // 🕵️ Sprint 23 — 情緒小偵探 (SPEC §23)
