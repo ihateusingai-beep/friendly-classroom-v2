@@ -3,7 +3,7 @@
 > **Purpose:** Single source of truth for resuming work on this project. Read this
 > first when starting a new session. Update as sprints land.
 >
-> **Last updated:** 2026-08-01 (covers through v2.13.5 / Sprint 18.10)
+> **Last updated:** 2026-08-01 (covers through v2.13.7 / Sprint 19.2)
 > **Maintainer:** kencheng + Mavis (assistant)
 > **Live URL:** https://ihateusingai-beep.github.io/friendly-classroom-v2/
 
@@ -16,8 +16,9 @@
   社交界線 / 家庭生活 / 理財價值觀** scenarios via moral-choice mechanics.
 - **Stack:** Vanilla JS + Vite 6 + vite-plugin-pwa + Workbox 7. NO framework.
   All data in `data/scenarios/*.json`. State in `localStorage`.
-- **Latest live:** **v2.13.5** (deployed 2026-08-01, commit `a4c7fb9`).
-- **State:** 328 scenarios / 21 topics / 2 subjects (value + family).
+- **Latest live:** **v2.13.7** (deployed 2026-08-01, commit `b2caefb`).
+- **State:** 340 scenarios / 21 topics / 2 subjects (value + family). Beginner (scb-*) + intermediate (sci-*) dual-difficulty for moderate-SEN.
+- **Difficulty modes:** mild (all options) / beginner (2-choice) / intermediate (3-choice) — teacher sets in ⚙️.
   299 scenario PNGs + 744 outcome PNGs.
 - **Tests:** 408 passed (vitest 2.1.9). Style audit: 0 violations.
 - **Default teacher PIN:** `unicornntd` (S18.4, with auto-migration from old `admin`).
@@ -116,6 +117,7 @@ friendly-classroom-v2/
 | **18.8** | `44ab8cd` | 2026-07-18 | 6 first-person bad-touch scenarios (s-self-85..90) in body-autonomy. **Pedagogical shift:** "你做咗 X, 先發覺唔啱" (first-person realization) instead of "someone did to you" (third-party). Critical for SEN empathy + boundary recognition. v2.13.3 |
 | **18.9** | `fe50636` | 2026-07-18 | 6 good-touch positive scenarios (s-self-91..96). **Counter-balance** to 18.8 to avoid ASD extreme "all touch = dangerous". Includes self-care touch (s-self-96 自己沖涼). v2.13.4 |
 | **18.10** | `a4c7fb9` | 2026-08-01 | 4 first-person chest/body scenarios (s-self-97..100) + 5 social-distance scenarios (s-self-139..143). Chest scenarios include s-self-100 healthy puberty 認知 (counter-overcorrection). v2.13.5 |
+| **19.2** | `b2caefb` | 2026-08-01 | 🎓 中度智障 dual-difficulty system: beginner (2-choice) + intermediate (3-choice) kindness-to-classmates scenarios; engine filters options by difficultyMode; gentle retry overlay (no creed/outcome); enhanced star float + Cantonese encouragement; speakAll TTS chains [題目+全部options]; large-image/large-button CSS; teacher difficulty toggle in ⚙️ settings. v2.13.7 |
 
 ---
 
