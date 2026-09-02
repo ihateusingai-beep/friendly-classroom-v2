@@ -241,6 +241,12 @@ export function setBankMaxRisk(level) {
   _render();
 }
 
+/** Sprint 19.2: Set student difficulty mode for moderate-SEN students. */
+export function setDifficultyMode(mode) {
+  _writeConfig({ difficultyMode: mode });
+  _render();
+}
+
 /** Toggle a topic in the teacher's assigned-topics list. */
 export function toggleAssignedTopic(topicId, checked) {
   const cfg = _readConfig();

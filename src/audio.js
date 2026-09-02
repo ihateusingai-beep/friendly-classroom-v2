@@ -337,6 +337,29 @@ export function speakScenario(scenario) {
   speak(text);
 }
 
+// Sprint 19.2: 朗讀題目 + 所有 options（beginner/intermediate 模式用）
+// Chains: [題目描述, "第一個選擇", opt1, "第二個選擇", opt2, ...]
+export function speakAll(scenario) {
+  if (!scenario) return;
+  const text = scenario.description || scenario.question || '';
+  const options = Array.isArray(scenario.options) ? scenario.options : [];
+  const parts = [];
+  if (text.trim()) parts.push({ text });
+  const optLabels = ['第一個選擇', '第二個選擇', '第三個選擇'];
+  options.forEach((opt, i) => {
+    if (opt?.text?.trim()) {
+      parts.push({ text: `${optLabels[i] || `選項${i + 1}`}：` });
+      parts.push({ text: opt.text });
+    }
+  });
+  if (parts.length === 0) return;
+  if (parts.length === 1) {
+    speak(parts[0].text);
+  } else {
+    speakChained(parts);
+  }
+}
+
 // 播放信條音頻
 // Sprint 5/6 fix: 學生信條永遠用 TTS 粵語 (zh-HK) 直讀, 唔用 MP3 fallback。
 // 原因：原本嘅 10 條 creed-*.mp3 係 6 月 2 日用 Hermes mmx + Cantonese_GentleLady
@@ -626,6 +649,7 @@ export function speakStopAndThink(stopAndThink) {
 
 window._fcAudio = {
   speakScenario,
+  speakAll,
   speakCreeds,
   speakOptionText,
   speakConsequence,

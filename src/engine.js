@@ -770,6 +770,27 @@ export function renderTeacherAssign() {
               role="radio" aria-checked="${config.buttonSize==='normal'}">中</button>
           </div>
         </div>
+
+        <!-- Sprint 19.2 — 中度智障學生難度模式 -->
+        <div class="feature-toggle">
+          <div>
+            <div class="ft-label">🎓 學生難度</div>
+            <div class="ft-desc">輕度 = 全部題目 | 初組 = 2揀1 | 高組 = 3揀1（圖大字少）</div>
+          </div>
+          <div style="display:flex;gap: var(--space-2);flex-wrap:wrap" role="radiogroup" aria-label="學生難度">
+            ${[
+              { v: 'mild', label: '輕度' },
+              { v: 'beginner', label: '初組（2揀1）' },
+              { v: 'intermediate', label: '高組（3揀1）' },
+            ].map(opt => `
+              <button type="button"
+                class="btn ${config.difficultyMode===opt.v ? 'btn-primary' : 'btn-outline'}"
+                style="padding: var(--space-2) var(--space-3);font-size:var(--fs-sm);min-height:36px"
+                data-action="setDifficultyMode" data-arg="${opt.v}"
+                role="radio" aria-checked="${config.difficultyMode===opt.v}">${opt.label}</button>
+            `).join('')}
+          </div>
+        </div>
       </div>
 
       <div class="card" style="margin-bottom:14px">
@@ -1236,6 +1257,18 @@ export function renderPlay(scenarioId, subjectId) {
   const topic = getTopic(s.topicId);
   const subColor = getSubjectColor(subjectId);
 
+  // Sprint 19.2: 中度智障學生難度 — filter options by difficultyMode
+  const cfg = getTeacherConfig();
+  const diff = cfg?.difficultyMode || 'mild';
+  // 'beginner' = 初組（2揀1）, 'intermediate' = 高組（3揀1）, 'mild' = all options
+  const displayOptions = (diff === 'beginner') ? s.options.slice(0, 2)
+    : (diff === 'intermediate') ? s.options.slice(0, 3)
+    : s.options;
+  // CSS class for large-image / large-button mode
+  const diffClass = (diff === 'beginner' || diff === 'intermediate')
+    ? ` difficulty-${diff}`
+    : '';
+
   // 題目進度：topic 內第幾題 / 共幾題
   const topicScenarios = getScenariosByTopic(s.topicId);
   const idxInTopic = topicScenarios.findIndex(x => x.id === s.id) + 1;
@@ -1252,7 +1285,7 @@ export function renderPlay(scenarioId, subjectId) {
     : null;
 
   return `
-    <div class="container fade-in">
+    <div class="container fade-in${diffClass}">
       ${renderPageHeader({
         titleHTML: `<h1 style="flex:1;text-align:center">${escapeAttr(topic?.emoji || '')} ${escapeAttr(topic?.title || '')}</h1>`,
         back: 'topic', backLabel: `返回 ${topic?.title || '主題'}`, backArg: s.topicId,
@@ -1313,7 +1346,7 @@ export function renderPlay(scenarioId, subjectId) {
       ` : `
       <div class="options-divider" aria-hidden="true">— 揀你嘅選擇 —</div>
       <div class="options" role="radiogroup" aria-label="${s.title} 嘅選擇題">
-        ${s.options.map((opt, i) => renderOptionCard({ scenarioId: s.id, opt, index: i, isBank: false, showMoral: true })).join('')}
+        ${displayOptions.map((opt, i) => renderOptionCard({ scenarioId: s.id, opt, index: i, isBank: false, showMoral: true })).join('')}
       </div>
       `}
 
@@ -1338,18 +1371,49 @@ export function renderResult(data, subjectId) {
   const subColor = getSubjectColor(subjectId);
   const scoreText = `${isGood ? '加咗 ' : '減咗 '}${Math.abs(moralChange)} 道德分${isGood ? '，做得好好！' : '，下次再努力。'}`;
 
-  // Sprint 16 (SPEC §17.3.3): 答錯反思 panel conditional render
-  const showStopAndThink = shouldRenderStopAndThink(option, moralChange);
-  const stopAndThinkText = showStopAndThink ? formatStopAndThink(option.stopAndThink) : '';
-  const stopAndThinkAria = showStopAndThink ? getStopAndThinkAriaLabel(option.stopAndThink) : '';
+  // Sprint 19.2: 中度智障學生難度 — gentle retry overlay for beginner/intermediate
+  // Must be defined before gentle-retry early-return (escapedOptionText needed inside)
+  const cfg = getTeacherConfig();
+  const diff = cfg?.difficultyMode || 'mild';
+  const diffClass = (diff === 'beginner' || diff === 'intermediate') ? ` difficulty-${diff}` : '';
+  const showGentleRetry = (diff !== 'mild') && !isGood;
 
   // Escape all user-data fields (R10 + §17.11 anti-pattern: never innerHTML on user-written text)
   const escapedOptionText = escapeAttr(option?.text || '');
   const escapedMainComment = escapeAttr(mainComment || '');
   const escapedScoreText = escapeAttr(scoreText);
 
+  // Sprint 19.2: Gentle retry overlay — 簡化版結果，唔顯示完整 page（無 creed / outcome image）
+  if (showGentleRetry) {
+    return `
+    <div class="container fade-in${diffClass}" id="result-root">
+      <h1 class="sr-only" aria-live="polite" aria-atomic="true">再試多次啦！</h1>
+      <div class="gentle-retry-overlay" role="status" aria-label="再試多次啦！">
+        <div class="gentle-retry-emoji" aria-hidden="true">🤗</div>
+        <div class="gentle-retry-title">再試多次啦！</div>
+        <div class="comment">你揀咗「${escapedOptionText}」</div>
+        <div class="gentle-retry-hint">試吓另一個選擇呢？</div>
+        <div class="voice-btn-row">
+          <button type="button" class="inline-voice-btn" data-action="speakOptionText" title="朗讀你嘅答案" aria-label="朗讀你選擇的答案">🔊 答案</button>
+        </div>
+        <div class="gentle-retry-actions">
+          <button type="button" class="btn btn-primary" data-action="retry">🔄 再做一次</button>
+          <button type="button" class="btn btn-outline" data-action="goTopic" data-arg="${escapeAttr(getCurrentScenario()?.topicId || '')}">← 返回主題</button>
+        </div>
+      </div>
+      <button type="button" class="voice-fab" data-action="speak" data-arg="${escapeAttr(getCurrentScenario()?.id || '')}" title="朗讀題目" aria-label="朗讀題目">🔊</button>
+      ${renderFooter()}
+    </div>
+  `;
+  }
+
+  // Sprint 16 (SPEC §17.3.3): 答錯反思 panel conditional render
+  const showStopAndThink = shouldRenderStopAndThink(option, moralChange);
+  const stopAndThinkText = showStopAndThink ? formatStopAndThink(option.stopAndThink) : '';
+  const stopAndThinkAria = showStopAndThink ? getStopAndThinkAriaLabel(option.stopAndThink) : '';
+
   return `
-    <div class="container fade-in" id="result-root">
+    <div class="container fade-in${diffClass}" id="result-root">
       <h1 class="sr-only" aria-live="polite" aria-atomic="true">${scenarioTitle}嘅結果：${scoreText}</h1>
       ${subjectId ? `<div style="text-align:center;margin-bottom:8px">
         <span class="topic-badge" style="background:${subColor}">${getSubjectEmoji(subjectId)} ${getSubjectName(subjectId)}</span>

@@ -207,13 +207,30 @@ function triggerConfetti() {
 }
 
 function triggerStarFloat() {
+  // Sprint 19.2: 答啱鼓勵訊息 (Cantonese, SEN-friendly)
+  const messages = ['你做得好好！', '好棒呀！', '啱晒！', '勁呀！'];
+  const msg = messages[Math.floor(Math.random() * messages.length)];
+  const msgEl = document.createElement('div');
+  msgEl.className = 'star-float';
+  msgEl.textContent = msg;
+  msgEl.style.left = '50%';
+  msgEl.style.top = '30vh';
+  msgEl.style.transform = 'translateX(-50%)';
+  msgEl.style.fontSize = '2em';
+  msgEl.style.fontWeight = '700';
+  msgEl.style.color = '#7c3aed';
+  msgEl.style.whiteSpace = 'nowrap';
+  msgEl.style.animation = 'fadeOutUp 1.5s ease-out forwards';
+  document.body.appendChild(msgEl);
+  setTimeout(() => msgEl.remove(), 1500);
+
   const emojis = ['🌟','✨','💫','⭐'];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 8; i++) {
     const el = document.createElement('div');
     el.className = 'star-float';
     el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
     el.style.left = Math.random() * 80 + 10 + 'vw';
-    el.style.top  = 50 + Math.random() * 30 + 'vh';
+    el.style.top  = 40 + Math.random() * 30 + 'vh';
     el.style.animationDelay = Math.random() * 0.8 + 's';
     document.body.appendChild(el);
     setTimeout(() => el.remove(), 2000);

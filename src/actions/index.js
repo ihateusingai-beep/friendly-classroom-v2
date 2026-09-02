@@ -27,7 +27,7 @@ import { wireIO, updateAnalyticsSummary, setSyncStatusLoading,
          handleImport, exportAll, exportMyData, importMyData,
          exportAnalyticsCSV, clearAnalytics, forceSync,
          toggleTeacherFeature, setTeacherTimer, setButtonSize,
-         setBankMaxRisk, toggleAssignedTopic, saveTeacherPIN, saveTeacherConfig } from '../domain/IO.js';
+         setBankMaxRisk, setDifficultyMode, toggleAssignedTopic, saveTeacherPIN, saveTeacherConfig } from '../domain/IO.js';
 import { wireGarden, playRelationshipGarden, selectGardenCharacter,
          gardenChoose, gardenNext, exitGarden, playGardenAgain } from './garden.js';
 import { isSpeaking, stopSpeaking, getTTSLang, TTS_LANGS } from '../audio.js';
@@ -101,7 +101,7 @@ export function wireActions(deps) {
     // IO
     handleImport, exportAll, exportMyData, importMyData,
     exportAnalyticsCSV, clearAnalytics, forceSync, setSyncStatusLoading, updateAnalyticsSummary,
-    toggleTeacherFeature, setTeacherTimer, setButtonSize, setBankMaxRisk,
+    toggleTeacherFeature, setTeacherTimer, setButtonSize, setBankMaxRisk, setDifficultyMode,
     toggleAssignedTopic, saveTeacherPIN, saveTeacherConfig,
     // Audio control surface (read-only refs)
     isSpeaking, stopSpeaking, getTTSLang, TTS_LANGS,

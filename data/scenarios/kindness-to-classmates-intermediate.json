@@ -1,0 +1,498 @@
+[
+  {
+    "id": "sci-1",
+    "title": "嬲到想打人，點算好？",
+    "background": "課室",
+    "description": "你旁邊嘅小明發出好大聲怪聲，你好嬲。你想點？",
+    "hints": [
+      "你可以慢慢吸氣、慢慢吐氣",
+      "你可以行去飲水機",
+      "老師會處理小明"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "sci-1-a",
+        "text": "慢慢深呼吸",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你做到喇！深呼吸令你冷靜晒！"
+          }
+        ]
+      },
+      {
+        "id": "sci-1-b",
+        "text": "行去喝水",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "你行去喝水，冷靜晒！"
+          }
+        ]
+      },
+      {
+        "id": "sci-1-c",
+        "text": "起身打小明",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -20,
+            "moralChange": -20,
+            "comment": "你打小明，小明喊"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "起身打小明",
+          "consequence": "老師說：「不准打人！老師會處理。」你被罰，小明喊晒，你後悔。",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "classroom",
+    "topicId": "kindness-to-classmates",
+    "creedIds": [
+      1,
+      2,
+      5,
+      9
+    ],
+    "valueCategory": "empathy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "self-regulation",
+      "deep breathing",
+      "walk away"
+    ],
+    "imagePrompt": "Hong Kong primary school classroom, a boy looking very angry after classmate made loud strange noises, anime cartoon style, FF XV Nomura style, clear image, warm tones, clean background, no text, 16:9 aspect ratio",
+    "subjectId": "value",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "sci-2",
+    "title": "同學有好野，點算？",
+    "background": "小息",
+    "description": "小美有好多零食，你好想食。你想點？",
+    "hints": [
+      "你可以問佢分你少少",
+      "你可以等佢食完先",
+      "唔可以搶"
+    ],
+    "characters": [
+      {
+        "name": "小美",
+        "emoji": "👧",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "sci-2-a",
+        "text": "問他分少少",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你做到喇！有禮貌問人，好乖！"
+          }
+        ]
+      },
+      {
+        "id": "sci-2-b",
+        "text": "等他吃完先",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "你做到喇！好有耐心！"
+          }
+        ]
+      },
+      {
+        "id": "sci-2-c",
+        "text": "伸手去拎",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -20,
+            "moralChange": -20,
+            "comment": "你伸手去拎，小美縮開"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "未問過就伸手拎人的野",
+          "consequence": "小美說：「我未說可以！」老師說：「要問過人先可以拎。」你被罰。",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "classroom",
+    "topicId": "kindness-to-classmates",
+    "creedIds": [
+      1,
+      2,
+      5,
+      9
+    ],
+    "valueCategory": "empathy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "ask politely",
+      "patience"
+    ],
+    "imagePrompt": "Hong Kong primary school classroom, a boy looking at classmate's snacks with envious eyes, anime cartoon style, FF XV Nomura style, clear image, warm tones, clean background, no text, 16:9 aspect ratio",
+    "subjectId": "value",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "sci-3",
+    "title": "排緊隊被人插，點算？",
+    "background": "飯堂",
+    "description": "你排緊隊，小華走嚟插你前面。你想點？",
+    "hints": [
+      "你可以話老師知",
+      "你可以大聲鬧佢",
+      "你可以行開"
+    ],
+    "characters": [
+      {
+        "name": "小華",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "sci-3-a",
+        "text": "說老師知",
+        "effects": [
+          {
+            "character": "小華",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你做到喇！老師會處理！"
+          }
+        ]
+      },
+      {
+        "id": "sci-3-b",
+        "text": "行開，冷靜",
+        "effects": [
+          {
+            "character": "小華",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "你行開冷靜，好成熟！"
+          }
+        ]
+      },
+      {
+        "id": "sci-3-c",
+        "text": "大聲鬧他",
+        "effects": [
+          {
+            "character": "小華",
+            "change": -20,
+            "moralChange": -20,
+            "comment": "你大聲鬧，場面乱晒"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "大聲鬧插隊同學",
+          "consequence": "老師說：「不准大聲鬧！」你被罰，大家眼光光望你。",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "canteen",
+    "topicId": "kindness-to-classmates",
+    "creedIds": [
+      1,
+      2,
+      5,
+      9
+    ],
+    "valueCategory": "empathy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "ask teacher",
+      "walk away",
+      "patience"
+    ],
+    "imagePrompt": "Hong Kong primary school canteen queue, a boy looking upset at another boy cutting in front of him, anime cartoon style, FF XV Nomura style, clear image, warm tones, clean background, no text, 16:9 aspect ratio",
+    "subjectId": "value",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "sci-4",
+    "title": "整跌人，要道歉？",
+    "background": "操場",
+    "description": "你跑嘅時候唔小心整跌咗小明，佢喊晒。你想點？",
+    "hints": [
+      "你可以道歉",
+      "你可以行開",
+      "你可以話係佢自己問題"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "sci-4-a",
+        "text": "道歉：「對不住」",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你做到喇！道歉令小明開心返！"
+          }
+        ]
+      },
+      {
+        "id": "sci-4-b",
+        "text": "行開，等小明冷靜",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 15,
+            "moralChange": 15,
+            "comment": "你行開等小明冷靜，都有禮貌！"
+          }
+        ]
+      },
+      {
+        "id": "sci-4-c",
+        "text": "說：「你自己衰」",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -20,
+            "moralChange": -20,
+            "comment": "你鬧小明，小明更傷心"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "整跌人仲要鬧人",
+          "consequence": "小明更傷心，老師說：「整跌人要道歉！」你被罰，大家都不開心。",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "playground",
+    "topicId": "kindness-to-classmates",
+    "creedIds": [
+      1,
+      2,
+      5,
+      9
+    ],
+    "valueCategory": "empathy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "apologize",
+      "take responsibility"
+    ],
+    "imagePrompt": "Hong Kong primary school playground, a boy accidentally knocked down classmate who is crying, anime cartoon style, FF XV Nomura style, clear image, warm tones, clean background, no text, 16:9 aspect ratio",
+    "subjectId": "value",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "sci-5",
+    "title": "見到同學喊，點算？",
+    "background": "課室",
+    "description": "小美喊晒，你行過。你想點？",
+    "hints": [
+      "你可以安慰佢",
+      "你可以問佢點解喊",
+      "你可以笑佢"
+    ],
+    "characters": [
+      {
+        "name": "小美",
+        "emoji": "👧",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "sci-5-a",
+        "text": "安慰他，說：「冇事」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你做到喇！好有同理心，小美好感激你！"
+          }
+        ]
+      },
+      {
+        "id": "sci-5-b",
+        "text": "問他：「你為甚麼喊？」",
+        "effects": [
+          {
+            "character": "小美",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "你做到喇！關心同學，好乖！"
+          }
+        ]
+      },
+      {
+        "id": "sci-5-c",
+        "text": "笑他",
+        "effects": [
+          {
+            "character": "小美",
+            "change": -20,
+            "moralChange": -20,
+            "comment": "你笑小美，小美更傷心"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "笑喊緊的同學",
+          "consequence": "小美更傷心，老師說：「不准笑人！」你被罰，小美不再理你。",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "classroom",
+    "topicId": "kindness-to-classmates",
+    "creedIds": [
+      1,
+      2,
+      5,
+      9
+    ],
+    "valueCategory": "empathy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "comfort",
+      "empathy",
+      "ask"
+    ],
+    "imagePrompt": "Hong Kong primary school classroom, a girl sitting crying at desk, another boy walking past looking at her, anime cartoon style, FF XV Nomura style, clear image, warm tones, clean background, no text, 16:9 aspect ratio",
+    "subjectId": "value",
+    "difficulty": "intermediate"
+  },
+  {
+    "id": "sci-6",
+    "title": "老師鬧同學，你要點？",
+    "background": "課室",
+    "description": "老師鬧小明，你覺得小明衰，你好嬲。你想點？",
+    "hints": [
+      "你可以坐好，深呼吸",
+      "你可以走去安慰小明",
+      "你可以走去打小明"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "sci-6-a",
+        "text": "坐好，深呼吸",
+        "effects": [
+          {
+            "character": "自己",
+            "change": 25,
+            "moralChange": 25,
+            "comment": "你做到喇！老師事情老師搞，你做得好好！"
+          }
+        ]
+      },
+      {
+        "id": "sci-6-b",
+        "text": "走去安慰小明",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "你做到喇！安慰同學，好有愛心！"
+          }
+        ]
+      },
+      {
+        "id": "sci-6-c",
+        "text": "走去打小明",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -20,
+            "moralChange": -20,
+            "comment": "你打小明，小明更傷心"
+          }
+        ],
+        "stopAndThink": {
+          "badBehavior": "走去打小明說幫老師",
+          "consequence": "老師說：「不准打人！老師會教，你打人都係錯！」你被罰，後悔。",
+          "isLoselose": true
+        }
+      }
+    ],
+    "location": "classroom",
+    "topicId": "kindness-to-classmates",
+    "creedIds": [
+      1,
+      2,
+      5,
+      9
+    ],
+    "valueCategory": "empathy",
+    "domain": "caring",
+    "audience": [
+      "caring"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "self-regulation",
+      "deep breathing",
+      "comfort"
+    ],
+    "imagePrompt": "Hong Kong primary school classroom, teacher standing looking serious scolding a boy at his desk, another boy looking angry at the classmate being scolded, anime cartoon style, FF XV Nomura style, clear image, warm tones, clean background, no text, 16:9 aspect ratio",
+    "subjectId": "value",
+    "difficulty": "intermediate"
+  }
+]

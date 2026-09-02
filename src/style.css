@@ -922,6 +922,95 @@ body:has(.action-cta-fab:not([hidden])) .container { padding-bottom: 80px; }
   display: block;
 }
 
+/* ── Sprint 19.2: 中度智障學生大圖 / 大掣模式 ─────────────────────── */
+/* 初組 (beginner) + 高組 (intermediate) 模式：圖片放大、按鈕加大 */
+.difficulty-beginner .scenario-image-wrap,
+.difficulty-intermediate .scenario-image-wrap {
+  max-height: 320px;
+}
+.difficulty-beginner .scenario-image,
+.difficulty-intermediate .scenario-image {
+  max-height: 320px;
+}
+.difficulty-beginner .option-card,
+.difficulty-intermediate .option-card {
+  padding: var(--space-4) var(--space-5);
+  min-height: 80px;
+}
+.difficulty-beginner .option-card .opt-thumb,
+.difficulty-intermediate .option-card .opt-thumb {
+  width: 120px;
+  height: 120px;
+}
+.difficulty-beginner .option-card .opt-text,
+.difficulty-intermediate .option-card .opt-text {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+}
+.difficulty-beginner .option-card .opt-read,
+.difficulty-intermediate .option-card .opt-read {
+  width: 56px;
+  height: 56px;
+  font-size: 1.4em;
+}
+/* 選項之間間距加大，方便 SEN 學生點擊 */
+.difficulty-beginner .options,
+.difficulty-intermediate .options {
+  gap: 14px;
+}
+.difficulty-beginner .scenario-title,
+.difficulty-intermediate .scenario-title {
+  font-size: var(--fs-xl);
+}
+.difficulty-beginner .scenario-desc,
+.difficulty-intermediate .scenario-desc {
+  font-size: var(--fs-lg);
+}
+
+/* ── Sprint 19.2: 温和 retry overlay（beginner/intermediate 答錯專用）── */
+.gentle-retry-overlay {
+  background: #fff;
+  border-radius: 24px;
+  padding: 32px 24px;
+  margin: 16px auto;
+  max-width: 480px;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.1);
+}
+.gentle-retry-emoji {
+  font-size: 4em;
+  margin-bottom: 12px;
+  animation: gentleBounce 0.6s ease-out;
+}
+@keyframes gentleBounce {
+  0%   { transform: scale(0.5); opacity: 0; }
+  60%  { transform: scale(1.1); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.gentle-retry-title {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--color-primary, #7c3aed);
+  margin-bottom: 12px;
+}
+.gentle-retry-overlay .comment {
+  color: var(--text-light);
+  margin-bottom: 8px;
+  font-size: var(--fs-base);
+}
+.gentle-retry-hint {
+  font-size: var(--fs-lg);
+  color: var(--text);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.gentle-retry-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
 /* ── 選項按鈕（舊版，已移除） ── */
 .options { display: flex; flex-direction: column; gap: 8px; }
 
@@ -1289,6 +1378,13 @@ html[data-rm="true"] .result-card.stop-and-think {
   50%  { transform: scale(1.15); }
   70%  { transform: scale(0.95); }
   100% { transform: scale(1); opacity: 1; }
+}
+/* Sprint 19.2: 答啱鼓勵文字向上淡出 */
+@keyframes fadeOutUp {
+  0%   { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  20%  { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-40px); }
 }
 @keyframes shimmer {
   0%   { background-position: -200% 0; }

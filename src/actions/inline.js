@@ -15,7 +15,7 @@ import { getScenarioById } from '../domain/ScenarioEngine.js';
 // storage layout + validation; the action handlers just translate user
 // intent into Resume.js calls + render() so the home page re-evaluates.
 import { dismissResume as _dismissResume, clearResume as _clearResume } from '../domain/Resume.js';
-import { speakScenario, speakCreeds, speak as _speak,
+import { speakScenario, speakAll, speakCreeds, speak as _speak,
          speakOptionText as _speakOptionText,
          speakConsequence as _speakConsequence,
          speakStopAndThink as _speakStopAndThink,
@@ -29,7 +29,7 @@ import { addStudent as _addStudent } from '../domain/Progress.js';
 import { selectStudent } from '../domain/Student.js';
 import { onboardingNext as _onboardingNext, onboardingSkip as _onboardingSkip,
          resetOnboarding as _resetOnboarding } from '../components/Onboarding.js';
-import { STORAGE_KEYS } from '../storage.js';
+import { STORAGE_KEYS, getTeacherConfig } from '../storage.js';
 
 const _ALLOWED_HOME_FILTERS = ['value', 'caring', 'emotion-detective', 'family', 'all'];
 
@@ -43,15 +43,19 @@ export function getInlineActions({ render, _navigate, getState, setView }) {
   return {
     // ── Voice (Sprint 14 inline bridge) ───────────────────────────
     /** data-action="speak" data-arg="${s.id}" — read scenario from cache,
-     *  speak it via TTS. Falls back to the currently playing scenario. */
+     *  speak it via TTS. Falls back to the currently playing scenario.
+     *  Sprint 19.2: beginner/intermediate mode uses speakAll (朗讀題目 + 所有 options). */
     speak(scenarioId) {
+      const diff = getTeacherConfig()?.difficultyMode || 'mild';
+      const useSpeakAll = (diff === 'beginner' || diff === 'intermediate');
+
       if (!scenarioId) {
         const cur = getCurrentScenario();
-        if (cur) return speakScenario(cur);
+        if (cur) return useSpeakAll ? speakAll(cur) : speakScenario(cur);
         return;
       }
       getScenarioById(scenarioId).then((sc) => {
-        if (sc) speakScenario(sc);
+        if (sc) useSpeakAll ? speakAll(sc) : speakScenario(sc);
       });
     },
 

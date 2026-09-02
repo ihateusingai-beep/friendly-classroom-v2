@@ -139,6 +139,10 @@ const _DEFAULTS = {
   // 對齊 emotionDetectiveEnabled pattern (見上面) — toggle 唔影響 data,
   // 純粹 UI 隱藏 + deep-link redirect to home + Toast 提示.
   familyEnabled: true,
+
+  // Sprint 19.2 — 中度智障學生難度模式
+  // 'mild' = 輕度（現有全部題目）| 'beginner' = 初組（2揀1）| 'intermediate' = 高組（3揀1）
+  difficultyMode: 'mild',
 };
 let _cached = null;
 let _cachedAt = 0;
