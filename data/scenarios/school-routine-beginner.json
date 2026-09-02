@@ -1,0 +1,672 @@
+[
+  {
+    "id": "s-sr-1",
+    "title": "學校流程：洗手清潔",
+    "background": "洗手間・小息",
+    "description": "小明食完零食，雙手污糟糟。佢準備去洗手。",
+    "hints": [
+      "然後老師指示就啱喇！",
+      "試吓回想平時老師點教你？"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-sr-1-a",
+        "text": "用梘液搓手20秒，再冲水",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "做得啱！你好好跟隨學校流程。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-sr-1-b",
+        "text": "用清水隨便冲兩下就算",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "下次記得然後學校流程吧。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "未跟學校流程",
+          "consequence": "會影響紀律，老師會提醒。"
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "school-routine",
+    "creedIds": [
+      1,
+      2
+    ],
+    "imagePrompt": "Primary school student 小明 in Hong Kong school setting doing school routine action for 洗手清潔, 洗手間・小息. HK primary school uniform, anime style, warm tones, no text, 16:9 aspect ratio",
+    "valueCategory": "school-routine",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "school-routine"
+    ],
+    "subjectId": "value",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "s-sr-2",
+    "title": "學校流程：放好書包",
+    "background": "課室・朝早",
+    "description": "朝早，小明返到課室，見到自己張書包隨便放在地下。",
+    "hints": [
+      "然後老師指示就啱喇！",
+      "試吓回想平時老師點教你？"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-sr-2-a",
+        "text": "將書包放在座位旁邊或書包櫃",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "做得啱！你好好跟隨學校流程。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-sr-2-b",
+        "text": "繼續放在地下，不理",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "下次記得然後學校流程吧。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "未跟學校流程",
+          "consequence": "會影響紀律，老師會提醒。"
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "school-routine",
+    "creedIds": [
+      1,
+      2
+    ],
+    "imagePrompt": "Primary school student 小明 in Hong Kong school setting doing school routine action for 放好書包, 課室・朝早. HK primary school uniform, anime style, warm tones, no text, 16:9 aspect ratio",
+    "valueCategory": "school-routine",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "school-routine"
+    ],
+    "subjectId": "value",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "s-sr-3",
+    "title": "學校流程：合上嘴巴",
+    "background": "課室・朝會",
+    "description": "朝會時，老師請大家安靜。見到小明張大嘴巴四處望。",
+    "hints": [
+      "然後老師指示就啱喇！",
+      "試吓回想平時老師點教你？"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-sr-3-a",
+        "text": "合上嘴巴，望實老師，專心聽",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "做得啱！你好好跟隨學校流程。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-sr-3-b",
+        "text": "繼續張大嘴巴，周圍望",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "下次記得然後學校流程吧。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "未跟學校流程",
+          "consequence": "會影響紀律，老師會提醒。"
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "school-routine",
+    "creedIds": [
+      1,
+      2
+    ],
+    "imagePrompt": "Primary school student 小明 in Hong Kong school setting doing school routine action for 合上嘴巴, 課室・朝會. HK primary school uniform, anime style, warm tones, no text, 16:9 aspect ratio",
+    "valueCategory": "school-routine",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "school-routine"
+    ],
+    "subjectId": "value",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "s-sr-4",
+    "title": "學校流程：留心聽老師",
+    "background": "課室・上課中",
+    "description": "老師開始上課，請大家望住老師。小明望緊老師。",
+    "hints": [
+      "然後老師指示就啱喇！",
+      "試吓回想平時老師點教你？"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-sr-4-a",
+        "text": "眼望老師，專心聽老師講東西",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "做得啱！你好好跟隨學校流程。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-sr-4-b",
+        "text": "望向窗外，掛住看風景",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "下次記得然後學校流程吧。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "未跟學校流程",
+          "consequence": "會影響紀律，老師會提醒。"
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "school-routine",
+    "creedIds": [
+      1,
+      2
+    ],
+    "imagePrompt": "Primary school student 小明 in Hong Kong school setting doing school routine action for 留心聽老師, 課室・上課中. HK primary school uniform, anime style, warm tones, no text, 16:9 aspect ratio",
+    "valueCategory": "school-routine",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "school-routine"
+    ],
+    "subjectId": "value",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "s-sr-5",
+    "title": "學校流程：留心看圖卡",
+    "background": "課室・堂上",
+    "description": "老師展示一張圖卡，請大家留心看。小明望緊圖卡。",
+    "hints": [
+      "然後老師指示就啱喇！",
+      "試吓回想平時老師點教你？"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-sr-5-a",
+        "text": "眼望圖卡，留心看圖卡的東西",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "做得啱！你好好跟隨學校流程。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-sr-5-b",
+        "text": "側側膊，不望圖卡，望地下",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "下次記得然後學校流程吧。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "未跟學校流程",
+          "consequence": "會影響紀律，老師會提醒。"
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "school-routine",
+    "creedIds": [
+      1,
+      2
+    ],
+    "imagePrompt": "Primary school student 小明 in Hong Kong school setting doing school routine action for 留心看圖卡, 課室・堂上. HK primary school uniform, anime style, warm tones, no text, 16:9 aspect ratio",
+    "valueCategory": "school-routine",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "school-routine"
+    ],
+    "subjectId": "value",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "s-sr-6",
+    "title": "學校流程：準備返學",
+    "background": "家中・朝早",
+    "description": "鬧鐘響，小明知道係時候準備返學喇。",
+    "hints": [
+      "然後老師指示就啱喇！",
+      "試吓回想平時老師點教你？"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-sr-6-a",
+        "text": "執好書包，換好校服，準備出門口",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "做得啱！你好好跟隨學校流程。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-sr-6-b",
+        "text": "繼續睡多陣，再算",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "下次記得然後學校流程吧。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "未跟學校流程",
+          "consequence": "會影響紀律，老師會提醒。"
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "school-routine",
+    "creedIds": [
+      1,
+      2
+    ],
+    "imagePrompt": "Primary school student 小明 in Hong Kong school setting doing school routine action for 準備返學, 家中・朝早. HK primary school uniform, anime style, warm tones, no text, 16:9 aspect ratio",
+    "valueCategory": "school-routine",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "school-routine"
+    ],
+    "subjectId": "value",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "s-sr-7",
+    "title": "學校流程：執齊東西先走",
+    "background": "課室・下課",
+    "description": "下課鐘响，小明想快這些走，但張書包仲未執好。",
+    "hints": [
+      "然後老師指示就啱喇！",
+      "試吓回想平時老師點教你？"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-sr-7-a",
+        "text": "執齊書包，執齊東西，先離開",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "做得啱！你好好跟隨學校流程。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-sr-7-b",
+        "text": "不執就走，東西散哂在枱面",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "下次記得然後學校流程吧。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "未跟學校流程",
+          "consequence": "會影響紀律，老師會提醒。"
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "school-routine",
+    "creedIds": [
+      1,
+      2
+    ],
+    "imagePrompt": "Primary school student 小明 in Hong Kong school setting doing school routine action for 執齊東西先走, 課室・下課. HK primary school uniform, anime style, warm tones, no text, 16:9 aspect ratio",
+    "valueCategory": "school-routine",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "school-routine"
+    ],
+    "subjectId": "value",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "s-sr-8",
+    "title": "學校流程：排隊行樓梯",
+    "background": "操場・小息後",
+    "description": "小息完，小明要行樓梯返課室，大家排緊隊。",
+    "hints": [
+      "然後老師指示就啱喇！",
+      "試吓回想平時老師點教你？"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-sr-8-a",
+        "text": "排在後面，然後前面慢慢行",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "做得啱！你好好跟隨學校流程。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-sr-8-b",
+        "text": "跑上前，推開前面同學",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "下次記得然後學校流程吧。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "未跟學校流程",
+          "consequence": "會影響紀律，老師會提醒。"
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "school-routine",
+    "creedIds": [
+      1,
+      2
+    ],
+    "imagePrompt": "Primary school student 小明 in Hong Kong school setting doing school routine action for 排隊行樓梯, 操場・小息後. HK primary school uniform, anime style, warm tones, no text, 16:9 aspect ratio",
+    "valueCategory": "school-routine",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "school-routine"
+    ],
+    "subjectId": "value",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "s-sr-9",
+    "title": "學校流程：排隊輪候",
+    "background": "飯堂・午膳",
+    "description": "午膳時間，小明排緊隊拎飯，見前面有同學插隊。",
+    "hints": [
+      "然後老師指示就啱喇！",
+      "試吓回想平時老師點教你？"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-sr-9-a",
+        "text": "請插隊的同學排回原位，大家輪候",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "做得啱！你好好跟隨學校流程。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-sr-9-b",
+        "text": "自己然後插隊，快這些拎到飯",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "下次記得然後學校流程吧。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "未跟學校流程",
+          "consequence": "會影響紀律，老師會提醒。"
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "school-routine",
+    "creedIds": [
+      1,
+      2
+    ],
+    "imagePrompt": "Primary school student 小明 in Hong Kong school setting doing school routine action for 排隊輪候, 飯堂・午膳. HK primary school uniform, anime style, warm tones, no text, 16:9 aspect ratio",
+    "valueCategory": "school-routine",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "school-routine"
+    ],
+    "subjectId": "value",
+    "difficulty": "beginner"
+  },
+  {
+    "id": "s-sr-10",
+    "title": "學校流程：舉手發言",
+    "background": "課室・堂上",
+    "description": "老師問問題，小明知道答案，佢想發言。",
+    "hints": [
+      "然後老師指示就啱喇！",
+      "試吓回想平時老師點教你？"
+    ],
+    "characters": [
+      {
+        "name": "小明",
+        "emoji": "👦",
+        "initial_relationship": 60
+      }
+    ],
+    "options": [
+      {
+        "id": "s-sr-10-a",
+        "text": "舉手，等老師叫名先發言",
+        "effects": [
+          {
+            "character": "小明",
+            "change": 20,
+            "moralChange": 20,
+            "comment": "做得啱！你好好跟隨學校流程。"
+          }
+        ],
+        "next_scenario": null
+      },
+      {
+        "id": "s-sr-10-b",
+        "text": "大聲叫答案，不理老師",
+        "effects": [
+          {
+            "character": "小明",
+            "change": -10,
+            "moralChange": -10,
+            "comment": "下次記得然後學校流程吧。"
+          }
+        ],
+        "next_scenario": null,
+        "stopAndThink": {
+          "badBehavior": "未跟學校流程",
+          "consequence": "會影響紀律，老師會提醒。"
+        }
+      }
+    ],
+    "location": "school",
+    "topicId": "school-routine",
+    "creedIds": [
+      1,
+      2
+    ],
+    "imagePrompt": "Primary school student 小明 in Hong Kong school setting doing school routine action for 舉手發言, 課室・堂上. HK primary school uniform, anime style, warm tones, no text, 16:9 aspect ratio",
+    "valueCategory": "school-routine",
+    "domain": "value",
+    "audience": [
+      "value"
+    ],
+    "riskLevel": 0,
+    "skills": [
+      "school-routine"
+    ],
+    "subjectId": "value",
+    "difficulty": "beginner"
+  }
+]

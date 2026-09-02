@@ -182,6 +182,16 @@ export const CARING = [
     creedIds: [1, 2, 5, 9],  // 堅毅 + 尊重 + 守法 + 同理心
     color: '#7C3AED',
   },
+  // Sprint 19.3: 學校流程 — 中度SEN學生日常學校紀律（洗手、排隊、舉手、專心聽）
+  {
+    id: 'school-routine',
+    title: '學校流程',
+    emoji: '🏫',
+    domain: 'caring',
+    description: '日常生活嘅學校紀律：洗手、排隊、舉手、專心聽',
+    creedIds: [1, 2, 3],  // 堅毅 + 尊重 + 責任感
+    color: '#0891B2',
+  },
 ];
 
 // 🕵️ Sprint 23 — 情緒小偵探 (SPEC §23)
