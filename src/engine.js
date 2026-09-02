@@ -43,11 +43,40 @@ export { setStudent, getStudent, setScenarios, getScenarios, getScenariosByTopic
 
 // ── Role Select (Entry Screen) ──────────────────────────────────────────────
 export function renderRoleSelect() {
+  // Sprint 19.2: read current difficulty, show prominent picker on entry screen
+  const cfg = getTeacherConfig();
+  const diff = cfg?.difficultyMode || 'intermediate';
+  const diffLabels = { mild: '輕度', beginner: '初組', intermediate: '高組' };
+
   return `
     <div class="role-screen">
       <div class="logo" aria-hidden="true">🎓</div>
       <h1>友愛教室</h1>
       <p class="tagline">選擇你的身份，開始學習！</p>
+
+      <!-- Sprint 19.2: 難度快速切換（醒目位置） -->
+      <div style="background:#f8f4ff;border:2px solid #c4b5fd;border-radius:16px;padding:14px 16px;margin:16px auto;max-width:360px;text-align:center">
+        <div style="font-size:var(--fs-sm);color:#6d28d9;font-weight:700;margin-bottom:10px">🎓 學生難度</div>
+        <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+          ${[
+            { v: 'mild', label: '輕度', desc: '全部選擇' },
+            { v: 'beginner', label: '初組', desc: '2揀1' },
+            { v: 'intermediate', label: '高組', desc: '3揀1' },
+          ].map(opt => `
+            <button type="button"
+              class="btn ${diff===opt.v ? 'btn-primary' : 'btn-outline'}"
+              style="padding:8px 14px;font-size:var(--fs-sm);min-height:44px;flex:1"
+              data-action="setDifficultyMode" data-arg="${opt.v}"
+              role="radio" aria-checked="${diff===opt.v}"
+              title="${opt.desc}">
+              ${opt.label}
+            </button>
+          `).join('')}
+        </div>
+        <div style="font-size:11px;color:#6d28d9;margin-top:6px">
+          ${diff === 'mild' ? '全部選項' : diff === 'beginner' ? '圖大字少，2揀1，適合初學者' : '圖大字少，3揀1，適合中度SEN'}
+        </div>
+      </div>
 
       <div class="role-cards">
         <button type="button" class="role-card student" data-action="chooseRole" data-arg="student" aria-label="選擇學生模式：揀遊戲、學習社交禮貌，自由探索">

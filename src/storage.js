@@ -142,7 +142,8 @@ const _DEFAULTS = {
 
   // Sprint 19.2 — 中度智障學生難度模式
   // 'mild' = 輕度（現有全部題目）| 'beginner' = 初組（2揀1）| 'intermediate' = 高組（3揀1）
-  difficultyMode: 'mild',
+  // Default = 'intermediate'（中度SEN預設，圖大字少，2-3揀1）
+  difficultyMode: 'intermediate',
 };
 let _cached = null;
 let _cachedAt = 0;
